@@ -162,6 +162,21 @@ function ResolutionSummary({ result }: { result: ResolutionResult }): JSX.Elemen
         </span>
       </div>
 
+      {result.policyBasis ? (
+        <ResultSection title="Policy basis">
+          <ul>
+            <li>
+              <strong>{statusLabels[result.policyBasis.status]}</strong>
+              <span>
+                {result.policyBasis.verification.status.replace(/_/g, " ")} ·{" "}
+                {result.policyBasis.sourceIds.length} source
+                {result.policyBasis.sourceIds.length === 1 ? "" : "s"}
+              </span>
+            </li>
+          </ul>
+        </ResultSection>
+      ) : null}
+
       <ResultSection title="Authority candidates">
         {result.authorityCandidates.length > 0 ? (
           <ul>
