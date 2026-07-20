@@ -131,11 +131,7 @@
         "id": { "type": "string" },
         "code_family": { "type": "string" },
         "model": { "type": "string" },
-        "entity_kinds": {
-          "type": "array",
-          "minItems": 1,
-          "items": { "type": "string" }
-        },
+        "entity_kinds": { "type": "array", "minItems": 1, "items": { "type": "string" } },
         "authority_ids": { "type": "array", "items": { "type": "string" } },
         "summary": { "type": "string" },
         "source_ids": { "$ref": "#/$defs/sourceIds" },
