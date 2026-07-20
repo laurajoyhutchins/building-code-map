@@ -55,26 +55,19 @@ export function ResolutionPanel(): JSX.Element {
       setResult(nextResult);
     } catch (requestError) {
       setResult(null);
-      setError(
-        requestError instanceof Error
-          ? requestError.message
-          : "Resolution failed.",
-      );
+      setError(requestError instanceof Error ? requestError.message : "Resolution failed.");
     } finally {
       setIsLoading(false);
     }
   }
 
   return (
-    <section
-      className="panel panel--tight resolution-panel"
-      aria-labelledby="resolution-heading"
-    >
+    <section className="panel panel--tight resolution-panel" aria-labelledby="resolution-heading">
       <div className="panel__header">
         <h2 id="resolution-heading">Resolve authority</h2>
         <p>
-          Enter a coordinate to identify the state policy, likely authorities,
-          and records that still require local verification.
+          Enter a coordinate to identify the state policy, likely authorities, and records that
+          still require local verification.
         </p>
       </div>
 
@@ -101,10 +94,7 @@ export function ResolutionPanel(): JSX.Element {
         </div>
         <label>
           <span>Code family</span>
-          <select
-            value={codeFamily}
-            onChange={(event) => setCodeFamily(event.target.value)}
-          >
+          <select value={codeFamily} onChange={(event) => setCodeFamily(event.target.value)}>
             {codeFamilies.map(([value, label]) => (
               <option key={value} value={value}>
                 {label}
@@ -114,10 +104,7 @@ export function ResolutionPanel(): JSX.Element {
         </label>
         <label>
           <span>Project context</span>
-          <select
-            value={projectType}
-            onChange={(event) => setProjectType(event.target.value)}
-          >
+          <select value={projectType} onChange={(event) => setProjectType(event.target.value)}>
             {projectTypes.map(([value, label]) => (
               <option key={value || "ordinary"} value={value}>
                 {label}
@@ -125,28 +112,18 @@ export function ResolutionPanel(): JSX.Element {
             ))}
           </select>
         </label>
-        <button
-          className="resolution-form__submit"
-          type="submit"
-          disabled={isLoading}
-        >
+        <button className="resolution-form__submit" type="submit" disabled={isLoading}>
           {isLoading ? "Resolving…" : "Resolve location"}
         </button>
       </form>
 
-      {error ? (
-        <p className="resolution-message resolution-message--error">{error}</p>
-      ) : null}
+      {error ? <p className="resolution-message resolution-message--error">{error}</p> : null}
       {result ? <ResolutionSummary result={result} /> : null}
     </section>
   );
 }
 
-function ResolutionSummary({
-  result,
-}: {
-  result: ResolutionResult;
-}): JSX.Element {
+function ResolutionSummary({ result }: { result: ResolutionResult }): JSX.Element {
   const place =
     result.geography.municipality?.name ??
     result.geography.county?.name ??
@@ -159,14 +136,10 @@ function ResolutionSummary({
         <div>
           <span className="resolution-result__place">{place}</span>
           <strong>
-            {result.codeFamily
-              ? result.codeFamily.replace(/_/g, " ")
-              : "All code families"}
+            {result.codeFamily ? result.codeFamily.replace(/_/g, " ") : "All code families"}
           </strong>
         </div>
-        <span
-          className={`resolution-status resolution-status--${result.status}`}
-        >
+        <span className={`resolution-status resolution-status--${result.status}`}>
           {statusLabels[result.status]}
         </span>
       </div>
@@ -175,14 +148,9 @@ function ResolutionSummary({
         {result.authorityCandidates.length > 0 ? (
           <ul>
             {result.authorityCandidates.map((candidate) => (
-              <li
-                key={`${candidate.kind}:${candidate.authorityId ?? candidate.name}`}
-              >
+              <li key={`${candidate.kind}:${candidate.authorityId ?? candidate.name}`}>
                 <strong>{candidate.name}</strong>
-                <span>
-                  {candidate.roles.join(", ") ||
-                    candidate.kind.replace(/_/g, " ")}
-                </span>
+                <span>{candidate.roles.join(", ") || candidate.kind.replace(/_/g, " ")}</span>
               </li>
             ))}
           </ul>
@@ -239,13 +207,7 @@ function ResolutionSummary({
   );
 }
 
-function ResultSection({
-  title,
-  children,
-}: {
-  title: string;
-  children: ReactNode;
-}): JSX.Element {
+function ResultSection({ title, children }: { title: string; children: ReactNode }): JSX.Element {
   return (
     <section className="resolution-result__section">
       <h3>{title}</h3>
