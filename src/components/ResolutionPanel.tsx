@@ -70,8 +70,8 @@ export function ResolutionPanel(): JSX.Element {
       <div className="panel__header">
         <h2 id="resolution-heading">Resolve authority</h2>
         <p>
-          Enter a coordinate and applicability date to identify the controlling state policy,
-          likely authorities, evidence, and records that still require local verification.
+          Enter a coordinate and applicability date to identify the controlling state policy, likely
+          authorities, evidence, and records that still require local verification.
         </p>
       </div>
 
@@ -152,7 +152,9 @@ function ResolutionSummary({ result }: { result: ResolutionResult }): JSX.Elemen
             {result.codeFamily ? result.codeFamily.replace(/_/g, " ") : "All code families"}
           </strong>
           {result.applicabilityDate ? (
-            <span className="resolution-result__place">Applicable on {result.applicabilityDate}</span>
+            <span className="resolution-result__place">
+              Applicable on {result.applicabilityDate}
+            </span>
           ) : null}
         </div>
         <span className={`resolution-status resolution-status--${result.status}`}>
