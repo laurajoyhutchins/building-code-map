@@ -13,7 +13,10 @@ export function buildApiUrl(path: string): string {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
 
   if (/^https?:\/\//i.test(API_BASE)) {
-    return new URL(normalizedPath.slice(1), `${API_BASE.replace(/\/+$/, "")}/`).toString();
+    return new URL(
+      normalizedPath.slice(1),
+      `${API_BASE.replace(/\/+$/, "")}/`,
+    ).toString();
   }
 
   return `${API_BASE.replace(/\/+$/, "")}${normalizedPath}`;
@@ -133,7 +136,9 @@ export interface ResolutionRequestInput {
   applicabilityDate?: string;
 }
 
-export function decodeResolutionResult(raw: RawResolutionResult): ResolutionResult {
+export function decodeResolutionResult(
+  raw: RawResolutionResult,
+): ResolutionResult {
   const mapBoundary = (match: RawBoundaryMatch) => ({
     layerFamily: match.layer_family,
     featureId: match.feature_id,
@@ -150,14 +155,18 @@ export function decodeResolutionResult(raw: RawResolutionResult): ResolutionResu
       stateId: raw.geography.state_id,
       stateFips: raw.geography.state_fips,
       stateName: raw.geography.state_name,
-      county: raw.geography.county ? mapBoundary(raw.geography.county) : undefined,
+      county: raw.geography.county
+        ? mapBoundary(raw.geography.county)
+        : undefined,
       municipality: raw.geography.municipality
         ? mapBoundary(raw.geography.municipality)
         : undefined,
       incorporated: raw.geography.incorporated,
       specialAreas: (raw.geography.special_areas ?? []).map(mapBoundary),
       tribalAreas: (raw.geography.tribal_areas ?? []).map(mapBoundary),
-      fireJurisdictions: (raw.geography.fire_jurisdictions ?? []).map(mapBoundary),
+      fireJurisdictions: (raw.geography.fire_jurisdictions ?? []).map(
+        mapBoundary,
+      ),
     },
     codeFamily: raw.code_family,
     projectType: raw.project_type,
@@ -194,7 +203,9 @@ export function decodeResolutionResult(raw: RawResolutionResult): ResolutionResu
   };
 }
 
-export async function fetchResolution(input: ResolutionRequestInput): Promise<ResolutionResult> {
+export async function fetchResolution(
+  input: ResolutionRequestInput,
+): Promise<ResolutionResult> {
   const raw = await readJson<RawResolutionResult>("/resolve", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
