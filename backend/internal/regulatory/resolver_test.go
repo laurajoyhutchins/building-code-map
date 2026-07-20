@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -31,6 +32,8 @@ func TestResolveColoradoBuildingRequiresLocalAdoptionRecord(t *testing.T) {
 	}
 	assertCandidateKind(t, result, "municipality")
 	assertContains(t, result.RequiredLocalRecords, "Current municipal building-code adoption ordinance and effective date")
+	assertRuleKind(t, result, "applicability")
+	assertRuleKind(t, result, "amendment")
 }
 
 func TestResolveColoradoElectricalAddsStateAdoption(t *testing.T) {
@@ -49,6 +52,7 @@ func TestResolveColoradoElectricalAddsStateAdoption(t *testing.T) {
 		t.Fatalf("unexpected adoptions: %#v", result.Adoptions)
 	}
 	assertCandidateAuthority(t, result, "auth:us-co:state-electrical-board")
+	assertRuleKind(t, result, "enforcement")
 }
 
 func TestResolveFloridaUsesStatewideBuildingCodeWithoutSuppressingLocalFollowUp(t *testing.T) {
@@ -61,7 +65,8 @@ func TestResolveFloridaUsesStatewideBuildingCodeWithoutSuppressingLocalFollowUp(
 			Municipality: &BoundaryMatch{Name: "Orlando"},
 			County:       &BoundaryMatch{Name: "Orange County"},
 		},
-		CodeFamily: "building",
+		CodeFamily:        "building",
+		ApplicabilityDate: "2026-07-20",
 	})
 	if err != nil {
 		t.Fatal(err)
@@ -71,6 +76,33 @@ func TestResolveFloridaUsesStatewideBuildingCodeWithoutSuppressingLocalFollowUp(
 	}
 	assertCandidateKind(t, result, "municipality")
 	assertContains(t, result.RequiredLocalRecords, "Local technical amendments and administrative procedures")
+	if len(result.AuthorityPath) != 1 {
+		t.Fatalf("expected authority path, got %#v", result.AuthorityPath)
+	}
+	for _, kind := range []string{"applicability", "date", "amendment", "enforcement"} {
+		assertRuleKind(t, result, kind)
+	}
+	if len(result.SupportingClaims) < 2 {
+		t.Fatalf("expected adoption and relationship claims, got %#v", result.SupportingClaims)
+	}
+}
+
+func TestResolveFloridaHistoricalDateFailsClosedBeforeCurrentEdition(t *testing.T) {
+	catalog := loadTestCatalog(t)
+	result, err := Resolve(catalog, ResolutionRequest{
+		Context:           &GeographicContext{StateID: "US-FL", StateFIPS: "12", Municipality: &BoundaryMatch{Name: "Orlando"}},
+		CodeFamily:        "building",
+		ApplicabilityDate: "2023-01-01",
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if result.Status != "insufficient_evidence" || len(result.Adoptions) != 0 {
+		t.Fatalf("historical result did not fail closed: %#v", result)
+	}
+	if !strings.Contains(strings.Join(result.Warnings, " "), "No supported adoption record") {
+		t.Fatalf("missing historical adoption warning: %#v", result.Warnings)
+	}
 }
 
 func TestResolveNewJerseyOperationalFireUsesSeparateAuthority(t *testing.T) {
@@ -93,6 +125,18 @@ func TestResolveNewJerseyOperationalFireUsesSeparateAuthority(t *testing.T) {
 	if len(result.Adoptions) != 1 || result.Adoptions[0].CodeFamily != "fire_operational" {
 		t.Fatalf("unexpected fire adoptions: %#v", result.Adoptions)
 	}
+	assertRuleKind(t, result, "enforcement")
+}
+
+func TestResolveRejectsInvalidApplicabilityDate(t *testing.T) {
+	catalog := loadTestCatalog(t)
+	_, err := Resolve(catalog, ResolutionRequest{
+		Context:           &GeographicContext{StateID: "US-FL", StateFIPS: "12"},
+		ApplicabilityDate: "yesterday",
+	})
+	if err == nil || !strings.Contains(err.Error(), "YYYY-MM-DD") {
+		t.Fatalf("unexpected error: %v", err)
+	}
 }
 
 func TestResolveUnknownStateFailsClosed(t *testing.T) {
@@ -109,6 +153,20 @@ func TestResolveUnknownStateFailsClosed(t *testing.T) {
 	}
 }
 
+func TestCatalogMergesRulePacksAndSourceHealth(t *testing.T) {
+	catalog := loadTestCatalog(t)
+	profile, ok := catalog.Profile("US-FL", "")
+	if !ok {
+		t.Fatal("Florida profile missing")
+	}
+	if len(profile.ApplicabilityRules) == 0 || len(profile.DateRules) == 0 || len(profile.AmendmentRules) == 0 || len(profile.EnforcementRules) == 0 {
+		t.Fatalf("rule pack was not merged: %#v", profile)
+	}
+	if profile.Sources[0].LastCheckedAt == "" || profile.Sources[0].Availability != "available" {
+		t.Fatalf("source health was not merged: %#v", profile.Sources)
+	}
+}
+
 func TestProfilesRoundTripDeterministically(t *testing.T) {
 	catalog := loadTestCatalog(t)
 	for _, profile := range catalog.Profiles() {
@@ -120,7 +178,7 @@ func TestProfilesRoundTripDeterministically(t *testing.T) {
 		if err := json.Unmarshal(raw, &decoded); err != nil {
 			t.Fatal(err)
 		}
-		if err := ValidateProfile(decoded); err != nil {
+		if err := ValidateCompleteProfile(decoded); err != nil {
 			t.Fatalf("round-trip profile %s: %v", profile.ProfileID, err)
 		}
 	}
@@ -155,6 +213,16 @@ func assertCandidateAuthority(t *testing.T, result ResolutionResult, id string) 
 		}
 	}
 	t.Fatalf("missing authority %q in %#v", id, result.AuthorityCandidates)
+}
+
+func assertRuleKind(t *testing.T, result ResolutionResult, kind string) {
+	t.Helper()
+	for _, rule := range result.ApplicableRules {
+		if rule.Kind == kind {
+			return
+		}
+	}
+	t.Fatalf("missing rule kind %q in %#v", kind, result.ApplicableRules)
 }
 
 func assertContains(t *testing.T, values []string, wanted string) {
