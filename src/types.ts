@@ -103,6 +103,14 @@ export interface ResolutionGeography {
   fireJurisdictions: ResolutionBoundaryMatch[];
 }
 
+export interface ResolutionPolicyBasis {
+  status: ResolutionStatus;
+  requiredLocalRecords: string[];
+  warnings: string[];
+  sourceIds: string[];
+  verification: VerificationRecord;
+}
+
 export interface ResolutionAuthorityCandidate {
   kind: string;
   authorityId?: string;
@@ -164,6 +172,7 @@ export interface ResolutionResult {
   projectType?: string;
   applicabilityDate?: string;
   status: ResolutionStatus;
+  policyBasis?: ResolutionPolicyBasis;
   authorityCandidates: ResolutionAuthorityCandidate[];
   authorityPath: ResolutionAuthorityRelationship[];
   adoptions: ResolutionAdoption[];
