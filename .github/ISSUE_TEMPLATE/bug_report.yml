@@ -1,0 +1,73 @@
+name: Software bug
+description: Report a reproducible problem in the frontend, backend, tooling, or documentation.
+title: "bug: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a defect. Do not include credentials, private data, restricted NERIS records, or security exploit details. Use GitHub's private vulnerability reporting feature for security issues.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - Frontend or map interaction
+        - Go API or snapshot reader
+        - Local development tooling
+        - CI or repository automation
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Observed behavior
+      description: Describe what happened, including relevant errors or response payloads.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: Describe what you expected instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Provide the smallest reliable sequence that reproduces the problem.
+      placeholder: |
+        1. Start ...
+        2. Open ...
+        3. Select ...
+        4. Observe ...
+    validations:
+      required: true
+
+  - type: input
+    id: revision
+    attributes:
+      label: Commit, branch, or release
+      description: Identify the revision where the problem occurs.
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include operating system, browser, Node.js, pnpm, and Go versions when relevant.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Publication and security checks
+      options:
+        - label: I removed credentials, private data, runtime database content, and machine-specific paths from this report.
+          required: true
+        - label: This is not a vulnerability report requiring private disclosure.
+          required: true
