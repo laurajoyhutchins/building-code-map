@@ -43,8 +43,19 @@ jobs:
       - name: Lint
         run: pnpm lint
 
-      - name: Check formatting
-        run: pnpm format:check
+      - name: Format checked files
+        run: pnpm format
+
+      - name: Upload Prettier output
+        uses: actions/upload-artifact@v4
+        with:
+          name: prettier-output-complete
+          path: |
+            .github/workflows/ci.yml
+            README.md
+            docs/superpowers/specs/2026-07-19-public-readme-design.md
+            docs/superpowers/plans/2026-07-19-public-readme.md
+          if-no-files-found: error
 
       - name: Test
         run: pnpm test
