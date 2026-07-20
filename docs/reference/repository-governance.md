@@ -2,6 +2,16 @@
 
 This document defines the intended GitHub settings and contribution controls for the public Building Code Map repository.
 
+## Apply and Verify the Settings
+
+From an authenticated Windows development environment with PowerShell 7 and GitHub CLI:
+
+```powershell
+.\tools\configure-github-repository.cmd
+```
+
+The script is idempotent. It normalizes merge settings, creates or updates the **Exact-head review clearance** ruleset, enables supported security features, and prints the resulting state. It requires repository administration permission. Features unavailable for the account or repository plan are reported as warnings for manual review.
+
 ## Repository Settings
 
 - Visibility: public
