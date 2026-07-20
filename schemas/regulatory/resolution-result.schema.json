@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/regulatory/resolution-result.schema.json",
+  "title": "Building Code Map Resolution Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_at",
+    "geography",
+    "status",
+    "authority_candidates",
+    "evidence"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "profile_id": { "type": "string" },
+    "profile_last_verified": { "type": "string", "format": "date" },
+    "geography": {
+      "type": "object",
+      "required": ["incorporated"],
+      "properties": {
+        "state_id": { "type": "string" },
+        "state_fips": { "type": "string" },
+        "state_name": { "type": "string" },
+        "county": { "$ref": "#/$defs/boundary" },
+        "municipality": { "$ref": "#/$defs/boundary" },
+        "incorporated": { "type": "boolean" },
+        "special_areas": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/boundary" }
+        },
+        "tribal_areas": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/boundary" }
+        },
+        "fire_jurisdictions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/boundary" }
+        }
+      }
+    },
+    "code_family": { "type": "string" },
+    "project_type": { "type": "string" },
+    "applicability_date": { "type": "string", "format": "date" },
+    "status": {
+      "enum": [
+        "resolved",
+        "partially_resolved",
+        "local_record_required",
+        "ambiguous",
+        "conflicting",
+        "insufficient_evidence"
+      ]
+    },
+    "authority_candidates": { "type": "array", "items": { "type": "object" } },
+    "adoptions": { "type": "array", "items": { "type": "object" } },
+    "required_local_records": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "evidence": { "type": "array", "items": { "type": "object" } }
+  },
+  "$defs": {
+    "boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["layer_family", "feature_id", "name"],
+      "properties": {
+        "layer_family": { "type": "string" },
+        "feature_id": { "type": "string" },
+        "name": { "type": "string" },
+        "source_id": { "type": "string" }
+      }
+    }
+  }
+}
