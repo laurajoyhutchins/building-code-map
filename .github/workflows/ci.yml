@@ -76,3 +76,33 @@ jobs:
 
       - name: Vet
         run: go vet ./...
+
+  regulatory-data:
+    name: Regulatory data
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Test compiler and quality reporting
+        run: python -m unittest discover -s reports/tools -p test_regulatory.py -v
+
+      - name: Validate pilot reports
+        run: python reports/tools/regulatory.py validate reports/pilots/*.md
+
+      - name: Verify compiled profiles are current
+        run: python reports/tools/regulatory.py compile reports/pilots/*.md --output-dir backend/data/regulatory --check
+
+      - name: Generate nationwide quality report
+        run: >-
+          python reports/tools/regulatory.py coverage
+          --reports-root reports
+          --json-output "${{ runner.temp }}/regulatory-coverage.json"
+          --markdown-output "${{ runner.temp }}/regulatory-coverage.md"
