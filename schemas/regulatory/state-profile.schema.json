@@ -25,9 +25,7 @@
     "state_name": { "type": "string", "minLength": 1 },
     "state_abbreviation": { "type": "string", "pattern": "^[A-Z]{2}$" },
     "state_fips": { "type": "string", "pattern": "^[0-9]{2}$" },
-    "status": {
-      "enum": ["draft", "partially_verified", "verified", "deprecated"]
-    },
+    "status": { "enum": ["draft", "partially_verified", "verified", "deprecated"] },
     "last_verified": { "type": "string", "format": "date" },
     "sources": {
       "type": "array",
@@ -46,6 +44,31 @@
     "adoptions": {
       "type": "array",
       "items": { "$ref": "#/$defs/adoption" }
+    },
+    "applicability_rules": {
+      "type": "array",
+      "items": { "$ref": "state-rule-pack.schema.json#/$defs/applicabilityRule" }
+    },
+    "date_rules": {
+      "type": "array",
+      "items": { "$ref": "state-rule-pack.schema.json#/$defs/dateRule" }
+    },
+    "amendment_rules": {
+      "type": "array",
+      "items": { "$ref": "state-rule-pack.schema.json#/$defs/amendmentRule" }
+    },
+    "enforcement_rules": {
+      "type": "array",
+      "items": { "$ref": "state-rule-pack.schema.json#/$defs/enforcementRule" }
+    },
+    "claims": {
+      "type": "array",
+      "items": { "$ref": "state-rule-pack.schema.json#/$defs/claim" }
+    },
+    "resolver_fixture_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
     },
     "defaults": {
       "type": "object",
@@ -67,6 +90,12 @@
     "verification": { "$ref": "#/$defs/verification" }
   },
   "$defs": {
+    "sourceIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
     "verification": {
       "type": "object",
       "additionalProperties": false,
@@ -89,6 +118,10 @@
         "url": { "type": "string", "format": "uri" },
         "kind": { "type": "string", "minLength": 1 },
         "accessed_at": { "type": "string", "format": "date" },
+        "last_checked_at": { "type": "string", "format": "date" },
+        "availability": {
+          "enum": ["available", "unavailable", "moved", "unknown"]
+        },
         "caveat": { "type": "string" }
       }
     },
@@ -115,6 +148,7 @@
         "relationship": { "type": "string", "minLength": 1 },
         "to": { "type": "string", "minLength": 1 },
         "scope": { "type": "array", "items": { "type": "string" } },
+        "summary": { "type": "string" },
         "source_ids": { "$ref": "#/$defs/sourceIds" },
         "verification": { "$ref": "#/$defs/verification" }
       }
@@ -222,12 +256,6 @@
         "warnings": { "type": "array", "items": { "type": "string" } },
         "source_ids": { "$ref": "#/$defs/sourceIds" }
       }
-    },
-    "sourceIds": {
-      "type": "array",
-      "minItems": 1,
-      "items": { "type": "string", "minLength": 1 },
-      "uniqueItems": true
     }
   }
 }
