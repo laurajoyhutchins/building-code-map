@@ -28,18 +28,28 @@ const loadingRefreshStatus: RefreshStatus = {
 };
 
 function App(): JSX.Element {
-  const [layerRegistry, setLayerRegistry] = useState<LayerFamilyDefinition[]>([]);
+  const [layerRegistry, setLayerRegistry] = useState<LayerFamilyDefinition[]>(
+    [],
+  );
   const [enabledLayers, setEnabledLayers] = useState<LayerSelectionMap>(() =>
     createLayerSelectionMap([]),
   );
-  const [refreshStatus, setRefreshStatus] = useState<RefreshStatus | null>(null);
-  const [boundaryFeatures, setBoundaryFeatures] = useState<BoundaryFeatureRecord[]>([]);
-  const [selectedFeatureId, setSelectedFeatureId] = useState<string | null>(null);
+  const [refreshStatus, setRefreshStatus] = useState<RefreshStatus | null>(
+    null,
+  );
+  const [boundaryFeatures, setBoundaryFeatures] = useState<
+    BoundaryFeatureRecord[]
+  >([]);
+  const [selectedFeatureId, setSelectedFeatureId] = useState<string | null>(
+    null,
+  );
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
 
   const selectedFeature: BoundaryFeatureRecord | null = selectedFeatureId
-    ? (boundaryFeatures.find((feature) => feature.featureId === selectedFeatureId) ?? null)
+    ? (boundaryFeatures.find(
+        (feature) => feature.featureId === selectedFeatureId,
+      ) ?? null)
     : null;
 
   const selectedSummary = selectedFeature;
@@ -49,11 +59,12 @@ function App(): JSX.Element {
 
     async function loadMetadata() {
       try {
-        const [nextLayers, nextRefreshStatus, nextBoundaryFeatures] = await Promise.all([
-          fetchLayers(),
-          fetchRefreshStatus(),
-          fetchBoundaryFeatures(),
-        ]);
+        const [nextLayers, nextRefreshStatus, nextBoundaryFeatures] =
+          await Promise.all([
+            fetchLayers(),
+            fetchRefreshStatus(),
+            fetchBoundaryFeatures(),
+          ]);
 
         if (cancelled) {
           return;
@@ -64,7 +75,9 @@ function App(): JSX.Element {
         setRefreshStatus(nextRefreshStatus);
         setBoundaryFeatures(nextBoundaryFeatures);
         setLoadError(null);
-        setSelectedFeatureId((current) => current ?? nextBoundaryFeatures[0]?.featureId ?? null);
+        setSelectedFeatureId(
+          (current) => current ?? nextBoundaryFeatures[0]?.featureId ?? null,
+        );
       } catch {
         if (!cancelled) {
           setLayerRegistry([]);
@@ -100,7 +113,9 @@ function App(): JSX.Element {
     <div className="app-shell">
       <header className="app-header">
         <div>
-          <p className="eyebrow">Local GIS + source-backed jurisdiction policy</p>
+          <p className="eyebrow">
+            Local GIS + source-backed jurisdiction policy
+          </p>
           <h1>Building Code Map</h1>
         </div>
         <div className="app-header__stats">
@@ -121,7 +136,11 @@ function App(): JSX.Element {
 
       <main className="app-grid">
         <aside className="sidebar">
-          <StatusBanner refreshStatus={refreshStatus} apiBaseUrl={apiBaseUrl} error={loadError} />
+          <StatusBanner
+            refreshStatus={refreshStatus}
+            apiBaseUrl={apiBaseUrl}
+            error={loadError}
+          />
           <ResolutionPanel />
           <LayerToggleList
             layers={layerRegistry}
