@@ -23,7 +23,11 @@ describe("resolution response decoding", () => {
         state_id: "US-CO",
         state_fips: "08",
         state_name: "Colorado",
-        county: { layer_family: "counties", feature_id: "08031", name: "Denver County" },
+        county: {
+          layer_family: "counties",
+          feature_id: "08031",
+          name: "Denver County",
+        },
         municipality: {
           layer_family: "municipalities",
           feature_id: "0820000",
@@ -33,7 +37,9 @@ describe("resolution response decoding", () => {
       },
       code_family: "building",
       status: "local_record_required",
-      required_local_records: ["Current municipal building-code adoption ordinance"],
+      required_local_records: [
+        "Current municipal building-code adoption ordinance",
+      ],
       warnings: ["State data does not establish a local edition."],
       evidence: [],
     });
