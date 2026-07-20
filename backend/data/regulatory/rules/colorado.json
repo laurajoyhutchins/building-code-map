@@ -106,7 +106,7 @@
   "claims": [
     {
       "id": "claim:us-co:building-local-record",
-      "subject_id": "state-profile:us-co",
+      "subject_id": "rule:us-co:building-local-adoption",
       "field": "defaults.building",
       "status": "supported",
       "value": "local_record_required",
