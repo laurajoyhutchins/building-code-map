@@ -1,0 +1,64 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: The Fire Prevention and Building Safety Commission is the primary statewide
+    body for building and fire-safety laws.
+  confidence: 0.9
+  source_ids:
+  - src:usa-in:idhs-fpbsc-overview
+  - src:usa-in:iac-675-12-gar-pdf
+- topic: Primary building code edition
+  finding: 675 IAC 13-2.6 lists the 2014 Indiana Building Code, based on the 2012
+    IBC First Printing, as currently in effect, effective 2014-12-01.
+  confidence: 0.86
+  source_ids:
+  - src:usa-in:idhs-fpbsc-rules-overview
+  - src:usa-in:iar-title-675-current
+- topic: Residential code edition
+  finding: 675 IAC 14-4.4 lists the 2020 Indiana Residential Code, based on the 2018
+    IRC First Printing, as currently in effect, effective 2019-12-26.
+  confidence: 0.86
+  source_ids:
+  - src:usa-in:idhs-fpbsc-rules-overview
+  - src:usa-in:iar-title-675-current
+- topic: Electrical code edition
+  finding: 675 IAC 17-1.8 lists the Indiana Electrical Code, 2009 Edition, based on
+    NFPA 70 NEC 2008 First Printing, as currently in effect, effective 2009-08-26;
+    a 2026 rulemaking is pending to replace it.
+  confidence: 0.8
+  source_ids:
+  - src:usa-in:idhs-fpbsc-rules-overview
+  - src:usa-in:idhs-electrical-code-update
+  - src:usa-in:iar-electrical-lsa-26-62
+- topic: Fire code edition
+  finding: 675 IAC 22-2.5 lists the 2014 Indiana Fire Code, based on the 2012 IFC
+    First Printing, as currently in effect, effective 2014-12-01.
+  confidence: 0.84
+  source_ids:
+  - src:usa-in:idhs-fpbsc-rules-overview
+  - src:usa-in:idhs-fire-code-update
+- topic: Local enforcement
+  finding: IDHS performs Class 1 plan review and provides code-enforcement inspections,
+    guidance, training, interpretation, and on-site inspection assistance; certified
+    cities, towns, and counties may perform local plan review under 675 IAC 12-7.
+  confidence: 0.78
+  source_ids:
+  - src:usa-in:idhs-building-plan-review
+  - src:usa-in:idhs-code-enforcement
+  - src:usa-in:iac-675-12-gar-pdf
+- topic: Local amendments
+  finding: "Substantive local deviations from Commission building/fire-safety rules\
+    \ are generally unavailable under IDHS's HEA 1575 posture; administrative\
+    \ local provisions remain."
+  confidence: 0.74
+  source_ids:
+  - src:usa-in:idhs-fpbsc-overview
+- topic: Effective / operative date rule
+  finding: Design-release projects generally use Commission rules in effect when plans
+    and specifications are filed with the Division; exempt construction uses rules
+    in effect when work is actually done, with a rebuttable presumption tied to construction
+    start.
+  confidence: 0.82
+  source_ids:
+  - src:usa-in:iac-675-12-gar-pdf
+  - src:usa-in:cornell-675-12-4-7

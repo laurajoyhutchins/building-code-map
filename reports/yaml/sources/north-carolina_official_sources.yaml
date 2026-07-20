@@ -1,0 +1,107 @@
+---
+official_sources:
+- source_id: src:usa-nc:gs-143-136-138
+  title: 'N.C. Gen. Stat. Chapter 143, Article 9: Building Code Council, Residential
+    Code Council, and North Carolina State Building Code'
+  publisher___custodian: North Carolina General Assembly
+  source_type: statute HTML
+  url: https://www.ncleg.gov/enactedlegislation/statutes/html/byarticle/chapter_143/article_9.html
+  date___version: General Statutes include changes through S.L. 2026-7 per NCGA chapter
+    page
+  primary_use: Building Code Council/RCC creation, adoption authority, code volumes,
+    local-code effect, local fire-prevention/floodplain rule, publication/distribution,
+    appeals, interpretation choice.
+- source_id: src:usa-nc:gs-143-139
+  title: "N.C. Gen. Stat. \xA7 143-139, Enforcement of the North Carolina State Building\
+    \ Code"
+  publisher___custodian: North Carolina General Assembly
+  source_type: statute HTML
+  url: https://www.ncleg.gov/enactedlegislation/statutes/html/bysection/chapter_143/gs_143-139.html
+  date___version: General Statutes include changes through S.L. 2026-7 per NCGA chapter
+    page
+  primary_use: State Fire Marshal general authority; local official cooperation; Department
+    of Labor allocations for boilers/elevators; enforcement remedies.
+- source_id: src:usa-nc:gs-160d-1102
+  title: "N.C. Gen. Stat. \xA7 160D-1102, Building code administration"
+  publisher___custodian: North Carolina General Assembly
+  source_type: statute HTML
+  url: https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_160D/GS_160D-1102.html
+  date___version: General Statutes include changes through S.L. 2026-7 per NCGA chapter
+    page
+  primary_use: Local inspection department options and State Fire Marshal backstop
+    if local services fail.
+- source_id: src:usa-nc:gs-160d-art11
+  title: N.C. Gen. Stat. Chapter 160D, Article 11, Building Code Enforcement
+  publisher___custodian: North Carolina General Assembly
+  source_type: statute HTML
+  url: https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/ByArticle/Chapter_160D/Article_11.html
+  date___version: General Statutes include changes through S.L. 2026-7 per NCGA chapter
+    page
+  primary_use: Building permits, local review timelines, inspections of work in progress,
+    permit expiration, certificates, records.
+- source_id: src:usa-nc:osfm-codes
+  title: Codes
+  publisher___custodian: North Carolina Office of State Fire Marshal
+  source_type: agency webpage
+  url: https://www.ncosfm.gov/codes
+  date___version: accessed 2026-06-26
+  primary_use: OSFM summary that NC State Building Code is adopted/amended by Building
+    Code Council for statewide implementation; Residential Code Council overview.
+- source_id: src:usa-nc:osfm-codes-current-past
+  title: Codes - Current and Past
+  publisher___custodian: North Carolina Office of State Fire Marshal
+  source_type: agency webpage / code portal
+  url: https://www.ncosfm.gov/codes/codes-current-and-past
+  date___version: accessed 2026-06-26
+  primary_use: Current code editions, 2018 code effective and transition dates, 2020
+    Electrical Code effective date, accessibility standard, current and past code
+    links.
+- source_id: src:usa-nc:osfm-electrical-division
+  title: State Electrical Division
+  publisher___custodian: North Carolina Office of State Fire Marshal
+  source_type: agency webpage
+  url: https://www.ncosfm.gov/codes/state-electrical-division
+  date___version: accessed 2026-06-26
+  primary_use: State Electrical Division role interpreting State Electrical Code and
+    providing access to adopted amendments.
+- source_id: src:usa-nc:osfm-2025-delay-press
+  title: North Carolina Delays Implementation of 2024 State Building Code
+  publisher___custodian: North Carolina Office of State Fire Marshal
+  source_type: agency press release
+  url: https://www.ncosfm.gov/news/press-releases/2025/04/07/north-carolina-delays-implementation-2024-state-building-code
+  date___version: '2025-04-07'
+  primary_use: 2024 Code delay; continued effectiveness of 2018 Code; alternative-method
+    use of 2024 Code; 2024 code volume list.
+- source_id: src:usa-nc:osfm-2024-rrc-links
+  title: 2025-0403 Rules Review Commission links to the 2024 North Carolina State
+    Building Code
+  publisher___custodian: North Carolina Office of State Fire Marshal
+  source_type: agency webpage linking PDF
+  url: https://www.ncosfm.gov/2025-0403-rules-review-commission-links-2024-north-carolina-state-building-code
+  date___version: '2025-04-03'
+  primary_use: Location of RRC link index for approved 2024 State Building Code rules;
+    underlying links not parsed.
+- source_id: src:usa-nc:osfm-2025-formal-interpretation-107
+  title: December 5, 2025 OSFM Formal Interpretation re 2018 NCACP Section 107 Inspections
+  publisher___custodian: North Carolina Office of State Fire Marshal
+  source_type: formal interpretation PDF
+  url: https://www.ncosfm.gov/formal-interpretations/2025-1205-nchba-2018-ncacp-section-107-inspections/open
+  date___version: '2025-12-05'
+  primary_use: Confirms 2018 Code remains effective, lists current 2018 code volumes
+    and 2024 future volumes, describes S.L. 2025-2 conditions and non-mandatory 2024
+    status as of the letter.
+- source_id: src:usa-nc:sl-2025-2
+  title: Session Law 2025-2, House Bill 47
+  publisher___custodian: North Carolina General Assembly
+  source_type: session law PDF
+  url: https://www.ncleg.gov/EnactedLegislation/SessionLaws/PDF/2025-2026/SL2025-2.pdf
+  date___version: enacted 2025-03-19
+  primary_use: Legal delay of 2024 Code effective date and certification trigger.
+- source_id: src:usa-nc:ncdol-elevator
+  title: Elevator
+  publisher___custodian: North Carolina Department of Labor
+  source_type: agency webpage
+  url: https://www.labor.nc.gov/safety-and-health/elevator
+  date___version: accessed 2026-06-26
+  primary_use: Elevator and Amusement Device Bureau enforcement of Elevator Safety
+    Act; elevator design/construction/installation/inspection/certification scope.

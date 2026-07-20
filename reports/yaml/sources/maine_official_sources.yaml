@@ -1,0 +1,199 @@
+---
+official_sources:
+- source_id: src:usa-me:statute-10-9722
+  source_type: statute
+  title: "10 M.R.S. \xA7 9722, Technical Building Codes and Standards Board"
+  issuing_authority: Maine Legislature
+  url___citation: https://www.mainelegislature.org/legis/statutes/10/title10sec9722.html
+  date___version: current HTML accessed 2026-06-25
+  key_facts_used: Establishes Board within MOCA; requires adoption/amendment/maintenance
+    of MUBEC; lists MUBEC code families; amendment process; conflict-resolution role;
+    optional energy appendix list.
+  status: official
+- source_id: src:usa-me:statute-10-9723
+  source_type: statute
+  title: "10 M.R.S. \xA7 9723, Training and certification program"
+  issuing_authority: Maine Legislature
+  url___citation: https://www.mainelegislature.org/legis/statutes/10/title10sec9723.html
+  date___version: current HTML accessed 2026-06-25
+  key_facts_used: Board committee and MOCA training/certification program for code
+    enforcement officials and third-party inspectors.
+  status: official
+- source_id: src:usa-me:statute-10-9724
+  source_type: statute
+  title: "10 M.R.S. \xA7 9724, Application"
+  issuing_authority: Maine Legislature
+  url___citation: https://www.mainelegislature.org/legis/statutes/10/title10sec9724.html
+  date___version: current HTML accessed 2026-06-25
+  key_facts_used: Mandatory MUBEC enforcement in municipalities over 4,000; smaller
+    municipality rule; preemption/voiding inconsistent ordinances; statutory exceptions.
+  status: official
+- source_id: src:usa-me:statute-25-2373
+  source_type: statute
+  title: "25 M.R.S. \xA7 2373, Municipal inspection options"
+  issuing_authority: Maine Legislature
+  url___citation: https://www.mainelegislature.org/legis/statutes/25/title25sec2373.html
+  date___version: current HTML accessed 2026-06-25
+  key_facts_used: 'Local enforcement options: local officials, interlocal agreements,
+    county/regional agreements, certified third-party inspectors.'
+  status: official
+- source_id: src:usa-me:fmo-building-codes
+  source_type: agency_page
+  title: Building Codes
+  issuing_authority: Maine Department of Public Safety, Office of State Fire Marshal
+  url___citation: https://www.maine.gov/dps/fmo/building-codes
+  date___version: accessed 2026-06-25
+  key_facts_used: Current amended MUBEC enforceable April 7, 2025; current code list;
+    statewide applicability and municipal enforcement threshold.
+  status: official
+- source_id: src:usa-me:fmo-mubec-rules
+  source_type: agency_page
+  title: MUBEC Rules and Laws
+  issuing_authority: Maine Department of Public Safety, Office of State Fire Marshal
+  url___citation: https://www.maine.gov/dps/fmo/building-codes/mubec-rules
+  date___version: accessed 2026-06-25
+  key_facts_used: MUBEC rule chapter list and current/prior rule structure.
+  status: official
+- source_id: src:usa-me:mubec-standards-amendments
+  source_type: agency_pdf
+  title: MUBEC Standards and Amendments
+  issuing_authority: Maine Department of Public Safety / Office of State Fire Marshal
+  url___citation: https://www.maine.gov/dps/fmo/sites/maine.gov.dps.fmo/files/inline-files/MUBEC%20Standards%20and%20Amendments.pdf
+  date___version: effective beginning 2025-04-07; accessed 2026-06-25
+  key_facts_used: Current model-code editions and standards; date and local enforcement
+    summary.
+  status: official_courtesy_pdf
+- source_id: src:usa-me:moca-code-rules
+  source_type: agency_page
+  title: Code Enforcement Rules
+  issuing_authority: Maine Office of Community Affairs
+  url___citation: https://www.maine.gov/moca/programs/code-enforcement/laws-rules/rules
+  date___version: accessed 2026-06-25
+  key_facts_used: Current MUBEC rule chapter list, including amendments to 2021 IBC,
+    IEBC, IRC, IECC, and IMC.
+  status: official
+- source_id: src:usa-me:energy-building-codes
+  source_type: agency_page
+  title: Building & Energy Codes
+  issuing_authority: Maine Department of Energy Resources
+  url___citation: https://www.maine.gov/energy/initiatives/energy-efficiency/building-codes
+  date___version: accessed 2026-06-25
+  key_facts_used: Current codes in effect as of 2025-04-07; 2021 I-code list; optional
+    stretch-code description.
+  status: official
+- source_id: src:usa-me:statute-25-2396
+  source_type: statute
+  title: "25 M.R.S. \xA7 2396, Office of State Fire Marshal"
+  issuing_authority: Maine Legislature
+  url___citation: https://www.mainelegislature.org/legis/statutes/25/title25sec2396.html
+  date___version: current HTML accessed 2026-06-25
+  key_facts_used: Establishes State Fire Marshal; statewide enforcement powers including
+    NFPA 101; fire-prevention areas.
+  status: official
+- source_id: src:usa-me:statute-25-2452
+  source_type: statute
+  title: "25 M.R.S. \xA7 2452, Life safety and property protection"
+  issuing_authority: Maine Legislature
+  url___citation: https://www.mainelegislature.org/legis/statutes/25/title25sec2452.html
+  date___version: current HTML accessed 2026-06-25
+  key_facts_used: Commissioner of Public Safety rulemaking for fire/life-safety around
+    buildings and structures.
+  status: official
+- source_id: src:usa-me:fmo-rules
+  source_type: agency_page
+  title: Rules of the State Fire Marshal
+  issuing_authority: Maine Department of Public Safety, Office of State Fire Marshal
+  url___citation: https://www.maine.gov/dps/fmo/laws-rules-policy/rules
+  date___version: accessed 2026-06-25
+  key_facts_used: Fire Marshal rule list; Chapter 3 Fire Prevention Code / NFPA 1-2018;
+    caveat about certified MAPA copies.
+  status: official_courtesy_html
+- source_id: src:usa-me:fmo-nfpa-standards
+  source_type: agency_page
+  title: State Adopted NFPA Standards
+  issuing_authority: Maine Department of Public Safety, Office of State Fire Marshal
+  url___citation: https://www11.maine.gov/dps/fmo/laws-rules-policy/nfpa-standards
+  date___version: accessed 2026-06-25
+  key_facts_used: Lists adopted NFPA standards including NFPA 1-2018, NFPA 54-2021,
+    NFPA 58-2020, NFPA 101-2018.
+  status: official
+- source_id: src:usa-me:eeb-home
+  source_type: agency_page
+  title: Electricians' Examining Board
+  issuing_authority: Maine Department of Professional and Financial Regulation
+  url___citation: https://www.maine.gov/pfr/professionallicensing/professions/electricians
+  date___version: accessed 2026-06-25
+  key_facts_used: Board purpose; 2023 NEC adoption notice and 2024-07-01 commencement
+    trigger.
+  status: official
+- source_id: src:usa-me:eeb-ch120
+  source_type: agency_pdf
+  title: 02-318 C.M.R. ch. 120, Electrical Installation Standards
+  issuing_authority: Maine Electricians' Examining Board
+  url___citation: https://www.maine.gov/pfr/professionallicensing/sites/maine.gov.pfr.professionallicensing/files/inline-files/Electrician-Examining-Board-Chapter-120.pdf
+  date___version: repealed/replaced effective 2024-07-01
+  key_facts_used: Rule adoption of 2023 NEC subject to amendments/exclusions; statutory
+    authority; commencement trigger.
+  status: official_pdf
+- source_id: src:usa-me:moca-plumbing
+  source_type: agency_page
+  title: 'Publications and Manuals: Maine State Internal Plumbing Code'
+  issuing_authority: Maine Office of Community Affairs
+  url___citation: https://www.maine.gov/moca/programs/code-enforcement/resources/publications-manuals
+  date___version: accessed 2026-06-25
+  key_facts_used: Plumbers' Examining Board adoption of IAPMO 2021 UPC as Maine plumbing
+    installation standard; amendments available with code.
+  status: official
+- source_id: src:usa-me:fuel-board-laws-rules
+  source_type: agency_page
+  title: Maine Fuel Board Laws and Rules
+  issuing_authority: Maine Department of Professional and Financial Regulation
+  url___citation: https://www.maine.gov/pfr/professionallicensing/professions/maine-fuel-board/home/laws-rules
+  date___version: accessed 2026-06-25
+  key_facts_used: Official entry point for Fuel Board laws/rules and inter-board MOUs.
+  status: official
+- source_id: src:usa-me:fuel-board-rules
+  source_type: agency_pdf
+  title: Maine Fuel Board Rules, including Chapter 6 Adoption of Standards
+  issuing_authority: Maine Fuel Board
+  url___citation: https://www.maine.gov/pfr/professionallicensing/sites/maine.gov.pfr.professionallicensing/files/inline-files/MFB%20FUE%20rules%20adopted%20May%2026%2C%202023%20combined%20PDF._0.pdf
+  date___version: effective 2023-09-16 for reviewed rule segment
+  key_facts_used: Adopted fuel standards including NFPA 54-2021 and NFPA 58-2020 subject
+    to amendments; rule effective date.
+  status: official_pdf
+- source_id: src:usa-me:statute-5-4594-g
+  source_type: statute
+  title: "5 M.R.S. \xA7 4594-G, Standards of construction"
+  issuing_authority: Maine Legislature
+  url___citation: https://www.mainelegislature.org/legis/statutes/5/title5sec4594-G.html
+  date___version: current HTML accessed 2026-06-25
+  key_facts_used: 2010 ADA Standards definition; applicability; barrier-free certification;
+    State Fire Marshal plan-review and variance role.
+  status: official
+- source_id: src:usa-me:fmo-barrier-free
+  source_type: agency_page
+  title: Barrier Free Construction Permits
+  issuing_authority: Maine Department of Public Safety, Office of State Fire Marshal
+  url___citation: https://www.maine.gov/dps/fmo/inspections-plans-review/construction/barrier-free
+  date___version: accessed 2026-06-25
+  key_facts_used: State Fire Marshal barrier-free permit and plan-review program description;
+    state permits in addition to local permits.
+  status: official
+- source_id: src:usa-me:fmo-plans-review
+  source_type: agency_page
+  title: Plans Review
+  issuing_authority: Maine Department of Public Safety, Office of State Fire Marshal
+  url___citation: https://www.maine.gov/dps/fmo/plans-review
+  date___version: accessed 2026-06-25
+  key_facts_used: Plans Review scope for public buildings, accessibility, sprinklers,
+    fuel tanks, amusement rides, gas stations.
+  status: official
+- source_id: src:usa-me:elevator-program-laws-rules
+  source_type: agency_pdf
+  title: Elevator and Tramway Safety Program Laws and Rules
+  issuing_authority: Maine Department of Professional and Financial Regulation / OPOR
+  url___citation: https://www.maine.gov/pfr/professionallicensing/sites/maine.gov.pfr.professionallicensing/files/inline-files/Elevator-and-Tramway-Safety-Program-Laws-and-Rules.pdf
+  date___version: compiled PDF accessed 2026-06-25
+  key_facts_used: Identifies program rule framework, national-code chapter, plan submission,
+    inspection, and certificate concepts; current editions unresolved.
+  status: official_pdf_needs_currency_check

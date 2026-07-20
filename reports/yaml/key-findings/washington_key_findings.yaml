@@ -1,0 +1,61 @@
+---
+key_findings:
+- topic: '**State adopting authority**'
+  finding: The Washington State Building Code Council maintains the State Building
+    Code under chapter 19.27 RCW and WAC Title 51.
+  confidence: 0.95
+  source_ids:
+  - src:usa-wa:statute:rcw-19-27
+  - src:usa-wa:regulation:wac-title-51
+- topic: '**Primary building code edition**'
+  finding: WAC 51-50 adopts and amends the 2021 International Building Code, including
+    Appendix E; the chapter became effective in all counties and cities on 2024-03-15.
+  confidence: 0.97
+  source_ids:
+  - src:usa-wa:regulation:wac-51-50
+  - src:usa-wa:agency:sbcc-building-amendments
+- topic: '**Electrical code authority**'
+  finding: Electrical rules are administered under chapter 19.28 RCW and chapter 296-46B
+    WAC; WAC 296-46B-010 currently adopts the 2023 NEC and sets a future replacement
+    by the 2026 NEC on 2026-12-31.
+  confidence: 0.94
+  source_ids:
+  - src:usa-wa:statute:rcw-19-28
+  - src:usa-wa:regulation:wac-296-46b-010
+  - src:usa-wa:agency:lni-electrical-laws
+- topic: '**Fire code authority**'
+  finding: WAC 51-54A adopts and amends the 2021 International Fire Code. Counties
+    and cities enforce the State Building Code under RCW 19.27.050, while fire-code-official
+    functions remain local/AHJ-specific.
+  confidence: 0.92
+  source_ids:
+  - src:usa-wa:regulation:wac-51-54a
+  - src:usa-wa:statute:rcw-19-27-050
+- topic: '**Local enforcement**'
+  finding: The State Building Code is enforced by counties and cities; a county or
+    city without a building department must contract with an approved enforcement
+    entity.
+  confidence: 0.96
+  source_ids:
+  - src:usa-wa:statute:rcw-19-27-050
+- topic: '**Local amendments**'
+  finding: Counties and cities may amend the State Building Code within statutory
+    limits, but local amendments may not reduce minimum state standards and residential
+    amendments generally require SBCC approval.
+  confidence: 0.92
+  source_ids:
+  - src:usa-wa:statute:rcw-19-27-060
+- topic: '**Effective / operative date rule**'
+  finding: Major 2021 SBCC-administered code chapters state 2024-03-15 as the statewide
+    effective date. Building permit-date trigger details are still AHJ-sensitive;
+    electrical standards apply by electrical permit issue date except for stated exceptions.
+  confidence: 0.86
+  source_ids:
+  - src:usa-wa:regulation:wac-51-50
+  - src:usa-wa:regulation:wac-51-51
+  - src:usa-wa:regulation:wac-51-52
+  - src:usa-wa:regulation:wac-51-54a
+  - src:usa-wa:regulation:wac-51-56
+  - src:usa-wa:regulation:wac-51-11c
+  - src:usa-wa:regulation:wac-51-11r
+  - src:usa-wa:regulation:wac-296-46b-010

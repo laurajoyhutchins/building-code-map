@@ -1,0 +1,21 @@
+---
+authority_structure:
+- field: Authority ID
+  value: ahj:usa-ia:dial-building-code-commissioner
+- field: Authority name
+  value: State Building Code Commissioner; DIAL Director or designee
+- field: Authority type
+  value: statewide building-code adopting and administrative authority
+- field: Legal basis
+  value: "Iowa Code chapter 103A, including sections 103A.4 and 103A.7; 481\u2014\
+    Chapter 300"
+- field: Role
+  value: Adopts, amends, and promulgates the State Building Code with Building Code
+    Advisory Council approval; administers plan review and inspections for state-code
+    projects identified by statute and rule.
+- field: Enforcement model
+  value: hybrid_state_and_local
+- field: Source IDs
+  value: src:usa-ia:code-103a; src:usa-ia:iac-481-300
+- field: Verification status
+  value: partially_verified

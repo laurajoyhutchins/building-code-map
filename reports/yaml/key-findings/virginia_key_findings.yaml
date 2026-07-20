@@ -1,0 +1,75 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: The Board of Housing and Community Development adopts and promulgates the
+    USBC; DHCD administers the program.
+  confidence: 0.9
+  source_ids:
+  - src:usa-va:code-36-98
+  - src:usa-va:dhcd-codes
+  - src:usa-va:dhcd-usbc
+- topic: Primary building code edition
+  finding: Virginia Construction Code / USBC Part I is the 2021 edition and incorporates
+    2021 IBC Chapters 2-35.
+  confidence: 0.9
+  source_ids:
+  - src:usa-va:vac-13-5-63
+  - src:usa-va:register-usbc-2021-final
+- topic: Electrical code edition
+  finding: The current statewide code set references the 2020 National Electrical
+    Code / NFPA 70.
+  confidence: 0.85
+  source_ids:
+  - src:usa-va:dhcd-codes
+  - src:usa-va:vac-13-5-63
+- topic: Fire code authority
+  finding: The Board of Housing and Community Development adopts the SFPC, cooperatively
+    developed with the Fire Services Board.
+  confidence: 0.88
+  source_ids:
+  - src:usa-va:code-27-97
+  - src:usa-va:register-sfpc-2021-final
+- topic: Operational fire code edition
+  finding: The SFPC incorporates the 2021 International Fire Code, with Virginia administrative
+    replacement of IFC Chapter 1 and state amendments.
+  confidence: 0.88
+  source_ids:
+  - src:usa-va:vac-13-5-52-30
+  - src:usa-va:register-sfpc-2021-final
+- topic: Local building-code enforcement
+  finding: Local building departments enforce construction and rehabilitation requirements;
+    local appeals precede state review-board appeals.
+  confidence: 0.88
+  source_ids:
+  - src:usa-va:code-36-105
+  - src:usa-va:dhcd-usbc
+- topic: Local fire-code enforcement
+  finding: Local governments may enforce the SFPC; the State Fire Marshal enforces
+    in jurisdictions where local governments do not enforce it.
+  confidence: 0.84
+  source_ids:
+  - src:usa-va:code-27-98
+- topic: Local amendments
+  finding: Building codes are superseded statewide; local fire prevention regulations
+    may be more restrictive or broader if they do not regulate construction manner
+    or materials.
+  confidence: 0.8
+  source_ids:
+  - src:usa-va:code-36-98
+  - src:usa-va:code-27-97
+- topic: Effective / operative date rule
+  finding:
+  - '2024-01-18'
+  confidence: 0.86
+  source_ids:
+  - src:usa-va:dhcd-codes
+  - src:usa-va:vac-13-5-63
+  - src:usa-va:register-usbc-2021-final
+  - src:usa-va:register-sfpc-2021-final
+- topic: Pending changes
+  finding: The 2024 Code Development Cycle is active, with base documents and 2026
+    BHCD meeting materials posted.
+  confidence: 0.76
+  source_ids:
+  - src:usa-va:dhcd-2024-cdc
+  - src:usa-va:dhcd-bhcd

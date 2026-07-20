@@ -1,0 +1,60 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: The State Fire Commission proposes legislative rules for the State Building
+    Code and State Fire Code.
+  confidence: 0.9
+  source_ids:
+  - src:usa-wv:statute:15a-11-3
+  - src:usa-wv:statute:15a-11-5
+  - src:usa-wv:rule:87-04-final-2022
+  - src:usa-wv:rule:87-01-final-2026
+- topic: Primary building code edition
+  finding: 87 CSR 4 adopts a 2018 ICC-family package with West Virginia amendments,
+    effective 2022-08-01.
+  confidence: 0.86
+  source_ids:
+  - src:usa-wv:sos:87-04-rule-page
+  - src:usa-wv:rule:87-04-final-2022
+- topic: Fire code edition/status
+  finding: 87 CSR 1 is active emergency as of this report date; the final legislative
+    rule is effective 2026-07-01 and adopts NFPA 1-2021 and NFPA 101-2021.
+  confidence: 0.8
+  source_ids:
+  - src:usa-wv:sos:87-01-rule-page
+  - src:usa-wv:rule:87-01-emergency-2025
+  - src:usa-wv:rule:87-01-final-2026
+- topic: Electrical code authority
+  finding: The NEC is incorporated through 87 CSR 4; electrician licensing and electrical-inspector
+    certification are administered through State Fire Marshal statutes.
+  confidence: 0.78
+  source_ids:
+  - src:usa-wv:rule:87-04-final-2022
+  - src:usa-wv:statute:29-3b-2
+  - src:usa-wv:statute:29-3b-5
+  - src:usa-wv:statute:29-3c-3
+  - src:usa-wv:statute:29-3c-4
+- topic: Local enforcement
+  finding: Counties and municipalities may adopt the State Building Code; adopting
+    local jurisdictions enforce it and must notify the State Fire Commission or State
+    Fire Marshal.
+  confidence: 0.84
+  source_ids:
+  - src:usa-wv:statute:15a-11-5
+  - src:usa-wv:statute:7-1-3n
+  - src:usa-wv:statute:8-12-13
+  - src:usa-wv:rule:87-04-final-2022
+- topic: Local amendments
+  finding: Local rules more stringent than the State Building Code may govern only
+    if not inconsistent and not contrary to recognized engineering standards; Commission
+    priority review is noted.
+  confidence: 0.65
+  source_ids:
+  - src:usa-wv:statute:15a-11-5
+- topic: Effective / operative date rule
+  finding: 87 CSR 4 has a fixed effective date of 2022-08-01; no permit-date grace
+    period was extracted from the reviewed State Building Code rule.
+  confidence: 0.75
+  source_ids:
+  - src:usa-wv:sos:87-04-rule-page
+  - src:usa-wv:rule:87-04-final-2022

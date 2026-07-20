@@ -1,0 +1,71 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: The Maryland Department of Labor adopts the MBPS by regulation; the Building
+    Codes Administration is the relevant Labor unit for statewide building-code administration.
+  confidence: 0.9
+  source_ids:
+  - src:usa-md:ps-12-503
+  - src:usa-md:labor-building-admin
+  - src:usa-md:comar-09-12-51
+- topic: Primary building / residential / energy editions
+  finding: MBPS incorporates the 2021 IBC, 2021 IRC, and 2021 IECC with Maryland modifications.
+  confidence: 0.92
+  source_ids:
+  - src:usa-md:comar-09-12-51-04
+  - src:usa-md:comar-09-12-51-05
+  - src:usa-md:code-matrix-2026
+- topic: MBPS transition rule
+  finding: Department guidance for the 2021 cycle states an effective date of 2023-05-29
+    and local implementation/enforcement by 2024-05-29.
+  confidence: 0.86
+  source_ids:
+  - src:usa-md:labor-2021-cycle
+  - src:usa-md:ps-12-505
+  - src:usa-md:comar-09-12-51-06
+- topic: Existing building / rehabilitation code
+  finding: Maryland Building Rehabilitation Code incorporates the 2021 IEBC.
+  confidence: 0.88
+  source_ids:
+  - src:usa-md:comar-09-12-58
+  - src:usa-md:code-matrix-2026
+- topic: Green construction
+  finding: COMAR 09.12.57 incorporates the 2024 IgCC; this supersedes older 2021-cycle
+    and March 2026 matrix references for the IgCC row.
+  confidence: 0.85
+  source_ids:
+  - src:usa-md:comar-09-12-57
+  - src:usa-md:labor-2021-cycle
+  - src:usa-md:code-matrix-2026
+- topic: Fire code authority and editions
+  finding: The State Fire Prevention Code incorporates NFPA 1 (2024) and NFPA 101
+    (2024), with enforcement by the State Fire Marshal or legally designated local
+    fire officials.
+  confidence: 0.9
+  source_ids:
+  - src:usa-md:comar-29-06-01
+  - src:usa-md:code-matrix-2026
+- topic: Local enforcement
+  finding: Local jurisdictions enforce MBPS; minimum activities include plan review,
+    permit issuance, inspections, and occupancy certificates.
+  confidence: 0.9
+  source_ids:
+  - src:usa-md:ps-12-505
+  - src:usa-md:comar-09-12-51-08
+- topic: Local amendments
+  finding: Local MBPS amendments are allowed but bounded by statutory floors for energy,
+    sprinklers, and wind provisions and must be submitted to the Department.
+  confidence: 0.88
+  source_ids:
+  - src:usa-md:ps-12-504
+  - src:usa-md:comar-09-12-51-05
+- topic: Trade-code editions
+  finding: Plumbing, fuel-gas, mechanical, and electrical rows are partially verified
+    from the current code matrix and COMAR chapters; edition reconciliation remains
+    open for plumbing / fuel gas / mechanical due current COMAR wording.
+  confidence: 0.6
+  source_ids:
+  - src:usa-md:code-matrix-2026
+  - src:usa-md:comar-09-20-01
+  - src:usa-md:comar-09-15-05
+  - src:usa-md:comar-09-12-50-02-1

@@ -1,0 +1,26 @@
+---
+authority_structure:
+- field: Authority ID
+  value: '`ahj:usa-or:dcbs-bcd`'
+- field: Authority name
+  value: Oregon Department of Consumer and Business Services, Building Codes Division
+- field: Authority type
+  value: state agency / state code division
+- field: Legal basis
+  value: ORS chapter 455; OAR chapter 918, division 8; code-specific OAR chapter 918
+    divisions
+- field: Role
+  value: Adopts, amends, interprets, and administers specialty codes that make up
+    the Oregon State Building Code; administers each code through specialized code
+    programs; works with local building officials, advisory boards, and the public.
+- field: Enforcement model
+  value: Statewide code with municipal/local administration through full-service or
+    partial building inspection programs, subject to BCD oversight and program rules.
+- field: Source IDs
+  value:
+  - src:usa-or:bcd-state-code
+  - src:usa-or:oar-918-008
+  - src:usa-or:oar-918-020
+  - src:usa-or:ors-455
+- field: Verification status
+  value: partially_verified

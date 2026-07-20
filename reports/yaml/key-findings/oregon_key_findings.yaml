@@ -1,0 +1,69 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: BCD adopts, amends, interprets, and administers specialty codes that make
+    up the Oregon State Building Code.
+  confidence: 0.9
+  source_ids:
+  - src:usa-or:bcd-state-code
+  - src:usa-or:oar-918-008
+  - src:usa-or:ors-455
+- topic: Primary building code edition
+  finding: The current commercial structural/building code is the 2025 Oregon Structural
+    Specialty Code, effective 2025-10-01, based on the 2024 IBC, 2024 IFC new-construction
+    provisions, and 2024 IEBC, with prior-code phase-in ending 2026-03-31.
+  confidence: 0.93
+  source_ids:
+  - src:usa-or:oar-918-460-0010
+  - src:usa-or:bcd-adopted-codes
+- topic: Residential code edition
+  finding: The current Oregon Residential Specialty Code is the 2023 ORSC, based on
+    the 2021 IRC; Chapter 1 was effective and mandatory 2023-10-01 and construction
+    provisions became mandatory 2024-04-01.
+  confidence: 0.92
+  source_ids:
+  - src:usa-or:oar-918-480-0005
+  - src:usa-or:bcd-residential
+- topic: Electrical code authority and edition
+  finding: BCD adopts the Oregon Electrical Specialty Code; the current OESC is effective
+    2023-10-01 and consists of the 2023 NEC, 2023 NESC, and electrical provisions
+    of the Oregon Elevator Specialty Code, as amended.
+  confidence: 0.88
+  source_ids:
+  - src:usa-or:oar-918-305
+  - src:usa-or:bcd-electrical
+- topic: Fire code authority and edition
+  finding: The Department of the State Fire Marshal adopts the Oregon Fire Code; the
+    current OFC is the 2025 Oregon Fire Code based on the 2024 IFC, effective 2025-10-01,
+    with 2022 OFC concurrency for specified phase-in purposes ending 2026-03-31.
+  confidence: 0.88
+  source_ids:
+  - src:usa-or:oar-837-040
+  - src:usa-or:osfm-fire-code
+  - src:usa-or:ors-476
+- topic: Local enforcement
+  finding: Municipalities may administer full-service or partial building inspection
+    programs through BCD program assumption/renewal; the exact AHJ for a given address
+    remains a jurisdiction-resolution task.
+  confidence: 0.78
+  source_ids:
+  - src:usa-or:oar-918-020
+  - src:usa-or:ors-455
+- topic: Local amendments
+  finding: Local amendments to matters covered by the state building code require
+    BCD/Director authorization and must follow the local-amendment request process.
+  confidence: 0.88
+  source_ids:
+  - src:usa-or:oar-918-020-0370
+  - src:usa-or:ors-455
+- topic: Effective / operative date rule
+  finding: For several BCD specialty codes, the code in effect at plan-review or permit-application
+    filing controls unless the applicant agrees to later changes; the electrical rule
+    separately uses the earlier of plan-review request or permit application, with
+    applicant option to use the current Electrical Specialty Code.
+  confidence: 0.82
+  source_ids:
+  - src:usa-or:oar-918-460-0010
+  - src:usa-or:oar-918-460-0500
+  - src:usa-or:oar-918-480-0005
+  - src:usa-or:oar-918-305

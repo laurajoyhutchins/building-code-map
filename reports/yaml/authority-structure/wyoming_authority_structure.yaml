@@ -1,0 +1,22 @@
+---
+authority_structure:
+- field: Authority ID
+  value: ahj:usa-wy:dfpes-state-fire-marshal
+- field: Authority name
+  value: Wyoming Department of Fire Prevention and Electrical Safety / Wyoming State
+    Fire Marshal
+- field: Authority type
+  value: state agency / state fire marshal
+- field: Legal basis
+  value: W.S. 35-9-101 through 35-9-130; State Fire Marshal appointed as director
+    of the Department; Council and Electrical Board created within the Department
+- field: Role
+  value: Administers the fire prevention and electrical safety program, performs plan
+    review and inspections within state jurisdiction, and enforces minimum fire and
+    electrical safety standards unless authority is delegated locally
+- field: Enforcement model
+  value: state_default_with_optional_local_delegation
+- field: Source IDs
+  value: src:usa-wy:statutes:title-35-ch9; src:usa-wy:dfpes:plan-review
+- field: Verification status
+  value: partially_verified

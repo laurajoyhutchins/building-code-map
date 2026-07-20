@@ -1,0 +1,44 @@
+---
+key_findings:
+- topic: Fire/building-safety authority
+  finding: The State Fire Marshal's Office states that it enforces, revises, and updates
+    the Arkansas Fire Prevention Code and performs state building plan reviews and
+    inspections.
+  confidence: 0.86
+  source_ids:
+  - src:usa-ar:dps-fire-marshal-page
+  - src:usa-ar:fire-marshal-duties-statute-pdf
+- topic: AFPC 2021 contents
+  finding: A State Fire Marshal clean-copy rules PDF identifies the AFPC 2021 edition
+    as using the 2021 IFC, 2021 IBC, and 2021 IRC, as amended and adopted by the Arkansas
+    State Fire Marshal.
+  confidence: 0.76
+  source_ids:
+  - src:usa-ar:afpc-2021-rules-clean-copy
+- topic: AFPC effective date
+  finding: The AFPC 2021 clean-copy rules PDF says the rules become effective ten
+    days after final filing with the Secretary of State, but the final filing date
+    was not verified.
+  confidence: 0.5
+  source_ids:
+  - src:usa-ar:afpc-2021-rules-clean-copy
+- topic: Plumbing / mechanical / fuel gas / energy / electrical cross-references
+  finding: The AFPC 2021 clean-copy rules PDF defines model-code references to the
+    Arkansas State Plumbing Code, mechanical code for Arkansas, Arkansas State Gas
+    Code, Arkansas Energy Code, and electrical code for the State of Arkansas; editions
+    and adopting authorities were not verified here.
+  confidence: 0.55
+  source_ids:
+  - src:usa-ar:afpc-2021-rules-clean-copy
+- topic: Local enforcement
+  finding: State Fire Marshal plan-review/inspection roles and local assistance are
+    verified; the general local building AHJ model remains unresolved.
+  confidence: 0.55
+  source_ids:
+  - src:usa-ar:dps-fire-marshal-page
+- topic: Local amendments
+  finding: Local amendment authority and registry status remain unresolved.
+  confidence: 0.1
+  source_ids:
+  - src:usa-ar:law-section
+  - src:usa-ar:rules-portal

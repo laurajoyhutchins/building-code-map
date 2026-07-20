@@ -1,0 +1,23 @@
+---
+authority_structure:
+- field: Authority ID
+  value: ahj:usa-ct:state-building-inspector
+- field: Authority name
+  value: State Building Inspector and Codes and Standards Committee, with approval
+    of the Commissioner of Administrative Services
+- field: Authority type
+  value: state_office_and_committee
+- field: Parent agency
+  value: Department of Administrative Services
+- field: Legal basis
+  value: "Conn. Gen. Stat. \xA7\xA7 29-250, 29-251, 29-252, 29-252a, 29-252b, 29-253,\
+    \ 29-254, 29-260"
+- field: Role
+  value: Adopts, administers, amends, interprets, and handles state-level variations,
+    exemptions, equivalent compliance, and appeals for the State Building Code
+- field: Enforcement model
+  value: hybrid
+- field: Source IDs
+  value: src:usa-ct:statute:chap-541; src:usa-ct:code:2022-csbc-pdf
+- field: Verification status
+  value: verified

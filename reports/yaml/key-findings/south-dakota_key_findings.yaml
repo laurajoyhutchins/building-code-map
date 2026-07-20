@@ -1,0 +1,60 @@
+---
+key_findings:
+- topic: State building-code model
+  finding: "South Dakota uses a statutory/local-option model: local ordinances must\
+    \ track specified I-Code editions, and \xA7 11-10-6 supplies a default nonresidential\
+    \ design standard where no local ordinance exists."
+  confidence: 0.78
+  source_ids:
+  - src:usa-sd:sdcl-11-10-5
+  - src:usa-sd:sdcl-11-10-6
+- topic: Primary building code edition
+  finding: Current verified baseline remains 2021 IBC until the 2026 update is operative;
+    SB 129 updates the statutory IBC reference to 2024 and changes the default commencement
+    trigger to 2026-07-01.
+  confidence: 0.75
+  source_ids:
+  - src:usa-sd:sdcl-11-10-5
+  - src:usa-sd:sdcl-11-10-6
+  - src:usa-sd:sb-129-2026
+- topic: Residential code posture
+  finding: Municipalities may adopt/amend the 2021 IRC, but may not require residential
+    sprinklers or standards more stringent than the referenced IRC edition; SB 129
+    updates the reference to 2024 IRC.
+  confidence: 0.74
+  source_ids:
+  - src:usa-sd:sdcl-11-10-12
+  - src:usa-sd:sb-129-2026
+- topic: Electrical code authority
+  finding: The South Dakota Electrical Commission administers electrical wiring laws/rules;
+    permits received on or after 2024-11-12 are inspected under the 2023 NEC.
+  confidence: 0.85
+  source_ids:
+  - src:usa-sd:dlr-electrical-home
+  - src:usa-sd:arsd-20-44-22-01
+- topic: Plumbing code authority
+  finding: The South Dakota Plumbing Commission identifies SDCL 36-25 and ARSD 20:53/20:54
+    as governing plumbing law/rules and states the 2024 UPC rule package was provisionally
+    effective on 2025-10-28.
+  confidence: 0.82
+  source_ids:
+  - src:usa-sd:dlr-plumbing-laws
+  - src:usa-sd:dlr-plumbing-inspections
+  - src:usa-sd:arsd-20-54
+- topic: Fire code authority
+  finding: The Department of Public Safety / State Fire Marshal fire-safety rules
+    incorporate the 2015 IBC, 2015 IFC, and 2015 IMC, as modified in ARSD 61:15.
+  confidence: 0.76
+  source_ids:
+  - src:usa-sd:arsd-61-15-01-01
+  - src:usa-sd:dps-fire-laws
+  - src:usa-sd:sdcl-34-29b-2
+- topic: Local amendments
+  finding: Local IBC/IPMC amendments are effective after adoption and filing with
+    the local official named in statute; fire rules allow political subdivisions to
+    enforce more stringent requirements.
+  confidence: 0.76
+  source_ids:
+  - src:usa-sd:sdcl-11-10-5
+  - src:usa-sd:sdcl-11-10-11
+  - src:usa-sd:sdcl-34-29b-25

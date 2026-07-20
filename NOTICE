@@ -1,0 +1,21 @@
+Building Code Map
+Copyright 2026 Laura Hutchins
+
+This product includes OpenCode integration files generated from or adapted from
+Deciduous, decision graph tooling for AI-assisted development.
+
+Deciduous
+Copyright 2025 Robert Grayson
+Licensed under the Apache License, Version 2.0.
+https://github.com/notactuallytreyanastasio/deciduous
+
+The affected integration surface includes files under .opencode/, opencode.json,
+and repository-local Deciduous helper scripts and documentation where derived
+from the upstream integration templates. Project-specific modifications include
+Windows wrappers, repository commands, documentation, safety constraints, and
+workflow guidance.
+
+OpenStreetMap, U.S. Census Bureau, NERIS, statutes, regulations, model codes,
+standards, and other third-party data or services retain their own terms and are
+not relicensed by this notice. See DATA_SOURCES.md for attribution and
+redistribution boundaries.

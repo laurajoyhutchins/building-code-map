@@ -1,0 +1,57 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: LSUCCC is the primary body to review and adopt the State Uniform Construction
+    Code and to determine justified amendments.
+  confidence: 0.9
+  source_ids:
+  - src:usa-la:rs-40-1730-22
+  - src:usa-la:rs-40-1730-26
+- topic: Primary building code edition
+  finding: The current building-code adoption is the 2021 IBC, excluding Chapter 1,
+    Chapter 11, and Chapter 27, with Louisiana amendments.
+  confidence: 0.82
+  source_ids:
+  - src:usa-la:lac-17-i-ucc-2024-03-20
+  - src:usa-la:lsuccc-current-codes-2023-10-19
+  - src:usa-la:osfm-codes-rules-laws
+- topic: Electrical code authority
+  finding: The LSUCCC-adopted construction-code matrix includes the 2020 National
+    Electric Code for regulation of construction in Louisiana.
+  confidence: 0.78
+  source_ids:
+  - src:usa-la:lac-17-i-ucc-2024-03-20
+  - src:usa-la:rs-40-1730-28
+- topic: Fire code authority
+  finding: OSFM enforces life-safety, accessibility, and fire-code requirements; current
+    OSFM materials list NFPA 101 Life Safety Code 2015 and fire-protection/egress
+    provisions of LSUCC codes. R.S. 40:1578.7 separately adopts the State Uniform
+    Fire Prevention Code.
+  confidence: 0.72
+  source_ids:
+  - src:usa-la:osfm-codes-rules-laws
+  - src:usa-la:rs-40-1578-7
+- topic: Local enforcement
+  finding: Municipalities and parishes must enforce only the construction codes in
+    Part IV-A and must use building code enforcement officers or certified third-party
+    providers.
+  confidence: 0.88
+  source_ids:
+  - src:usa-la:rs-40-1730-23
+  - src:usa-la:rs-40-1730-24
+  - src:usa-la:rs-40-1730-25
+- topic: Local amendments
+  finding: Local administrative/enforcement ordinances are allowed, but local governments
+    may not avoid enforcement or amend mandatory construction-code provisions required
+    by R.S. 40:1730.28.
+  confidence: 0.8
+  source_ids:
+  - src:usa-la:rs-40-1730-40
+- topic: Effective / operative date rule
+  finding: The 2021 I-code / 2020 NEC package is reported as effective 2023-01-01;
+    energy provisions are effective 2023-07-01; local grace-period or permit-date
+    transition rules were not resolved.
+  confidence: 0.7
+  source_ids:
+  - src:usa-la:lsuccc-current-codes-2023-10-19
+  - src:usa-la:rs-40-1730-28-5

@@ -1,0 +1,266 @@
+---
+official_sources:
+- source_id: src:usa-ma:mgl-c143-s93
+  title: "M.G.L. c. 143, \xA7 93, State board of building regulations and standards;\
+    \ establishment"
+  publisher___authority: Massachusetts Legislature
+  url___citation: https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXX/Chapter143/Section93
+  source_type: statute
+  key_fields_supported: BBRS establishment; adoption/administering role
+  status: parsed_core
+- source_id: src:usa-ma:mgl-c143-s94
+  title: "M.G.L. c. 143, \xA7 94, Powers and duties"
+  publisher___authority: Massachusetts Legislature
+  url___citation: https://malegislature.gov/laws/generallaws/parti/titlexx/chapter143/section94
+  source_type: statute
+  key_fields_supported: BBRS powers; State Building Code scope; energy update duties
+  status: parsed_core
+- source_id: src:usa-ma:mgl-c143-s3
+  title: "M.G.L. c. 143, \xA7 3, Local building officials"
+  publisher___authority: Massachusetts Legislature
+  url___citation: https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXX/Chapter143/Section3
+  source_type: statute
+  key_fields_supported: local enforcement officials; certification
+  status: parsed_core
+- source_id: src:usa-ma:mgl-c143-s3a
+  title: "M.G.L. c. 143, \xA7 3A, Enforcement of State Building Code"
+  publisher___authority: Massachusetts Legislature
+  url___citation: https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXX/Chapter143/Section3A
+  source_type: statute
+  key_fields_supported: local enforcement; State Building Code as code for all city/town
+    buildings; Commonwealth-owned buildings; historic district exception
+  status: parsed_core
+- source_id: src:usa-ma:mgl-c143-s3l
+  title: "M.G.L. c. 143, \xA7 3L, Electrical wiring and fixtures"
+  publisher___authority: Massachusetts Legislature
+  url___citation: https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXX/Chapter143/Section3L
+  source_type: statute
+  key_fields_supported: BFPR electrical rulemaking and enforcement
+  status: parsed_core
+- source_id: src:usa-ma:mgl-c22d-s4
+  title: "M.G.L. c. 22D, \xA7 4, Board of Fire Prevention Regulations"
+  publisher___authority: Massachusetts Legislature
+  url___citation: https://malegislature.gov/Laws/GeneralLaws/PartI/TitleII/Chapter22d/Section4
+  source_type: statute
+  key_fields_supported: BFPR establishment; comprehensive fire safety code duty
+  status: parsed_core
+- source_id: src:usa-ma:mgl-c142-s11
+  title: "M.G.L. c. 142, \xA7 11, Plumbing/gas inspectors"
+  publisher___authority: Massachusetts Legislature
+  url___citation: https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXX/Chapter142/Section11
+  source_type: statute
+  key_fields_supported: local plumbing/gas inspection model
+  status: parsed_core
+- source_id: src:usa-ma:mgl-c22-s13a
+  title: "M.G.L. c. 22, \xA7 13A, Architectural Access Board"
+  publisher___authority: Massachusetts Legislature
+  url___citation: https://malegislature.gov/Laws/GeneralLaws/PartI/TitleII/Chapter22/Section13A
+  source_type: statute
+  key_fields_supported: AAB authority; specialized-code status
+  status: parsed_core
+- source_id: src:usa-ma:mgl-c143-s62
+  title: "M.G.L. c. 143, \xA7 62, Elevator inspection system"
+  publisher___authority: Massachusetts Legislature
+  url___citation: https://malegislature.gov/Laws/GeneralLaws/PartI/TitleXX/Chapter143/Section62
+  source_type: statute
+  key_fields_supported: elevator inspection and regulation authority
+  status: parsed_core
+- source_id: src:usa-ma:780-cmr-10th-handbook
+  title: Tenth edition of the MA State Building Code 780
+  publisher___authority: Mass.gov / Office of Public Safety and Inspections
+  url___citation: https://www.mass.gov/handbook/tenth-edition-of-the-ma-state-building-code-780
+  source_type: official agency page / handbook
+  key_fields_supported: 10th Edition effective date; concurrency; 2021 I-Code basis
+  status: parsed_core
+- source_id: src:usa-ma:10th-edition-concurrency-extension
+  title: Concurrency Period for 9th and 10th Edition of the State Building Code Extended
+    Until June 30, 2025
+  publisher___authority: Mass.gov / BBRS
+  url___citation: https://www.mass.gov/news/concurrency-period-for-9th-and-10th-edition-of-the-state-building-code-extended-until-june-30-2025
+  source_type: official agency notice
+  key_fields_supported: permit filing date through 2025-06-30; mandatory 10th Edition
+    after concurrency
+  status: parsed_core
+- source_id: src:usa-ma:780-cmr-10th-toc
+  title: '780 CMR Tenth Edition: Table of Contents'
+  publisher___authority: Mass.gov / Office of Public Safety and Inspections
+  url___citation: https://www.mass.gov/regulations/780-CMR-tenth-edition-table-of-contents
+  source_type: regulation convenience page
+  key_fields_supported: 780 CMR 10th Edition structure
+  status: parsed_core
+- source_id: src:usa-ma:780-cmr-10th-ch1
+  title: 10th Edition Chapter 1 Scope and Administration of Amendments
+  publisher___authority: Mass.gov / BBRS
+  url___citation: https://www.mass.gov/doc/10th-edition-chapter-1-scope-and-administration-of-amendments/download
+  source_type: regulation PDF convenience copy
+  key_fields_supported: IBC adoption; IMC reference; administrative scope
+  status: partially_parsed
+- source_id: src:usa-ma:780-cmr-ch28
+  title: 10th Edition Chapter 28 Mechanical Systems
+  publisher___authority: Mass.gov / BBRS
+  url___citation: https://www.mass.gov/doc/10th-edition-chapter-28-mechanical-systems/download
+  source_type: regulation PDF convenience copy
+  key_fields_supported: mechanical provisions
+  status: source_identified
+- source_id: src:usa-ma:780-cmr-ch34
+  title: 780 CMR Tenth Edition Chapter 34 Existing Building Code Amendments
+  publisher___authority: Mass.gov / BBRS
+  url___citation: https://www.mass.gov/regulations/780-CMR-tenth-edition-chapter-34-existing-building-code-amendments
+  source_type: regulation convenience page
+  key_fields_supported: IEBC 2021 existing building scope
+  status: parsed_core
+- source_id: src:usa-ma:780-cmr-residential-ch1
+  title: 10th Edition Residential Chapter 1 Scope and Application
+  publisher___authority: Mass.gov / BBRS
+  url___citation: https://www.mass.gov/doc/10th-edition-residential-chapter-1-scope-and-application/download
+  source_type: regulation PDF convenience copy
+  key_fields_supported: residential transition; residential code scope
+  status: parsed_core
+- source_id: src:usa-ma:energy-codes
+  title: Massachusetts Building Energy Codes
+  publisher___authority: Mass.gov / Department of Energy Resources
+  url___citation: https://www.mass.gov/info-details/massachusetts-building-energy-codes
+  source_type: official agency page
+  key_fields_supported: Base/Stretch/Specialized energy-code pathways; IECC 2021 basis
+  status: parsed_core
+- source_id: src:usa-ma:225-cmr-22
+  title: 225 CMR 22.00, Massachusetts Stretch and Specialized Code for Low-Rise Residential
+  publisher___authority: Mass.gov / Department of Energy Resources
+  url___citation: https://www.mass.gov/doc/225-cmr-22-massachusetts-stretch-code-and-specialized-code-for-low-rise-residential-2025-residential-low-rise-amendments-to-iecc2021-and-irc-2021-chapter-11-energy-efficiency/download
+  source_type: regulation PDF convenience copy
+  key_fields_supported: residential Stretch/Specialized code
+  status: source_identified
+- source_id: src:usa-ma:225-cmr-23
+  title: 225 CMR 23.00, Massachusetts Stretch and Specialized Code for Commercial,
+    Multi-Family, and Other Construction
+  publisher___authority: Mass.gov / Department of Energy Resources
+  url___citation: https://www.mass.gov/regulations/225-CMR-2300-massachusetts-stretch-code-and-specialized-code-for-commercial-multi-family-and-all-other-construction-2025-amendments-to-iecc2021-and-ashrae-standards-901-2019
+  source_type: regulation convenience page
+  key_fields_supported: commercial/multifamily Stretch/Specialized code
+  status: source_identified
+- source_id: src:usa-ma:municipal-energy-registry
+  title: Massachusetts Building Energy Code Adoption by Municipality
+  publisher___authority: Mass.gov / Department of Energy Resources
+  url___citation: https://www.mass.gov/info-details/massachusetts-building-energy-code-adoption-by-municipality
+  source_type: official agency registry
+  key_fields_supported: municipal Base/Stretch/Specialized status and effective dates
+  status: identified_not_parsed
+- source_id: src:usa-ma:fire-code-page
+  title: Massachusetts Fire Code
+  publisher___authority: Mass.gov / Department of Fire Services
+  url___citation: https://www.mass.gov/info-details/massachusetts-fire-code
+  source_type: official agency page
+  key_fields_supported: current fire code; NFPA 1 2021 basis
+  status: parsed_core
+- source_id: src:usa-ma:527-cmr-1-2021
+  title: Massachusetts 527 CMR 1.00, 2021 Edition, effective May 12, 2023
+  publisher___authority: Mass.gov / Department of Fire Services
+  url___citation: https://www.mass.gov/doc/massachusetts-527-cmr-100-2021-edition-effective-may-12-2023/download
+  source_type: regulation PDF convenience copy
+  key_fields_supported: current 527 CMR 1.00, NFPA 1 2021 with amendments
+  status: parsed_core
+- source_id: src:usa-ma:fire-code-advisory-2022
+  title: 'Advisory: Revisions to 527 CMR 1.00, effective December 9, 2022'
+  publisher___authority: Mass.gov / Department of Fire Services
+  url___citation: https://www.mass.gov/doc/advisory-2021-amendment-package-memo/download
+  source_type: official agency advisory
+  key_fields_supported: historical revision date caveat
+  status: source_identified
+- source_id: src:usa-ma:submit-fire-code-changes
+  title: Submit Proposed Changes to the State Fire Code
+  publisher___authority: Mass.gov / Department of Fire Services
+  url___citation: https://www.mass.gov/how-to/submit-proposed-changes-to-the-state-fire-code
+  source_type: official agency page
+  key_fields_supported: future fire-code cycle watch
+  status: parsed_core
+- source_id: src:usa-ma:electrical-code-page
+  title: Massachusetts Electrical Code
+  publisher___authority: Mass.gov / Department of Fire Services
+  url___citation: https://www.mass.gov/info-details/massachusetts-electrical-code
+  source_type: official agency page
+  key_fields_supported: current 527 CMR 12.00; NFPA 70 2026 basis
+  status: parsed_core
+- source_id: src:usa-ma:527-cmr-12-2026
+  title: 527 CMR 12.00 Massachusetts Electrical Code, effective 4/24/26
+  publisher___authority: Mass.gov / Board of Fire Prevention Regulations
+  url___citation: https://www.mass.gov/doc/527-cmr-1200-massachusetts-electrical-code-effective-42426/download
+  source_type: regulation PDF convenience copy
+  key_fields_supported: 2026 NEC adoption; permit trigger
+  status: parsed_core
+- source_id: src:usa-ma:248-cmr-10
+  title: 248 CMR 10.00, Uniform State Plumbing Code
+  publisher___authority: Mass.gov / Board of State Examiners of Plumbers and Gas Fitters
+  url___citation: https://www.mass.gov/regulations/248-CMR-1000-uniform-state-plumbing-code
+  source_type: regulation convenience page
+  key_fields_supported: current plumbing code
+  status: parsed_core
+- source_id: src:usa-ma:plumbing-2023-faq
+  title: Board of State Examiners of Plumbers and Gas Fitters FAQ for new regulations
+  publisher___authority: Mass.gov / Board of State Examiners of Plumbers and Gas Fitters
+  url___citation: https://www.mass.gov/lists/board-of-state-examiners-of-plumbers-and-gas-fitters-frequently-asked-questions-for-new-regulations
+  source_type: official agency FAQ
+  key_fields_supported: 2023-12-08 changes to 248 CMR 10.00
+  status: parsed_core
+- source_id: src:usa-ma:248-cmr-4
+  title: 248 CMR 4.00, Massachusetts Fuel Gas Code
+  publisher___authority: Mass.gov / Board of State Examiners of Plumbers and Gas Fitters
+  url___citation: https://www.mass.gov/regulations/248-CMR-400-massachusetts-fuel-gas-code
+  source_type: regulation convenience page
+  key_fields_supported: fuel gas code scope and effective date
+  status: parsed_core
+- source_id: src:usa-ma:248-cmr-5
+  title: 248 CMR 5.00, Amendments to NFPA 54
+  publisher___authority: Mass.gov / Board of State Examiners of Plumbers and Gas Fitters
+  url___citation: https://www.mass.gov/regulations/248-CMR-500-amendments-to-nfpa-54
+  source_type: regulation convenience page
+  key_fields_supported: NFPA 54 amendments
+  status: source_identified
+- source_id: src:usa-ma:248-cmr-8
+  title: 248 CMR 8.00, Amendments to NFPA 58
+  publisher___authority: Mass.gov / Board of State Examiners of Plumbers and Gas Fitters
+  url___citation: https://www.mass.gov/regulations/248-CMR-800-amendments-to-nfpa-58
+  source_type: regulation convenience page
+  key_fields_supported: NFPA 58 amendments
+  status: source_identified
+- source_id: src:usa-ma:plumbers-board-page
+  title: Board of State Examiners of Plumbers and Gas Fitters
+  publisher___authority: Mass.gov / Division of Occupational Licensure
+  url___citation: https://www.mass.gov/orgs/board-of-state-examiners-of-plumbers-and-gas-fitters
+  source_type: official agency page
+  key_fields_supported: board role in plumbing and gas fitting
+  status: parsed_core
+- source_id: src:usa-ma:521-cmr-physical-accessibility
+  title: Physical accessibility requirements
+  publisher___authority: Mass.gov / Architectural Access Board
+  url___citation: https://www.mass.gov/info-details/physical-accessibility-requirements
+  source_type: official agency page
+  key_fields_supported: 521 CMR current accessibility regulations
+  status: source_identified
+- source_id: src:usa-ma:521-cmr-1996
+  title: 521 CMR 1996 Edition
+  publisher___authority: Mass.gov / Architectural Access Board
+  url___citation: https://www.mass.gov/doc/521-cmr-1996-edition/download
+  source_type: regulation PDF convenience copy
+  key_fields_supported: 521 CMR edition history / effective-date context
+  status: source_identified
+- source_id: src:usa-ma:524-cmr-elevator-list
+  title: Elevator laws and regulations, effective June 1, 2018
+  publisher___authority: Mass.gov / Board of Elevator Regulations
+  url___citation: https://www.mass.gov/lists/elevator-laws-and-regulations-effective-june-1-2018
+  source_type: official agency list
+  key_fields_supported: 524 CMR current regulation set
+  status: source_identified
+- source_id: src:usa-ma:524-cmr-35
+  title: 524 CMR 35.00, Safety Code for Elevators and Escalators A17.1-2013
+  publisher___authority: Mass.gov / Board of Elevator Regulations
+  url___citation: https://www.mass.gov/doc/524-cmr-chapter-35-safety-code-for-elevators-and-escalators-a171-2013-and-the-massachusetts-modifications-of-that-code/download
+  source_type: regulation PDF convenience copy
+  key_fields_supported: ASME A17.1-2013 incorporation
+  status: source_identified
+- source_id: src:usa-ma:bbrs-page
+  title: Board of Building Regulations and Standards
+  publisher___authority: Mass.gov / Office of Public Safety and Inspections
+  url___citation: https://www.mass.gov/orgs/board-of-building-regulations-and-standards
+  source_type: official agency page
+  key_fields_supported: agency identity and monitoring target
+  status: source_identified

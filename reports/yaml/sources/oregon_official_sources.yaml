@@ -1,0 +1,161 @@
+---
+official_sources:
+- source_id: src:usa-or:bcd-state-code
+  title: 'Oregon State Building Code: Codes and standards'
+  publisher___custodian: Oregon Building Codes Division
+  url: https://www.oregon.gov/bcd/codes-stand/pages/index.aspx
+  accessed: '2026-06-26'
+  key_fields_supported: BCD role; specialty-code programs; adoption/amendment/interpretation
+    overview
+- source_id: src:usa-or:bcd-adopted-codes
+  title: Adopted codes online
+  publisher___custodian: Oregon Building Codes Division
+  url: https://www.oregon.gov/bcd/codes-stand/pages/adopted-codes.aspx
+  accessed: '2026-06-26'
+  key_fields_supported: Statewide code list; effective/mandatory dates; model-code
+    bases; portal caveats
+- source_id: src:usa-or:bcd-residential
+  title: Residential Structures Code Program
+  publisher___custodian: Oregon Building Codes Division
+  url: https://www.oregon.gov/bcd/codes-stand/pages/residential-structures.aspx
+  accessed: '2026-06-26'
+  key_fields_supported: ORSC scope; ORSC phase-in and mandatory dates; 2021 IRC base;
+    interim amendments list
+- source_id: src:usa-or:bcd-electrical
+  title: Electrical Code Program
+  publisher___custodian: Oregon Building Codes Division
+  url: https://www.oregon.gov/bcd/codes-stand/pages/electrical.aspx
+  accessed: '2026-06-26'
+  key_fields_supported: OESC program role; 2023 OESC effective date and NEC base;
+    amendment table path
+- source_id: src:usa-or:bcd-energy
+  title: Oregon Energy Efficiency Specialty Code
+  publisher___custodian: Oregon Building Codes Division
+  url: https://www.oregon.gov/bcd/codes-stand/pages/oeesc-adoption.aspx
+  accessed: '2026-06-26'
+  key_fields_supported: 2025 OEESC effective/mandatory dates; ASHRAE 90.1-2022 base;
+    CIEB participation
+- source_id: src:usa-or:bcd-elevator
+  title: Oregon Elevator Specialty Code
+  publisher___custodian: Oregon Building Codes Division
+  url: https://www.oregon.gov/bcd/codes-stand/pages/elevator-adoption.aspx
+  accessed: '2026-06-26'
+  key_fields_supported: 2024 elevator code components; effective date; A17.3 phase-in
+- source_id: src:usa-or:bcd-oesc-adoption
+  title: Oregon Electrical Specialty Code adoption
+  publisher___custodian: Oregon Building Codes Division
+  url: https://www.oregon.gov/bcd/codes-stand/pages/oesc-adoption.aspx
+  accessed: '2026-06-26'
+  key_fields_supported: Pending 2026 OESC adoption process; anticipated 2026-10-01
+    adoption; 2026 NEC base
+- source_id: src:usa-or:oar-918-008
+  title: 'OAR chapter 918, division 8: Division code development rules, in general'
+  publisher___custodian: Oregon Secretary of State / Building Codes Division
+  url: https://secure.sos.state.or.us/oard/displayDivisionRules.action?selectedDivision=4129
+  accessed: '2026-06-26'
+  key_fields_supported: State building code creation by administrative rule; adoption/amendment
+    process; statewide interpretations and alternate method rulings
+- source_id: src:usa-or:oar-918-020
+  title: 'OAR chapter 918, division 20: Delegation of programs to local jurisdictions'
+  publisher___custodian: Oregon Secretary of State / Building Codes Division
+  url: https://secure.sos.state.or.us/oard/displayDivisionRules.action?selectedDivision=4131
+  accessed: '2026-06-26'
+  key_fields_supported: Municipal program assumption, renewal, reporting periods,
+    program oversight
+- source_id: src:usa-or:oar-918-020-0370
+  title: 'OAR 918-020-0370: Local Amendment Requests'
+  publisher___custodian: Oregon Secretary of State / Building Codes Division
+  url: https://secure.sos.state.or.us/oard/view.action?ruleNumber=918-020-0370
+  accessed: '2026-06-26'
+  key_fields_supported: Local amendment request requirements, BCD review/approval/denial/termination,
+    public-process and impact-report requirements
+- source_id: src:usa-or:oar-918-305
+  title: 'OAR chapter 918, division 305: Electrical Codes and Standards'
+  publisher___custodian: Oregon Secretary of State / Building Codes Division
+  url: https://secure.sos.state.or.us/oard/displayDivisionRules.action?selectedDivision=4158
+  accessed: '2026-06-26'
+  key_fields_supported: 2023 OESC adoption; governing-code rule; existing installations;
+    amendments; microgrid amendment
+- source_id: src:usa-or:oar-918-400-0455
+  title: 'OAR 918-400-0455: Adopted Oregon Elevator Specialty Code'
+  publisher___custodian: Oregon Secretary of State / Building Codes Division
+  url: https://secure.sos.state.or.us/oard/view.action?ruleNumber=918-400-0455
+  accessed: '2026-06-26'
+  key_fields_supported: 2024 Oregon Elevator Specialty Code; ASME components; A17.3
+    phase-in
+- source_id: src:usa-or:oar-918-440-0010
+  title: 'OAR 918-440-0010: Adopted Oregon Mechanical Specialty Code'
+  publisher___custodian: Oregon Secretary of State / Building Codes Division
+  url: https://secure.sos.state.or.us/oard/view.action?ruleNumber=918-440-0010
+  accessed: '2026-06-26'
+  key_fields_supported: 2025 OMSC; 2024 IMC/IFGC base; phase-in and effective date
+- source_id: src:usa-or:oar-918-460-0010
+  title: 'OAR 918-460-0010: Adopted Oregon Structural Specialty Code'
+  publisher___custodian: Oregon Secretary of State / Building Codes Division
+  url: https://secure.sos.state.or.us/oard/view.action?ruleNumber=918-460-0010
+  accessed: '2026-06-26'
+  key_fields_supported: 2025 OSSC; IBC/IFC/IEBC base; phase-in; plan-review/permit
+    application date rule
+- source_id: src:usa-or:oar-918-460-0015
+  title: 'OAR 918-460-0015: Amendments to the Oregon Structural Specialty Code'
+  publisher___custodian: Oregon Secretary of State / Building Codes Division
+  url: https://secure.sos.state.or.us/oard/view.action?ruleNumber=918-460-0015
+  accessed: '2026-06-26'
+  key_fields_supported: OSSC amendment path; Chapter 34 snow-load repair/alteration
+    amendment effective 2026-04-01
+- source_id: src:usa-or:oar-918-460-0500
+  title: 'OAR 918-460-0500: Energy Provisions of the Oregon Structural Specialty Code'
+  publisher___custodian: Oregon Secretary of State / Building Codes Division
+  url: https://secure.sos.state.or.us/oard/view.action?ruleNumber=918-460-0500
+  accessed: '2026-06-26'
+  key_fields_supported: 2025 OEESC; ASHRAE 90.1-2022 base; phase-in; application-date
+    rule
+- source_id: src:usa-or:oar-918-480-0005
+  title: 'OAR 918-480-0005: Adopted Oregon Residential Specialty Code'
+  publisher___custodian: Oregon Secretary of State / Building Codes Division
+  url: https://secure.sos.state.or.us/oard/view.action?ruleNumber=918-480-0005
+  accessed: '2026-06-26'
+  key_fields_supported: 2023 ORSC; phase-in; low-rise plumbing/electrical relationships;
+    application-date rule
+- source_id: src:usa-or:oar-918-480-0010
+  title: 'OAR 918-480-0010: Amendments to the Oregon Residential Specialty Code'
+  publisher___custodian: Oregon Secretary of State / Building Codes Division
+  url: https://secure.sos.state.or.us/oard/view.action?ruleNumber=918-480-0010
+  accessed: '2026-06-26'
+  key_fields_supported: ORSC R310/R302.3/R327/R332 interim amendments
+- source_id: src:usa-or:oar-918-750-0110
+  title: 'OAR 918-750-0110: Oregon Plumbing Specialty Code'
+  publisher___custodian: Oregon Secretary of State / Building Codes Division
+  url: https://secure.sos.state.or.us/oard/view.action?ruleNumber=918-750-0110
+  accessed: '2026-06-26'
+  key_fields_supported: 2023 OPSC; UPC base; adopted/excluded appendices; local adoption
+    of Appendices L and N
+- source_id: src:usa-or:oar-837-040
+  title: 'OAR chapter 837, division 40: Fire and Life Safety Regulations'
+  publisher___custodian: Oregon Secretary of State / Department of the State Fire
+    Marshal
+  url: https://secure.sos.state.or.us/oard/displayDivisionRules.action?selectedDivision=3805
+  accessed: '2026-06-26'
+  key_fields_supported: 2025 OFC adoption; 2024 IFC base; 180-day OFC phase-in; fire-code
+    authority
+- source_id: src:usa-or:osfm-fire-code
+  title: Oregon Fire Code
+  publisher___custodian: Oregon Department of the State Fire Marshal
+  url: https://www.oregon.gov/osfm/fire-service-partners/pages/oregon-fire-code.aspx
+  accessed: '2026-06-26'
+  key_fields_supported: OFC code portal; 2022 OFC valid-through note; 2025 OFC publication
+    path
+- source_id: src:usa-or:ors-455
+  title: 'ORS chapter 455: Building Code'
+  publisher___custodian: Oregon Legislative Assembly
+  url: https://www.oregonlegislature.gov/bills_laws/ors/ors455.html
+  accessed: '2026-06-26'
+  key_fields_supported: Statutory basis for state building code, Director/DCBS authority,
+    uniformity/preemption, municipal building inspection programs
+- source_id: src:usa-or:ors-476
+  title: 'ORS chapter 476: State Fire Marshal / fire protection'
+  publisher___custodian: Oregon Legislative Assembly
+  url: https://www.oregonlegislature.gov/bills_laws/ors/ors476.html
+  accessed: '2026-06-26'
+  key_fields_supported: Statutory basis for State Fire Marshal rulemaking and enforcement
+    powers

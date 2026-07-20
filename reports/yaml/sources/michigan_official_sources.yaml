@@ -1,0 +1,181 @@
+---
+official_sources:
+- source_id: src:usa-mi:lara-bcc-home
+  source_type: agency_page
+  title: Bureau of Construction Codes
+  publisher___authority: Michigan LARA
+  url: https://www.michigan.gov/lara/bureau-list/bcc
+  supports: BCC role and mission
+  date___version: current page accessed 2026-06-25
+  extraction_status: parsed_summary
+- source_id: src:usa-mi:lara-code-books
+  source_type: agency_page
+  title: Code Books
+  publisher___authority: Michigan LARA / BCC
+  url: https://www.michigan.gov/lara/bureau-list/bcc/rules-acts/codes/code-books
+  supports: Current code editions and effective dates
+  date___version: current page accessed 2026-06-25
+  extraction_status: parsed_key_fields
+- source_id: src:usa-mi:mcl-125-1504
+  source_type: statute
+  title: MCL 125.1504, State construction code; rules
+  publisher___authority: Michigan Legislature
+  url: https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-125-1504
+  supports: State construction-code rulemaking authority
+  date___version: official MCL target
+  extraction_status: indirect_extract_from_rules
+- source_id: src:usa-mi:mcl-125-1508b
+  source_type: statute
+  title: MCL 125.1508b, administration and enforcement / local assumption provisions
+  publisher___authority: Michigan Legislature
+  url: https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-125-1508b
+  supports: Local enforcement model
+  date___version: official MCL target
+  extraction_status: search_surface_only
+- source_id: src:usa-mi:admin-part4-building
+  source_type: administrative_rule
+  title: Michigan Administrative Rules Part 4, Building Code
+  publisher___authority: Michigan Administrative Rules / LARA
+  url: https://ars.apps.lara.state.mi.us/AdminCode/DownloadAdminCodeFile?FileName=R+408.30401++to+408.30499a.pdf&ReturnHTML=True
+  supports:
+  - 2021 IBC adoption
+  - building-code purpose
+  - authority
+  - effective date
+  - local-resolution exceptions
+  date___version: 2024 MR 23; effective 2025-04-09
+  extraction_status: parsed_key_fields
+- source_id: src:usa-mi:admin-part7-plumbing
+  source_type: administrative_rule
+  title: Michigan Administrative Rules Part 7, Plumbing Code
+  publisher___authority: Michigan Administrative Rules / LARA
+  url: https://ars.apps.lara.state.mi.us/AdminCode/DownloadAdminCodeFile?FileName=R+408.30701++to+408.30796.pdf&ReturnHTML=True
+  supports:
+  - 2021 IPC adoption
+  - purpose/scope
+  - effective date
+  - permit expiration
+  date___version: 2023 MR 22; effective 2024-03-12
+  extraction_status: parsed_key_fields
+- source_id: src:usa-mi:admin-part8-electrical
+  source_type: administrative_rule
+  title: Michigan Administrative Rules Part 8, Electrical Code
+  publisher___authority: Michigan Administrative Rules / LARA
+  url: https://ars.apps.lara.state.mi.us/AdminCode/DownloadAdminCodeFile?FileName=R+408.30801++to+408.30880.pdf&ReturnHTML=True
+  supports:
+  - 2023 NEC adoption
+  - AHJ definition
+  - effective date
+  - scope
+  date___version: 2023 MR 22; effective 2024-03-12
+  extraction_status: parsed_key_fields
+- source_id: src:usa-mi:admin-part9a-mechanical
+  source_type: administrative_rule
+  title: Michigan Administrative Rules Part 9A, Mechanical Code
+  publisher___authority: Michigan Administrative Rules / LARA
+  url: https://ars.apps.lara.state.mi.us/AdminCode/DownloadAdminCodeFile?FileName=R+408.30901++to+408.30998.pdf&ReturnHTML=True
+  supports:
+  - 2021 IMC adoption
+  - scope
+  - effective date
+  date___version: 2023 MR 22; effective 2024-03-12
+  extraction_status: parsed_key_fields
+- source_id: src:usa-mi:admin-part10a-commercial-energy
+  source_type: administrative_rule
+  title: Michigan Administrative Rules Part 10A, Michigan Energy Code
+  publisher___authority: Michigan Administrative Rules / LARA
+  url: https://ars.apps.lara.state.mi.us/AdminCode/DownloadAdminCodeFile?FileName=R+408.31087++to+408.31099.pdf&ReturnHTML=True
+  supports:
+  - 2021 IECC commercial adoption
+  - ASHRAE 90.1-2019
+  - Appendix CB/CC
+  - effective date
+  date___version: 2024 MR 23; effective 2025-04-22
+  extraction_status: parsed_key_fields
+- source_id: src:usa-mi:lara-open-rules-res-energy-stay
+  source_type: agency_page_and_advisory
+  title: 2021 Residential Code / Residential Energy Code injunction advisory
+  publisher___authority: Michigan LARA / BCC
+  url: https://www.michigan.gov/lara/bureau-list/bcc/rules-acts/rules/currently-open
+  supports:
+  - Stayed 2021 residential and residential-energy updates
+  - 2015 standards remain valid/effective
+  date___version: LARA advisory referencing 2025-07-07 order
+  extraction_status: parsed_key_fields
+- source_id: src:usa-mi:lara-open-rules
+  source_type: agency_page
+  title: Currently Open Rules
+  publisher___authority: Michigan LARA / BCC
+  url: https://www.michigan.gov/lara/bureau-list/bcc/rules-acts/rules/currently-open
+  supports: Pending rulemaking and hearing/advisory dates
+  date___version: current page accessed 2026-06-25
+  extraction_status: parsed_key_fields
+- source_id: src:usa-mi:bcc-building-permits
+  source_type: agency_page
+  title: Building Permit Information
+  publisher___authority: Michigan LARA / BCC
+  url: https://www.michigan.gov/lara/bureau-list/bcc/sections/permits/building-permit-information
+  supports: Permit-before-work overview and building-code scope
+  date___version: current page accessed 2026-06-25
+  extraction_status: parsed_summary
+- source_id: src:usa-mi:construction-code-commission
+  source_type: agency_page
+  title: State Construction Code Commission
+  publisher___authority: Michigan LARA / BCC
+  url: https://www.michigan.gov/lara/bureau-list/bcc/boards/state-construction-code-commission
+  supports: Commission creation and appeal function
+  date___version: current page accessed 2026-06-25
+  extraction_status: parsed_summary
+- source_id: src:usa-mi:lara-bfs-home
+  source_type: agency_page
+  title: Bureau of Fire Services
+  publisher___authority: Michigan LARA
+  url: https://www.michigan.gov/lara/bureau-list/bfs
+  supports: Fire-prevention mission and BFS context
+  date___version: current page accessed 2026-06-25
+  extraction_status: parsed_summary
+- source_id: src:usa-mi:fire-prevention-code-act207
+  source_type: statute
+  title: Fire Prevention Code Act 207 of 1941
+  publisher___authority: Michigan Legislature / official PDF target
+  url: https://www.legislature.mi.gov/documents/mcl/pdf/mcl-act-207-of-1941.pdf
+  supports: Fire-prevention statutory framework
+  date___version: official act PDF target
+  extraction_status: not_fully_parsed
+- source_id: src:usa-mi:state-fire-safety-board-rules
+  source_type: administrative_rule_index
+  title: State Fire Safety Board rules index
+  publisher___authority: Michigan Administrative Rules / LARA
+  url: https://ars.apps.lara.state.mi.us/AdminCode/DeptBureauAdminCode?Department=Licensing+and+Regulatory+Affairs&Bureau=State+Fire+Safety+Board
+  supports: Fire-safety administrative rules and review/hearing process
+  date___version: current ARS index accessed 2026-06-25
+  extraction_status: parsed_summary
+- source_id: src:usa-mi:lara-elevator-permit-info
+  source_type: agency_page
+  title: Elevator Permit Information
+  publisher___authority: Michigan LARA / BCC
+  url: https://www.michigan.gov/lara/bureau-list/bcc/sections/permits/elevator-permit-information
+  supports:
+  - Elevator-code scope
+  - standards
+  - permit pathway
+  date___version: current page accessed 2026-06-25
+  extraction_status: parsed_summary
+- source_id: src:usa-mi:lara-elevator-section
+  source_type: agency_page
+  title: Elevator Section
+  publisher___authority: Michigan LARA / BCC
+  url: https://www.michigan.gov/lara/bureau-list/bcc/sections/elevator-section
+  supports: Elevator-code administration and enforcement
+  date___version: current page accessed 2026-06-25
+  extraction_status: parsed_summary
+- source_id: src:usa-mi:elevator-safety-board
+  source_type: agency_page
+  title: Elevator Safety Board
+  publisher___authority: Michigan LARA / BCC
+  url: https://www.michigan.gov/lara/bureau-list/bcc/boards/elevator-safety-board
+  supports:
+  - Elevator board creation
+  - rule/licensing/exam functions
+  date___version: current page accessed 2026-06-25
+  extraction_status: parsed_summary

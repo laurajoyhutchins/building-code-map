@@ -1,0 +1,63 @@
+---
+key_findings:
+- topic: Overall authority model
+  finding: Colorado does not appear to have a single statewide IBC/IRC adoption for
+    all ordinary buildings; local county and municipal adoption remains central, with
+    state energy, trade, and special-program overlays.
+  confidence: 0.72
+  source_ids:
+  - src:usa-co:crs-title-30
+  - src:usa-co:crs-title-31
+  - src:usa-co:session-law-2022-ch301
+- topic: County building-code authority
+  finding: County boards of commissioners are authorized to adopt building codes in
+    all or part of the county outside incorporated cities and towns.
+  confidence: 0.9
+  source_ids:
+  - src:usa-co:crs-title-30
+- topic: Local energy-code floor
+  finding: Counties and municipalities with building codes must adopt and enforce
+    energy codes meeting Colorado's statutory thresholds when adopting or updating
+    building codes.
+  confidence: 0.88
+  source_ids:
+  - src:usa-co:crs-title-30
+  - src:usa-co:crs-title-31
+- topic: Electrical code
+  finding: The State Electrical Board incorporates NFPA 70, National Electrical Code,
+    2023 edition, as minimum standards, effective 2023-08-01.
+  confidence: 0.92
+  source_ids:
+  - src:usa-co:3-ccr-710-1
+  - src:usa-co:3-ccr-710-1-rule-info
+- topic: Plumbing and fuel gas
+  finding: The State Plumbing Board rules establish the Colorado Plumbing Code and
+    Colorado Fuel Gas Code using incorporated 2018 IPC, IRC, and IFGC provisions,
+    with additions, revisions, and deletions.
+  confidence: 0.86
+  source_ids:
+  - src:usa-co:3-ccr-720-1
+  - src:usa-co:3-ccr-720-1-rule-info
+- topic: DFPC state-administered building and fire code
+  finding: DFPC adopts building, fire, life-safety, and related standards for property,
+    buildings, and structures subject to DFPC oversight; this is not evidence of universal
+    statewide building-code coverage.
+  confidence: 0.82
+  source_ids:
+  - src:usa-co:8-ccr-1507-101
+  - src:usa-co:8-ccr-1507-30
+- topic: Factory-built and selected housing scopes
+  finding: Division of Housing / State Housing Board rules cover factory-built structures,
+    tiny homes, installations, and certain hotels, motels, and multi-family structures
+    in areas where no standards exist.
+  confidence: 0.82
+  source_ids:
+  - src:usa-co:8-ccr-1302-14
+  - src:usa-co:8-ccr-1302-14-rule-info
+- topic: Local amendments
+  finding: County building-code amendments are verified; municipal and full local
+    energy-amendment processes remain partially unresolved.
+  confidence: 0.55
+  source_ids:
+  - src:usa-co:crs-title-30
+  - src:usa-co:3-ccr-720-1

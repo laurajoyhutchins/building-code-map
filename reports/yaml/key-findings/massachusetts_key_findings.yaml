@@ -1,0 +1,56 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: BBRS is established in the Division of Occupational Licensure and must
+    adopt and administer the State Building Code.
+  confidence: 0.95
+  source_ids:
+  - src:usa-ma:mgl-c143-s93
+- topic: Primary building code edition
+  finding: The current State Building Code is 780 CMR 10th Edition, based on modified
+    2021 I-Codes, effective 2024-10-11 and mandatory after the 2025-06-30 concurrency
+    period.
+  confidence: 0.9
+  source_ids:
+  - src:usa-ma:780-cmr-10th-handbook
+  - src:usa-ma:780-cmr-10th-toc
+- topic: Electrical code authority
+  finding: BFPR promulgates electrical wiring rules; 527 CMR 12.00 is the Massachusetts
+    Electrical Code and is currently based on NFPA 70, 2026 edition.
+  confidence: 0.85
+  source_ids:
+  - src:usa-ma:mgl-c143-s3l
+  - src:usa-ma:527-cmr-12-2026
+- topic: Fire code authority
+  finding: BFPR is required to promulgate a comprehensive fire safety code; current
+    operational code is 527 CMR 1.00 based on NFPA 1, 2021 edition with Massachusetts
+    amendments.
+  confidence: 0.85
+  source_ids:
+  - src:usa-ma:mgl-c22d-s4
+  - src:usa-ma:527-cmr-1-2021
+  - src:usa-ma:fire-code-page
+- topic: Local enforcement
+  finding: City and town building commissioners/inspectors and local inspectors administer
+    and enforce the State Building Code.
+  confidence: 0.9
+  source_ids:
+  - src:usa-ma:mgl-c143-s3
+  - src:usa-ma:mgl-c143-s3a
+- topic: Local amendments
+  finding: General local building-code amendment authority was not identified; supported
+    exceptions include municipal energy-code adoption paths and historic/architectural
+    district exterior features.
+  confidence: 0.62
+  source_ids:
+  - src:usa-ma:mgl-c143-s3a
+  - src:usa-ma:energy-codes
+  - src:usa-ma:municipal-energy-registry
+- topic: Effective / operative date rule
+  finding: '10th Edition building-code transition is permit-application based: 9th
+    Edition projects had to file permit applications on or before 2025-06-30.'
+  confidence: 0.88
+  source_ids:
+  - src:usa-ma:780-cmr-10th-handbook
+  - src:usa-ma:10th-edition-concurrency-extension
+  - src:usa-ma:780-cmr-residential-ch1

@@ -1,0 +1,67 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: DSPS/DIS is the primary verified statewide authority for commercial building
+    plan review, UDC administration, and state construction/trades code programs.
+  confidence: 0.8
+  source_ids:
+  - src:usa-wi:dsps-commercial-buildings
+  - src:usa-wi:dsps-plan-review
+  - src:usa-wi:dsps-rules-index
+- topic: Primary commercial building code edition
+  finding: Wisconsin CBC adopts the 2021 ICC code set as of 2025-09-01, with plans
+    submitted on or after 2025-11-01 required to comply.
+  confidence: 0.82
+  source_ids:
+  - src:usa-wi:dsps-commercial-buildings
+  - src:usa-wi:dsps-plan-review
+  - src:usa-wi:sps-361-366
+  - src:usa-wi:dsps-cbc-code-template
+- topic: Residential building code
+  finding: UDC is statewide for one- and two-family dwellings built since 1980-06-01
+    and is enforced in all Wisconsin municipalities.
+  confidence: 0.82
+  source_ids:
+  - src:usa-wi:dsps-udc-page
+  - src:usa-wi:sps-320-325
+- topic: Fire code authority
+  finding: SPS 314 is the fire-prevention chapter; current rules reference 2012 NFPA
+    1 and DSPS is considering a 2024 NFPA 1 update.
+  confidence: 0.7
+  source_ids:
+  - src:usa-wi:sps-314
+  - src:usa-wi:fire-scope-2025
+  - src:usa-wi:dsps-pending-rules
+- topic: Electrical code
+  finding: SPS 316 is the electrical code chapter. DSPS rulemaking materials state
+    the current chapter adopts 2017 NEC and the pending/approved update adopts 2023
+    NEC effective 2026-09-01.
+  confidence: 0.7
+  source_ids:
+  - src:usa-wi:sps-316
+  - src:usa-wi:electrical-cr26-016
+  - src:usa-wi:dsps-pending-rules
+- topic: Plumbing code
+  finding: SPS 381 to 387 are the Wisconsin Plumbing Code chapters; DSPS pending-rules
+    page lists Plumbing Code Review effective 2026-09-01.
+  confidence: 0.72
+  source_ids:
+  - src:usa-wi:sps-381-387
+  - src:usa-wi:plumbing-cr26-019
+  - src:usa-wi:dsps-pending-rules
+- topic: Local amendments
+  finding: Commercial/public-building local minimum construction standards generally
+    must strictly conform to state rules, with statutory exceptions; registry and
+    exception inventory remain unresolved.
+  confidence: 0.6
+  source_ids:
+  - src:usa-wi:stat-101-02-local-standards
+  - src:usa-wi:court-abc-madison-2023
+- topic: Effective / operative date rule
+  finding: CBC uses both an effective date and a later plan-submittal compliance date;
+    electrical and plumbing updates have a future effective date of 2026-09-01.
+  confidence: 0.74
+  source_ids:
+  - src:usa-wi:dsps-commercial-buildings
+  - src:usa-wi:dsps-plan-review
+  - src:usa-wi:dsps-pending-rules

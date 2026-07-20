@@ -1,0 +1,67 @@
+---
+key_findings:
+- topic: State building code adoption
+  finding: The Legislature creates the state building code and adopts 2018 IBC, 2018
+    IRC, 2018 IEBC, and 2018 UPC by reference, with listed exclusions.
+  confidence: 0.92
+  source_ids:
+  - src:usa-ne:71-6403-state-building-code
+- topic: Local code enforcement
+  finding: Counties, cities, and villages may enact, administer, and enforce local
+    building or construction codes if they adopt the state code or a code conforming
+    generally with it.
+  confidence: 0.88
+  source_ids:
+  - src:usa-ne:71-6406-local-building-code
+- topic: Local fallback rule
+  finding: If a local jurisdiction fails to adopt a qualifying code within two years
+    after a state update, the state building code applies there, except for farm construction
+    or construction for farm purposes.
+  confidence: 0.84
+  source_ids:
+  - src:usa-ne:71-6406-local-building-code
+- topic: Local amendment limits
+  finding: Local amendments are allowed, but prior editions and omission of radon-resistant
+    new-construction minimum standards break general conformity.
+  confidence: 0.86
+  source_ids:
+  - src:usa-ne:71-6406-local-building-code
+  - src:usa-ne:76-3504-radon
+- topic: Energy code
+  finding: Nebraska Energy Code is the 2018 IECC; DWEE states the 2018 IECC went into
+    effect on 2020-07-01 and identifies ASHRAE 90.1-2016 in the update.
+  confidence: 0.88
+  source_ids:
+  - src:usa-ne:81-1611-energy-code
+  - src:usa-ne:dwee-energy-codes
+- topic: Electrical code authority
+  finding: The State Electrical Board is the specialized electrical authority; current
+    statutory standards begin with the 2023 NEC, subject to listed 2017 NEC exceptions.
+  confidence: 0.9
+  source_ids:
+  - src:usa-ne:81-2104-electrical-board
+  - src:usa-ne:state-electrical-2023-adoption
+- topic: Fire code authority
+  finding: The State Fire Marshal adopts and enforces the State Fire Code and reviews
+    fire-code plans; Title 153 Chapter 1 is a scanned/stamped rule source.
+  confidence: 0.82
+  source_ids:
+  - src:usa-ne:81-503-01-state-fire-code
+  - src:usa-ne:sfm-regulations
+  - src:usa-ne:title153-ch1-fire-code
+  - src:usa-ne:title153-ch21-plan-review
+- topic: Accessibility authority
+  finding: The State Fire Marshal adopts accessibility standards consistent with ADA
+    and FHA standards and maintains state/local review-authority pathways.
+  confidence: 0.76
+  source_ids:
+  - src:usa-ne:81-5-147-accessibility
+  - src:usa-ne:sfm-regulations
+  - src:usa-ne:sfm-delegated-local-authority
+- topic: Pending statewide updates
+  finding: LB611 and LB801 building/energy-code update bills were indefinitely postponed
+    on 2026-04-17.
+  confidence: 0.86
+  source_ids:
+  - src:usa-ne:lb611-2025-status
+  - src:usa-ne:lb801-2026-status

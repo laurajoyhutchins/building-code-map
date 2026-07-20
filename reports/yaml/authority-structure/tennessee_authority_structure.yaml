@@ -1,0 +1,24 @@
+---
+authority_structure:
+- field: Authority ID
+  value: ahj:usa-tn:state-fire-marshal
+- field: Authority name
+  value: Tennessee Department of Commerce and Insurance, Division of Fire Prevention
+    / State Fire Marshal's Office
+- field: Authority type
+  value: state agency / state fire marshal
+- field: Legal basis
+  value: "T.C.A. \xA7 68-120-101; T.C.A. \xA7 68-120-106; Tenn. Comp. R. & Regs. 0780-02-02;\
+    \ Tenn. Comp. R. & Regs. 0780-02-03"
+- field: Role
+  value: Promulgates minimum statewide building construction safety standards; adopts
+    model codes by rule; enforces statewide adopted fire and building construction
+    safety codes; reviews plans and inspections for covered projects.
+- field: Enforcement model
+  value: hybrid_state_minimum_with_local_certification_and_state_reserved_scope
+- field: Source IDs
+  value: src:usa-tn:tdci-codes-enforcement; src:usa-tn:tdci-currently-adopted-codes;
+    src:usa-tn:rule-0780-02-02; src:usa-tn:rule-0780-02-03; src:usa-tn:lexis-tca-68-120-101;
+    src:usa-tn:justia-tca-68-120-101
+- field: Verification status
+  value: partially_verified

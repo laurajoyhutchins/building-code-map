@@ -1,0 +1,69 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: DHBC is the primary statewide authority for the mandatory uniform building
+    code under 815 KAR 7:120 and 815 KAR 7:125.
+  confidence: 0.86
+  source_ids:
+  - src:usa-ky:815-kar-7-120
+  - src:usa-ky:815-kar-7-125
+  - src:usa-ky:dhbc-building-code-enforcement
+- topic: Primary building code edition
+  finding: KBC = 2015 IBC plus Kentucky amendments in the 2018 Kentucky Building Code,
+    Fourth Edition, February 2024.
+  confidence: 0.88
+  source_ids:
+  - src:usa-ky:815-kar-7-120
+  - src:usa-ky:kbc-2018-fourth-edition-pdf
+- topic: Primary residential code edition
+  finding: KRC = 2015 IRC plus Kentucky amendments in the 2018 Kentucky Residential
+    Code, Third Edition, August 2024.
+  confidence: 0.88
+  source_ids:
+  - src:usa-ky:815-kar-7-125
+  - src:usa-ky:krc-2018-third-edition-pdf
+- topic: Electrical code authority
+  finding: Electrical standards are part of the Uniform State Building Code and use
+    NFPA 70 / NEC as a minimum standard; KBC/KRC current references identify NFPA
+    70-23 with Kentucky transition notes.
+  confidence: 0.74
+  source_ids:
+  - src:usa-ky:krs-227-480
+  - src:usa-ky:kbc-2018-fourth-edition-pdf
+  - src:usa-ky:krc-2018-third-edition-pdf
+  - src:usa-ky:815-kar-35-020
+- topic: Fire code authority
+  finding: Construction fire-safety requirements are in the KBC where referenced;
+    operational and existing-building fire safety is separated through the Kentucky
+    Standards of Safety, 815 KAR 10:060, with State Fire Marshal and local fire program
+    roles.
+  confidence: 0.72
+  source_ids:
+  - src:usa-ky:kbc-2018-fourth-edition-pdf
+  - src:usa-ky:815-kar-10-060
+- topic: Local enforcement
+  finding: Enforcement is shared between DHBC and city/county building departments,
+    with expanded local jurisdiction criteria and state-retained responsibilities.
+  confidence: 0.79
+  source_ids:
+  - src:usa-ky:krs-198b-060
+  - src:usa-ky:815-kar-7-110
+  - src:usa-ky:dhbc-building-codes
+- topic: Local amendments
+  finding: KBC/KRC local building-code substitutions are not supported; amendments
+    verified here are statewide through DHBC regulatory process.
+  confidence: 0.76
+  source_ids:
+  - src:usa-ky:kbc-2018-fourth-edition-pdf
+  - src:usa-ky:krc-2018-third-edition-pdf
+  - src:usa-ky:krs-198b-080
+- topic: Effective / operative date rule
+  finding: KBC plan-submittal and KRC permit rules both use 2019-08-01 as the verified
+    mandatory/operative transition date for the 2018 code family; current KAR amendments
+    have a separate 2024-12-03 effective history entry.
+  confidence: 0.74
+  source_ids:
+  - src:usa-ky:kbc-2018-fourth-edition-pdf
+  - src:usa-ky:krc-2018-third-edition-pdf
+  - src:usa-ky:815-kar-7-120
+  - src:usa-ky:815-kar-7-125

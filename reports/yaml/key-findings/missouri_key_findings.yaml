@@ -1,0 +1,67 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: No single primary statewide general building-code adopting authority was
+    identified; general code adoption is local and statute-enabled.
+  confidence: 0.72
+  source_ids:
+  - src:usa-mo:dnr-codes-by-jurisdiction
+  - src:usa-mo:rsmo-67-280
+  - src:usa-mo:rsmo-64-170
+  - src:usa-mo:rsmo-89-020
+- topic: Primary building code edition
+  finding: No statewide IBC edition applies to all private construction. The Missouri
+    professional board uses the 2018 IBC only as professional-conduct evaluation criteria
+    when no local building code exists.
+  confidence: 0.75
+  source_ids:
+  - src:usa-mo:csr-20-2030-2
+- topic: Electrical code authority
+  finding: No statewide NEC adoption was identified. Counties of the first and second
+    classification may regulate electrical wiring/installations under RSMo 64.170;
+    communities may adopt electrical technical codes by reference under RSMo 67.280
+    if otherwise authorized.
+  confidence: 0.6
+  source_ids:
+  - src:usa-mo:rsmo-64-170
+  - src:usa-mo:rsmo-67-280
+- topic: Fire code authority
+  finding: Missouri Division of Fire Safety states Missouri has no statewide fire
+    code, while state fire-safety regulations affect most licensed day cares, nursing
+    homes, and other state-licensed facilities.
+  confidence: 0.82
+  source_ids:
+  - src:usa-mo:dfs-fire-faq
+- topic: Elevator / conveyance
+  finding: Missouri Division of Fire Safety, Elevator Safety Unit administers elevator
+    standards; elevators installed after 2020-04-30 must comply with ASME A17.1 2016.
+  confidence: 0.86
+  source_ids:
+  - src:usa-mo:dps-dfs-elevator-code-adoptions
+  - src:usa-mo:dps-dfs-elevator-code-info
+- topic: State-building energy
+  finding: State buildings over 5,000 square feet, substantial renovations, and certain
+    state leases/acquisitions are subject to minimum energy efficiency standards.
+  confidence: 0.78
+  source_ids:
+  - src:usa-mo:rsmo-8-812
+  - src:usa-mo:csr-10-140-7-010
+- topic: Local amendments
+  finding: Local code adoption by reference can include amendments with 90-day clerk
+    filing, but no complete state-level amendment registry was identified.
+  confidence: 0.58
+  source_ids:
+  - src:usa-mo:rsmo-67-280
+  - src:usa-mo:dnr-codes-by-jurisdiction
+- topic: Effective / operative date rules
+  finding: Statewide local-code effective dates are jurisdiction-specific. Confirmed
+    state-level rules include state-building energy dates, elevator installation date
+    bands, and seismic applicability dates.
+  confidence: 0.64
+  source_ids:
+  - src:usa-mo:rsmo-67-280
+  - src:usa-mo:rsmo-8-812
+  - src:usa-mo:csr-10-140-7-010
+  - src:usa-mo:dps-dfs-elevator-code-adoptions
+  - src:usa-mo:rsmo-319-200
+  - src:usa-mo:rsmo-319-203

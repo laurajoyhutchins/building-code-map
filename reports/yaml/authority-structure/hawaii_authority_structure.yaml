@@ -1,0 +1,19 @@
+---
+authority_structure:
+- field: Authority ID
+  value: ahj:usa-hi:state-building-code-council
+- field: Authority name
+  value: State Building Code Council
+- field: Authority type
+  value: state_agency
+- field: Legal basis
+  value: HRS 107-22 as referenced by the DAGS Building Code Council page
+- field: Role
+  value: Establishes the state building code through adoption of national model codes
+    and state design standards
+- field: Enforcement model
+  value: hybrid
+- field: Source IDs
+  value: src:usa-hi:bcc-home; src:usa-hi:bcc-building-code-rules
+- field: Verification status
+  value: verified

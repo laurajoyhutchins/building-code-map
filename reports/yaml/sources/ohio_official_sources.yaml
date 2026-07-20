@@ -1,0 +1,177 @@
+---
+official_sources:
+- source_id: src:usa-oh:orc-3781-10
+  title: "Ohio Revised Code \xA7 3781.10 - Board of building standards; powers and\
+    \ duties"
+  publisher___custodian: Ohio Laws and Administrative Rules / Ohio Revised Code
+  type: statute
+  date___effective_date: current page reviewed 2026-06-26
+  locator: https://codes.ohio.gov/ohio-revised-code/section-3781.10
+  reliability: official
+  notes: Primary authority for BBS construction-code rulemaking.
+- source_id: src:usa-oh:orc-3781-03
+  title: "Ohio Revised Code \xA7 3781.03 - Enforcement provisions"
+  publisher___custodian: Ohio Laws and Administrative Rules / Ohio Revised Code
+  type: statute
+  date___effective_date: current page reviewed 2026-06-26
+  locator: https://codes.ohio.gov/ohio-revised-code/section-3781.03
+  reliability: official
+  notes:
+  - Supports enforcement split among fire
+  - construction
+  - and plumbing authorities.
+- source_id: src:usa-oh:orc-3781-01
+  title: "Ohio Revised Code \xA7 3781.01 - Municipal and residential local regulations"
+  publisher___custodian: Ohio Laws and Administrative Rules / Ohio Revised Code
+  type: statute
+  date___effective_date: current page reviewed 2026-06-26
+  locator: https://codes.ohio.gov/ohio-revised-code/section-3781.01
+  reliability: official
+  notes: Supports local non-conflict and residential conflict-review rules.
+- source_id: src:usa-oh:orc-3781-11
+  title: "Ohio Revised Code \xA7 3781.11 - Rules of board; uniform standards; conflict/supersession"
+  publisher___custodian: Ohio Laws and Administrative Rules / Ohio Revised Code
+  type: statute
+  date___effective_date: current page reviewed 2026-06-26
+  locator: https://codes.ohio.gov/ohio-revised-code/section-3781.11
+  reliability: official
+  notes: Supports statewide uniform minimum code and supersession rules.
+- source_id: src:usa-oh:oac-4101-1-1-01-2025
+  title: OAC 4101:1-1-01 - Administration, effective 2025-10-15
+  publisher___custodian: Ohio Laws and Administrative Rules / Ohio Administrative
+    Code
+  type: administrative rule / authenticated PDF
+  date___effective_date: '2025-10-15'
+  locator: https://codes.ohio.gov/assets/laws/administrative-code/rules/4101/1/4101%241-1-01_eff_10_15_25.pdf
+  reliability: official
+  notes:
+  - Current OBC administrative rule
+  - includes 2021 IBC incorporation
+  - scope
+  - local regulation text
+  - IEBC
+  - and referenced code coordination.
+- source_id: src:usa-oh:oac-4101-1-27-01
+  title: OAC 4101:1-27-01 - Electrical
+  publisher___custodian: Ohio Laws and Administrative Rules / Ohio Administrative
+    Code
+  type: administrative rule
+  date___effective_date: '2024-03-01'
+  locator: https://codes.ohio.gov/ohio-administrative-code/rule-4101:1-27-01
+  reliability: official
+  notes:
+  - Rule identified
+  - full electrical scope not fully parsed.
+- source_id: src:usa-oh:oac-4101-7-1-01
+  title: OAC 4101:7-1-01 - Certification general provisions
+  publisher___custodian: Ohio Laws and Administrative Rules / Ohio Administrative
+    Code
+  type: administrative rule
+  date___effective_date: current page reviewed 2026-06-26
+  locator: https://codes.ohio.gov/ohio-administrative-code/rule-4101:7-1-01
+  reliability: official
+  notes: Supports BBS certification program and prerequisite nature of certification.
+- source_id: src:usa-oh:oac-4101-7-2-01
+  title: OAC 4101:7-2-01 - Building department certification
+  publisher___custodian: Ohio Laws and Administrative Rules / Ohio Administrative
+    Code
+  type: administrative rule
+  date___effective_date: current page reviewed 2026-06-26
+  locator: https://codes.ohio.gov/ohio-administrative-code/rule-4101:7-2-01
+  reliability: official
+  notes:
+  - Supports local enforcement certification model
+  - plumbing distinctions
+  - and certified department list.
+- source_id: src:usa-oh:commerce-2024-obc-rules
+  title: 2024 Ohio Building Code Rules Effective March 1, 2024
+  publisher___custodian: Ohio Department of Commerce / Ohio Board of Building Standards
+  type: official PDF rule package
+  date___effective_date: adopted 2023-08-11; effective 2024-03-01
+  locator: https://dam.assets.ohio.gov/image/upload/com.ohio.gov/documents/2024%20Ohio%20Building%20Code%20Rules%20Effective%20March%201%2C%202024.pdf
+  reliability: official
+  notes:
+  - Official rule package for 2024 OBC
+  - model code text incorporated by reference
+  - not reproduced in full.
+- source_id: src:usa-oh:commerce-2024-omc-rules
+  title: 2024 Ohio Mechanical Code Rules Effective March 1, 2024
+  publisher___custodian: Ohio Department of Commerce / Ohio Board of Building Standards
+  type: official PDF rule package
+  date___effective_date: adopted 2023-08-11; effective 2024-03-01
+  locator: https://dam.assets.ohio.gov/image/upload/com.ohio.gov/documents/2024%20Ohio%20Mechanical%20Code%20Rules%20Effective%20March%201%2C%202024.pdf
+  reliability: official
+  notes:
+  - Official rule package for 2024 OMC
+  - incorporates 2021 IMC by reference with Ohio amendments.
+- source_id: src:usa-oh:commerce-2024-opc-rules
+  title: 2024 Ohio Plumbing Code Rules Effective March 1, 2024
+  publisher___custodian: Ohio Department of Commerce / Ohio Board of Building Standards
+  type: official PDF rule package
+  date___effective_date: adopted 2023-08-11; effective 2024-03-01
+  locator: https://dam.assets.ohio.gov/image/upload/com.ohio.gov/documents/2024%20Ohio%20Plumbing%20Code%20Rules%20Effective%20March%201%2C%202024.pdf
+  reliability: official
+  notes:
+  - Official rule package for 2024 OPC
+  - incorporates 2021 IPC by reference with Ohio amendments.
+- source_id: src:usa-oh:commerce-2024-overview
+  title: Overview 2024 Building Codes
+  publisher___custodian: Ohio Department of Commerce / Ohio Board of Building Standards
+  type: official presentation PDF
+  date___effective_date: '2024-01-30'
+  locator: https://dam.assets.ohio.gov/image/upload/com.ohio.gov/documents/2024%20OBC%20Executive%20Summary%201.pdf
+  reliability: official_supplemental
+  notes:
+  - Helpful summary for 2021 ICC model-code package
+  - IECC/ASHRAE/electrical/accessibility standards
+  - and other rules
+  - not a substitute for rule text.
+- source_id: src:usa-oh:commerce-rco-2019-rules
+  title: Residential Code of Ohio Rules Effective July 1, 2019
+  publisher___custodian: Ohio Department of Commerce / Ohio Board of Building Standards
+  type: official PDF rule package
+  date___effective_date: adopted 2018-12-14; effective 2019-07-01
+  locator: https://dam.assets.ohio.gov/image/upload/com.ohio.gov/documents/bbst_ResidentialCodeofOhioEffectiveJuly1%2C2019.pdf
+  reliability: official_partial
+  notes:
+  - Source identified for RCO base
+  - full text not parsed in this pass.
+- source_id: src:usa-oh:commerce-rco-ag101
+  title: Amendments Group 101 Notice Package - Residential Code of Ohio
+  publisher___custodian: Ohio Department of Commerce / Ohio Board of Building Standards
+  type: official PDF notice package
+  date___effective_date: adopted 2024-01-26; effective 2024-03-01
+  locator: https://dam.assets.ohio.gov/image/upload/com.ohio.gov/documents/AG101%20Notice%20package.pdf
+  reliability: official
+  notes:
+  - Confirms RCO Chapter 4
+  - '34'
+  - and 44 amendments and NFPA 70-2023 reference.
+- source_id: src:usa-oh:orc-3737-22
+  title: "Ohio Revised Code \xA7 3737.22 - Fire marshal duties and code enforcement"
+  publisher___custodian: Ohio Laws and Administrative Rules / Ohio Revised Code
+  type: statute
+  date___effective_date: current page reviewed 2026-06-26
+  locator: https://codes.ohio.gov/ohio-revised-code/section-3737.22
+  reliability: official
+  notes: Primary source for fire marshal fire-code adoption/enforcement duties.
+- source_id: src:usa-oh:orc-3737-82
+  title: "Ohio Revised Code \xA7 3737.82 - State fire code"
+  publisher___custodian: Ohio Laws and Administrative Rules / Ohio Revised Code
+  type: statute
+  date___effective_date: current page reviewed 2026-06-26
+  locator: https://codes.ohio.gov/ohio-revised-code/section-3737.82
+  reliability: official
+  notes: Requires the fire marshal to adopt a state fire code and permits incorporation
+    by reference.
+- source_id: src:usa-oh:oac-1301-7-7-01-2025
+  title: OAC 1301:7-7-01 - Ohio Fire Code, effective 2025-11-20
+  publisher___custodian: Ohio Laws and Administrative Rules / Ohio Administrative
+    Code
+  type: administrative rule / authenticated PDF
+  date___effective_date: final 2025-11-10; effective 2025-11-20
+  locator: https://codes.ohio.gov/assets/laws/administrative-code/rules/1301/7/1301%247-7-01_eff_11_20_25.pdf
+  reliability: official
+  notes:
+  - Current Ohio Fire Code administrative rule
+  - incorporates 2021 IFC chapters and 2024 IFC Chapter 12.

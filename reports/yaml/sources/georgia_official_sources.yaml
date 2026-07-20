@@ -1,0 +1,120 @@
+---
+official_sources:
+- source_id: src:usa-ga:dca:construction-codes
+  title: Construction Codes
+  source_type: agency_page
+  publisher: Georgia Department of Community Affairs
+  url: https://dca.georgia.gov/community-assistance/construction-codes
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:ga-construction-codes-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-ga:dca:current-codes
+  title: Current State Minimum Codes for Construction
+  source_type: agency_page
+  publisher: Georgia Department of Community Affairs
+  url: https://dca.georgia.gov/community-assistance/construction-codes/current-state-minimum-codes-construction
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:ga-current-codes-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-ga:dca:mandatory-permissive
+  title: Mandatory and Permissive State Codes
+  source_type: agency_page
+  publisher: Georgia Department of Community Affairs
+  url: https://dca.georgia.gov/community-assistance/construction-codes/mandatory-and-permissive-state-codes
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:ga-mandatory-permissive-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-ga:dca:enforcement
+  title: Administration and Enforcement of State Minimum Codes
+  source_type: agency_page
+  publisher: Georgia Department of Community Affairs
+  url: https://dca.georgia.gov/community-assistance/construction-codes/enforcement-state-minimum-codes
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:ga-enforcement-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-ga:dca:new-codes-2026
+  title: New Georgia Codes and Amendments - Effective January 1, 2026
+  source_type: agency_notice
+  publisher: Georgia Department of Community Affairs
+  url: https://dca.georgia.gov/announcement/2025-12-09/new-codes-jan-2026
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:ga-new-codes-2026-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-ga:dca:ib-codes-info-sheet-2026
+  title: Georgia State Minimum Standard Codes - Industrialized Buildings Program IB
+    Codes Info Sheet, January 1, 2026
+  source_type: agency_pdf
+  publisher: Georgia Department of Community Affairs
+  url: https://dca.georgia.gov/document/document/grey-sheet-ib-codes-info-sheetpdf/download
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:ga-ib-codes-info-sheet-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-ga:sos:rule-110-11-1
+  title: Subject 110-11-1 Georgia State Minimum Standard Codes
+  source_type: regulation_html
+  publisher: Georgia Secretary of State / Georgia Rules and Regulations
+  url: https://rules.sos.ga.gov/gac/110-11-1
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:ga-rule-110-11-1-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-ga:sos:rule-120-3-3
+  title: Subject 120-3-3 Rules and Regulations for the State Minimum Fire Safety Standards
+  source_type: regulation_html
+  publisher: Georgia Secretary of State / Georgia Rules and Regulations
+  url: https://rules.sos.ga.gov/gac/120-3-3
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:ga-rule-120-3-3-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-ga:sos:rule-120-3-20
+  title: Subject 120-3-20 Access To and Use of Public Facilities by Handicapped Persons
+  source_type: regulation_html
+  publisher: Georgia Secretary of State / Georgia Rules and Regulations
+  url: https://rules.sos.ga.gov/gac/120-3-20
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:ga-rule-120-3-20-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-ga:oci:safety-fire-division
+  title: Safety Fire Division
+  source_type: agency_page
+  publisher: Office of Commissioner of Insurance and Safety Fire
+  url: https://oci.georgia.gov/contacts/safety-fire-division
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:ga-oci-safety-fire-division-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-ga:oci:fire-plan-review
+  title: Submit a Safety Fire Plan for Review
+  source_type: agency_page
+  publisher: Office of Commissioner of Insurance and Safety Fire
+  url: https://oci.georgia.gov/submit-safety-fire-plan-review
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:ga-oci-fire-plan-review-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-ga:oci:elevators-escalators
+  title: Elevators & Escalators
+  source_type: agency_page
+  publisher: Office of Commissioner of Insurance and Safety Fire
+  url: https://oci.georgia.gov/inspections-permits-plans/elevators-escalators
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:ga-oci-elevators-escalators-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-ga:oci:safety-fire-rules
+  title: Safety Fire Rules and Regulations
+  source_type: agency_page
+  publisher: Office of Commissioner of Insurance and Safety Fire
+  url: https://oci.georgia.gov/inspections-permits-plans/rules-and-regulations
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:ga-oci-safety-fire-rules-2026-06-25
+  checksum: null
+  status: active

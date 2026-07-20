@@ -1,0 +1,28 @@
+---
+authority_structure:
+- field: Authority ID
+  value: '`ahj:usa-md:labor-building-codes`'
+- field: Authority name
+  value: Maryland Department of Labor, Division of Labor and Industry, Building Codes
+    Administration
+- field: Authority type
+  value: state agency / code administration unit
+- field: Legal basis
+  value: "Public Safety Article \xA712-503; COMAR 09.12.51"
+- field: Role
+  value: Adopts the MBPS by regulation; publishes and administers statewide building-code
+    programs including MBPS, Maryland Accessibility Code, Maryland Building Rehabilitation
+    Code, Model Performance Code, Minimum Livability Code, and related state-administered
+    code programs.
+- field: Enforcement model
+  value: Statewide adoption with local jurisdiction implementation and enforcement
+    for ordinary MBPS building permits; state-administered programs remain separately
+    administered where assigned by law.
+- field: Source IDs
+  value:
+  - src:usa-md:ps-12-503
+  - src:usa-md:labor-building-admin
+  - src:usa-md:labor-building-codes
+  - src:usa-md:comar-09-12-51
+- field: Verification status
+  value: partially_verified

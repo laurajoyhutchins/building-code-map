@@ -1,0 +1,21 @@
+---
+authority_structure:
+- field: Authority ID
+  value: ahj:usa-mo:local-communities
+- field: Authority name
+  value: Missouri counties, municipalities, and fire protection districts where otherwise
+    authorized by law
+- field: Authority type
+  value: local_adoption_authorities
+- field: Legal basis
+  value: RSMo 67.280; RSMo 64.170; RSMo 89.020; RSMo 321.228
+- field: Role
+  value: Adopt and administer local technical codes, subject to each entity's underlying
+    statutory authority and scope.
+- field: Enforcement model
+  value: local_adoption_and_local_enforcement
+- field: Source IDs
+  value: src:usa-mo:rsmo-67-280; src:usa-mo:rsmo-64-170; src:usa-mo:rsmo-89-020; src:usa-mo:rsmo-321-228;
+    src:usa-mo:dnr-codes-by-jurisdiction
+- field: Verification status
+  value: partially_verified

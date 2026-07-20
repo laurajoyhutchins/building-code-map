@@ -1,0 +1,54 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: The DCA Commissioner is the primary statewide authority for adopting the
+    State Uniform Construction Code.
+  confidence: 0.82
+  source_ids:
+  - src:usa-nj:ucc-act-dca-pdf
+  - src:usa-nj:njac-5-23-1
+- topic: Primary building code edition
+  finding: DCA lists the Building Subcode as International Building Code/2021, New
+    Jersey edition.
+  confidence: 0.86
+  source_ids:
+  - src:usa-nj:dca-current-codes
+  - src:usa-nj:njac-5-23-3
+  - src:usa-nj:2021-icode-2020-nec-adoption
+- topic: Electrical code authority and edition
+  finding: DCA lists the Electrical Subcode as National Electrical Code (NFPA 70)/2020.
+  confidence: 0.84
+  source_ids:
+  - src:usa-nj:dca-current-codes
+  - src:usa-nj:2021-icode-2020-nec-adoption
+- topic: Fire code authority
+  finding: Fire-construction references are part of the UCC; operational fire/prevention
+    code authority is associated with DCA Division of Fire Safety and N.J.A.C. 5:70,
+    but the current primary text was not fully parsed.
+  confidence: 0.55
+  source_ids:
+  - src:usa-nj:dca-current-codes
+  - src:usa-nj:dca-dfs-codes-regs
+  - src:usa-nj:fire-code-2023-proposal
+- topic: Local enforcement
+  finding: Municipal construction officials and subcode officials administer and enforce
+    the UCC locally, subject to DCA oversight and State-reserved review/enforcement.
+  confidence: 0.78
+  source_ids:
+  - src:usa-nj:njac-5-23-4
+  - src:usa-nj:ucc-act-dca-pdf
+- topic: Local amendments
+  finding: UCC-covered construction standards are statewide and preempt conflicting
+    local construction standards; local zoning, licensing, and non-conflicting fire-safety
+    maintenance authority remain distinct issues.
+  confidence: 0.72
+  source_ids:
+  - src:usa-nj:njac-5-23-3
+  - src:usa-nj:ucc-act-dca-pdf
+- topic: Effective / operative date rule
+  finding: Unless a New Jersey Register adoption notice provides otherwise, the effective
+    date is the operative date; N.J.A.C. 5:23-1.6 supplies a six-month grace period
+    for qualifying projects after a subcode revision.
+  confidence: 0.8
+  source_ids:
+  - src:usa-nj:njac-5-23-1

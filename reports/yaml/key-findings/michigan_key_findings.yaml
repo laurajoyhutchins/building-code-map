@@ -1,0 +1,72 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: LARA Director's Office/BCC is the primary statewide construction-code authority
+    for the code parts reviewed; rules cite MCL 125.1504 as authority.
+  confidence: 0.85
+  source_ids:
+  - src:usa-mi:mcl-125-1504
+  - src:usa-mi:admin-part4-building
+  - src:usa-mi:lara-bcc-home
+- topic: Primary building code edition
+  finding: 2021 Michigan Building Code, based on the 2021 IBC, is current with an
+    effective date of 2025-04-09.
+  confidence: 0.95
+  source_ids:
+  - src:usa-mi:lara-code-books
+  - src:usa-mi:admin-part4-building
+- topic: Residential code edition
+  finding: 2015 Michigan Residential Code remains current; 2021 IRC / residential-energy
+    update implementation is stayed.
+  confidence: 0.9
+  source_ids:
+  - src:usa-mi:lara-code-books
+  - src:usa-mi:lara-open-rules-res-energy-stay
+- topic: Mechanical / plumbing / electrical
+  finding: Mechanical and plumbing use 2021 model-code bases effective 2024-03-12;
+    electrical uses the 2023 NEC effective 2024-03-12.
+  confidence: 0.92
+  source_ids:
+  - src:usa-mi:admin-part9a-mechanical
+  - src:usa-mi:admin-part7-plumbing
+  - src:usa-mi:admin-part8-electrical
+  - src:usa-mi:lara-code-books
+- topic: Commercial energy
+  finding: Michigan Commercial Energy Code uses the 2021 IECC for nonresidential buildings
+    and ASHRAE/IESNA 90.1-2019; effective date 2025-04-22.
+  confidence: 0.92
+  source_ids:
+  - src:usa-mi:admin-part10a-commercial-energy
+  - src:usa-mi:lara-code-books
+- topic: Fire code authority
+  finding: Bureau of Fire Services / State Fire Marshal and the State Fire Safety
+    Board are identified, but a complete operational fire-code adoption matrix is
+    unresolved.
+  confidence: 0.55
+  source_ids:
+  - src:usa-mi:lara-bfs-home
+  - src:usa-mi:fire-prevention-code-act207
+  - src:usa-mi:state-fire-safety-board-rules
+- topic: Local enforcement
+  finding: State-default / local-assumption model is provisionally classified from
+    MCL 125.1508b search-surface text and BCC/AHJ materials; direct statutory extraction
+    remains open.
+  confidence: 0.7
+  source_ids:
+  - src:usa-mi:mcl-125-1508b
+  - src:usa-mi:bcc-building-permits
+  - src:usa-mi:admin-part8-electrical
+- topic: Local amendments
+  finding: General local amendment authority is unresolved; only specific rule-level
+    local-resolution options were captured.
+  confidence: 0.35
+  source_ids:
+  - src:usa-mi:admin-part4-building
+- topic: Effective / operative date rule
+  finding: Code effective dates were captured separately; statewide permit-date or
+    issuance-date transition logic remains unresolved except for code-specific permit
+    provisions noted below.
+  confidence: 0.6
+  source_ids:
+  - src:usa-mi:lara-code-books
+  - src:usa-mi:admin-part7-plumbing

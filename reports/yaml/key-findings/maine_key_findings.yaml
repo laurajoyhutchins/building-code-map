@@ -1,0 +1,66 @@
+---
+key_findings:
+- topic: Primary statewide MUBEC authority
+  finding: Technical Building Codes and Standards Board adopts, amends, and maintains
+    MUBEC and resolves conflicts with fire/life-safety codes.
+  confidence: 0.85
+  source_ids:
+  - src:usa-me:statute-10-9722
+- topic: Current MUBEC model-code editions
+  finding: Current agency-published MUBEC adoption includes the 2021 IBC, IRC, IEBC,
+    IECC, and IMC, plus listed ASHRAE/CSA/ASTM standards.
+  confidence: 0.85
+  source_ids:
+  - src:usa-me:fmo-building-codes
+  - src:usa-me:energy-building-codes
+  - src:usa-me:mubec-standards-amendments
+- topic: MUBEC effective/enforcement date
+  finding: Maine agency sources identify the current amended MUBEC adoption as in
+    effect/enforceable beginning 2025-04-07.
+  confidence: 0.82
+  source_ids:
+  - src:usa-me:fmo-building-codes
+  - src:usa-me:energy-building-codes
+  - src:usa-me:mubec-standards-amendments
+- topic: Local MUBEC enforcement threshold
+  finding: Municipalities over 4,000 must enforce MUBEC; municipalities of 4,000 or
+    fewer are not required to enforce it but are constrained if they choose to adopt
+    or enforce a building code.
+  confidence: 0.85
+  source_ids:
+  - src:usa-me:statute-10-9724
+  - src:usa-me:statute-25-2373
+  - src:usa-me:fmo-building-codes
+- topic: Local amendment / preemption posture
+  finding: Inconsistent local ordinances are void except preserved local enforcement
+    ordinances and specific statutory exceptions; amendments flow through the statewide
+    Board process.
+  confidence: 0.75
+  source_ids:
+  - src:usa-me:statute-10-9722
+  - src:usa-me:statute-10-9724
+- topic: Electrical installation code
+  finding: The Electricians' Examining Board adopted the 2023 NEC with amendments/exclusions;
+    installations commencing on or after 2024-07-01 must comply.
+  confidence: 0.9
+  source_ids:
+  - src:usa-me:eeb-home
+  - src:usa-me:eeb-ch120
+- topic: Fire/life-safety authority
+  finding: The Department of Public Safety / State Fire Marshal has statewide fire/life-safety
+    authority; published agency lists include NFPA 1-2018 and NFPA 101-2018.
+  confidence: 0.75
+  source_ids:
+  - src:usa-me:statute-25-2396
+  - src:usa-me:statute-25-2452
+  - src:usa-me:fmo-rules
+  - src:usa-me:fmo-nfpa-standards
+- topic: Accessibility / barrier-free construction
+  finding: Maine statutory construction standards reference the 2010 ADA Standards;
+    the State Fire Marshal has plan-review and permit roles for covered public-building
+    work.
+  confidence: 0.78
+  source_ids:
+  - src:usa-me:statute-5-4594-g
+  - src:usa-me:fmo-barrier-free
+  - src:usa-me:fmo-plans-review

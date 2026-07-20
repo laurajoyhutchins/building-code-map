@@ -1,0 +1,27 @@
+---
+authority_structure:
+- field: Authority ID
+  value: '`ahj:usa-vt:dps-commissioner-fire-safety`'
+- field: Authority name
+  value: Commissioner of Public Safety / Department of Public Safety, Division of
+    Fire Safety
+- field: Authority type
+  value: state executive agency / commissioner
+- field: Legal basis
+  value: "20 V.S.A. \xA7 2731 authorizes rules governing construction, maintenance,\
+    \ operation, fire prevention, and fire-hazard removal for public-safety protection."
+- field: Role
+  value: Adopts and administers public-building fire and building safety rules; conducts
+    or oversees inspections; maintains statewide construction-category/code applicability
+    chart.
+- field: Enforcement model
+  value: "State-administered inspection and enforcement, with municipal enforcement\
+    \ assignment possible under 20 V.S.A. \xA7 2736."
+- field: Source IDs
+  value:
+  - src:usa-vt:stat-20-2731
+  - src:usa-vt:stat-20-2730
+  - src:usa-vt:stat-20-2736
+  - src:usa-vt:sos-rule-25p022-fire-building
+- field: Verification status
+  value: partially_verified

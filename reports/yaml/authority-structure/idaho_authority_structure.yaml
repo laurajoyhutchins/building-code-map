@@ -1,0 +1,21 @@
+---
+authority_structure:
+- field: Authority ID
+  value: ahj:usa-id:idaho-building-code-board
+- field: Authority name
+  value: Idaho Building Code Board
+- field: Authority type
+  value: state_board
+- field: Legal basis
+  value: Idaho Code Title 39, Chapter 41; Idaho Code 39-4107; 39-4109; 39-4112; 39-4113;
+    39-9701
+- field: Role
+  value: Adopts the building code bundle and oversees plan review, permits, and inspections
+    through DOPL
+- field: Enforcement model
+  value: state_administered
+- field: Source IDs
+  value: src:usa-id:bld-home; src:usa-id:bld-statutes-rules; src:usa-id:bld-rules-2024;
+    src:usa-id:plan-review
+- field: Verification status
+  value: verified

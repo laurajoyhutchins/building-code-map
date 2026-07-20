@@ -1,0 +1,247 @@
+---
+official_sources:
+- source_id: src:usa-wa:agency:sbcc-current-codes
+  title: State Codes, Regulations & Guidelines
+  source_type: agency_page
+  publisher: Washington State Building Code Council
+  url: https://sbcc.wa.gov/state-codes-regulations-guidelines
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:agency:sbcc-home-2024-cycle
+  title: Washington State Building Code Council homepage / 2024 Codes Delay notice
+  source_type: agency_page
+  publisher: Washington State Building Code Council
+  url: https://sbcc.wa.gov/
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:agency:sbcc-building-amendments
+  title: Building Code Amendments
+  source_type: agency_page
+  publisher: Washington State Building Code Council
+  url: https://sbcc.wa.gov/state-codes-regulations-guidelines/state-building-code/building-code-amendments
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:agency:sbcc-residential-amendments
+  title: Residential Code Amendments
+  source_type: agency_page
+  publisher: Washington State Building Code Council
+  url: https://sbcc.wa.gov/state-codes-regulations-guidelines/state-building-code/residential-code-amendments
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:agency:sbcc-mechanical-amendments
+  title: Mechanical Code Amendments
+  source_type: agency_page
+  publisher: Washington State Building Code Council
+  url: https://sbcc.wa.gov/state-codes-regulations-guidelines/state-building-code/mechanical-code-amendments
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:agency:sbcc-fire-amendments
+  title: Fire Code Amendments
+  source_type: agency_page
+  publisher: Washington State Building Code Council
+  url: https://sbcc.wa.gov/state-codes-regulations-guidelines/state-building-code/fire-code-amendments
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:agency:sbcc-energy-code
+  title: Energy Code
+  source_type: agency_page
+  publisher: Washington State Building Code Council
+  url: https://sbcc.wa.gov/state-codes-regulations-guidelines/state-building-code/energy-code
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:agency:lni-electrical-laws
+  title: Electrical Laws & Rules
+  source_type: agency_page
+  publisher: Washington State Department of Labor & Industries
+  url: https://www.lni.wa.gov/licensing-permits/electrical/laws-rules-policies
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:agency:lni-elevator-laws
+  title: Elevator Laws, Rules & Policies
+  source_type: agency_page
+  publisher: Washington State Department of Labor & Industries
+  url: https://lni.wa.gov/licensing-permits/elevators/laws-rules-policies
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:statute:rcw-19-27
+  title: 'Chapter 19.27 RCW: State Building Code'
+  source_type: statute
+  publisher: Washington State Legislature
+  url: https://app.leg.wa.gov/RCW/default.aspx?cite=19.27
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:statute:rcw-19-27-050
+  title: 'RCW 19.27.050: Enforcement'
+  source_type: statute
+  publisher: Washington State Legislature
+  url: https://app.leg.wa.gov/RCW/default.aspx?cite=19.27.050
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:statute:rcw-19-27-060
+  title: 'RCW 19.27.060: Local amendments and permit exemptions'
+  source_type: statute
+  publisher: Washington State Legislature
+  url: https://app.leg.wa.gov/RCW/default.aspx?cite=19.27.060
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:statute:rcw-19-28
+  title: 'Chapter 19.28 RCW: Electricians and Electrical Installations'
+  source_type: statute
+  publisher: Washington State Legislature
+  url: https://app.leg.wa.gov/RCW/default.aspx?cite=19.28
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:statute:rcw-19-28-031
+  title: 'RCW 19.28.031: Rules, Regulations, and Standards'
+  source_type: statute
+  publisher: Washington State Legislature
+  url: https://app.leg.wa.gov/RCW/default.aspx?cite=19.28.031
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:regulation:wac-title-51
+  title: 'Title 51 WAC: Enterprise Services, Department of (Building Code Council)'
+  source_type: regulation
+  publisher: Washington State Legislature
+  url: https://app.leg.wa.gov/WAC/default.aspx?cite=51
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:regulation:wac-51-04
+  title: 'Chapter 51-04 WAC: Policies and Procedures for Consideration of Statewide
+    and Local Amendments to the State Building Code'
+  source_type: regulation
+  publisher: Washington State Legislature
+  url: https://app.leg.wa.gov/WAC/default.aspx?cite=51-04
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official_not_parsed
+- source_id: src:usa-wa:regulation:wac-51-50
+  title: 'Chapter 51-50 WAC: 2021 International Building Code adoption and amendment'
+  source_type: regulation
+  publisher: Washington State Legislature
+  url: https://app.leg.wa.gov/WAC/default.aspx?cite=51-50
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:regulation:wac-51-51
+  title: 'Chapter 51-51 WAC: 2021 International Residential Code adoption and amendment'
+  source_type: regulation
+  publisher: Washington State Legislature
+  url: https://app.leg.wa.gov/WAC/default.aspx?cite=51-51
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:regulation:wac-51-52
+  title: 'Chapter 51-52 WAC: 2021 International Mechanical Code adoption and amendment'
+  source_type: regulation
+  publisher: Washington State Legislature
+  url: https://app.leg.wa.gov/WAC/default.aspx?cite=51-52
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:regulation:wac-51-54a
+  title: 'Chapter 51-54A WAC: 2021 International Fire Code adoption and amendment'
+  source_type: regulation
+  publisher: Washington State Legislature
+  url: https://app.leg.wa.gov/WAC/default.aspx?cite=51-54A
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:regulation:wac-51-56
+  title: 'Chapter 51-56 WAC: 2021 Uniform Plumbing Code adoption and amendment'
+  source_type: regulation
+  publisher: Washington State Legislature
+  url: https://app.leg.wa.gov/WAC/default.aspx?cite=51-56
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:regulation:wac-51-11c
+  title: 'Chapter 51-11C WAC: 2021 International Energy Conservation Code, Commercial'
+  source_type: regulation
+  publisher: Washington State Legislature
+  url: https://app.leg.wa.gov/WAC/default.aspx?cite=51-11C
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:regulation:wac-51-11r
+  title: 'Chapter 51-11R WAC: 2021 International Energy Conservation Code, Residential'
+  source_type: regulation
+  publisher: Washington State Legislature
+  url: https://app.leg.wa.gov/WAC/default.aspx?cite=51-11R
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:regulation:wac-296-46b
+  title: 'Chapter 296-46B WAC: Electrical Safety Standards, Administration, and Installation'
+  source_type: regulation
+  publisher: Washington State Legislature
+  url: https://app.leg.wa.gov/WAC/default.aspx?cite=296-46B
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:regulation:wac-296-46b-010
+  title: 'WAC 296-46B-010: General / Adopted Standards'
+  source_type: regulation
+  publisher: Washington State Legislature
+  url: https://app.leg.wa.gov/WAC/default.aspx?cite=296-46B-010
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:regulation:wac-296-96
+  title: 'Chapter 296-96 WAC: Safety Regulations and Fees for All Elevators, Dumbwaiters,
+    Escalators and Other Conveyances'
+  source_type: regulation
+  publisher: Washington State Legislature
+  url: https://app.leg.wa.gov/WAC/default.aspx?cite=296-96
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official
+- source_id: src:usa-wa:regulation:wac-296-96-00650
+  title: 'WAC 296-96-00650: Adopted Standards'
+  source_type: regulation
+  publisher: Washington State Legislature
+  url: https://app.leg.wa.gov/WAC/default.aspx?cite=296-96-00650
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: official

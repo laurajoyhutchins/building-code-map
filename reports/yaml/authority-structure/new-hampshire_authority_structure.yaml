@@ -1,0 +1,21 @@
+---
+authority_structure:
+- field: Authority ID
+  value: ahj:usa-nh:bcrb
+- field: Authority name
+  value: New Hampshire State Building Code Review Board
+- field: Authority type
+  value: state board
+- field: Legal basis
+  value: RSA 155-A:10; RSA 155-A:1, IV
+- field: Role
+  value: Reviews and recommends building-code amendments; state building-code amendments
+    are ratified by the legislature. Municipal amendments submitted under RSA 155-A
+    are reviewed/confirmed by the board.
+- field: Enforcement model
+  value: statewide minimum code with local enforcement and limited State Fire Marshal
+    backstop
+- field: Source IDs
+  value: src:usa-nh:rsa-155-a-1; src:usa-nh:rsa-155-a-10; src:usa-nh:bcrb-page
+- field: Verification status
+  value: partially_verified

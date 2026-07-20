@@ -1,0 +1,67 @@
+---
+key_findings:
+- topic: State building-code authority, limited scope
+  finding: DCM is the verified state-level authority for the Alabama State Building
+    Code within defined public/special-use project scope.
+  confidence: 0.9
+  source_ids:
+  - src:usa-al:dcm:state-building-code
+  - src:usa-al:admin-code:355-12-1
+- topic: General private statewide building code
+  finding: No universal statewide building-code enforcement model for all ordinary
+    private commercial/residential projects was verified.
+  confidence: 0.78
+  source_ids:
+  - src:usa-al:dcm:state-building-code
+  - src:usa-al:hblb:law-2026
+- topic: Primary DCM building code edition
+  finding: 2021 IBC, amended with specified 2024 provisions, applies in DCM scope.
+  confidence: 0.9
+  source_ids:
+  - src:usa-al:dcm:state-building-code
+  - src:usa-al:admin-code:355-12-1
+- topic: DCM companion codes
+  finding: DCM scope includes 2021 IEBC, IPC, IFGC, IMC, IFC; 2020 NEC; ASHRAE 90.1-2013;
+    2010 ADA Standards; 2020 ICC/NSSA-500; 2019 NFPA 72.
+  confidence: 0.88
+  source_ids:
+  - src:usa-al:dcm:state-building-code
+  - src:usa-al:admin-code:355-12-1
+- topic: State Fire Marshal authority
+  finding: Alabama State Fire Marshal has state-level fire/life-safety authority and
+    has adopted the 2021 IFC with exceptions.
+  confidence: 0.86
+  source_ids:
+  - src:usa-al:sfmo:about
+  - src:usa-al:sfmo:482-2-101
+- topic: Residential code authority
+  finding: Alabama Home Builders Licensure Board has sole authority to adopt the Alabama
+    Residential Building Code and Residential Energy Code.
+  confidence: 0.86
+  source_ids:
+  - src:usa-al:hblb:law-2026
+- topic: Residential enforcement
+  finding: Residential code enforcement is local where local permitting/inspection
+    programs exist; in jurisdictions without a local code, the board-adopted residential
+    code applies.
+  confidence: 0.82
+  source_ids:
+  - src:usa-al:hblb:law-2026
+- topic: Commercial energy authority
+  finding: Commercial energy authority transferred to the Alabama Licensing Board
+    for General Contractors, but final adopted current code edition was not verified
+    in this pass.
+  confidence: 0.58
+  source_ids:
+  - src:usa-al:dcm:state-building-code
+- topic: Local amendments / local codes
+  finding: Local residential codes are allowed subject to state minimums; local residential
+    energy provisions are constrained by state energy-code limits.
+  confidence: 0.78
+  source_ids:
+  - src:usa-al:hblb:law-2026
+- topic: Elevator / conveyance code
+  finding: Not verified in this pass.
+  confidence: 0.1
+  source_ids:
+  - unresolved

@@ -1,0 +1,62 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: The SFMO is the primary statewide code authority for minimum building construction
+    safety standards.
+  confidence: 0.85
+  source_ids:
+  - src:usa-tn:tdci-codes-enforcement
+  - src:usa-tn:lexis-tca-68-120-101
+  - src:usa-tn:justia-tca-68-120-101
+- topic: Primary commercial building code edition
+  finding: 2021 International Building Code, with Tennessee amendments.
+  confidence: 0.9
+  source_ids:
+  - src:usa-tn:tdci-currently-adopted-codes
+  - src:usa-tn:rule-0780-02-02
+- topic: Residential code edition
+  finding: 2018 IRC and 2018 IECC for one- and two-family dwellings/townhomes, with
+    Tennessee amendments.
+  confidence: 0.85
+  source_ids:
+  - src:usa-tn:tdci-currently-adopted-codes
+  - src:usa-tn:tdci-residential-permits
+  - src:usa-tn:rule-0780-02-23
+- topic: Electrical code edition
+  finding: 2017 NEC, with SFMO-listed exceptions; rule effective/operative dates require
+    careful treatment.
+  confidence: 0.75
+  source_ids:
+  - src:usa-tn:tdci-currently-adopted-codes
+  - src:usa-tn:rule-0780-02-01
+  - src:usa-tn:cornell-0780-02-01-02
+- topic: Fire code authority and edition
+  finding: 2021 IFC is listed as currently adopted; NFPA 101 is limited to specified
+    new small residential board-and-care facilities in the current SFMO list.
+  confidence: 0.8
+  source_ids:
+  - src:usa-tn:tdci-currently-adopted-codes
+  - src:usa-tn:rule-0780-02-02
+- topic: Local enforcement
+  finding: Local jurisdictions may adopt/enforce qualifying codes; otherwise SFMO
+    enforces statewide codes for uncovered buildings. SFMO audits local enforcement
+    at least every three years.
+  confidence: 0.75
+  source_ids:
+  - src:usa-tn:justia-tca-68-120-101
+  - src:usa-tn:cornell-0780-02-02-05
+- topic: Local amendments
+  finding: Local ordinances must not be less stringent unless approved; ordinances
+    must be forwarded within 60 days; less-stringent reductions require Division review/approval.
+  confidence: 0.78
+  source_ids:
+  - src:usa-tn:rule-0780-02-02
+  - src:usa-tn:cornell-0780-02-02-05
+- topic: Transition rule
+  finding: 2025 update effective 2025-04-17; prior codes allowed for SFMO plan submissions
+    through 2025-08-15.
+  confidence: 0.9
+  source_ids:
+  - src:usa-tn:tdci-codes-enforcement
+  - src:usa-tn:rule-filing-2025-01-17
+  - src:usa-tn:rule-0780-02-03

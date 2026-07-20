@@ -1,0 +1,111 @@
+---
+official_sources:
+- source_id: src:usa-ct:portal:ctgov-home
+  title: CT.GOV - Connecticut's Official State Website
+  source_type: agency_page
+  publisher: State of Connecticut
+  url: https://portal.ct.gov/
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:2026-06-25:ctgov-home
+  checksum: null
+  status: active
+- source_id: src:usa-ct:statute:chap-541
+  title: Connecticut General Statutes, Chapter 541
+  source_type: statute
+  publisher: Connecticut General Assembly
+  url: https://www.cga.ct.gov/current/pub/chap_541.htm
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:2026-06-25:chap-541
+  checksum: null
+  status: active_with_caveat
+- source_id: src:usa-ct:agency:building-code-page
+  title: Connecticut State Building Code - Regulations
+  source_type: agency_page
+  publisher: Department of Administrative Services
+  url: https://portal.ct.gov/das/home/office-of-state-building-inspector/connecticut-state-building-code/regulations?language=en_US
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:2026-06-25:das-building-code-regulations
+  checksum: null
+  status: active
+- source_id: src:usa-ct:code:2022-csbc-pdf
+  title: '2022 Connecticut State Building Code with Errata #1'
+  source_type: code_pdf
+  publisher: Department of Administrative Services / Office of State Building Inspector
+  url: https://portal.ct.gov/das/-/media/das/office-of-state-building-inspector/2022-state-codes/2022-csbc-final.pdf
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:2026-06-25:2022-csbc-final
+  checksum: null
+  status: active
+- source_id: src:usa-ct:agency:fire-codes-overview
+  title: CT Fire Safety and Prevention Codes
+  source_type: agency_page
+  publisher: Department of Administrative Services / Office of State Fire Marshal
+  url: https://portal.ct.gov/en/das/office-of-state-fire-marshal/ct-fire-safety-and-prevention-codes?language=en_US
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:2026-06-25:das-fire-codes-overview
+  checksum: null
+  status: active
+- source_id: src:usa-ct:agency:fire-codes-docs
+  title: CT Fire Safety and Prevention Codes - Documents/Forms
+  source_type: agency_page
+  publisher: Department of Administrative Services / Office of State Fire Marshal
+  url: https://portal.ct.gov/das/office-of-state-fire-marshal/ct-fire-safety-and-prevention-codes/documents
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:2026-06-25:das-fire-codes-docs
+  checksum: null
+  status: active
+- source_id: src:usa-ct:code:2022-csfsc-pdf
+  title: 2022 Connecticut State Fire Safety Code
+  source_type: code_pdf
+  publisher: Department of Administrative Services / Office of State Fire Marshal
+  url: https://portal.ct.gov/-/media/das/office-of-state-building-inspector/2022-state-codes/2022-csfsc-final.pdf
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:2026-06-25:2022-csfsc-final
+  checksum: null
+  status: active
+- source_id: src:usa-ct:code:2022-csfpc-pdf
+  title: 2022 Connecticut State Fire Prevention Code
+  source_type: code_pdf
+  publisher: Department of Administrative Services / Office of State Fire Marshal
+  url: https://portal.ct.gov/-/media/DAS/Office-of-State-Building-Inspector/2022-State-Codes/2022-CSFPC-Final.pdf
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:2026-06-25:2022-csfpc-final
+  checksum: null
+  status: active
+- source_id: src:usa-ct:agency:code-adoption-process
+  title: Building and Fire Code Adoption Process
+  source_type: agency_page
+  publisher: Department of Administrative Services / Office of State Building Inspector
+  url: https://portal.ct.gov/das/office-of-state-building-inspector/building-and-fire-code-adoption-process
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:2026-06-25:das-code-adoption-process
+  checksum: null
+  status: active
+- source_id: src:usa-ct:agency:modifications-waivers
+  title: Building and Fire Code Modifications, Exemptions and Waivers
+  source_type: agency_page
+  publisher: Department of Administrative Services / Office of State Building Inspector
+    and Office of State Fire Marshal
+  url: https://portal.ct.gov/das/office-of-state-building-inspector/building-and-fire-code-modifications-exemptions-and-waivers
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:2026-06-25:das-modifications-waivers
+  checksum: null
+  status: active
+- source_id: src:usa-ct:agency:elevator-code-page
+  title: Safety Code for Elevators and Escalators
+  source_type: agency_page
+  publisher: Department of Administrative Services / Office of State Building Inspector
+  url: https://portal.ct.gov/das/office-of-state-building-inspector/safety-code-for-elevators-and-escalators
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:2026-06-25:das-elevator-code
+  checksum: null
+  status: active
+- source_id: src:usa-ct:agency:boiler-elevator-inspections
+  title: Apply for boiler, elevator, and escalator inspections and certifications
+  source_type: agency_page
+  publisher: Department of Administrative Services / Office of State Building Inspector
+  url: https://portal.ct.gov/das/office-of-state-building-inspector/apply-for-boiler-elevator-and-escalator-inspections-and-certifications
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:2026-06-25:das-boiler-elevator-inspections
+  checksum: null
+  status: active

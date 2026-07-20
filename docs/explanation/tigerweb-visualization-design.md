@@ -2,20 +2,20 @@
 
 **Date:** 2026-06-22
 
-**Goal:** Let a user explore AHJ-relevant TIGERweb boundary data on an OpenStreetMap basemap, click a feature, and inspect the full TIGERweb attribute record.
+**Goal:** Let a user explore AHJ-relevant TIGERweb and NERIS boundary data on an OpenStreetMap basemap, click a feature, and inspect the full attribute record.
 
-**Scope:** Frontend in TypeScript with MapLibre GL JS. Boundary data mirrored into PostGIS, served as vector tiles by Martin, and accessed through a FastAPI backend for detail lookup and refresh orchestration.
+**Scope:** Frontend in TypeScript with MapLibre GL JS. Boundary data mirrored into PostGIS, served as vector tiles by Martin, and accessed through a Go backend for detail lookup and refresh orchestration.
 
 ---
 
 ## Product Summary
 
-This product is a map-first explorer for TIGERweb boundary data. The initial experience should be simple: show boundaries, let the user toggle layers, and let them click a feature to inspect the full record. The application is intended as a springboard for future GIS and AHJ workflow work, so the architecture should be easy to extend without being overbuilt now.
+This product is a map-first explorer for TIGERweb and NERIS boundary data. The initial experience should be simple: show boundaries, let the user toggle layers, and let them click a feature to inspect the full record. The application is intended as a springboard for future GIS and AHJ workflow work, so the architecture should be easy to extend without being overbuilt now.
 
 ## In Scope
 
 - OpenStreetMap basemap.
-- Vector-tile rendering of TIGERweb boundary layers.
+- Vector-tile rendering of TIGERweb boundary layers and real NERIS DepartmentJurisdiction polygons.
 - Boundary layers relevant to AHJs:
   - States
   - Counties
@@ -24,7 +24,7 @@ This product is a map-first explorer for TIGERweb boundary data. The initial exp
   - American Indian areas
 - Layer toggles for turning boundary families on and off.
 - Click-to-identify behavior for boundary features.
-- Attribute panel showing the full TIGERweb record for the clicked feature.
+- Attribute panel showing the full record for the clicked feature.
 - Scheduled refresh of mirrored TIGERweb data into PostGIS.
 - Basic loading, empty, and error states.
 
@@ -45,10 +45,12 @@ These items are explicitly out of scope for the MVP:
 1. The user opens the app and sees an OpenStreetMap basemap with TIGERweb boundary overlays.
 2. A layer control lets the user show or hide each boundary family.
 3. When the user clicks a boundary feature, the feature highlights.
-4. A side panel or drawer opens with the complete TIGERweb record for that feature.
+4. A side panel or drawer opens with the complete feature record for that feature.
 5. The user can click a different feature and the panel updates.
 
 The UI should be functional and readable, not fancy. The main design goal is clarity and a stable base for future work.
+
+NERIS geometries should be treated as first-class service-area polygons. Department identity and attributes come from the NERIS department record, while the jurisdiction polygon is the authoritative geometry. County polygons are a fallback only when no jurisdiction polygon is available, and they should be clearly marked as approximate coverage.
 
 ## Frontend
 
@@ -56,7 +58,7 @@ The UI should be functional and readable, not fancy. The main design goal is cla
 
 - Render the map with MapLibre GL JS.
 - Load the OSM basemap and Martin vector tile sources.
-- Present layer toggles for the supported TIGERweb boundary families.
+- Present layer toggles for the supported TIGERweb and NERIS boundary families.
 - Handle feature clicks, highlight state, and attribute display.
 - Request full feature details from the backend when a feature is selected.
 
@@ -186,4 +188,3 @@ Behavior expectations:
 - Refresh cadence is intentionally left configurable; the system only requires scheduled refresh, not a specific interval.
 - The exact shape of the PostGIS tables can be chosen during implementation as long as the full record and stable feature lookup are preserved.
 - The exact UI placement of the attribute panel can be chosen during implementation, provided it is easy to find and easy to dismiss.
-

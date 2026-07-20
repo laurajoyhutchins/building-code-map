@@ -1,0 +1,26 @@
+---
+authority_structure:
+- field: Authority ID
+  value: '`ahj:usa-pa:dli-bois-ucc`'
+- field: Authority name
+  value: Pennsylvania Department of Labor & Industry, Bureau of Occupational and Industrial
+    Safety, Uniform Construction Code program
+- field: Authority type
+  value: state executive agency
+- field: Legal basis
+  value: Pennsylvania Construction Code Act, Act 45 of 1999, as amended; 34 Pa. Code
+    Part XIV, Uniform Construction Code
+- field: Role
+  value: Statewide UCC administration; promulgation of UCC regulations; triennial-code
+    update implementation; oversight of certification and local/third-party enforcement
+    pathways; selected plan-review and inspection roles where DLI jurisdiction applies
+- field: Enforcement model
+  value: mixed state-local-third-party
+- field: Source IDs
+  value:
+  - src:usa-pa:pcca-act-45
+  - src:usa-pa:dli-ucc-home
+  - src:usa-pa:dli-ucc-regs-statutes
+  - src:usa-pa:pa-code-403-102
+- field: Verification status
+  value: partially_verified

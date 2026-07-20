@@ -1,0 +1,140 @@
+---
+official_sources:
+- source_id: src:usa-de:code:title16:home
+  title: Title 16 - Health and Safety
+  source_type: code_index
+  publisher: Delaware Code Online
+  url: https://delcode.delaware.gov/title16/
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:de-title16-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-de:code:title16:ch66-sc01
+  title: Chapter 66, Subchapter I - State Fire Prevention Commission
+  source_type: statute
+  publisher: Delaware Code Online
+  url: https://delcode.delaware.gov/title16/c066/sc01/index.html
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:de-ch66-sc01-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-de:code:title16:ch66-sc02
+  title: Chapter 66, Subchapter II - State Fire Marshal
+  source_type: statute
+  publisher: Delaware Code Online
+  url: https://delcode.delaware.gov/title16/c066/sc02/index.html
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:de-ch66-sc02-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-de:code:title16:ch76
+  title: Chapter 76 - County or Municipal Building, Plumbing, Electrical and Other
+    Codes
+  source_type: statute
+  publisher: Delaware Code Online
+  url: https://delcode.delaware.gov/title16/c076/index.html
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:de-ch76-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-de:code:title16:ch79
+  title: Chapter 79 - Plumbing Code
+  source_type: statute
+  publisher: Delaware Code Online
+  url: https://delcode.delaware.gov/title16/c079/index.html
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:de-ch79-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-de:code:title16:ch80
+  title: Chapter 80 - Electric Vehicle Charging Infrastructure for Residential Dwellings
+  source_type: statute
+  publisher: Delaware Code Online
+  url: https://delcode.delaware.gov/title16/c080/index.html
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:de-ch80-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-de:code:title16:ch87
+  title: Chapter 87 - Elevators
+  source_type: statute
+  publisher: Delaware Code Online
+  url: https://delcode.delaware.gov/title16/c087/index.html
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:de-ch87-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-de:dhss:plumbing-program
+  title: Plumbing Program
+  source_type: agency_page
+  publisher: Delaware Department of Health and Social Services, Division of Public
+    Health
+  url: https://dhss.delaware.gov/dph/homepage/about/sections/hsp/licenses-and-permits/plumbing/
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:de-dhss-plumbing-program-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-de:dnrec:building-energy-codes
+  title: Building Energy Codes
+  source_type: agency_page
+  publisher: DNREC Division of Climate, Coastal and Energy
+  url: https://dnrec.delaware.gov/climate-coastal-energy/efficiency/building-energy-codes/
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:de-dnrec-building-energy-codes-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-de:dnrec:energy-order-2026-cce-0002
+  title: Secretary's Order No. 2026-CCE-0002
+  source_type: secretary_order_pdf
+  publisher: DNREC
+  url: https://documents.dnrec.delaware.gov/Admin/Orders/Secretarys-Order-No-2026-CCE-0002.pdf
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:de-dnrec-order-2026-cce-0002
+  checksum: null
+  status: active
+- source_id: src:usa-de:dnrec:energy-hearing-2025-r-cce-0008
+  title: 'Public Hearing: Regulations for State Energy Conservation Code'
+  source_type: rulemaking_page
+  publisher: DNREC
+  url: https://dnrec.delaware.gov/events/public-hearing-regulations-for-state-energy-conservation-code-2/
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:de-dnrec-energy-hearing-2025-r-cce-0008
+  checksum: null
+  status: active
+- source_id: src:usa-de:regulations:title1:701-2025-final
+  title: 1 DE Admin. Code 701, Administration and Enforcement - Final Regulation,
+    29 DE Reg. 509
+  source_type: final_regulation
+  publisher: Delaware Register of Regulations
+  url: https://regulations.delaware.gov/register/december2025/final/29%20DE%20Reg%20509%2012-01-25.htm
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:de-reg-701-final-2025-12
+  checksum: null
+  status: active
+- source_id: src:usa-de:firemarshal:2026-dsfpr-update
+  title: 2026 Delaware State Fire Prevention Regulations update notice
+  source_type: agency_pdf
+  publisher: Delaware Office of the State Fire Marshal
+  url: https://statefiremarshal.delaware.gov/wp-content/uploads/sites/110/2025/12/2026-DSFPR-update.pdf
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:de-firemarshal-2026-dsfpr-update
+  checksum: null
+  status: active
+- source_id: src:usa-de:regulations:title24:1400
+  title: Board of Electrical Examiners, 24 DE Admin. Code 1400
+  source_type: regulation
+  publisher: Delaware Regulations
+  url: https://regulations.delaware.gov/AdminCode/title24/1400/
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:de-title24-1400-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-de:new-castle:county-laws-code
+  title: County Laws and Code
+  source_type: local_code_page
+  publisher: New Castle County
+  url: https://www.newcastlede.gov/229/County-Laws-Code
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:new-castle-code-page-2026-06-25
+  checksum: null
+  status: active

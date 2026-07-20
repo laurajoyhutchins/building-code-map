@@ -1,0 +1,72 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: CID adopts building codes and minimum standards recommended by trade bureaus
+    and approved by CIC under CILA; CIC reviews and approves/disapproves codes, standards,
+    and related rules.
+  confidence: 0.82
+  source_ids:
+  - src:usa-nm:cila-rld-2021
+  - src:usa-nm:supp-nmsa-60-13-44-justia
+- topic: Primary building code edition
+  finding: New Mexico adopted the 2021 IBC as the 2021 New Mexico Commercial Building
+    Code, effective 2023-07-14.
+  confidence: 0.88
+  source_ids:
+  - src:usa-nm:nm-register-2023-building
+  - src:usa-nm:nmac-14-7-2
+- topic: Residential code edition
+  finding: New Mexico adopted the 2021 IRC as the 2021 New Mexico Residential Building
+    Code, effective 2023-07-14 with mandatory use after 2023-12-14.
+  confidence: 0.86
+  source_ids:
+  - src:usa-nm:nm-register-2023-building
+  - src:usa-nm:nmac-14-7-3
+- topic: Electrical code authority and edition
+  finding: The 2020 NEC is adopted as the New Mexico Electrical Code, effective 2023-03-28
+    with mandatory use after 2023-09-28.
+  confidence: 0.88
+  source_ids:
+  - src:usa-nm:nm-register-2023-electrical
+  - src:usa-nm:nmac-14-10-4
+- topic: Fire code authority
+  finding: The State Fire Marshal rule adopts the IFC as revised in 10.25.5 NMAC;
+    fire protection systems remain under fire-marshal authority while other construction-code
+    work remains with the building AHJ.
+  confidence: 0.78
+  source_ids:
+  - src:usa-nm:nmac-10-25-5
+  - src:usa-nm:nm-register-2022-fire-amend
+  - src:usa-nm:supp-cornell-10-25-5-8
+- topic: Local enforcement
+  finding: Local AHJs enforce where they have permitting/enforcement authority, but
+    the state rule set remains statewide and CID jurisdiction applies where applicable.
+  confidence: 0.66
+  source_ids:
+  - src:usa-nm:nmac-14-5-1
+  - src:usa-nm:nmac-14-5-2
+  - src:usa-nm:nm-register-2022-fire-amend
+- topic: Local amendments
+  finding: Political-subdivision codes must meet state minimums; fire AHJs may impose
+    more stringent, non-conflicting fire-protection requirements. Approval/filing
+    mechanics remain unresolved.
+  confidence: 0.58
+  source_ids:
+  - src:usa-nm:supp-nmsa-60-13-44-justia
+  - src:usa-nm:nm-register-2022-fire-amend
+- topic: Effective / operative date rule
+  finding: NMAC code rules commonly use an effective date, permit-application cutoff,
+    and code-specific grace period or mandatory date.
+  confidence: 0.82
+  source_ids:
+  - src:usa-nm:nm-register-2023-building
+  - src:usa-nm:nm-register-2023-electrical
+  - src:usa-nm:nm-register-2024-energy
+- topic: Elevator / conveyance code
+  finding: CID now lists Elevator Safety Code parts 14.15.1 through 14.15.8, including
+    the 2019 New Mexico Safety Code for Elevators and Escalators; existing commercial
+    conveyances had a 2026-01-01 registration deadline.
+  confidence: 0.78
+  source_ids:
+  - src:usa-nm:rld-elevator-bureau
+  - src:usa-nm:nm-register-2025-elevator-rules

@@ -1,0 +1,6 @@
+backend/
+backend/.pytest_cache/
+dist/
+node_modules/
+pnpm-lock.yaml
+docs/superpowers/plans/

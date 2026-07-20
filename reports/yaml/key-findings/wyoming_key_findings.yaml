@@ -1,0 +1,59 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: The Council on Fire Prevention and Electrical Safety in Buildings adopts
+    minimum standards for fire/building-related codes; DFPES and the State Fire Marshal
+    administer/enforce.
+  confidence: 0.78
+  source_ids:
+  - src:usa-wy:statutes:title-35-ch9
+  - src:usa-wy:rules:council-ch1-2024
+  - src:usa-wy:dfpes:plan-review
+- topic: Primary building code edition
+  finding: 2024 IBC is the current verified statewide building-code base for DFPES-administered
+    plan review and minimum standards.
+  confidence: 0.82
+  source_ids:
+  - src:usa-wy:rules:council-ch1-2024
+  - src:usa-wy:dfpes:plan-review
+  - src:usa-wy:rules:council-ch1-lii
+- topic: Fire code authority
+  finding: 2024 IFC is adopted under the Council/DFPES framework and listed by the
+    State Fire Marshal as an adopted state code.
+  confidence: 0.82
+  source_ids:
+  - src:usa-wy:rules:council-ch1-2024
+  - src:usa-wy:dfpes:plan-review
+  - src:usa-wy:statutes:title-35-ch9
+- topic: Electrical code authority
+  finding: Electrical installations are subject to the NEC; the State Fire Marshal
+    page identifies the 2023 NEC as effective 2023-07-01, and the chief electrical
+    inspector enforces minimum electrical requirements unless local authority is delegated.
+  confidence: 0.76
+  source_ids:
+  - src:usa-wy:statutes:title-35-ch9
+  - src:usa-wy:rules:electrical-board-2023
+  - src:usa-wy:dfpes:plan-review
+- topic: Local enforcement
+  finding: 'Local enforcement is optional/delegated, not purely home-rule: municipalities
+    and counties must apply, adopt equivalent-or-stronger standards, maintain certified
+    inspectors, and receive transfer of authority.'
+  confidence: 0.8
+  source_ids:
+  - src:usa-wy:statutes:title-35-ch9
+- topic: Health care facilities
+  finding: The Department of Health has jurisdiction over construction/remodeling
+    of state-licensed health care facilities, except electrical installation; NFPA
+    101 or federal life-safety certification requirements can control.
+  confidence: 0.75
+  source_ids:
+  - src:usa-wy:statutes:title-35-ch9
+  - src:usa-wy:health:chapter-20-jurisdiction
+  - src:usa-wy:health:hls-construction
+- topic: Effective / operative date rule
+  finding: 2024 International Codes rule effective date is 2024-06-26; State Fire
+    Marshal page uses 2024-06-28 as the new-plan-review compliance trigger.
+  confidence: 0.72
+  source_ids:
+  - src:usa-wy:rules:council-ch1-2024
+  - src:usa-wy:dfpes:plan-review

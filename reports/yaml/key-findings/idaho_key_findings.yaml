@@ -1,0 +1,51 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: Idaho Building Code Board and DOPL administer the Idaho Building Code Act
+    and related rule chapters.
+  confidence: 0.98
+  source_ids:
+  - src:usa-id:bld-home
+  - src:usa-id:bld-statutes-rules
+  - src:usa-id:bld-rules-2024
+- topic: Primary building code edition
+  finding: Idaho Building Code - 2018 IBC, with Idaho amendments and accessibility
+    appendices.
+  confidence: 0.99
+  source_ids:
+  - src:usa-id:bld-rules-2024
+- topic: Electrical code authority
+  finding: Idaho Electrical Board adopts the 2023 NEC.
+  confidence: 0.99
+  source_ids:
+  - src:usa-id:ele-home
+  - src:usa-id:ele-rules-2025
+- topic: Fire code authority
+  finding: Not verified in this pass; no statewide Idaho fire-code source was confirmed.
+  confidence: 0.1
+  source_ids:
+  - none
+- topic: Local enforcement
+  finding: DOPL issues building permits, plan review, and inspections; the building
+    rules apply to construction in Idaho and to public entities and modular building
+    manufacturers.
+  confidence: 0.94
+  source_ids:
+  - src:usa-id:bld-rules-2024
+  - src:usa-id:plan-review
+- topic: Local amendments
+  finding: No local amendment pathway or registry was verified in the reviewed source
+    set.
+  confidence: 0.68
+  source_ids:
+  - src:usa-id:bld-statutes-rules
+  - src:usa-id:plan-review
+- topic: Effective / operative date rule
+  finding: Current rule chapters show effective dates of 2024-07-01 for building,
+    2023-03-28 for plumbing/HVAC, and 2025-04-04 for electrical.
+  confidence: 0.91
+  source_ids:
+  - src:usa-id:bld-rules-2024
+  - src:usa-id:plb-rules-2023
+  - src:usa-id:hvac-rules-2023
+  - src:usa-id:ele-rules-2025

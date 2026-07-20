@@ -1,0 +1,89 @@
+---
+official_sources:
+- source_id: src:usa-vt:stat-20-2731
+  title: "20 V.S.A. \xA7 2731, Rules; inspections; variances"
+  source_type: statute
+  publisher___maintainer: Vermont General Assembly / Vermont Laws Online
+  url: https://legislature.vermont.gov/statutes/section/20/173/02731
+  date___version: accessed 2026-06-26
+  used_for: Commissioner of Public Safety authority; inspections; building-code update
+    duties.
+- source_id: src:usa-vt:stat-20-2730
+  title: "20 V.S.A. \xA7 2730, Definitions"
+  source_type: statute
+  publisher___maintainer: Vermont General Assembly / Vermont Laws Online
+  url: https://legislature.vermont.gov/statutes/section/20/173/02730
+  date___version: accessed 2026-06-26
+  used_for: Public-building scope and exclusions.
+- source_id: src:usa-vt:stat-20-2736
+  title: "20 V.S.A. \xA7 2736, Enforcement; municipal enforcement assignment"
+  source_type: statute
+  publisher___maintainer: Vermont General Assembly / Vermont Laws Online
+  url: https://legislature.vermont.gov/statutes/section/20/173/02736
+  date___version: accessed 2026-06-26
+  used_for: Municipal enforcement assignment and retained Commissioner authority.
+- source_id: src:usa-vt:stat-24-3101
+  title: "24 V.S.A. \xA7 3101, Establishment of building codes and regulations"
+  source_type: statute
+  publisher___maintainer: Vermont General Assembly / Vermont Laws Online
+  url: https://legislature.vermont.gov/statutes/section/24/083/03101
+  date___version: accessed 2026-06-26
+  used_for: Municipal building-code authority, state-rule consistency, electrical
+    exclusion, local filing.
+- source_id: src:usa-vt:sos-rule-25p022-fire-building
+  title: Rule 25P022, 2025 Vermont Fire & Building Safety Code
+  source_type: rule record
+  publisher___maintainer: Vermont Secretary of State, Rules Service
+  url: https://secure.vermont.gov/SOS/rules/results.php?keyword=&status=ADOPTED&number=25P022&title=&order=&page=1
+  date___version: adopted status shown; accessed 2026-06-26
+  used_for: Adopted fire/building safety rule record, authority, purpose and summary.
+- source_id: src:usa-vt:sos-rule-25p023-electrical
+  title: Rule 25P023, The 2025 Vermont Electrical Safety Rules
+  source_type: rule record
+  publisher___maintainer: Vermont Secretary of State, Rules Service
+  url: https://secure.vermont.gov/SOS/rules/results.php?keyword=&status=ADOPTED&number=25P023&title=&order=&page=1
+  date___version: adopted status shown; accessed 2026-06-26
+  used_for: Adopted electrical rule and 2023 NEC adoption.
+- source_id: src:usa-vt:stat-26-891-electrical
+  title: "26 V.S.A. \xA7 891, Electricians' Licensing Board powers; rules"
+  source_type: statute
+  publisher___maintainer: Vermont General Assembly / Vermont Laws Online
+  url: https://legislature.vermont.gov/statutes/section/26/015/00891
+  date___version: accessed 2026-06-26
+  used_for: Electrical rulemaking authority and authority to adopt a nationally recognized
+    electrical code.
+- source_id: src:usa-vt:sos-rule-25p024-plumbing
+  title: Rule 25P024, The 2025 Vermont Plumbing Rules
+  source_type: rule record
+  publisher___maintainer: Vermont Secretary of State, Rules Service
+  url: https://secure.vermont.gov/SOS/rules/results.php?keyword=&status=ADOPTED&number=25P024&title=&order=&page=1
+  date___version: adopted status shown; accessed 2026-06-26
+  used_for: Adopted plumbing rule and 2024 IPC update.
+- source_id: src:usa-vt:stat-26-2173-plumbing
+  title: "26 V.S.A. \xA7 2173, Plumbing rules"
+  source_type: statute
+  publisher___maintainer: Vermont General Assembly / Vermont Laws Online
+  url: https://legislature.vermont.gov/statutes/section/26/039/02173
+  date___version: accessed 2026-06-26
+  used_for: Plumbing rulemaking authority, scope, enforcement, inspection authority.
+- source_id: src:usa-vt:stat-30-51-rbes
+  title: "30 V.S.A. \xA7 51, Residential Building Energy Standards"
+  source_type: statute
+  publisher___maintainer: Vermont General Assembly / Vermont Laws Online
+  url: https://legislature.vermont.gov/statutes/section/30/002/00051
+  date___version: accessed 2026-06-26
+  used_for: RBES authority, update requirements, transition rule, certification.
+- source_id: src:usa-vt:stat-30-53-cbes
+  title: "30 V.S.A. \xA7 53, Commercial Building Energy Standards"
+  source_type: statute
+  publisher___maintainer: Vermont General Assembly / Vermont Laws Online
+  url: https://legislature.vermont.gov/statutes/section/30/002/00053
+  date___version: accessed 2026-06-26
+  used_for: CBES authority, update requirements, transition rule, exemptions/variances.
+- source_id: src:usa-vt:stat-20-174-accessibility
+  title: 20 V.S.A. ch. 174, Access to Public Buildings
+  source_type: statute
+  publisher___maintainer: Vermont General Assembly / Vermont Laws Online
+  url: https://legislature.vermont.gov/statutes/fullchapter/20/174
+  date___version: accessed 2026-06-26
+  used_for: Vermont Access Board, access standard requirements, enforcement.

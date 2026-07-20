@@ -1,0 +1,213 @@
+---
+official_sources:
+- source_id: src:usa-md:labor-building-codes
+  title: Maryland Building Codes - Building Codes Administration
+  publisher___custodian: Maryland Department of Labor
+  source_type: agency page
+  url: https://labor.maryland.gov/labor/build/buildcodes.shtml
+  key_fields_supported: MBPS summary; local amendment limits summary; MPC scope; code
+    portal
+  access_date: '2026-06-25'
+  caveats:
+  - Agency summary page
+  - use COMAR / statutes for controlling text.
+- source_id: src:usa-md:labor-building-admin
+  title: Building Codes Administration
+  publisher___custodian: Maryland Department of Labor
+  source_type: agency page
+  url: https://www.labor.maryland.gov/labor/build/
+  key_fields_supported: Building Codes Administration mandates and list of state code
+    programs
+  access_date: '2026-06-25'
+  caveats:
+  - High-level agency description
+  - not a substitute for code text.
+- source_id: src:usa-md:labor-2021-cycle
+  title: Code Administration News / 2021 Code Cycle
+  publisher___custodian: Maryland Department of Labor
+  source_type: agency notice
+  url: https://labor.maryland.gov/labor/build/buildadmin.shtml
+  key_fields_supported: 2021 IBC / IRC / IECC / IgCC / IEBC adoption notice; 2023-05-29
+    effective date; 2024-05-29 local implementation date
+  access_date: '2026-06-25'
+  caveats:
+  - Page is a dated agency notice
+  - later IgCC amendment supersedes 2021 IgCC row.
+- source_id: src:usa-md:code-matrix-2026
+  title: Current Adopted Building-Related Codes in the State of Maryland
+  publisher___custodian: Maryland Department of Labor
+  source_type: agency PDF matrix
+  url: https://labor.maryland.gov/labor/build/buildcodematrix.pdf
+  key_fields_supported: Current matrix rows for IBC, IRC, IECC, IEBC, IPMC, MAC, IPC,
+    IMC, NEC, NFPA 1, NFPA 101, conveyance, fuel gas, LP gas
+  access_date: '2026-06-25'
+  caveats:
+  - PDF dated 2026-03-18
+  - IgCC row appears superseded by COMAR amendment effective 2026-05-25
+  - trade-code edition rows need reconciliation with current COMAR wording.
+- source_id: src:usa-md:ps-12-501
+  title: "Public Safety Article \xA712-501"
+  publisher___custodian: Maryland General Assembly
+  source_type: statute
+  url: https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gps&enactments=false&section=12-501
+  key_fields_supported: Definitions of Department, local jurisdiction, Standards,
+    IBC / IECC / IgCC
+  access_date: '2026-06-25'
+  caveats: Official HTML statute text.
+- source_id: src:usa-md:ps-12-503
+  title: "Public Safety Article \xA712-503"
+  publisher___custodian: Maryland General Assembly
+  source_type: statute
+  url: https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gps&enactments=false&section=12-503
+  key_fields_supported: Department adoption of MBPS; IBC / IECC adoption; subsequent
+    version cycle; IgCC adoption
+  access_date: '2026-06-25'
+  caveats: Official HTML statute text.
+- source_id: src:usa-md:ps-12-504
+  title: "Public Safety Article \xA712-504"
+  publisher___custodian: Maryland General Assembly
+  source_type: statute
+  url: https://mgaleg.maryland.gov/mgawebsite/laws/StatuteText?article=gps&section=12-504
+  key_fields_supported: Local amendment authority, amendment limits, local amendment
+    submission timing
+  access_date: '2026-06-25'
+  caveats: Official HTML statute text.
+- source_id: src:usa-md:ps-12-505
+  title: "Public Safety Article \xA712-505"
+  publisher___custodian: Maryland General Assembly
+  source_type: statute
+  url: https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?archived=False&article=gps&enactments=False&section=12-505
+  key_fields_supported: Local implementation and enforcement; 12-month local implementation;
+    county / municipal responsibility; minimum enforcement activities
+  access_date: '2026-06-25'
+  caveats: Official HTML statute text.
+- source_id: src:usa-md:comar-09-12-51
+  title: COMAR 09.12.51 Maryland Building Performance Standards
+  publisher___custodian: Library of Maryland Regulations
+  source_type: regulation chapter
+  url: https://regs.maryland.gov/us/md/exec/comar/09.12.51
+  key_fields_supported: MBPS chapter structure and authority
+  access_date: '2026-06-25'
+  caveats:
+  - Chapter page
+  - detailed requirements in child regulations.
+- source_id: src:usa-md:comar-09-12-51-04
+  title: COMAR 09.12.51.04 Incorporation by Reference
+  publisher___custodian: Library of Maryland Regulations
+  source_type: regulation
+  url: https://regs.maryland.gov/us/md/exec/comar/09.12.51.04
+  key_fields_supported: 2021 IBC / IRC / IECC incorporation; MBPS modifications; existing-building
+    routing; IRC appendices
+  access_date: '2026-06-25'
+  caveats:
+  - Long HTML regulation
+  - detailed amendment diff not fully parsed.
+- source_id: src:usa-md:comar-09-12-51-05
+  title: COMAR 09.12.51.05 Maryland Building Performance Standards
+  publisher___custodian: Library of Maryland Regulations
+  source_type: regulation
+  url: https://regs.maryland.gov/us/md/exec/comar/09.12.51.05
+  key_fields_supported: MBPS composition; local amendments; local amendment limits
+    and submission timing
+  access_date: '2026-06-25'
+  caveats: Official regulatory text.
+- source_id: src:usa-md:comar-09-12-51-06
+  title: COMAR 09.12.51.06 Application
+  publisher___custodian: Library of Maryland Regulations
+  source_type: regulation
+  url: https://regs.maryland.gov/us/md/exec/comar/09.12.51.06
+  key_fields_supported: MBPS applicability to permit applications; local implementation
+    within 12 months; agritourism exception
+  access_date: '2026-06-25'
+  caveats: Official regulatory text.
+- source_id: src:usa-md:comar-09-12-51-08
+  title: COMAR 09.12.51.08 Enforcement
+  publisher___custodian: Library of Maryland Regulations
+  source_type: regulation
+  url: https://regs.maryland.gov/us/md/exec/comar/09.12.51.08
+  key_fields_supported: Enforcement responsibility of local jurisdiction
+  access_date: '2026-06-25'
+  caveats: Official regulatory text.
+- source_id: src:usa-md:comar-09-12-51-09
+  title: COMAR 09.12.51.09 State Fire Code
+  publisher___custodian: Library of Maryland Regulations
+  source_type: regulation
+  url: https://regs.maryland.gov/us/md/exec/comar/09.12.51.09
+  key_fields_supported: Cross-reference to State Fire Code enforcement by State Fire
+    Marshal or authorized fire official
+  access_date: '2026-06-25'
+  caveats:
+  - Official regulatory cross-reference
+  - use COMAR 29.06.01 for fire code details.
+- source_id: src:usa-md:comar-09-12-50-02-1
+  title: COMAR 09.12.50.02-1 Incorporation by Reference
+  publisher___custodian: Library of Maryland Regulations
+  source_type: regulation
+  url: https://regs.maryland.gov/us/md/exec/comar/09.12.50.02-1
+  key_fields_supported: Model Performance Code incorporations including 2021 IBC,
+    2021 IPC, 2020 NEC, 2021 IRC, 2021 IMC, 2021 IECC
+  access_date: '2026-06-25'
+  caveats:
+  - Applies to MPC scope
+  - not ordinary local building-code scope unless adopted locally.
+- source_id: src:usa-md:comar-09-12-57
+  title: COMAR 09.12.57 International Green Construction Code
+  publisher___custodian: Library of Maryland Regulations
+  source_type: regulation chapter / regulation
+  url: https://regs.maryland.gov/us/md/exec/comar/09.12.57
+  key_fields_supported: IgCC chapter history; 2024 IgCC incorporation effective 2026-05-25
+  access_date: '2026-06-25'
+  caveats: Current regulation supersedes older matrix / agency notice for IgCC edition.
+- source_id: src:usa-md:comar-09-12-58
+  title: COMAR 09.12.58 Maryland Building Rehabilitation Code Regulations
+  publisher___custodian: Library of Maryland Regulations
+  source_type: regulation chapter / regulation
+  url: https://regs.maryland.gov/us/md/exec/comar/09.12.58
+  key_fields_supported: 2021 IEBC incorporation and MBRC enforcement
+  access_date: '2026-06-25'
+  caveats:
+  - Official regulatory text
+  - full MBRC amendment details not fully parsed.
+- source_id: src:usa-md:comar-09-12-53
+  title: COMAR 09.12.53 Maryland Accessibility Code
+  publisher___custodian: Library of Maryland Regulations
+  source_type: regulation chapter / regulation
+  url: https://regs.maryland.gov/us/md/exec/comar/09.12.53
+  key_fields_supported: MAC authority and applicable standards
+  access_date: '2026-06-25'
+  caveats:
+  - Current matrix lists 2019 MAC
+  - COMAR text identifies ADA / Maryland standards in detail.
+- source_id: src:usa-md:comar-29-06-01
+  title: COMAR 29.06.01 State Fire Prevention Code
+  publisher___custodian: Library of Maryland Regulations
+  source_type: regulation chapter
+  url: https://regs.maryland.gov/us/md/exec/comar/29.06/index.full.html
+  key_fields_supported: State Fire Prevention Code authority, 2024 NFPA 1 / NFPA 101
+    incorporation, enforcement, applicability, exclusions, new-building rule
+  access_date: '2026-06-25'
+  caveats:
+  - Long HTML full-chapter view
+  - detailed NFPA amendments not fully extracted.
+- source_id: src:usa-md:comar-09-20-01
+  title: COMAR 09.20.01 State Plumbing Code
+  publisher___custodian: Library of Maryland Regulations
+  source_type: regulation chapter / regulation
+  url: https://regs.maryland.gov/us/md/exec/comar/09.20.01
+  key_fields_supported: State Plumbing Code authority and incorporation framework
+    for IPC, IRC, IFGC, NFPA 54, NFPA 58
+  access_date: '2026-06-25'
+  caveats:
+  - Current COMAR uses "most recent version" wording
+  - reconcile with 2026 agency matrix before verified production use.
+- source_id: src:usa-md:comar-09-15-05
+  title: COMAR 09.15.05 Maryland Building Performance Standards for HVACR Services
+  publisher___custodian: Library of Maryland Regulations
+  source_type: regulation chapter / regulation
+  url: https://regs.maryland.gov/us/md/exec/comar/09.15.05
+  key_fields_supported: HVACR authority and incorporation framework for IMC / IRC
+    HVACR chapters
+  access_date: '2026-06-25'
+  caveats:
+  - Current COMAR uses "most recent version" wording
+  - reconcile with 2026 agency matrix before verified production use.

@@ -1,0 +1,62 @@
+---
+key_findings:
+- topic: Statewide building-code authority
+  finding: No single statewide IBC/IRC adopting authority was verified; county and
+    municipal governments have local code authority.
+  confidence: 0.94
+  source_ids:
+  - src:usa-de:code:title16:ch76
+- topic: Primary local building authority
+  finding: County Councils, Levy Court, and municipalities may adopt and enforce building,
+    plumbing, electrical, and similar codes.
+  confidence: 0.96
+  source_ids:
+  - src:usa-de:code:title16:ch76
+- topic: State energy code
+  finding: The Delaware Energy Office adopted a 2026 package based on the 2024 IECC
+    and ASHRAE 90.1-2022, effective 2026-04-11, with a 12-month local implementation
+    window.
+  confidence: 0.97
+  source_ids:
+  - src:usa-de:dnrec:building-energy-codes
+  - src:usa-de:dnrec:energy-order-2026-cce-0002
+- topic: State plumbing code
+  finding: Delaware's plumbing program uses the 2021 IPC as the Delaware Plumbing
+    Code with Delaware-specific amendments, and DPH has statutory authority to adopt
+    and enforce the IPC.
+  confidence: 0.94
+  source_ids:
+  - src:usa-de:code:title16:ch79
+  - src:usa-de:dhss:plumbing-program
+- topic: Fire prevention authority
+  finding: The State Fire Prevention Commission promulgates regulations with statewide
+    force, and the State Fire Marshal enforces fire laws, fire-prevention regulations,
+    plan review, and listed fire-safety systems.
+  confidence: 0.98
+  source_ids:
+  - src:usa-de:code:title16:ch66-sc01
+  - src:usa-de:code:title16:ch66-sc02
+- topic: Current fire regulation package
+  finding: The 2026 Delaware State Fire Prevention Regulations became effective 2026-01-01
+    and require projects submitted on or after 2025-12-31 to comply.
+  confidence: 0.93
+  source_ids:
+  - src:usa-de:firemarshal:2026-dsfpr-update
+  - src:usa-de:regulations:title1:701-2025-final
+- topic: Electrical code reference
+  finding: Electrical work is tied to the NEC as adopted through the State Fire Prevention
+    Commission; the 2026 fire-regulation update lists NFPA 70, National Electrical
+    Code, 2023 edition.
+  confidence: 0.86
+  source_ids:
+  - src:usa-de:firemarshal:2026-dsfpr-update
+  - src:usa-de:regulations:title24:1400
+- topic: Local amendments
+  finding: Local building adoption is broad; plumbing local modifications require
+    DPH approval; energy stretch codes are allowed with limits; more stringent local
+    fire regulations may apply if not inconsistent.
+  confidence: 0.9
+  source_ids:
+  - src:usa-de:code:title16:ch76
+  - src:usa-de:code:title16:ch79
+  - src:usa-de:code:title16:ch66-sc01

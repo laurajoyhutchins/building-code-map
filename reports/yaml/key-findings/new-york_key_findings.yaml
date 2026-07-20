@@ -1,0 +1,74 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: The State Fire Prevention and Building Code Council has statutory responsibility
+    for developing and maintaining the Uniform Code and Energy Code.
+  confidence: 0.95
+  source_ids:
+  - src:usa-ny:dos-code-development
+  - src:usa-ny:exec-law-374
+  - src:usa-ny:exec-law-375
+- topic: Primary building code edition
+  finding: The 2025 Building Code of New York State is incorporated as one of the
+    2025 NYS Uniform Code Books.
+  confidence: 0.9
+  source_ids:
+  - src:usa-ny:dos-2025-notice-adoption
+  - src:usa-ny:19nycrr-1219
+  - src:usa-ny:19nycrr-1221
+- topic: Residential code edition
+  finding: The 2025 Residential Code of New York State is incorporated in the Uniform
+    Code and applies to the residential buildings identified in 19 NYCRR Part 1220.
+  confidence: 0.9
+  source_ids:
+  - src:usa-ny:dos-2025-notice-adoption
+  - src:usa-ny:19nycrr-1219
+  - src:usa-ny:19nycrr-1220
+- topic: Energy code edition
+  finding: The Energy Code update incorporates the 2025 Energy Conservation Construction
+    Code of New York State and New York State ASHRAE 90.1-2025, effective 2025-12-31.
+  confidence: 0.9
+  source_ids:
+  - src:usa-ny:dos-2025-notice-adoption
+  - src:usa-ny:19nycrr-1240
+- topic: Fire code authority
+  finding: The operational/prevention fire code is within the statewide Uniform Code
+    structure; no distinct statewide fire-code adopting authority separate from the
+    Code Council was verified in this pass.
+  confidence: 0.78
+  source_ids:
+  - src:usa-ny:dos-uniform-code
+  - src:usa-ny:dos-2025-notice-adoption
+  - src:usa-ny:19nycrr-1219
+- topic: Local enforcement
+  finding: Local governments administer and enforce the Uniform Code and Energy Code,
+    with county and Secretary of State fallback mechanisms.
+  confidence: 0.9
+  source_ids:
+  - src:usa-ny:exec-law-381
+  - src:usa-ny:dos-enforcement-programs
+- topic: Local amendments
+  finding: "Uniform Code local standards must be higher or more restrictive and require\
+    \ Code Council approval; local energy codes must be more stringent and are subject\
+    \ to filing/review under Energy Law \xA711-109."
+  confidence: 0.86
+  source_ids:
+  - src:usa-ny:exec-law-379
+  - src:usa-ny:energy-law-11-109
+  - src:usa-ny:dos-code-development
+  - src:usa-ny:dos-lg07-local-authority
+- topic: NYC treatment
+  finding: The Uniform Code applies statewide except New York City; the Energy Code
+    applies statewide, including New York City.
+  confidence: 0.86
+  source_ids:
+  - src:usa-ny:dos-code-council-page
+  - src:usa-ny:dos-uniform-code
+  - src:usa-ny:dos-faq
+- topic: Suspended provisions
+  finding: "Fossil-fuel-equipment/building-system provisions in 19 NYCRR \xA71240.6\
+    \ and Subpart 1229-2 are suspended under a court stipulation and order."
+  confidence: 0.88
+  source_ids:
+  - src:usa-ny:dos-2025-notice-adoption
+  - src:usa-ny:mulhern-stipulation-order

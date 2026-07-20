@@ -1,0 +1,25 @@
+---
+authority_structure:
+- field: Authority ID
+  value: ahj:usa-sc:bcc
+- field: Authority name
+  value: South Carolina Building Codes Council
+- field: Authority type
+  value: State building-code council within the South Carolina Department of Labor,
+    Licensing and Regulation
+- field: Legal basis
+  value: "S.C. Code Ann. \xA7\xA76-9-40, 6-9-50, 6-9-55, 6-9-105; S.C. Code Regs.\
+    \ Chapter 8, including Regs. 8-236, 8-240, and 8-245"
+- field: Role
+  value: Reviews, adopts, modifies, and promulgates the mandatory statewide building-code
+    set; approves or denies statewide and local code modifications; sets implementation
+    dates; regulates building code officer registration, special inspectors, and the
+    modular building program
+- field: Enforcement model
+  value: State adoption and modification by Council; county and municipal local enforcement;
+    special state/fire/reserved jurisdiction for some project classes
+- field: Source IDs
+  value: src:usa-sc:code-title-6-ch9; src:usa-sc:regs-ch8-bcc; src:usa-sc:llr-bcc-home;
+    src:usa-sc:llr-building-code-adoption
+- field: Verification status
+  value: verified_for_core_fields

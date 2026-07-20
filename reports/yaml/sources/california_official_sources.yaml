@@ -1,0 +1,271 @@
+---
+official_sources:
+- source_id: src:usa-ca:hsc-18930
+  title: "Health and Safety Code \xA7 18930"
+  publisher___maintainer: California Legislative Information
+  type: statute
+  url: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=18930.
+  accessed: '2026-06-25'
+  key_fields_supported: CBSC approval/adoption before codification; State Fire Marshal
+    approval for fire/panic standards; residential standards moratorium exceptions
+- source_id: src:usa-ca:hsc-18938
+  title: "Health and Safety Code \xA7 18938"
+  publisher___maintainer: California Legislative Information
+  type: statute
+  url: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=18938.
+  accessed: '2026-06-25'
+  key_fields_supported: filing, codification, statewide applicability, 180-day default
+    effective date
+- source_id: src:usa-ca:hsc-18938-5
+  title: "Health and Safety Code \xA7 18938.5"
+  publisher___maintainer: California Legislative Information
+  type: statute
+  url: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=18938.5.
+  accessed: '2026-06-25'
+  key_fields_supported: permit-application-date rule; local residential ordinance
+    applicability; model-home design rule
+- source_id: src:usa-ca:hsc-18941-5
+  title: "Health and Safety Code \xA7 18941.5"
+  publisher___maintainer: California Legislative Information
+  type: statute
+  url: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=18941.5.
+  accessed: '2026-06-25'
+  key_fields_supported: local amendments, 180-day rule, more-restrictive local standards,
+    residential moratorium
+- source_id: src:usa-ca:hsc-18942
+  title: "Health and Safety Code \xA7 18942"
+  publisher___maintainer: California Legislative Information
+  type: statute
+  url: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=18942.
+  accessed: '2026-06-25'
+  key_fields_supported: CBSC triennial code publication; supplements; local code copies
+    maintained by building officials
+- source_id: src:usa-ca:hsc-17922
+  title: "Health and Safety Code \xA7 17922"
+  publisher___maintainer: California Legislative Information
+  type: statute
+  url: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=17922
+  accessed: '2026-06-25'
+  key_fields_supported: HCD residential/housing standards and model-code families
+    referenced for housing
+- source_id: src:usa-ca:hsc-17958
+  title: "Health and Safety Code \xA7 17958"
+  publisher___maintainer: California Legislative Information
+  type: statute
+  url: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=17958
+  accessed: '2026-06-25'
+  key_fields_supported: city/county changes to Title 24/HCD provisions; 2025-2031
+    residential constraints
+- source_id: src:usa-ca:hsc-17958-5
+  title: "Health and Safety Code \xA7 17958.5"
+  publisher___maintainer: California Legislative Information
+  type: statute
+  url: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=17958.5
+  accessed: '2026-06-25'
+  key_fields_supported: local climatic/geological/topographical findings basis; residential
+    restrictions
+- source_id: src:usa-ca:hsc-17958-7
+  title: "Health and Safety Code \xA7 17958.7"
+  publisher___maintainer: California Legislative Information
+  type: statute
+  url: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=17958.7
+  accessed: '2026-06-25'
+  key_fields_supported: local findings and filing requirement; CBSC rejection authority
+    for missing findings; residential restrictions
+- source_id: src:usa-ca:hsc-17960
+  title: "Health and Safety Code \xA7 17960"
+  publisher___maintainer: California Legislative Information
+  type: statute
+  url: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=17960.
+  accessed: '2026-06-25'
+  key_fields_supported: city/county building department enforcement for covered residential/housing
+    construction activities
+- source_id: src:usa-ca:hsc-17961
+  title: "Health and Safety Code \xA7 17961"
+  publisher___maintainer: California Legislative Information
+  type: statute
+  url: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=17961.
+  accessed: '2026-06-25'
+  key_fields_supported: local enforcement for maintenance, sanitation, ventilation,
+    use, or occupancy of covered housing occupancies
+- source_id: src:usa-ca:hsc-13143
+  title: "Health and Safety Code \xA7 13143"
+  publisher___maintainer: California Legislative Information
+  type: statute
+  url: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=13143.
+  accessed: '2026-06-25'
+  key_fields_supported: State Fire Marshal fire/panic-safety building standards and
+    regulations
+- source_id: src:usa-ca:hsc-13145
+  title: "Health and Safety Code \xA7 13145"
+  publisher___maintainer: California Legislative Information
+  type: statute
+  url: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=13145.
+  accessed: '2026-06-25'
+  key_fields_supported: State Fire Marshal and local fire chiefs/districts enforce
+    fire/panic-safety standards in respective areas
+- source_id: src:usa-ca:hsc-13869-7
+  title: "Health and Safety Code \xA7 13869.7"
+  publisher___maintainer: California Legislative Information
+  type: statute
+  url: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=13869.7.
+  accessed: '2026-06-25'
+  key_fields_supported: fire protection district more-stringent fire/panic-safety
+    building standards and ratification process
+- source_id: src:usa-ca:prc-25402-1
+  title: "Public Resources Code \xA7 25402.1"
+  publisher___maintainer: California Legislative Information
+  type: statute
+  url: https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=25402.1.
+  accessed: '2026-06-25'
+  key_fields_supported: CEC Energy Code implementation, manuals, local enforcement,
+    CEC fallback enforcement and disputes
+- source_id: src:usa-ca:cbsc-home
+  title: Building Standards Commission home page
+  publisher___maintainer: California Department of General Services / CBSC
+  type: agency page
+  url: https://www.dgs.ca.gov/bsc
+  accessed: '2026-06-25'
+  key_fields_supported: 2025 Title 24 current effective period, 2025 intervening-cycle
+    notice
+- source_id: src:usa-ca:cbsc-about
+  title: CBSC About
+  publisher___maintainer: California Department of General Services / CBSC
+  type: agency page
+  url: https://www.dgs.ca.gov/BSC/About
+  accessed: '2026-06-25'
+  key_fields_supported: CBSC charged by Building Standards Law to administer adoption,
+    approval, publication, and implementation processes; local ordinance filing role
+- source_id: src:usa-ca:cbsc-codes
+  title: Codes
+  publisher___maintainer: California Department of General Services / CBSC
+  type: agency page
+  url: https://www.dgs.ca.gov/bsc/codes
+  accessed: '2026-06-25'
+  key_fields_supported: 2025 Title 24 publication date and effective date; links to
+    code parts
+- source_id: src:usa-ca:cbsc-2025-code-changes
+  title: 2025 Title 24 California Code Changes
+  publisher___maintainer: California Department of General Services / CBSC
+  type: agency page
+  url: https://www.dgs.ca.gov/BSC/Resources/2025-Title-24-California-Code-Changes
+  accessed: '2026-06-25'
+  key_fields_supported: summary of substantive 2025 California changes; official rulemaking
+    context
+- source_id: src:usa-ca:cbsc-2025-intervening-cycle
+  title: 2025 Intervening Code Adoption Cycle
+  publisher___maintainer: California Department of General Services / CBSC
+  type: agency page
+  url: https://www.dgs.ca.gov/BSC/Rulemaking/2025-Intervening-Cycle
+  accessed: '2026-06-25'
+  key_fields_supported: pending supplement cycle and agency submission timing
+- source_id: src:usa-ca:cbsc-fall-2025
+  title: CALCode Quarterly Fall 2025
+  publisher___maintainer: California Department of General Services / CBSC
+  type: agency newsletter
+  url: https://www.dgs.ca.gov/BSC/News/Page-Content/CALCode-Quarterly-Newsletters-Archive/CALCode-Quarterly-Fall-2025
+  accessed: '2026-06-25'
+  key_fields_supported: local filing guidance and intervening-cycle context
+- source_id: src:usa-ca:cbsc-spring-2026
+  title: CALCode Quarterly Spring 2026
+  publisher___maintainer: California Department of General Services / CBSC
+  type: agency newsletter
+  url: https://www.dgs.ca.gov/BSC/News/Page-Content/CALCode-Quarterly-Newsletters-Archive/CALCode-Quarterly-Spring-2026
+  accessed: '2026-06-25'
+  key_fields_supported: supplements to 2025 edition watch target
+- source_id: src:usa-ca:cbsc-local-ordinances
+  title: Local Amendments to Building Standards - Ordinances
+  publisher___maintainer: California Department of General Services / CBSC
+  type: registry page
+  url: https://www.dgs.ca.gov/bsc/codes/local-amendments-to-building-standards---ordinances
+  accessed: '2026-06-25'
+  key_fields_supported: local ordinance filing registry existence
+- source_id: src:usa-ca:cbsc-2025-ordinances
+  title: 2025 Ordinances
+  publisher___maintainer: California Department of General Services / CBSC
+  type: registry page
+  url: https://www.dgs.ca.gov/BSC/Codes/2025-Ordinances
+  accessed: '2026-06-25'
+  key_fields_supported: 2025 local ordinance search by city/county
+- source_id: src:usa-ca:hcd-title24
+  title: Title 24 Rulemaking
+  publisher___maintainer: California Department of Housing and Community Development
+  type: agency page
+  url: https://www.hcd.ca.gov/building-standards/title-24-rulemaking
+  accessed: '2026-06-25'
+  key_fields_supported: HCD Title 24 building standards development and housing accessibility
+    scope
+- source_id: src:usa-ca:hcd-shl-laws
+  title: State Housing Law Program Laws & Regulations
+  publisher___maintainer: California Department of Housing and Community Development
+  type: agency page
+  url: https://www.hcd.ca.gov/building-standards/shl/laws-and-regulations
+  accessed: '2026-06-25'
+  key_fields_supported: statewide residential building standards in Title 24; CBSC
+    adoption/publication
+- source_id: src:usa-ca:cec-2025-energy
+  title: 2025 Building Energy Efficiency Standards
+  publisher___maintainer: California Energy Commission
+  type: agency page
+  url: https://www.energy.ca.gov/programs-and-topics/programs/building-energy-efficiency-standards/2025-building-energy-efficiency
+  accessed: '2026-06-25'
+  key_fields_supported: 2025 Energy Code scope, permit-application trigger, compliance
+    resources, local ordinances exceeding Energy Code
+- source_id: src:usa-ca:cec-energy-adoption-news
+  title: Energy Commission Adopts Updated Building Standards
+  publisher___maintainer: California Energy Commission
+  type: agency news release
+  url: https://www.energy.ca.gov/news/2024-09/energy-commission-adopts-updated-building-standards-expanding-requirements-heat
+  accessed: '2026-06-25'
+  key_fields_supported: CEC adoption date and CBSC approval path for 2025 Energy Code
+- source_id: src:usa-ca:osfm-title24
+  title: Title 24 Development
+  publisher___maintainer: Office of the State Fire Marshal
+  type: agency page
+  url: https://osfm.fire.ca.gov/what-we-do/code-development-and-analysis/title-24-development
+  accessed: '2026-06-25'
+  key_fields_supported: OSFM Title 24 fire/life-safety regulation role and affected
+    codes
+- source_id: src:usa-ca:osfm-title19
+  title: Title 19 Development
+  publisher___maintainer: Office of the State Fire Marshal
+  type: agency page
+  url: https://osfm.fire.ca.gov/what-we-do/code-development-and-analysis/title-19-development
+  accessed: '2026-06-25'
+  key_fields_supported: operational fire/prevention rulemaking watch target
+- source_id: src:usa-ca:osfm-fire-life-safety
+  title: Fire and Life Safety
+  publisher___maintainer: Office of the State Fire Marshal
+  type: agency page
+  url: https://osfm.fire.ca.gov/what-we-do/fire-and-life-safety
+  accessed: '2026-06-25'
+  key_fields_supported: OSFM enforcement jurisdiction for state-owned, specified state-occupied,
+    and state institutions; plan review/inspection
+- source_id: src:usa-ca:dsa-access-code-development
+  title: Access Compliance Code Development
+  publisher___maintainer: Division of the State Architect
+  type: agency page
+  url: https://www.dgs.ca.gov/DSA/Resources/Access-Compliance-Code-Development
+  accessed: '2026-06-25'
+  key_fields_supported: DSA accessibility code-change proposals submitted to CBSC
+- source_id: src:usa-ca:dir-elevator-safety-orders
+  title: Title 8 Elevator Safety Orders
+  publisher___maintainer: Department of Industrial Relations
+  type: regulation page
+  url: https://www.dir.ca.gov/title8/sub6.html
+  accessed: '2026-06-25'
+  key_fields_supported: Elevator Safety Orders scope and caveat
+- source_id: src:usa-ca:dir-elevator-permits
+  title: Elevator Permits
+  publisher___maintainer: Department of Industrial Relations / Cal/OSHA
+  type: agency page
+  url: https://www.dir.ca.gov/dosh/ElevatorPermits.html
+  accessed: '2026-06-25'
+  key_fields_supported: Cal/OSHA Elevator Unit operating permits
+- source_id: src:usa-ca:dir-elevator-group-v-rulemaking
+  title: Elevator Safety Orders - Group V
+  publisher___maintainer: Occupational Safety and Health Standards Board
+  type: rulemaking page
+  url: https://www.dir.ca.gov/OSHSB/ESO-Group-V.html
+  accessed: '2026-06-25'
+  key_fields_supported: active elevator rulemaking watch target

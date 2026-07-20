@@ -1,0 +1,24 @@
+---
+authority_structure:
+- field: Authority ID
+  value: ahj:usa-ar:state-fire-marshal-office
+- field: Authority name
+  value: Arkansas State Fire Marshal's Office, Arkansas Department of Public Safety
+    / Division of Emergency Management
+- field: Authority type
+  value: state_fire_marshal_and_building_safety_code_authority
+- field: Legal basis
+  value: "Arkansas Fire Prevention Code authority as described by the State Fire Marshal\
+    \ page and the State Fire Marshal duties statute excerpt; AFPC 2021 clean-copy\
+    \ rules cite Act 841 of 2023, A.C.A. \xA7 20-22-1010, and A.C.A. \xA7 12-13-105."
+- field: Role
+  value: Enforces, periodically revises, and updates the Arkansas Fire Prevention
+    Code; reviews state building project plans; conducts state-building inspections;
+    assists local jurisdictions with plan reviews and inspections when needed or requested.
+- field: Enforcement model
+  value: hybrid_state_fire_marshal_with_local_assistance_and_unresolved_local_AHJ_scope
+- field: Source IDs
+  value: src:usa-ar:dps-fire-marshal-page, src:usa-ar:fire-marshal-duties-statute-pdf,
+    src:usa-ar:afpc-2021-rules-clean-copy
+- field: Verification status
+  value: partially_verified

@@ -1,0 +1,69 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: Commissioner of Labor and Industry adopts, administers, and amends the
+    State Building Code under chapter 326B authority.
+  confidence: 0.88
+  source_ids:
+  - src:usa-mn:stat-326b-101
+  - src:usa-mn:stat-326b-106
+  - src:usa-mn:dli-ccld-overview
+- topic: Primary building code edition
+  finding: Minnesota Building Code incorporates the 2018 IBC into the Minnesota State
+    Building Code as amended in chapter 1305.
+  confidence: 0.86
+  source_ids:
+  - src:usa-mn:rule-1305
+  - src:usa-mn:dli-state-building-codes-2020
+- topic: Residential code edition
+  finding: Minnesota Residential Code incorporates the 2018 IRC, with listed mandatory
+    chapters and Minnesota amendments.
+  confidence: 0.84
+  source_ids:
+  - src:usa-mn:rule-1309
+  - src:usa-mn:dli-state-building-codes-2020
+- topic: Electrical code authority and edition
+  finding: Minnesota Electrical Code currently incorporates the 2023 NEC; DLI states
+    the Board of Electricity adopted the 2023 NEC effective 2023-07-01.
+  confidence: 0.88
+  source_ids:
+  - src:usa-mn:rule-1315
+  - src:usa-mn:dli-electrical-codes
+  - src:usa-mn:stat-326b-02
+- topic: Fire code authority
+  finding: State Fire Code is adopted by the Commissioner of Labor and Industry consistent
+    with State Fire Marshal recommendations and enforced through the Public Safety/State
+    Fire Marshal structure.
+  confidence: 0.78
+  source_ids:
+  - src:usa-mn:stat-326b-02
+  - src:usa-mn:stat-326b-106
+  - src:usa-mn:stat-299f-011
+  - src:usa-mn:stat-299f-01
+- topic: Fire code edition
+  finding: Minnesota Rules chapter 7511 incorporates the 2018 IFC into the Minnesota
+    State Fire Code as amended. The precise effective date was not independently resolved
+    from the rule text in this pass.
+  confidence: 0.72
+  source_ids:
+  - src:usa-mn:rule-7511
+- topic: Local enforcement
+  finding: The code is statewide, but municipal administration/enforcement is tied
+    to required continuation or ordinance adoption.
+  confidence: 0.86
+  source_ids:
+  - src:usa-mn:stat-326b-121
+  - src:usa-mn:dli-building-code-overview
+- topic: Local amendments
+  finding: Different municipal building-code provisions are generally barred; optional
+    provisions and approved geological-condition ordinances are limited exceptions.
+  confidence: 0.82
+  source_ids:
+  - src:usa-mn:stat-326b-121
+  - src:usa-mn:rule-1300
+- topic: Electrical transition rule
+  finding: Electrical permits filed before 2023-07-01 follow the 2020 NEC; permits
+    filed on or after 2023-07-01 follow the 2023 NEC.
+  confidence: 0.9
+  source_ids:
+  - src:usa-mn:dli-electrical-codes

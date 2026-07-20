@@ -1,0 +1,22 @@
+---
+authority_structure:
+- field: Authority ID
+  value: ahj:usa-ma:bbrs
+- field: Authority name
+  value: State Board of Building Regulations and Standards
+- field: Authority type
+  value: statewide_board
+- field: Legal basis
+  value: "M.G.L. c. 143, \xA7\xA7 93-94"
+- field: Role
+  value: Adopts, administers, revises, and amends the Massachusetts State Building
+    Code, including the non-specialized building-code provisions and energy provisions
+    integrated into the State Building Code.
+- field: Enforcement model
+  value: Local enforcement by city/town building commissioner or inspector of buildings,
+    with state inspector authority and supervisory review for specified state-owned
+    or state-supervised work.
+- field: Source IDs
+  value: src:usa-ma:mgl-c143-s93; src:usa-ma:mgl-c143-s94; src:usa-ma:mgl-c143-s3; src:usa-ma:mgl-c143-s3a
+- field: Verification status
+  value: verified_core

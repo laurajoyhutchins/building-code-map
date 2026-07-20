@@ -1,0 +1,66 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: The DIAL director serves as, or designates, the State Building Code Commissioner;
+    the commissioner adopts and amends the State Building Code with Building Code
+    Advisory Council approval.
+  confidence: 0.88
+  source_ids:
+  - src:usa-ia:code-103a
+  - src:usa-ia:iac-481-300
+- topic: State code applicability
+  finding: The State Building Code applies to specified state, local-adoption, state-funded,
+    city-size, factory-built, energy, and accessibility contexts rather than to all
+    private construction by default.
+  confidence: 0.82
+  source_ids:
+  - src:usa-ia:code-103a
+  - src:usa-ia:iac-481-301
+- topic: Primary building/residential/existing code editions
+  finding: Chapter 301 adopts the 2024 IBC, 2024 IRC, and 2024 IEBC with Iowa amendments.
+  confidence: 0.88
+  source_ids:
+  - src:usa-ia:iac-481-301
+- topic: Energy code edition
+  finding: Iowa's verified statewide energy rules in Chapter 301 adopt the 2012 IECC
+    Residential Provisions and 2012 IECC Commercial Provisions.
+  confidence: 0.86
+  source_ids:
+  - src:usa-ia:code-103a
+  - src:usa-ia:iac-481-301
+- topic: Electrical code authority and edition
+  finding: The state electrical inspection program is in DIAL; the 2023 NEC is adopted
+    for covered electrical installations.
+  confidence: 0.82
+  source_ids:
+  - src:usa-ia:iac-481-404
+- topic: Fire code authority and edition
+  finding: DIAL fire-control rules are adopted in consultation with the State Fire
+    Marshal; Chapter 280 adopts the 2024 IFC with amendments.
+  confidence: 0.82
+  source_ids:
+  - src:usa-ia:code-10a-511
+  - src:usa-ia:iac-481-280
+- topic: Plumbing/mechanical authority and editions
+  finding: The Plumbing and Mechanical Systems Board rules adopt the 2024 UPC and
+    2024 IMC; local jurisdictions administer permits and inspections unless another
+    law provides otherwise.
+  confidence: 0.84
+  source_ids:
+  - src:usa-ia:iac-481-425
+  - src:usa-ia:iac-481-426
+- topic: Transition rule
+  finding: Chapter 301 permits covered Part 1 and Part 3 projects commenced within
+    12 months after the revised standards' effective date to use either the revised
+    or prior standards.
+  confidence: 0.84
+  source_ids:
+  - src:usa-ia:iac-481-301
+- topic: Local amendments
+  finding: Plumbing/mechanical local amendments are partly resolved; general building
+    local-amendment scope and a public registry remain unresolved.
+  confidence: 0.5
+  source_ids:
+  - src:usa-ia:iac-481-425
+  - src:usa-ia:iac-481-426
+  - src:usa-ia:iac-481-280

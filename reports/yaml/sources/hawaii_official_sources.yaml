@@ -1,0 +1,101 @@
+---
+official_sources:
+- source_id: src:usa-hi:bcc-home
+  title: Building Code Council
+  source_type: agency_page
+  publisher: Department of Accounting and General Services
+  url: https://ags.hawaii.gov/bcc/
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:hi-bcc-home-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-hi:bcc-building-code-rules
+  title: Building Code Rules
+  source_type: agency_page
+  publisher: Department of Accounting and General Services
+  url: https://ags.hawaii.gov/bcc/building-code-rules/
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:hi-bcc-rules-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-hi:state-building-code-2018
+  title: State Building Code - 2018 IBC with Hawaii Amendments
+  source_type: code_pdf
+  publisher: State Building Code Council / Department of Accounting and General Services
+  url: https://ags.hawaii.gov/wp-content/uploads/2021/09/2018StateBuildingCode_20210817.pdf
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:hi-building-code-2018-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-hi:state-residential-code-2018
+  title: State Residential Code - 2018 IRC with Hawaii Amendments
+  source_type: code_pdf
+  publisher: State Building Code Council / Department of Accounting and General Services
+  url: https://ags.hawaii.gov/wp-content/uploads/2021/09/2018StateResidentialCode_20201117rev1.pdf
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:hi-residential-code-2018-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-hi:state-existing-building-code-2018
+  title: State Existing Building Code - 2018 IEBC with Hawaii Amendments
+  source_type: code_pdf
+  publisher: State Building Code Council / Department of Accounting and General Services
+  url: https://ags.hawaii.gov/wp-content/uploads/2021/09/2018StateExistingBuildingCode_20201117.pdf
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:hi-existing-building-code-2018-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-hi:state-energy-code-2018
+  title: State Energy Code - 2018 IECC with Hawaii Amendments
+  source_type: code_pdf
+  publisher: State Building Code Council / Department of Accounting and General Services
+  url: https://ags.hawaii.gov/wp-content/uploads/2021/01/soh_bcc_energycode_20201215.pdf
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:hi-energy-code-2018-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-hi:state-plumbing-code-2018
+  title: State Plumbing Code - 2018 UPC with Hawaii Amendments
+  source_type: code_pdf
+  publisher: State Building Code Council / Department of Accounting and General Services
+  url: https://ags.hawaii.gov/wp-content/uploads/2020/06/StatePlumbingCode_20200519.pdf
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:hi-plumbing-code-2018-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-hi:state-electrical-code-2020
+  title: State Electrical Code - 2020 NFPA 70 / NEC
+  source_type: code_pdf
+  publisher: State Building Code Council / Department of Accounting and General Services
+  url: https://ags.hawaii.gov/wp-content/uploads/2021/12/StateElectricalCode_03152022.pdf
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:hi-electrical-code-2020-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-hi:state-fire-code-2024
+  title: 2024 State Fire Code Amendments - Draft
+  source_type: regulation_pdf
+  publisher: State Fire Council / Department of Law Enforcement
+  url: https://law.hawaii.gov/wp-content/uploads/2025/09/NFPA1-2024-Hawaii-State-Fire-Code-amendments.pdf
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:hi-fire-code-2024-2026-06-25
+  checksum: null
+  status: active
+- source_id: src:usa-hi:governor-proclamation-2025-09-23
+  title: Fifteenth Proclamation Relating to Affordable Housing
+  source_type: proclamation_pdf
+  publisher: Office of the Governor, State of Hawaii
+  url: https://governor.hawaii.gov/wp-content/uploads/2025/09/2509073.pdf
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:hi-affordable-housing-proclamation-2025-09-23
+  checksum: null
+  status: active
+- source_id: src:usa-hi:hiosh-elevators
+  title: Standards (AdminRules) Part 11 - Elevators and Related Systems
+  source_type: agency_page
+  publisher: Hawaii Department of Labor and Industrial Relations
+  url: https://labor.hawaii.gov/hiosh/standards/standards-adminrules-part-11/
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot:hi-hiosh-part11-2026-06-25
+  checksum: null
+  status: active

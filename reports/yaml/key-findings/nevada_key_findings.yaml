@@ -1,0 +1,71 @@
+---
+key_findings:
+- topic: State building-code authority
+  finding: The State Public Works Division / Board administers code compliance for
+    state-owned land and adopts minimum code standards for state buildings; it is
+    not confirmed as a statewide private-building code authority.
+  confidence: 0.78
+  source_ids:
+  - src:usa-nv:spwd-permitting
+  - src:usa-nv:nrs-341-100
+  - src:usa-nv:nrs-341-105
+  - src:usa-nv:nac-341-045
+- topic: Local building-code authority
+  finding: Counties and cities have statutory authority to adopt building, electrical,
+    plumbing, safety, and related codes, subject to state limits.
+  confidence: 0.72
+  source_ids:
+  - src:usa-nv:nrs-244-3675
+  - src:usa-nv:nrs-268-413
+  - src:usa-nv:nrs-278-580
+- topic: Energy code
+  finding: The Governor's Office of Energy adopted the 2024 IECC effective 2024-08-18
+    as the statewide energy-conservation code minimum.
+  confidence: 0.82
+  source_ids:
+  - src:usa-nv:goe-state-adoption-status
+  - src:usa-nv:nrs-701-220
+  - src:usa-nv:nac-701-185
+- topic: Fire code authority
+  finding: The Nevada State Fire Marshal is the distinct fire/life-safety authority;
+    2024-code enforcement is announced effective 2026-01-01, with R205-24 updating
+    NAC 477 references.
+  confidence: 0.7
+  source_ids:
+  - src:usa-nv:nrs-477-030
+  - src:usa-nv:sfm-hot-topics
+  - src:usa-nv:reg-r205-24
+- topic: Electrical code authority
+  finding: 'Electrical-code rules are split: local governments administer local construction
+    codes; state buildings use the NEC code path under NAC 341.045; NRS 278.583 limits
+    local NEC modifications.'
+  confidence: 0.55
+  source_ids:
+  - src:usa-nv:nac-341-045
+  - src:usa-nv:nrs-278-583
+- topic: Local enforcement
+  finding: Enforcement is primarily local for non-state property, with separate state
+    enforcement on state-owned property and specialized state tracks for fire, energy,
+    and conveyances.
+  confidence: 0.62
+  source_ids:
+  - src:usa-nv:nrs-278-585
+  - src:usa-nv:spwd-permitting
+  - src:usa-nv:nrs-477-030
+  - src:usa-nv:nrs-455c
+- topic: Local amendments
+  finding: Local amendments are allowed within state-law limits, but no complete statewide
+    local-amendment filing or registry process was verified.
+  confidence: 0.45
+  source_ids:
+  - src:usa-nv:nrs-701-220
+  - src:usa-nv:nrs-278-583
+  - src:usa-nv:nrs-278-586
+- topic: Effective / operative date rule
+  finding: Confirmed statewide dates are limited to the 2024 IECC effective date and
+    the State Fire Marshal 2024-code enforcement date; local permit/application transition
+    dates remain jurisdiction-specific.
+  confidence: 0.5
+  source_ids:
+  - src:usa-nv:goe-state-adoption-status
+  - src:usa-nv:sfm-hot-topics

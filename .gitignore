@@ -1,0 +1,37 @@
+node_modules/
+dist/
+coverage/
+.env
+.env.local
+*.log
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+tools/.logs/
+tools/.state/
+backend/*.egg-info/
+*.tmp
+.tmp/
+.ruff_cache/
+cache/
+
+# Deciduous database and generated public exports
+.deciduous/
+docs/graph-data.json
+docs/git-history.json
+docs/decision-graph*.png
+docs/deciduous-graph*.png
+docs/decision-graph*.dot
+docs/deciduous-graph*.dot
+
+# Database binary files
+*.duckdb
+*.duckdb.wal
+*.duckdb.tmp
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm

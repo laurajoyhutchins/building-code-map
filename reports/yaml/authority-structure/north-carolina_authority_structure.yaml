@@ -1,0 +1,25 @@
+---
+authority_structure:
+- field: Authority ID
+  value: '`ahj:usa-nc:building-code-council`'
+- field: Authority name
+  value: North Carolina Building Code Council
+- field: Authority type
+  value: statewide code council
+- field: Legal basis
+  value: "N.C. Gen. Stat. \xA7 143-136; N.C. Gen. Stat. \xA7 143-138"
+- field: Role
+  value: Reviews, considers, and oversees revisions or amendments to State Building
+    Code volumes and other codes applicable to commercial or multi-family construction;
+    shares State Building Code preparation/adoption authority with the Residential
+    Code Council.
+- field: Enforcement model
+  value: statewide adoption with State Fire Marshal supervision/administration/enforcement
+    and local inspection departments for local administration.
+- field: Source IDs
+  value:
+  - src:usa-nc:gs-143-136-138
+  - src:usa-nc:gs-143-139
+  - src:usa-nc:osfm-codes
+- field: Verification status
+  value: verified_core

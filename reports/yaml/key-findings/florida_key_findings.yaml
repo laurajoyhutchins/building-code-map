@@ -1,0 +1,73 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: The Florida Building Commission adopts the Florida Building Code under
+    Fla. Stat. 553.73.
+  confidence: 0.99
+  source_ids:
+  - src:usa-fl:statute:553.73
+- topic: Primary building code edition
+  finding: Florida Building Code, 8th Edition (2023), is the current statewide building-code
+    cycle and is effective December 31, 2023.
+  confidence: 0.99
+  source_ids:
+  - src:usa-fl:agency:bcis-homepage
+  - src:usa-fl:agency:fbc-annual-report-2021
+- topic: Cycle-level model code basis
+  finding: The 8th Edition (2023) update process selected the 2021 I-Codes and 2020
+    NEC for review, not the 2023 I-Codes.
+  confidence: 0.96
+  source_ids:
+  - src:usa-fl:agency:fbc-annual-report-2021
+- topic: Electrical model reference
+  finding: The 8th Edition cycle-level electrical model reference is the 2020 NEC;
+    the Florida Building Commission uses NFPA 70 in code updates.
+  confidence: 0.95
+  source_ids:
+  - src:usa-fl:agency:fbc-annual-report-2021
+  - src:usa-fl:statute:553.73
+- topic: Fire code authority
+  finding: The Florida Fire Prevention Code and Life Safety Code are adopted, modified,
+    interpreted, and maintained by the Department of Financial Services / State Fire
+    Marshal, not the Florida Building Commission.
+  confidence: 0.99
+  source_ids:
+  - src:usa-fl:statute:553.73
+  - src:usa-fl:statute:633.208
+- topic: Fire code edition
+  finding: The current Florida Fire Prevention Code is the 8th Edition (2023), effective
+    December 31, 2023, incorporating NFPA 1 Florida 2021 Edition and NFPA 101 Florida
+    2021 Edition through Rule Chapter 69A-60.
+  confidence: 0.98
+  source_ids:
+  - src:usa-fl:agency:sfm-ffpc
+  - src:usa-fl:rule:69a-60
+  - src:usa-fl:rule:69a-60.003
+  - src:usa-fl:rule:69a-60.004
+- topic: Local enforcement
+  finding: Local governments and legally constituted enforcement districts generally
+    enforce the Florida Building Code, with state-agency exceptions listed in Fla.
+    Stat. 553.80.
+  confidence: 0.98
+  source_ids:
+  - src:usa-fl:statute:553.80
+- topic: Local amendments
+  finding: Local amendments must be more stringent, transmitted to the commission
+    within 30 days, publicly available, and, for local technical amendments, are not
+    effective until 30 days after receipt and publication by the commission.
+  confidence: 0.98
+  source_ids:
+  - src:usa-fl:statute:553.73
+- topic: Permit-date rule
+  finding: The edition of the Florida Building Code in effect on the permit-application
+    date governs permitted work for the life of the permit and extensions.
+  confidence: 0.97
+  source_ids:
+  - src:usa-fl:statute:553.73
+- topic: Expired-permit closure rule
+  finding: An expired permit with substantially completed work may be closed under
+    the building code in effect when the local enforcement agency received the permit
+    application.
+  confidence: 0.94
+  source_ids:
+  - src:usa-fl:statute:553.79

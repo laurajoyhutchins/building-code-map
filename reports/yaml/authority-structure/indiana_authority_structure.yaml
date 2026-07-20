@@ -1,0 +1,23 @@
+---
+authority_structure:
+- field: Authority ID
+  value: '`ahj:usa-in:fpbsc`'
+- field: Authority name
+  value: Indiana Fire Prevention and Building Safety Commission
+- field: Authority type
+  value: statewide commission / rulemaking body
+- field: Legal basis
+  value: Indiana Code 22-12-2; Title 675 IAC; 675 IAC 12 general administrative rules
+- field: Role
+  value: Creates statewide building and fire-safety laws; adopts rules under Title
+    675; reviews variances, rule-modification petitions, and enforcement orders.
+- field: Enforcement model
+  value: Statewide rules administered by IDHS/Division functions with local administration
+    and certified local plan-review participation where allowed.
+- field: Source IDs
+  value:
+  - src:usa-in:idhs-fpbsc-overview
+  - src:usa-in:iac-675-12-gar-pdf
+  - src:usa-in:idhs-fpbsc-rules-overview
+- field: Verification status
+  value: partially_verified

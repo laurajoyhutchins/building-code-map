@@ -1,0 +1,68 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: Texas is best modeled as a hybrid/local authority state rather than a single
+    statewide building-code jurisdiction for all site-built projects.
+  confidence: 0.6
+  source_ids:
+  - src:usa-tx:lg-ch214
+  - src:usa-tx:lg-ch233
+  - src:usa-tx:seco-local-ordinances
+  - src:usa-tx:tdlr-ihb-codes
+  - src:usa-tx:tdlr-electrical-compliance
+  - src:usa-tx:tdi-sfmo-standards
+- topic: Municipal residential/commercial baseline
+  finding: Municipal residential and commercial baseline codes are tied to IRC/IBC
+    statutory provisions; edition references changed to codes as they existed on 2012-05-01.
+  confidence: 0.55
+  source_ids:
+  - src:usa-tx:lg-ch214
+  - src:usa-tx:capitol-hb0738-2021
+  - src:usa-tx:supp-findlaw-lg214-212
+  - src:usa-tx:supp-justia-lg214-216
+- topic: Energy code
+  finding: Statewide energy minimums are Chapter 11 of the 2015 IRC for single-family
+    homes and the 2015 IECC for other residential, commercial, and industrial buildings;
+    local implementation/enforcement remains local.
+  confidence: 0.85
+  source_ids:
+  - src:usa-tx:seco-local-ordinances
+  - src:usa-tx:seco-commercial-energy
+- topic: Industrialized housing/buildings
+  finding: IHB mandatory codes effective 2024-07-01 include 2021 IBC, 2021 IRC, 2021
+    IFGC, 2021 IMC, 2021 IPC, 2015 IECC, 2021 IEBC, and 2020 NEC.
+  confidence: 0.9
+  source_ids:
+  - src:usa-tx:tdlr-ihb-codes
+  - src:usa-tx:tdlr-ihb-adoption-2024
+- topic: Electrical code authority
+  finding: TDLR adopted the 2023 NEC as the state electrical code effective 2023-09-01,
+    with permit-date and start-of-work date logic.
+  confidence: 0.9
+  source_ids:
+  - src:usa-tx:tdlr-electrical-compliance
+  - src:usa-tx:tdlr-electrical-laws-rules
+- topic: Fire code / inspection standard
+  finding: SFMO uses 2021 NFPA 101 and NFPA 1 as inspection standards effective 2023-09-01;
+    local fire-code adoption and local operational fire-prevention codes remain only
+    partially mapped.
+  confidence: 0.78
+  source_ids:
+  - src:usa-tx:tdi-sfmo-standards
+  - src:usa-tx:tdi-sfmo-rules
+  - src:usa-tx:tdi-sfmo-inspections
+- topic: Coastal windstorm
+  finding: TDI windstorm certification requires WPI-1 applications starting 2026-04-01
+    to be certified under the 2024 IRC or 2024 IBC.
+  confidence: 0.88
+  source_ids:
+  - src:usa-tx:tdi-windstorm-adopted-codes
+- topic: Local amendments
+  finding: Local amendment authority is confirmed for several paths, but no unified
+    statewide local-amendment registry was verified.
+  confidence: 0.45
+  source_ids:
+  - src:usa-tx:seco-local-ordinances
+  - src:usa-tx:seco-adoption-process
+  - src:usa-tx:lg-ch214
+  - src:usa-tx:tdlr-ihb-faq

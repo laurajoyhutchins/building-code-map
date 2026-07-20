@@ -1,0 +1,56 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: The Utah Legislature adopts the State Construction Code by legislation;
+    UBCC advises DOPL and supports legislative code-analysis workflows.
+  confidence: 0.86
+  source_ids:
+  - src:usa-ut:code-15a-1-204
+  - src:usa-ut:code-15a-1-203
+  - src:usa-ut:dopl-uniform-building-codes
+- topic: Current construction code editions
+  finding: Current 15A-2-103 package is effective 2025-07-01 and superseded 2026-07-01;
+    it includes 2021 IBC, 2021 IRC, 2021 IPC, 2021 IMC, 2021 IFGC, 2023 NEC, 2021
+    IECC, 2021 IEBC, and residential provisions of the 2021 ISPSC.
+  confidence: 0.9
+  source_ids:
+  - src:usa-ut:code-15a-2-103
+- topic: Pending construction code update
+  finding: Effective 2026-07-01, 15A-2-103 moves building, plumbing, mechanical, fuel
+    gas, energy, existing building, and residential swimming-pool/spa references to
+    2024 editions while retaining 2021 IRC and 2023 NEC.
+  confidence: 0.82
+  source_ids:
+  - src:usa-ut:code-15a-2-103-future
+  - src:usa-ut:hb65-2026
+- topic: Fire code authority and editions
+  finding: The State Fire Code is separately codified under Chapter 5; current text
+    incorporates the 2021 IFC package and future 2026-07-01 text incorporates the
+    2024 IFC package.
+  confidence: 0.88
+  source_ids:
+  - src:usa-ut:code-15a-5-103
+  - src:usa-ut:hb45-2026
+- topic: Local enforcement
+  finding: Local regulators and compliance agencies are defined in Title 15A; local
+    regulators must employ or contract with a qualified building official.
+  confidence: 0.78
+  source_ids:
+  - src:usa-ut:code-15a-1-202
+- topic: Local amendments
+  finding: Utah local amendments are not a free-form local-adoption model; codified
+    local amendments appear in Title 15A, Chapter 4, and more-restrictive local requirements
+    are constrained by Section 15A-1-204.
+  confidence: 0.7
+  source_ids:
+  - src:usa-ut:code-15a-1-204
+  - src:usa-ut:code-chapter-4
+- topic: Effective / operative date rule
+  finding: The general legislative adoption rule points to July 1 after enactment
+    unless legislation states otherwise; statewide project-level permit-date or issuance-date
+    logic remains unresolved.
+  confidence: 0.58
+  source_ids:
+  - src:usa-ut:code-15a-1-204
+  - src:usa-ut:hb65-2026
+  - src:usa-ut:hb45-2026

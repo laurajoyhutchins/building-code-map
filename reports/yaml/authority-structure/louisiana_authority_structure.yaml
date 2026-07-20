@@ -1,0 +1,23 @@
+---
+authority_structure:
+- field: Authority ID
+  value: ahj:usa-la:lsuccc
+- field: Authority name
+  value: Louisiana State Uniform Construction Code Council
+- field: Authority type
+  value: statewide construction-code council
+- field: Legal basis
+  value: R.S. 40:1730.21 through 40:1730.40.1; especially R.S. 40:1730.22, 40:1730.26,
+    and 40:1730.28
+- field: Role
+  value: Reviews, adopts, modifies, and promulgates the State Uniform Construction
+    Code; determines justified amendments; establishes certification and continuing-education
+    requirements for code enforcement personnel
+- field: Enforcement model
+  value: Statewide code with local municipal/parish enforcement and certified third-party
+    provider option
+- field: Source IDs
+  value: src:usa-la:rs-40-1730-21, src:usa-la:rs-40-1730-22, src:usa-la:rs-40-1730-26,
+    src:usa-la:rs-40-1730-28
+- field: Verification status
+  value: partially_verified

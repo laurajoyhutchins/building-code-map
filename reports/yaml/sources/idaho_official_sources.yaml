@@ -1,0 +1,129 @@
+---
+official_sources:
+- source_id: src:usa-id:bld-home
+  title: Idaho Building Code Board & Factory Built Structures Board
+  source_type: agency_page
+  publisher: DOPL
+  url: https://dopl.idaho.gov/bld/
+  accessed_date: '2026-06-24'
+  snapshot_id: snapshot:usa-id-bld-home
+  checksum: null
+  status: active
+- source_id: src:usa-id:bld-statutes-rules
+  title: Statutes and Rules
+  source_type: agency_page
+  publisher: DOPL
+  url: https://dopl.idaho.gov/bld/bld-statutes-and-rules/
+  accessed_date: '2026-06-24'
+  snapshot_id: snapshot:usa-id-bld-statutes-rules
+  checksum: null
+  status: active
+- source_id: src:usa-id:bld-rules-2024
+  title: Rules of Building Safety (Building Code Rules)
+  source_type: regulation_pdf
+  publisher: Idaho Administrative Code
+  url: https://adminrules.idaho.gov/rules/current/24/243930.pdf
+  accessed_date: '2026-06-24'
+  snapshot_id: snapshot:usa-id-bld-rules-2024
+  checksum: null
+  status: active
+- source_id: src:usa-id:plan-review
+  title: Plan Review and Permits
+  source_type: agency_page
+  publisher: DOPL
+  url: https://dopl.idaho.gov/bld/bld-plan-review-and-permits/
+  accessed_date: '2026-06-24'
+  snapshot_id: snapshot:usa-id-plan-review
+  checksum: null
+  status: active
+- source_id: src:usa-id:ele-home
+  title: Idaho Electrical Board
+  source_type: agency_page
+  publisher: DOPL
+  url: https://dopl.idaho.gov/ele/
+  accessed_date: '2026-06-24'
+  snapshot_id: snapshot:usa-id-ele-home
+  checksum: null
+  status: active
+- source_id: src:usa-id:ele-rules-2025
+  title: Rules of the Idaho Electrical Board
+  source_type: regulation_pdf
+  publisher: Idaho Administrative Code
+  url: https://adminrules.idaho.gov/rules/current/24/243910.pdf
+  accessed_date: '2026-06-24'
+  snapshot_id: snapshot:usa-id-ele-rules-2025
+  checksum: null
+  status: active
+- source_id: src:usa-id:plb-home
+  title: State Plumbing Board
+  source_type: agency_page
+  publisher: DOPL
+  url: https://dopl.idaho.gov/plb/
+  accessed_date: '2026-06-24'
+  snapshot_id: snapshot:usa-id-plb-home
+  checksum: null
+  status: active
+- source_id: src:usa-id:plb-rules-2023
+  title: Rules Governing Plumbing
+  source_type: regulation_pdf
+  publisher: Idaho Administrative Code
+  url: https://adminrules.idaho.gov/rules/current/24/243920.pdf
+  accessed_date: '2026-06-24'
+  snapshot_id: snapshot:usa-id-plb-rules-2023
+  checksum: null
+  status: active
+- source_id: src:usa-id:hvac-home
+  title: Heating, Ventilation and Air Conditioning (HVAC) Board
+  source_type: agency_page
+  publisher: DOPL
+  url: https://dopl.idaho.gov/hvac/
+  accessed_date: '2026-06-24'
+  snapshot_id: snapshot:usa-id-hvac-home
+  checksum: null
+  status: active
+- source_id: src:usa-id:hvac-rules-2023
+  title: Rules Governing Installation of Heating, Ventilation, and Air Conditioning
+    Systems
+  source_type: regulation_pdf
+  publisher: Idaho Administrative Code
+  url: https://adminrules.idaho.gov/rules/current/24/243970.pdf
+  accessed_date: '2026-06-24'
+  snapshot_id: snapshot:usa-id-hvac-rules-2023
+  checksum: null
+  status: active
+- source_id: src:usa-id:elev-home
+  title: Idaho Elevator Program
+  source_type: agency_page
+  publisher: DOPL
+  url: https://dopl.idaho.gov/elev/
+  accessed_date: '2026-06-24'
+  snapshot_id: snapshot:usa-id-elev-home
+  checksum: null
+  status: active
+- source_id: src:usa-id:elev-codes
+  title: Adopted Codes
+  source_type: agency_page
+  publisher: DOPL
+  url: https://dopl.idaho.gov/elev/elev-adopted-codes/
+  accessed_date: '2026-06-24'
+  snapshot_id: snapshot:usa-id-elev-codes
+  checksum: null
+  status: active
+- source_id: src:usa-id:lpg-home
+  title: Board of Liquefied Petroleum Gas Safety
+  source_type: agency_page
+  publisher: DOPL
+  url: https://dopl.idaho.gov/lpg/
+  accessed_date: '2026-06-24'
+  snapshot_id: snapshot:usa-id-lpg-home
+  checksum: null
+  status: active
+- source_id: src:usa-id:lpg-documents
+  title: Board Referenced Documents
+  source_type: agency_page
+  publisher: DOPL
+  url: https://dopl.idaho.gov/lpg/lpg-documents/
+  accessed_date: '2026-06-24'
+  snapshot_id: snapshot:usa-id-lpg-documents
+  checksum: null
+  status: active

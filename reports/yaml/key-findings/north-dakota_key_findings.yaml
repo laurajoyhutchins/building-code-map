@@ -1,0 +1,65 @@
+---
+key_findings:
+- topic: Primary statewide building-code authority
+  finding: The North Dakota Department of Commerce, Division of Community Services,
+    administers the State Building Code framework, with update and amendment voting
+    by the Building Code Advisory Committee and eligible local jurisdictions.
+  confidence: 0.9
+  source_ids:
+  - src:usa-nd:commerce-building-codes
+  - src:usa-nd:state-building-code-2026-book
+  - src:usa-nd:ndcc-54-21-3
+  - src:usa-nd:ndac-108-01-01
+- topic: Current State Building Code editions
+  finding: The 2026 State Building Code uses the 2024 IBC, IRC, IMC, IFGC, IECC, and
+    IEBC, with state amendments, effective 2026-01-01.
+  confidence: 0.92
+  source_ids:
+  - src:usa-nd:commerce-building-codes
+  - src:usa-nd:state-building-code-2026-book
+- topic: Local building-code enforcement
+  finding: Local jurisdictions that elect to enforce a building code must adopt and
+    enforce the State Building Code; counties may administer areas outside city or
+    township administration.
+  confidence: 0.85
+  source_ids:
+  - src:usa-nd:state-building-code-2026-book
+  - src:usa-nd:ndcc-54-21-3
+  - src:usa-nd:ndac-108-01-01
+- topic: Local building amendments
+  finding: Electing cities, townships, and counties may amend the State Building Code
+    to conform to local needs; a statewide amendment registry was not found in the
+    reviewed sources.
+  confidence: 0.75
+  source_ids:
+  - src:usa-nd:state-building-code-2026-book
+  - src:usa-nd:ndcc-54-21-3
+  - src:usa-nd:ndac-108-01-01
+- topic: Electrical authority and code basis
+  finding: The State Electrical Board has statewide jurisdiction over electrical installations
+    and identifies 2023 NEC-based standards effective 2024-07-01, with a 2026 NEC
+    transition indicated for 2026-07-01.
+  confidence: 0.88
+  source_ids:
+  - src:usa-nd:electrical-board-laws-rules
+  - src:usa-nd:ndac-24-1-06-01
+  - src:usa-nd:ndac-24-1-2026-supplement
+  - src:usa-nd:ndcc-43-09
+- topic: Plumbing authority and code basis
+  finding: The State Plumbing Board administers the North Dakota Plumbing Code, based
+    on the 2018 Uniform Plumbing Code, effective 2020-04-01.
+  confidence: 0.84
+  source_ids:
+  - src:usa-nd:plumbing-board-laws-rules
+  - src:usa-nd:ndac-62-01-01
+  - src:usa-nd:ndac-62-03-1-01
+- topic: Fire authority and operational fire code
+  finding: The State Fire Marshal administers the State Fire Code, currently verified
+    from codified NDAC as the 2021 IFC with North Dakota modifications, effective
+    2024-01-01. A 2026 rulemaking copy points toward 2024 IFC but needs final codification
+    review.
+  confidence: 0.75
+  source_ids:
+  - src:usa-nd:ndac-45-18-01
+  - src:usa-nd:insurance-fire-rulemaking-2026
+  - src:usa-nd:ndcc-18-01

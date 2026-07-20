@@ -1,0 +1,62 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: State Building Code Council, authorized by HRS 107-22 and housed administratively
+    in DAGS, establishes the Hawaii state building-code baseline through adoption
+    of national model codes and state standards.
+  confidence: 0.98
+  source_ids:
+  - src:usa-hi:bcc-home
+  - src:usa-hi:bcc-building-code-rules
+- topic: Primary building code edition
+  finding: State Building Code adopts the 2018 IBC with Hawaii amendments; the SBCC
+    adoption letter states adoption and effective date as 2021-04-20, with state-building
+    design compliance by 2022-04-20 and county adoption/interim-code timing by 2023-04-20.
+  confidence: 0.99
+  source_ids:
+  - src:usa-hi:bcc-building-code-rules
+  - src:usa-hi:state-building-code-2018
+- topic: Residential / existing building / energy / plumbing
+  finding: SBCC current-code page lists 2018 IRC, 2018 IEBC, 2018 IECC, and 2018 UPC;
+    linked official code PDFs support adoption/effective dates for residential, existing-building,
+    energy, and plumbing code families.
+  confidence: 0.94
+  source_ids:
+  - src:usa-hi:bcc-building-code-rules
+  - src:usa-hi:state-residential-code-2018
+  - src:usa-hi:state-existing-building-code-2018
+  - src:usa-hi:state-energy-code-2018
+  - src:usa-hi:state-plumbing-code-2018
+- topic: Electrical code edition conflict
+  finding: The SBCC current-code page labels the State Electric Code as 2018 NFPA
+    70, but the linked official State Electrical Code PDF adopts the 2020 NFPA 70
+    effective 2022-03-15. The report preserves the conflict rather than choosing one
+    silently.
+  confidence: 0.7
+  source_ids:
+  - src:usa-hi:bcc-building-code-rules
+  - src:usa-hi:state-electrical-code-2020
+- topic: Fire code authority
+  finding: State Fire Council adopts the 2024 NFPA 1 Fire Code with Hawaii State Amendments;
+    the fire-code PDF states an effective date of 2025-09-05 and administration/enforcement
+    by the AHJ designated by HRS 132.
+  confidence: 0.99
+  source_ids:
+  - src:usa-hi:bcc-building-code-rules
+  - src:usa-hi:state-fire-code-2024
+- topic: Local enforcement and amendment posture
+  finding: 'Hawaii remains a state-plus-county model: county updates are expressly
+    preserved in the 2025 affordable-housing proclamation and the State Fire Code
+    uses county/AHJ permit and enforcement paths.'
+  confidence: 0.94
+  source_ids:
+  - src:usa-hi:bcc-building-code-rules
+  - src:usa-hi:governor-proclamation-2025-09-23
+  - src:usa-hi:state-fire-code-2024
+- topic: Production readiness limiter
+  finding: Mechanical/fuel-gas standalone scope, accessibility codification, county
+    amendment registry, and the electrical-edition conflict remain open issues.
+  confidence: 0.88
+  source_ids:
+  - src:usa-hi:bcc-building-code-rules
+  - src:usa-hi:state-electrical-code-2020

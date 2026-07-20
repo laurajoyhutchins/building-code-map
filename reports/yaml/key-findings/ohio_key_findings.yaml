@@ -1,0 +1,56 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: The Ohio Board of Building Standards formulates and adopts rules governing
+    construction, repair, alteration, and maintenance of buildings and related equipment.
+  confidence: 0.95
+  source_ids:
+  - src:usa-oh:orc-3781-10
+- topic: Primary building code edition
+  finding: The 2024 Ohio Building Code package adopted 2021 IBC chapters 2-35 and
+    Appendix H by reference with Ohio amendments, effective 2024-03-01; current administrative
+    rule text shows OAC 4101:1-1-01 effective 2025-10-15.
+  confidence: 0.9
+  source_ids:
+  - src:usa-oh:commerce-2024-obc-rules
+  - src:usa-oh:oac-4101-1-1-01-2025
+- topic: Mechanical and plumbing editions
+  finding: The 2024 Ohio Mechanical Code and 2024 Ohio Plumbing Code were adopted
+    as part of Amendments Group 100, effective 2024-03-01, incorporating the 2021
+    IMC and 2021 IPC by reference with Ohio amendments.
+  confidence: 0.9
+  source_ids:
+  - src:usa-oh:commerce-2024-omc-rules
+  - src:usa-oh:commerce-2024-opc-rules
+- topic: Fire code authority
+  finding: The state fire marshal adopts and enforces the state fire code; the current
+    Ohio Fire Code rule is effective 2025-11-20.
+  confidence: 0.9
+  source_ids:
+  - src:usa-oh:orc-3737-22
+  - src:usa-oh:orc-3737-82
+  - src:usa-oh:oac-1301-7-7-01-2025
+- topic: Local enforcement
+  finding: BBS-certified municipalities, townships, and counties may exercise building-code
+    enforcement authority; certification and certified personnel are prerequisites.
+  confidence: 0.85
+  source_ids:
+  - src:usa-oh:oac-4101-7-1-01
+  - src:usa-oh:oac-4101-7-2-01
+- topic: Local amendments
+  finding: Local regulations may supplement state standards only within conflict limits;
+    local residential regulations have a BBS conflict-review path.
+  confidence: 0.8
+  source_ids:
+  - src:usa-oh:orc-3781-01
+  - src:usa-oh:orc-3781-11
+  - src:usa-oh:oac-4101-1-1-01-2025
+- topic: Effective / operative date rule
+  finding: 2024 code package effective date is verified; precise application-date
+    transition rule still needs the primary BBS memo.
+  confidence: 0.55
+  source_ids:
+  - src:usa-oh:commerce-2024-obc-rules
+  - src:usa-oh:commerce-2024-omc-rules
+  - src:usa-oh:commerce-2024-opc-rules
+  - src:usa-oh:bbs-memo-414-secondary

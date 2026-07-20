@@ -1,0 +1,74 @@
+---
+key_findings:
+- topic: Primary adopting authority
+  finding: "The South Carolina Building Codes Council reviews, adopts, modifies, and\
+    \ promulgates the mandatory statewide building-code set referenced in \xA76-9-50."
+  confidence: 0.9
+  source_ids:
+  - src:usa-sc:code-title-6-ch9
+  - src:usa-sc:regs-ch8-bcc
+  - src:usa-sc:llr-bcc-home
+- topic: Current construction-code package
+  finding: The current verified mandatory package is the 2021 IBC, IRC, IFC, IPC,
+    IMC, IFGC, the 2020 NEC, and the 2009 IECC, with South Carolina modifications
+    where applicable.
+  confidence: 0.9
+  source_ids:
+  - src:usa-sc:llr-building-codes-in-effect-2022
+  - src:usa-sc:llr-building-code-adoption
+  - src:usa-sc:llr-2021-code-adoption-notice
+- topic: Current 2021/2020 adoption and implementation dates
+  finding: The 2021 I-Code / 2020 NEC package was adopted 2021-10-06 and implemented
+    / enforceable locally 2023-01-01.
+  confidence: 0.9
+  source_ids:
+  - src:usa-sc:llr-building-code-adoption
+  - src:usa-sc:llr-building-codes-in-effect-2022
+- topic: Energy code
+  finding: The 2009 IECC is adopted by statute as the Energy Standard; all new and
+    renovated buildings and additions constructed in South Carolina must comply.
+  confidence: 0.88
+  source_ids:
+  - src:usa-sc:code-title-6-ch10-energy
+  - src:usa-sc:llr-building-codes-in-effect-2022
+- topic: Local enforcement
+  finding: Counties and municipalities enforce the state building-code set and must
+    appoint or contract for building officials, with county jurisdiction over unincorporated
+    areas and municipal jurisdiction inside municipal limits.
+  confidence: 0.86
+  source_ids:
+  - src:usa-sc:code-title-6-ch9
+  - src:usa-sc:regs-ch8-bcc
+- topic: Local amendments
+  finding: Local code variations require local governing-body approval and Building
+    Codes Council approval, and must be justified by physical or climatological conditions.
+  confidence: 0.84
+  source_ids:
+  - src:usa-sc:code-title-6-ch9
+  - src:usa-sc:regs-ch8-bcc
+- topic: Fire authority
+  finding: The Building Codes Council adopts the South Carolina Fire Code for construction-code
+    purposes, while the State Fire Marshal retains statewide fire-prevention and fire-protection
+    authority.
+  confidence: 0.76
+  source_ids:
+  - src:usa-sc:code-title-6-ch9
+  - src:usa-sc:code-title-23-ch9-fire-marshal
+  - src:usa-sc:state-fire-codes-standards
+- topic: Effective / operative date rule
+  finding: Inspections generally follow the code in effect on the date the original
+    building permit was issued, with statutory fallback rules where permit or application
+    dates are unavailable.
+  confidence: 0.88
+  source_ids:
+  - src:usa-sc:code-title-6-ch9
+  - src:usa-sc:regs-ch8-bcc
+- topic: Future 2024 cycle
+  finding: The 2024 I-Code / 2023 NEC cycle has published modification materials and
+    proposed regulations indicating 2027-01-01 enforcement-purpose effective date.
+  confidence: 0.74
+  source_ids:
+  - src:usa-sc:llr-building-code-adoption
+  - src:usa-sc:llr-2024-code-intent
+  - src:usa-sc:state-register-2025-2024-code-proposed
+  - src:usa-sc:llr-2026-2024-code-final-mods

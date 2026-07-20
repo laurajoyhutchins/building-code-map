@@ -1,0 +1,61 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: The Building Code Council and Residential Code Council may prepare and
+    adopt the North Carolina State Building Code; the Building Code Council oversees
+    commercial and multi-family code volumes, and the Residential Code Council oversees
+    residential code volumes.
+  confidence: 0.85
+  source_ids:
+  - src:usa-nc:gs-143-136-138
+  - src:usa-nc:osfm-codes
+- topic: Primary building code edition
+  finding: The current mandatory statewide building-code baseline is the 2018 NC Code
+    suite, effective 2019-01-01, with the 2018 NC Building Code based on the 2015
+    IBC with NC amendments.
+  confidence: 0.8
+  source_ids:
+  - src:usa-nc:osfm-codes-current-past
+  - src:usa-nc:osfm-2025-formal-interpretation-107
+- topic: Electrical code authority / edition
+  finding: 'North Carolina Electrical Code is an adopted NEC version with NC amendments.
+    OSFM''s code portal lists the 2020 Electrical Code as effective 2021-11-01 and
+    currently effective; OSFM''s 2025 formal interpretation identifies a residential/non-residential
+    scope split: 2017 NFPA 70 for 2018 Residential Code scope and 2020 NFPA 70 for
+    other structures.'
+  confidence: 0.65
+  source_ids:
+  - src:usa-nc:osfm-codes-current-past
+  - src:usa-nc:osfm-electrical-division
+  - src:usa-nc:osfm-2025-formal-interpretation-107
+- topic: Fire code authority
+  finding: The North Carolina Fire Code is a State Building Code volume. Local political
+    subdivisions may adopt local fire-prevention codes, subject to statutory limitations
+    and responsible Code Council approval unless an exception applies.
+  confidence: 0.75
+  source_ids:
+  - src:usa-nc:gs-143-136-138
+  - src:usa-nc:osfm-codes-current-past
+- topic: Local enforcement
+  finding: Local governments must perform inspection duties through their own inspection
+    department, a joint department, a contract with another unit, or county-provided
+    services; local inspectors inspect work in progress under permits.
+  confidence: 0.8
+  source_ids:
+  - src:usa-nc:gs-160d-1102
+  - src:usa-nc:gs-160d-art11
+- topic: Local amendments
+  finding: Statewide code applies throughout the State. Local fire-prevention codes
+    and most local regulations require responsible Code Council approval before becoming
+    effective; local floodplain regulations have a distinct allowance.
+  confidence: 0.7
+  source_ids:
+  - src:usa-nc:gs-143-136-138
+- topic: Effective / operative date rule
+  finding: 'Current 2018 code suite: effective 2019-01-01, with transition from 2018-07-01
+    through 2018-12-31. Future 2024 suite: mandatory date contingent under S.L. 2025-2.'
+  confidence: 0.75
+  source_ids:
+  - src:usa-nc:osfm-codes-current-past
+  - src:usa-nc:sl-2025-2
+  - src:usa-nc:osfm-2025-formal-interpretation-107

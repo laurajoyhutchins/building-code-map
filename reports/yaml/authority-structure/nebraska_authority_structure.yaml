@@ -1,0 +1,23 @@
+---
+authority_structure:
+- field: Authority ID
+  value: ahj:usa-ne:legislature-building-construction-act
+- field: Authority name
+  value: Nebraska Legislature, through the Building Construction Act
+- field: Authority type
+  value: state legislature / statutory code-adopting authority
+- field: Legal basis
+  value: "Neb. Rev. Stat. \xA7 71-6403 creates the state building code and adopts\
+    \ model codes by reference; Neb. Rev. Stat. \xA7 71-6406 controls local adoption,\
+    \ enforcement, conformance, and amendment boundaries."
+- field: Role
+  value: Creates and updates the state building code; defines local conformance and
+    fallback rules.
+- field: Enforcement model
+  value: Local jurisdictions may administer/enforce conforming local codes; the state
+    code applies as a statutory fallback when local adoption is not timely, subject
+    to the farm-purpose exception.
+- field: Source IDs
+  value: src:usa-ne:71-6403-state-building-code, src:usa-ne:71-6406-local-building-code
+- field: Verification status
+  value: partially_verified

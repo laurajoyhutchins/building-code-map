@@ -1,0 +1,160 @@
+---
+official_sources:
+- source_id: src:usa-nh:dfs-state-building-code
+  title: State Building Code
+  publisher___custodian: New Hampshire Division of Fire Safety / State Fire Marshal
+  source_type: official agency page
+  url___locator: https://www.firemarshal.dos.nh.gov/laws-rules-regulatory/state-building-code
+  date___version: accessed 2026-06-26
+  used_for: statewide building-code page, future 2024-code transition watch, state-page
+    caveat
+  access_notes:
+  - Search result accessible
+  - direct automated page open returned 403.
+- source_id: src:usa-nh:bcrb-page
+  title: State Building Code Review Board
+  publisher___custodian: New Hampshire Division of Fire Safety / State Fire Marshal
+  source_type: official agency page
+  url___locator: https://www.firemarshal.dos.nh.gov/laws-rules-regulatory/boards-commissions-committees/state-building-code-review-board
+  date___version: accessed 2026-06-26
+  used_for: BCRB role and amendment review source locator
+  access_notes:
+  - Search result accessible
+  - direct automated page open returned 403.
+- source_id: src:usa-nh:rsa-155-a-1
+  title: RSA 155-A:1 Definitions
+  publisher___custodian: New Hampshire General Court / Revised Statutes Online
+  source_type: official statute, mirrored through nonofficial text extraction
+  url___locator: https://gc.nh.gov/rsa/html/XII/155-A/155-A-1.htm
+  date___version: 2025 statute text, including future notes
+  used_for: State Building Code definition and current model-code editions
+  access_notes:
+  - Official locator identified
+  - extractable text came from Justia mirror due General Court navigation/403 issues.
+- source_id: src:usa-nh:rsa-155-a-2
+  title: RSA 155-A:2 State Building Code
+  publisher___custodian: New Hampshire General Court / Revised Statutes Online
+  source_type: official statute, mirrored through nonofficial text extraction
+  url___locator: https://gc.nh.gov/rsa/html/XII/155-A/155-A-2.htm
+  date___version: 2025 statute text, including future notes
+  used_for: compliance mandate, permit-date rule, concurrency period, conflict rule,
+    State Fire Marshal reserved role
+  access_notes:
+  - Official locator identified
+  - extractable text came from Justia mirror.
+- source_id: src:usa-nh:rsa-155-a-3
+  title: RSA 155-A:3 Enforcement Mechanism / Local Amendments
+  publisher___custodian: New Hampshire General Court / Revised Statutes Online
+  source_type: official statute, mirrored through nonofficial text extraction
+  url___locator: https://gc.nh.gov/rsa/html/XII/155-A/155-A-3.htm
+  date___version: 2025 statute text, future version effective 2026-07-01
+  used_for: local enforcement mechanism and local amendment constraints
+  access_notes:
+  - Official locator identified
+  - extractable text came from Justia mirror.
+- source_id: src:usa-nh:rsa-155-a-7
+  title: RSA 155-A:7 Enforcement Authority
+  publisher___custodian: New Hampshire General Court / Revised Statutes Online
+  source_type: official statute, mirrored through nonofficial text extraction
+  url___locator: https://gc.nh.gov/rsa/html/XII/155-A/155-A-7.htm
+  date___version: 2025 statute text, including future notes
+  used_for: local enforcement agency, local fire chief, State Fire Marshal backstop
+  access_notes:
+  - Official locator identified
+  - extractable text came from Justia mirror.
+- source_id: src:usa-nh:rsa-155-a-10
+  title: RSA 155-A:10 State Building Code Review Board
+  publisher___custodian: New Hampshire General Court / Revised Statutes Online
+  source_type: official statute, mirrored through nonofficial text extraction
+  url___locator: https://gc.nh.gov/rsa/html/XII/155-A/155-A-10.htm
+  date___version: 2025 statute text
+  used_for: BCRB role; municipal amendment confirmation
+  access_notes:
+  - Extractable lines not fully opened in this pass
+  - search result and related statutory cross-references used.
+- source_id: src:usa-nh:rsa-153-1
+  title: RSA 153:1 Definitions
+  publisher___custodian: New Hampshire General Court / Revised Statutes Online
+  source_type: official statute, mirrored through nonofficial text extraction
+  url___locator: https://gc.nh.gov/rsa/html/XII/153/153-1.htm
+  date___version: 2025 statute text
+  used_for: State Fire Code definition; NFPA 101 / NFPA 1 editions
+  access_notes:
+  - Official locator identified
+  - extractable text came from Justia mirror.
+- source_id: src:usa-nh:rsa-153-5
+  title: RSA 153:5 State Fire Code; Rules
+  publisher___custodian: New Hampshire General Court / Revised Statutes Online
+  source_type: official statute, mirrored through nonofficial text extraction
+  url___locator: https://gc.nh.gov/rsa/html/XII/153/153-5.htm
+  date___version: 2025 statute text, including future notes
+  used_for: State Fire Code amendment authority; local fire chief / State Fire Marshal
+    use; local fire-code amendment limits
+  access_notes:
+  - Official locator identified
+  - extractable text came from Justia mirror.
+- source_id: src:usa-nh:dfs-state-fire-code
+  title: State Fire Code
+  publisher___custodian: New Hampshire Division of Fire Safety / State Fire Marshal
+  source_type: official agency page
+  url___locator: https://www.firemarshal.dos.nh.gov/laws-rules-regulatory/state-fire-code
+  date___version: accessed 2026-06-26
+  used_for: 2021 NFPA 1 / NFPA 101 effective 2024-08-13 agency confirmation
+  access_notes:
+  - Search result accessible
+  - direct automated page open returned 403.
+- source_id: src:usa-nh:summary-2021-building-amendments-2025
+  title: New Hampshire Building Code Amendments Effective 2025-07-01
+  publisher___custodian: New Hampshire Division of Fire Safety / State Fire Marshal
+  source_type: official PDF
+  url___locator: https://mm.nh.gov/files/uploads/fmo/remote-docs/summary-of-2021-building-code-amendments-effective-1jul2025.pdf
+  date___version: '2025-07-01'
+  used_for: amendment publication path; 2023 NEC update; IFGC/IFC non-adoption snippets
+  access_notes:
+  - Search/PDF snippets accessible
+  - full automated PDF open blocked.
+- source_id: src:usa-nh:oplc-mechanical-board
+  title: Mechanical Safety and Licensing Board Laws and Rules
+  publisher___custodian: New Hampshire Office of Professional Licensure and Certification
+  source_type: official agency page
+  url___locator: https://www.oplc.nh.gov/mechanical-safety-and-licensing-board-laws-and-rules
+  date___version: accessed 2026-06-26
+  used_for: mechanical/plumbing/fuel-gas licensing program source locator
+  access_notes: Search result accessible.
+- source_id: src:usa-nh:dol-elevator
+  title: Elevators and Accessibility Lifts
+  publisher___custodian: New Hampshire Department of Labor
+  source_type: official agency page
+  url___locator: https://www.dol.nh.gov/inspections/elevators-and-accessibility-lifts
+  date___version: accessed 2026-06-26
+  used_for: elevator/accessibility lift authority and rule locator
+  access_notes: Search result accessible.
+- source_id: src:usa-nh:rsa-155-a-5
+  title: RSA 155-A:5 through 155-A:5-b Accessibility Standards for Public Buildings
+  publisher___custodian: New Hampshire General Court / Revised Statutes Online
+  source_type: official statute, mirrored through nonofficial text extraction
+  url___locator: https://gc.nh.gov/rsa/html/XII/155-A/155-A-5.htm
+  date___version: 2025 statute text
+  used_for: accessibility authority and certification/enforcement framework
+  access_notes: Extractable text came from Justia search/open snippets.
+- source_id: src:usa-nh:hb134-2025
+  title: HB 134 / Chapter 135, relative to the state building code
+  publisher___custodian: New Hampshire General Court
+  source_type: official enacted bill / chapter law locator
+  url___locator: https://www.gencourt.state.nh.us/bill_status/billinfo.aspx?id=134
+  date___version: signed 2025-06-23; effective 2025-07-01
+  used_for: 2023 NEC and amendment-ratification-date update
+  access_notes:
+  - Official bill locator should be verified directly
+  - search snippets from FastDemocracy/BillTrack50 used as temporary extraction aid.
+- source_id: src:usa-nh:sb494-2026-watch
+  title: SB 494, relative to the state fire code, fire incident reporting and investigations,
+    and duties of the state fire marshal
+  publisher___custodian: New Hampshire General Court
+  source_type: bill watch locator
+  url___locator: https://www.gencourt.state.nh.us/bill_status/billinfo.aspx?id=494
+  date___version: 2026 session
+  used_for: watch item for possible 2024 NFPA 1 / NFPA 101 update
+  access_notes:
+  - Noncurrent-law watch item
+  - not used for current adoption.

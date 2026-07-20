@@ -1,0 +1,52 @@
+{
+  "name": "building-code-map",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "packageManager": "pnpm@10.12.1",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  },
+  "scripts": {
+    "dev": "node tools/dev.mjs",
+    "build": "vite build",
+    "preview": "node tools/preview.mjs",
+    "check": "tsc --noEmit",
+    "decision:recover": ".\\tools\\deciduous-recover.cmd",
+    "decision:audit": ".\\tools\\deciduous-audit.cmd",
+    "decision:audit:strict": ".\\tools\\deciduous-audit.cmd -Strict",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "backend:lint": "cd backend && go vet ./...",
+    "backend:format": "cd backend && go fmt ./...",
+    "backend:test": "cd backend && go test ./...",
+    "format": "prettier \"AGENTS.md\" \"README.md\" \"DATA_SOURCES.md\" \"SECURITY.md\" \"package.json\" \"eslint.config.js\" \".prettierrc.json\" \".github/**/*.{md,yml,yaml}\" \"docs/**/*.{md,json}\" \"src/**/*.{ts,tsx,css}\" --write",
+    "format:check": "prettier \"AGENTS.md\" \"README.md\" \"DATA_SOURCES.md\" \"SECURITY.md\" \"package.json\" \"eslint.config.js\" \".prettierrc.json\" \".github/**/*.{md,yml,yaml}\" \"docs/**/*.{md,json}\" \"src/**/*.{ts,tsx,css}\" --check",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "maplibre-gl": "^5.6.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^10.5.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.3",
+    "globals": "^17.6.0",
+    "prettier": "^3.8.4",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.61.1",
+    "vite": "^5.4.0",
+    "vitest": "^2.0.5"
+  }
+}

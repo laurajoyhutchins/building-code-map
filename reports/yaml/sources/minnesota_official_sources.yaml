@@ -1,0 +1,243 @@
+---
+official_sources:
+- source_id: src:usa-mn:dli-state-building-codes-2020
+  title: 2020 Minnesota State Building Codes
+  type: agency_page
+  publisher: Minnesota Department of Labor and Industry
+  url: https://www.dli.mn.gov/business/codes-and-laws/2020-minnesota-state-building-codes
+  key_fields_supported: 2020 code effective dates; current State Building Code family
+    list; Commercial Energy Code effective date
+  caveats:
+  - Official agency page
+  - page combines code-family summaries and does not provide every adoption date.
+- source_id: src:usa-mn:dli-building-code-overview
+  title: Overview of Minnesota State Building Code
+  type: agency_page
+  publisher: Minnesota Department of Labor and Industry
+  url: https://www.dli.mn.gov/business/codes-and-laws/overview-minnesota-state-building-code
+  key_fields_supported: Statewide minimum-standard statement; local enforceability
+    by municipal ordinance; adoption-cycle summary
+  caveats:
+  - Official agency overview
+  - use statutes/rules for legal text.
+- source_id: src:usa-mn:dli-ccld-overview
+  title: Construction Codes and Licensing
+  type: agency_page
+  publisher: Minnesota Department of Labor and Industry
+  url: https://www.dli.mn.gov/about-department/about-dli/our-areas-service/construction-codes-and-licensing
+  key_fields_supported: DLI/CCLD program scope and administered code families
+  caveats:
+  - Official agency page
+  - high-level program description.
+- source_id: src:usa-mn:stat-326b-02
+  title: "Minnesota Statutes \xA7 326B.02, Powers"
+  type: statute
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/statutes/cite/326B.02
+  key_fields_supported: Transfers of authority; general rulemaking authority; State
+    Fire Code rulemaking authority; Board of Electricity and Plumbing Board transfer
+    context
+  caveats:
+  - Official HTML statute
+  - current version should be checked for session changes.
+- source_id: src:usa-mn:stat-326b-101
+  title: "Minnesota Statutes \xA7 326B.101, State Building Code; Application"
+  type: statute
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/statutes/cite/326B.101
+  key_fields_supported: State Building Code application; commissioner administration
+    and amendment of state construction code
+  caveats:
+  - Official HTML statute
+  - current version should be checked for session changes.
+- source_id: src:usa-mn:stat-326b-106
+  title: "Minnesota Statutes \xA7 326B.106, General Powers of Commissioner of Labor\
+    \ and Industry"
+  type: statute
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/statutes/cite/326B.106
+  key_fields_supported: Commissioner authority; model-code adoption cycle; energy-code
+    cycles; elevator, trade, and fire-code enforcement relationships
+  caveats:
+  - Official HTML statute
+  - current version should be checked for session changes.
+- source_id: src:usa-mn:stat-326b-107
+  title: "Minnesota Statutes \xA7 326B.107, Public Buildings and State-Licensed Facilities"
+  type: statute
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/statutes/cite/326B.107
+  key_fields_supported: State administration/enforcement for public buildings and
+    state-licensed facilities; municipal agreements
+  caveats:
+  - Official HTML statute
+  - current version should be checked for session changes.
+- source_id: src:usa-mn:stat-326b-121
+  title: "Minnesota Statutes \xA7 326B.121, State Building Code; Municipal Enforcement"
+  type: statute
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/statutes/cite/326B.121
+  key_fields_supported: Statewide standard; municipal enforcement; local amendment/preemption;
+    geological-condition exception; exterior-work timing
+  caveats:
+  - Official HTML statute
+  - current version should be checked for session changes.
+- source_id: src:usa-mn:rule-1300
+  title: Minnesota Rules chapter 1300, State Building Code Administration
+  type: regulation
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/rules/1300/full
+  key_fields_supported: Code composition; optional provisions; definitions; administration
+  caveats:
+  - Official HTML rule
+  - detailed administrative provisions not exhaustively parsed.
+- source_id: src:usa-mn:rule-1305
+  title: Minnesota Rules chapter 1305, Minnesota Building Code
+  type: regulation
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/rules/1305/full
+  key_fields_supported: 2018 IBC incorporation; mandatory chapters; major amendments
+    and cross-references
+  caveats:
+  - Official HTML rule
+  - detailed amendments not exhaustively parsed.
+- source_id: src:usa-mn:rule-1309
+  title: Minnesota Rules chapter 1309, Minnesota Residential Code
+  type: regulation
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/rules/1309/full
+  key_fields_supported: 2018 IRC incorporation; mandatory chapters; replacement of
+    energy chapter
+  caveats:
+  - Official HTML rule
+  - detailed amendments not exhaustively parsed.
+- source_id: src:usa-mn:rule-1311
+  title: Minnesota Rules chapter 1311, Minnesota Conservation Code for Existing Buildings
+  type: regulation
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/rules/1311/full
+  key_fields_supported: 2018 IEBC incorporation; existing-building scope
+  caveats:
+  - Official HTML rule
+  - detailed amendments not exhaustively parsed.
+- source_id: src:usa-mn:rule-1346
+  title: Minnesota Rules chapter 1346, Minnesota Mechanical and Fuel Gas Code
+  type: regulation
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/rules/1346/full
+  key_fields_supported: 2018 IMC and 2018 IFGC incorporation; mechanical/fuel-gas
+    references
+  caveats:
+  - Official HTML rule
+  - detailed amendments not exhaustively parsed.
+- source_id: src:usa-mn:rule-1315
+  title: Minnesota Rules chapter 1315, Minnesota Electrical Code
+  type: regulation
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/rules/1315/full
+  key_fields_supported: 2023 NEC incorporation and electrical-code rules
+  caveats:
+  - Official HTML rule
+  - date transition confirmed through DLI electrical page.
+- source_id: src:usa-mn:dli-electrical-codes
+  title: Electrical codes and standards
+  type: agency_page
+  publisher: Minnesota Department of Labor and Industry
+  url: https://www.dli.mn.gov/business/electrical-contractors/electrical-codes-and-standards
+  key_fields_supported: 2023 NEC effective date and permit-date transition
+  caveats:
+  - Official agency page
+  - should be monitored for future NEC cycles.
+- source_id: src:usa-mn:rule-4714
+  title: Minnesota Rules chapter 4714, Minnesota Plumbing Code
+  type: regulation
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/rules/4714/full
+  key_fields_supported: 2018 UPC incorporation; plumbing administrative authority
+    definitions
+  caveats:
+  - Official HTML rule
+  - effective date not resolved from captured text.
+- source_id: src:usa-mn:dli-energy-conservation
+  title: Energy conservation
+  type: agency_page
+  publisher: Minnesota Department of Labor and Industry
+  url: https://www.dli.mn.gov/business/codes-and-laws/energy-conservation
+  key_fields_supported: Residential and Commercial Energy Code effective dates
+  caveats:
+  - Official agency page
+  - use rules for incorporated standards.
+- source_id: src:usa-mn:rule-1322
+  title: Minnesota Rules chapter 1322, Residential Energy Code
+  type: regulation
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/rules/1322/full
+  key_fields_supported: 2012 IECC Residential Provisions incorporation; residential
+    energy chapter
+  caveats:
+  - Official HTML rule
+  - detailed amendments not exhaustively parsed.
+- source_id: src:usa-mn:rule-1323
+  title: Minnesota Rules chapter 1323, Commercial Energy Code
+  type: regulation
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/rules/1323/full
+  key_fields_supported: ASHRAE 90.1-2019 incorporation; commercial energy chapter
+  caveats:
+  - Official HTML rule
+  - detailed amendments not exhaustively parsed.
+- source_id: src:usa-mn:rule-7511
+  title: Minnesota Rules chapter 7511, Minnesota State Fire Code
+  type: regulation
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/rules/7511/full
+  key_fields_supported: 2018 IFC incorporation as Minnesota State Fire Code
+  caveats:
+  - Official HTML rule
+  - effective date not resolved from captured text.
+- source_id: src:usa-mn:stat-299f-011
+  title: "Minnesota Statutes \xA7 299F.011, State Fire Code"
+  type: statute
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/statutes/cite/299F.011
+  key_fields_supported: State Fire Code applicability; local fire ordinance authority
+    and limits
+  caveats:
+  - Official HTML statute
+  - current version should be checked for session changes.
+- source_id: src:usa-mn:stat-299f-01
+  title: "Minnesota Statutes \xA7 299F.01, State Fire Marshal"
+  type: statute
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/statutes/cite/299F.01
+  key_fields_supported: State Fire Marshal Division within Department of Public Safety
+  caveats:
+  - Official HTML statute
+  - current version should be checked for session changes.
+- source_id: src:usa-mn:rule-7511-0202
+  title: Minnesota Rules part 7511.0202, Definitions / AHJ
+  type: regulation
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/rules/7511.0202/
+  key_fields_supported: Fire-code official and authority-having-jurisdiction definitions
+  caveats:
+  - Official HTML rule
+  - use in AHJ logic with local confirmation.
+- source_id: src:usa-mn:rule-1341
+  title: Minnesota Rules chapter 1341, Accessibility for Buildings and Facilities
+  type: regulation
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/rules/1341/full
+  key_fields_supported: IBC chapter 11, IEBC section 305, ICC/ANSI A117.1 incorporation
+    and amendments
+  caveats:
+  - Official HTML rule
+  - detailed amendments not exhaustively parsed.
+- source_id: src:usa-mn:rule-1307
+  title: Minnesota Rules chapter 1307, Elevators and Related Devices
+  type: regulation
+  publisher: Office of the Revisor of Statutes
+  url: https://www.revisor.mn.gov/rules/1307/full
+  key_fields_supported: Elevator/conveyance code scope and referenced ASME standards
+  caveats:
+  - Official HTML rule
+  - effective date not resolved from captured text.

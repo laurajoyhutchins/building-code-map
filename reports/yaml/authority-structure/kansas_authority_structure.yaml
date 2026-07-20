@@ -1,0 +1,24 @@
+---
+authority_structure:
+- field: Authority ID
+  value: ahj:usa-ks:state-fire-marshal
+- field: Authority name
+  value: Kansas Office of the State Fire Marshal
+- field: Authority type
+  value: state_fire_marshal / state fire and life-safety code authority
+- field: Legal basis
+  value: K.S.A. 31-133 and 31-134 as amended and published in 2026 HB 2739; K.A.R.
+    Article 22-1
+- field: Role
+  value: Adopts and administers the Kansas fire prevention code; may incorporate nationally
+    recognized fire-prevention code editions; reviews specified plans/code footprints
+    and local fire-code modifications; administers elevator safety.
+- field: Enforcement model
+  value: statewide fire/life-safety authority with local collaboration and local code
+    administration; not confirmed as a comprehensive statewide building-code agency
+    for all model-code families
+- field: Source IDs
+  value: src:usa-ks:ksreg-2026-hb2739; src:usa-ks:kar-22-1-fire-prevention-code; src:usa-ks:ksfm-plan-review;
+    src:usa-ks:ksfm-elevator-program
+- field: Verification status
+  value: partially_verified

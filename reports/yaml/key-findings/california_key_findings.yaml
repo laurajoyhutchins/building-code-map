@@ -1,0 +1,67 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: CBSC is the statewide approval/adoption and publication hub for California
+    building standards; state agency building standards must generally be submitted
+    to and approved or adopted by CBSC before codification.
+  confidence: 0.86
+  source_ids:
+  - src:usa-ca:hsc-18930
+  - src:usa-ca:hsc-18938
+  - src:usa-ca:hsc-18942
+  - src:usa-ca:cbsc-about
+- topic: Current Title 24 edition
+  finding: 2025 California Building Standards Code, Title 24, effective January 1,
+    2026 to December 31, 2028.
+  confidence: 0.84
+  source_ids:
+  - src:usa-ca:cbsc-home
+  - src:usa-ca:cbsc-codes
+- topic: Primary building code edition
+  finding: 2025 California Building Code, Title 24 Part 2; base model code identified
+    as the 2024 International Building Code by publisher/catalog sources.
+  confidence: 0.7
+  source_ids:
+  - src:usa-ca:cbsc-codes
+  - src:usa-ca:icc-cbc-2025
+- topic: Electrical code edition
+  finding: 2025 California Electrical Code, Title 24 Part 3, based on the 2023 National
+    Electrical Code according to catalog/publisher sources; current statewide effective
+    date follows the 2025 Title 24 cycle.
+  confidence: 0.68
+  source_ids:
+  - src:usa-ca:cbsc-codes
+  - src:usa-ca:saclaw-cec-2025
+  - src:usa-ca:icc-store-cec-2025
+- topic: Energy code applicability
+  finding: 2025 Energy Code applies to buildings with permit applications applied
+    for on or after January 1, 2026.
+  confidence: 0.9
+  source_ids:
+  - src:usa-ca:cec-2025-energy
+- topic: Fire code authority
+  finding: OSFM promulgates fire/life-safety regulations for inclusion in Title 24
+    and the State Fire Marshal/local fire chiefs enforce fire and panic-safety standards
+    in their respective areas.
+  confidence: 0.82
+  source_ids:
+  - src:usa-ca:osfm-title24
+  - src:usa-ca:hsc-13143
+  - src:usa-ca:hsc-13145
+  - src:usa-ca:osfm-fire-life-safety
+- topic: Local amendments
+  finding: City/county local modifications require statutory findings and filing;
+    residential modifications are restricted from October 1, 2025 through June 1,
+    2031 unless an exception applies.
+  confidence: 0.83
+  source_ids:
+  - src:usa-ca:hsc-17958
+  - src:usa-ca:hsc-17958-5
+  - src:usa-ca:hsc-17958-7
+  - src:usa-ca:hsc-18941-5
+- topic: Permit-date rule
+  finding: The applicable building standards are those approved by CBSC and effective
+    locally when the building permit application is submitted.
+  confidence: 0.88
+  source_ids:
+  - src:usa-ca:hsc-18938-5

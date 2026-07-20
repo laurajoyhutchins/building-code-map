@@ -1,0 +1,23 @@
+---
+authority_structure:
+- field: Authority ID
+  value: ahj:usa-wv:state-fire-commission
+- field: Authority name
+  value: West Virginia State Fire Commission
+- field: Authority type
+  value: state_commission_rulemaking_body
+- field: Legal basis
+  value: "W. Va. Code \xA715A-11-5; 87 CSR 4"
+- field: Role
+  value: Proposes legislative rules for the State Building Code, including building
+    energy codes, to safeguard life and property and ensure construction quality.
+- field: Enforcement model
+  value: State Building Code has force and effect in adopting counties and municipalities;
+    local jurisdictions enforce adopted building-code rules, while the Office of the
+    State Fire Marshal has state-level enforcement authority for fire/building-code
+    violations and related inspections.
+- field: Source IDs
+  value: src:usa-wv:statute:15a-11-5; src:usa-wv:statute:15a-10-2; src:usa-wv:statute:15a-10-3;
+    src:usa-wv:rule:87-04-final-2022
+- field: Verification status
+  value: partially_verified

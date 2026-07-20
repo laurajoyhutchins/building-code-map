@@ -1,0 +1,128 @@
+---
+authority_structure:
+- authority_id: ahj:usa-co:local-building-code-authorities
+  authority_name: County boards of commissioners and municipal governments
+  authority_type: local_adopting_authorities
+  legal_basis:
+  - CRS Title 30 county building-code provisions
+  - CRS Title 31 municipal energy-code provisions
+  role: Adopt and administer local building codes for ordinary local construction
+    where local code authority exists.
+  enforcement_model: local_primary_with_state_overlays
+  source_ids:
+  - src:usa-co:crs-title-30
+  - src:usa-co:crs-title-31
+  verification_status:
+  - partially_verified
+- authority_id: ahj:usa-co:energy-code-board
+  authority_name: Colorado Energy Code Board / Colorado Energy Office / Department
+    of Local Affairs
+  authority_type: state_model_code_and_energy_policy_authority
+  legal_basis:
+  - HB22-1362 / Session Law Ch. 301
+  - CRS energy-code provisions
+  role: Develops model energy-code language used in statutory local-government and
+    state-agency energy-code requirements.
+  enforcement_model: state_floor_local_enforcement
+  source_ids:
+  - src:usa-co:session-law-2022-ch301
+  - src:usa-co:crs-title-30
+  - src:usa-co:crs-title-31
+  verification_status:
+  - partially_verified
+- authority_id: ahj:usa-co:state-electrical-board
+  authority_name: Colorado State Electrical Board
+  authority_type: state_trade_code_authority
+  legal_basis:
+  - 3 CCR 710-1
+  - Electrical Practice Act references
+  role: Adopts and enforces electrical rules and minimum electrical standards.
+  enforcement_model: state_trade_program_with_possible_local_interfaces
+  source_ids:
+  - src:usa-co:dora-electrical
+  - src:usa-co:3-ccr-710-1
+  - src:usa-co:3-ccr-710-1-rule-info
+  verification_status:
+  - verified
+- authority_id: ahj:usa-co:state-plumbing-board
+  authority_name: Colorado State Plumbing Board
+  authority_type: state_trade_code_authority
+  legal_basis:
+  - 3 CCR 720-1
+  - Title 12 Article 155 references
+  role: Adopts Colorado Plumbing Code and Colorado Fuel Gas Code; governs plumbing/fuel
+    gas standards statewide for covered work.
+  enforcement_model: state_trade_program_with_local_more_stringent_reporting
+  source_ids:
+  - src:usa-co:3-ccr-720-1
+  - src:usa-co:3-ccr-720-1-rule-info
+  verification_status:
+  - verified
+- authority_id: ahj:usa-co:dfpc
+  authority_name: Colorado Division of Fire Prevention and Control
+  authority_type: state_fire_and_life_safety_program_authority
+  legal_basis:
+  - 8 CCR 1507-101
+  - 8 CCR 1507-30
+  role: Adopts building and fire codes for DFPC-administered programs and serves as
+    or delegates fire-code official functions for specified public-school and junior-college
+    scopes.
+  enforcement_model: state_administered_and_delegated_for_specified_scopes
+  source_ids:
+  - src:usa-co:8-ccr-1507-101
+  - src:usa-co:8-ccr-1507-30
+  verification_status:
+  - partially_verified
+- authority_id: ahj:usa-co:division-of-housing
+  authority_name: Colorado Division of Housing / State Housing Board
+  authority_type: state_special_building_program_authority
+  legal_basis:
+  - 8 CCR 1302-14
+  - HB22-1362 / Session Law Ch. 301
+  role: Regulates factory-built structures, tiny homes, installations, and certain
+    hotels, motels, and multi-family structures in areas where no construction standards
+    exist.
+  enforcement_model: state_special_scope_program
+  source_ids:
+  - src:usa-co:8-ccr-1302-14
+  - src:usa-co:8-ccr-1302-14-rule-info
+  - src:usa-co:session-law-2022-ch301
+  verification_status:
+  - partially_verified
+- authority_id: ahj:usa-co:office-of-state-architect
+  authority_name: Colorado Office of the State Architect
+  authority_type: state_facilities_authority
+  legal_basis:
+  - HB22-1362 / Session Law Ch. 301
+  role: Must adopt and enforce energy-code requirements for construction by state
+    agencies on covered state-owned or state-leased properties and facilities.
+  enforcement_model: state_facility_program
+  source_ids:
+  - src:usa-co:session-law-2022-ch301
+  verification_status:
+  - partially_verified
+- authority_id: ahj:usa-co:elevator-safety
+  authority_name: Elevator and escalator code authority
+  authority_type: state_trade_or_special_program_authority
+  legal_basis:
+  - referenced in CRS Title 30 and Title 31 energy-code timing exceptions
+  role: Authority and current adopted edition not independently extracted; listed
+    because the statutes distinguish elevator and escalator code updates from ordinary
+    building-code updates.
+  enforcement_model: unresolved
+  source_ids:
+  - src:usa-co:crs-title-30
+  - src:usa-co:crs-title-31
+  verification_status:
+  - unresolved
+- authority_id: ahj:usa-co:accessibility
+  authority_name: Accessibility authority
+  authority_type: state_or_local_special_program_authority
+  legal_basis:
+  - unresolved
+  role: Accessibility-specific construction-code authority was not extracted.
+  enforcement_model: unresolved
+  source_ids:
+  - src:usa-co:ccr-portal
+  verification_status:
+  - unresolved

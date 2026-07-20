@@ -1,0 +1,194 @@
+---
+official_sources:
+- source_id: src:usa-ky:krs-198b-050
+  title___description: KRS 198B.050, Uniform State Building Code
+  source_type: statute
+  publisher: Kentucky Legislative Research Commission
+  url: https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=46900
+  accessed: '2026-06-25'
+  supported_fields: Uniform State Building Code authority
+- source_id: src:usa-ky:krs-198b-060
+  title___description: KRS 198B.060, Local enforcement of Uniform State Building Code
+  source_type: statute
+  publisher: Kentucky Legislative Research Commission
+  url: https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=52659
+  accessed: '2026-06-25'
+  supported_fields:
+  - Local enforcement
+  - single-family local ordinance trigger
+- source_id: src:usa-ky:krs-198b-080
+  title___description: KRS 198B.080, Amendments to the Uniform State Building Code
+  source_type: statute
+  publisher: Kentucky Legislative Research Commission
+  url: https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=46903
+  accessed: '2026-06-25'
+  supported_fields: Statewide amendment process and statewide effect
+- source_id: src:usa-ky:krs-227-480
+  title___description: KRS 227.480, Authority to require electrical permits and electrical
+    standards
+  source_type: statute
+  publisher: Kentucky Legislative Research Commission
+  url: https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=50963
+  accessed: '2026-06-25'
+  supported_fields: Electrical standards and NEC minimum standard
+- source_id: src:usa-ky:815-kar-7-120
+  title___description: 815 KAR 7:120, Kentucky Building Code
+  source_type: regulation
+  publisher: Kentucky Legislative Research Commission
+  url: https://apps.legislature.ky.gov/law/kar/titles/815/007/120/
+  accessed: '2026-06-25'
+  supported_fields:
+  - KBC authority
+  - scope
+  - incorporation by reference
+  - current amendment history
+- source_id: src:usa-ky:815-kar-7-125
+  title___description: 815 KAR 7:125, Kentucky Residential Code
+  source_type: regulation
+  publisher: Kentucky Legislative Research Commission
+  url: https://apps.legislature.ky.gov/law/kar/titles/815/007/125/
+  accessed: '2026-06-25'
+  supported_fields:
+  - KRC authority
+  - scope
+  - single-family exception
+  - incorporation by reference
+  - current amendment history
+- source_id: src:usa-ky:815-kar-7-110
+  title___description: 815 KAR 7:110, Criteria for expanded local jurisdiction
+  source_type: regulation
+  publisher: Kentucky Legislative Research Commission
+  url: https://apps.legislature.ky.gov/law/kar/titles/815/007/110/
+  accessed: '2026-06-25'
+  supported_fields:
+  - Expanded local jurisdiction
+  - inspector requirements
+  - state retained jurisdiction
+  - preemption
+- source_id: src:usa-ky:815-kar-10-060
+  title___description: 815 KAR 10:060, Standards of Safety
+  source_type: regulation
+  publisher: Kentucky Legislative Research Commission
+  url: https://apps.legislature.ky.gov/law/kar/titles/815/010/060/
+  accessed: '2026-06-25'
+  supported_fields:
+  - Fire-safety standards
+  - State Fire Marshal/local fire jurisdiction
+  - existing-building fire rules
+- source_id: src:usa-ky:815-kar-20-130
+  title___description: 815 KAR 20:130, House sewers and storm water piping; methods
+    of installation
+  source_type: regulation
+  publisher: Kentucky Legislative Research Commission
+  url: https://apps.legislature.ky.gov/law/kar/titles/815/020/130/
+  accessed: '2026-06-25'
+  supported_fields: Plumbing code authority example under KRS 318.130 and 815 KAR
+    Chapter 20
+- source_id: src:usa-ky:815-kar-35-020
+  title___description: 815 KAR 35:020, Electrical inspections
+  source_type: regulation
+  publisher: Kentucky Legislative Research Commission
+  url: https://apps.legislature.ky.gov/law/kar/titles/815/035/020/
+  accessed: '2026-06-25'
+  supported_fields: Electrical inspection requirements
+- source_id: src:usa-ky:815-kar-8-100
+  title___description: 815 KAR 8:100, Local HVAC inspection program
+  source_type: regulation
+  publisher: Kentucky Legislative Research Commission
+  url: https://apps.legislature.ky.gov/law/kar/titles/815/008/100/
+  accessed: '2026-06-25'
+  supported_fields: Local HVAC program framework
+- source_id: src:usa-ky:815-kar-4-010
+  title___description: 815 KAR 4:010, Annual inspection of elevators, chairlifts,
+    fixed guideway systems, and platform lifts
+  source_type: regulation
+  publisher: Kentucky Legislative Research Commission
+  url: https://apps.legislature.ky.gov/law/kar/titles/815/004/010/
+  accessed: '2026-06-25'
+  supported_fields: Elevator annual inspection requirements
+- source_id: src:usa-ky:815-kar-4-025
+  title___description: 815 KAR 4:025, Permit and inspection fees for new and altered
+    elevators, chairlifts, fixed guideway systems, and platform lifts
+  source_type: regulation
+  publisher: Kentucky Legislative Research Commission
+  url: https://apps.legislature.ky.gov/law/kar/titles/815/004/025/
+  accessed: '2026-06-25'
+  supported_fields: Elevator permit and inspection framework
+- source_id: src:usa-ky:dhbc-building-code-enforcement
+  title___description: DHBC Division of Building Code Enforcement page
+  source_type: agency_page
+  publisher: Kentucky Department of Housing, Buildings and Construction
+  url: https://dhbc.ky.gov/newstatic_info.aspx?static_id=297
+  accessed: '2026-06-25'
+  supported_fields:
+  - DHBC role
+  - current KBC/KRC amendment links
+  - adoption note
+  - division responsibilities
+- source_id: src:usa-ky:dhbc-building-codes
+  title___description: DHBC Building Codes page
+  source_type: agency_page
+  publisher: Kentucky Department of Housing, Buildings and Construction
+  url: https://dhbc.ky.gov/newstatic_info.aspx?static_id=333
+  accessed: '2026-06-25'
+  supported_fields:
+  - State/local enforcement split
+  - jurisdictions without local inspection program
+  - KBC/KRC effective agency notes
+- source_id: src:usa-ky:dhbc-plumbing-code
+  title___description: DHBC Kentucky Plumbing Law, Regulations and Code page
+  source_type: agency_page
+  publisher: Kentucky Department of Housing, Buildings and Construction
+  url: https://dhbc.ky.gov/newstatic_info.aspx?static_id=342
+  accessed: '2026-06-25'
+  supported_fields: Plumbing law/regulation portal
+- source_id: src:usa-ky:dhbc-plumbing-division
+  title___description: DHBC Division of Plumbing page
+  source_type: agency_page
+  publisher: Kentucky Department of Housing, Buildings and Construction
+  url: https://dhbc.ky.gov/newstatic_info.aspx?static_id=337
+  accessed: '2026-06-25'
+  supported_fields: Plumbing permit and licensed plumber requirements
+- source_id: src:usa-ky:dhbc-hvac
+  title___description: DHBC Division of HVAC page
+  source_type: agency_page
+  publisher: Kentucky Department of Housing, Buildings and Construction
+  url: https://dhbc.ky.gov/newstatic_info.aspx?static_id=335
+  accessed: '2026-06-25'
+  supported_fields: HVAC administration and licensing framework
+- source_id: src:usa-ky:dhbc-elevators
+  title___description: DHBC Elevators page
+  source_type: agency_page
+  publisher: Kentucky Department of Housing, Buildings and Construction
+  url: https://dhbc.ky.gov/newstatic_info.aspx?static_id=328
+  accessed: '2026-06-25'
+  supported_fields: Elevator plan/specification approval and permitting
+- source_id: src:usa-ky:dhbc-proposed-kar
+  title___description: DHBC Proposed Administrative Regulations page
+  source_type: agency_page
+  publisher: Kentucky Department of Housing, Buildings and Construction
+  url: https://dhbc.ky.gov/kar.aspx
+  accessed: '2026-06-25'
+  supported_fields: Pending/proposed DHBC regulatory changes
+- source_id: src:usa-ky:kbc-2018-fourth-edition-pdf
+  title___description: 2018 Kentucky Building Code, Fourth Edition, February 2024
+  source_type: incorporated_code_pdf
+  publisher: Kentucky Department of Housing, Buildings and Construction
+  url: https://dhbc.ky.gov/Documents/2018%20Kentucky%20Building%20Code%204th%20Ed.pdf
+  accessed: '2026-06-25'
+  supported_fields:
+  - KBC amendments
+  - mini/maxi model
+  - date rules
+  - referenced-code provisions
+- source_id: src:usa-ky:krc-2018-third-edition-pdf
+  title___description: 2018 Kentucky Residential Code, Third Edition, August 2024
+  source_type: incorporated_code_pdf
+  publisher: Kentucky Department of Housing, Buildings and Construction
+  url: https://dhbc.ky.gov/Documents/2018%20Kentucky%20Residential%20Code%203d%20Ed.pdf
+  accessed: '2026-06-25'
+  supported_fields:
+  - KRC amendments
+  - mini/maxi model
+  - date rules
+  - NEC transition notes

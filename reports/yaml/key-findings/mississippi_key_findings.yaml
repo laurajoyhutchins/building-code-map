@@ -1,0 +1,49 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: Mississippi Building Codes Council is created by statute and adopts by
+    reference/amends discretionary statewide minimum codes for IBC, IRC, and other
+    listed code subjects.
+  confidence: 0.78
+  source_ids:
+  - src:usa-ms:stat-17-2-3
+- topic: State Uniform Construction Code
+  finding: Counties and municipalities must adopt/amend as minimum codes one of the
+    last three adopted editions of IBC or IRC, or other codes addressing electrical,
+    plumbing, mechanical, fire, and fuel gas, subject to opt-out and exemptions.
+  confidence: 0.74
+  source_ids:
+  - src:usa-ms:stat-17-2-4
+- topic: Coastal wind/flood rule
+  finding: Jackson, Harrison, Hancock, Stone, and Pearl River Counties, including
+    municipalities, have a separate wind/flood mitigation provision based on the 2003
+    IBC/IRC until local adoption of later minimum mandatory codes, with an opt-out
+    process.
+  confidence: 0.72
+  source_ids:
+  - src:usa-ms:stat-17-2-1
+- topic: Local enforcement
+  finding: Local governments enforce codes they adopt; they may use agreements with
+    other governmental entities or certified third-party providers for permitting/enforcement.
+  confidence: 0.78
+  source_ids:
+  - src:usa-ms:stat-17-2-5
+- topic: Fire prevention authority
+  finding: The State Fire Marshal promulgates and enforces the Mississippi Fire Prevention
+    Code; the current rule is based on the most current IFC and became effective 2025-01-01.
+  confidence: 0.86
+  source_ids:
+  - src:usa-ms:admin-19-7-ch7
+- topic: Local fire code substitution
+  finding: A county or municipality may adopt a fire prevention code not less stringent
+    than the MFPC, and that local code/enforcement mechanism applies instead for the
+    local covered scope.
+  confidence: 0.82
+  source_ids:
+  - src:usa-ms:admin-19-7-ch7
+- topic: Current code editions
+  finding: Exact current MBCC adopted editions and amendment package were not obtained
+    from an official MBCC adoption order in this pass.
+  confidence: 0.35
+  source_ids:
+  - none

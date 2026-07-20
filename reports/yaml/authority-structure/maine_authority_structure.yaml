@@ -1,0 +1,22 @@
+---
+authority_structure:
+- field: Authority ID
+  value: ahj:usa-me:tbcands-board
+- field: Authority name
+  value: Technical Building Codes and Standards Board
+- field: Authority type
+  value: statewide board within Maine Office of Community Affairs
+- field: Legal basis
+  value: "10 M.R.S. \xA7 9722"
+- field: Role
+  value: "Adopt, amend, and maintain MUBEC; provide training for municipal building\
+    \ officials, code enforcement officers, and third-party inspectors; resolve conflicts\
+    \ between MUBEC and fire/life-safety codes under 25 M.R.S. \xA7\xA7 2452 and 2465."
+- field: Enforcement model
+  value: Statewide code with population-based local enforcement and certified third-party
+    inspection options.
+- field: Source IDs
+  value: src:usa-me:statute-10-9722; src:usa-me:statute-10-9723; src:usa-me:statute-10-9724;
+    src:usa-me:statute-25-2373
+- field: Verification status
+  value: partially_verified

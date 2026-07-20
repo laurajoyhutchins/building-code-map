@@ -1,0 +1,29 @@
+---
+authority_structure:
+- field: Authority ID
+  value: '`ahj:usa-wi:dsps-dis`'
+- field: Authority name
+  value: Wisconsin Department of Safety and Professional Services, Division of Industry
+    Services
+- field: Authority type
+  value: state agency / state code-administration division
+- field: Legal basis
+  value: Wis. Stat. ch. 101 and Wis. Admin. Code SPS construction/trades chapters;
+    exact subsection mapping captured for high-value topics below and remains incomplete
+    for all programs.
+- field: Role
+  value: Administers statewide construction/trades code programs; reviews plans for
+    public buildings and places of employment; sets commercial energy and HVAC standards;
+    administers UDC consultation, credentials, and materials evaluation; coordinates
+    with local certified municipalities and delegated agents.
+- field: Enforcement model
+  value: state-administered with local certified municipality/delegated-agent participation
+    and municipal UDC enforcement
+- field: Source IDs
+  value:
+  - src:usa-wi:dsps-commercial-buildings
+  - src:usa-wi:dsps-plan-review
+  - src:usa-wi:dsps-udc-page
+  - src:usa-wi:dsps-rules-index
+- field: Verification status
+  value: verified_core

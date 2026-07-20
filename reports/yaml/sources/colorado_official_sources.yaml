@@ -1,0 +1,125 @@
+---
+official_sources:
+- source_id: src:usa-co:crs-title-30
+  title: Colorado Revised Statutes 2024, Title 30, Government - County
+  source_type: statute_pdf
+  publisher: Colorado General Assembly / Office of Legislative Legal Services
+  url: https://content.leg.colorado.gov/sites/default/files/images/olls/crs2024-title-30.pdf
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-co:crs-title-31
+  title: Colorado Revised Statutes 2024, Title 31, Government - Municipal
+  source_type: statute_pdf
+  publisher: Colorado General Assembly / Office of Legislative Legal Services
+  url: https://content.leg.colorado.gov/sites/default/files/images/olls/crs2024-title-31.pdf
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-co:session-law-2022-ch301
+  title: Session Laws of Colorado 2022, Chapter 301, HB22-1362
+  source_type: session_law_pdf
+  publisher: Colorado General Assembly
+  url: https://leg.colorado.gov/laws/session-laws/1691/download
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-co:ccr-portal
+  title: Code of Colorado Regulations portal
+  source_type: rules_portal
+  publisher: Colorado Secretary of State
+  url: https://www.sos.state.co.us/CCR/Welcome.do
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-co:dora-electrical
+  title: 'Electrical Board: Applications and Forms / program page'
+  source_type: agency_page
+  publisher: Colorado Department of Regulatory Agencies, Division of Professions and
+    Occupations
+  url: https://dpo.colorado.gov/Electrical/Applications
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: supplemental_official
+- source_id: src:usa-co:3-ccr-710-1-rule-info
+  title: 3 CCR 710-1 State Electrical Board Rules and Regulations current rule information
+  source_type: ccr_rule_info_page
+  publisher: Colorado Secretary of State
+  url: https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=211
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-co:3-ccr-710-1
+  title: 3 CCR 710-1 State Electrical Board Rules and Regulations
+  source_type: ccr_rule_pdf
+  publisher: Colorado Secretary of State
+  url: https://www.sos.state.co.us/CCR/GenerateRulePdf.do?fileName=3+CCR+710-1&ruleVersionId=11034
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-co:3-ccr-720-1-rule-info
+  title: 3 CCR 720-1 Plumbing Rules and Regulations current rule information
+  source_type: ccr_rule_info_page
+  publisher: Colorado Secretary of State
+  url: https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&agencyID=33&agencyName=Division+of+Professions+and+Occupations+-+&deptID=18&deptName=Department+of+Regulatory+Agencies&ruleId=2255
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-co:3-ccr-720-1
+  title: 3 CCR 720-1 Plumbing Rules and Regulations
+  source_type: ccr_rule_pdf
+  publisher: Colorado Secretary of State
+  url: https://www.sos.state.co.us/CCR/GenerateRulePdf.do?fileName=3+CCR+720-1&ruleVersionId=8778
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-co:8-ccr-1507-101
+  title: 8 CCR 1507-101 Building and Fire Code Adoption and Certification of Inspectors
+    for Fire & Life Safety Programs Administered by the State of Colorado
+  source_type: ccr_rule_pdf
+  publisher: Colorado Secretary of State / Colorado Division of Fire Prevention and
+    Control
+  url: https://www.sos.state.co.us/CCR/GenerateRulePdf.do?fileName=8+CCR+1507-101&ruleVersionId=12302
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-co:8-ccr-1507-30
+  title: 8 CCR 1507-30 Code Enforcement and Certification of Inspectors for Public
+    Schools, Charter Schools and Junior Colleges
+  source_type: ccr_rule_pdf
+  publisher: Colorado Secretary of State / Colorado Division of Fire Prevention and
+    Control
+  url: https://www.coloradosos.gov/CCR/GenerateRulePdf.do?fileName=8+CCR+1507-30&ruleVersionId=11809
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-co:8-ccr-1302-14-rule-info
+  title: 8 CCR 1302-14 current rule information
+  source_type: ccr_rule_info_page
+  publisher: Colorado Secretary of State / Colorado Division of Housing
+  url: https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&agencyID=51&agencyName=Division+of+Housing&deptID=12&deptName=Department+of+Local+Affairs&ruleId=3278&seriesNum=8+CCR+1302-14
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-co:8-ccr-1302-14
+  title: 8 CCR 1302-14 Non-Residential and Residential Factory-Built Structures and
+    Tiny Homes; Installations; and Selected No-Local-Standard Scopes
+  source_type: ccr_rule_pdf
+  publisher: Colorado Secretary of State / Colorado Division of Housing
+  url: https://www.sos.state.co.us/CCR/GenerateRulePdf.do?fileName=8+CCR+1302-14&ruleVersionId=11765
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified

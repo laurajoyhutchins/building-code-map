@@ -1,0 +1,118 @@
+---
+official_sources:
+- source_id: src:usa-in:idhs-fpbsc-overview
+  source_type: agency_page
+  publisher: Indiana Department of Homeland Security
+  title___locator: Boards and Commissions - Fire Prevention and Building Safety Commission
+  url: https://www.in.gov/dhs/boards-and-commissions/
+  key_facts_used: Commission role; statewide code authority; HEA 1575 local-ordinance
+    posture; petition/rulemaking pathway.
+  extraction_status: extracted_2026-06-25
+- source_id: src:usa-in:idhs-fpbsc-rules-overview
+  source_type: agency_page
+  publisher: Indiana Department of Homeland Security
+  title___locator: Rules of the Indiana Fire Prevention and Building Safety Commission
+  url: https://www.in.gov/dhs/boards-and-commissions/fpbsc-rules/
+  key_facts_used: Current Title 675 code-adoption matrix, model editions, effective
+    dates, and caveat that page is informal.
+  extraction_status: extracted_2026-06-25
+- source_id: src:usa-in:iac-675-12-gar-pdf
+  source_type: official_pdf_copy
+  publisher: Indiana Department of Homeland Security / Indiana Administrative Code
+  title___locator: 675 IAC 12 General Administrative Rules
+  url: https://www.in.gov/dhs/files/675-IAC-12-General-Administrative-Rules.pdf
+  key_facts_used: Commission/division definitions, organization of Title 675, design-release
+    date rule, design-release requirements, local plan-review certification, existing-building
+    rules.
+  extraction_status: extracted_2026-06-25
+- source_id: src:usa-in:idhs-building-plan-review
+  source_type: agency_page
+  publisher: Indiana Department of Homeland Security
+  title___locator: Building Plan Review
+  url: https://www.in.gov/dhs/building-plan-review/
+  key_facts_used: Class 1 plan review function; State Building Commissioner oversight;
+    state-adopted building codes.
+  extraction_status: extracted_2026-06-25
+- source_id: src:usa-in:idhs-code-enforcement
+  source_type: agency_page
+  publisher: Indiana Department of Homeland Security
+  title___locator: State Fire Marshal / Code Enforcement
+  url: https://www.in.gov/dhs/fire-and-building-safety/
+  key_facts_used: State Fire Marshal oversight; Code Enforcement Section inspections,
+    training, guidance, interpretations, and local department assistance; regulated
+    devices and boiler program context.
+  extraction_status: extracted_2026-06-25
+- source_id: src:usa-in:idhs-nonrule-interpretations
+  source_type: agency_page
+  publisher: Indiana Department of Homeland Security
+  title___locator: Non-Rule Policy Documents / Interpretations of the Commission's
+    Rules
+  url: https://www.in.gov/dhs/boards-and-commissions/non-rule-policy-documentsinterpretations-of-the-commissions-rules/
+  key_facts_used: Non-rule interpretations generally followed by Commission, IDHS,
+    local departments, and AHJs enforcing state building/fire-safety laws.
+  extraction_status: extracted_2026-06-25
+- source_id: src:usa-in:idhs-building-code-update
+  source_type: agency_page
+  publisher: Indiana Department of Homeland Security
+  title___locator: Building Code Update Committee
+  url: https://www.in.gov/dhs/boards-and-commissions/building-code-update-committee/
+  key_facts_used: Pending work to draft proposed rule updating current Indiana Building
+    Code at 675 IAC 13-2.6 using 2024 IBC; Commission retains authority.
+  extraction_status: extracted_2026-06-25
+- source_id: src:usa-in:idhs-fire-code-update
+  source_type: agency_page
+  publisher: Indiana Department of Homeland Security
+  title___locator: Fire Prevention Code Update Committee
+  url: https://www.in.gov/dhs/boards-and-commissions/fire-prevention-update-committee/
+  key_facts_used: Pending work to draft proposed rule updating current fire prevention
+    code at 675 IAC 22-2.5 using 2024 model code; Commission retains authority.
+  extraction_status: extracted_2026-06-25
+- source_id: src:usa-in:idhs-electrical-code-update
+  source_type: agency_page
+  publisher: Indiana Department of Homeland Security
+  title___locator: Indiana Electrical Code Update Committee
+  url: https://www.in.gov/dhs/boards-and-commissions/indiana-electrical-code-update-committee/
+  key_facts_used: Review of proposed amendments to 2023 NFPA 70 NEC; path to Commission
+    review and rule promulgation.
+  extraction_status: extracted_2026-06-25
+- source_id: src:usa-in:idhs-rule-readoption-2025
+  source_type: agency_pdf
+  publisher: Indiana Department of Homeland Security / Fire Prevention and Building
+    Safety Commission
+  title___locator: 'Rulemaking Docket: Rule Readoption, LSA Document No. 24-566'
+  url: https://www.in.gov/dhs/files/Rulemaking-Docket-Rule-Readoptions-2025.pdf
+  key_facts_used: Readoptions without changes for residential, electrical, pool, amusement,
+    and boiler rules; repeal of 675 IAC 24-1; public-comment timetable.
+  extraction_status: extracted_2026-06-25
+- source_id: src:usa-in:iar-readoption-lsa-24-566
+  source_type: register_notice
+  publisher: Indiana Register / Legislative Services Agency
+  title___locator: LSA Document 24-566, Rule Readoption
+  url: https://iar.iga.in.gov/register/20251210-IR-675240566RFA
+  key_facts_used: Final-rule locator for readoption docket; page content was JavaScript-gated
+    in browser tool but search result confirms official Register page.
+  extraction_status: locator_verified_2026-06-25
+- source_id: src:usa-in:iar-electrical-lsa-26-62
+  source_type: register_notice / agency_pdf
+  publisher: Indiana Register / IDHS
+  title___locator: LSA Document 26-62, Indiana Electrical Code, 2026 Edition
+  url: https://iar.iga.in.gov/register/20260311-IR-675260062FNA
+  key_facts_used: First public comment period and proposed electrical-code update
+    path; IDHS docket summary indicates 2026 Indiana Electrical Code replacing 2009
+    code.
+  extraction_status: extracted_2026-06-25
+- source_id: src:usa-in:iar-plumbing-lsa-26-128
+  source_type: register_notice
+  publisher: Indiana Register / Legislative Services Agency
+  title___locator: LSA Document 26-128, Indiana Plumbing Code
+  url: https://iar.iga.in.gov/register/20260520-IR-675260128FNA
+  key_facts_used: First public comment period for plumbing-code update proceeding.
+  extraction_status: locator_verified_2026-06-25
+- source_id: src:usa-in:iar-title-675-current
+  source_type: administrative_code_portal
+  publisher: Indiana Register / Indiana Administrative Code
+  title___locator: Title 675 Fire Prevention and Building Safety Commission
+  url: https://iar.iga.in.gov/latestTitle/675
+  key_facts_used: Official rule-text portal for Title 675 current rules; used as official
+    locator backing DHS article list.
+  extraction_status: locator_verified_2026-06-25

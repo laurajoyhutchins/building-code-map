@@ -1,0 +1,27 @@
+---
+authority_structure:
+- field: Authority ID
+  value: '`ahj:usa-mn:dli-commissioner`'
+- field: Authority name
+  value: Minnesota Commissioner of Labor and Industry / Department of Labor and Industry,
+    Construction Codes and Licensing Division
+- field: Authority type
+  value: state_agency_commissioner
+- field: Legal basis
+  value: "Minnesota Statutes \xA7\xA7 326B.02, 326B.101, 326B.106"
+- field: Role
+  value: Adopt, administer, and amend the State Building Code; administer construction-code
+    programs through DLI/CCLD; enforce specified trade-code provisions under statutory
+    direction.
+- field: Enforcement model
+  value: statewide_standard_with_municipal_administration_where_required_or_adopted;
+    state_reserved_trade_and_public_facility_roles
+- field: Source IDs
+  value:
+  - src:usa-mn:stat-326b-02
+  - src:usa-mn:stat-326b-101
+  - src:usa-mn:stat-326b-106
+  - src:usa-mn:dli-ccld-overview
+  - src:usa-mn:dli-building-code-overview
+- field: Verification status
+  value: verified_core_authority

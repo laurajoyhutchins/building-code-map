@@ -1,0 +1,21 @@
+---
+authority_structure:
+- field: Authority ID
+  value: ahj:usa-ms:mbcc
+- field: Authority name
+  value: Mississippi Building Codes Council
+- field: Authority type
+  value: statewide council / code-adoption body
+- field: Legal basis
+  value: "Miss. Code \xA7 17-2-3"
+- field: Role
+  value: Adopts by reference and amends one of the last three editions of specified
+    model codes as discretionary statewide minimum codes; produces recommendations
+    for mandatory statewide minimum codes.
+- field: Enforcement model
+  value: Local enforcement for locally adopted construction codes; MBCC is not verified
+    as the direct statewide enforcement agency in this pass.
+- field: Source IDs
+  value: src:usa-ms:stat-17-2-3; src:usa-ms:stat-17-2-5
+- field: Verification status
+  value: partially_verified

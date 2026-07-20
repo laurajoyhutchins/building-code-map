@@ -1,0 +1,110 @@
+---
+official_sources:
+- source_id: src:usa-az:ars:9-801
+  title: "A.R.S. \xA7 9-801, Definitions"
+  source_type: statute
+  publisher: Arizona Legislature
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-az:ars:9-802
+  title: "A.R.S. \xA7 9-802, Procedure for adoption by reference"
+  source_type: statute
+  publisher: Arizona Legislature
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-az:ars:9-807
+  title: "A.R.S. \xA7 9-807, Mandated fire sprinklers in certain residences"
+  source_type: statute
+  publisher: Arizona Legislature
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-az:ars:9-808
+  title: "A.R.S. \xA7 9-808, Fire apparatus access road or approved route; fire watch\
+    \ requirements"
+  source_type: statute
+  publisher: Arizona Legislature
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-az:ars:11-861
+  title: "A.R.S. \xA7 11-861, Adoption of codes by reference; limitations; method\
+    \ of adoption"
+  source_type: statute
+  publisher: Arizona Legislature
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-az:ars:11-862
+  title: "A.R.S. \xA7 11-862, Advisory board; appointment; terms; duties"
+  source_type: statute
+  publisher: Arizona Legislature
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-az:ars:34-461
+  title: "A.R.S. \xA7 34-461, Applicability of local codes; exceptions; definition"
+  source_type: statute
+  publisher: Arizona Legislature
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-az:ars:37-1381
+  title: "A.R.S. \xA7 37-1381, Office of the State Fire Marshal"
+  source_type: statute
+  publisher: Arizona Legislature
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-az:ars:37-1383
+  title: "A.R.S. \xA7 37-1383, State Fire Marshal powers and duties"
+  source_type: statute
+  publisher: Arizona Legislature
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-az:aac:r4-36-201
+  title: A.A.C. R4-36-201, Incorporation by Reference of the International Fire Code
+  source_type: administrative_rule
+  publisher: Arizona Secretary of State / Department of Forestry and Fire Management
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-az:ars:48-805
+  title: "A.R.S. \xA7 48-805, Fire district powers and duties"
+  source_type: statute
+  publisher: Arizona Legislature
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-az:aac:r20-5-507
+  title: A.A.C. R20-5-507, Safety Code for Elevators, Escalators, Dumbwaiters, Moving
+    Walks, Material Lifts, Special Purpose Personnel Elevators, and Dumbwaiters with
+    Automatic Transfer Devices
+  source_type: administrative_rule
+  publisher: Arizona Secretary of State / Industrial Commission of Arizona
+  accessed_date: '2026-06-25'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: verified
+- source_id: src:usa-az:constitution:article13
+  title: Arizona Constitution, Article 13, Municipal Corporations
+  source_type: constitution
+  publisher: Arizona Legislature
+  accessed_date: '2026-06-24'
+  snapshot_id: snapshot-pending
+  checksum: snapshot-pending
+  status: retained_from_baseline

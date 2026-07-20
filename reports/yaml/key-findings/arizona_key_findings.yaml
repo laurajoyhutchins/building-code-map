@@ -1,0 +1,72 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: No single statewide private building code adoption was verified; ordinary
+    construction codes are primarily adopted locally by municipalities and counties.
+  confidence: 0.82
+  source_ids:
+  - src:usa-az:ars:9-801
+  - src:usa-az:ars:9-802
+  - src:usa-az:ars:11-861
+- topic: Municipal code adoption
+  finding: Municipalities may adopt a code or public record by reference; "code" includes
+    building, electrical wiring, fire prevention, wildland-urban interface, and other
+    proper subjects of municipal legislation.
+  confidence: 0.92
+  source_ids:
+  - src:usa-az:ars:9-801
+  - src:usa-az:ars:9-802
+- topic: County code adoption
+  finding: Counties with zoning may adopt and enforce building and related codes for
+    zoned unincorporated areas; county codes are limited to nationally adopted building/electrical/plumbing/mechanical
+    codes or the code adopted by the largest city in the county.
+  confidence: 0.93
+  source_ids:
+  - src:usa-az:ars:11-861
+- topic: State Fire Code
+  finding: Arizona has adopted the 2024 International Fire Code as the State Fire
+    Code, with specified appendices and state modifications.
+  confidence: 0.95
+  source_ids:
+  - src:usa-az:aac:r4-36-201
+- topic: Public buildings
+  finding: "Public buildings follow applicable local building, plumbing, electrical,\
+    \ fire, and mechanical codes; if no local codes exist, they use the State Fire\
+    \ Code plus the largest city in the county's building, plumbing, electrical,\
+    \ and mechanical codes."
+  confidence: 0.95
+  source_ids:
+  - src:usa-az:ars:34-461
+- topic: Fire districts
+  finding: Fire districts may adopt a nationally recognized fire code approved by
+    the State Fire Marshal after voter approval, and amendments/revisions require
+    State Fire Marshal approval.
+  confidence: 0.9
+  source_ids:
+  - src:usa-az:ars:48-805
+- topic: Elevator / conveyance
+  finding: Covered conveyances installed, repaired, or altered on or after January
+    1, 2023 must comply with ASME A17.1-2019 or ASME A17.7-2007 as referenced in ASME
+    A17.1-2019.
+  confidence: 0.92
+  source_ids:
+  - src:usa-az:aac:r20-5-507
+- topic: Local amendments
+  finding: Municipal code amendments follow the same adoption-by-reference process.
+    County and fire-district amendments are subject to additional statutory limits.
+  confidence: 0.84
+  source_ids:
+  - src:usa-az:ars:9-802
+  - src:usa-az:ars:11-861
+  - src:usa-az:ars:48-805
+- topic: Effective / transition rules
+  finding: Verified for State Fire Code, elevator/conveyance, public buildings, municipal
+    adoption-by-reference procedure, and county adoption/update mechanics; not fully
+    resolved for each local ordinance.
+  confidence: 0.76
+  source_ids:
+  - src:usa-az:aac:r4-36-201
+  - src:usa-az:aac:r20-5-507
+  - src:usa-az:ars:34-461
+  - src:usa-az:ars:9-802
+  - src:usa-az:ars:11-861

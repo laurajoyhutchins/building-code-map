@@ -1,0 +1,83 @@
+---
+key_findings:
+- topic: Primary statewide building/fire-life-safety authority
+  finding: Alaska DPS Division of Fire and Life Safety / State Fire Marshal adopts
+    and enforces the Alaska Fire Code based on the IFC with Alaska-specific amendments
+    and administers plan review and inspections.
+  confidence: 0.94
+  source_ids:
+  - src:usa-ak:dps:fire-life-safety-page
+  - src:usa-ak:dps:aac-13-50-55-fire-prevention-pdf
+- topic: Commercial/state fire-life-safety building code
+  finding: 13 AAC 50.020 adopts the 2021 IBC, with chapters and amendments, to regulate
+    all occupancies and buildings within its stated scope.
+  confidence: 0.92
+  source_ids:
+  - src:usa-ak:dps:aac-13-50-55-fire-prevention-pdf
+- topic: Existing building code
+  finding: 13 AAC 50.021 adopts the 2021 IEBC, with amendments, to regulate all occupancies
+    and buildings within its stated scope.
+  confidence: 0.9
+  source_ids:
+  - src:usa-ak:dps:aac-13-50-55-fire-prevention-pdf
+- topic: Mechanical code
+  finding: 13 AAC 50.023 adopts the 2021 IMC, with amendments.
+  confidence: 0.9
+  source_ids:
+  - src:usa-ak:dps:aac-13-50-55-fire-prevention-pdf
+- topic: Fuel gas code
+  finding: '13 AAC 50.024 adopts only specified 2021 IFGC provisions: Chapter 3 Section
+    304 and Chapters 6 and 7.'
+  confidence: 0.88
+  source_ids:
+  - src:usa-ak:dps:aac-13-50-55-fire-prevention-pdf
+- topic: Fire code
+  finding: 13 AAC 50.025 adopts the 2021 IFC, with specified chapters reserved and
+    Alaska amendments.
+  confidence: 0.94
+  source_ids:
+  - src:usa-ak:dps:aac-13-50-55-fire-prevention-pdf
+- topic: Electrical code
+  finding: DOLWD Mechanical Inspection lists 8 AAC 70.025(a) as the 2020 National
+    Electrical Code and 8 AAC 70.025(b) as the 2017 National Electrical Safety Code.
+  confidence: 0.86
+  source_ids:
+  - src:usa-ak:dolwd:mechanical-inspection-page
+- topic: Plumbing code
+  finding: DOLWD Mechanical Inspection lists 2018 UPC, 2018 Uniform Swimming Pool/Spa/Hot
+    Tub Code, and 2018 Uniform Solar Energy/Hydronics/Geothermal Code as adopted codes;
+    the April 2020 plumbing publication shows 8 AAC 63.010 adopting those 2018 IAPMO
+    codes.
+  confidence: 0.85
+  source_ids:
+  - src:usa-ak:dolwd:mechanical-inspection-page
+  - src:usa-ak:dolwd:plumbing-code-pdf
+- topic: AHFC residential code
+  finding: AHFC materials identify the 2018 IRC with Alaska-specific amendments as
+    the applicable AHFC residential building code/minimum construction standard.
+  confidence: 0.82
+  source_ids:
+  - src:usa-ak:ahfc:codes-standards
+  - src:usa-ak:ahfc:minimum-construction-standards
+  - src:usa-ak:ahfc:2018-code-adoption-packet
+- topic: AHFC energy standard
+  finding: AHFC BEES is comprised of the 2018 IECC, ASHRAE 62.2-2016, and Alaska-specific
+    amendments, with a minimum 5 Star energy rating.
+  confidence: 0.88
+  source_ids:
+  - src:usa-ak:ahfc:bees
+- topic: Local fire/life-safety amendments
+  finding: Local fire/life-safety revisions must be submitted to the State Fire Marshal,
+    and less-stringent local minimum standards require written State Fire Marshal
+    approval.
+  confidence: 0.92
+  source_ids:
+  - src:usa-ak:dps:aac-13-50-55-fire-prevention-pdf
+- topic: Local general authority
+  finding: Home-rule boroughs and cities may exercise all legislative powers not prohibited
+    by law or charter, but code-specific state minimums and approval rules remain
+    controlling where applicable.
+  confidence: 0.86
+  source_ids:
+  - src:usa-ak:constitution:article-x
+  - src:usa-ak:dps:aac-13-50-55-fire-prevention-pdf

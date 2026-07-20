@@ -1,0 +1,62 @@
+---
+key_findings:
+- topic: State construction-code authority
+  finding: The Board of Community Affairs / DCA adopts and maintains Georgia state
+    minimum standard construction codes.
+  confidence: 0.98
+  source_ids:
+  - src:usa-ga:dca:current-codes
+  - src:usa-ga:dca:new-codes-2026
+  - src:usa-ga:sos:rule-110-11-1
+- topic: 2026 mandatory code package
+  finding: DCA announced that listed 2024 model-code adoptions and the 2026 NEC amendments
+    have an effective date of 2026-01-01.
+  confidence: 0.98
+  source_ids:
+  - src:usa-ga:dca:new-codes-2026
+  - src:usa-ga:dca:current-codes
+- topic: Mandatory/permissive distinction
+  finding: Mandatory codes apply to all construction whether or not locally enforced;
+    permissive codes apply only if locally adopted and enforced.
+  confidence: 0.99
+  source_ids:
+  - src:usa-ga:dca:mandatory-permissive
+  - src:usa-ga:dca:construction-codes
+- topic: Fire authority
+  finding: The 2024 IFC is listed in the current mandatory code package, and Safety
+    Fire Commissioner rules establish state minimum fire safety standards with statewide
+    effect.
+  confidence: 0.96
+  source_ids:
+  - src:usa-ga:dca:current-codes
+  - src:usa-ga:dca:new-codes-2026
+  - src:usa-ga:sos:rule-120-3-3
+  - src:usa-ga:oci:fire-plan-review
+- topic: Accessibility authority
+  finding: Chapter 120-3-20 establishes Georgia accessibility requirements and adopts
+    the 2010 ADA Standards framework for covered facilities; DCA industrialized-building
+    guidance lists Chapter 120-3-20 / 2010 ADA Standards.
+  confidence: 0.94
+  source_ids:
+  - src:usa-ga:sos:rule-120-3-20
+  - src:usa-ga:dca:ib-codes-info-sheet-2026
+- topic: Local enforcement
+  finding: A local government that chooses to enforce state minimum codes must enforce
+    the latest editions and amendments adopted by DCA and must adopt local administrative
+    procedures.
+  confidence: 0.98
+  source_ids:
+  - src:usa-ga:dca:enforcement
+- topic: Local amendments
+  finding: Local amendments must be stricter, locally justified, and submitted to
+    DCA 60 days before adoption; DCA provides recommendations rather than approval
+    or disapproval.
+  confidence: 0.99
+  source_ids:
+  - src:usa-ga:dca:enforcement
+- topic: Elevator / escalator authority
+  finding: OCI is responsible for elevator inspections and for issuing Certificates
+    of Authority for companies or individuals that install, maintain, or service elevators.
+  confidence: 0.94
+  source_ids:
+  - src:usa-ga:oci:elevators-escalators

@@ -1,0 +1,150 @@
+---
+official_sources:
+- source_id: src:usa-sc:code-title-6-ch9
+  source_name: S.C. Code of Laws, Title 6, Chapter 9, Building Codes
+  publisher: South Carolina Legislative Services Agency / Statehouse
+  url___locator: https://www.scstatehouse.gov/code/t06c009.php
+  source_type: statute
+  key_use: Primary building-code authority, local enforcement, adoption procedure,
+    local variations, state/school exceptions, inspection-date rules
+  last_checked: '2026-06-26'
+  caveat: Online unannotated statutory text; verify against official published code
+    for legal use.
+- source_id: src:usa-sc:code-title-6-ch10-energy
+  source_name: S.C. Code of Laws, Title 6, Chapter 10, Building Energy Efficiency
+    Standards
+  publisher: South Carolina Legislative Services Agency / Statehouse
+  url___locator: https://www.scstatehouse.gov/code/t06c010.php
+  source_type: statute
+  key_use: 2009 IECC Energy Standard, statewide compliance, local enforcement, variances
+  last_checked: '2026-06-26'
+  caveat: Online unannotated statutory text; verify against official published code
+    for legal use.
+- source_id: src:usa-sc:code-title-10-ch5-accessibility
+  source_name: S.C. Code of Laws, Title 10, Chapter 5, Construction of Public Buildings
+    for Access by Persons with Disabilities
+  publisher: South Carolina Legislative Services Agency / Statehouse
+  url___locator: https://www.scstatehouse.gov/code/t10c005.php
+  source_type: statute
+  key_use: Accessibility Act and ICC/ANSI A117.1 basis
+  last_checked: '2026-06-26'
+  caveat: Source was used for high-level authority only; detailed extraction remains
+    partial.
+- source_id: src:usa-sc:code-title-23-ch9-fire-marshal
+  source_name: S.C. Code of Laws, Title 23, Chapter 9, State Fire Marshal
+  publisher: South Carolina Legislative Services Agency / Statehouse
+  url___locator: https://www.scstatehouse.gov/code/t23c009.php
+  source_type: statute
+  key_use: State Fire Marshal authority and statewide fire-prevention / life-safety
+    scope
+  last_checked: '2026-06-26'
+  caveat: Online unannotated statutory text; verify against official published code
+    for legal use.
+- source_id: src:usa-sc:regs-status-page
+  source_name: South Carolina Code of State Regulations status / disclaimer page
+  publisher: South Carolina Legislative Services Agency / Statehouse
+  url___locator: https://www.scstatehouse.gov/coderegs/statmast.php
+  source_type: official portal notice
+  key_use: Current-through date and unofficial online regulation caveat
+  last_checked: '2026-06-26'
+  caveat: States online unannotated regulations are current through State Register
+    Vol. 50, Issue 3, effective 2026-03-27, but are not the official version.
+- source_id: src:usa-sc:regs-ch8-bcc
+  source_name: S.C. Code of Regulations, Chapter 8, Building Codes Council
+  publisher: South Carolina Legislative Services Agency / Statehouse
+  url___locator: https://www.scstatehouse.gov/coderegs/Chapter%208.pdf
+  source_type: regulation courtesy copy
+  key_use: Council procedures, building-code adoption / modification procedures, current
+    2021 amendment articles, accessibility regulations, modular program
+  last_checked: '2026-06-26'
+  caveat: Online unannotated regulation copy; not official per Statehouse disclaimer.
+    Treat as authoritative portal copy pending legal verification against official
+    published regulations.
+- source_id: src:usa-sc:llr-bcc-home
+  source_name: South Carolina Building Codes Council homepage
+  publisher: South Carolina Department of Labor, Licensing and Regulation
+  url___locator: https://llr.sc.gov/bcc/
+  source_type: agency page
+  key_use: Council function, 2021 code effective date, contact path
+  last_checked: '2026-06-26'
+  caveat: Agency web page; may change without formal archival history.
+- source_id: src:usa-sc:llr-building-code-adoption
+  source_name: Building Code Adoption
+  publisher: South Carolina Department of Labor, Licensing and Regulation, Building
+    Codes Council
+  url___locator: https://llr.sc.gov/bcc/BCAdoption.aspx
+  source_type: agency page
+  key_use: 2021 adoption / effective date, 2024-cycle modification and notice materials,
+    Greenville County local modification reference
+  last_checked: '2026-06-26'
+  caveat: Agency web page; use with State Register / statute for legal status.
+- source_id: src:usa-sc:llr-building-codes-in-effect-2022
+  source_name: Building Codes in Effect for South Carolina
+  publisher: South Carolina Department of Labor, Licensing and Regulation, Building
+    Codes Council
+  url___locator: https://llr.sc.gov/bcc/PDFfiles/Building%20Codes%20in%20Effect%20for%20South%20Carolina%20Final.pdf
+  source_type: agency PDF
+  key_use: Current 2021/2020 mandatory code list, 2009 IECC, accessibility note, adoption
+    and implementation history
+  last_checked: '2026-06-26'
+  caveat: PDF dated 12/2022; current for 2021 package but should be reconciled with
+    2024-cycle materials and any later LLR updates.
+- source_id: src:usa-sc:llr-2021-code-adoption-notice
+  source_name: SC Code Adoption Notice, 2021 South Carolina Building Codes
+  publisher: South Carolina Department of Labor, Licensing and Regulation, Building
+    Codes Council
+  url___locator: https://llr.sc.gov/bcc/PDFfiles/SC-Code-Adoption-Notice.pdf
+  source_type: agency PDF notice
+  key_use: 2021 adoption notice, mandatory code list, implementation date, modification
+    validity statement
+  last_checked: '2026-06-26'
+  caveat: Agency notice; use with Code and regulations for legal status.
+- source_id: src:usa-sc:llr-2024-code-intent
+  source_name: Notice of Intent to Modify and Adopt 2024 Building Codes
+  publisher: South Carolina Department of Labor, Licensing and Regulation / State
+    Register notice
+  url___locator: LLR Building Codes Council 2024 Notice of Intent PDF
+  source_type: notice / agency PDF
+  key_use: 2024 I-Code and 2023 NEC modification / adoption process and comment window
+  last_checked: '2026-06-26'
+  caveat: Used for process timing and code families; final legal effect requires State
+    Register / codified regulation verification.
+- source_id: src:usa-sc:state-register-2025-2024-code-proposed
+  source_name: South Carolina State Register, Vol. 49, Issue 10, October 24, 2025,
+    proposed 2024 Building Codes regulations
+  publisher: South Carolina State Register
+  url___locator: https://www.scstatehouse.gov/state_register.php?file=Sr49-10.pdf&first=FILE&pdf=1
+  source_type: proposed regulation publication
+  key_use: 2024-cycle proposed regulations; 2027-01-01 enforcement-purpose effective
+    date stated in proposal
+  last_checked: '2026-06-26'
+  caveat: Proposed regulations are not final by themselves; use only for pending-cycle
+    watch unless final publication is reconciled.
+- source_id: src:usa-sc:llr-2026-2024-code-final-mods
+  source_name: 2024 Code Modifications as published in the State Register on 2026-05-22
+  publisher: South Carolina Department of Labor, Licensing and Regulation / State
+    Register
+  url___locator: LLR Building Codes Council 2024 modifications link from Building
+    Code Adoption page
+  source_type: final regulation / agency-linked publication
+  key_use: 2024-cycle final modification publication reference
+  last_checked: '2026-06-26'
+  caveat: Full final text extraction remains incomplete; reconcile with codified Chapter
+    8 before replacing current 2021 package.
+- source_id: src:usa-sc:state-fire-codes-standards
+  source_name: Codes and Standards
+  publisher: South Carolina State Fire / Office of State Fire Marshal, LLR
+  url___locator: https://statefire.llr.sc.gov/osfm/codes.aspx
+  source_type: agency page
+  key_use: State Fire code / standards page, 2021 effective date reference, state/school
+    project path, OSFM contact
+  last_checked: '2026-06-26'
+  caveat: Agency web page; operational enforcement scope needs program-specific confirmation.
+- source_id: src:usa-sc:osfm-statutes-regulations
+  source_name: Statutes and Regulations
+  publisher: South Carolina State Fire / Office of State Fire Marshal, LLR
+  url___locator: https://statefire.llr.sc.gov/osfm/statutes.aspx
+  source_type: agency page
+  key_use: Fire Marshal statutes and regulations navigation
+  last_checked: '2026-06-26'
+  caveat: Supplemental navigation only; statute text is preferred for legal assertions.

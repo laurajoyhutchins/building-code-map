@@ -1,0 +1,64 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: Commissioner of Public Safety / Division of Fire Safety is the primary
+    verified authority for statewide public-building fire and building safety rules.
+  confidence: 0.85
+  source_ids:
+  - src:usa-vt:stat-20-2731
+  - src:usa-vt:sos-rule-25p022-fire-building
+- topic: Scope of public-building rules
+  finding: The statutory public-building definition includes many nonresidential and
+    public-use premises, while owner-occupied single-family residences are generally
+    excluded unless used for public purposes listed in statute.
+  confidence: 0.8
+  source_ids:
+  - src:usa-vt:stat-20-2730
+- topic: Primary building/fire code cycle
+  finding: A 2025 Vermont Fire & Building Safety Code rule record is adopted; precise
+    model-code edition mapping still needs confirmation in the full state code text.
+  confidence: 0.62
+  source_ids:
+  - src:usa-vt:sos-rule-25p022-fire-building
+  - src:usa-vt:burlington-adopted-codes
+  - src:usa-vt:bennington-2025-code-release
+- topic: Electrical code authority and edition
+  finding: Electricians' Licensing Board rules may adopt a nationally recognized electrical
+    code; the 2025 Vermont Electrical Safety Rules adopt the 2023 NEC.
+  confidence: 0.88
+  source_ids:
+  - src:usa-vt:stat-26-891-electrical
+  - src:usa-vt:sos-rule-25p023-electrical
+- topic: Plumbing code authority and edition
+  finding: Plumber's Examining Board rules may adopt a nationally recognized plumbing
+    code; the 2025 Vermont Plumbing Rules update the rules to the 2024 IPC.
+  confidence: 0.86
+  source_ids:
+  - src:usa-vt:stat-26-2173-plumbing
+  - src:usa-vt:sos-rule-25p024-plumbing
+- topic: Energy code authority
+  finding: Commissioner of Public Service adopts and updates RBES and CBES; latest
+    support guidance identifies both 2024 standards as effective 2024-07-01.
+  confidence: 0.82
+  source_ids:
+  - src:usa-vt:stat-30-51-rbes
+  - src:usa-vt:stat-30-53-cbes
+  - src:usa-vt:efficiency-vt-energy-code-support
+- topic: Local enforcement
+  finding: Municipal enforcement can occur by Commissioner's assignment, with Commissioner
+    authority retained.
+  confidence: 0.8
+  source_ids:
+  - src:usa-vt:stat-20-2736
+- topic: Local amendments / local codes
+  finding: Municipal building codes are allowed but must be consistent with Commissioner
+    rules; electrical installations covered by state electrical law are excluded.
+  confidence: 0.78
+  source_ids:
+  - src:usa-vt:stat-24-3101
+- topic: Accessibility
+  finding: Vermont has an Access Board rulemaking framework for access standards and
+    Department of Public Safety enforcement responsibilities.
+  confidence: 0.72
+  source_ids:
+  - src:usa-vt:stat-20-174-accessibility

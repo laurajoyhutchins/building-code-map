@@ -1,0 +1,52 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: The New Hampshire Building Code is established in RSA 155-A and amended
+    through the State Building Code Review Board / legislative ratification structure.
+  confidence: 0.85
+  source_ids:
+  - src:usa-nh:rsa-155-a-1
+  - src:usa-nh:rsa-155-a-10
+  - src:usa-nh:bcrb-page
+- topic: Primary building code editions
+  finding: Current RSA 155-A:1, IV lists 2021 IBC, IEBC, IPC, IMC, ISPSC, IRC; 2018
+    IECC; and 2023 NEC.
+  confidence: 0.9
+  source_ids:
+  - src:usa-nh:rsa-155-a-1
+- topic: Fire code authority
+  finding: RSA 153:1 defines the State Fire Code as 2021 NFPA 101 and 2021 NFPA 1,
+    amended by the State Board of Fire Control and ratified under RSA 153:5.
+  confidence: 0.85
+  source_ids:
+  - src:usa-nh:rsa-153-1
+  - src:usa-nh:rsa-153-5
+  - src:usa-nh:dfs-state-fire-code
+- topic: Local enforcement
+  finding: Local enforcement agency enforces the State Building Code; local fire chief
+    enforces the State Fire Code; State Fire Marshal may enforce where local enforcement
+    is absent and municipality requests it.
+  confidence: 0.85
+  source_ids:
+  - src:usa-nh:rsa-155-a-7
+- topic: Local amendments
+  finding: On and after 2026-07-01, local technical building-code amendments are generally
+    prohibited except when the state code is more than two editions behind the model
+    codes; administrative amendments are reserved locally if confirmed.
+  confidence: 0.75
+  source_ids:
+  - src:usa-nh:rsa-155-a-3
+  - src:usa-nh:rsa-155-a-10
+- topic: Effective / operative date rule
+  finding: Code in effect when the building-permit application is received remains
+    in effect for the permit work; a six-month concurrency period follows code effective
+    dates.
+  confidence: 0.85
+  source_ids:
+  - src:usa-nh:rsa-155-a-2
+- topic: Future building-code update
+  finding: Official state building-code page identifies 2024 codes effective 2026-07-01
+    and permit requests required to follow them beginning 2027-01-01.
+  confidence: 0.7
+  source_ids:
+  - src:usa-nh:dfs-state-building-code

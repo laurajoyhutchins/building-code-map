@@ -1,0 +1,53 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: OUBCC is the primary statewide minimum-code adopting authority for residential
+    and commercial construction.
+  confidence: 0.9
+  source_ids:
+  - src:usa-ok:oubcc-statute-act
+  - src:usa-ok:oubcc-home
+- topic: Primary commercial building code edition
+  finding: OUBCC lists the 2018 IBC permanent rule as the current unsuperseded IBC
+    adoption, effective 2021-09-14.
+  confidence: 0.88
+  source_ids:
+  - src:usa-ok:oubcc-ibc-adoptions
+- topic: Primary residential code edition
+  finding: OUBCC lists the 2018 IRC permanent rule as the current unsuperseded IRC
+    adoption, effective 2022-09-14.
+  confidence: 0.88
+  source_ids:
+  - src:usa-ok:oubcc-irc-adoptions
+- topic: Electrical code edition
+  finding: OUBCC lists the 2023 NEC permanent rule as current, effective 2024-09-14.
+  confidence: 0.88
+  source_ids:
+  - src:usa-ok:oubcc-nec-adoptions
+- topic: Fire code authority and edition
+  finding: OUBCC lists the 2018 IFC permanent rule as current, effective 2021-09-14;
+    local/OSFM enforcement allocation should be verified beyond the FAQ before production.
+  confidence: 0.78
+  source_ids:
+  - src:usa-ok:oubcc-ifc-adoptions
+  - src:usa-ok:oubcc-faq
+- topic: Local enforcement
+  finding: "Local jurisdictions enforce adopted minimum codes; CIB and the State Fire\
+    \ Marshal have specified roles in unincorporated areas according to OUBCC'\
+    s FAQ."
+  confidence: 0.76
+  source_ids:
+  - src:usa-ok:oubcc-faq
+- topic: Local amendments
+  finding: Higher local standards are allowed, but local-condition amendments require
+    Commission approval; the post-revocation administrative procedure needs follow-up.
+  confidence: 0.68
+  source_ids:
+  - src:usa-ok:oubcc-statute-act
+  - src:usa-ok:oubcc-admin-2021-rules
+- topic: Pending changes
+  finding: OUBCC has an active 2024-code rulemaking record, but final adoption was
+    not confirmed in this pass.
+  confidence: 0.75
+  source_ids:
+  - src:usa-ok:oubcc-proposed-rules

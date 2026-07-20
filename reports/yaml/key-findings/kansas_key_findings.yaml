@@ -1,0 +1,62 @@
+---
+key_findings:
+- topic: State fire/life-safety adopting authority
+  finding: The State Fire Marshal adopts rules and regulations for safeguarding life
+    and property from fire, explosion, and hazardous materials; the Kansas fire prevention
+    code has uniform statewide force.
+  confidence: 0.85
+  source_ids:
+  - src:usa-ks:ksreg-2026-hb2739
+  - src:usa-ks:kar-22-1-fire-prevention-code
+- topic: Primary statewide construction-code reference
+  finding: The verified statewide construction-code reference is the 2006 IBC as adopted
+    in K.A.R. 22-1-3 and treated as part of the Kansas fire prevention code, not as
+    a fully verified all-purpose statewide building code.
+  confidence: 0.78
+  source_ids:
+  - src:usa-ks:kar-22-1-fire-prevention-code
+  - src:usa-ks:ksfm-code-listing
+  - src:usa-ks:ksfm-plan-review
+- topic: Operational fire code
+  finding: The verified operational fire code reference is the 2006 IFC with stated
+    exclusions in K.A.R. 22-1-3.
+  confidence: 0.82
+  source_ids:
+  - src:usa-ks:kar-22-1-fire-prevention-code
+  - src:usa-ks:ksfm-code-listing
+- topic: One- and two-family dwellings
+  finding: Fire Marshal rules under K.S.A. 31-133 do not apply to buildings used wholly
+    as dwelling houses containing no more than two families. No statewide IRC adoption
+    was verified.
+  confidence: 0.74
+  source_ids:
+  - src:usa-ks:ksreg-2026-hb2739
+- topic: Schools
+  finding: School-building construction must meet the IBC adopted by reference in
+    K.A.R. 22-1-3, and school electric wiring must conform to the NEC adopted by reference
+    in K.A.R. 22-1-3.
+  confidence: 0.82
+  source_ids:
+  - src:usa-ks:ksreg-2024-kar-22-18-3
+  - src:usa-ks:ksa-31-150
+- topic: Local fire amendments
+  finding: Municipal fire-code modifications must be submitted to the State Fire Marshal
+    and reviewed for approval or rejection within 30 days.
+  confidence: 0.86
+  source_ids:
+  - src:usa-ks:kar-22-1-fire-prevention-code
+- topic: Elevator code
+  finding: KSFM implemented ASME A17.1 (2022) effective 2024-07-01; pre-2024-07-01
+    designed, approved, or contracted elevators may comply with ASME A17.1 (2019)
+    unless a variance applies.
+  confidence: 0.86
+  source_ids:
+  - src:usa-ks:ksfm-asme-a17-1-2022
+  - src:usa-ks:ksfm-elevator-program
+- topic: Pending fire-code update
+  finding: HB 2739 authorizes special handling for rules updating the Kansas fire
+    prevention code with the 2024 IFC, but still requires Attorney General review
+    and legislative ratification.
+  confidence: 0.78
+  source_ids:
+  - src:usa-ks:ksreg-2026-hb2739

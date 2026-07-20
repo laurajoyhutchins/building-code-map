@@ -1,0 +1,21 @@
+---
+authority_structure:
+- field: '**Authority ID**'
+  value: ahj:usa-wa:state-building-code-council
+- field: '**Authority name**'
+  value: Washington State Building Code Council
+- field: '**Authority type**'
+  value: state_council
+- field: '**Legal basis**'
+  value: Chapter 19.27 RCW; WAC Title 51
+- field: '**Role**'
+  value: Maintains statewide building-code adoptions and Washington amendments for
+    building, residential, mechanical/fuel-gas, plumbing, energy, fire, existing-building,
+    accessibility-linked building-code provisions, and related model-code insert pages
+- field: '**Enforcement model**'
+  value: locally_enforced for State Building Code; specialized state programs for
+    electrical and elevator/conveyance
+- field: '**Source IDs**'
+  value: src:usa-wa:statute:rcw-19-27; src:usa-wa:regulation:wac-title-51; src:usa-wa:agency:sbcc-current-codes
+- field: '**Verification status**'
+  value: verified

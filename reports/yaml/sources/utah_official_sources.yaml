@@ -1,0 +1,130 @@
+---
+official_sources:
+- source_id: src:usa-ut:code-title-15a
+  source_type: statute
+  official_status: official
+  title___locator: Utah Code Title 15A, State Construction and Fire Codes Act
+  url: https://le.utah.gov/xcode/Title15a/15a.html
+  key_facts_supported: Overall Title 15A structure; Chapters 1 through 6.
+  caveats:
+  - HTML navigation can omit details shown in PDFs
+  - verify section-level current/future versions before relying on dates.
+- source_id: src:usa-ut:code-15a-1-202
+  source_type: statute
+  official_status: official
+  title___locator: "Utah Code \xA7 15A-1-202, Definitions"
+  url: https://le.utah.gov/xcode/Title15A/Chapter1/15A-1-S202.html
+  key_facts_supported: Definitions of commission, compliance agency, construction
+    code, local regulator, qualified building official, and state regulator.
+  caveats:
+  - Date-sensitive
+  - section has effective-version history.
+- source_id: src:usa-ut:code-15a-1-203
+  source_type: statute
+  official_status: official
+  title___locator: "Utah Code \xA7 15A-1-203, Uniform Building Code Commission --\
+    \ Unified Code Analysis Council"
+  url: https://le.utah.gov/xcode/Title15A/Chapter1/15A-1-S203.html
+  key_facts_supported: UBCC creation, advisory role, member structure, reporting and
+    code-analysis role.
+  caveats: Detailed member roster should be cross-checked against DOPL for current
+    appointments.
+- source_id: src:usa-ut:code-15a-1-204
+  source_type: statute
+  official_status: official
+  title___locator: "Utah Code \xA7 15A-1-204, Adoption of State Construction Code"
+  url: https://le.utah.gov/xcode/Title15A/Chapter1/15A-1-S204.html
+  key_facts_supported: State Construction Code definition; statewide compliance; legislative
+    adoption process; July 1 default; commission emergency amendment framework; local
+    more-restrictive-rule constraint.
+  caveats: Some future/effective text may appear in PDF more clearly than in dynamic
+    HTML.
+- source_id: src:usa-ut:code-15a-2-103
+  source_type: statute
+  official_status: official
+  title___locator: "Utah Code \xA7 15A-2-103, current effective 2025-07-01 and superseded\
+    \ 2026-07-01"
+  url: https://le.utah.gov/xcode/Title15A/Chapter2/15A-2-S103.html
+  key_facts_supported: Current construction-code editions and specialty standards.
+  caveats: Must distinguish current from future/superseded versions.
+- source_id: src:usa-ut:code-15a-2-103-future
+  source_type: statute
+  official_status: official
+  title___locator: "Utah Code \xA7 15A-2-103, future effective 2026-07-01 and 2027-01-01\
+    \ versions"
+  url: https://le.utah.gov/xcode/Title15A/Chapter2/C15A-2_1800010118000101.pdf
+  key_facts_supported: Future construction-code editions and WUI transition.
+  caveats:
+  - Compiled PDF includes multiple effective versions
+  - do not collapse 2026-07-01 and 2027-01-01 changes.
+- source_id: src:usa-ut:code-chapter-3
+  source_type: statute
+  official_status: official
+  title___locator: Utah Code Title 15A, Chapter 3, Statewide Amendments Incorporated
+    as Part of State Construction Code
+  url: https://le.utah.gov/xcode/Title15a/Chapter3/15a-3.html
+  key_facts_supported: Statewide amendment publication structure and amendment index.
+  caveats: Individual amendments were not fully extracted.
+- source_id: src:usa-ut:code-chapter-4
+  source_type: statute
+  official_status: official
+  title___locator: Utah Code Title 15A, Chapter 4, Local Amendments Incorporated as
+    Part of State Construction Code
+  url: https://le.utah.gov/xcode/Title15A/Chapter4/15A-4-P1.html
+  key_facts_supported: Statutory publication path for codified local amendments.
+  caveats:
+  - Index-level use only
+  - individual local amendments require section-level extraction and local confirmation.
+- source_id: src:usa-ut:code-15a-5-103
+  source_type: statute
+  official_status: official
+  title___locator: "Utah Code \xA7 15A-5-103, Nationally recognized codes incorporated\
+    \ by reference into State Fire Code"
+  url: https://le.utah.gov/xcode/Title15A/Chapter5/15A-5-S103.html
+  key_facts_supported: Current and future State Fire Code editions, including 2021
+    IFC current and 2024 IFC future effective 2026-07-01.
+  caveats: Fire-code amendments in Chapter 5 Part 2 were not fully parsed.
+- source_id: src:usa-ut:dopl-uniform-building-codes
+  source_type: agency page
+  official_status: official
+  title___locator: Utah Department of Commerce / DOPL, Uniform Building Codes
+  url: https://commerce.utah.gov/dopl/uniform-building-codes/
+  key_facts_supported: DOPL Building Code Analyst support role, training fund, building-official
+    management training announcement, links to boards/commissions.
+  caveats:
+  - Agency page is supplemental
+  - statutes control legal adoption.
+- source_id: src:usa-ut:dopl-ubcc
+  source_type: agency page
+  official_status: official
+  title___locator: Utah Department of Commerce / DOPL, Uniform Building Code Commission
+  url: https://commerce.utah.gov/dopl/uniform-building-codes/uniform-building-code-commission/
+  key_facts_supported: Current UBCC board page and roster context.
+  caveats:
+  - Roster dates can change
+  - use only for administrative context unless refreshed.
+- source_id: src:usa-ut:fire-prevention-board
+  source_type: agency page
+  official_status: official
+  title___locator: Utah State Fire Marshal Office, Fire Prevention Board
+  url: https://firemarshal.utah.gov/boards/fire-prevention-board/
+  key_facts_supported: Fire Prevention Board context and fire-code update process/meeting
+    records.
+  caveats:
+  - Meeting-page content is not codified law
+  - use for process monitoring
+  - not as sole adoption authority.
+- source_id: src:usa-ut:hb65-2026
+  source_type: legislation
+  official_status: official
+  title___locator: 2026 H.B. 65, State Construction Code Modifications
+  url: https://le.utah.gov/Session/2026/bills/introduced/HB0065S04.pdf
+  key_facts_supported: 2026 construction-code transition and effective-date support.
+  caveats: Use codified 15A-2-103 future text as controlling source once published.
+- source_id: src:usa-ut:hb45-2026
+  source_type: legislation
+  official_status: official
+  title___locator: 2026 H.B. 45, State Fire Code Modifications
+  url: https://le.utah.gov/Session/2026/bills/enrolled/HB0045.pdf
+  key_facts_supported: 2026 fire-code transition and effective-date support.
+  caveats: Use codified 15A-5-103 future text as controlling source once published.

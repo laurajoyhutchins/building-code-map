@@ -1,0 +1,61 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: DLI administers Title 50, chapter 60, parts 1 through 7 and must adopt
+    rules that constitute the state building code.
+  confidence: 0.9
+  source_ids:
+  - src:usa-mt:mca-50-60-103
+  - src:usa-mt:mca-50-60-203
+- topic: Sole state building-regulation authority
+  finding: DLI is the only state agency that may promulgate building regulations,
+    with an express Department of Justice exception for regulations relating to use
+    of buildings and installation of equipment.
+  confidence: 0.9
+  source_ids:
+  - src:usa-mt:mca-50-60-202
+- topic: Primary building code edition
+  finding: DLI lists the 2021 IBC as adopted and effective 2022-06-11, amended through
+    ARM Title 24, Chapter 301.
+  confidence: 0.85
+  source_ids:
+  - src:usa-mt:dli-current-codes
+  - src:usa-mt:arm-24-301-current-rules
+- topic: Electrical code edition
+  finding: DLI lists the 2020 NEC as adopted and effective 2022-06-11, with a technical
+    advisory issued 2022-08-12.
+  confidence: 0.8
+  source_ids:
+  - src:usa-mt:dli-current-codes
+- topic: Fire code authority
+  finding: The Department of Justice Fire Prevention and Investigation Section / State
+    Fire Marshal has statewide fire-prevention authority and ARM 23.12.601 adopts
+    the 2021 IFC; the effective date of the IFC rule was not captured.
+  confidence: 0.7
+  source_ids:
+  - src:usa-mt:mca-50-3-102
+  - src:usa-mt:doj-fpi
+  - src:usa-mt:arm-23-12-601
+- topic: Local enforcement
+  finding: Local governments may enforce selected code programs only if certified;
+    otherwise the State Building Codes Bureau has jurisdiction.
+  confidence: 0.9
+  source_ids:
+  - src:usa-mt:dli-building-codes-program
+  - src:usa-mt:dli-certified-local-programs
+  - src:usa-mt:mca-50-60-302
+- topic: Local amendment scope
+  finding: Local codes may include only codes adopted by the Building Codes Program;
+    local authority verified in this pass is primarily adoption/enforcement/administration,
+    not independent technical-code substitution.
+  confidence: 0.75
+  source_ids:
+  - src:usa-mt:dli-certified-local-programs
+  - src:usa-mt:mca-50-60-106
+- topic: Effective / transition rule
+  finding: DLI lists effective dates; ARM 24.301.146 contains a permit-issued transition
+    rule, but adoption dates and mandatory dates were not separately verified.
+  confidence: 0.7
+  source_ids:
+  - src:usa-mt:dli-current-codes
+  - src:usa-mt:arm-24-301-146-permit-transition

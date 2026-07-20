@@ -1,0 +1,127 @@
+---
+official_sources:
+- source_id: src:usa-wy:statutes:title-35-ch9
+  title: Wyoming Statutes, Title 35, Chapter 9 - Fire Protection
+  publisher___authority: Wyoming Legislature
+  source_type: statute PDF
+  url___locator: https://wyoleg.gov/statutes/compress/title35.pdf
+  currentness___effective_date: Legislature PDF search result published last month;
+    accessed 2026-06-26
+  supports:
+  - DFPES creation
+  - Council/Board creation
+  - State Fire Marshal duties
+  - plan review
+  - electrical standards
+  - local enforcement
+  - health care facility jurisdiction
+  caveats:
+  - Official compressed-title PDF
+  - line extraction from PDF was readable
+  - but production should pin exact statutory sections in a statute database if available.
+- source_id: src:usa-wy:statutes:title-15-municipal-powers
+  title: Wyoming Statutes, Title 15 - Cities and Towns
+  publisher___authority: Wyoming Legislature
+  source_type: statute PDF
+  url___locator: https://wyoleg.gov/statutes/compress/title15.pdf
+  currentness___effective_date: Legislature PDF search result published last month;
+    accessed 2026-06-26
+  supports: Municipal fire/building-related police powers background
+  caveats:
+  - Official compressed-title PDF
+  - used as background only
+  - not primary local-delegation authority.
+- source_id: src:usa-wy:statutes:title-27-elevator-safety-device
+  title: Wyoming Statutes, Title 27 - Labor and Employment, W.S. 27-1-103 safety devices
+    on elevators and machinery
+  publisher___authority: Wyoming Legislature
+  source_type: statute PDF
+  url___locator: https://wyoleg.gov/statutes/compress/title27.pdf
+  currentness___effective_date: Legislature PDF search result published last month;
+    accessed 2026-06-26
+  supports: Elevator/conveyance open issue marker
+  caveats:
+  - Search result indicates safety-device provisions only
+  - not sufficient to classify elevator code authority.
+- source_id: src:usa-wy:dfpes:plan-review
+  title: Plan Review
+  publisher___authority: Wyoming State Fire Marshal / Department of Fire Prevention
+    and Electrical Safety
+  source_type: agency web page
+  url___locator: https://wsfm.wyo.gov/fire-prevention/plan-review
+  currentness___effective_date: Accessed 2026-06-26; page states 2024 International
+    Codes adopted on 2024-06-28 and new submissions from 2024-06-28 must comply
+  supports:
+  - Adopted code list
+  - plan review process
+  - operative compliance trigger
+  - 2023 NEC effective date
+  caveats:
+  - Agency website page
+  - page footer did not expose a reliable last-updated date in parsed text.
+- source_id: src:usa-wy:dfpes:rules-and-statutes
+  title: Rules and Statutes
+  publisher___authority: Wyoming State Fire Marshal / Department of Fire Prevention
+    and Electrical Safety
+  source_type: agency web page
+  url___locator: https://wsfm.wyo.gov/electrical-safety/rules-statutes-and-jurisdictions
+  currentness___effective_date: Accessed 2026-06-26
+  supports: Adopted code list and links to statute/rule documents
+  caveats:
+  - Agency page duplicates adopted-code text from plan-review page
+  - linked rule PDFs hosted through Google Drive were not fetched directly.
+- source_id: src:usa-wy:rules:council-ch1-2024
+  title: Fire Prevention & Electrical Safety, Dept. of - Council on Fire Prevention,
+    Electrical Safety, Chapter 1
+  publisher___authority: Wyoming Secretary of State Administrative Rules
+  source_type: official rule PDF/search result
+  url___locator: rules.wyo.gov source_id=24233, filename=24233.pdf
+  currentness___effective_date: Effective 2024-06-26 to Current
+  supports:
+  - 2024 I-Code adoption rule
+  - effective date
+  - Council code standards
+  caveats:
+  - Official PDF search result was found
+  - but the web fetch returned an internal fetch error
+  - code-list details were cross-checked using the agency page and Cornell mirror.
+- source_id: src:usa-wy:rules:electrical-board-2023
+  title: Fire Prevention & Electrical Safety, Dept. of - Electrical Board rules
+  publisher___authority: Wyoming Secretary of State Administrative Rules
+  source_type: official rule PDF/search result
+  url___locator: rules.wyo.gov source_id=21789, filename=21789.pdf
+  currentness___effective_date: Search result date 2023-07-19; accessed 2026-06-26
+  supports: Electrical Board/NEC context
+  caveats:
+  - Official PDF search result located
+  - full rule text not parsed. The 2023 NEC effective date is taken from the State
+    Fire Marshal page.
+- source_id: src:usa-wy:health:hls-construction
+  title: Facility Construction
+  publisher___authority: Wyoming Department of Health, Healthcare Licensing and Surveys
+  source_type: agency web page
+  url___locator: https://health.wyo.gov/aging/hls/healthcare-facility-construction/
+  currentness___effective_date: Accessed 2026-06-26
+  supports:
+  - HLS construction plan review
+  - final licensure surveys
+  - electrical review coordination
+  - delegated health-care construction jurisdiction list reference
+  caveats:
+  - Agency page
+  - linked jurisdiction delegation list was not extracted.
+- source_id: src:usa-wy:health:chapter-20-jurisdiction
+  title: 'Chapter 20: Health Care Facilities Jurisdiction and Delegation'
+  publisher___authority: Wyoming Department of Health / Healthcare Licensing and Surveys
+  source_type: administrative rule PDF
+  url___locator: https://health.wyo.gov/wp-content/uploads/2016/11/HLS-Rule-Ch-20-Jurisdiction-and-Delegation.pdf
+  currentness___effective_date: Current rule per PDF metadata generated 2016-11-07;
+    effective 2004-07-15 to Current
+  supports:
+  - Department of Health AHJ definition
+  - health-care construction jurisdiction/delegation
+  - NFPA 101/federal life-safety certification priority
+  caveats:
+  - Official agency PDF
+  - production should confirm against current Secretary of State rules database if
+    the PDF copy is stale.

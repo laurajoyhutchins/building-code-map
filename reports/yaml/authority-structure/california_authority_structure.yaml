@@ -1,0 +1,27 @@
+---
+authority_structure:
+- field: Authority ID
+  value: '`ahj:usa-ca:cbsc`'
+- field: Authority name
+  value: California Building Standards Commission
+- field: Authority type
+  value: statewide building standards commission
+- field: Legal basis
+  value: "California Building Standards Law, including Health and Safety Code \xA7\
+    \xA7 18930, 18938, and 18942"
+- field: Role
+  value: Reviews, approves/adopts, codifies, and publishes statewide building standards
+    in Title 24; publishes triennial editions and supplements; receives local ordinance
+    filings where statutes require filing.
+- field: Enforcement model
+  value: Statewide code publication and approval body; local building, housing, fire,
+    and specialized state agencies enforce within assigned scopes.
+- field: Source IDs
+  value:
+  - src:usa-ca:hsc-18930
+  - src:usa-ca:hsc-18938
+  - src:usa-ca:hsc-18942
+  - src:usa-ca:cbsc-about
+  - src:usa-ca:cbsc-local-ordinances
+- field: Verification status
+  value: partially_verified

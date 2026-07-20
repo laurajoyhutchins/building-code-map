@@ -1,0 +1,61 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: DLI is the statewide UCC agency; the Construction Code Act requires DLI
+    to promulgate regulations adopting Council decisions in the triennial review process.
+  confidence: 0.86
+  source_ids:
+  - src:usa-pa:pcca-act-45
+  - src:usa-pa:dli-ucc-rac-2021-cycle
+- topic: Primary building code edition
+  finding:
+  - '2026-01-01'
+  confidence: 0.91
+  source_ids:
+  - src:usa-pa:pa-code-403-21
+  - src:usa-pa:pa-bulletin-55-45-ucc-final-omitted
+- topic: Residential code edition
+  finding: The current UCC adopts the 2021 International Residential Code with Pennsylvania
+    exclusions and amendments.
+  confidence: 0.86
+  source_ids:
+  - src:usa-pa:pa-code-403-21
+  - src:usa-pa:pa-bulletin-55-45-ucc-final-omitted
+- topic: Electrical code authority
+  finding: A standalone statewide NEC adoption was not established from the sources
+    reviewed; electrical requirements appear through adopted ICC provisions and referenced
+    standards where applicable.
+  confidence: 0.42
+  source_ids:
+  - src:usa-pa:pa-code-403-21
+- topic: Fire code authority
+  finding: Pennsylvania adopts the 2021 International Fire Code only to the extent
+    it is referenced by other adopted ICC codes; separate operational fire-prevention
+    authority remains unresolved.
+  confidence: 0.57
+  source_ids:
+  - src:usa-pa:pa-code-403-21
+  - src:usa-pa:pa-bulletin-55-45-ucc-final-omitted
+- topic: Local enforcement
+  finding: Municipalities may opt into UCC administration and enforcement; non-administering
+    municipalities use statutory third-party or DLI pathways by project type.
+  confidence: 0.84
+  source_ids:
+  - src:usa-pa:pcca-act-45
+  - src:usa-pa:pa-code-403-102
+- topic: Local amendments
+  finding: Local technical changes must equal or exceed the UCC and follow the hearing,
+    notice, filing, and DLI-review process.
+  confidence: 0.82
+  source_ids:
+  - src:usa-pa:pcca-act-45
+  - src:usa-pa:pa-code-403-102
+  - src:usa-pa:dli-municipal-code-change-ordinances
+- topic: Effective / transition rule
+  finding:
+  - '2026-01-01'
+  confidence: 0.81
+  source_ids:
+  - src:usa-pa:dli-ucc-rac-2021-cycle
+  - src:usa-pa:pcca-act-45
+  - src:usa-pa:pa-code-403-1

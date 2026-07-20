@@ -1,0 +1,65 @@
+---
+key_findings:
+- topic: State adopting / coordinating authority
+  finding: CDB is the primary statewide building-code coordinating authority for the
+    post-2025 framework, commercial non-building-code certification, and local building-code
+    reporting.
+  confidence: 0.82
+  source_ids:
+  - src:usa-il:cdb-act-20-ilcs-3105
+  - src:usa-il:cdb-building-codes-page
+- topic: Primary private-building model
+  finding: 'Illinois is hybrid: local codes continue where adopted, but post-2025
+    statutory baselines and state specialty codes apply.'
+  confidence: 0.78
+  source_ids:
+  - src:usa-il:cdb-act-20-ilcs-3105
+  - src:usa-il:cdb-building-codes-page
+- topic: Commercial non-building-code baseline
+  finding: New or substantially improved commercial buildings in non-building-code
+    jurisdictions must certify compliance with current or most-recent-preceding IBC/IEBC
+    and NEC, plus Illinois energy/stretch, accessibility, plumbing, and fire-prevention
+    rules.
+  confidence: 0.85
+  source_ids:
+  - src:usa-il:cdb-act-20-ilcs-3105
+- topic: Residential non-building-code baseline
+  finding: In non-building-code jurisdictions, new residential construction contracts
+    must adopt an agreed IRC or nearby municipal/county residential code; if no agreement/code
+    is stated, the current IRC plus Illinois energy and plumbing codes are adopted
+    by law into the contract.
+  confidence: 0.82
+  source_ids:
+  - src:usa-il:residential-building-code-act-815-ilcs-670
+- topic: Energy code
+  finding: CDB administers the Illinois Energy Conservation Code; the 2024 IECC, as
+    amended, is incorporated for privately funded commercial facilities and residential
+    buildings, effective 2025-11-30.
+  confidence: 0.86
+  source_ids:
+  - src:usa-il:energy-code-71-iac-600
+  - src:usa-il:energy-code-cdb-page
+- topic: Fire / life-safety code
+  finding: OSFM administers Part 100 Fire Prevention and Safety under the Fire Investigation
+    Act and adopts NFPA 101 (2015) subject to OSFM modifications; local AHJs may use
+    equal-or-higher local fire/life-safety codes when OSFM criteria are met.
+  confidence: 0.8
+  source_ids:
+  - src:usa-il:fire-prevention-rules-41-iac-100
+  - src:usa-il:osfm-life-safety-faq
+- topic: Public schools
+  finding: Public school facilities outside Article 34 Chicago-school exceptions are
+    governed by the Health/Life Safety Code for Public Schools; 2024 IBC and listed
+    subcodes apply to projects with design contracts executed on or after 2025-01-01.
+  confidence: 0.82
+  source_ids:
+  - src:usa-il:school-code-105-ilcs-5-2-3-12
+  - src:usa-il:hls-code-public-schools-23-iac-180
+- topic: Local amendment registry
+  finding: Municipalities and counties must report new building-code editions and
+    amendments to CDB before effective date; CDB must publish reported code title,
+    edition, amendment status, and reporting date.
+  confidence: 0.8
+  source_ids:
+  - src:usa-il:cdb-act-20-ilcs-3105
+  - src:usa-il:cdb-building-codes-page

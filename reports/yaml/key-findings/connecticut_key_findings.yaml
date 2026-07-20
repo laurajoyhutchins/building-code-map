@@ -1,0 +1,70 @@
+---
+key_findings:
+- topic: State adopting authority
+  finding: The State Building Inspector and Codes and Standards Committee, with approval
+    of the Commissioner of Administrative Services, adopt and administer the State
+    Building Code.
+  confidence: 0.97
+  source_ids:
+  - src:usa-ct:statute:chap-541
+- topic: Building-code statewide scope
+  finding: The State Building Code, including state-adopted amendments, is the building
+    code for all towns, cities, boroughs, state agencies, the Connecticut Airport
+    Authority, and the Connecticut Port Authority.
+  confidence: 0.97
+  source_ids:
+  - src:usa-ct:statute:chap-541
+  - src:usa-ct:code:2022-csbc-pdf
+- topic: Current building-code edition
+  finding: The current State Building Code is the 2022 Connecticut State Building
+    Code, based on 2021 International Codes, 2020 NFPA 70, and 2017 ICC A117.1; it
+    applies to permit applications filed from 2022-10-01.
+  confidence: 0.96
+  source_ids:
+  - src:usa-ct:agency:building-code-page
+  - src:usa-ct:code:2022-csbc-pdf
+- topic: Fuel gas treatment
+  finding: Connecticut does not adopt the International Fuel Gas Code as a separate
+    state code; fuel-gas references are redirected to NFPA 2, NFPA 54, and NFPA 58
+    as adopted in the 2022 fire codes.
+  confidence: 0.91
+  source_ids:
+  - src:usa-ct:code:2022-csbc-pdf
+- topic: Current fire safety code
+  finding: The 2022 Connecticut State Fire Safety Code is effective 2022-10-01 and
+    adopts the 2021 IFC as Part III and 2021 NFPA 101 as Part IV, with a January 1,
+    2006 applicability split.
+  confidence: 0.95
+  source_ids:
+  - src:usa-ct:agency:fire-codes-docs
+  - src:usa-ct:code:2022-csfsc-pdf
+- topic: Current fire prevention code
+  finding: The 2022 Connecticut State Fire Prevention Code is effective 2022-10-01
+    and is based on NFPA 1, Fire Code, 2021 edition, with Connecticut amendments.
+  confidence: 0.96
+  source_ids:
+  - src:usa-ct:agency:fire-codes-overview
+  - src:usa-ct:code:2022-csfpc-pdf
+- topic: Effective-date publication rule
+  finding: Approved or deemed-approved State Building Code, State Fire Prevention
+    Code, and Fire Safety Code provisions become effective and enforceable upon posting
+    on the DAS website unless a later date is required by statute or specified in
+    the code.
+  confidence: 0.97
+  source_ids:
+  - src:usa-ct:statute:chap-541
+- topic: Local enforcement
+  finding: Municipal building officials administer the building code locally; local
+    fire marshals inspect occupancies regulated by the fire codes and make most initial
+    fire-code compliance decisions.
+  confidence: 0.94
+  source_ids:
+  - src:usa-ct:statute:chap-541
+  - src:usa-ct:code:2022-csfpc-pdf
+- topic: Elevator / conveyance code
+  finding: OSBI administers elevators and escalators in addition to the State Building
+    Code; Connecticut adopted ASME A17.1-2013 effective 2018-01-03.
+  confidence: 0.82
+  source_ids:
+  - src:usa-ct:agency:elevator-code-page
+  - src:usa-ct:agency:boiler-elevator-inspections
