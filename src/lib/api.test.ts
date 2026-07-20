@@ -37,9 +37,7 @@ describe("resolution response decoding", () => {
       },
       code_family: "building",
       status: "local_record_required",
-      required_local_records: [
-        "Current municipal building-code adoption ordinance",
-      ],
+      required_local_records: ["Current municipal building-code adoption ordinance"],
       warnings: ["State data does not establish a local edition."],
       evidence: [],
     });
