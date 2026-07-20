@@ -34,6 +34,10 @@ func TestResolveColoradoBuildingRequiresLocalAdoptionRecord(t *testing.T) {
 	assertContains(t, result.RequiredLocalRecords, "Current municipal building-code adoption ordinance and effective date")
 	assertRuleKind(t, result, "applicability")
 	assertRuleKind(t, result, "amendment")
+	if result.PolicyBasis == nil || result.PolicyBasis.Status != "local_record_required" {
+		t.Fatalf("missing source-bearing policy basis: %#v", result.PolicyBasis)
+	}
+	assertContains(t, result.PolicyBasis.SourceIDs, "src:us-co:energy-local")
 }
 
 func TestResolveColoradoElectricalAddsStateAdoption(t *testing.T) {
@@ -105,6 +109,21 @@ func TestResolveFloridaHistoricalDateFailsClosedBeforeCurrentEdition(t *testing.
 	}
 }
 
+func TestResolveNewJerseyHistoricalDateFailsClosedWithoutEditionTimeline(t *testing.T) {
+	catalog := loadTestCatalog(t)
+	result, err := Resolve(catalog, ResolutionRequest{
+		Context:           &GeographicContext{StateID: "US-NJ", StateFIPS: "34", Municipality: &BoundaryMatch{Name: "Trenton"}},
+		CodeFamily:        "building",
+		ApplicabilityDate: "2020-01-01",
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if result.Status != "insufficient_evidence" || len(result.Adoptions) != 0 {
+		t.Fatalf("undated current record leaked into historical result: %#v", result)
+	}
+}
+
 func TestResolveNewJerseyOperationalFireUsesSeparateAuthority(t *testing.T) {
 	catalog := loadTestCatalog(t)
 	result, err := Resolve(catalog, ResolutionRequest{
@@ -126,6 +145,71 @@ func TestResolveNewJerseyOperationalFireUsesSeparateAuthority(t *testing.T) {
 		t.Fatalf("unexpected fire adoptions: %#v", result.Adoptions)
 	}
 	assertRuleKind(t, result, "enforcement")
+}
+
+func TestResolveFloridaOperationalFireExcludesConstructionRules(t *testing.T) {
+	catalog := loadTestCatalog(t)
+	result, err := Resolve(catalog, ResolutionRequest{
+		Context:    &GeographicContext{StateID: "US-FL", StateFIPS: "12", Municipality: &BoundaryMatch{Name: "Orlando"}},
+		CodeFamily: "fire",
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	assertRuleIDAbsent(t, result, "rule:us-fl:local-technical-amendments")
+	assertRuleIDAbsent(t, result, "rule:us-fl:local-enforcement")
+}
+
+func TestResolveNewJerseyStateOwnedProjectAppliesProjectOverride(t *testing.T) {
+	catalog := loadTestCatalog(t)
+	result, err := Resolve(catalog, ResolutionRequest{
+		Context:     &GeographicContext{StateID: "US-NJ", StateFIPS: "34", Municipality: &BoundaryMatch{Name: "Trenton"}},
+		CodeFamily:  "building",
+		ProjectType: "state_owned",
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if result.Status != "resolved" {
+		t.Fatalf("status = %q, want resolved", result.Status)
+	}
+	assertCandidateAuthority(t, result, "auth:us-nj:codes-standards")
+}
+
+func TestResolveSurfacesConflictingRelevantClaims(t *testing.T) {
+	catalog := loadTestCatalog(t)
+	profile, ok := catalog.Profile("US-FL", "")
+	if !ok {
+		t.Fatal("Florida profile missing")
+	}
+	profile.Claims = append(profile.Claims, Claim{
+		ID:            "claim:us-fl:building-effective-date:conflict",
+		SubjectID:     "adoption:us-fl:building:2023",
+		Field:         "dates.effective_date",
+		Status:        "conflicting",
+		Value:         "2024-01-01",
+		ConflictGroup: "conflict:us-fl:building-effective-date",
+		SourceIDs:     []string{"src:us-fl:statute-553-73"},
+		Verification:  Verification{Status: "needs_review", Confidence: 0.5},
+	})
+	conflictingCatalog, err := NewCatalog([]StateProfile{profile})
+	if err != nil {
+		t.Fatal(err)
+	}
+	result, err := Resolve(conflictingCatalog, ResolutionRequest{
+		Context:           &GeographicContext{StateID: "US-FL", StateFIPS: "12", Municipality: &BoundaryMatch{Name: "Orlando"}},
+		CodeFamily:        "building",
+		ApplicabilityDate: "2026-07-20",
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if result.Status != "conflicting" {
+		t.Fatalf("status = %q, want conflicting", result.Status)
+	}
+	if len(result.SupportingClaims) < 2 {
+		t.Fatalf("conflicting claims were not preserved: %#v", result.SupportingClaims)
+	}
 }
 
 func TestResolveRejectsInvalidApplicabilityDate(t *testing.T) {
@@ -223,6 +307,15 @@ func assertRuleKind(t *testing.T, result ResolutionResult, kind string) {
 		}
 	}
 	t.Fatalf("missing rule kind %q in %#v", kind, result.ApplicableRules)
+}
+
+func assertRuleIDAbsent(t *testing.T, result ResolutionResult, id string) {
+	t.Helper()
+	for _, rule := range result.ApplicableRules {
+		if rule.ID == id {
+			t.Fatalf("unexpected rule %q in %#v", id, result.ApplicableRules)
+		}
+	}
 }
 
 func assertContains(t *testing.T, values []string, wanted string) {
