@@ -43,18 +43,8 @@ jobs:
       - name: Lint
         run: pnpm lint
 
-      - name: Format documentation
-        run: pnpm format
-
-      - name: Upload formatted documentation
-        uses: actions/upload-artifact@v4
-        with:
-          name: prettier-output
-          path: |
-            README.md
-            docs/superpowers/specs/2026-07-19-public-readme-design.md
-            docs/superpowers/plans/2026-07-19-public-readme.md
-          if-no-files-found: error
+      - name: Check formatting
+        run: pnpm format:check
 
       - name: Test
         run: pnpm test
