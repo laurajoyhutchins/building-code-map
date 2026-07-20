@@ -44,6 +44,13 @@ func Resolve(catalog Catalog, request ResolutionRequest) (ResolutionResult, erro
 	if override, exists := profile.ProjectTypeOverrides[projectType]; projectType != "" && exists {
 		policy = mergePolicies(policy, override)
 	}
+	policyBasis := &PolicyBasis{
+		Status:               policy.Status,
+		RequiredLocalRecords: deduplicateStrings(policy.RequiredLocalRecords),
+		Warnings:             deduplicateStrings(policy.Warnings),
+		SourceIDs:            deduplicateStrings(policy.SourceIDs),
+		Verification:         profile.Verification,
+	}
 
 	authorities := make(map[string]Authority, len(profile.Authorities))
 	for _, authority := range profile.Authorities {
@@ -75,7 +82,7 @@ func Resolve(catalog Catalog, request ResolutionRequest) (ResolutionResult, erro
 		if !exists {
 			return ResolutionResult{}, fmt.Errorf("validated profile references missing adoption %s", id)
 		}
-		if !adoptionAppliesOn(adoption, applicabilityDate) {
+		if !adoptionAppliesOn(adoption, applicabilityDate, profile.LastVerified) {
 			continue
 		}
 		resolvedAdoptions = append(resolvedAdoptions, adoption)
@@ -127,6 +134,7 @@ func Resolve(catalog Catalog, request ResolutionRequest) (ResolutionResult, erro
 		ProjectType:          projectType,
 		ApplicabilityDate:    applicabilityDate,
 		Status:               status,
+		PolicyBasis:          policyBasis,
 		AuthorityCandidates:  candidates,
 		AuthorityPath:        authorityPath,
 		Adoptions:            resolvedAdoptions,
@@ -149,7 +157,7 @@ func resolveApplicabilityDate(value string) (string, error) {
 	return value, nil
 }
 
-func adoptionAppliesOn(adoption Adoption, applicabilityDate string) bool {
+func adoptionAppliesOn(adoption Adoption, applicabilityDate, profileLastVerified string) bool {
 	requested, err := time.Parse(time.DateOnly, applicabilityDate)
 	if err != nil {
 		return false
@@ -165,8 +173,14 @@ func adoptionAppliesOn(adoption Adoption, applicabilityDate string) bool {
 		if err != nil || requested.Before(parsed) {
 			return false
 		}
-	} else if adoption.Status == "future" || adoption.Status == "pending" {
-		return false
+	} else {
+		if adoption.Status == "future" || adoption.Status == "pending" {
+			return false
+		}
+		verifiedAt, err := time.Parse(time.DateOnly, profileLastVerified)
+		if err != nil || requested.Before(verifiedAt) {
+			return false
+		}
 	}
 	if replacement := strings.TrimSpace(adoption.Dates.ReplacementDate); replacement != "" {
 		parsed, err := time.Parse(time.DateOnly, replacement)
@@ -326,7 +340,14 @@ func collectEvidence(sources []Source, evidenceIDs []string) ([]Source, []string
 }
 
 func familyMatches(ruleFamily, requested string) bool {
-	return requested == "" || strings.TrimSpace(ruleFamily) == "" || normalizeKey(ruleFamily) == requested
+	if requested == "" || strings.TrimSpace(ruleFamily) == "" {
+		return true
+	}
+	normalizedRule := normalizeKey(ruleFamily)
+	if normalizedRule == "construction_code" {
+		return requested != "fire_operational"
+	}
+	return normalizedRule == requested
 }
 
 func projectTypesMatch(projectTypes []string, requested string) bool {
