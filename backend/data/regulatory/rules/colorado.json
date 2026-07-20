@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.0",
+  "state_id": "US-CO",
+  "source_health": {
+    "src:us-co:energy-local": {
+      "last_checked_at": "2026-07-20",
+      "availability": "available"
+    },
+    "src:us-co:electrical-board": {
+      "last_checked_at": "2026-07-20",
+      "availability": "available"
+    },
+    "src:us-co:accessibility-local": {
+      "last_checked_at": "2026-07-20",
+      "availability": "available"
+    }
+  },
+  "applicability_rules": [
+    {
+      "id": "rule:us-co:building-local-adoption",
+      "code_family": "building",
+      "trigger": "ordinary_local_project",
+      "applies_to": [
+        "incorporated",
+        "unincorporated"
+      ],
+      "summary": "Ordinary building-code applicability is resolved from the current local adoption record rather than a single general statewide edition.",
+      "source_ids": [
+        "src:us-co:accessibility-local",
+        "src:us-co:energy-local"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.8
+      }
+    },
+    {
+      "id": "rule:us-co:electrical-state-code",
+      "code_family": "electrical",
+      "trigger": "electrical_installation",
+      "summary": "The State Electrical Board adoption applies, while the inspecting authority may be state or local.",
+      "source_ids": [
+        "src:us-co:electrical-board"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.85
+      }
+    }
+  ],
+  "date_rules": [
+    {
+      "id": "rule:us-co:electrical-date-record",
+      "code_family": "electrical",
+      "rule_type": "effective_record",
+      "trigger": "applicability_date",
+      "summary": "The pilot identifies the 2020 NEC record as current but does not yet establish complete adoption, effective, and replacement dates.",
+      "source_ids": [
+        "src:us-co:electrical-board"
+      ],
+      "verification": {
+        "status": "needs_review",
+        "confidence": 0.65
+      }
+    }
+  ],
+  "amendment_rules": [
+    {
+      "id": "rule:us-co:local-building-amendments",
+      "code_family": "building",
+      "level": "local",
+      "posture": "local_adoption_and_amendment_record_required",
+      "summary": "The applicable local adoption instrument and amendments must be retrieved for the location.",
+      "source_ids": [
+        "src:us-co:accessibility-local",
+        "src:us-co:energy-local"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.8
+      }
+    }
+  ],
+  "enforcement_rules": [
+    {
+      "id": "rule:us-co:electrical-hybrid-enforcement",
+      "code_family": "electrical",
+      "model": "hybrid",
+      "entity_kinds": [
+        "state_board",
+        "local_electrical_authority"
+      ],
+      "authority_ids": [
+        "auth:us-co:state-electrical-board"
+      ],
+      "summary": "Electrical inspection is performed by an approved local authority where present and otherwise by the State Electrical Board.",
+      "source_ids": [
+        "src:us-co:electrical-board"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.85
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim:us-co:building-local-record",
+      "subject_id": "state-profile:us-co",
+      "field": "defaults.building",
+      "status": "supported",
+      "value": "local_record_required",
+      "source_ids": [
+        "src:us-co:accessibility-local",
+        "src:us-co:energy-local"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.8
+      }
+    },
+    {
+      "id": "claim:us-co:electrical-edition",
+      "subject_id": "adoption:us-co:electrical:2020-nec",
+      "field": "base_model_code.edition_year",
+      "status": "supported",
+      "value": 2020,
+      "source_ids": [
+        "src:us-co:electrical-board"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.8
+      }
+    }
+  ],
+  "resolver_fixture_ids": [
+    "fixture:us-co:denver-building",
+    "fixture:us-co:larimer-electrical"
+  ]
+}
