@@ -4,3 +4,4 @@ dist/
 node_modules/
 pnpm-lock.yaml
 docs/superpowers/plans/
+docs/explanation/launch-scripts-implementation-plan.md
