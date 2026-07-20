@@ -11,11 +11,9 @@ const API_BASE = import.meta.env.VITE_API_BASE_URL?.trim() || "/api";
 
 export function buildApiUrl(path: string): string {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
-
   if (/^https?:\/\//i.test(API_BASE)) {
     return new URL(normalizedPath.slice(1), `${API_BASE.replace(/\/+$/, "")}/`).toString();
   }
-
   return `${API_BASE.replace(/\/+$/, "")}${normalizedPath}`;
 }
 
@@ -23,15 +21,10 @@ async function readJson<T>(path: string, init?: RequestInit): Promise<T> {
   const { headers: requestHeaders, ...rest } = init ?? {};
   const headers = new Headers(requestHeaders);
   headers.set("Accept", "application/json");
-
-  const response = await fetch(buildApiUrl(path), {
-    headers,
-    ...rest,
-  });
+  const response = await fetch(buildApiUrl(path), { headers, ...rest });
   if (!response.ok) {
     throw new Error(`Request to ${path} failed with ${response.status}`);
   }
-
   return (await response.json()) as T;
 }
 
@@ -75,6 +68,48 @@ interface RawBoundaryMatch {
   source_id?: string;
 }
 
+interface RawSource {
+  id: string;
+  title: string;
+  url: string;
+  kind: string;
+  accessed_at: string;
+  last_checked_at?: string;
+  availability?: "available" | "unavailable" | "moved" | "unknown";
+  caveat?: string;
+}
+
+interface RawRelationship {
+  id: string;
+  from_id: string;
+  relationship: string;
+  to: string;
+  scope?: string[];
+  summary?: string;
+  source_ids?: string[];
+  verification: RawVerificationRecord;
+}
+
+interface RawRuleReference {
+  id: string;
+  kind: "applicability" | "date" | "amendment" | "enforcement";
+  code_family?: string;
+  summary: string;
+  source_ids?: string[];
+  verification: RawVerificationRecord;
+}
+
+interface RawClaim {
+  id: string;
+  subject_id: string;
+  field: string;
+  status: string;
+  value?: unknown;
+  conflict_group?: string;
+  source_ids?: string[];
+  verification: RawVerificationRecord;
+}
+
 interface RawResolutionResult {
   schema_version: string;
   generated_at: string;
@@ -103,6 +138,7 @@ interface RawResolutionResult {
     source_ids?: string[];
     verification: RawVerificationRecord;
   }>;
+  authority_path?: RawRelationship[];
   adoptions?: Array<{
     id: string;
     code_family: string;
@@ -113,16 +149,11 @@ interface RawResolutionResult {
     source_ids?: string[];
     verification: RawVerificationRecord;
   }>;
+  applicable_rules?: RawRuleReference[];
+  supporting_claims?: RawClaim[];
   required_local_records?: string[];
   warnings?: string[];
-  evidence?: Array<{
-    id: string;
-    title: string;
-    url: string;
-    kind: string;
-    accessed_at: string;
-    caveat?: string;
-  }>;
+  evidence?: RawSource[];
 }
 
 export interface ResolutionRequestInput {
@@ -171,6 +202,16 @@ export function decodeResolutionResult(raw: RawResolutionResult): ResolutionResu
       sourceIds: candidate.source_ids ?? [],
       verification: candidate.verification,
     })),
+    authorityPath: (raw.authority_path ?? []).map((relationship) => ({
+      id: relationship.id,
+      fromId: relationship.from_id,
+      relationship: relationship.relationship,
+      to: relationship.to,
+      scope: relationship.scope ?? [],
+      summary: relationship.summary,
+      sourceIds: relationship.source_ids ?? [],
+      verification: relationship.verification,
+    })),
     adoptions: (raw.adoptions ?? []).map((adoption) => ({
       id: adoption.id,
       codeFamily: adoption.code_family,
@@ -181,6 +222,24 @@ export function decodeResolutionResult(raw: RawResolutionResult): ResolutionResu
       sourceIds: adoption.source_ids ?? [],
       verification: adoption.verification,
     })),
+    applicableRules: (raw.applicable_rules ?? []).map((rule) => ({
+      id: rule.id,
+      kind: rule.kind,
+      codeFamily: rule.code_family,
+      summary: rule.summary,
+      sourceIds: rule.source_ids ?? [],
+      verification: rule.verification,
+    })),
+    supportingClaims: (raw.supporting_claims ?? []).map((claim) => ({
+      id: claim.id,
+      subjectId: claim.subject_id,
+      field: claim.field,
+      status: claim.status,
+      value: claim.value,
+      conflictGroup: claim.conflict_group,
+      sourceIds: claim.source_ids ?? [],
+      verification: claim.verification,
+    })),
     requiredLocalRecords: raw.required_local_records ?? [],
     warnings: raw.warnings ?? [],
     evidence: (raw.evidence ?? []).map((source) => ({
@@ -189,6 +248,8 @@ export function decodeResolutionResult(raw: RawResolutionResult): ResolutionResu
       url: source.url,
       kind: source.kind,
       accessedAt: source.accessed_at,
+      lastCheckedAt: source.last_checked_at,
+      availability: source.availability,
       caveat: source.caveat,
     })),
   };
@@ -205,6 +266,5 @@ export async function fetchResolution(input: ResolutionRequestInput): Promise<Re
       applicability_date: input.applicabilityDate || undefined,
     }),
   });
-
   return decodeResolutionResult(raw);
 }
