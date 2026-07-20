@@ -1,0 +1,28 @@
+---
+state:
+  state_id: "US-NJ"
+  name: "New Jersey"
+  abbreviation: "NJ"
+report:
+  report_id: "pilot-report:us-nj"
+  schema_version: "1.0"
+  status: "partially_verified"
+  last_updated: "2026-07-20"
+  last_verified: "2026-07-20"
+risk:
+  overall_confidence: 0.80
+  risk_flags: ["pilot_scope", "split_authority"]
+  open_questions_count: 1
+---
+
+# Building Code Authority Pilot: New Jersey
+
+Statewide uniform construction code with a separate operational-fire authority path.
+
+This pilot is intentionally scoped to resolver behavior. It preserves unresolved local records and does not claim production-ready statewide or municipal coverage.
+
+## Canonical Jurisdiction Profile
+
+```json jurisdiction-profile
+{"schema_version":"1.0","profile_id":"state-profile:us-nj","state_id":"US-NJ","state_name":"New Jersey","state_abbreviation":"NJ","state_fips":"34","status":"partially_verified","last_verified":"2026-07-20","sources":[{"id":"src:us-nj:ucc","title":"New Jersey DCA — Uniform Construction Code, N.J.A.C. 5:23","url":"https://www.nj.gov/dca/codes/codreg/ucc.shtml","kind":"administrative_code","accessed_at":"2026-07-20","caveat":"Courtesy copies; the official administrative rules govern if discrepancies exist."},{"id":"src:us-nj:codes-about","title":"New Jersey DCA — Division of Codes and Standards","url":"https://www.nj.gov/dca/codes/about.shtml","kind":"official_web","accessed_at":"2026-07-20"},{"id":"src:us-nj:local-enforcement","title":"New Jersey DCA — local and regional code enforcement","url":"https://nj.gov/dca/codes/offices/localcode.shtml","kind":"official_web","accessed_at":"2026-07-20"},{"id":"src:us-nj:fire-safety","title":"New Jersey DCA — Division of Fire Safety","url":"https://www.nj.gov/dca/dfs/","kind":"official_web","accessed_at":"2026-07-20"}],"authorities":[{"id":"auth:us-nj:codes-standards","name":"New Jersey Division of Codes and Standards","type":"state_agency","roles":["adopts","oversees_enforcement","state_enforcement"],"source_ids":["src:us-nj:ucc","src:us-nj:codes-about"],"verification":{"status":"verified","confidence":0.95}},{"id":"auth:us-nj:division-fire-safety","name":"New Jersey Division of Fire Safety","type":"state_agency","roles":["administers_uniform_fire_code","enforces_state_fire_code","monitors_local_enforcement"],"source_ids":["src:us-nj:fire-safety"],"verification":{"status":"verified","confidence":0.95}}],"relationships":[{"id":"edge:us-nj:ucc-local-enforcement","from_id":"auth:us-nj:codes-standards","relationship":"oversees","to":"municipal enforcing agencies","scope":["construction_code"],"source_ids":["src:us-nj:codes-about","src:us-nj:local-enforcement"],"verification":{"status":"verified","confidence":0.95}}],"adoptions":[{"id":"adoption:us-nj:ucc","code_family":"building","status":"current","state_code_name":"New Jersey Uniform Construction Code","adopting_authority_id":"auth:us-nj:codes-standards","enforcement_model":"hybrid","applies_to":["construction","alteration","repair","rehabilitation"],"dates":{},"source_ids":["src:us-nj:ucc","src:us-nj:codes-about"],"verification":{"status":"verified","confidence":0.95}},{"id":"adoption:us-nj:uniform-fire-code","code_family":"fire_operational","status":"current","state_code_name":"New Jersey Uniform Fire Code","adopting_authority_id":"auth:us-nj:division-fire-safety","enforcement_model":"hybrid","applies_to":["fire_prevention","life_hazard_uses","operational_fire_safety"],"dates":{},"source_ids":["src:us-nj:fire-safety"],"verification":{"status":"verified","confidence":0.95}}],"defaults":{"incorporated":{"status":"partially_resolved","authority_candidates":[{"kind":"municipality","source_ids":["src:us-nj:codes-about"],"label":"construction code enforcing agency","roles":["enforces"]},{"kind":"state_authority","source_ids":["src:us-nj:ucc","src:us-nj:local-enforcement"],"authority_id":"auth:us-nj:codes-standards"}],"adoption_ids":["adoption:us-nj:ucc"],"required_local_records":["Current municipal enforcing agency and permit office","Any project-specific state plan review or state-jurisdiction subcode requirement"],"source_ids":["src:us-nj:ucc","src:us-nj:codes-about","src:us-nj:local-enforcement"]},"unincorporated":{"status":"ambiguous","authority_candidates":[{"kind":"state_authority","source_ids":["src:us-nj:local-enforcement"],"authority_id":"auth:us-nj:codes-standards"}],"adoption_ids":["adoption:us-nj:ucc"],"required_local_records":["Confirm the responsible municipal or DCA regional enforcing agency for the location"],"warnings":["New Jersey geographic data should ordinarily resolve a municipality; an unincorporated result requires review."],"source_ids":["src:us-nj:ucc","src:us-nj:local-enforcement"]}},"code_family_overrides":{"fire_operational":{"status":"partially_resolved","authority_candidates":[{"kind":"fire_authority","source_ids":["src:us-nj:fire-safety"],"label":"Local fire code enforcing agency","roles":["enforces"]},{"kind":"state_authority","source_ids":["src:us-nj:fire-safety"],"authority_id":"auth:us-nj:division-fire-safety"}],"adoption_ids":["adoption:us-nj:uniform-fire-code"],"required_local_records":["Whether the property is locally enforced or state enforced under the Uniform Fire Code"],"source_ids":["src:us-nj:fire-safety"],"replace_authority_candidates":true,"replace_adoptions":true}},"project_type_overrides":{"state_owned":{"status":"resolved","authority_candidates":[{"kind":"state_authority","source_ids":["src:us-nj:codes-about"],"authority_id":"auth:us-nj:codes-standards"}],"required_local_records":["Project-specific state plan review and release requirements"],"source_ids":["src:us-nj:codes-about"]}},"verification":{"status":"partially_verified","confidence":0.8}}
+```
