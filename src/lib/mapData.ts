@@ -1,9 +1,4 @@
-import type {
-  GeoJSONGeometry,
-  LayerFamilyKey,
-  LayerSelectionMap,
-  PolygonGeometry,
-} from "../types";
+import type { GeoJSONGeometry, LayerFamilyKey, LayerSelectionMap, PolygonGeometry } from "../types";
 
 export interface BoundaryRenderableFeature {
   layerFamily: LayerFamilyKey;
@@ -84,16 +79,16 @@ export function buildBoundaryFeatureCollection(
       .map((feature) => ({
         type: "Feature",
         geometry: feature.geometry,
-          properties: {
-            layerFamily: feature.layerFamily,
-            featureId: feature.featureId,
-            title: feature.title,
-            subtitle: feature.subtitle,
-            sourceId: feature.sourceId,
-            geometrySource: feature.geometrySource ?? null,
-            selected: feature.featureId === selectedFeatureId,
-          },
-        })),
+        properties: {
+          layerFamily: feature.layerFamily,
+          featureId: feature.featureId,
+          title: feature.title,
+          subtitle: feature.subtitle,
+          sourceId: feature.sourceId,
+          geometrySource: feature.geometrySource ?? null,
+          selected: feature.featureId === selectedFeatureId,
+        },
+      })),
   };
 }
 
