@@ -2,8 +2,14 @@ import { useEffect, useState } from "react";
 import { FeatureInspector } from "./components/FeatureInspector";
 import { LayerToggleList } from "./components/LayerToggleList";
 import { MapStage } from "./components/MapStage";
+import { ResolutionPanel } from "./components/ResolutionPanel";
 import { StatusBanner } from "./components/StatusBanner";
-import { fetchBoundaryFeatures, fetchLayers, fetchRefreshStatus, getApiBaseUrl } from "./lib/api";
+import {
+  fetchBoundaryFeatures,
+  fetchLayers,
+  fetchRefreshStatus,
+  getApiBaseUrl,
+} from "./lib/api";
 import { createLayerSelectionMap } from "./lib/layerSelection";
 import type {
   BoundaryFeatureRecord,
@@ -94,8 +100,8 @@ function App(): JSX.Element {
     <div className="app-shell">
       <header className="app-header">
         <div>
-          <p className="eyebrow">TIGERweb / NERIS / Martin / PostGIS</p>
-          <h1>Cached boundary explorer</h1>
+          <p className="eyebrow">Local GIS + source-backed jurisdiction policy</p>
+          <h1>Building Code Map</h1>
         </div>
         <div className="app-header__stats">
           <div>
@@ -116,6 +122,7 @@ function App(): JSX.Element {
       <main className="app-grid">
         <aside className="sidebar">
           <StatusBanner refreshStatus={refreshStatus} apiBaseUrl={apiBaseUrl} error={loadError} />
+          <ResolutionPanel />
           <LayerToggleList
             layers={layerRegistry}
             enabledLayers={enabledLayers}
