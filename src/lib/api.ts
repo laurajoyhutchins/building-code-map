@@ -79,6 +79,14 @@ interface RawSource {
   caveat?: string;
 }
 
+interface RawPolicyBasis {
+  status: ResolutionResult["status"];
+  required_local_records?: string[];
+  warnings?: string[];
+  source_ids?: string[];
+  verification: RawVerificationRecord;
+}
+
 interface RawRelationship {
   id: string;
   from_id: string;
@@ -130,6 +138,7 @@ interface RawResolutionResult {
   project_type?: string;
   applicability_date?: string;
   status: ResolutionResult["status"];
+  policy_basis?: RawPolicyBasis;
   authority_candidates?: Array<{
     kind: string;
     authority_id?: string;
@@ -194,6 +203,15 @@ export function decodeResolutionResult(raw: RawResolutionResult): ResolutionResu
     projectType: raw.project_type,
     applicabilityDate: raw.applicability_date,
     status: raw.status,
+    policyBasis: raw.policy_basis
+      ? {
+          status: raw.policy_basis.status,
+          requiredLocalRecords: raw.policy_basis.required_local_records ?? [],
+          warnings: raw.policy_basis.warnings ?? [],
+          sourceIds: raw.policy_basis.source_ids ?? [],
+          verification: raw.policy_basis.verification,
+        }
+      : undefined,
     authorityCandidates: (raw.authority_candidates ?? []).map((candidate) => ({
       kind: candidate.kind,
       authorityId: candidate.authority_id,
