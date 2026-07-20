@@ -13,29 +13,73 @@
     "evidence"
   ],
   "properties": {
-    "schema_version": { "const": "1.0" },
-    "generated_at": { "type": "string", "format": "date-time" },
-    "profile_id": { "type": "string" },
-    "profile_last_verified": { "type": "string", "format": "date" },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "profile_id": {
+      "type": "string"
+    },
+    "profile_last_verified": {
+      "type": "string",
+      "format": "date"
+    },
     "geography": {
       "type": "object",
       "additionalProperties": false,
       "required": ["incorporated"],
       "properties": {
-        "state_id": { "type": "string" },
-        "state_fips": { "type": "string" },
-        "state_name": { "type": "string" },
-        "county": { "$ref": "#/$defs/boundary" },
-        "municipality": { "$ref": "#/$defs/boundary" },
-        "incorporated": { "type": "boolean" },
-        "special_areas": { "type": "array", "items": { "$ref": "#/$defs/boundary" } },
-        "tribal_areas": { "type": "array", "items": { "$ref": "#/$defs/boundary" } },
-        "fire_jurisdictions": { "type": "array", "items": { "$ref": "#/$defs/boundary" } }
+        "state_id": {
+          "type": "string"
+        },
+        "state_fips": {
+          "type": "string"
+        },
+        "state_name": {
+          "type": "string"
+        },
+        "county": {
+          "$ref": "#/$defs/boundary"
+        },
+        "municipality": {
+          "$ref": "#/$defs/boundary"
+        },
+        "incorporated": {
+          "type": "boolean"
+        },
+        "special_areas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/boundary"
+          }
+        },
+        "tribal_areas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/boundary"
+          }
+        },
+        "fire_jurisdictions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/boundary"
+          }
+        }
       }
     },
-    "code_family": { "type": "string" },
-    "project_type": { "type": "string" },
-    "applicability_date": { "type": "string", "format": "date" },
+    "code_family": {
+      "type": "string"
+    },
+    "project_type": {
+      "type": "string"
+    },
+    "applicability_date": {
+      "type": "string",
+      "format": "date"
+    },
     "status": {
       "enum": [
         "resolved",
@@ -46,14 +90,57 @@
         "insufficient_evidence"
       ]
     },
-    "authority_candidates": { "type": "array", "items": { "$ref": "#/$defs/authorityCandidate" } },
-    "authority_path": { "type": "array", "items": { "$ref": "#/$defs/relationship" } },
-    "adoptions": { "type": "array", "items": { "$ref": "#/$defs/adoption" } },
-    "applicable_rules": { "type": "array", "items": { "$ref": "#/$defs/ruleReference" } },
-    "supporting_claims": { "type": "array", "items": { "$ref": "#/$defs/claim" } },
-    "required_local_records": { "type": "array", "items": { "type": "string" } },
-    "warnings": { "type": "array", "items": { "type": "string" } },
-    "evidence": { "type": "array", "items": { "$ref": "#/$defs/source" } }
+    "authority_candidates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/authorityCandidate"
+      }
+    },
+    "authority_path": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/relationship"
+      }
+    },
+    "adoptions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/adoption"
+      }
+    },
+    "applicable_rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ruleReference"
+      }
+    },
+    "supporting_claims": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "required_local_records": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "policy_basis": {
+      "$ref": "#/$defs/policyBasis"
+    }
   },
   "$defs": {
     "verification": {
@@ -61,21 +148,42 @@
       "additionalProperties": false,
       "required": ["status"],
       "properties": {
-        "status": { "type": "string" },
-        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
-        "notes": { "type": "string" }
+        "status": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "notes": {
+          "type": "string"
+        }
       }
     },
-    "sourceIds": { "type": "array", "items": { "type": "string" } },
+    "sourceIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "boundary": {
       "type": "object",
       "additionalProperties": false,
       "required": ["layer_family", "feature_id", "name"],
       "properties": {
-        "layer_family": { "type": "string" },
-        "feature_id": { "type": "string" },
-        "name": { "type": "string" },
-        "source_id": { "type": "string" }
+        "layer_family": {
+          "type": "string"
+        },
+        "feature_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "source_id": {
+          "type": "string"
+        }
       }
     },
     "source": {
@@ -83,14 +191,33 @@
       "additionalProperties": false,
       "required": ["id", "title", "url", "kind", "accessed_at"],
       "properties": {
-        "id": { "type": "string" },
-        "title": { "type": "string" },
-        "url": { "type": "string", "format": "uri" },
-        "kind": { "type": "string" },
-        "accessed_at": { "type": "string", "format": "date" },
-        "last_checked_at": { "type": "string", "format": "date" },
-        "availability": { "enum": ["available", "unavailable", "moved", "unknown"] },
-        "caveat": { "type": "string" }
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "accessed_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "last_checked_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "availability": {
+          "enum": ["available", "unavailable", "moved", "unknown"]
+        },
+        "caveat": {
+          "type": "string"
+        }
       }
     },
     "authorityCandidate": {
@@ -98,12 +225,27 @@
       "additionalProperties": false,
       "required": ["kind", "name", "source_ids", "verification"],
       "properties": {
-        "kind": { "type": "string" },
-        "authority_id": { "type": "string" },
-        "name": { "type": "string" },
-        "roles": { "type": "array", "items": { "type": "string" } },
-        "source_ids": { "$ref": "#/$defs/sourceIds" },
-        "verification": { "$ref": "#/$defs/verification" }
+        "kind": {
+          "type": "string"
+        },
+        "authority_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source_ids": {
+          "$ref": "#/$defs/sourceIds"
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        }
       }
     },
     "relationship": {
@@ -111,14 +253,33 @@
       "additionalProperties": false,
       "required": ["id", "from_id", "relationship", "to", "source_ids", "verification"],
       "properties": {
-        "id": { "type": "string" },
-        "from_id": { "type": "string" },
-        "relationship": { "type": "string" },
-        "to": { "type": "string" },
-        "scope": { "type": "array", "items": { "type": "string" } },
-        "summary": { "type": "string" },
-        "source_ids": { "$ref": "#/$defs/sourceIds" },
-        "verification": { "$ref": "#/$defs/verification" }
+        "id": {
+          "type": "string"
+        },
+        "from_id": {
+          "type": "string"
+        },
+        "relationship": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "summary": {
+          "type": "string"
+        },
+        "source_ids": {
+          "$ref": "#/$defs/sourceIds"
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        }
       }
     },
     "adoption": {
@@ -135,14 +296,33 @@
         "verification"
       ],
       "properties": {
-        "id": { "type": "string" },
-        "code_family": { "type": "string" },
-        "status": { "type": "string" },
-        "state_code_name": { "type": "string" },
-        "enforcement_model": { "type": "string" },
-        "dates": { "type": "object", "additionalProperties": { "type": "string" } },
-        "source_ids": { "$ref": "#/$defs/sourceIds" },
-        "verification": { "$ref": "#/$defs/verification" }
+        "id": {
+          "type": "string"
+        },
+        "code_family": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "state_code_name": {
+          "type": "string"
+        },
+        "enforcement_model": {
+          "type": "string"
+        },
+        "dates": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "source_ids": {
+          "$ref": "#/$defs/sourceIds"
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        }
       }
     },
     "ruleReference": {
@@ -150,12 +330,24 @@
       "additionalProperties": false,
       "required": ["id", "kind", "summary", "source_ids", "verification"],
       "properties": {
-        "id": { "type": "string" },
-        "kind": { "enum": ["applicability", "date", "amendment", "enforcement"] },
-        "code_family": { "type": "string" },
-        "summary": { "type": "string" },
-        "source_ids": { "$ref": "#/$defs/sourceIds" },
-        "verification": { "$ref": "#/$defs/verification" }
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": ["applicability", "date", "amendment", "enforcement"]
+        },
+        "code_family": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "source_ids": {
+          "$ref": "#/$defs/sourceIds"
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        }
       }
     },
     "claim": {
@@ -163,14 +355,63 @@
       "additionalProperties": false,
       "required": ["id", "subject_id", "field", "status", "source_ids", "verification"],
       "properties": {
-        "id": { "type": "string" },
-        "subject_id": { "type": "string" },
-        "field": { "type": "string" },
-        "status": { "type": "string" },
+        "id": {
+          "type": "string"
+        },
+        "subject_id": {
+          "type": "string"
+        },
+        "field": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
         "value": {},
-        "conflict_group": { "type": "string" },
-        "source_ids": { "$ref": "#/$defs/sourceIds" },
-        "verification": { "$ref": "#/$defs/verification" }
+        "conflict_group": {
+          "type": "string"
+        },
+        "source_ids": {
+          "$ref": "#/$defs/sourceIds"
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        }
+      }
+    },
+    "policyBasis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "source_ids", "verification"],
+      "properties": {
+        "status": {
+          "enum": [
+            "resolved",
+            "partially_resolved",
+            "local_record_required",
+            "ambiguous",
+            "conflicting",
+            "insufficient_evidence"
+          ]
+        },
+        "required_local_records": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source_ids": {
+          "$ref": "#/$defs/sourceIds"
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        }
       }
     }
   }
