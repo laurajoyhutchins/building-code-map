@@ -28,18 +28,9 @@
         "county": { "$ref": "#/$defs/boundary" },
         "municipality": { "$ref": "#/$defs/boundary" },
         "incorporated": { "type": "boolean" },
-        "special_areas": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/boundary" }
-        },
-        "tribal_areas": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/boundary" }
-        },
-        "fire_jurisdictions": {
-          "type": "array",
-          "items": { "$ref": "#/$defs/boundary" }
-        }
+        "special_areas": { "type": "array", "items": { "$ref": "#/$defs/boundary" } },
+        "tribal_areas": { "type": "array", "items": { "$ref": "#/$defs/boundary" } },
+        "fire_jurisdictions": { "type": "array", "items": { "$ref": "#/$defs/boundary" } }
       }
     },
     "code_family": { "type": "string" },
@@ -55,35 +46,14 @@
         "insufficient_evidence"
       ]
     },
-    "authority_candidates": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/authorityCandidate" }
-    },
-    "authority_path": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/relationship" }
-    },
-    "adoptions": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/adoption" }
-    },
-    "applicable_rules": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/ruleReference" }
-    },
-    "supporting_claims": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/claim" }
-    },
-    "required_local_records": {
-      "type": "array",
-      "items": { "type": "string" }
-    },
+    "authority_candidates": { "type": "array", "items": { "$ref": "#/$defs/authorityCandidate" } },
+    "authority_path": { "type": "array", "items": { "$ref": "#/$defs/relationship" } },
+    "adoptions": { "type": "array", "items": { "$ref": "#/$defs/adoption" } },
+    "applicable_rules": { "type": "array", "items": { "$ref": "#/$defs/ruleReference" } },
+    "supporting_claims": { "type": "array", "items": { "$ref": "#/$defs/claim" } },
+    "required_local_records": { "type": "array", "items": { "type": "string" } },
     "warnings": { "type": "array", "items": { "type": "string" } },
-    "evidence": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/source" }
-    }
+    "evidence": { "type": "array", "items": { "$ref": "#/$defs/source" } }
   },
   "$defs": {
     "verification": {
@@ -96,10 +66,7 @@
         "notes": { "type": "string" }
       }
     },
-    "sourceIds": {
-      "type": "array",
-      "items": { "type": "string" }
-    },
+    "sourceIds": { "type": "array", "items": { "type": "string" } },
     "boundary": {
       "type": "object",
       "additionalProperties": false,
@@ -122,9 +89,7 @@
         "kind": { "type": "string" },
         "accessed_at": { "type": "string", "format": "date" },
         "last_checked_at": { "type": "string", "format": "date" },
-        "availability": {
-          "enum": ["available", "unavailable", "moved", "unknown"]
-        },
+        "availability": { "enum": ["available", "unavailable", "moved", "unknown"] },
         "caveat": { "type": "string" }
       }
     },
@@ -175,10 +140,7 @@
         "status": { "type": "string" },
         "state_code_name": { "type": "string" },
         "enforcement_model": { "type": "string" },
-        "dates": {
-          "type": "object",
-          "additionalProperties": { "type": "string" }
-        },
+        "dates": { "type": "object", "additionalProperties": { "type": "string" } },
         "source_ids": { "$ref": "#/$defs/sourceIds" },
         "verification": { "$ref": "#/$defs/verification" }
       }
@@ -189,9 +151,7 @@
       "required": ["id", "kind", "summary", "source_ids", "verification"],
       "properties": {
         "id": { "type": "string" },
-        "kind": {
-          "enum": ["applicability", "date", "amendment", "enforcement"]
-        },
+        "kind": { "enum": ["applicability", "date", "amendment", "enforcement"] },
         "code_family": { "type": "string" },
         "summary": { "type": "string" },
         "source_ids": { "$ref": "#/$defs/sourceIds" },
