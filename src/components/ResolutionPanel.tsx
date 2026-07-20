@@ -1,6 +1,6 @@
 import { useState, type FormEvent, type ReactNode } from "react";
 import { fetchResolution } from "../lib/api";
-import type { ResolutionResult, ResolutionStatus } from "../types";
+import type { ResolutionClaim, ResolutionResult, ResolutionStatus } from "../types";
 
 const codeFamilies = [
   ["building", "Building"],
@@ -25,11 +25,14 @@ const statusLabels: Record<ResolutionStatus, string> = {
   insufficient_evidence: "Insufficient evidence",
 };
 
+const today = new Date().toISOString().slice(0, 10);
+
 export function ResolutionPanel(): JSX.Element {
   const [longitude, setLongitude] = useState("-104.9903");
   const [latitude, setLatitude] = useState("39.7392");
   const [codeFamily, setCodeFamily] = useState("building");
   const [projectType, setProjectType] = useState("");
+  const [applicabilityDate, setApplicabilityDate] = useState(today);
   const [result, setResult] = useState<ResolutionResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -51,6 +54,7 @@ export function ResolutionPanel(): JSX.Element {
         latitude: nextLatitude,
         codeFamily,
         projectType: projectType || undefined,
+        applicabilityDate,
       });
       setResult(nextResult);
     } catch (requestError) {
@@ -66,8 +70,8 @@ export function ResolutionPanel(): JSX.Element {
       <div className="panel__header">
         <h2 id="resolution-heading">Resolve authority</h2>
         <p>
-          Enter a coordinate to identify the state policy, likely authorities, and records that
-          still require local verification.
+          Enter a coordinate and applicability date to identify the controlling state policy,
+          likely authorities, evidence, and records that still require local verification.
         </p>
       </div>
 
@@ -112,6 +116,15 @@ export function ResolutionPanel(): JSX.Element {
             ))}
           </select>
         </label>
+        <label>
+          <span>Applicability date</span>
+          <input
+            type="date"
+            value={applicabilityDate}
+            onChange={(event) => setApplicabilityDate(event.target.value)}
+            required
+          />
+        </label>
         <button className="resolution-form__submit" type="submit" disabled={isLoading}>
           {isLoading ? "Resolving…" : "Resolve location"}
         </button>
@@ -138,6 +151,9 @@ function ResolutionSummary({ result }: { result: ResolutionResult }): JSX.Elemen
           <strong>
             {result.codeFamily ? result.codeFamily.replace(/_/g, " ") : "All code families"}
           </strong>
+          {result.applicabilityDate ? (
+            <span className="resolution-result__place">Applicable on {result.applicabilityDate}</span>
+          ) : null}
         </div>
         <span className={`resolution-status resolution-status--${result.status}`}>
           {statusLabels[result.status]}
@@ -159,13 +175,61 @@ function ResolutionSummary({ result }: { result: ResolutionResult }): JSX.Elemen
         )}
       </ResultSection>
 
+      {result.authorityPath.length > 0 ? (
+        <ResultSection title="Authority path">
+          <ul>
+            {result.authorityPath.map((relationship) => (
+              <li key={relationship.id}>
+                <strong>
+                  {relationship.fromId} → {relationship.to}
+                </strong>
+                <span>{relationship.summary ?? relationship.relationship.replace(/_/g, " ")}</span>
+              </li>
+            ))}
+          </ul>
+        </ResultSection>
+      ) : null}
+
       {result.adoptions.length > 0 ? (
-        <ResultSection title="Supported statewide records">
+        <ResultSection title="Supported adoption records">
           <ul>
             {result.adoptions.map((adoption) => (
               <li key={adoption.id}>
                 <strong>{adoption.stateCodeName}</strong>
-                <span>{adoption.codeFamily.replace(/_/g, " ")}</span>
+                <span>
+                  {adoption.codeFamily.replace(/_/g, " ")}
+                  {adoption.dates.effective_date
+                    ? ` · effective ${adoption.dates.effective_date}`
+                    : ""}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </ResultSection>
+      ) : null}
+
+      {result.applicableRules.length > 0 ? (
+        <ResultSection title="Applicable rules">
+          <ul>
+            {result.applicableRules.map((rule) => (
+              <li key={rule.id}>
+                <strong>{rule.kind.replace(/_/g, " ")}</strong>
+                <span>{rule.summary}</span>
+              </li>
+            ))}
+          </ul>
+        </ResultSection>
+      ) : null}
+
+      {result.supportingClaims.length > 0 ? (
+        <ResultSection title="Supporting claims">
+          <ul>
+            {result.supportingClaims.map((claim) => (
+              <li key={claim.id}>
+                <strong>
+                  {claim.field} · {claim.status}
+                </strong>
+                <span>{formatClaimValue(claim)}</span>
               </li>
             ))}
           </ul>
@@ -198,13 +262,25 @@ function ResolutionSummary({ result }: { result: ResolutionResult }): JSX.Elemen
               <a href={source.url} target="_blank" rel="noreferrer">
                 {source.title}
               </a>
-              <span>Accessed {source.accessedAt}</span>
+              <span>
+                Accessed {source.accessedAt}
+                {source.lastCheckedAt ? ` · checked ${source.lastCheckedAt}` : ""}
+                {source.availability ? ` · ${source.availability}` : ""}
+              </span>
             </li>
           ))}
         </ul>
       </details>
     </div>
   );
+}
+
+function formatClaimValue(claim: ResolutionClaim): string {
+  if (claim.value === undefined || claim.value === null) {
+    return claim.conflictGroup ? `Conflict group: ${claim.conflictGroup}` : "No normalized value";
+  }
+  const value = typeof claim.value === "string" ? claim.value : JSON.stringify(claim.value);
+  return claim.conflictGroup ? `${value} · conflict group ${claim.conflictGroup}` : value;
 }
 
 function ResultSection({ title, children }: { title: string; children: ReactNode }): JSX.Element {
