@@ -38,6 +38,12 @@ describe("resolution response decoding", () => {
       code_family: "building",
       applicability_date: "2026-07-20",
       status: "partially_resolved",
+      policy_basis: {
+        status: "partially_resolved",
+        required_local_records: ["Local amendment record"],
+        source_ids: ["src:us-fl:statute-553-73"],
+        verification: { status: "partially_verified", confidence: 0.9 },
+      },
       authority_path: [
         {
           id: "edge:us-fl:state-code-local-enforcement",
@@ -84,6 +90,7 @@ describe("resolution response decoding", () => {
 
     expect(result.geography.municipality?.name).toBe("Orlando");
     expect(result.applicabilityDate).toBe("2026-07-20");
+    expect(result.policyBasis?.sourceIds).toEqual(["src:us-fl:statute-553-73"]);
     expect(result.authorityPath[0]?.relationship).toBe("delegates_enforcement_to");
     expect(result.applicableRules[0]?.kind).toBe("date");
     expect(result.supportingClaims[0]?.value).toBe("2023-12-31");
