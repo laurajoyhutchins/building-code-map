@@ -152,11 +152,13 @@ The documentation is organized by intent under [`docs/`](docs/README.md):
 - [Getting started tutorial](docs/tutorials/getting-started.md)
 - [Runtime and API reference](docs/reference/runtime-and-api.md)
 - [Configuration reference](docs/reference/configuration.md)
+- [Repository governance reference](docs/reference/repository-governance.md)
 - [Add a boundary layer](docs/how-to/add-boundary-layer.md)
 - [Populate a state report](docs/how-to/populate-state-report-template.md)
 - [TIGERweb visualization design](docs/explanation/tigerweb-visualization-design.md)
 - [Data sources and redistribution boundaries](DATA_SOURCES.md)
 - [Security policy](SECURITY.md)
+- [Contribution guide](CONTRIBUTING.md)
 
 ## Data and Publication Boundaries
 
@@ -167,6 +169,12 @@ The documentation is organized by intent under [`docs/`](docs/README.md):
 - Environment files, logs, local caches, decision databases, prompt-bearing graph exports, and database binaries are ignored.
 
 See [`DATA_SOURCES.md`](DATA_SOURCES.md) for the maintained attribution and redistribution boundary.
+
+## Contributing
+
+Use the structured issue forms for software bugs, jurisdiction or code-data corrections, and feature requests. Pull requests must preserve provenance, publication boundaries, and the exact-head verification policy described in [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+Security vulnerabilities must be reported privately according to [`SECURITY.md`](SECURITY.md), not through a public issue.
 
 ## License
 

@@ -1,0 +1,62 @@
+name: Feature request
+description: Propose a focused improvement aligned with the deterministic location-to-authority product direction.
+title: "feature: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the user outcome before proposing implementation. Architectural direction is documented in the README; deferred systems should not be treated as already delivered requirements.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or user need
+      description: What specific task is difficult or impossible today, and who is affected?
+    validations:
+      required: true
+
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Describe observable behavior and a measurable completion condition.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Primary scope
+      options:
+        - Boundary exploration
+        - Location or address lookup
+        - Authority graph
+        - Building-code evidence
+        - Data ingestion and provenance
+        - API or integration
+        - Developer experience
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting evidence
+      description: Link relevant official sources, examples, user workflows, or existing issues.
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Describe simpler workflows or narrower scopes that might solve the same problem.
+
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Scope checks
+      options:
+        - label: This request does not require committing restricted data or copyrighted model-code text.
+          required: true
+        - label: I have described a user outcome rather than only naming a technology.
+          required: true

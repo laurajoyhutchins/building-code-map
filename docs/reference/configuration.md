@@ -33,6 +33,8 @@ This page records which files own which kinds of configuration so the repository
 - [`tools/start.cmd`](/tools/start.cmd): Windows launcher for the frontend and backend services.
 - [`tools/health.cmd`](/tools/health.cmd): HTTP health checks for local services.
 - [`tools/stop.cmd`](/tools/stop.cmd): stops services recorded by the launcher.
+- [`tools/configure-github-repository.cmd`](/tools/configure-github-repository.cmd): applies and verifies the documented GitHub merge, ruleset, and security settings through the authenticated GitHub CLI.
+- [`tools/configure-github-repository.ps1`](/tools/configure-github-repository.ps1): idempotent PowerShell implementation behind the GitHub settings wrapper.
 - [`tools/deciduous.cmd`](/tools/deciduous.cmd): Windows wrapper for the Deciduous CLI.
 - [`tools/deciduous-work.cmd`](/tools/deciduous-work.cmd): starts a goal from the supplied user request, then shows recovery state.
 - [`tools/deciduous-recover.cmd`](/tools/deciduous-recover.cmd): session-start recovery for the current graph.
@@ -71,6 +73,7 @@ The backend launcher resolves `go` from `PATH`, runs `go run ./cmd/server`, and 
 - `cd backend; go test ./...`: run backend tests.
 - `cd backend; go vet ./...`: run backend static checks.
 - `.\tools\start.cmd`, `.\tools\health.cmd`, and `.\tools\stop.cmd`: operate the local service pair on Windows.
+- `.\tools\configure-github-repository.cmd`: apply and verify public repository governance settings.
 
 ## Cleanup Rules
 

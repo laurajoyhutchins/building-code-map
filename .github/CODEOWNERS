@@ -1,0 +1,10 @@
+# Default ownership for all repository content.
+* @laurajoyhutchins
+
+# Protect ownership and governance definitions explicitly.
+/.github/CODEOWNERS @laurajoyhutchins
+/.github/ @laurajoyhutchins
+/SECURITY.md @laurajoyhutchins
+/DATA_SOURCES.md @laurajoyhutchins
+/CONTRIBUTING.md @laurajoyhutchins
+/reports/ @laurajoyhutchins
