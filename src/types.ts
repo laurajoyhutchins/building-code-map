@@ -59,3 +59,82 @@ export interface RefreshStatus {
   nextScheduledRefresh: string;
   message: string;
 }
+
+export type ResolutionStatus =
+  | "resolved"
+  | "partially_resolved"
+  | "local_record_required"
+  | "ambiguous"
+  | "conflicting"
+  | "insufficient_evidence";
+
+export interface VerificationRecord {
+  status: string;
+  confidence?: number;
+  notes?: string;
+}
+
+export interface RegulatorySource {
+  id: string;
+  title: string;
+  url: string;
+  kind: string;
+  accessedAt: string;
+  caveat?: string;
+}
+
+export interface ResolutionBoundaryMatch {
+  layerFamily: string;
+  featureId: string;
+  name: string;
+  sourceId?: string;
+}
+
+export interface ResolutionGeography {
+  stateId?: string;
+  stateFips?: string;
+  stateName?: string;
+  county?: ResolutionBoundaryMatch;
+  municipality?: ResolutionBoundaryMatch;
+  incorporated: boolean;
+  specialAreas: ResolutionBoundaryMatch[];
+  tribalAreas: ResolutionBoundaryMatch[];
+  fireJurisdictions: ResolutionBoundaryMatch[];
+}
+
+export interface ResolutionAuthorityCandidate {
+  kind: string;
+  authorityId?: string;
+  name: string;
+  roles: string[];
+  sourceIds: string[];
+  verification: VerificationRecord;
+}
+
+export interface ResolutionAdoption {
+  id: string;
+  codeFamily: string;
+  status: string;
+  stateCodeName: string;
+  enforcementModel: string;
+  dates: Record<string, string>;
+  sourceIds: string[];
+  verification: VerificationRecord;
+}
+
+export interface ResolutionResult {
+  schemaVersion: string;
+  generatedAt: string;
+  profileId?: string;
+  profileLastVerified?: string;
+  geography: ResolutionGeography;
+  codeFamily?: string;
+  projectType?: string;
+  applicabilityDate?: string;
+  status: ResolutionStatus;
+  authorityCandidates: ResolutionAuthorityCandidate[];
+  adoptions: ResolutionAdoption[];
+  requiredLocalRecords: string[];
+  warnings: string[];
+  evidence: RegulatorySource[];
+}
