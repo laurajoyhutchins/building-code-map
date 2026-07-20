@@ -27,24 +27,14 @@
     "state_fips": { "type": "string", "pattern": "^[0-9]{2}$" },
     "status": { "enum": ["draft", "partially_verified", "verified", "deprecated"] },
     "last_verified": { "type": "string", "format": "date" },
-    "sources": {
-      "type": "array",
-      "minItems": 1,
-      "items": { "$ref": "#/$defs/source" }
-    },
+    "sources": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/source" } },
     "authorities": {
       "type": "array",
       "minItems": 1,
       "items": { "$ref": "#/$defs/authority" }
     },
-    "relationships": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/relationship" }
-    },
-    "adoptions": {
-      "type": "array",
-      "items": { "$ref": "#/$defs/adoption" }
-    },
+    "relationships": { "type": "array", "items": { "$ref": "#/$defs/relationship" } },
+    "adoptions": { "type": "array", "items": { "$ref": "#/$defs/adoption" } },
     "applicability_rules": {
       "type": "array",
       "items": { "$ref": "state-rule-pack.schema.json#/$defs/applicabilityRule" }
@@ -101,9 +91,7 @@
       "additionalProperties": false,
       "required": ["status"],
       "properties": {
-        "status": {
-          "enum": ["verified", "partially_verified", "needs_review", "unresolved"]
-        },
+        "status": { "enum": ["verified", "partially_verified", "needs_review", "unresolved"] },
         "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
         "notes": { "type": "string" }
       }
@@ -119,9 +107,7 @@
         "kind": { "type": "string", "minLength": 1 },
         "accessed_at": { "type": "string", "format": "date" },
         "last_checked_at": { "type": "string", "format": "date" },
-        "availability": {
-          "enum": ["available", "unavailable", "moved", "unknown"]
-        },
+        "availability": { "enum": ["available", "unavailable", "moved", "unknown"] },
         "caveat": { "type": "string" }
       }
     },
@@ -180,11 +166,7 @@
           "properties": {
             "publisher": { "type": "string" },
             "name": { "type": "string" },
-            "edition_year": {
-              "type": "integer",
-              "minimum": 1800,
-              "maximum": 2200
-            }
+            "edition_year": { "type": "integer", "minimum": 1800, "maximum": 2200 }
           }
         },
         "adopting_authority_id": { "type": "string", "minLength": 1 },
