@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0",
+  "state_id": "US-NJ",
+  "source_health": {
+    "src:us-nj:ucc": {
+      "last_checked_at": "2026-07-20",
+      "availability": "available"
+    },
+    "src:us-nj:codes-about": {
+      "last_checked_at": "2026-07-20",
+      "availability": "available"
+    },
+    "src:us-nj:local-enforcement": {
+      "last_checked_at": "2026-07-20",
+      "availability": "available"
+    },
+    "src:us-nj:fire-safety": {
+      "last_checked_at": "2026-07-20",
+      "availability": "available"
+    }
+  },
+  "applicability_rules": [
+    {
+      "id": "rule:us-nj:uniform-construction-code",
+      "code_family": "building",
+      "trigger": "construction_alteration_repair_or_rehabilitation",
+      "summary": "The New Jersey Uniform Construction Code supplies the statewide construction-code framework.",
+      "source_ids": [
+        "src:us-nj:ucc",
+        "src:us-nj:codes-about"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-nj:uniform-fire-code",
+      "code_family": "fire_operational",
+      "trigger": "operational_fire_safety",
+      "summary": "Operational fire-safety questions are governed through the separate Uniform Fire Code authority path.",
+      "source_ids": [
+        "src:us-nj:fire-safety"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "date_rules": [
+    {
+      "id": "rule:us-nj:ucc-current-record-review",
+      "code_family": "building",
+      "rule_type": "current_record",
+      "trigger": "applicability_date",
+      "summary": "The pilot establishes the current UCC framework but requires the official subcode adoption and effective-date record for historical determinations.",
+      "source_ids": [
+        "src:us-nj:ucc"
+      ],
+      "verification": {
+        "status": "needs_review",
+        "confidence": 0.7
+      }
+    },
+    {
+      "id": "rule:us-nj:fire-current-record-review",
+      "code_family": "fire_operational",
+      "rule_type": "current_record",
+      "trigger": "applicability_date",
+      "summary": "The pilot establishes the current Uniform Fire Code framework but does not encode a complete historical edition timeline.",
+      "source_ids": [
+        "src:us-nj:fire-safety"
+      ],
+      "verification": {
+        "status": "needs_review",
+        "confidence": 0.7
+      }
+    }
+  ],
+  "amendment_rules": [
+    {
+      "id": "rule:us-nj:state-uniformity",
+      "code_family": "building",
+      "level": "state",
+      "authority_id": "auth:us-nj:codes-standards",
+      "posture": "state_uniform_code_with_local_administration",
+      "summary": "The state code framework controls while local or regional enforcing agencies administer permits and inspections.",
+      "source_ids": [
+        "src:us-nj:ucc",
+        "src:us-nj:local-enforcement"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.9
+      }
+    }
+  ],
+  "enforcement_rules": [
+    {
+      "id": "rule:us-nj:construction-hybrid-enforcement",
+      "code_family": "building",
+      "model": "hybrid",
+      "entity_kinds": [
+        "municipal_enforcing_agency",
+        "regional_enforcing_agency",
+        "state_agency"
+      ],
+      "authority_ids": [
+        "auth:us-nj:codes-standards"
+      ],
+      "summary": "Construction-code enforcement is ordinarily local or regional under state oversight, with state enforcement for defined projects or jurisdictions.",
+      "source_ids": [
+        "src:us-nj:codes-about",
+        "src:us-nj:local-enforcement"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-nj:fire-hybrid-enforcement",
+      "code_family": "fire_operational",
+      "model": "hybrid",
+      "entity_kinds": [
+        "local_fire_enforcing_agency",
+        "state_fire_safety_division"
+      ],
+      "authority_ids": [
+        "auth:us-nj:division-fire-safety"
+      ],
+      "summary": "Uniform Fire Code enforcement may be local or state depending on the property and enforcement assignment.",
+      "source_ids": [
+        "src:us-nj:fire-safety"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim:us-nj:ucc-statewide-framework",
+      "subject_id": "adoption:us-nj:ucc",
+      "field": "state_code_name",
+      "status": "supported",
+      "value": "New Jersey Uniform Construction Code",
+      "source_ids": [
+        "src:us-nj:ucc"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "claim:us-nj:fire-separate-authority",
+      "subject_id": "adoption:us-nj:uniform-fire-code",
+      "field": "adopting_authority_id",
+      "status": "supported",
+      "value": "auth:us-nj:division-fire-safety",
+      "source_ids": [
+        "src:us-nj:fire-safety"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "resolver_fixture_ids": [
+    "fixture:us-nj:trenton-building",
+    "fixture:us-nj:trenton-fire",
+    "fixture:us-nj:state-owned-building"
+  ]
+}

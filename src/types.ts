@@ -7,7 +7,6 @@ export type LayerFamilyKey =
   | "neris_jurisdictions";
 
 export type AttributeValue = string | number | boolean | null;
-
 export type PolygonPosition = readonly [number, number];
 
 export interface PolygonGeometry {
@@ -58,4 +57,128 @@ export interface RefreshStatus {
   latestAttempt: string;
   nextScheduledRefresh: string;
   message: string;
+}
+
+export type ResolutionStatus =
+  | "resolved"
+  | "partially_resolved"
+  | "local_record_required"
+  | "ambiguous"
+  | "conflicting"
+  | "insufficient_evidence";
+
+export interface VerificationRecord {
+  status: string;
+  confidence?: number;
+  notes?: string;
+}
+
+export interface RegulatorySource {
+  id: string;
+  title: string;
+  url: string;
+  kind: string;
+  accessedAt: string;
+  lastCheckedAt?: string;
+  availability?: "available" | "unavailable" | "moved" | "unknown";
+  caveat?: string;
+}
+
+export interface ResolutionBoundaryMatch {
+  layerFamily: string;
+  featureId: string;
+  name: string;
+  sourceId?: string;
+}
+
+export interface ResolutionGeography {
+  stateId?: string;
+  stateFips?: string;
+  stateName?: string;
+  county?: ResolutionBoundaryMatch;
+  municipality?: ResolutionBoundaryMatch;
+  incorporated: boolean;
+  specialAreas: ResolutionBoundaryMatch[];
+  tribalAreas: ResolutionBoundaryMatch[];
+  fireJurisdictions: ResolutionBoundaryMatch[];
+}
+
+export interface ResolutionPolicyBasis {
+  status: ResolutionStatus;
+  requiredLocalRecords: string[];
+  warnings: string[];
+  sourceIds: string[];
+  verification: VerificationRecord;
+}
+
+export interface ResolutionAuthorityCandidate {
+  kind: string;
+  authorityId?: string;
+  name: string;
+  roles: string[];
+  sourceIds: string[];
+  verification: VerificationRecord;
+}
+
+export interface ResolutionAuthorityRelationship {
+  id: string;
+  fromId: string;
+  relationship: string;
+  to: string;
+  scope: string[];
+  summary?: string;
+  sourceIds: string[];
+  verification: VerificationRecord;
+}
+
+export interface ResolutionAdoption {
+  id: string;
+  codeFamily: string;
+  status: string;
+  stateCodeName: string;
+  enforcementModel: string;
+  dates: Record<string, string>;
+  sourceIds: string[];
+  verification: VerificationRecord;
+}
+
+export interface ResolutionRuleReference {
+  id: string;
+  kind: "applicability" | "date" | "amendment" | "enforcement";
+  codeFamily?: string;
+  summary: string;
+  sourceIds: string[];
+  verification: VerificationRecord;
+}
+
+export interface ResolutionClaim {
+  id: string;
+  subjectId: string;
+  field: string;
+  status: string;
+  value?: unknown;
+  conflictGroup?: string;
+  sourceIds: string[];
+  verification: VerificationRecord;
+}
+
+export interface ResolutionResult {
+  schemaVersion: string;
+  generatedAt: string;
+  profileId?: string;
+  profileLastVerified?: string;
+  geography: ResolutionGeography;
+  codeFamily?: string;
+  projectType?: string;
+  applicabilityDate?: string;
+  status: ResolutionStatus;
+  policyBasis?: ResolutionPolicyBasis;
+  authorityCandidates: ResolutionAuthorityCandidate[];
+  authorityPath: ResolutionAuthorityRelationship[];
+  adoptions: ResolutionAdoption[];
+  applicableRules: ResolutionRuleReference[];
+  supportingClaims: ResolutionClaim[];
+  requiredLocalRecords: string[];
+  warnings: string[];
+  evidence: RegulatorySource[];
 }

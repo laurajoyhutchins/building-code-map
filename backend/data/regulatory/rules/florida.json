@@ -1,0 +1,202 @@
+{
+  "schema_version": "1.0",
+  "state_id": "US-FL",
+  "source_health": {
+    "src:us-fl:statute-553-73": {
+      "last_checked_at": "2026-07-20",
+      "availability": "available"
+    },
+    "src:us-fl:fbc-current": {
+      "last_checked_at": "2026-07-20",
+      "availability": "available"
+    }
+  },
+  "applicability_rules": [
+    {
+      "id": "rule:us-fl:statewide-building",
+      "code_family": "building",
+      "trigger": "ordinary_project",
+      "applies_to": [
+        "new_construction",
+        "alteration",
+        "repair",
+        "addition",
+        "change_of_occupancy"
+      ],
+      "summary": "The statewide Florida Building Code building volume supplies the baseline code for covered construction.",
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:fbc-current"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-fl:statewide-residential",
+      "code_family": "residential",
+      "trigger": "detached_one_two_family_or_townhouse",
+      "summary": "The statewide Florida Building Code residential volume supplies the baseline for covered residential work.",
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:fbc-current"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-fl:statewide-energy",
+      "code_family": "energy",
+      "trigger": "covered_building_project",
+      "summary": "The statewide Florida Building Code energy-conservation volume supplies the baseline energy code.",
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:fbc-current"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-fl:operational-fire-local-record",
+      "code_family": "fire_operational",
+      "trigger": "operational_fire_question",
+      "summary": "Operational fire-code resolution requires the current local fire-prevention code and enforcing authority.",
+      "source_ids": [
+        "src:us-fl:statute-553-73"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.75
+      }
+    }
+  ],
+  "date_rules": [
+    {
+      "id": "rule:us-fl:2023-code-effective",
+      "code_family": "building",
+      "rule_type": "effective_date",
+      "trigger": "applicability_date",
+      "start_date": "2023-12-31",
+      "prior_code_allowed": false,
+      "summary": "The recorded 8th Edition (2023) building volume is operative for dates on or after December 31, 2023.",
+      "source_ids": [
+        "src:us-fl:fbc-current"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-fl:2023-residential-effective",
+      "code_family": "residential",
+      "rule_type": "effective_date",
+      "trigger": "applicability_date",
+      "start_date": "2023-12-31",
+      "prior_code_allowed": false,
+      "summary": "The recorded 8th Edition (2023) residential volume is operative for dates on or after December 31, 2023.",
+      "source_ids": [
+        "src:us-fl:fbc-current"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-fl:2023-energy-effective",
+      "code_family": "energy",
+      "rule_type": "effective_date",
+      "trigger": "applicability_date",
+      "start_date": "2023-12-31",
+      "prior_code_allowed": false,
+      "summary": "The recorded 8th Edition (2023) energy volume is operative for dates on or after December 31, 2023.",
+      "source_ids": [
+        "src:us-fl:fbc-current"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "amendment_rules": [
+    {
+      "id": "rule:us-fl:local-technical-amendments",
+      "code_family": "construction_code",
+      "level": "local",
+      "posture": "local_amendment_record_required",
+      "summary": "Local technical amendments and administrative procedures remain part of the final applicable-code record.",
+      "source_ids": [
+        "src:us-fl:statute-553-73"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.85
+      }
+    }
+  ],
+  "enforcement_rules": [
+    {
+      "id": "rule:us-fl:local-enforcement",
+      "code_family": "construction_code",
+      "model": "local_with_state_oversight",
+      "entity_kinds": [
+        "municipality",
+        "county",
+        "state_commission"
+      ],
+      "authority_ids": [
+        "auth:us-fl:building-commission"
+      ],
+      "summary": "Local enforcing agencies administer permits and enforcement under the statewide code framework maintained by the Florida Building Commission.",
+      "source_ids": [
+        "src:us-fl:statute-553-73"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.85
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim:us-fl:building-effective-date",
+      "subject_id": "adoption:us-fl:building:2023",
+      "field": "dates.effective_date",
+      "status": "supported",
+      "value": "2023-12-31",
+      "source_ids": [
+        "src:us-fl:fbc-current"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "claim:us-fl:local-enforcement-path",
+      "subject_id": "edge:us-fl:state-code-local-enforcement",
+      "field": "relationship",
+      "status": "supported",
+      "value": "delegates_enforcement_to",
+      "source_ids": [
+        "src:us-fl:statute-553-73"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.85
+      }
+    }
+  ],
+  "resolver_fixture_ids": [
+    "fixture:us-fl:orlando-building-current",
+    "fixture:us-fl:orlando-building-historical",
+    "fixture:us-fl:orange-county-energy"
+  ]
+}

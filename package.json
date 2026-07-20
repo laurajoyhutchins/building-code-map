@@ -22,8 +22,10 @@
     "backend:lint": "cd backend && go vet ./...",
     "backend:format": "cd backend && go fmt ./...",
     "backend:test": "cd backend && go test ./...",
-    "format": "prettier \"AGENTS.md\" \"README.md\" \"CONTRIBUTING.md\" \"DATA_SOURCES.md\" \"SECURITY.md\" \"package.json\" \"eslint.config.js\" \".prettierrc.json\" \".github/**/*.{md,yml,yaml}\" \"docs/**/*.{md,json}\" \"src/**/*.{ts,tsx,css}\" --write",
-    "format:check": "prettier \"AGENTS.md\" \"README.md\" \"CONTRIBUTING.md\" \"DATA_SOURCES.md\" \"SECURITY.md\" \"package.json\" \"eslint.config.js\" \".prettierrc.json\" \".github/**/*.{md,yml,yaml}\" \"docs/**/*.{md,json}\" \"src/**/*.{ts,tsx,css}\" --check",
+    "regulatory:test": "python reports/tools/regulatory.py validate reports/pilots/*.md && python -m unittest discover -s reports/tools -p test_regulatory.py",
+    "regulatory:compile:check": "python reports/tools/regulatory.py compile reports/pilots/*.md --output-dir backend/data/regulatory --check",
+    "format": "prettier \"AGENTS.md\" \"README.md\" \"CONTRIBUTING.md\" \"DATA_SOURCES.md\" \"SECURITY.md\" \"package.json\" \"eslint.config.js\" \".prettierrc.json\" \".github/**/*.{md,yml,yaml}\" \"docs/**/*.{md,json}\" \"schemas/**/*.json\" \"src/**/*.{ts,tsx,css}\" --write",
+    "format:check": "prettier \"AGENTS.md\" \"README.md\" \"CONTRIBUTING.md\" \"DATA_SOURCES.md\" \"SECURITY.md\" \"package.json\" \"eslint.config.js\" \".prettierrc.json\" \".github/**/*.{md,yml,yaml}\" \"docs/**/*.{md,json}\" \"schemas/**/*.json\" \"src/**/*.{ts,tsx,css}\" --check",
     "test": "vitest run",
     "test:watch": "vitest"
   },
