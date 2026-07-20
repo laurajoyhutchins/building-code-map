@@ -7,7 +7,6 @@ export type LayerFamilyKey =
   | "neris_jurisdictions";
 
 export type AttributeValue = string | number | boolean | null;
-
 export type PolygonPosition = readonly [number, number];
 
 export interface PolygonGeometry {
@@ -80,6 +79,8 @@ export interface RegulatorySource {
   url: string;
   kind: string;
   accessedAt: string;
+  lastCheckedAt?: string;
+  availability?: "available" | "unavailable" | "moved" | "unknown";
   caveat?: string;
 }
 
@@ -111,6 +112,17 @@ export interface ResolutionAuthorityCandidate {
   verification: VerificationRecord;
 }
 
+export interface ResolutionAuthorityRelationship {
+  id: string;
+  fromId: string;
+  relationship: string;
+  to: string;
+  scope: string[];
+  summary?: string;
+  sourceIds: string[];
+  verification: VerificationRecord;
+}
+
 export interface ResolutionAdoption {
   id: string;
   codeFamily: string;
@@ -118,6 +130,26 @@ export interface ResolutionAdoption {
   stateCodeName: string;
   enforcementModel: string;
   dates: Record<string, string>;
+  sourceIds: string[];
+  verification: VerificationRecord;
+}
+
+export interface ResolutionRuleReference {
+  id: string;
+  kind: "applicability" | "date" | "amendment" | "enforcement";
+  codeFamily?: string;
+  summary: string;
+  sourceIds: string[];
+  verification: VerificationRecord;
+}
+
+export interface ResolutionClaim {
+  id: string;
+  subjectId: string;
+  field: string;
+  status: string;
+  value?: unknown;
+  conflictGroup?: string;
   sourceIds: string[];
   verification: VerificationRecord;
 }
@@ -133,7 +165,10 @@ export interface ResolutionResult {
   applicabilityDate?: string;
   status: ResolutionStatus;
   authorityCandidates: ResolutionAuthorityCandidate[];
+  authorityPath: ResolutionAuthorityRelationship[];
   adoptions: ResolutionAdoption[];
+  applicableRules: ResolutionRuleReference[];
+  supportingClaims: ResolutionClaim[];
   requiredLocalRecords: string[];
   warnings: string[];
   evidence: RegulatorySource[];
