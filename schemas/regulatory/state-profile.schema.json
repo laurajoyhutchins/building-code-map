@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/regulatory/state-profile.schema.json",
+  "title": "Building Code Map State Jurisdiction Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "profile_id",
+    "state_id",
+    "state_name",
+    "state_abbreviation",
+    "state_fips",
+    "status",
+    "last_verified",
+    "sources",
+    "authorities",
+    "defaults",
+    "verification"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "profile_id": { "type": "string", "minLength": 1 },
+    "state_id": { "type": "string", "pattern": "^US-[A-Z]{2}$" },
+    "state_name": { "type": "string", "minLength": 1 },
+    "state_abbreviation": { "type": "string", "pattern": "^[A-Z]{2}$" },
+    "state_fips": { "type": "string", "pattern": "^[0-9]{2}$" },
+    "status": {
+      "enum": ["draft", "partially_verified", "verified", "deprecated"]
+    },
+    "last_verified": { "type": "string", "format": "date" },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/source" }
+    },
+    "authorities": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/authority" }
+    },
+    "relationships": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/relationship" }
+    },
+    "adoptions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/adoption" }
+    },
+    "defaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["incorporated", "unincorporated"],
+      "properties": {
+        "incorporated": { "$ref": "#/$defs/policy" },
+        "unincorporated": { "$ref": "#/$defs/policy" }
+      }
+    },
+    "code_family_overrides": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/policy" }
+    },
+    "project_type_overrides": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/policy" }
+    },
+    "verification": { "$ref": "#/$defs/verification" }
+  },
+  "$defs": {
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "enum": [
+            "verified",
+            "partially_verified",
+            "needs_review",
+            "unresolved"
+          ]
+        },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "notes": { "type": "string" }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "url", "kind", "accessed_at"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "format": "uri" },
+        "kind": { "type": "string", "minLength": 1 },
+        "accessed_at": { "type": "string", "format": "date" },
+        "caveat": { "type": "string" }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "type", "roles", "source_ids", "verification"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "name": { "type": "string", "minLength": 1 },
+        "type": { "type": "string", "minLength": 1 },
+        "roles": { "type": "array", "items": { "type": "string" } },
+        "source_ids": { "$ref": "#/$defs/sourceIds" },
+        "verification": { "$ref": "#/$defs/verification" }
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "from_id",
+        "relationship",
+        "to",
+        "source_ids",
+        "verification"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "from_id": { "type": "string", "minLength": 1 },
+        "relationship": { "type": "string", "minLength": 1 },
+        "to": { "type": "string", "minLength": 1 },
+        "scope": { "type": "array", "items": { "type": "string" } },
+        "source_ids": { "$ref": "#/$defs/sourceIds" },
+        "verification": { "$ref": "#/$defs/verification" }
+      }
+    },
+    "adoption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "code_family",
+        "status",
+        "state_code_name",
+        "adopting_authority_id",
+        "enforcement_model",
+        "dates",
+        "source_ids",
+        "verification"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "code_family": { "type": "string", "minLength": 1 },
+        "status": {
+          "enum": [
+            "current",
+            "prior",
+            "future",
+            "pending",
+            "superseded",
+            "unknown"
+          ]
+        },
+        "state_code_name": { "type": "string", "minLength": 1 },
+        "base_model_code": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "publisher": { "type": "string" },
+            "name": { "type": "string" },
+            "edition_year": {
+              "type": "integer",
+              "minimum": 1800,
+              "maximum": 2200
+            }
+          }
+        },
+        "adopting_authority_id": { "type": "string", "minLength": 1 },
+        "enforcement_model": { "type": "string", "minLength": 1 },
+        "applies_to": { "type": "array", "items": { "type": "string" } },
+        "exclusions": { "type": "array", "items": { "type": "string" } },
+        "dates": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "adoption_date": { "type": "string", "format": "date" },
+            "effective_date": { "type": "string", "format": "date" },
+            "operative_date": { "type": "string", "format": "date" },
+            "mandatory_date": { "type": "string", "format": "date" },
+            "replacement_date": { "type": "string", "format": "date" }
+          }
+        },
+        "source_ids": { "$ref": "#/$defs/sourceIds" },
+        "verification": { "$ref": "#/$defs/verification" }
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "source_ids"],
+      "properties": {
+        "kind": {
+          "enum": [
+            "state_authority",
+            "municipality",
+            "county",
+            "fire_authority",
+            "special_area",
+            "tribal_authority"
+          ]
+        },
+        "authority_id": { "type": "string" },
+        "label": { "type": "string" },
+        "roles": { "type": "array", "items": { "type": "string" } },
+        "source_ids": { "$ref": "#/$defs/sourceIds" }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "source_ids"],
+      "properties": {
+        "replace_authority_candidates": { "type": "boolean" },
+        "replace_adoptions": { "type": "boolean" },
+        "status": {
+          "enum": [
+            "resolved",
+            "partially_resolved",
+            "local_record_required",
+            "ambiguous",
+            "conflicting",
+            "insufficient_evidence"
+          ]
+        },
+        "authority_candidates": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/candidate" }
+        },
+        "adoption_ids": { "type": "array", "items": { "type": "string" } },
+        "required_local_records": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "warnings": { "type": "array", "items": { "type": "string" } },
+        "source_ids": { "$ref": "#/$defs/sourceIds" }
+      }
+    },
+    "sourceIds": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    }
+  }
+}
