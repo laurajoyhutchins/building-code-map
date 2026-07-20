@@ -230,6 +230,14 @@ type RuleReference struct {
 	Verification Verification `json:"verification"`
 }
 
+type PolicyBasis struct {
+	Status               string       `json:"status"`
+	RequiredLocalRecords []string     `json:"required_local_records,omitempty"`
+	Warnings             []string     `json:"warnings,omitempty"`
+	SourceIDs            []string     `json:"source_ids"`
+	Verification         Verification `json:"verification"`
+}
+
 type ResolutionResult struct {
 	SchemaVersion        string                  `json:"schema_version"`
 	GeneratedAt          time.Time               `json:"generated_at"`
@@ -240,6 +248,7 @@ type ResolutionResult struct {
 	ProjectType          string                  `json:"project_type,omitempty"`
 	ApplicabilityDate    string                  `json:"applicability_date,omitempty"`
 	Status               string                  `json:"status"`
+	PolicyBasis          *PolicyBasis            `json:"policy_basis,omitempty"`
 	AuthorityCandidates  []AuthorityCandidate    `json:"authority_candidates"`
 	AuthorityPath        []AuthorityRelationship `json:"authority_path,omitempty"`
 	Adoptions            []Adoption              `json:"adoptions,omitempty"`
