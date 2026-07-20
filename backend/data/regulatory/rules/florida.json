@@ -128,6 +128,7 @@
   "amendment_rules": [
     {
       "id": "rule:us-fl:local-technical-amendments",
+      "code_family": "construction_code",
       "level": "local",
       "posture": "local_amendment_record_required",
       "summary": "Local technical amendments and administrative procedures remain part of the final applicable-code record.",
@@ -143,6 +144,7 @@
   "enforcement_rules": [
     {
       "id": "rule:us-fl:local-enforcement",
+      "code_family": "construction_code",
       "model": "local_with_state_oversight",
       "entity_kinds": [
         "municipality",
