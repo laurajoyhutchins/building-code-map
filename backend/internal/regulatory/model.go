@@ -14,12 +14,14 @@ type Verification struct {
 }
 
 type Source struct {
-	ID         string `json:"id"`
-	Title      string `json:"title"`
-	URL        string `json:"url"`
-	Kind       string `json:"kind"`
-	AccessedAt string `json:"accessed_at"`
-	Caveat     string `json:"caveat,omitempty"`
+	ID            string `json:"id"`
+	Title         string `json:"title"`
+	URL           string `json:"url"`
+	Kind          string `json:"kind"`
+	AccessedAt    string `json:"accessed_at"`
+	LastCheckedAt string `json:"last_checked_at,omitempty"`
+	Availability  string `json:"availability,omitempty"`
+	Caveat        string `json:"caveat,omitempty"`
 }
 
 type Authority struct {
@@ -37,6 +39,7 @@ type AuthorityRelationship struct {
 	Relationship string       `json:"relationship"`
 	To           string       `json:"to"`
 	Scope        []string     `json:"scope,omitempty"`
+	Summary      string       `json:"summary,omitempty"`
 	SourceIDs    []string     `json:"source_ids"`
 	Verification Verification `json:"verification"`
 }
@@ -68,6 +71,64 @@ type Adoption struct {
 	Dates               AdoptionDates `json:"dates"`
 	SourceIDs           []string      `json:"source_ids"`
 	Verification        Verification  `json:"verification"`
+}
+
+type ApplicabilityRule struct {
+	ID           string       `json:"id"`
+	CodeFamily   string       `json:"code_family,omitempty"`
+	ProjectTypes []string     `json:"project_types,omitempty"`
+	Trigger      string       `json:"trigger"`
+	AppliesTo    []string     `json:"applies_to,omitempty"`
+	Exclusions   []string     `json:"exclusions,omitempty"`
+	Summary      string       `json:"summary"`
+	SourceIDs    []string     `json:"source_ids"`
+	Verification Verification `json:"verification"`
+}
+
+type DateRule struct {
+	ID               string       `json:"id"`
+	CodeFamily       string       `json:"code_family,omitempty"`
+	RuleType         string       `json:"rule_type"`
+	Trigger          string       `json:"trigger"`
+	StartDate        string       `json:"start_date,omitempty"`
+	EndDate          string       `json:"end_date,omitempty"`
+	PriorCodeAllowed *bool        `json:"prior_code_allowed,omitempty"`
+	Summary          string       `json:"summary"`
+	SourceIDs        []string     `json:"source_ids"`
+	Verification     Verification `json:"verification"`
+}
+
+type AmendmentRule struct {
+	ID           string       `json:"id"`
+	CodeFamily   string       `json:"code_family,omitempty"`
+	Level        string       `json:"level"`
+	AuthorityID  string       `json:"authority_id,omitempty"`
+	Posture      string       `json:"posture"`
+	Summary      string       `json:"summary"`
+	SourceIDs    []string     `json:"source_ids"`
+	Verification Verification `json:"verification"`
+}
+
+type EnforcementRule struct {
+	ID           string       `json:"id"`
+	CodeFamily   string       `json:"code_family,omitempty"`
+	Model        string       `json:"model"`
+	EntityKinds  []string     `json:"entity_kinds"`
+	AuthorityIDs []string     `json:"authority_ids,omitempty"`
+	Summary      string       `json:"summary"`
+	SourceIDs    []string     `json:"source_ids"`
+	Verification Verification `json:"verification"`
+}
+
+type Claim struct {
+	ID            string       `json:"id"`
+	SubjectID     string       `json:"subject_id"`
+	Field         string       `json:"field"`
+	Status        string       `json:"status"`
+	Value         any          `json:"value,omitempty"`
+	ConflictGroup string       `json:"conflict_group,omitempty"`
+	SourceIDs     []string     `json:"source_ids"`
+	Verification  Verification `json:"verification"`
 }
 
 type CandidateRule struct {
@@ -107,6 +168,12 @@ type StateProfile struct {
 	Authorities          []Authority                 `json:"authorities"`
 	Relationships        []AuthorityRelationship     `json:"relationships,omitempty"`
 	Adoptions            []Adoption                  `json:"adoptions,omitempty"`
+	ApplicabilityRules   []ApplicabilityRule         `json:"applicability_rules,omitempty"`
+	DateRules            []DateRule                  `json:"date_rules,omitempty"`
+	AmendmentRules       []AmendmentRule             `json:"amendment_rules,omitempty"`
+	EnforcementRules     []EnforcementRule           `json:"enforcement_rules,omitempty"`
+	Claims               []Claim                     `json:"claims,omitempty"`
+	ResolverFixtureIDs   []string                    `json:"resolver_fixture_ids,omitempty"`
 	Defaults             DefaultPolicies             `json:"defaults"`
 	CodeFamilyOverrides  map[string]ResolutionPolicy `json:"code_family_overrides,omitempty"`
 	ProjectTypeOverrides map[string]ResolutionPolicy `json:"project_type_overrides,omitempty"`
@@ -154,19 +221,31 @@ type AuthorityCandidate struct {
 	Verification Verification `json:"verification"`
 }
 
+type RuleReference struct {
+	ID           string       `json:"id"`
+	Kind         string       `json:"kind"`
+	CodeFamily   string       `json:"code_family,omitempty"`
+	Summary      string       `json:"summary"`
+	SourceIDs    []string     `json:"source_ids"`
+	Verification Verification `json:"verification"`
+}
+
 type ResolutionResult struct {
-	SchemaVersion        string               `json:"schema_version"`
-	GeneratedAt          time.Time            `json:"generated_at"`
-	ProfileID            string               `json:"profile_id"`
-	ProfileLastVerified  string               `json:"profile_last_verified"`
-	Geography            GeographicContext    `json:"geography"`
-	CodeFamily           string               `json:"code_family,omitempty"`
-	ProjectType          string               `json:"project_type,omitempty"`
-	ApplicabilityDate    string               `json:"applicability_date,omitempty"`
-	Status               string               `json:"status"`
-	AuthorityCandidates  []AuthorityCandidate `json:"authority_candidates"`
-	Adoptions            []Adoption           `json:"adoptions,omitempty"`
-	RequiredLocalRecords []string             `json:"required_local_records,omitempty"`
-	Warnings             []string             `json:"warnings,omitempty"`
-	Evidence             []Source             `json:"evidence"`
+	SchemaVersion        string                  `json:"schema_version"`
+	GeneratedAt          time.Time               `json:"generated_at"`
+	ProfileID            string                  `json:"profile_id"`
+	ProfileLastVerified  string                  `json:"profile_last_verified"`
+	Geography            GeographicContext       `json:"geography"`
+	CodeFamily           string                  `json:"code_family,omitempty"`
+	ProjectType          string                  `json:"project_type,omitempty"`
+	ApplicabilityDate    string                  `json:"applicability_date,omitempty"`
+	Status               string                  `json:"status"`
+	AuthorityCandidates  []AuthorityCandidate    `json:"authority_candidates"`
+	AuthorityPath        []AuthorityRelationship `json:"authority_path,omitempty"`
+	Adoptions            []Adoption              `json:"adoptions,omitempty"`
+	ApplicableRules      []RuleReference         `json:"applicable_rules,omitempty"`
+	SupportingClaims     []Claim                 `json:"supporting_claims,omitempty"`
+	RequiredLocalRecords []string                `json:"required_local_records,omitempty"`
+	Warnings             []string                `json:"warnings,omitempty"`
+	Evidence             []Source                `json:"evidence"`
 }
