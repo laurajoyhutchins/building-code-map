@@ -44,17 +44,15 @@ jobs:
         run: pnpm lint
 
       - name: Format checked files
-        run: pnpm format
+        run: |
+          pnpm format
+          git diff --binary > prettier.patch
 
-      - name: Upload Prettier output
+      - name: Upload Prettier diff
         uses: actions/upload-artifact@v4
         with:
-          name: prettier-output-complete
-          path: |
-            .github/workflows/ci.yml
-            README.md
-            docs/superpowers/specs/2026-07-19-public-readme-design.md
-            docs/superpowers/plans/2026-07-19-public-readme.md
+          name: prettier-diff
+          path: prettier.patch
           if-no-files-found: error
 
       - name: Test
