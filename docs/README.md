@@ -10,6 +10,7 @@ This repository uses Diataxis to separate reader intent.
 - [How-to Guides](how-to/use-decision-graph-for-repo-work.md): keep Deciduous aligned to the repo's real workstreams.
 - [Reference](reference/runtime-and-api.md): look up scripts, endpoints, and data shapes.
 - [Reference](reference/configuration.md): see which files own formatting, linting, and generated state.
+- [Reference](reference/repository-governance.md): review merge, ruleset, security, ownership, and exact-head verification policy.
 - [Reference](reference/fema_bcat.md): review the FEMA BCAT source contract and update flow.
 - [Explanation](explanation/tigerweb-visualization-design.md): understand the product and architecture choices.
 - [Explanation](explanation/launch-scripts-implementation-plan.md): understand the launch-script architecture and rollout plan.
