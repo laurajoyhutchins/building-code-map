@@ -9,7 +9,10 @@ import (
 	"time"
 )
 
-var twoDigitFIPS = regexp.MustCompile(`^[0-9]{2}$`)
+var (
+	twoDigitFIPS         = regexp.MustCompile(`^[0-9]{2}$`)
+	twoLetterStateAbbrev = regexp.MustCompile(`^[A-Z]{2}$`)
+)
 
 func ValidateProfile(profile StateProfile) error {
 	var problems []string
@@ -22,11 +25,23 @@ func ValidateProfile(profile StateProfile) error {
 	if strings.TrimSpace(profile.StateID) == "" {
 		problems = append(problems, "state_id is required")
 	}
+	if strings.TrimSpace(profile.StateName) == "" {
+		problems = append(problems, "state_name is required")
+	}
+	if !twoLetterStateAbbrev.MatchString(profile.StateAbbreviation) {
+		problems = append(problems, "state_abbreviation must be exactly two uppercase letters")
+	}
 	if !twoDigitFIPS.MatchString(profile.StateFIPS) {
 		problems = append(problems, "state_fips must be exactly two digits")
 	}
 	if _, err := time.Parse("2006-01-02", profile.LastVerified); err != nil {
 		problems = append(problems, "last_verified must use YYYY-MM-DD")
+	}
+	if len(profile.Sources) == 0 {
+		problems = append(problems, "at least one source is required")
+	}
+	if len(profile.Authorities) == 0 {
+		problems = append(problems, "at least one authority is required")
 	}
 
 	sourceIDs := map[string]struct{}{}
@@ -39,6 +54,9 @@ func ValidateProfile(profile StateProfile) error {
 			problems = append(problems, "duplicate source id "+source.ID)
 		}
 		sourceIDs[source.ID] = struct{}{}
+		if strings.TrimSpace(source.Title) == "" || strings.TrimSpace(source.Kind) == "" {
+			problems = append(problems, "source "+source.ID+" requires title and kind")
+		}
 		parsed, err := url.Parse(source.URL)
 		if err != nil || (parsed.Scheme != "http" && parsed.Scheme != "https") || parsed.Host == "" {
 			problems = append(problems, "source "+source.ID+" must use an absolute http(s) URL")
@@ -58,6 +76,9 @@ func ValidateProfile(profile StateProfile) error {
 			problems = append(problems, "duplicate authority id "+authority.ID)
 		}
 		authorityIDs[authority.ID] = struct{}{}
+		if strings.TrimSpace(authority.Name) == "" || strings.TrimSpace(authority.Type) == "" {
+			problems = append(problems, "authority "+authority.ID+" requires name and type")
+		}
 		problems = append(problems, missingSources("authority "+authority.ID, authority.SourceIDs, sourceIDs)...)
 	}
 
