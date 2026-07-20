@@ -1,0 +1,78 @@
+name: Jurisdiction or code-data correction
+description: Report an incorrect, incomplete, stale, or conflicting authority or building-code claim.
+title: "data: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Building Code Map preserves uncertainty instead of guessing. Please cite controlling official sources and describe conflicts explicitly. Do not paste commercial model-code text, standards, or restricted operational data.
+
+  - type: input
+    id: jurisdiction
+    attributes:
+      label: Jurisdiction or authority
+      description: Name the state, county, municipality, district, agency, tribal authority, or other affected entity.
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_claim
+    attributes:
+      label: Current project claim
+      description: Quote or summarize the specific record, report field, map attribute, or behavior that appears incorrect.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_correction
+    attributes:
+      label: Proposed correction
+      description: State the corrected fact, including unresolved alternatives where the official sources conflict.
+    validations:
+      required: true
+
+  - type: input
+    id: official_publisher
+    attributes:
+      label: Official publisher
+      placeholder: State legislature, code commission, agency, municipality, register, or other controlling publisher
+    validations:
+      required: true
+
+  - type: textarea
+    id: official_sources
+    attributes:
+      label: Official source URLs
+      description: Provide stable official URLs and identify the relevant section, page, rule, ordinance, register item, or adoption instrument.
+    validations:
+      required: true
+
+  - type: input
+    id: verification_date
+    attributes:
+      label: Verification date
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+
+  - type: textarea
+    id: dates
+    attributes:
+      label: Adoption and effective dates
+      description: Identify adoption, effective, operative, mandatory, amendment, or repeal dates and explain which date controls.
+
+  - type: textarea
+    id: conflicts
+    attributes:
+      label: Conflicts or unresolved questions
+      description: Describe any disagreement among official sources or fields that should remain unresolved.
+
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Publication boundaries
+      options:
+        - label: I cited official sources rather than copying protected model-code or standards text.
+          required: true
+        - label: This report contains no credentials, private data, restricted NERIS records, or hydrated database content.
+          required: true
