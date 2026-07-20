@@ -6,6 +6,7 @@ import (
 	"net/url"
 	"strings"
 
+	"building-code-map/backend/internal/regulatory"
 	"building-code-map/backend/internal/snapshot"
 )
 
@@ -42,18 +43,20 @@ func ParseAllowedOrigins(rawValue string) []string {
 }
 
 type Options struct {
-	AllowedOrigins []string
+	AllowedOrigins    []string
+	RegulatoryCatalog regulatory.Catalog
 }
 
 type Handler struct {
-	snapshot       snapshot.Snapshot
-	layerIndex     map[string]snapshot.LayerFamily
-	featureIndex   map[string]snapshot.BoundaryFeature
-	allowedOrigins map[string]struct{}
+	snapshot          snapshot.Snapshot
+	layerIndex        map[string]snapshot.LayerFamily
+	featureIndex      map[string]snapshot.BoundaryFeature
+	allowedOrigins    map[string]struct{}
+	regulatoryCatalog regulatory.Catalog
 }
 
 func NewHandler(snap snapshot.Snapshot, options ...Options) http.Handler {
-	opt := Options{}
+	opt := Options{RegulatoryCatalog: regulatory.EmptyCatalog()}
 	if len(options) > 0 {
 		opt = options[0]
 	}
@@ -64,10 +67,11 @@ func NewHandler(snap snapshot.Snapshot, options ...Options) http.Handler {
 	}
 
 	handler := &Handler{
-		snapshot:       snap,
-		layerIndex:     make(map[string]snapshot.LayerFamily, len(snap.LayerFamilies)),
-		featureIndex:   make(map[string]snapshot.BoundaryFeature, len(snap.BoundaryFeatures)),
-		allowedOrigins: make(map[string]struct{}, len(allowedOrigins)),
+		snapshot:          snap,
+		layerIndex:        make(map[string]snapshot.LayerFamily, len(snap.LayerFamilies)),
+		featureIndex:      make(map[string]snapshot.BoundaryFeature, len(snap.BoundaryFeatures)),
+		allowedOrigins:    make(map[string]struct{}, len(allowedOrigins)),
+		regulatoryCatalog: opt.RegulatoryCatalog,
 	}
 	for _, origin := range allowedOrigins {
 		handler.allowedOrigins[origin] = struct{}{}
@@ -96,6 +100,8 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		h.writeJSON(w, http.StatusOK, h.snapshot.BoundaryFeatures)
 	case r.Method == http.MethodGet && strings.HasPrefix(r.URL.Path, "/features/"):
 		h.handleFeature(w, r)
+	case r.Method == http.MethodPost && r.URL.Path == "/resolve":
+		h.handleResolve(w, r)
 	case r.Method == http.MethodGet && r.URL.Path == "/refresh/status":
 		h.writeJSON(w, http.StatusOK, h.snapshot.RefreshStatus)
 	case r.Method == http.MethodPost && r.URL.Path == "/refresh/trigger":
