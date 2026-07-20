@@ -21,9 +21,11 @@
 ### Task 1: Rewrite the README landing experience
 
 **Files:**
+
 - Modify: `README.md`
 
 **Interfaces:**
+
 - Consumes: scripts declared in `package.json`, Go version and module in `backend/go.mod`, runtime behavior documented in `docs/reference/runtime-and-api.md` and `docs/reference/configuration.md`.
 - Produces: a public landing page with product framing, quick start, architecture summary, roadmap, and documentation links.
 
