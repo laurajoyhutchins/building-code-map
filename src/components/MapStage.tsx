@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { Map as MapLibreMap, StyleSpecification } from "maplibre-gl";
+import type { GeoJSONSource, Map as MapLibreMap, StyleSpecification } from "maplibre-gl";
 import type { LayerFamilyDefinition, LayerSelectionMap, RefreshStatus } from "../types";
 import type { BoundaryFeatureRecord, FeatureSummary } from "../types";
 import { buildBoundaryFeatureCollection, calculateBoundaryBounds } from "../lib/mapData";
@@ -83,6 +83,90 @@ function createMapStyle() {
   } satisfies StyleSpecification;
 }
 
+function layerIds(layerKey: LayerFamilyDefinition["key"]) {
+  return {
+    fill: `${sourceId}-${layerKey}-fill`,
+    line: `${sourceId}-${layerKey}-line`,
+    selected: `${sourceId}-${layerKey}-selected`,
+  };
+}
+
+export function reconcileBoundaryLayers(
+  map: MapLibreMap,
+  layers: readonly LayerFamilyDefinition[],
+  enabledLayers: LayerSelectionMap,
+  boundaryCollection: ReturnType<typeof buildBoundaryFeatureCollection>,
+): void {
+  if (!map.getSource(sourceId)) {
+    map.addSource(sourceId, {
+      type: "geojson",
+      data: boundaryCollection,
+    });
+  }
+
+  const source = map.getSource(sourceId) as GeoJSONSource | undefined;
+  source?.setData(boundaryCollection);
+
+  for (const layer of layers) {
+    const ids = layerIds(layer.key);
+    const { fillColor, lineColor, selectedColor } = getLayerPaints(layer.key);
+    const visibility = enabledLayers[layer.key] ? "visible" : "none";
+
+    if (!map.getLayer(ids.fill)) {
+      map.addLayer({
+        id: ids.fill,
+        type: "fill",
+        source: sourceId,
+        filter: ["==", ["get", "layerFamily"], layer.key],
+        paint: {
+          "fill-color": fillColor,
+          "fill-opacity": 0.95,
+          "fill-outline-color": lineColor,
+        },
+        layout: { visibility },
+      });
+    }
+
+    if (!map.getLayer(ids.line)) {
+      map.addLayer({
+        id: ids.line,
+        type: "line",
+        source: sourceId,
+        filter: ["==", ["get", "layerFamily"], layer.key],
+        paint: {
+          "line-color": lineColor,
+          "line-width": 1.5,
+        },
+        layout: { visibility },
+      });
+    }
+
+    if (!map.getLayer(ids.selected)) {
+      map.addLayer({
+        id: ids.selected,
+        type: "line",
+        source: sourceId,
+        filter: [
+          "all",
+          ["==", ["get", "layerFamily"], layer.key],
+          ["==", ["get", "selected"], true],
+        ],
+        paint: {
+          "line-color": selectedColor,
+          "line-width": 3.5,
+        },
+        layout: { visibility },
+      });
+    }
+
+    for (const id of [ids.fill, ids.line, ids.selected]) {
+      if (map.getLayer(id)) {
+        map.setLayoutProperty(id, "visibility", visibility);
+      }
+    }
+  }
+}
+
 export function MapStage({
   layers,
   selectedFeature,
@@ -154,60 +238,23 @@ export function MapStage({
             return;
           }
 
-          map.addSource(sourceId, {
-            type: "geojson",
-            data: boundaryCollectionRef.current,
-          });
-
-          for (const layer of layersRef.current) {
-            const { fillColor, lineColor, selectedColor } = getLayerPaints(layer.key);
-            const visibility = enabledLayersRef.current[layer.key] ? "visible" : "none";
-
-            map.addLayer({
-              id: `${sourceId}-${layer.key}-fill`,
-              type: "fill",
-              source: sourceId,
-              filter: ["==", ["get", "layerFamily"], layer.key],
-              paint: {
-                "fill-color": fillColor,
-                "fill-opacity": 0.95,
-                "fill-outline-color": lineColor,
-              },
-              layout: { visibility },
-            });
-
-            map.addLayer({
-              id: `${sourceId}-${layer.key}-line`,
-              type: "line",
-              source: sourceId,
-              filter: ["==", ["get", "layerFamily"], layer.key],
-              paint: {
-                "line-color": lineColor,
-                "line-width": 1.5,
-              },
-              layout: { visibility },
-            });
-
-            map.addLayer({
-              id: `${sourceId}-${layer.key}-selected`,
-              type: "line",
-              source: sourceId,
-              filter: [
-                "all",
-                ["==", ["get", "layerFamily"], layer.key],
-                ["==", ["get", "selected"], true],
-              ],
-              paint: {
-                "line-color": selectedColor,
-                "line-width": 3.5,
-              },
-              layout: { visibility },
-            });
-          }
+          reconcileBoundaryLayers(
+            map,
+            layersRef.current,
+            enabledLayersRef.current,
+            boundaryCollectionRef.current,
+          );
 
           map.on("click", (event) => {
+            const existingFillLayers = layersRef.current
+              .map((layer) => layerIds(layer.key).fill)
+              .filter((id) => Boolean(map.getLayer(id)));
+            if (existingFillLayers.length === 0) {
+              return;
+            }
+
             const renderedFeatures = map.queryRenderedFeatures(event.point, {
-              layers: layersRef.current.map((layer) => `${sourceId}-${layer.key}-fill`),
+              layers: existingFillLayers,
             });
             const clickedFeatureId = renderedFeatures[0]?.properties?.featureId;
 
@@ -216,6 +263,7 @@ export function MapStage({
             }
           });
 
+          setMapError(null);
           setMapStatus("ready");
         });
 
@@ -230,7 +278,9 @@ export function MapStage({
               : "MapLibre failed to load the OpenStreetMap basemap.";
 
           setMapError(message);
-          setMapStatus("error");
+          if (!map.getSource(sourceId)) {
+            setMapStatus("error");
+          }
         });
       })
       .catch((error: unknown) => {
@@ -255,15 +305,7 @@ export function MapStage({
       return;
     }
 
-    const source = map.getSource(sourceId) as { setData?: (data: unknown) => void } | undefined;
-    source?.setData?.(boundaryCollection);
-
-    for (const layer of layers) {
-      const visibility = enabledLayers[layer.key] ? "visible" : "none";
-      map.setLayoutProperty(`${sourceId}-${layer.key}-fill`, "visibility", visibility);
-      map.setLayoutProperty(`${sourceId}-${layer.key}-line`, "visibility", visibility);
-      map.setLayoutProperty(`${sourceId}-${layer.key}-selected`, "visibility", visibility);
-    }
+    reconcileBoundaryLayers(map, layers, enabledLayers, boundaryCollection);
 
     if (
       selectedFeature?.geometry &&
