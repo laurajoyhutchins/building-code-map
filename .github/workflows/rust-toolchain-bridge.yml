@@ -1,0 +1,67 @@
+name: Temporary Rust toolchain bridge
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/rust-toolchain-bridge.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    name: Download and verify Rust 1.97.1
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      RUST_VERSION: 1.97.1
+      RUST_TARGET: x86_64-unknown-linux-gnu
+    steps:
+      - name: Download official standalone archive and checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p rust-toolchain
+          archive="rust-${RUST_VERSION}-${RUST_TARGET}.tar.xz"
+          base="https://static.rust-lang.org/dist"
+          curl --fail --location --retry 5 --retry-all-errors \
+            --output "rust-toolchain/${archive}" \
+            "${base}/${archive}"
+          curl --fail --location --retry 5 --retry-all-errors \
+            --output "rust-toolchain/${archive}.sha256" \
+            "${base}/${archive}.sha256"
+
+      - name: Verify upstream checksum and record transfer manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd rust-toolchain
+          archive="rust-${RUST_VERSION}-${RUST_TARGET}.tar.xz"
+          expected="$(awk '{print $1}' "${archive}.sha256")"
+          actual="$(sha256sum "${archive}" | awk '{print $1}')"
+          test "${actual}" = "${expected}"
+          bytes="$(stat -c '%s' "${archive}")"
+          cat > transfer-manifest.json <<JSON
+          {
+            "schema_version": 1,
+            "rust_version": "${RUST_VERSION}",
+            "target": "${RUST_TARGET}",
+            "archive": "${archive}",
+            "source_url": "https://static.rust-lang.org/dist/${archive}",
+            "checksum_url": "https://static.rust-lang.org/dist/${archive}.sha256",
+            "sha256": "${actual}",
+            "bytes": ${bytes},
+            "verified": true
+          }
+          JSON
+          cat transfer-manifest.json
+
+      - name: Upload verified bridge artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rust-1.97.1-x86_64-unknown-linux-gnu
+          path: rust-toolchain/
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1
