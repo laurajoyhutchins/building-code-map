@@ -1,0 +1,44 @@
+schema_version: 1
+id: procedure.build-geocoder-snapshot
+kind: procedure
+revision: 1
+status: active
+title: Build a local geocoder snapshot
+summary: Import reviewed address-point and optional street-range CSV files into a validated temporary SQLite database and replace the configured snapshot only after the complete build succeeds.
+scope:
+  repository: building-code-map
+  components:
+    - local-sqlite-geocoder
+evidence:
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: backend/internal/geocoder/build.go
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: backend/cmd/geocoder-build/main.go
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: docs/how-to/build-local-geocoder-snapshot.md
+disclosure:
+  audiences:
+    - contributors
+    - maintainers
+  tags:
+    - procedure
+    - ingestion
+    - provenance
+  weight: 85
+provenance:
+  source: bootstrap
+  transaction: null
+  producer: owner-reviewed-bootstrap
+supersedes: null
+payload:
+  inputs:
+    - reviewed address-point CSV or street-range CSV
+    - source name
+    - source vintage
+  command: go run ./cmd/geocoder-build
+  validations:
+    - required columns and provenance
+    - WGS 84 coordinate ranges
+    - unique source identities
+    - supported parity and nonzero street ranges
+  output: Ignored local SQLite snapshot, normally backend/data/geocoder.sqlite.
