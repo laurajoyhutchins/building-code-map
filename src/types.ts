@@ -62,6 +62,29 @@ export interface RefreshStatus {
   message: string;
 }
 
+export type GeocodeStatus = "matched" | "ambiguous" | "not_found";
+export type GeocodePrecision = "address_point" | "interpolated";
+
+export interface GeocodeCandidate {
+  matchedAddress: string;
+  longitude: number;
+  latitude: number;
+  precision: GeocodePrecision;
+  confidence: number;
+  source: string;
+  sourceRecordId: string;
+  sourceVintage: string;
+}
+
+export interface GeocodeResult {
+  query: string;
+  normalized?: string;
+  status: GeocodeStatus;
+  selected?: GeocodeCandidate;
+  candidates: GeocodeCandidate[];
+  warnings: string[];
+}
+
 export type ResolutionStatus =
   | "resolved"
   | "partially_resolved"
@@ -184,4 +207,9 @@ export interface ResolutionResult {
   requiredLocalRecords: string[];
   warnings: string[];
   evidence: RegulatorySource[];
+}
+
+export interface LookupResult {
+  geocode: GeocodeResult;
+  resolution: ResolutionResult;
 }
