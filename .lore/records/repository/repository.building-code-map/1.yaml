@@ -15,6 +15,8 @@ scope:
 evidence:
   - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
     path: README.md
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: docs/superpowers/specs/2026-08-01-local-sqlite-geocoder-design.md
 disclosure:
   audiences:
     - contributors
