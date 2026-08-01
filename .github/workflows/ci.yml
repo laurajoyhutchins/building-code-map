@@ -136,5 +136,8 @@ jobs:
           pnpm install --no-frozen-lockfile
           pnpm build
 
+      - name: Extract deterministic repository facts
+        run: node "$RUNNER_TEMP/lore/dist/src/cli/main.js" extract
+
       - name: Validate repository documentation
         run: node "$RUNNER_TEMP/lore/dist/src/cli/main.js" validate
