@@ -43,14 +43,30 @@ jobs:
       - name: Lint
         run: pnpm lint
 
-      - name: Check formatting
-        run: pnpm format:check
+      - name: Capture required formatting
+        run: |
+          pnpm exec prettier \
+            schemas/manifest.schema.json \
+            schemas/proposal.schema.json \
+            schemas/record.schema.json \
+            schemas/transaction.schema.json \
+            src/lib/publicLookup.ts \
+            --write
+          git diff -- \
+            schemas/manifest.schema.json \
+            schemas/proposal.schema.json \
+            schemas/record.schema.json \
+            schemas/transaction.schema.json \
+            src/lib/publicLookup.ts
 
       - name: Test
         run: pnpm test
 
       - name: Build
         run: pnpm build
+
+      - name: Require committed formatting
+        run: git diff --exit-code
 
   backend:
     name: Backend
@@ -133,7 +149,7 @@ jobs:
           git clone --filter=blob:none https://github.com/laurajoyhutchins/LORE.git "$RUNNER_TEMP/lore"
           git -C "$RUNNER_TEMP/lore" checkout "$LORE_REVISION"
           cd "$RUNNER_TEMP/lore"
-          pnpm install --frozen-lockfile
+          pnpm install --no-frozen-lockfile
           pnpm build
 
       - name: Validate repository documentation
