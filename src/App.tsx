@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FeatureInspector } from "./components/FeatureInspector";
 import { LayerToggleList } from "./components/LayerToggleList";
 import { MapStage } from "./components/MapStage";
+import { PublicLookup } from "./components/PublicLookup";
 import { ResolutionPanel } from "./components/ResolutionPanel";
 import { StatusBanner } from "./components/StatusBanner";
 import { fetchBoundaryFeatures, fetchLayers, fetchRefreshStatus, getApiBaseUrl } from "./lib/api";
@@ -25,6 +26,11 @@ const loadingRefreshStatus: RefreshStatus = {
 };
 
 function App(): JSX.Element {
+  const routeName = window.location.pathname.split("/").filter(Boolean).at(-1);
+  return routeName === "explorer" ? <ExplorerApp /> : <PublicLookup />;
+}
+
+function ExplorerApp(): JSX.Element {
   const [layerRegistry, setLayerRegistry] = useState<LayerFamilyDefinition[]>([]);
   const [enabledLayers, setEnabledLayers] = useState<LayerSelectionMap>(() =>
     createLayerSelectionMap([]),
@@ -104,7 +110,7 @@ function App(): JSX.Element {
       <header className="app-header">
         <div>
           <p className="eyebrow">Local GIS + source-backed jurisdiction policy</p>
-          <h1>Building Code Map</h1>
+          <h1>Building Code Map Explorer</h1>
         </div>
         <div className="app-header__stats">
           <div>
