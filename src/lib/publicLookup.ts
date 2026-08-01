@@ -1,8 +1,4 @@
-import type {
-  GeocodeCandidate,
-  ResolutionResult,
-  ResolutionStatus,
-} from "../types";
+import type { GeocodeCandidate, ResolutionResult, ResolutionStatus } from "../types";
 
 export interface CoordinatePoint {
   latitude: number;
