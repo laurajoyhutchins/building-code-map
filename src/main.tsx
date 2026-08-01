@@ -4,6 +4,7 @@ import App from "./App";
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./styles.css";
 import "./resolution.css";
+import "./public.css";
 
 const rootElement = document.getElementById("root");
 

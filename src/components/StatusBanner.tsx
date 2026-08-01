@@ -16,7 +16,7 @@ export function StatusBanner({
       <div className="status-banner status-banner--warning">
         <div>
           <strong>{error ?? "Loading cached boundary data."}</strong>
-          <p>Waiting for the DuckDB snapshot to load.</p>
+          <p>Waiting for the runtime snapshot to load.</p>
         </div>
         <div className="status-banner__aside">
           <span>API</span>
