@@ -5,6 +5,7 @@ import { MapStage } from "./components/MapStage";
 import { ResolutionPanel } from "./components/ResolutionPanel";
 import { StatusBanner } from "./components/StatusBanner";
 import { fetchBoundaryFeatures, fetchLayers, fetchRefreshStatus, getApiBaseUrl } from "./lib/api";
+import { findFeatureByRef } from "./lib/featureIdentity";
 import { createLayerSelectionMap } from "./lib/layerSelection";
 import type {
   BoundaryFeatureRecord,
@@ -34,14 +35,7 @@ function App(): JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
 
-  const selectedFeature: BoundaryFeatureRecord | null = selectedFeatureRef
-    ? (boundaryFeatures.find(
-        (feature) =>
-          feature.layerFamily === selectedFeatureRef.layerFamily &&
-          feature.featureId === selectedFeatureRef.featureId,
-      ) ?? null)
-    : null;
-
+  const selectedFeature = findFeatureByRef(boundaryFeatures, selectedFeatureRef);
   const selectedSummary = selectedFeature;
 
   useEffect(() => {
