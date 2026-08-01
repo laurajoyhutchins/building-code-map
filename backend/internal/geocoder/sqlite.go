@@ -116,11 +116,14 @@ func (service *SQLiteService) Geocode(ctx context.Context, query Query) (Result,
 
 func (service *SQLiteService) addressPointCandidates(ctx context.Context, parsed ParsedAddress) ([]Candidate, error) {
 	rows, err := service.db.QueryContext(ctx, `
-SELECT matched_address, longitude, latitude, source_name, source_record_id, source_vintage, city, postal_code
+SELECT matched_address, longitude, latitude, source_name, source_record_id, source_vintage,
+       street_name, city, postal_code
 FROM address_points
-WHERE address_number = ? AND street_name = ? AND state = ?
+WHERE address_number = ?
+  AND (street_name = ? OR street_name LIKE ?)
+  AND state = ?
 ORDER BY source_name, source_record_id
-LIMIT 20;`, parsed.HouseNumber, parsed.Street, parsed.State)
+LIMIT 20;`, parsed.HouseNumber, parsed.Street, parsed.Street+" %", parsed.State)
 	if err != nil {
 		return nil, err
 	}
@@ -129,7 +132,7 @@ LIMIT 20;`, parsed.HouseNumber, parsed.Street, parsed.State)
 	candidates := []Candidate{}
 	for rows.Next() {
 		var candidate Candidate
-		var city, postalCode string
+		var street, city, postalCode string
 		if err := rows.Scan(
 			&candidate.MatchedAddress,
 			&candidate.Longitude,
@@ -137,13 +140,17 @@ LIMIT 20;`, parsed.HouseNumber, parsed.Street, parsed.State)
 			&candidate.Source,
 			&candidate.SourceRecordID,
 			&candidate.SourceVintage,
+			&street,
 			&city,
 			&postalCode,
 		); err != nil {
 			return nil, err
 		}
 		candidate.Precision = PrecisionAddressPoint
-		candidate.Confidence = 0.75
+		candidate.Confidence = 0.70
+		if street == parsed.Street {
+			candidate.Confidence += 0.05
+		}
 		if city == parsed.City {
 			candidate.Confidence += 0.15
 		}
@@ -166,14 +173,15 @@ func (service *SQLiteService) streetRangeCandidates(ctx context.Context, parsed 
 		return nil, nil
 	}
 	rows, err := service.db.QueryContext(ctx, `
-SELECT from_number, to_number, parity, city, postal_code,
+SELECT from_number, to_number, parity, street_name, city, postal_code,
        from_longitude, from_latitude, to_longitude, to_latitude,
        source_name, source_record_id, source_vintage
 FROM street_ranges
-WHERE street_name = ? AND state = ?
+WHERE (street_name = ? OR street_name LIKE ?)
+  AND state = ?
   AND ? BETWEEN MIN(from_number, to_number) AND MAX(from_number, to_number)
 ORDER BY source_name, source_record_id
-LIMIT 20;`, parsed.Street, parsed.State, houseNumber)
+LIMIT 20;`, parsed.Street, parsed.Street+" %", parsed.State, houseNumber)
 	if err != nil {
 		return nil, err
 	}
@@ -182,13 +190,14 @@ LIMIT 20;`, parsed.Street, parsed.State, houseNumber)
 	candidates := []Candidate{}
 	for rows.Next() {
 		var fromNumber, toNumber int
-		var parity, city, postalCode string
+		var parity, street, city, postalCode string
 		var fromLongitude, fromLatitude, toLongitude, toLatitude float64
 		var source, sourceRecordID, sourceVintage string
 		if err := rows.Scan(
 			&fromNumber,
 			&toNumber,
 			&parity,
+			&street,
 			&city,
 			&postalCode,
 			&fromLongitude,
@@ -210,10 +219,13 @@ LIMIT 20;`, parsed.Street, parsed.State, houseNumber)
 			Longitude:      fromLongitude + ratio*(toLongitude-fromLongitude),
 			Latitude:       fromLatitude + ratio*(toLatitude-fromLatitude),
 			Precision:      PrecisionInterpolated,
-			Confidence:     0.60,
+			Confidence:     0.55,
 			Source:         source,
 			SourceRecordID: sourceRecordID,
 			SourceVintage:  sourceVintage,
+		}
+		if street == parsed.Street {
+			candidate.Confidence += 0.05
 		}
 		if city == parsed.City {
 			candidate.Confidence += 0.15
