@@ -280,6 +280,7 @@ func readCSVRows(path string, required []string, visit func(map[string]string, i
 			if index < len(record) {
 				row[name] = record[index]
 			}
+		}
 		if err := visit(row, line); err != nil {
 			return err
 		}
