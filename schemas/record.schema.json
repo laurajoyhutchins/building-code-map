@@ -3,11 +3,35 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "id", "kind", "revision", "status", "title", "summary", "scope", "evidence", "disclosure", "provenance", "supersedes", "payload"],
+  "required": [
+    "schema_version",
+    "id",
+    "kind",
+    "revision",
+    "status",
+    "title",
+    "summary",
+    "scope",
+    "evidence",
+    "disclosure",
+    "provenance",
+    "supersedes",
+    "payload"
+  ],
   "properties": {
     "schema_version": { "const": 1 },
     "id": { "type": "string", "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$" },
-    "kind": { "enum": ["repository", "component", "relationship", "decision", "finding", "constraint", "procedure"] },
+    "kind": {
+      "enum": [
+        "repository",
+        "component",
+        "relationship",
+        "decision",
+        "finding",
+        "constraint",
+        "procedure"
+      ]
+    },
     "revision": { "type": "integer", "minimum": 1 },
     "status": { "enum": ["draft", "active", "superseded", "deprecated", "resolved", "withdrawn"] },
     "title": { "type": "string", "minLength": 1 },
@@ -18,7 +42,11 @@
       "required": ["repository", "components"],
       "properties": {
         "repository": { "type": "string", "minLength": 1 },
-        "components": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true }
+        "components": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
       }
     },
     "evidence": {
@@ -49,8 +77,16 @@
       "additionalProperties": false,
       "required": ["audiences", "tags", "weight"],
       "properties": {
-        "audiences": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
-        "tags": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+        "audiences": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
         "weight": { "type": "integer", "minimum": 0, "maximum": 100 }
       }
     },
@@ -61,10 +97,7 @@
       "properties": {
         "source": { "enum": ["bootstrap", "proposal"] },
         "transaction": {
-          "oneOf": [
-            { "type": "null" },
-            { "type": "string", "pattern": "^tx-[0-9a-f]{24}$" }
-          ]
+          "oneOf": [{ "type": "null" }, { "type": "string", "pattern": "^tx-[0-9a-f]{24}$" }]
         },
         "producer": { "type": "string", "minLength": 1 }
       }
