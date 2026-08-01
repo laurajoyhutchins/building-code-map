@@ -27,14 +27,7 @@
     "paths": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "extracted",
-        "records",
-        "proposals",
-        "transactions",
-        "generated_docs",
-        "skills"
-      ],
+      "required": ["extracted", "records", "proposals", "transactions", "generated_docs", "skills"],
       "properties": {
         "extracted": { "type": "string", "minLength": 1 },
         "records": { "type": "string", "minLength": 1 },
