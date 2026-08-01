@@ -1,9 +1,17 @@
-import type { ResolutionResult, ResolutionStatus } from "../types";
+import type {
+  GeocodeCandidate,
+  ResolutionResult,
+  ResolutionStatus,
+} from "../types";
 
 export interface CoordinatePoint {
   latitude: number;
   longitude: number;
 }
+
+export type LocationQuery =
+  | { kind: "coordinates"; point: CoordinatePoint }
+  | { kind: "address"; address: string };
 
 export function parseCoordinateQuery(value: string): CoordinatePoint {
   const parts = value
@@ -30,6 +38,23 @@ export function parseCoordinateQuery(value: string): CoordinatePoint {
   }
 
   return { latitude, longitude };
+}
+
+export function classifyLocationQuery(value: string): LocationQuery {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    throw new Error("Enter an address or coordinates.");
+  }
+
+  const coordinateParts = trimmed.split(/[\s,]+/).filter(Boolean);
+  if (
+    coordinateParts.length === 2 &&
+    coordinateParts.every((part) => Number.isFinite(Number(part)))
+  ) {
+    return { kind: "coordinates", point: parseCoordinateQuery(trimmed) };
+  }
+
+  return { kind: "address", address: trimmed };
 }
 
 export function getResolutionPlace(result: ResolutionResult): string {
@@ -65,4 +90,10 @@ export function formatCodeFamily(codeFamily: string | undefined): string {
     return "Operational fire";
   }
   return label.charAt(0).toUpperCase() + label.slice(1);
+}
+
+export function formatGeocodeSummary(candidate: GeocodeCandidate): string {
+  const precision =
+    candidate.precision === "address_point" ? "Address point" : "Interpolated street range";
+  return [precision, candidate.source, candidate.sourceVintage].join(" · ");
 }
