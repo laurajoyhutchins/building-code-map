@@ -1,7 +1,8 @@
 import type { Map as MapLibreMap } from "maplibre-gl";
 import { describe, expect, it, vi } from "vitest";
+import { featureRefFromMapProperties } from "../lib/featureIdentity";
 import type { LayerFamilyDefinition, LayerSelectionMap } from "../types";
-import { featureRefFromMapProperties, reconcileBoundaryLayers } from "./MapStage";
+import { reconcileBoundaryLayers } from "./MapStage";
 
 const statesLayer: LayerFamilyDefinition = {
   key: "states",
