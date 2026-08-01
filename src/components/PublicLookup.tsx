@@ -1,12 +1,13 @@
 import { useState, type FormEvent, type ReactNode } from "react";
-import { fetchResolution } from "../lib/api";
+import { fetchLookup, fetchResolution } from "../lib/api";
 import {
+  classifyLocationQuery,
   formatCodeFamily,
+  formatGeocodeSummary,
   getResolutionNotice,
   getResolutionPlace,
-  parseCoordinateQuery,
 } from "../lib/publicLookup";
-import type { ResolutionResult } from "../types";
+import type { GeocodeResult, ResolutionResult } from "../types";
 
 const codeFamilies = [
   ["building", "Building"],
@@ -19,10 +20,11 @@ const codeFamilies = [
 const today = new Date().toISOString().slice(0, 10);
 
 export function PublicLookup(): JSX.Element {
-  const [coordinates, setCoordinates] = useState("");
+  const [location, setLocation] = useState("");
   const [codeFamily, setCodeFamily] = useState("building");
   const [applicabilityDate, setApplicabilityDate] = useState(today);
   const [result, setResult] = useState<ResolutionResult | null>(null);
+  const [geocode, setGeocode] = useState<GeocodeResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -31,28 +33,38 @@ export function PublicLookup(): JSX.Element {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    let point;
+    let query;
     try {
-      point = parseCoordinateQuery(coordinates);
-    } catch (coordinateError) {
-      setError(
-        coordinateError instanceof Error ? coordinateError.message : "Enter valid coordinates.",
-      );
+      query = classifyLocationQuery(location);
+    } catch (locationError) {
+      setError(locationError instanceof Error ? locationError.message : "Enter a valid location.");
       return;
     }
 
     setIsLoading(true);
     setError(null);
     try {
-      const nextResult = await fetchResolution({
-        longitude: point.longitude,
-        latitude: point.latitude,
-        codeFamily,
-        applicabilityDate,
-      });
-      setResult(nextResult);
+      if (query.kind === "coordinates") {
+        const nextResult = await fetchResolution({
+          longitude: query.point.longitude,
+          latitude: query.point.latitude,
+          codeFamily,
+          applicabilityDate,
+        });
+        setGeocode(null);
+        setResult(nextResult);
+      } else {
+        const lookup = await fetchLookup({
+          address: query.address,
+          codeFamily,
+          applicabilityDate,
+        });
+        setGeocode(lookup.geocode);
+        setResult(lookup.resolution);
+      }
     } catch (requestError) {
       setResult(null);
+      setGeocode(null);
       setError(requestError instanceof Error ? requestError.message : "The lookup failed.");
     } finally {
       setIsLoading(false);
@@ -78,16 +90,18 @@ export function PublicLookup(): JSX.Element {
 
         <form className="public-search" onSubmit={handleSubmit}>
           <label className="public-search__location">
-            <span>Coordinates</span>
+            <span>Address or coordinates</span>
             <input
-              autoComplete="off"
-              inputMode="decimal"
-              placeholder="39.7392, -104.9903"
-              value={coordinates}
-              onChange={(event) => setCoordinates(event.target.value)}
+              autoComplete="street-address"
+              placeholder="1600 N Broadway, Denver, CO 80202"
+              value={location}
+              onChange={(event) => setLocation(event.target.value)}
               required
             />
-            <small>Enter latitude and longitude. The reverse order is also accepted.</small>
+            <small>
+              Enter a United States civic address or latitude and longitude. Address lookup uses a
+              local snapshot when available.
+            </small>
           </label>
 
           <div className="public-search__options">
@@ -124,7 +138,7 @@ export function PublicLookup(): JSX.Element {
           </p>
         ) : null}
 
-        {result ? <PublicResult result={result} /> : null}
+        {result ? <PublicResult result={result} geocode={geocode} /> : null}
       </main>
 
       <footer className="public-footer">
@@ -137,7 +151,13 @@ export function PublicLookup(): JSX.Element {
   );
 }
 
-function PublicResult({ result }: { result: ResolutionResult }): JSX.Element {
+function PublicResult({
+  result,
+  geocode,
+}: {
+  result: ResolutionResult;
+  geocode: GeocodeResult | null;
+}): JSX.Element {
   const notice = getResolutionNotice(result.status);
   const authorities = result.authorityCandidates;
   const adoptions = result.adoptions;
@@ -147,6 +167,15 @@ function PublicResult({ result }: { result: ResolutionResult }): JSX.Element {
       <header className="public-result__header">
         <p>{formatCodeFamily(result.codeFamily)}</p>
         <h2>{getResolutionPlace(result)}</h2>
+        {geocode?.selected ? (
+          <div className="public-location-match">
+            <strong>{geocode.selected.matchedAddress}</strong>
+            <span>{formatGeocodeSummary(geocode.selected)}</span>
+            {geocode.warnings.map((warning) => (
+              <span key={warning}>{warning}</span>
+            ))}
+          </div>
+        ) : null}
         {result.applicabilityDate ? <p>Applicable on {result.applicabilityDate}</p> : null}
         {notice ? <div className="public-message">{notice}</div> : null}
       </header>
