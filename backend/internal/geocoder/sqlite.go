@@ -121,9 +121,19 @@ SELECT matched_address, longitude, latitude, source_name, source_record_id, sour
 FROM address_points
 WHERE address_number = ?
   AND (street_name = ? OR street_name LIKE ?)
+  AND city = ?
   AND state = ?
+  AND (? = '' OR postal_code = ?)
 ORDER BY source_name, source_record_id
-LIMIT 20;`, parsed.HouseNumber, parsed.Street, parsed.Street+" %", parsed.State)
+LIMIT 20;`,
+		parsed.HouseNumber,
+		parsed.Street,
+		parsed.Street+" %",
+		parsed.City,
+		parsed.State,
+		parsed.PostalCode,
+		parsed.PostalCode,
+	)
 	if err != nil {
 		return nil, err
 	}
@@ -178,10 +188,20 @@ SELECT from_number, to_number, parity, street_name, city, postal_code,
        source_name, source_record_id, source_vintage
 FROM street_ranges
 WHERE (street_name = ? OR street_name LIKE ?)
+  AND city = ?
   AND state = ?
+  AND (? = '' OR postal_code = ?)
   AND ? BETWEEN MIN(from_number, to_number) AND MAX(from_number, to_number)
 ORDER BY source_name, source_record_id
-LIMIT 20;`, parsed.Street, parsed.Street+" %", parsed.State, houseNumber)
+LIMIT 20;`,
+		parsed.Street,
+		parsed.Street+" %",
+		parsed.City,
+		parsed.State,
+		parsed.PostalCode,
+		parsed.PostalCode,
+		houseNumber,
+	)
 	if err != nil {
 		return nil, err
 	}
