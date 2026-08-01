@@ -210,7 +210,9 @@ function PublicResult({ result }: { result: ResolutionResult }): JSX.Element {
           <ul className="public-record-list">
             {result.authorityPath.map((relationship) => (
               <li key={relationship.id}>
-                <strong>{relationship.summary ?? relationship.relationship.replace(/_/g, " ")}</strong>
+                <strong>
+                  {relationship.summary ?? relationship.relationship.replace(/_/g, " ")}
+                </strong>
                 <span>
                   {relationship.fromId} to {relationship.to}
                 </span>
