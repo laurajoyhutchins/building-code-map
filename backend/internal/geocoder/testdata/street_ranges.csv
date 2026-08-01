@@ -1,0 +1,2 @@
+source_record_id,from_number,to_number,parity,street,city,state,postal_code,from_longitude,from_latitude,to_longitude,to_latitude
+co-denver-market-even,1500,1598,E,MARKET ST,DENVER,CO,80202,-105.0000,39.7480,-104.9850,39.7480
