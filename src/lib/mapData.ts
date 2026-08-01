@@ -1,8 +1,13 @@
-import type { GeoJSONGeometry, LayerFamilyKey, LayerSelectionMap, PolygonGeometry } from "../types";
+import type {
+  FeatureRef,
+  GeoJSONGeometry,
+  LayerFamilyKey,
+  LayerSelectionMap,
+  PolygonGeometry,
+} from "../types";
+import { featureRefsEqual } from "./featureIdentity";
 
-export interface BoundaryRenderableFeature {
-  layerFamily: LayerFamilyKey;
-  featureId: string;
+export interface BoundaryRenderableFeature extends FeatureRef {
   title: string;
   subtitle: string;
   sourceId: string;
@@ -70,7 +75,7 @@ export function calculateBoundaryBounds(
 export function buildBoundaryFeatureCollection(
   features: readonly BoundaryRenderableFeature[],
   enabledLayers: LayerSelectionMap,
-  selectedFeatureId: string | null,
+  selectedFeature: FeatureRef | null,
 ): BoundaryFeatureCollection {
   return {
     type: "FeatureCollection",
@@ -86,7 +91,7 @@ export function buildBoundaryFeatureCollection(
           subtitle: feature.subtitle,
           sourceId: feature.sourceId,
           geometrySource: feature.geometrySource ?? null,
-          selected: feature.featureId === selectedFeatureId,
+          selected: featureRefsEqual(feature, selectedFeature),
         },
       })),
   };
