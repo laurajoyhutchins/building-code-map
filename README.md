@@ -1,23 +1,25 @@
 # Building Code Map
 
-Building Code Map is an early-stage, local-first project for answering a difficult regulatory question deterministically: **given a location, which authorities and adopted building codes apply?**
+Building Code Map is a local-first project for answering a difficult regulatory question deterministically: **given a location, which authorities and adopted building codes apply?**
 
-The long-term product is a source-backed location-to-authority and code-evidence workflow. What exists today is the geographic and research foundation for that product: a boundary explorer, a Go API over local snapshots, and structured state building-code research artifacts.
+The product combines three deliberately separate systems: address-to-point geocoding, point-to-geographic-boundary resolution, and source-backed regulatory policy. Keeping those boundaries separate preserves provenance and prevents an approximate address match from being mistaken for a regulatory conclusion.
 
 > **Project status:** pre-1.0 research and engineering. Results are not a substitute for confirmation by the controlling authority having jurisdiction, a licensed professional, or current official publications.
 
 ## What Works Today
 
-- React, TypeScript, and Vite frontend
-- MapLibre GL JS with an attributed OpenStreetMap basemap
+- public address-or-coordinate lookup plus a technical GIS explorer
+- deterministic local SQLite geocoder engine and snapshot builder
+- authoritative address-point preference with visibly labeled street-range interpolation
+- React, TypeScript, Vite, and MapLibre GL JS frontend
 - Go HTTP API
-- local SQLite runtime snapshots, with legacy DuckDB migration compatibility
+- local SQLite boundary snapshots, with legacy DuckDB migration compatibility
 - state, county, municipality, special land-use, American Indian area, and NERIS jurisdiction layers
-- boundary selection and full-record inspection
-- source-backed state building-code reports and normalization tooling
-- read-only GitHub Actions verification for the frontend and backend
+- source-backed state jurisdiction and adopted-code policy for pilot states
+- LORE-compatible semantic documentation trust root
+- read-only GitHub Actions verification for frontend, backend, regulatory data, and repository documentation
 
-The repository intentionally excludes hydrated SQLite and DuckDB databases. Runtime snapshots can be large, stale, or redistribution-sensitive, so they must be generated or supplied locally with provenance intact.
+The repository intentionally excludes hydrated boundary and geocoder databases. Runtime snapshots can be large, stale, or redistribution-sensitive, so they must be generated or supplied locally with provenance intact.
 
 ## Five-Minute Quick Start
 
@@ -26,7 +28,8 @@ The repository intentionally excludes hydrated SQLite and DuckDB databases. Runt
 - Node.js 22
 - pnpm 10.12.1-compatible tooling
 - the Go version declared in [`backend/go.mod`](backend/go.mod)
-- a supported local snapshot, normally `backend/data/tigerweb.sqlite`, for a ready data-backed runtime
+- a supported boundary snapshot, normally `backend/data/tigerweb.sqlite`
+- optionally, a locally built `backend/data/geocoder.sqlite` for address lookup
 
 Install frontend dependencies from the repository root:
 
@@ -53,74 +56,108 @@ Then check:
 - backend readiness: `http://127.0.0.1:8000/ready`
 - frontend: the local URL printed by Vite, normally `http://127.0.0.1:5173`
 
-`/health` can succeed without a runtime snapshot. `/ready` reports whether the API has a usable supported snapshot. See the [configuration reference](docs/reference/configuration.md) for supported paths and environment variables.
+`/health` can succeed without a usable boundary snapshot. `/ready` reports whether the boundary-backed API is usable. A missing geocoder snapshot disables address endpoints but does not disable coordinate lookup or the explorer.
 
 On Windows, `./tools/start.cmd` starts both services and waits for backend readiness. `./tools/health.cmd` probes the running services, and `./tools/stop.cmd` stops the processes launched by the repository scripts.
 
 ## Delivered Architecture
 
 ```text
-React + MapLibre frontend
-        |
-        | HTTP through the Vite development proxy
-        v
-Go API
-        |
-        v
-Local SQLite snapshot
+Address input
+    |
+    v
+Local SQLite geocoder -----> provenance-bearing point
+                                  |
+Coordinate input ----------------+
+                                  |
+                                  v
+                         Boundary resolution
+                                  |
+                                  v
+                         Regulatory resolver
+                                  |
+                                  v
+                  Authorities, adoptions, evidence
 ```
 
-TIGERweb, NERIS, and official state sources feed ingestion and research workflows. They are not direct browser dependencies.
+OpenStreetMap is a browser basemap. TIGERweb, NERIS, address sources, and official regulatory sources feed offline ingestion or research workflows; they are not lookup-time browser dependencies.
 
-The backend currently exposes:
+The backend exposes:
 
 - `GET /health`
 - `GET /ready`
 - `GET /layers`
 - `GET /boundaries`
 - `GET /features/{layer_family}/{feature_id}`
+- `POST /geocode`
+- `POST /lookup`
+- `POST /resolve`
 - `GET /refresh/status`
 - `POST /refresh/trigger`
 
-The API prefers SQLite. DuckDB support remains only for migration compatibility.
+`POST /resolve` remains point-based. `POST /lookup` composes local geocoding with that existing resolver and returns both results.
+
+## Build a Local Geocoder Snapshot
+
+The repository includes a deterministic CSV-to-SQLite builder:
+
+```bash
+cd backend
+go run ./cmd/geocoder-build \
+  --output data/geocoder.sqlite \
+  --address-points ./path/to/address-points.csv \
+  --street-ranges ./path/to/street-ranges.csv \
+  --source-name "Reviewed local address data" \
+  --source-vintage "2026-08-01"
+```
+
+Address sources require independent licensing and redistribution review. See [Build a local geocoder snapshot](docs/how-to/build-local-geocoder-snapshot.md) and [Data Sources and Attribution](DATA_SOURCES.md).
 
 ## Repository Layout
 
-- `src/`: React frontend and map interaction logic
-- `backend/`: Go API, snapshot readers, and backend tests
+- `src/`: public lookup, explorer, map interaction, and frontend data contracts
+- `backend/internal/geocoder/`: address normalization, SQLite matching, interpolation, provenance, and snapshot construction
+- `backend/internal/httpapi/`: HTTP contracts and address-to-resolution composition
+- `backend/internal/regulatory/`: source-backed policy catalog and generic resolver
+- `backend/internal/snapshot/`: boundary snapshot loading
+- `backend/cmd/geocoder-build/`: reproducible geocoder snapshot builder
 - `reports/`: state building-code research artifacts and transformation tooling
-- `docs/`: tutorials, how-to guides, references, and explanations
+- `docs/`: tutorials, how-to guides, references, explanations, and generated LORE projections
+- `.lore/records/`: accepted semantic repository knowledge
+- `skills/maintain-repository-documentation/`: neutral LORE maintenance protocol
 - `tools/`: Windows launch, health, stop, reporting, and Deciduous helpers
-- `.github/workflows/ci.yml`: read-only frontend and backend verification
+- `.github/workflows/ci.yml`: read-only repository verification
 
 ## Roadmap
 
 ### Current
 
-- cached boundary exploration and attribute inspection
-- Go API over local snapshots
-- source-backed state research artifacts
-- explicit provenance and redistribution boundaries
+- local address or coordinate entry
+- provenance-bearing address-point and interpolated geocoding
+- cached boundary exploration and geographic resolution
+- source-backed pilot-state regulatory resolution
+- explicit uncertainty and required-local-record outputs
 
 ### Next
 
-- a deterministic location-to-authority result
-- normalized authority relationships with source evidence
-- adopted-code output that preserves unresolved or conflicting states instead of guessing
-- a reproducible snapshot ingestion path from official sources
+- acquire and review production address sources for selected jurisdictions
+- broaden municipal adopted-code coverage
+- add reproducible boundary and address refresh workflows
+- improve candidate ranking using deterministic source-specific rules
+- extend source-backed regulatory profiles beyond the pilot states
 
 ### Later
 
-- local geocoding and address normalization
-- PostGIS-backed storage and Martin vector-tile serving where scale requires them
-- historical versioning for boundaries, authorities, adoptions, and amendments
-- broader jurisdiction coverage with source-level verification
+- PostGIS-backed storage and vector-tile serving where scale requires them
+- historical versioning for addresses, boundaries, authorities, adoptions, and amendments
+- unit, parcel, landmark, intersection, and reverse geocoding where source quality supports them
+- broader nationwide coverage with source-level verification
 
 Deferred systems are architectural direction, not current delivered functionality.
 
 ## Verification
 
-Run the frontend checks from the repository root:
+Run frontend checks from the repository root:
 
 ```bash
 pnpm check
@@ -130,40 +167,35 @@ pnpm test
 pnpm build
 ```
 
-Run backend verification either directly from `backend/`:
+Run backend verification from `backend/`:
 
 ```bash
-cd backend
 go test ./...
 go vet ./...
 ```
 
-or through the root scripts:
-
-```bash
-pnpm backend:test
-pnpm backend:lint
-```
+GitHub Actions also validates the repository-local LORE trust root against a pinned public LORE revision.
 
 ## Documentation
 
-The documentation is organized by intent under [`docs/`](docs/README.md):
-
 - [Getting started tutorial](docs/tutorials/getting-started.md)
+- [Build a local geocoder snapshot](docs/how-to/build-local-geocoder-snapshot.md)
 - [Runtime and API reference](docs/reference/runtime-and-api.md)
 - [Configuration reference](docs/reference/configuration.md)
 - [Repository governance reference](docs/reference/repository-governance.md)
 - [Add a boundary layer](docs/how-to/add-boundary-layer.md)
 - [Populate a state report](docs/how-to/populate-state-report-template.md)
-- [TIGERweb visualization design](docs/explanation/tigerweb-visualization-design.md)
+- [Local SQLite geocoder design](docs/superpowers/specs/2026-08-01-local-sqlite-geocoder-design.md)
 - [Data sources and redistribution boundaries](DATA_SOURCES.md)
 - [Security policy](SECURITY.md)
 - [Contribution guide](CONTRIBUTING.md)
 
+`docs/generated/` contains non-authoritative LORE projections. Accepted semantic records, schemas, repository facts, and transaction history remain the source of truth.
+
 ## Data and Publication Boundaries
 
 - OpenStreetMap attribution remains visible in the map.
-- Census and other official-source provenance must remain attached to transformed records.
+- Boundary and address sources retain independent provenance and redistribution reviews.
 - NERIS operational data is not assumed to be redistributable; individual fire departments retain ownership of their data.
 - Model-code and standards text is not included merely because a jurisdiction adopts it.
 - Environment files, logs, local caches, decision databases, prompt-bearing graph exports, and database binaries are ignored.
