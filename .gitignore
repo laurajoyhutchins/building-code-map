@@ -19,6 +19,9 @@ backend/*.egg-info/
 .ruff_cache/
 cache/
 
+# LORE maintainer proposals are ephemeral inputs bound to the current Git HEAD
+.lore/proposals/
+
 # Deciduous database and generated public exports
 .deciduous/
 docs/graph-data.json
