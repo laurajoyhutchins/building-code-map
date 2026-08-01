@@ -31,9 +31,12 @@ export interface LayerFamilyDefinition {
 
 export type LayerSelectionMap = Readonly<Record<LayerFamilyKey, boolean>>;
 
-export interface FeatureSummary {
+export interface FeatureRef {
   layerFamily: LayerFamilyKey;
   featureId: string;
+}
+
+export interface FeatureSummary extends FeatureRef {
   title: string;
   subtitle: string;
   sourceId: string;

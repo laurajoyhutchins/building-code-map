@@ -1,5 +1,6 @@
 import type { Map as MapLibreMap } from "maplibre-gl";
 import { describe, expect, it, vi } from "vitest";
+import { featureRefFromMapProperties } from "../lib/featureIdentity";
 import type { LayerFamilyDefinition, LayerSelectionMap } from "../types";
 import { reconcileBoundaryLayers } from "./MapStage";
 
@@ -53,6 +54,30 @@ function createFakeMap() {
     addLayer: map.addLayer,
   };
 }
+
+describe("featureRefFromMapProperties", () => {
+  it("returns both identity fields from a rendered map feature", () => {
+    expect(
+      featureRefFromMapProperties({
+        layerFamily: "counties",
+        featureId: "08",
+      }),
+    ).toEqual({
+      layerFamily: "counties",
+      featureId: "08",
+    });
+  });
+
+  it("rejects incomplete or unknown map feature identities", () => {
+    expect(featureRefFromMapProperties({ featureId: "08" })).toBeNull();
+    expect(
+      featureRefFromMapProperties({
+        layerFamily: "unsupported",
+        featureId: "08",
+      }),
+    ).toBeNull();
+  });
+});
 
 describe("reconcileBoundaryLayers", () => {
   it("adds registry layers when the map becomes ready before registry hydration", () => {

@@ -1,14 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 import type { GeoJSONSource, Map as MapLibreMap, StyleSpecification } from "maplibre-gl";
-import type { LayerFamilyDefinition, LayerSelectionMap, RefreshStatus } from "../types";
-import type { BoundaryFeatureRecord, FeatureSummary } from "../types";
+import {
+  encodeFeatureRef,
+  featureRefFromMapProperties,
+  featureRefsEqual,
+} from "../lib/featureIdentity";
 import { buildBoundaryFeatureCollection, calculateBoundaryBounds } from "../lib/mapData";
+import type {
+  BoundaryFeatureRecord,
+  FeatureRef,
+  FeatureSummary,
+  LayerFamilyDefinition,
+  LayerSelectionMap,
+  RefreshStatus,
+} from "../types";
 
 interface MapStageProps {
   layers: LayerFamilyDefinition[];
   selectedFeature: BoundaryFeatureRecord | null;
   enabledLayers: LayerSelectionMap;
-  onSelectFeature: (featureId: FeatureSummary["featureId"]) => void;
+  onSelectFeature: (feature: FeatureRef) => void;
   refreshStatus: RefreshStatus;
   featureSummaries: FeatureSummary[];
   boundaryFeatures: readonly BoundaryFeatureRecord[];
@@ -178,14 +189,14 @@ export function MapStage({
 }: MapStageProps): JSX.Element {
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
-  const previousSelectedFeatureIdRef = useRef<string | null>(null);
+  const previousSelectedFeatureKeyRef = useRef<string | null>(null);
   const [mapStatus, setMapStatus] = useState<"loading" | "ready" | "error">("loading");
   const [mapError, setMapError] = useState<string | null>(null);
 
   const boundaryCollection = buildBoundaryFeatureCollection(
     boundaryFeatures,
     enabledLayers,
-    selectedFeature?.featureId ?? null,
+    selectedFeature,
   );
   const layersRef = useRef(layers);
   const enabledLayersRef = useRef(enabledLayers);
@@ -256,10 +267,10 @@ export function MapStage({
             const renderedFeatures = map.queryRenderedFeatures(event.point, {
               layers: existingFillLayers,
             });
-            const clickedFeatureId = renderedFeatures[0]?.properties?.featureId;
+            const clickedFeature = featureRefFromMapProperties(renderedFeatures[0]?.properties);
 
-            if (typeof clickedFeatureId === "string" && clickedFeatureId.length > 0) {
-              onSelectFeatureRef.current(clickedFeatureId);
+            if (clickedFeature) {
+              onSelectFeatureRef.current(clickedFeature);
             }
           });
 
@@ -307,11 +318,14 @@ export function MapStage({
 
     reconcileBoundaryLayers(map, layers, enabledLayers, boundaryCollection);
 
-    if (
-      selectedFeature?.geometry &&
-      selectedFeature.featureId !== previousSelectedFeatureIdRef.current
-    ) {
-      previousSelectedFeatureIdRef.current = selectedFeature.featureId;
+    if (!selectedFeature) {
+      previousSelectedFeatureKeyRef.current = null;
+      return;
+    }
+
+    const selectedFeatureKey = encodeFeatureRef(selectedFeature);
+    if (selectedFeatureKey !== previousSelectedFeatureKeyRef.current) {
+      previousSelectedFeatureKeyRef.current = selectedFeatureKey;
       map.fitBounds(calculateBoundaryBounds(selectedFeature.geometry), {
         padding: 48,
         duration: 650,
@@ -381,13 +395,18 @@ export function MapStage({
         </div>
         <div className="feature-list">
           {featureSummaries.map((feature) => {
-            const active = selectedFeature?.featureId === feature.featureId;
+            const active = featureRefsEqual(selectedFeature, feature);
 
             return (
               <button
                 className={`feature-card ${active ? "is-active" : ""}`}
-                key={`${feature.layerFamily}-${feature.featureId}`}
-                onClick={() => onSelectFeature(feature.featureId)}
+                key={encodeFeatureRef(feature)}
+                onClick={() =>
+                  onSelectFeature({
+                    layerFamily: feature.layerFamily,
+                    featureId: feature.featureId,
+                  })
+                }
                 type="button"
               >
                 <strong>{feature.title}</strong>
