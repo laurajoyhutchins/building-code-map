@@ -1,0 +1,31 @@
+schema_version: 1
+id: bootstrap-repository-knowledge
+title: Bootstrap Building Code Map semantic knowledge
+description: Review the exact repository evidence and propose the initial LORE records
+  for repository purpose, architecture, relationships, decisions, constraints, and
+  verification procedures. Preserve uncertainty and do not edit generated documentation
+  or accepted history directly.
+paths:
+- README.md
+- AGENTS.md
+- DATA_SOURCES.md
+- package.json
+- docs/reference/runtime-and-api.md
+- docs/reference/regulatory-resolution.md
+- docs/reference/repository-governance.md
+- src
+- backend
+- reports
+- schemas/regulatory
+components: []
+tags:
+- architecture
+- bootstrap
+- local-first
+- provenance
+- regulatory-data
+audiences:
+- architecture
+- contributor
+- maintainer
+history: false
