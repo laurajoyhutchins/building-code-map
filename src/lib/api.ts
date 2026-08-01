@@ -1,8 +1,11 @@
 import type {
   BoundaryFeatureRecord,
   FeatureRecord,
+  GeocodeCandidate,
+  GeocodeResult,
   LayerFamilyDefinition,
   LayerFamilyKey,
+  LookupResult,
   RefreshStatus,
   ResolutionResult,
 } from "../types";
@@ -23,7 +26,25 @@ async function readJson<T>(path: string, init?: RequestInit): Promise<T> {
   headers.set("Accept", "application/json");
   const response = await fetch(buildApiUrl(path), { headers, ...rest });
   if (!response.ok) {
-    throw new Error(`Request to ${path} failed with ${response.status}`);
+    let message = `Request to ${path} failed with ${response.status}`;
+    try {
+      const payload = (await response.json()) as {
+        error?: string;
+        status?: string;
+        candidates?: unknown[];
+      };
+      if (payload.error) {
+        message = payload.error;
+      } else if (payload.status === "ambiguous") {
+        const count = payload.candidates?.length ?? 0;
+        message = `The address matched ${count || "multiple"} locations. Add a ZIP code or more specific locality.`;
+      } else if (payload.status === "not_found") {
+        message = "The local geocoder could not match that address.";
+      }
+    } catch {
+      // Keep the status-based fallback when the response is not JSON.
+    }
+    throw new Error(message);
   }
   return (await response.json()) as T;
 }
@@ -165,9 +186,41 @@ interface RawResolutionResult {
   evidence?: RawSource[];
 }
 
+interface RawGeocodeCandidate {
+  matched_address: string;
+  longitude: number;
+  latitude: number;
+  precision: GeocodeCandidate["precision"];
+  confidence: number;
+  source: string;
+  source_record_id: string;
+  source_vintage: string;
+}
+
+interface RawGeocodeResult {
+  query: string;
+  normalized?: string;
+  status: GeocodeResult["status"];
+  selected?: RawGeocodeCandidate;
+  candidates?: RawGeocodeCandidate[];
+  warnings?: string[];
+}
+
+interface RawLookupResult {
+  geocode: RawGeocodeResult;
+  resolution: RawResolutionResult;
+}
+
 export interface ResolutionRequestInput {
   longitude: number;
   latitude: number;
+  codeFamily?: string;
+  projectType?: string;
+  applicabilityDate?: string;
+}
+
+export interface LookupRequestInput {
+  address: string;
   codeFamily?: string;
   projectType?: string;
   applicabilityDate?: string;
@@ -273,6 +326,37 @@ export function decodeResolutionResult(raw: RawResolutionResult): ResolutionResu
   };
 }
 
+function decodeGeocodeCandidate(raw: RawGeocodeCandidate): GeocodeCandidate {
+  return {
+    matchedAddress: raw.matched_address,
+    longitude: raw.longitude,
+    latitude: raw.latitude,
+    precision: raw.precision,
+    confidence: raw.confidence,
+    source: raw.source,
+    sourceRecordId: raw.source_record_id,
+    sourceVintage: raw.source_vintage,
+  };
+}
+
+export function decodeGeocodeResult(raw: RawGeocodeResult): GeocodeResult {
+  return {
+    query: raw.query,
+    normalized: raw.normalized,
+    status: raw.status,
+    selected: raw.selected ? decodeGeocodeCandidate(raw.selected) : undefined,
+    candidates: (raw.candidates ?? []).map(decodeGeocodeCandidate),
+    warnings: raw.warnings ?? [],
+  };
+}
+
+export function decodeLookupResult(raw: RawLookupResult): LookupResult {
+  return {
+    geocode: decodeGeocodeResult(raw.geocode),
+    resolution: decodeResolutionResult(raw.resolution),
+  };
+}
+
 export async function fetchResolution(input: ResolutionRequestInput): Promise<ResolutionResult> {
   const raw = await readJson<RawResolutionResult>("/resolve", {
     method: "POST",
@@ -285,4 +369,18 @@ export async function fetchResolution(input: ResolutionRequestInput): Promise<Re
     }),
   });
   return decodeResolutionResult(raw);
+}
+
+export async function fetchLookup(input: LookupRequestInput): Promise<LookupResult> {
+  const raw = await readJson<RawLookupResult>("/lookup", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      address: input.address,
+      code_family: input.codeFamily || undefined,
+      project_type: input.projectType || undefined,
+      applicability_date: input.applicabilityDate || undefined,
+    }),
+  });
+  return decodeLookupResult(raw);
 }
