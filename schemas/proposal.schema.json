@@ -39,7 +39,9 @@
           "properties": {
             "operation": { "const": "transition_record" },
             "record_id": { "type": "string", "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$" },
-            "from": { "enum": ["draft", "active", "superseded", "deprecated", "resolved", "withdrawn"] },
+            "from": {
+              "enum": ["draft", "active", "superseded", "deprecated", "resolved", "withdrawn"]
+            },
             "to": { "enum": ["draft", "active", "deprecated", "resolved", "withdrawn"] },
             "evidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evidence" } }
           }
@@ -49,7 +51,15 @@
   },
   "type": "object",
   "additionalProperties": false,
-  "required": ["protocol", "proposal_id", "base_revision", "skill", "result", "operations", "uncertainties"],
+  "required": [
+    "protocol",
+    "proposal_id",
+    "base_revision",
+    "skill",
+    "result",
+    "operations",
+    "uncertainties"
+  ],
   "properties": {
     "protocol": { "const": "lore-proposal/v1" },
     "proposal_id": { "type": "string", "pattern": "^[a-z0-9]+(?:[.-][a-z0-9]+)*$" },
@@ -83,7 +93,10 @@
       "then": { "properties": { "operations": { "type": "array", "minItems": 1 } } }
     },
     {
-      "if": { "properties": { "result": { "const": "no_documentation_change" } }, "required": ["result"] },
+      "if": {
+        "properties": { "result": { "const": "no_documentation_change" } },
+        "required": ["result"]
+      },
       "then": {
         "required": ["reason"],
         "properties": {
