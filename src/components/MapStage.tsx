@@ -316,16 +316,13 @@ export function MapStage({
 
     reconcileBoundaryLayers(map, layers, enabledLayers, boundaryCollection);
 
-    const selectedFeatureKey = selectedFeature ? encodeFeatureRef(selectedFeature) : null;
-    if (!selectedFeatureKey) {
+    if (!selectedFeature) {
       previousSelectedFeatureKeyRef.current = null;
       return;
     }
 
-    if (
-      selectedFeature.geometry &&
-      selectedFeatureKey !== previousSelectedFeatureKeyRef.current
-    ) {
+    const selectedFeatureKey = encodeFeatureRef(selectedFeature);
+    if (selectedFeatureKey !== previousSelectedFeatureKeyRef.current) {
       previousSelectedFeatureKeyRef.current = selectedFeatureKey;
       map.fitBounds(calculateBoundaryBounds(selectedFeature.geometry), {
         padding: 48,
