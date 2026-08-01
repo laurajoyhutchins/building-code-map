@@ -267,9 +267,7 @@ export function MapStage({
             const renderedFeatures = map.queryRenderedFeatures(event.point, {
               layers: existingFillLayers,
             });
-            const clickedFeature = featureRefFromMapProperties(
-              renderedFeatures[0]?.properties,
-            );
+            const clickedFeature = featureRefFromMapProperties(renderedFeatures[0]?.properties);
 
             if (clickedFeature) {
               onSelectFeatureRef.current(clickedFeature);
