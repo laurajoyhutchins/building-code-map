@@ -1,0 +1,45 @@
+schema_version: 1
+id: regulatory-resolution
+kind: component
+revision: 1
+status: active
+title: Source-backed regulatory resolution
+summary: Generic resolver that combines normalized geographic context with versioned state policy profiles to return authority candidates, adoption records, rules, evidence, warnings, and unresolved local-record requirements.
+scope:
+  repository: building-code-map
+  components:
+    - regulatory-resolution
+evidence:
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: backend/internal/regulatory/resolver.go
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: backend/internal/regulatory/model.go
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: backend/internal/httpapi/resolve.go
+disclosure:
+  audiences:
+    - contributors
+    - maintainers
+  tags:
+    - regulatory
+    - policy
+    - evidence
+  weight: 90
+provenance:
+  source: bootstrap
+  transaction: null
+  producer: owner-reviewed-bootstrap
+supersedes: null
+payload:
+  inputs:
+    - normalized geographic context
+    - code family
+    - project type
+    - applicability date
+  outputs:
+    - authority candidates
+    - adoptions
+    - applicable rules
+    - required local records
+    - warnings
+    - evidence

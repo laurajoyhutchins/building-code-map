@@ -1,5 +1,5 @@
 schema_version: 1
-id: component.local-sqlite-geocoder
+id: local-sqlite-geocoder
 kind: component
 revision: 1
 status: active

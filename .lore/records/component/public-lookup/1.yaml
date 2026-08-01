@@ -1,0 +1,38 @@
+schema_version: 1
+id: public-lookup
+kind: component
+revision: 1
+status: active
+title: Public address and coordinate lookup
+summary: Public React workflow that classifies a location input, preserves direct coordinate resolution, composes civic addresses through the local geocoder, and displays location provenance with regulatory results.
+scope:
+  repository: building-code-map
+  components:
+    - public-lookup
+evidence:
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: src/components/PublicLookup.tsx
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: src/lib/publicLookup.ts
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: src/lib/api.ts
+disclosure:
+  audiences:
+    - contributors
+    - maintainers
+  tags:
+    - frontend
+    - lookup
+    - provenance
+  weight: 80
+provenance:
+  source: bootstrap
+  transaction: null
+  producer: owner-reviewed-bootstrap
+supersedes: null
+payload:
+  inputs:
+    - civic address
+    - longitude and latitude
+  coordinate_path: Call POST /resolve directly.
+  address_path: Call POST /lookup and display the selected geocoder candidate.
