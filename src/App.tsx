@@ -8,6 +8,7 @@ import { fetchBoundaryFeatures, fetchLayers, fetchRefreshStatus, getApiBaseUrl }
 import { createLayerSelectionMap } from "./lib/layerSelection";
 import type {
   BoundaryFeatureRecord,
+  FeatureRef,
   LayerFamilyDefinition,
   LayerFamilyKey,
   LayerSelectionMap,
@@ -29,12 +30,16 @@ function App(): JSX.Element {
   );
   const [refreshStatus, setRefreshStatus] = useState<RefreshStatus | null>(null);
   const [boundaryFeatures, setBoundaryFeatures] = useState<BoundaryFeatureRecord[]>([]);
-  const [selectedFeatureId, setSelectedFeatureId] = useState<string | null>(null);
+  const [selectedFeatureRef, setSelectedFeatureRef] = useState<FeatureRef | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
 
-  const selectedFeature: BoundaryFeatureRecord | null = selectedFeatureId
-    ? (boundaryFeatures.find((feature) => feature.featureId === selectedFeatureId) ?? null)
+  const selectedFeature: BoundaryFeatureRecord | null = selectedFeatureRef
+    ? (boundaryFeatures.find(
+        (feature) =>
+          feature.layerFamily === selectedFeatureRef.layerFamily &&
+          feature.featureId === selectedFeatureRef.featureId,
+      ) ?? null)
     : null;
 
   const selectedSummary = selectedFeature;
@@ -54,18 +59,27 @@ function App(): JSX.Element {
           return;
         }
 
+        const firstFeature = nextBoundaryFeatures[0];
+        const firstFeatureRef: FeatureRef | null = firstFeature
+          ? {
+              layerFamily: firstFeature.layerFamily,
+              featureId: firstFeature.featureId,
+            }
+          : null;
+
         setLayerRegistry(nextLayers);
         setEnabledLayers(createLayerSelectionMap(nextLayers));
         setRefreshStatus(nextRefreshStatus);
         setBoundaryFeatures(nextBoundaryFeatures);
         setLoadError(null);
-        setSelectedFeatureId((current) => current ?? nextBoundaryFeatures[0]?.featureId ?? null);
+        setSelectedFeatureRef((current) => current ?? firstFeatureRef);
       } catch {
         if (!cancelled) {
           setLayerRegistry([]);
           setEnabledLayers(createLayerSelectionMap([]));
           setRefreshStatus(null);
           setBoundaryFeatures([]);
+          setSelectedFeatureRef(null);
           setLoadError("Cached boundary data could not be loaded.");
         }
       } finally {
@@ -129,7 +143,7 @@ function App(): JSX.Element {
           layers={layerRegistry}
           selectedFeature={selectedFeature}
           enabledLayers={enabledLayers}
-          onSelectFeature={setSelectedFeatureId}
+          onSelectFeature={(featureRef) => setSelectedFeatureRef(featureRef)}
           refreshStatus={refreshStatus ?? loadingRefreshStatus}
           featureSummaries={boundaryFeatures.map(
             ({ layerFamily, featureId, title, subtitle, sourceId }) => ({
