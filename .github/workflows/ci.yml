@@ -106,3 +106,35 @@ jobs:
           --reports-root reports
           --json-output "${{ runner.temp }}/regulatory-coverage.json"
           --markdown-output "${{ runner.temp }}/regulatory-coverage.md"
+
+  lore:
+    name: LORE documentation
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout Building Code Map
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Build pinned LORE
+        env:
+          LORE_REVISION: a8792bd594db34fcbf3065239b70ef4383f7e186
+        run: |
+          git clone --filter=blob:none https://github.com/laurajoyhutchins/LORE.git "$RUNNER_TEMP/lore"
+          git -C "$RUNNER_TEMP/lore" checkout "$LORE_REVISION"
+          cd "$RUNNER_TEMP/lore"
+          pnpm install --frozen-lockfile
+          pnpm build
+
+      - name: Validate repository documentation
+        run: node "$RUNNER_TEMP/lore/dist/cli/main.js" validate
