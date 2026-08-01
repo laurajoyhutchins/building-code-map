@@ -118,7 +118,10 @@ describe("buildBoundaryFeatureCollection", () => {
       neris_jurisdictions: true,
     };
 
-    const collection = buildBoundaryFeatureCollection(demoFeatures, enabledLayers, "08");
+    const collection = buildBoundaryFeatureCollection(demoFeatures, enabledLayers, {
+      layerFamily: "states",
+      featureId: "08",
+    });
 
     expect(collection.type).toBe("FeatureCollection");
     expect(collection.features).toHaveLength(2);
@@ -133,6 +136,30 @@ describe("buildBoundaryFeatureCollection", () => {
       geometrySource: "neris_department_jurisdiction",
       selected: false,
     });
+  });
+
+  it("selects exactly one feature when layer families reuse a feature id", () => {
+    const enabledLayers = createLayerSelectionMap(layerFamilies);
+    const collisionFeatures = [
+      demoFeatures[0],
+      {
+        ...demoFeatures[0],
+        layerFamily: "counties" as const,
+        title: "County 08",
+        subtitle: "County boundary",
+        sourceId: "COUNTYFP=08",
+      },
+    ];
+
+    const collection = buildBoundaryFeatureCollection(collisionFeatures, enabledLayers, {
+      layerFamily: "counties",
+      featureId: "08",
+    });
+
+    expect(collection.features.map((feature) => feature.properties.selected)).toEqual([
+      false,
+      true,
+    ]);
   });
 });
 
