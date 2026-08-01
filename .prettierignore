@@ -5,3 +5,10 @@ node_modules/
 pnpm-lock.yaml
 docs/superpowers/plans/
 docs/explanation/launch-scripts-implementation-plan.md
+schemas/extracted-facts.schema.json
+schemas/hydration.schema.json
+schemas/manifest.schema.json
+schemas/proposal.schema.json
+schemas/record.schema.json
+schemas/task.schema.json
+schemas/transaction.schema.json
