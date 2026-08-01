@@ -1,10 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { FeatureSummary } from "../types";
-import {
-  encodeFeatureRef,
-  featureRefsEqual,
-  findFeatureByRef,
-} from "./featureIdentity";
+import { encodeFeatureRef, featureRefsEqual, findFeatureByRef } from "./featureIdentity";
 
 const collidingFeatures: FeatureSummary[] = [
   {
