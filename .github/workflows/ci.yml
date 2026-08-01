@@ -43,30 +43,14 @@ jobs:
       - name: Lint
         run: pnpm lint
 
-      - name: Capture required formatting
-        run: |
-          pnpm exec prettier \
-            schemas/manifest.schema.json \
-            schemas/proposal.schema.json \
-            schemas/record.schema.json \
-            schemas/transaction.schema.json \
-            src/lib/publicLookup.ts \
-            --write
-          git diff -- \
-            schemas/manifest.schema.json \
-            schemas/proposal.schema.json \
-            schemas/record.schema.json \
-            schemas/transaction.schema.json \
-            src/lib/publicLookup.ts
+      - name: Check formatting
+        run: pnpm format:check
 
       - name: Test
         run: pnpm test
 
       - name: Build
         run: pnpm build
-
-      - name: Require committed formatting
-        run: git diff --exit-code
 
   backend:
     name: Backend
@@ -153,4 +137,4 @@ jobs:
           pnpm build
 
       - name: Validate repository documentation
-        run: node "$RUNNER_TEMP/lore/dist/cli/main.js" validate
+        run: node "$RUNNER_TEMP/lore/dist/src/cli/main.js" validate
