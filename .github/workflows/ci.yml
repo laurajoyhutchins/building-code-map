@@ -43,12 +43,6 @@ jobs:
       - name: Lint
         run: pnpm lint
 
-      - name: Diagnose MapStage formatting
-        run: |
-          pnpm exec prettier src/components/MapStage.tsx --write
-          git diff -- src/components/MapStage.tsx
-          git checkout -- src/components/MapStage.tsx
-
       - name: Check formatting
         run: pnpm format:check
 
