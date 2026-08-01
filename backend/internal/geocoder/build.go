@@ -90,14 +90,65 @@ func BuildSnapshot(options BuildOptions) error {
 	}
 	closed = true
 
-	if err := os.Rename(temporaryPath, outputPath); err == nil {
+	return replaceSnapshot(temporaryPath, outputPath)
+}
+
+func replaceSnapshot(temporaryPath, outputPath string) error {
+	return replaceSnapshotWithRename(temporaryPath, outputPath, os.Rename)
+}
+
+func replaceSnapshotWithRename(
+	temporaryPath string,
+	outputPath string,
+	rename func(string, string) error,
+) error {
+	directErr := rename(temporaryPath, outputPath)
+	if directErr == nil {
 		return nil
 	}
-	if err := os.Remove(outputPath); err != nil && !errors.Is(err, os.ErrNotExist) {
-		return err
+
+	info, err := os.Stat(outputPath)
+	if err != nil {
+		if errors.Is(err, os.ErrNotExist) {
+			return fmt.Errorf("replace geocoder snapshot: %w", directErr)
+		}
+		return fmt.Errorf("inspect existing geocoder snapshot: %w", err)
 	}
-	if err := os.Rename(temporaryPath, outputPath); err != nil {
+	if info.IsDir() {
+		return errors.New("replace geocoder snapshot: output path is a directory")
+	}
+
+	backup, err := os.CreateTemp(
+		filepath.Dir(outputPath),
+		"."+filepath.Base(outputPath)+".backup-*",
+	)
+	if err != nil {
+		return fmt.Errorf("reserve geocoder snapshot backup: %w", err)
+	}
+	backupPath := backup.Name()
+	if err := backup.Close(); err != nil {
+		_ = os.Remove(backupPath)
+		return fmt.Errorf("close geocoder snapshot backup: %w", err)
+	}
+	if err := os.Remove(backupPath); err != nil {
+		return fmt.Errorf("prepare geocoder snapshot backup: %w", err)
+	}
+
+	if err := rename(outputPath, backupPath); err != nil {
+		return fmt.Errorf("backup existing geocoder snapshot: %w", err)
+	}
+	if err := rename(temporaryPath, outputPath); err != nil {
+		restoreErr := rename(backupPath, outputPath)
+		if restoreErr != nil {
+			return errors.Join(
+				fmt.Errorf("replace geocoder snapshot: %w", err),
+				fmt.Errorf("restore previous geocoder snapshot from %s: %w", backupPath, restoreErr),
+			)
+		}
 		return fmt.Errorf("replace geocoder snapshot: %w", err)
+	}
+	if err := os.Remove(backupPath); err != nil && !errors.Is(err, os.ErrNotExist) {
+		return fmt.Errorf("remove previous geocoder snapshot backup: %w", err)
 	}
 	return nil
 }
@@ -229,7 +280,6 @@ func readCSVRows(path string, required []string, visit func(map[string]string, i
 			if index < len(record) {
 				row[name] = record[index]
 			}
-		}
 		if err := visit(row, line); err != nil {
 			return err
 		}
