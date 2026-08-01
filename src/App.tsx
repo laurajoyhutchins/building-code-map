@@ -5,12 +5,7 @@ import { MapStage } from "./components/MapStage";
 import { PublicLookup } from "./components/PublicLookup";
 import { ResolutionPanel } from "./components/ResolutionPanel";
 import { StatusBanner } from "./components/StatusBanner";
-import {
-  fetchBoundaryFeatures,
-  fetchLayers,
-  fetchRefreshStatus,
-  getApiBaseUrl,
-} from "./lib/api";
+import { fetchBoundaryFeatures, fetchLayers, fetchRefreshStatus, getApiBaseUrl } from "./lib/api";
 import { findFeatureByRef } from "./lib/featureIdentity";
 import { createLayerSelectionMap } from "./lib/layerSelection";
 import type {
