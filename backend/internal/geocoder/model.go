@@ -1,6 +1,11 @@
 package geocoder
 
-import "context"
+import (
+	"context"
+	"errors"
+)
+
+var ErrInvalidAddress = errors.New("enter a civic address with house number, street, city, and state")
 
 type Status string
 
