@@ -1,7 +1,6 @@
 package geocoder
 
 import (
-	"errors"
 	"fmt"
 	"regexp"
 	"strings"
@@ -9,17 +8,16 @@ import (
 )
 
 var (
-	errInvalidAddress = errors.New("enter a civic address with house number, street, city, and state")
-	poBoxPattern      = regexp.MustCompile(`(?i)^\s*P(?:OST)?\.?\s*O(?:FFICE)?\.?\s+BOX\b`)
-	housePattern      = regexp.MustCompile(`^([0-9]+[A-Z]?)\s+(.+)$`)
-	zipPattern        = regexp.MustCompile(`^([0-9]{5})(?:-[0-9]{4})?$`)
+	poBoxPattern = regexp.MustCompile(`(?i)^\s*P(?:OST)?\.?\s*O(?:FFICE)?\.?\s+BOX\b`)
+	housePattern = regexp.MustCompile(`^([0-9]+[A-Z]?)\s+(.+)$`)
+	zipPattern   = regexp.MustCompile(`^([0-9]{5})(?:-[0-9]{4})?$`)
 )
 
 var directionAliases = map[string]string{
-	"NORTH": "N",
-	"SOUTH": "S",
-	"EAST":  "E",
-	"WEST":  "W",
+	"NORTH":     "N",
+	"SOUTH":     "S",
+	"EAST":      "E",
+	"WEST":      "W",
 	"NORTHEAST": "NE",
 	"NORTHWEST": "NW",
 	"SOUTHEAST": "SE",
@@ -27,23 +25,23 @@ var directionAliases = map[string]string{
 }
 
 var suffixAliases = map[string]string{
-	"ALLEY": "ALY",
-	"AVENUE": "AVE",
-	"BOULEVARD": "BLVD",
-	"CIRCLE": "CIR",
-	"COURT": "CT",
-	"DRIVE": "DR",
+	"ALLEY":      "ALY",
+	"AVENUE":     "AVE",
+	"BOULEVARD":  "BLVD",
+	"CIRCLE":     "CIR",
+	"COURT":      "CT",
+	"DRIVE":      "DR",
 	"EXPRESSWAY": "EXPY",
-	"HIGHWAY": "HWY",
-	"LANE": "LN",
-	"PARKWAY": "PKWY",
-	"PLACE": "PL",
-	"ROAD": "RD",
-	"SQUARE": "SQ",
-	"STREET": "ST",
-	"TERRACE": "TER",
-	"TRAIL": "TRL",
-	"WAY": "WAY",
+	"HIGHWAY":    "HWY",
+	"LANE":       "LN",
+	"PARKWAY":    "PKWY",
+	"PLACE":      "PL",
+	"ROAD":       "RD",
+	"SQUARE":     "SQ",
+	"STREET":     "ST",
+	"TERRACE":    "TER",
+	"TRAIL":      "TRL",
+	"WAY":        "WAY",
 }
 
 var stateAliases = map[string]string{
@@ -65,29 +63,29 @@ var stateAliases = map[string]string{
 func ParseAddress(value string) (ParsedAddress, error) {
 	trimmed := strings.TrimSpace(value)
 	if trimmed == "" || poBoxPattern.MatchString(trimmed) {
-		return ParsedAddress{}, errInvalidAddress
+		return ParsedAddress{}, ErrInvalidAddress
 	}
 
 	parts := strings.Split(trimmed, ",")
 	if len(parts) != 3 {
-		return ParsedAddress{}, errInvalidAddress
+		return ParsedAddress{}, ErrInvalidAddress
 	}
 
 	streetPart := normalizeWords(parts[0])
 	match := housePattern.FindStringSubmatch(streetPart)
 	if len(match) != 3 {
-		return ParsedAddress{}, errInvalidAddress
+		return ParsedAddress{}, ErrInvalidAddress
 	}
 	houseNumber := match[1]
 	street := normalizeStreet(match[2])
 	city := normalizeWords(parts[1])
 	if street == "" || city == "" {
-		return ParsedAddress{}, errInvalidAddress
+		return ParsedAddress{}, ErrInvalidAddress
 	}
 
 	stateAndZip := strings.Fields(strings.TrimSpace(parts[2]))
 	if len(stateAndZip) == 0 {
-		return ParsedAddress{}, errInvalidAddress
+		return ParsedAddress{}, ErrInvalidAddress
 	}
 	postalCode := ""
 	if zipMatch := zipPattern.FindStringSubmatch(stateAndZip[len(stateAndZip)-1]); len(zipMatch) == 2 {
@@ -96,7 +94,7 @@ func ParseAddress(value string) (ParsedAddress, error) {
 	}
 	state, ok := normalizeState(strings.Join(stateAndZip, " "))
 	if !ok {
-		return ParsedAddress{}, fmt.Errorf("%w: use a two-letter United States state abbreviation", errInvalidAddress)
+		return ParsedAddress{}, fmt.Errorf("%w: use a United States state name or abbreviation", ErrInvalidAddress)
 	}
 
 	normalized := fmt.Sprintf("%s %s, %s, %s", houseNumber, street, city, state)
