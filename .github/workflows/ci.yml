@@ -91,8 +91,8 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: Test compiler and quality reporting
-        run: python -m unittest discover -s reports/tools -p test_regulatory.py -v
+      - name: Test compiler, quality reporting, and production gate
+        run: python -m unittest discover -s reports/tools -p "test_*.py" -v
 
       - name: Validate pilot reports
         run: python reports/tools/regulatory.py validate reports/pilots/*.md
@@ -106,6 +106,27 @@ jobs:
           --reports-root reports
           --json-output "${{ runner.temp }}/regulatory-coverage.json"
           --markdown-output "${{ runner.temp }}/regulatory-coverage.md"
+
+      - name: Audit pilot production readiness
+        run: >-
+          python reports/tools/production_readiness.py audit
+          --compiled-root backend/data/regulatory
+          --manifests-root reports/production
+          --json-output "${{ runner.temp }}/pilot-production-readiness.json"
+          --markdown-output "${{ runner.temp }}/pilot-production-readiness.md"
+          --fail-on-premature-verification
+
+      - name: Upload regulatory quality reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: regulatory-quality
+          path: |
+            ${{ runner.temp }}/regulatory-coverage.json
+            ${{ runner.temp }}/regulatory-coverage.md
+            ${{ runner.temp }}/pilot-production-readiness.json
+            ${{ runner.temp }}/pilot-production-readiness.md
+          if-no-files-found: error
+          retention-days: 14
 
   lore:
     name: LORE documentation
