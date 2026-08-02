@@ -1,0 +1,5 @@
+source_record_id,address_number,street,city,state,postal_code,longitude,latitude,matched_address
+co-denver-1600,1600,N BROADWAY ST,DENVER,CO,80202,-104.9876,39.7411,1600 N Broadway St Denver CO 80202
+nj-springfield-100-a,100,MAIN ST,SPRINGFIELD,NJ,07081,-74.3190,40.7040,100 Main St Springfield NJ 07081
+nj-springfield-100-b,100,MAIN ST,SPRINGFIELD,NJ,07081,-74.3180,40.7050,100 Main St Springfield NJ 07081
+co-denver-1700,1700,MARKET ST,DENVER,CO,80202,-104.9965,39.7521,1700 Market St Denver CO 80202

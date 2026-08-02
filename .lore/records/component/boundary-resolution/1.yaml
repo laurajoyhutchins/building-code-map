@@ -1,0 +1,40 @@
+schema_version: 1
+id: boundary-resolution
+kind: component
+revision: 1
+status: active
+title: Geographic boundary resolution
+summary: Deterministic point-in-polygon resolution that maps a longitude and latitude to supported state, county, municipality, special-area, tribal-area, and fire-jurisdiction context.
+scope:
+  repository: building-code-map
+  components:
+    - boundary-resolution
+evidence:
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: backend/internal/httpapi/resolve.go
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: backend/internal/snapshot/snapshot.go
+disclosure:
+  audiences:
+    - contributors
+    - maintainers
+  tags:
+    - geospatial
+    - boundaries
+    - deterministic
+  weight: 85
+provenance:
+  source: bootstrap
+  transaction: null
+  producer: owner-reviewed-bootstrap
+supersedes: null
+payload:
+  input: WGS 84 longitude and latitude.
+  output: Normalized geographic context for the regulatory resolver.
+  boundary_families:
+    - states
+    - counties
+    - municipalities
+    - special_areas
+    - tribal_areas
+    - neris_jurisdictions

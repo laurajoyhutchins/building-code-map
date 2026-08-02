@@ -1,11 +1,13 @@
 import { describe, expect, it } from "vitest";
 import {
+  classifyLocationQuery,
   formatCodeFamily,
+  formatGeocodeSummary,
   getResolutionNotice,
   getResolutionPlace,
   parseCoordinateQuery,
 } from "./publicLookup";
-import type { ResolutionResult } from "../types";
+import type { GeocodeCandidate, ResolutionResult } from "../types";
 
 function makeResult(overrides: Partial<ResolutionResult> = {}): ResolutionResult {
   return {
@@ -62,6 +64,26 @@ describe("parseCoordinateQuery", () => {
   });
 });
 
+describe("classifyLocationQuery", () => {
+  it("keeps coordinates on the direct resolution path", () => {
+    expect(classifyLocationQuery("39.7392, -104.9903")).toEqual({
+      kind: "coordinates",
+      point: { latitude: 39.7392, longitude: -104.9903 },
+    });
+  });
+
+  it("routes civic addresses through the local geocoder", () => {
+    expect(classifyLocationQuery(" 1600 N Broadway, Denver, CO 80202 ")).toEqual({
+      kind: "address",
+      address: "1600 N Broadway, Denver, CO 80202",
+    });
+  });
+
+  it("does not disguise invalid numeric coordinates as an address", () => {
+    expect(() => classifyLocationQuery("95, 200")).toThrow("valid latitude and longitude");
+  });
+});
+
 describe("public result presentation", () => {
   it("uses the most specific matched place", () => {
     expect(getResolutionPlace(makeResult())).toBe("Denver, Colorado");
@@ -81,5 +103,21 @@ describe("public result presentation", () => {
   it("formats machine code-family names for display", () => {
     expect(formatCodeFamily("fire_operational")).toBe("Operational fire");
     expect(formatCodeFamily(undefined)).toBe("Building codes");
+  });
+
+  it("formats geocoder provenance without hiding interpolation", () => {
+    const candidate: GeocodeCandidate = {
+      matchedAddress: "1510 Market St Denver CO 80202",
+      longitude: -104.99,
+      latitude: 39.748,
+      precision: "interpolated",
+      confidence: 0.9,
+      source: "Denver address ranges",
+      sourceRecordId: "range-1",
+      sourceVintage: "2026-08-01",
+    };
+    expect(formatGeocodeSummary(candidate)).toBe(
+      "Interpolated street range · Denver address ranges · 2026-08-01",
+    );
   });
 });

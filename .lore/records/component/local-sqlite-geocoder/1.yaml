@@ -1,0 +1,41 @@
+schema_version: 1
+id: local-sqlite-geocoder
+kind: component
+revision: 1
+status: active
+title: Local SQLite geocoder
+summary: Deterministic address normalization and indexed SQLite matching component that prefers address points, preserves source provenance, and labels street-range interpolation.
+scope:
+  repository: building-code-map
+  components:
+    - local-sqlite-geocoder
+evidence:
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: backend/internal/geocoder/model.go
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: backend/internal/geocoder/sqlite.go
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: backend/internal/geocoder/schema.go
+disclosure:
+  audiences:
+    - contributors
+    - maintainers
+  tags:
+    - geocoding
+    - sqlite
+    - provenance
+  weight: 90
+provenance:
+  source: bootstrap
+  transaction: null
+  producer: owner-reviewed-bootstrap
+supersedes: null
+payload:
+  interface: Geocode a supported United States civic address into zero, one, or multiple provenance-bearing candidates.
+  preferred_precision: address_point
+  fallback_precision: interpolated
+  ambiguity_policy: Do not select a candidate when materially tied qualifying candidates remain.
+  snapshot_tables:
+    - geocoder_metadata
+    - address_points
+    - street_ranges

@@ -1,0 +1,37 @@
+schema_version: 1
+id: constraint.local-geocoding-no-network
+kind: constraint
+revision: 1
+status: active
+title: Lookup-time geocoding is local
+summary: Address lookup must use a repository-configured local snapshot and must not depend on a network geocoding provider during a request.
+scope:
+  repository: building-code-map
+  components:
+    - local-sqlite-geocoder
+    - public-lookup
+evidence:
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: backend/internal/geocoder/sqlite.go
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: backend/cmd/server/main.go
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: docs/superpowers/specs/2026-08-01-local-sqlite-geocoder-design.md
+disclosure:
+  audiences:
+    - contributors
+    - maintainers
+  tags:
+    - constraint
+    - local-first
+    - privacy
+  weight: 95
+provenance:
+  source: bootstrap
+  transaction: null
+  producer: owner-reviewed-bootstrap
+supersedes: null
+payload:
+  requirement: No lookup-time request to Census, Nominatim, Pelias, or another external geocoding service.
+  failure_behavior: Missing or invalid geocoder data disables address endpoints without disabling coordinate resolution.
+  data_location: The configured SQLite path must remain inside the backend checkout.

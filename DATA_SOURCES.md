@@ -1,6 +1,6 @@
 # Data Sources and Attribution
 
-The Apache 2.0 license in this repository applies to project-authored software and documentation. It does not relicense third-party map tiles, government records, department-owned data, statutes, regulations, standards, or other source material.
+The Apache 2.0 license in this repository applies to project-authored software and documentation. It does not relicense third-party map tiles, government records, address points, street ranges, department-owned data, statutes, regulations, standards, or other source material.
 
 ## OpenStreetMap
 
@@ -19,6 +19,26 @@ Boundary geometry and geographic identifiers may be derived from U.S. Census Bur
 - Census geography mapping files: https://www.census.gov/geographies/mapping-files.html
 
 Preserve the source vintage, layer or service identifier, retrieval date, and transformation history when material is mirrored or transformed. Census geography products describe boundaries and identifiers; they should not be represented as containing demographic data unless a separate demographic source is explicitly joined.
+
+## Address Geocoding Data
+
+The local geocoder accepts reviewed address-point and street-range sources. Address data is a separate provenance and publication domain from Census boundaries.
+
+For every imported source, retain:
+
+- the source publisher and source name;
+- a stable source record identifier for each row;
+- the source vintage or publication date;
+- the coordinate reference system and any transformation performed;
+- the acquisition location and access date outside the runtime database where appropriate;
+- the license, public-record status, and redistribution determination;
+- any limitations on unit addresses, private roads, rural routes, positional accuracy, or update frequency.
+
+Do not assume that an address dataset is redistributable because it was produced by a public agency or is accessible through a public portal. Review the controlling terms independently. Do not commit a hydrated geocoder SQLite database unless its complete contents have been separately approved for publication.
+
+The repository may commit small synthetic fixtures or fixture rows whose redistribution terms are clear. Fixture provenance must not be presented as nationwide production coverage.
+
+Street-range interpolation is an approximation. Results derived from it must remain distinguishable from authoritative address-point matches in APIs, user interfaces, and downstream records.
 
 ## NERIS
 
@@ -44,4 +64,4 @@ Commercial model-code text, standards, and copyrighted commentary are not includ
 
 ## Runtime Snapshots
 
-Hydrated SQLite and DuckDB snapshots are local runtime artifacts and are ignored by Git. A public release should distribute reproducible ingestion logic and provenance metadata rather than local databases whose contents and redistribution rights have not been independently reviewed.
+Hydrated SQLite and DuckDB snapshots are local runtime artifacts and are ignored by Git. Boundary and geocoder snapshots are separate artifacts with separate source and redistribution reviews. A public release should distribute reproducible ingestion logic and provenance metadata rather than local databases whose contents and redistribution rights have not been independently reviewed.

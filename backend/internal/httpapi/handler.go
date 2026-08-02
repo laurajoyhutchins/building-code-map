@@ -6,6 +6,7 @@ import (
 	"net/url"
 	"strings"
 
+	"building-code-map/backend/internal/geocoder"
 	"building-code-map/backend/internal/regulatory"
 	"building-code-map/backend/internal/snapshot"
 )
@@ -45,6 +46,7 @@ func ParseAllowedOrigins(rawValue string) []string {
 type Options struct {
 	AllowedOrigins    []string
 	RegulatoryCatalog regulatory.Catalog
+	Geocoder           geocoder.Service
 }
 
 type Handler struct {
@@ -53,6 +55,7 @@ type Handler struct {
 	featureIndex      map[string]snapshot.BoundaryFeature
 	allowedOrigins    map[string]struct{}
 	regulatoryCatalog regulatory.Catalog
+	geocoder          geocoder.Service
 }
 
 func NewHandler(snap snapshot.Snapshot, options ...Options) http.Handler {
@@ -72,6 +75,7 @@ func NewHandler(snap snapshot.Snapshot, options ...Options) http.Handler {
 		featureIndex:      make(map[string]snapshot.BoundaryFeature, len(snap.BoundaryFeatures)),
 		allowedOrigins:    make(map[string]struct{}, len(allowedOrigins)),
 		regulatoryCatalog: opt.RegulatoryCatalog,
+		geocoder:          opt.Geocoder,
 	}
 	for _, origin := range allowedOrigins {
 		handler.allowedOrigins[origin] = struct{}{}
@@ -100,6 +104,10 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		h.writeJSON(w, http.StatusOK, h.snapshot.BoundaryFeatures)
 	case r.Method == http.MethodGet && strings.HasPrefix(r.URL.Path, "/features/"):
 		h.handleFeature(w, r)
+	case r.Method == http.MethodPost && r.URL.Path == "/geocode":
+		h.handleGeocode(w, r)
+	case r.Method == http.MethodPost && r.URL.Path == "/lookup":
+		h.handleLookup(w, r)
 	case r.Method == http.MethodPost && r.URL.Path == "/resolve":
 		h.handleResolve(w, r)
 	case r.Method == http.MethodGet && r.URL.Path == "/refresh/status":

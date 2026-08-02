@@ -1,0 +1,38 @@
+schema_version: 1
+repository:
+  id: building-code-map
+  name: Building Code Map
+  root: .
+paths:
+  extracted: .lore/extracted
+  records: .lore/records
+  proposals: .lore/proposals
+  transactions: .lore/transactions
+  generated_docs: docs/generated
+  skills: skills
+extractors:
+  - id: repository-metadata
+    enabled: true
+  - id: typescript-modules
+    enabled: true
+  - id: typescript-imports
+    enabled: true
+  - id: vitest-tests
+    enabled: true
+projections:
+  - id: repository-card
+    output: docs/generated/repository-card.md
+  - id: architecture
+    output: docs/generated/architecture.md
+  - id: component-catalog
+    output: docs/generated/component-catalog.md
+  - id: current-decisions
+    output: docs/generated/current-decisions.md
+  - id: maintainer-guide
+    output: docs/generated/maintainer-guide.md
+maintenance:
+  skill: skills/maintain-repository-documentation/SKILL.md
+  proposal_schema: skills/maintain-repository-documentation/schemas/proposal.schema.json
+hydration:
+  max_records: 20
+  max_characters: 40000

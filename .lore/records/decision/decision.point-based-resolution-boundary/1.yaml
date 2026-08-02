@@ -1,0 +1,41 @@
+schema_version: 1
+id: decision.point-based-resolution-boundary
+kind: decision
+revision: 1
+status: active
+title: Keep regulatory resolution point-based
+summary: Address geocoding produces location evidence, while the existing regulatory resolver continues to consume a point or normalized geographic context and remains independent from address parsing.
+scope:
+  repository: building-code-map
+  components:
+    - local-sqlite-geocoder
+    - boundary-resolution
+    - regulatory-resolution
+evidence:
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: backend/internal/httpapi/geocode.go
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: backend/internal/httpapi/resolve.go
+  - revision: bef43c93c9c0adcab11cfb1fad0f3b1d4d6664bf
+    path: docs/superpowers/specs/2026-08-01-local-sqlite-geocoder-design.md
+disclosure:
+  audiences:
+    - contributors
+    - maintainers
+  tags:
+    - architecture-decision
+    - api
+    - separation-of-concerns
+  weight: 100
+provenance:
+  source: bootstrap
+  transaction: null
+  producer: owner-reviewed-bootstrap
+supersedes: null
+payload:
+  decision: Preserve POST /resolve as a point or normalized-context contract.
+  composition: POST /lookup geocodes an address and then invokes the same regulatory resolution path.
+  rationale:
+    - Address quality must remain inspectable independently from regulatory conclusions.
+    - Coordinate callers must continue to work without a geocoder snapshot.
+    - Address parsing and ranking must not become state regulatory policy.
