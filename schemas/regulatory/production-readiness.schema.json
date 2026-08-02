@@ -14,32 +14,54 @@
     "fixtures"
   ],
   "properties": {
-    "schema_version": { "const": "1.0" },
-    "state_id": { "type": "string", "pattern": "^US-[A-Z]{2}$" },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "state_id": {
+      "type": "string",
+      "pattern": "^US-[A-Z]{2}$"
+    },
     "scope": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["code_families", "start_date", "end_date"],
+      "required": [
+        "code_families",
+        "start_date",
+        "end_date"
+      ],
       "properties": {
         "code_families": {
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
-          "items": { "type": "string", "minLength": 1 }
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
         },
-        "start_date": { "type": "string", "format": "date" },
-        "end_date": { "type": "string", "format": "date" }
+        "start_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date"
+        }
       }
     },
     "primary_source_ids": {
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
-      "items": { "type": "string", "minLength": 1 }
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
     },
     "required_fixture_kinds": {
       "type": "array",
-      "minItems": 1,
+      "minItems": 6,
+      "maxItems": 6,
       "uniqueItems": true,
       "items": {
         "enum": [
@@ -50,15 +72,51 @@
           "conflict",
           "historical"
         ]
-      }
+      },
+      "allOf": [
+        {
+          "contains": {
+            "const": "incorporated"
+          }
+        },
+        {
+          "contains": {
+            "const": "unincorporated"
+          }
+        },
+        {
+          "contains": {
+            "const": "special_project"
+          }
+        },
+        {
+          "contains": {
+            "const": "missing_evidence"
+          }
+        },
+        {
+          "contains": {
+            "const": "conflict"
+          }
+        },
+        {
+          "contains": {
+            "const": "historical"
+          }
+        }
+      ]
     },
     "timelines": {
       "type": "array",
-      "items": { "$ref": "#/$defs/timeline" }
+      "items": {
+        "$ref": "#/$defs/timeline"
+      }
     },
     "fixtures": {
       "type": "array",
-      "items": { "$ref": "#/$defs/fixture" }
+      "items": {
+        "$ref": "#/$defs/fixture"
+      }
     }
   },
   "$defs": {
@@ -66,18 +124,34 @@
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
-      "items": { "type": "string", "minLength": 1 }
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
     },
     "verification": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["status"],
+      "required": [
+        "status"
+      ],
       "properties": {
         "status": {
-          "enum": ["verified", "partially_verified", "needs_review", "unresolved"]
+          "enum": [
+            "verified",
+            "partially_verified",
+            "needs_review",
+            "unresolved"
+          ]
         },
-        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
-        "notes": { "type": "string" }
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "notes": {
+          "type": "string"
+        }
       }
     },
     "timeline": {
@@ -92,22 +166,40 @@
         "verification"
       ],
       "properties": {
-        "code_family": { "type": "string", "minLength": 1 },
-        "start_date": { "type": "string", "format": "date" },
+        "code_family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "start_date": {
+          "type": "string",
+          "format": "date"
+        },
         "end_date": {
           "oneOf": [
-            { "type": "string", "format": "date" },
-            { "type": "null" }
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
           ]
         },
         "adoption_ids": {
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
-          "items": { "type": "string", "minLength": 1 }
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
         },
-        "source_ids": { "$ref": "#/$defs/sourceIds" },
-        "verification": { "$ref": "#/$defs/verification" }
+        "source_ids": {
+          "$ref": "#/$defs/sourceIds"
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        }
       }
     },
     "fixture": {
@@ -126,7 +218,10 @@
         "verification"
       ],
       "properties": {
-        "id": { "type": "string", "minLength": 1 },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
         "kind": {
           "enum": [
             "incorporated",
@@ -137,14 +232,23 @@
             "historical"
           ]
         },
-        "jurisdiction": { "type": "string", "minLength": 1 },
+        "jurisdiction": {
+          "type": "string",
+          "minLength": 1
+        },
         "code_families": {
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
-          "items": { "type": "string", "minLength": 1 }
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
         },
-        "applicability_date": { "type": "string", "format": "date" },
+        "applicability_date": {
+          "type": "string",
+          "format": "date"
+        },
         "expected_status": {
           "enum": [
             "resolved",
@@ -155,14 +259,23 @@
             "insufficient_evidence"
           ]
         },
-        "production_supported": { "type": "boolean" },
-        "source_ids": { "$ref": "#/$defs/sourceIds" },
+        "production_supported": {
+          "type": "boolean"
+        },
+        "source_ids": {
+          "$ref": "#/$defs/sourceIds"
+        },
         "local_source_ids": {
           "type": "array",
           "uniqueItems": true,
-          "items": { "type": "string", "minLength": 1 }
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
         },
-        "verification": { "$ref": "#/$defs/verification" }
+        "verification": {
+          "$ref": "#/$defs/verification"
+        }
       }
     }
   }
