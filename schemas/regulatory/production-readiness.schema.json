@@ -24,11 +24,7 @@
     "scope": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "code_families",
-        "start_date",
-        "end_date"
-      ],
+      "required": ["code_families", "start_date", "end_date"],
       "properties": {
         "code_families": {
           "type": "array",
@@ -132,17 +128,10 @@
     "verification": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "status"
-      ],
+      "required": ["status"],
       "properties": {
         "status": {
-          "enum": [
-            "verified",
-            "partially_verified",
-            "needs_review",
-            "unresolved"
-          ]
+          "enum": ["verified", "partially_verified", "needs_review", "unresolved"]
         },
         "confidence": {
           "type": "number",
