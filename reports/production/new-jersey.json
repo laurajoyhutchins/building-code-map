@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "state_id": "US-NJ",
+  "scope": {
+    "code_families": ["building", "fire_operational"],
+    "start_date": "2020-01-01",
+    "end_date": "2026-08-02"
+  },
+  "primary_source_ids": [
+    "src:us-nj:ucc",
+    "src:us-nj:codes-about",
+    "src:us-nj:local-enforcement",
+    "src:us-nj:fire-safety"
+  ],
+  "required_fixture_kinds": [
+    "conflict",
+    "historical",
+    "incorporated",
+    "missing_evidence",
+    "special_project",
+    "unincorporated"
+  ],
+  "timelines": [],
+  "fixtures": [
+    {
+      "id": "fixture:us-nj:trenton-building",
+      "kind": "incorporated",
+      "jurisdiction": "City of Trenton",
+      "code_families": ["building"],
+      "applicability_date": "2026-08-02",
+      "expected_status": "partially_resolved",
+      "production_supported": false,
+      "source_ids": [
+        "src:us-nj:ucc",
+        "src:us-nj:codes-about",
+        "src:us-nj:local-enforcement"
+      ],
+      "local_source_ids": [],
+      "verification": {
+        "status": "needs_review",
+        "confidence": 0.6,
+        "notes": "Add Trenton's enforcing agency, permit office, inspection, and appeals records."
+      }
+    },
+    {
+      "id": "fixture:us-nj:trenton-fire",
+      "kind": "incorporated",
+      "jurisdiction": "City of Trenton",
+      "code_families": ["fire_operational"],
+      "applicability_date": "2026-08-02",
+      "expected_status": "partially_resolved",
+      "production_supported": false,
+      "source_ids": ["src:us-nj:fire-safety"],
+      "local_source_ids": [],
+      "verification": {
+        "status": "needs_review",
+        "confidence": 0.5,
+        "notes": "Determine whether the property class is locally or state enforced and add the official assignment record."
+      }
+    },
+    {
+      "id": "fixture:us-nj:state-owned-building",
+      "kind": "special_project",
+      "jurisdiction": "New Jersey state-owned building",
+      "code_families": ["building"],
+      "applicability_date": "2026-08-02",
+      "expected_status": "resolved",
+      "production_supported": false,
+      "source_ids": ["src:us-nj:codes-about", "src:us-nj:ucc"],
+      "local_source_ids": [],
+      "verification": {
+        "status": "needs_review",
+        "confidence": 0.7,
+        "notes": "Add the project-class-specific state plan-review, permitting, inspection, and appeals records."
+      }
+    }
+  ]
+}
