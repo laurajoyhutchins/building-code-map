@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "state_id": "US-FL",
+  "scope": {
+    "code_families": ["building", "residential", "energy"],
+    "start_date": "2020-01-01",
+    "end_date": "2026-08-02"
+  },
+  "primary_source_ids": [
+    "src:us-fl:statute-553-73",
+    "src:us-fl:fbc-current"
+  ],
+  "required_fixture_kinds": [
+    "conflict",
+    "historical",
+    "incorporated",
+    "missing_evidence",
+    "special_project",
+    "unincorporated"
+  ],
+  "timelines": [
+    {
+      "code_family": "building",
+      "start_date": "2023-12-31",
+      "end_date": null,
+      "adoption_ids": ["adoption:us-fl:building:2023"],
+      "source_ids": ["src:us-fl:statute-553-73", "src:us-fl:fbc-current"],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "code_family": "residential",
+      "start_date": "2023-12-31",
+      "end_date": null,
+      "adoption_ids": ["adoption:us-fl:residential:2023"],
+      "source_ids": ["src:us-fl:statute-553-73", "src:us-fl:fbc-current"],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "code_family": "energy",
+      "start_date": "2023-12-31",
+      "end_date": null,
+      "adoption_ids": ["adoption:us-fl:energy:2023"],
+      "source_ids": ["src:us-fl:statute-553-73", "src:us-fl:fbc-current"],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "fixtures": [
+    {
+      "id": "fixture:us-fl:orlando-building-current",
+      "kind": "incorporated",
+      "jurisdiction": "City of Orlando",
+      "code_families": ["building"],
+      "applicability_date": "2026-08-02",
+      "expected_status": "partially_resolved",
+      "production_supported": false,
+      "source_ids": ["src:us-fl:statute-553-73", "src:us-fl:fbc-current"],
+      "local_source_ids": [],
+      "verification": {
+        "status": "needs_review",
+        "confidence": 0.6,
+        "notes": "Add Orlando's current enforcing agency, administrative procedures, and local amendment record."
+      }
+    },
+    {
+      "id": "fixture:us-fl:orlando-building-historical",
+      "kind": "historical",
+      "jurisdiction": "City of Orlando",
+      "code_families": ["building"],
+      "applicability_date": "2022-01-01",
+      "expected_status": "insufficient_evidence",
+      "production_supported": false,
+      "source_ids": ["src:us-fl:statute-553-73", "src:us-fl:fbc-current"],
+      "local_source_ids": [],
+      "verification": {
+        "status": "needs_review",
+        "confidence": 0.3,
+        "notes": "Add the prior statewide edition and contemporaneous Orlando enforcement record."
+      }
+    },
+    {
+      "id": "fixture:us-fl:orange-county-energy",
+      "kind": "unincorporated",
+      "jurisdiction": "Unincorporated Orange County",
+      "code_families": ["energy"],
+      "applicability_date": "2026-08-02",
+      "expected_status": "partially_resolved",
+      "production_supported": false,
+      "source_ids": ["src:us-fl:statute-553-73", "src:us-fl:fbc-current"],
+      "local_source_ids": [],
+      "verification": {
+        "status": "needs_review",
+        "confidence": 0.6,
+        "notes": "Add Orange County's enforcing agency, permit administration, and local amendment record."
+      }
+    }
+  ]
+}
