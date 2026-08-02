@@ -108,13 +108,14 @@ jobs:
           --markdown-output "${{ runner.temp }}/regulatory-coverage.md"
 
       - name: Audit pilot production readiness
-        run: >-
-          python reports/tools/production_readiness.py audit
-          --compiled-root backend/data/regulatory
-          --manifests-root reports/production
-          --json-output "${{ runner.temp }}/pilot-production-readiness.json"
-          --markdown-output "${{ runner.temp }}/pilot-production-readiness.md"
-          --fail-on-premature-verification
+        run: |
+          python reports/tools/production_readiness.py audit \
+            --compiled-root backend/data/regulatory \
+            --manifests-root reports/production \
+            --json-output "${{ runner.temp }}/pilot-production-readiness.json" \
+            --markdown-output "${{ runner.temp }}/pilot-production-readiness.md" \
+            --fail-on-premature-verification
+          python -c 'import json, sys; summary = json.load(open("${{ runner.temp }}/pilot-production-readiness.json"))["summary"]; sys.exit(1 if summary["blocked"] else 0)'
 
       - name: Upload regulatory quality reports
         uses: actions/upload-artifact@v4
