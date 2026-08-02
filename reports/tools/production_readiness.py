@@ -18,6 +18,7 @@ REQUIRED_FIXTURE_KINDS = {
     "conflict",
     "historical",
 }
+REQUIRED_PILOT_SLUGS = {"colorado", "florida", "new-jersey"}
 RESOLVED_STATUSES = {"resolved", "partially_resolved"}
 VERIFIED = "verified"
 SOURCE_OK = "available"
@@ -43,7 +44,9 @@ def _parse_date(value: Any, owner: str) -> date:
         raise ReadinessError(f"{owner} must be an ISO date") from exc
 
 
-def _string_list(value: Any, owner: str, *, required: bool = True) -> list[str]:
+def _string_list(
+    value: Any, owner: str, *, required: bool = True
+) -> list[str]:
     if not isinstance(value, list) or any(
         not isinstance(item, str) or not item for item in value
     ):
@@ -60,14 +63,14 @@ def _verification_status(value: Any) -> str | None:
 
 
 def validate_manifest(
-    manifest: dict[str, Any], profile: dict[str, Any], pack: dict[str, Any]
+    manifest: dict[str, Any],
+    profile: dict[str, Any],
+    pack: dict[str, Any],
 ) -> None:
     if manifest.get("schema_version") != "1.0":
         raise ReadinessError("manifest schema_version must be '1.0'")
-    if (
-        manifest.get("state_id") != profile.get("state_id")
-        or manifest.get("state_id") != pack.get("state_id")
-    ):
+    state_id = manifest.get("state_id")
+    if state_id != profile.get("state_id") or state_id != pack.get("state_id"):
         raise ReadinessError(
             "manifest, profile, and rule pack state_id values must match"
         )
@@ -75,21 +78,23 @@ def validate_manifest(
     scope = manifest.get("scope")
     if not isinstance(scope, dict):
         raise ReadinessError("scope must be an object")
-    families = _string_list(scope.get("code_families"), "scope.code_families")
+    families = set(
+        _string_list(scope.get("code_families"), "scope.code_families")
+    )
     start = _parse_date(scope.get("start_date"), "scope.start_date")
     end = _parse_date(scope.get("end_date"), "scope.end_date")
     if start > end:
         raise ReadinessError("scope.start_date must not follow scope.end_date")
 
-    source_ids = {
+    sources = {
         item.get("id")
         for item in profile.get("sources", [])
         if isinstance(item, dict) and isinstance(item.get("id"), str)
     }
-    primary = _string_list(
-        manifest.get("primary_source_ids"), "primary_source_ids"
+    primary = set(
+        _string_list(manifest.get("primary_source_ids"), "primary_source_ids")
     )
-    unknown_primary = sorted(set(primary) - source_ids)
+    unknown_primary = sorted(primary - sources)
     if unknown_primary:
         raise ReadinessError(
             "primary_source_ids reference unknown sources: "
@@ -98,16 +103,25 @@ def validate_manifest(
 
     required_kinds = set(
         _string_list(
-            manifest.get("required_fixture_kinds"), "required_fixture_kinds"
+            manifest.get("required_fixture_kinds"),
+            "required_fixture_kinds",
         )
     )
-    unknown_kinds = required_kinds - REQUIRED_FIXTURE_KINDS
-    if unknown_kinds:
+    if required_kinds != REQUIRED_FIXTURE_KINDS:
+        missing = sorted(REQUIRED_FIXTURE_KINDS - required_kinds)
+        extra = sorted(required_kinds - REQUIRED_FIXTURE_KINDS)
+        details: list[str] = []
+        if missing:
+            details.append("missing " + ", ".join(missing))
+        if extra:
+            details.append("unknown " + ", ".join(extra))
+        suffix = ": " + "; ".join(details) if details else ""
         raise ReadinessError(
-            "unknown required fixture kinds: " + ", ".join(sorted(unknown_kinds))
+            "required_fixture_kinds must exactly match the issue #31 "
+            f"acceptance classes{suffix}"
         )
 
-    adoption_ids = {
+    adoptions = {
         item.get("id")
         for item in profile.get("adoptions", [])
         if isinstance(item, dict) and isinstance(item.get("id"), str)
@@ -131,21 +145,25 @@ def validate_manifest(
                 raise ReadinessError(
                     f"{owner}.start_date must not follow end_date"
                 )
-        refs = _string_list(
-            timeline.get("adoption_ids"), f"{owner}.adoption_ids"
-        )
-        unknown = sorted(set(refs) - adoption_ids)
-        if unknown:
-            raise ReadinessError(
-                f"{owner} references unknown adoptions: {', '.join(unknown)}"
+        adoption_refs = set(
+            _string_list(
+                timeline.get("adoption_ids"), f"{owner}.adoption_ids"
             )
-        source_refs = _string_list(
-            timeline.get("source_ids"), f"{owner}.source_ids"
         )
-        unknown_sources = sorted(set(source_refs) - source_ids)
+        unknown_adoptions = sorted(adoption_refs - adoptions)
+        if unknown_adoptions:
+            raise ReadinessError(
+                f"{owner} references unknown adoptions: "
+                + ", ".join(unknown_adoptions)
+            )
+        source_refs = set(
+            _string_list(timeline.get("source_ids"), f"{owner}.source_ids")
+        )
+        unknown_sources = sorted(source_refs - sources)
         if unknown_sources:
             raise ReadinessError(
-                f"{owner} references unknown sources: {', '.join(unknown_sources)}"
+                f"{owner} references unknown sources: "
+                + ", ".join(unknown_sources)
             )
 
     registered = set(
@@ -171,32 +189,38 @@ def validate_manifest(
         fixture_ids.add(fixture_id)
         if fixture.get("kind") not in REQUIRED_FIXTURE_KINDS:
             raise ReadinessError(f"{owner}.kind is invalid")
-        _string_list(
-            fixture.get("code_families"), f"{owner}.code_families"
+        fixture_families = set(
+            _string_list(
+                fixture.get("code_families"), f"{owner}.code_families"
+            )
         )
+        if not fixture_families.issubset(families):
+            raise ReadinessError(f"{owner}.code_families must be within scope")
         _parse_date(
-            fixture.get("applicability_date"), f"{owner}.applicability_date"
+            fixture.get("applicability_date"),
+            f"{owner}.applicability_date",
         )
         if not isinstance(fixture.get("production_supported"), bool):
             raise ReadinessError(
                 f"{owner}.production_supported must be boolean"
             )
-        source_refs = _string_list(
-            fixture.get("source_ids"), f"{owner}.source_ids"
+        source_refs = set(
+            _string_list(fixture.get("source_ids"), f"{owner}.source_ids")
         )
-        local_refs = _string_list(
-            fixture.get("local_source_ids", []),
-            f"{owner}.local_source_ids",
-            required=False,
+        local_refs = set(
+            _string_list(
+                fixture.get("local_source_ids", []),
+                f"{owner}.local_source_ids",
+                required=False,
+            )
         )
-        unknown_sources = sorted(
-            (set(source_refs) | set(local_refs)) - source_ids
-        )
+        unknown_sources = sorted((source_refs | local_refs) - sources)
         if unknown_sources:
             raise ReadinessError(
-                f"{owner} references unknown sources: {', '.join(unknown_sources)}"
+                f"{owner} references unknown sources: "
+                + ", ".join(unknown_sources)
             )
-        if not set(local_refs).issubset(source_refs):
+        if not local_refs.issubset(source_refs):
             raise ReadinessError(
                 f"{owner}.local_source_ids must also appear in source_ids"
             )
@@ -207,7 +231,9 @@ def validate_manifest(
 
 
 def _timeline_signals(
-    profile: dict[str, Any], manifest: dict[str, Any]
+    profile: dict[str, Any],
+    manifest: dict[str, Any],
+    primary: set[str],
 ) -> list[str]:
     signals: list[str] = []
     scope = manifest["scope"]
@@ -220,12 +246,9 @@ def _timeline_signals(
     }
 
     for family in scope["code_families"]:
-        family_adoptions = [
-            item
-            for item in adoptions.values()
-            if item.get("code_family") == family
-        ]
-        if not family_adoptions:
+        if not any(
+            item.get("code_family") == family for item in adoptions.values()
+        ):
             signals.append(f"scope_family_missing_adoption:{family}")
         segments = sorted(
             [
@@ -262,14 +285,23 @@ def _timeline_signals(
                 signals.append(
                     f"timeline_not_verified:{family}:{segment['start_date']}"
                 )
+            if not set(segment.get("source_ids", [])).issubset(primary):
+                signals.append(
+                    f"timeline_source_not_primary:{family}:"
+                    f"{segment['start_date']}"
+                )
             for adoption_id in segment.get("adoption_ids", []):
                 adoption = adoptions.get(adoption_id)
-                if (
-                    adoption
-                    and _verification_status(adoption.get("verification"))
-                    != VERIFIED
-                ):
+                if adoption and _verification_status(
+                    adoption.get("verification")
+                ) != VERIFIED:
                     signals.append(f"adoption_not_verified:{adoption_id}")
+                if adoption and not set(
+                    adoption.get("source_ids", [])
+                ).issubset(primary):
+                    signals.append(
+                        f"adoption_source_not_primary:{adoption_id}"
+                    )
             cursor = max(cursor, end + timedelta(days=1))
             if cursor > scope_end:
                 break
@@ -298,13 +330,13 @@ def audit_state(
         signals.append("profile_verification_incomplete")
 
     primary = set(manifest["primary_source_ids"])
-    sources_by_id = {
+    sources = {
         item.get("id"): item
         for item in profile.get("sources", [])
         if isinstance(item, dict) and isinstance(item.get("id"), str)
     }
     for source_id in sorted(primary):
-        source = sources_by_id.get(source_id, {})
+        source = sources.get(source_id, {})
         if source.get("kind") in NON_PRIMARY_SOURCE_KINDS:
             signals.append(
                 f"source_not_primary:{source_id}:{source.get('kind')}"
@@ -317,14 +349,14 @@ def audit_state(
             signals.append(f"primary_source_health_missing:{source_id}")
             continue
         if health.get("availability") != SOURCE_OK:
+            availability = health.get("availability", "unknown")
             signals.append(
-                f"primary_source_unhealthy:{source_id}:"
-                f"{health.get('availability', 'unknown')}"
+                f"primary_source_unhealthy:{source_id}:{availability}"
             )
-        checked_raw = health.get("last_checked_at")
         try:
             checked = _parse_date(
-                checked_raw, f"source_health.{source_id}.last_checked_at"
+                health.get("last_checked_at"),
+                f"source_health.{source_id}.last_checked_at",
             )
         except ReadinessError:
             signals.append(f"primary_source_check_date_missing:{source_id}")
@@ -332,7 +364,7 @@ def audit_state(
             if (as_of - checked).days > stale_after_days:
                 signals.append(f"primary_source_stale:{source_id}")
 
-    signals.extend(_timeline_signals(profile, manifest))
+    signals.extend(_timeline_signals(profile, manifest, primary))
 
     registered = set(pack.get("resolver_fixture_ids", []))
     fixtures = manifest["fixtures"]
@@ -343,9 +375,7 @@ def audit_state(
         signals.append(f"fixture_not_registered:{fixture_id}")
 
     present_kinds = {fixture["kind"] for fixture in fixtures}
-    for kind in sorted(
-        set(manifest["required_fixture_kinds"]) - present_kinds
-    ):
+    for kind in sorted(REQUIRED_FIXTURE_KINDS - present_kinds):
         signals.append(f"fixture_kind_missing:{kind}")
 
     for fixture in fixtures:
@@ -382,25 +412,16 @@ def audit_state(
     for claim in pack.get("claims", []):
         if not isinstance(claim, dict):
             continue
+        claim_id = claim.get("id", "unknown")
         if claim.get("status") == "conflicting":
-            signals.append(
-                f"unresolved_conflicting_claim:{claim.get('id', 'unknown')}"
-            )
-        if (
-            claim.get("status") == "supported"
-            and _verification_status(claim.get("verification")) != VERIFIED
-        ):
-            signals.append(
-                f"supported_claim_not_verified:{claim.get('id', 'unknown')}"
-            )
-        if (
-            claim.get("status") == "supported"
-            and not set(claim.get("source_ids", [])).issubset(primary)
-        ):
-            signals.append(
-                f"supported_claim_source_not_primary:"
-                f"{claim.get('id', 'unknown')}"
-            )
+            signals.append(f"unresolved_conflicting_claim:{claim_id}")
+        if claim.get("status") == "supported":
+            if _verification_status(claim.get("verification")) != VERIFIED:
+                signals.append(f"supported_claim_not_verified:{claim_id}")
+            if not set(claim.get("source_ids", [])).issubset(primary):
+                signals.append(
+                    f"supported_claim_source_not_primary:{claim_id}"
+                )
 
     unique_signals = sorted(set(signals))
     return {
@@ -429,42 +450,71 @@ def audit_repository(
     *,
     as_of: date | None = None,
     stale_after_days: int = 365,
+    expected_state_slugs: set[str] | None = None,
 ) -> dict[str, Any]:
+    manifests = {
+        path.stem: path for path in manifests_root.glob("*.json")
+    }
+    slugs = set(expected_state_slugs or REQUIRED_PILOT_SLUGS)
+    slugs.update(manifests)
     rows: list[dict[str, Any]] = []
-    for manifest_path in sorted(manifests_root.glob("*.json")):
-        slug = manifest_path.stem
+    for slug in sorted(slugs):
+        manifest_path = manifests.get(slug, manifests_root / f"{slug}.json")
         profile_path = compiled_root / f"{slug}.json"
         pack_path = compiled_root / "rules" / f"{slug}.json"
+        profile: dict[str, Any] | None = None
         try:
-            manifest = json.loads(
-                manifest_path.read_text(encoding="utf-8")
-            )
             profile = json.loads(profile_path.read_text(encoding="utf-8"))
             pack = json.loads(pack_path.read_text(encoding="utf-8"))
-            row = audit_state(
-                profile,
-                pack,
-                manifest,
-                as_of=as_of,
-                stale_after_days=stale_after_days,
-            )
-            row["manifest"] = manifest_path.as_posix()
+            if not manifest_path.exists():
+                row = {
+                    "state_id": profile.get("state_id"),
+                    "state_name": profile.get("state_name", slug),
+                    "scope": None,
+                    "fixture_count": 0,
+                    "production_fixture_count": 0,
+                    "timeline_segment_count": 0,
+                    "primary_source_count": 0,
+                    "readiness": "blocked",
+                    "premature_verified_profile": (
+                        profile.get("status") == VERIFIED
+                    ),
+                    "signals": ["manifest_missing"],
+                    "manifest": manifest_path.as_posix(),
+                }
+            else:
+                manifest = json.loads(
+                    manifest_path.read_text(encoding="utf-8")
+                )
+                row = audit_state(
+                    profile,
+                    pack,
+                    manifest,
+                    as_of=as_of,
+                    stale_after_days=stale_after_days,
+                )
+                row["manifest"] = manifest_path.as_posix()
         except (OSError, json.JSONDecodeError, ReadinessError) as exc:
             row = {
-                "state_id": None,
-                "state_name": slug,
+                "state_id": profile.get("state_id") if profile else None,
+                "state_name": (
+                    profile.get("state_name", slug) if profile else slug
+                ),
                 "scope": None,
                 "fixture_count": 0,
                 "production_fixture_count": 0,
                 "timeline_segment_count": 0,
                 "primary_source_count": 0,
                 "readiness": "blocked",
-                "premature_verified_profile": False,
+                "premature_verified_profile": bool(
+                    profile and profile.get("status") == VERIFIED
+                ),
                 "signals": ["manifest_or_artifact_invalid"],
                 "error": str(exc),
                 "manifest": manifest_path.as_posix(),
             }
         rows.append(row)
+
     return {
         "schema_version": "1.0",
         "as_of": (as_of or date.today()).isoformat(),
@@ -491,9 +541,12 @@ def readiness_markdown(report: dict[str, Any]) -> str:
     lines = [
         "# Pilot Production Readiness",
         "",
-        "This audit evaluates the explicit production scope, primary-source set, complete adoption timelines, and evidence-backed resolver fixtures required by issue #31.",
+        "This audit evaluates the explicit production scope, primary-source "
+        "set, complete adoption timelines, and evidence-backed resolver "
+        "fixtures required by issue #31.",
         "",
-        "| State | Scope | Primary sources | Timelines | Fixtures | Production fixtures | Readiness | Gaps |",
+        "| State | Scope | Primary sources | Timelines | Fixtures | "
+        "Production fixtures | Readiness | Gaps |",
         "| --- | --- | ---: | ---: | ---: | ---: | --- | --- |",
     ]
     for row in report["states"]:
@@ -519,7 +572,12 @@ def readiness_markdown(report: dict[str, Any]) -> str:
             "",
             "## Promotion rule",
             "",
-            "A pilot is `production_ready` only when every scoped code family has a continuous verified timeline, every required fixture class is represented by a verified fixture, supported local fixtures cite local primary sources, all primary sources are healthy and current, and no supported claim remains conflicting or partially verified.",
+            "A pilot is `production_ready` only when every scoped code "
+            "family has a continuous verified timeline, every required "
+            "fixture class is represented by a verified fixture, supported "
+            "local fixtures cite local primary sources, all primary sources "
+            "are healthy and current, and no supported claim remains "
+            "conflicting or partially verified.",
             "",
         ]
     )
@@ -655,7 +713,8 @@ def _write(path: Path, content: str) -> None:
 def parser() -> argparse.ArgumentParser:
     root = argparse.ArgumentParser(
         description=(
-            "Audit scoped pilot production readiness and official source health."
+            "Audit scoped pilot production readiness and official source "
+            "health."
         )
     )
     commands = root.add_subparsers(dest="command", required=True)
