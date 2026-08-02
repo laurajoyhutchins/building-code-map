@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "state_id": "US-CO",
+  "scope": {
+    "code_families": ["building", "electrical", "energy"],
+    "start_date": "2020-01-01",
+    "end_date": "2026-08-02"
+  },
+  "primary_source_ids": [
+    "src:us-co:energy-local",
+    "src:us-co:electrical-board",
+    "src:us-co:accessibility-local"
+  ],
+  "required_fixture_kinds": [
+    "conflict",
+    "historical",
+    "incorporated",
+    "missing_evidence",
+    "special_project",
+    "unincorporated"
+  ],
+  "timelines": [],
+  "fixtures": [
+    {
+      "id": "fixture:us-co:denver-building",
+      "kind": "incorporated",
+      "jurisdiction": "City and County of Denver",
+      "code_families": ["building"],
+      "applicability_date": "2026-08-02",
+      "expected_status": "local_record_required",
+      "production_supported": false,
+      "source_ids": [
+        "src:us-co:accessibility-local",
+        "src:us-co:energy-local"
+      ],
+      "local_source_ids": [],
+      "verification": {
+        "status": "needs_review",
+        "confidence": 0.4,
+        "notes": "Add Denver adoption, amendment, permitting, inspection, and appeals records."
+      }
+    },
+    {
+      "id": "fixture:us-co:larimer-electrical",
+      "kind": "unincorporated",
+      "jurisdiction": "Unincorporated Larimer County",
+      "code_families": ["electrical"],
+      "applicability_date": "2026-08-02",
+      "expected_status": "partially_resolved",
+      "production_supported": false,
+      "source_ids": ["src:us-co:electrical-board"],
+      "local_source_ids": [],
+      "verification": {
+        "status": "needs_review",
+        "confidence": 0.5,
+        "notes": "Add the local electrical inspection delegation and county permit record."
+      }
+    }
+  ]
+}
