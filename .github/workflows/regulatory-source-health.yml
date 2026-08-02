@@ -1,0 +1,47 @@
+name: Regulatory source health
+
+on:
+  schedule:
+    - cron: "17 13 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: regulatory-source-health
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: Check official sources
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Check source availability and redirects
+        run: >-
+          python reports/tools/production_readiness.py check-sources
+          --compiled-root backend/data/regulatory
+          --json-output "${{ runner.temp }}/regulatory-source-health.json"
+          --markdown-output "${{ runner.temp }}/regulatory-source-health.md"
+          --fail-on-unhealthy
+
+      - name: Upload source-health report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regulatory-source-health
+          path: |
+            ${{ runner.temp }}/regulatory-source-health.json
+            ${{ runner.temp }}/regulatory-source-health.md
+          if-no-files-found: warn
+          retention-days: 30
