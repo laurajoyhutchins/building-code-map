@@ -107,6 +107,26 @@ jobs:
           --json-output "${{ runner.temp }}/regulatory-coverage.json"
           --markdown-output "${{ runner.temp }}/regulatory-coverage.md"
 
+  deciduous-archaeology:
+    name: Deciduous archaeology
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Validate graph, evidence, and projections
+        run: python tools/validate_deciduous_archaeology.py --write-db --write-export
+
+      - name: Verify generated export is current
+        run: git diff --exit-code -- docs/graph-data.json
+
   lore:
     name: LORE documentation
     runs-on: ubuntu-latest
