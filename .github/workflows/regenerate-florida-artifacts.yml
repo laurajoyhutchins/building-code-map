@@ -1,0 +1,35 @@
+name: Regenerate Florida regulatory artifacts
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  regenerate:
+    name: Regenerate Florida artifacts
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Compile pilot reports
+        run: python reports/tools/regulatory.py compile reports/pilots/*.md --output-dir backend/data/regulatory
+
+      - name: Upload Florida artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: regenerated-florida-artifacts
+          path: |
+            backend/data/regulatory/florida.json
+            backend/data/regulatory/rules/florida.json
+          if-no-files-found: error
+          retention-days: 1
