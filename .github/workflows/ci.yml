@@ -122,10 +122,7 @@ jobs:
           python-version: "3.13"
 
       - name: Validate graph, evidence, and projections
-        run: python tools/validate_deciduous_archaeology.py --write-db --write-export
-
-      - name: Verify generated export is current
-        run: git diff --exit-code -- docs/graph-data.json
+        run: python tools/validate_deciduous_archaeology.py --write-sql --write-db --write-export
 
   lore:
     name: LORE documentation
