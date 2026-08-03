@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"strings"
 
 	"building-code-map/backend/internal/geocoder"
 	"building-code-map/backend/internal/regulatory"
@@ -88,13 +89,24 @@ func (h *Handler) resolveRequest(request regulatory.ResolutionRequest) (regulato
 	if request.Point == nil {
 		return regulatory.ResolutionResult{}, errors.New("point is required")
 	}
+	dateWasAssumed := strings.TrimSpace(request.ApplicabilityDate) == ""
 	context, err := resolveGeographicContext(h.snapshot, h.regulatoryCatalog, *request.Point)
 	if err != nil {
 		return regulatory.ResolutionResult{}, err
 	}
 	request.Context = &context
 	request.Point = nil
-	return regulatory.Resolve(h.regulatoryCatalog, request)
+	result, err := regulatory.Resolve(h.regulatoryCatalog, request)
+	if err != nil {
+		return regulatory.ResolutionResult{}, err
+	}
+	if dateWasAssumed {
+		result.Warnings = append(result.Warnings, fmt.Sprintf(
+			"Applicability date was omitted; the server used %s in UTC. Confirm the date that governs the project.",
+			result.ApplicabilityDate,
+		))
+	}
+	return result, nil
 }
 
 func decodeStrictRequest[T any](w http.ResponseWriter, r *http.Request) (T, error) {
