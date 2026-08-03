@@ -5,8 +5,8 @@
   "state_name": "Colorado",
   "state_abbreviation": "CO",
   "state_fips": "08",
-  "status": "partially_verified",
-  "last_verified": "2026-07-20",
+  "status": "verified",
+  "last_verified": "2026-08-02",
   "sources": [
     {
       "id": "src:us-co:energy-local",
@@ -16,18 +16,67 @@
       "accessed_at": "2026-07-20"
     },
     {
-      "id": "src:us-co:electrical-board",
-      "title": "Colorado State Electrical Board — permit and inspection information",
-      "url": "https://dpo.colorado.gov/Electrical/PermitInspectionInfo",
-      "kind": "official_web",
-      "accessed_at": "2026-07-20"
-    },
-    {
       "id": "src:us-co:accessibility-local",
       "title": "Colorado General Assembly — accessibility standards in locally adopted building codes",
       "url": "https://leg.colorado.gov/bills/HB25-1030",
       "kind": "session_law_summary",
       "accessed_at": "2026-07-20"
+    },
+    {
+      "id": "src:us-co:electrical-board",
+      "title": "Colorado State Electrical Board — permit and inspection information",
+      "url": "https://dpo.colorado.gov/Electrical/PermitInspectionInfo",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-co:electrical-2020-news",
+      "title": "Colorado State Electrical Board — 2020 NEC rules adopted",
+      "url": "https://dpo.colorado.gov/Electrical/News",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-co:larimer-adoption-history",
+      "title": "Larimer County — building codes adopted in Larimer County",
+      "url": "https://www.larimer.gov/building/building-codes/building_codes_adpoted_in_Larimer_County",
+      "kind": "county_code_history",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-co:larimer-codes",
+      "title": "Larimer County — current building and electrical codes",
+      "url": "https://www.larimer.gov/building/building/codes",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-co:larimer-building",
+      "title": "Larimer County Building Division",
+      "url": "https://www.larimer.gov/building",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-co:larimer-electrical-permits",
+      "title": "Larimer County — electrical permitting and inspections",
+      "url": "https://www.larimer.gov/building/electrical-permitting-inspections",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-co:denver-permits",
+      "title": "City and County of Denver — plan review, permits, and inspections",
+      "url": "https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Community-Planning-and-Development/Plan-Review-Permits-and-Inspections",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-co:denver-quick-permits",
+      "title": "City and County of Denver — electrical quick permits and plan review",
+      "url": "https://denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Community-Planning-and-Development/Plan-Review-Permits-and-Inspections/Quick-Permits",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
     }
   ],
   "authorities": [
@@ -42,7 +91,46 @@
         "inspects_public_schools"
       ],
       "source_ids": [
-        "src:us-co:electrical-board"
+        "src:us-co:electrical-board",
+        "src:us-co:electrical-2020-news"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "auth:us-co:larimer-building",
+      "name": "Larimer County Building Division",
+      "type": "county_department",
+      "roles": [
+        "permits",
+        "plan_review",
+        "inspects",
+        "enforces"
+      ],
+      "source_ids": [
+        "src:us-co:larimer-building",
+        "src:us-co:larimer-electrical-permits"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "auth:us-co:denver-cpd",
+      "name": "Denver Community Planning and Development",
+      "type": "municipal_department",
+      "roles": [
+        "permits",
+        "plan_review",
+        "inspects",
+        "enforces"
+      ],
+      "source_ids": [
+        "src:us-co:denver-permits",
+        "src:us-co:denver-quick-permits"
       ],
       "verification": {
         "status": "verified",
@@ -50,13 +138,31 @@
       }
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "id": "edge:us-co:electrical-hybrid-enforcement",
+      "from_id": "auth:us-co:state-electrical-board",
+      "relationship": "defers_inspection_to",
+      "to": "approved local electrical inspection authorities",
+      "scope": [
+        "electrical"
+      ],
+      "source_ids": [
+        "src:us-co:electrical-board",
+        "src:us-co:larimer-electrical-permits"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
   "adoptions": [
     {
       "id": "adoption:us-co:electrical:2020-nec",
       "code_family": "electrical",
-      "status": "current",
-      "state_code_name": "Colorado Electrical Code",
+      "status": "prior",
+      "state_code_name": "Colorado Electrical Code — 2020 NEC",
       "base_model_code": {
         "publisher": "NFPA",
         "name": "NFPA 70 National Electrical Code",
@@ -67,13 +173,73 @@
       "applies_to": [
         "electrical_installations"
       ],
-      "dates": {},
+      "dates": {
+        "effective_date": "2020-07-01",
+        "operative_date": "2020-07-01",
+        "replacement_date": "2023-08-01"
+      },
       "source_ids": [
-        "src:us-co:electrical-board"
+        "src:us-co:electrical-2020-news",
+        "src:us-co:larimer-adoption-history"
       ],
       "verification": {
-        "status": "partially_verified",
-        "confidence": 0.8
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "adoption:us-co:electrical:2023-nec",
+      "code_family": "electrical",
+      "status": "prior",
+      "state_code_name": "Colorado Electrical Code — 2023 NEC",
+      "base_model_code": {
+        "publisher": "NFPA",
+        "name": "NFPA 70 National Electrical Code",
+        "edition_year": 2023
+      },
+      "adopting_authority_id": "auth:us-co:state-electrical-board",
+      "enforcement_model": "hybrid",
+      "applies_to": [
+        "electrical_installations"
+      ],
+      "dates": {
+        "effective_date": "2023-08-01",
+        "operative_date": "2023-08-01",
+        "replacement_date": "2026-08-01"
+      },
+      "source_ids": [
+        "src:us-co:larimer-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "adoption:us-co:electrical:2026-nec",
+      "code_family": "electrical",
+      "status": "current",
+      "state_code_name": "Colorado Electrical Code — 2026 NEC",
+      "base_model_code": {
+        "publisher": "NFPA",
+        "name": "NFPA 70 National Electrical Code",
+        "edition_year": 2026
+      },
+      "adopting_authority_id": "auth:us-co:state-electrical-board",
+      "enforcement_model": "hybrid",
+      "applies_to": [
+        "electrical_installations"
+      ],
+      "dates": {
+        "effective_date": "2026-08-01",
+        "operative_date": "2026-08-01"
+      },
+      "source_ids": [
+        "src:us-co:larimer-building"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
       }
     }
   ],
@@ -87,27 +253,16 @@
             "src:us-co:accessibility-local",
             "src:us-co:energy-local"
           ],
-          "label": "building department",
+          "label": "Local building department",
           "roles": [
             "adopts",
             "enforces"
           ]
-        },
-        {
-          "kind": "fire_authority",
-          "source_ids": [
-            "src:us-co:accessibility-local"
-          ],
-          "label": "Local fire authority",
-          "roles": [
-            "adopts_or_enforces"
-          ]
         }
       ],
       "required_local_records": [
-        "Current municipal building-code adoption ordinance and effective date",
-        "Current municipal amendments",
-        "Current fire-code adoption and enforcing authority"
+        "Current municipal building, fire, and energy-code adoption instruments",
+        "Current local amendments and enforcing authorities"
       ],
       "warnings": [
         "Colorado does not provide one general statewide building-code edition for ordinary local construction."
@@ -126,27 +281,16 @@
             "src:us-co:accessibility-local",
             "src:us-co:energy-local"
           ],
-          "label": "building department",
+          "label": "County building department",
           "roles": [
             "adopts",
             "enforces"
           ]
-        },
-        {
-          "kind": "fire_authority",
-          "source_ids": [
-            "src:us-co:accessibility-local"
-          ],
-          "label": "Local fire authority",
-          "roles": [
-            "adopts_or_enforces"
-          ]
         }
       ],
       "required_local_records": [
-        "Current county building-code adoption resolution and effective date",
-        "Current county amendments",
-        "Current fire-code adoption and enforcing authority"
+        "Current county building, fire, and energy-code adoption instruments",
+        "Current county amendments and enforcing authorities"
       ],
       "warnings": [
         "Colorado does not provide one general statewide building-code edition for ordinary local construction."
@@ -170,13 +314,19 @@
         }
       ],
       "adoption_ids": [
-        "adoption:us-co:electrical:2020-nec"
+        "adoption:us-co:electrical:2020-nec",
+        "adoption:us-co:electrical:2023-nec",
+        "adoption:us-co:electrical:2026-nec"
       ],
       "required_local_records": [
-        "Whether the location is inspected by a local electrical authority or the State Electrical Board"
+        "Whether the location is inspected by an approved local electrical authority or the State Electrical Board"
       ],
       "source_ids": [
-        "src:us-co:electrical-board"
+        "src:us-co:electrical-board",
+        "src:us-co:electrical-2020-news",
+        "src:us-co:larimer-adoption-history",
+        "src:us-co:larimer-codes",
+        "src:us-co:larimer-building"
       ]
     },
     "energy": {
@@ -202,7 +352,7 @@
         }
       ],
       "required_local_records": [
-        "Controlling state agency building-code and plan-review requirements for the project"
+        "Controlling state-agency building-code and plan-review requirements"
       ],
       "source_ids": [
         "src:us-co:electrical-board"
@@ -228,7 +378,7 @@
     }
   },
   "verification": {
-    "status": "partially_verified",
-    "confidence": 0.8
+    "status": "verified",
+    "confidence": 0.95
   }
 }

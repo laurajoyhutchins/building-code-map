@@ -1,1 +1,249 @@
-{"schema_version":"1.0","state_id":"US-CO","source_health":{"src:us-co:energy-local":{"last_checked_at":"2026-07-20","availability":"available"},"src:us-co:accessibility-local":{"last_checked_at":"2026-07-20","availability":"available"},"src:us-co:electrical-board":{"last_checked_at":"2026-08-02","availability":"available"},"src:us-co:electrical-2020-news":{"last_checked_at":"2026-08-02","availability":"available"},"src:us-co:larimer-adoption-history":{"last_checked_at":"2026-08-02","availability":"available"},"src:us-co:larimer-codes":{"last_checked_at":"2026-08-02","availability":"available"},"src:us-co:larimer-building":{"last_checked_at":"2026-08-02","availability":"available"},"src:us-co:larimer-electrical-permits":{"last_checked_at":"2026-08-02","availability":"available"},"src:us-co:denver-permits":{"last_checked_at":"2026-08-02","availability":"available"},"src:us-co:denver-quick-permits":{"last_checked_at":"2026-08-02","availability":"available"}},"applicability_rules":[{"id":"rule:us-co:electrical-state-code","code_family":"electrical","trigger":"electrical_installation","summary":"The State Electrical Board adopts the statewide NEC edition, while electrical permitting and inspection may be performed by the State Board or an approved local authority.","source_ids":["src:us-co:electrical-board","src:us-co:electrical-2020-news","src:us-co:larimer-codes","src:us-co:larimer-building"],"verification":{"status":"verified","confidence":0.95}},{"id":"rule:us-co:state-inspected-projects","code_family":"electrical","project_types":["public_school","state_owned"],"trigger":"state_inspected_project","summary":"The State Electrical Board issues permits and performs electrical inspections for public schools and state buildings throughout Colorado.","source_ids":["src:us-co:electrical-board"],"verification":{"status":"verified","confidence":0.95}}],"date_rules":[{"id":"rule:us-co:electrical:2020-window","code_family":"electrical","rule_type":"effective_window","trigger":"applicability_date","start_date":"2020-07-01","end_date":"2023-07-31","prior_code_allowed":false,"summary":"The 2020 NEC applies during the recorded Colorado electrical-code window beginning July 1, 2020.","source_ids":["src:us-co:electrical-2020-news","src:us-co:larimer-adoption-history"],"verification":{"status":"verified","confidence":0.95}},{"id":"rule:us-co:electrical:2023-window","code_family":"electrical","rule_type":"effective_window","trigger":"applicability_date","start_date":"2023-08-01","end_date":"2026-07-31","prior_code_allowed":false,"summary":"The 2023 NEC applies during the recorded Colorado electrical-code window beginning August 1, 2023.","source_ids":["src:us-co:larimer-codes"],"verification":{"status":"verified","confidence":0.95}},{"id":"rule:us-co:electrical:2026-window","code_family":"electrical","rule_type":"effective_window","trigger":"applicability_date","start_date":"2026-08-01","prior_code_allowed":false,"summary":"The 2026 NEC applies during the recorded Colorado electrical-code window beginning August 1, 2026.","source_ids":["src:us-co:larimer-building"],"verification":{"status":"verified","confidence":0.95}}],"amendment_rules":[{"id":"rule:us-co:local-electrical-administration","code_family":"electrical","level":"local","posture":"state_technical_code_with_local_administration","summary":"An approved local authority may administer electrical permits, inspections, and local administrative provisions while applying the statewide NEC edition.","source_ids":["src:us-co:electrical-board","src:us-co:larimer-electrical-permits","src:us-co:denver-quick-permits"],"verification":{"status":"verified","confidence":0.95}}],"enforcement_rules":[{"id":"rule:us-co:electrical-hybrid-enforcement","code_family":"electrical","model":"hybrid","entity_kinds":["state_board","municipal_electrical_authority","county_electrical_authority"],"authority_ids":["auth:us-co:state-electrical-board","auth:us-co:larimer-building","auth:us-co:denver-cpd"],"summary":"The State Board inspects areas without an approved local authority and all public schools and state buildings; Denver and Larimer County administer the represented local permitting and inspection paths.","source_ids":["src:us-co:electrical-board","src:us-co:larimer-building","src:us-co:larimer-electrical-permits","src:us-co:denver-permits","src:us-co:denver-quick-permits"],"verification":{"status":"verified","confidence":0.95}}],"claims":[{"id":"claim:us-co:electrical-2020-effective","subject_id":"adoption:us-co:electrical:2020-nec","field":"dates.effective_date","status":"supported","value":"2020-07-01","source_ids":["src:us-co:electrical-2020-news","src:us-co:larimer-adoption-history"],"verification":{"status":"verified","confidence":0.95}},{"id":"claim:us-co:electrical-2023-effective","subject_id":"adoption:us-co:electrical:2023-nec","field":"dates.effective_date","status":"supported","value":"2023-08-01","source_ids":["src:us-co:larimer-codes"],"verification":{"status":"verified","confidence":0.95}},{"id":"claim:us-co:electrical-2026-effective","subject_id":"adoption:us-co:electrical:2026-nec","field":"dates.effective_date","status":"supported","value":"2026-08-01","source_ids":["src:us-co:larimer-building"],"verification":{"status":"verified","confidence":0.95}},{"id":"claim:us-co:electrical-enforcement-path","subject_id":"edge:us-co:electrical-hybrid-enforcement","field":"relationship","status":"supported","value":"defers_inspection_to","source_ids":["src:us-co:electrical-board","src:us-co:larimer-electrical-permits"],"verification":{"status":"verified","confidence":0.95}}],"resolver_fixture_ids":["fixture:us-co:denver-electrical-current","fixture:us-co:larimer-electrical-current","fixture:us-co:state-public-school-electrical","fixture:us-co:larimer-electrical-historical","fixture:us-co:missing-local-electrical-record","fixture:us-co:conflicting-nec-edition"]}
+{
+  "schema_version": "1.0",
+  "state_id": "US-CO",
+  "source_health": {
+    "src:us-co:energy-local": {
+      "last_checked_at": "2026-07-20",
+      "availability": "available"
+    },
+    "src:us-co:accessibility-local": {
+      "last_checked_at": "2026-07-20",
+      "availability": "available"
+    },
+    "src:us-co:electrical-board": {
+      "last_checked_at": "2026-08-02",
+      "availability": "available"
+    },
+    "src:us-co:electrical-2020-news": {
+      "last_checked_at": "2026-08-02",
+      "availability": "available"
+    },
+    "src:us-co:larimer-adoption-history": {
+      "last_checked_at": "2026-08-02",
+      "availability": "available"
+    },
+    "src:us-co:larimer-codes": {
+      "last_checked_at": "2026-08-02",
+      "availability": "available"
+    },
+    "src:us-co:larimer-building": {
+      "last_checked_at": "2026-08-02",
+      "availability": "available"
+    },
+    "src:us-co:larimer-electrical-permits": {
+      "last_checked_at": "2026-08-02",
+      "availability": "available"
+    },
+    "src:us-co:denver-permits": {
+      "last_checked_at": "2026-08-02",
+      "availability": "available"
+    },
+    "src:us-co:denver-quick-permits": {
+      "last_checked_at": "2026-08-02",
+      "availability": "available"
+    }
+  },
+  "applicability_rules": [
+    {
+      "id": "rule:us-co:electrical-state-code",
+      "code_family": "electrical",
+      "trigger": "electrical_installation",
+      "summary": "The State Electrical Board adopts the statewide NEC edition, while electrical permitting and inspection may be performed by the State Board or an approved local authority.",
+      "source_ids": [
+        "src:us-co:electrical-board",
+        "src:us-co:electrical-2020-news",
+        "src:us-co:larimer-codes",
+        "src:us-co:larimer-building"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-co:state-inspected-projects",
+      "code_family": "electrical",
+      "project_types": [
+        "public_school",
+        "state_owned"
+      ],
+      "trigger": "state_inspected_project",
+      "summary": "The State Electrical Board issues permits and performs electrical inspections for public schools and state buildings throughout Colorado.",
+      "source_ids": [
+        "src:us-co:electrical-board"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "date_rules": [
+    {
+      "id": "rule:us-co:electrical:2020-window",
+      "code_family": "electrical",
+      "rule_type": "effective_window",
+      "trigger": "applicability_date",
+      "start_date": "2020-07-01",
+      "end_date": "2023-07-31",
+      "prior_code_allowed": false,
+      "summary": "The 2020 NEC applies during the recorded Colorado electrical-code window beginning July 1, 2020.",
+      "source_ids": [
+        "src:us-co:electrical-2020-news",
+        "src:us-co:larimer-adoption-history"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-co:electrical:2023-window",
+      "code_family": "electrical",
+      "rule_type": "effective_window",
+      "trigger": "applicability_date",
+      "start_date": "2023-08-01",
+      "end_date": "2026-07-31",
+      "prior_code_allowed": false,
+      "summary": "The 2023 NEC applies during the recorded Colorado electrical-code window beginning August 1, 2023.",
+      "source_ids": [
+        "src:us-co:larimer-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-co:electrical:2026-window",
+      "code_family": "electrical",
+      "rule_type": "effective_window",
+      "trigger": "applicability_date",
+      "start_date": "2026-08-01",
+      "prior_code_allowed": false,
+      "summary": "The 2026 NEC applies during the recorded Colorado electrical-code window beginning August 1, 2026.",
+      "source_ids": [
+        "src:us-co:larimer-building"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "amendment_rules": [
+    {
+      "id": "rule:us-co:local-electrical-administration",
+      "code_family": "electrical",
+      "level": "local",
+      "posture": "state_technical_code_with_local_administration",
+      "summary": "An approved local authority may administer electrical permits, inspections, and local administrative provisions while applying the statewide NEC edition.",
+      "source_ids": [
+        "src:us-co:electrical-board",
+        "src:us-co:larimer-electrical-permits",
+        "src:us-co:denver-quick-permits"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "enforcement_rules": [
+    {
+      "id": "rule:us-co:electrical-hybrid-enforcement",
+      "code_family": "electrical",
+      "model": "hybrid",
+      "entity_kinds": [
+        "state_board",
+        "municipal_electrical_authority",
+        "county_electrical_authority"
+      ],
+      "authority_ids": [
+        "auth:us-co:state-electrical-board",
+        "auth:us-co:larimer-building",
+        "auth:us-co:denver-cpd"
+      ],
+      "summary": "The State Board inspects areas without an approved local authority and all public schools and state buildings; Denver and Larimer County administer the represented local permitting and inspection paths.",
+      "source_ids": [
+        "src:us-co:electrical-board",
+        "src:us-co:larimer-building",
+        "src:us-co:larimer-electrical-permits",
+        "src:us-co:denver-permits",
+        "src:us-co:denver-quick-permits"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim:us-co:electrical-2020-effective",
+      "subject_id": "adoption:us-co:electrical:2020-nec",
+      "field": "dates.effective_date",
+      "status": "supported",
+      "value": "2020-07-01",
+      "source_ids": [
+        "src:us-co:electrical-2020-news",
+        "src:us-co:larimer-adoption-history"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "claim:us-co:electrical-2023-effective",
+      "subject_id": "adoption:us-co:electrical:2023-nec",
+      "field": "dates.effective_date",
+      "status": "supported",
+      "value": "2023-08-01",
+      "source_ids": [
+        "src:us-co:larimer-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "claim:us-co:electrical-2026-effective",
+      "subject_id": "adoption:us-co:electrical:2026-nec",
+      "field": "dates.effective_date",
+      "status": "supported",
+      "value": "2026-08-01",
+      "source_ids": [
+        "src:us-co:larimer-building"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "claim:us-co:electrical-enforcement-path",
+      "subject_id": "edge:us-co:electrical-hybrid-enforcement",
+      "field": "relationship",
+      "status": "supported",
+      "value": "defers_inspection_to",
+      "source_ids": [
+        "src:us-co:electrical-board",
+        "src:us-co:larimer-electrical-permits"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "resolver_fixture_ids": [
+    "fixture:us-co:denver-electrical-current",
+    "fixture:us-co:larimer-electrical-current",
+    "fixture:us-co:state-public-school-electrical",
+    "fixture:us-co:larimer-electrical-historical",
+    "fixture:us-co:missing-local-electrical-record",
+    "fixture:us-co:conflicting-nec-edition"
+  ]
+}
