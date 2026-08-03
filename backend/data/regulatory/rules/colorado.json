@@ -45,6 +45,24 @@
   },
   "applicability_rules": [
     {
+      "id": "rule:us-co:building-local-adoption",
+      "code_family": "building",
+      "trigger": "ordinary_local_project",
+      "applies_to": [
+        "incorporated",
+        "unincorporated"
+      ],
+      "summary": "Ordinary building-code applicability is resolved from the current local adoption record rather than a single general statewide edition.",
+      "source_ids": [
+        "src:us-co:accessibility-local",
+        "src:us-co:energy-local"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.8
+      }
+    },
+    {
       "id": "rule:us-co:electrical-state-code",
       "code_family": "electrical",
       "trigger": "electrical_installation",
@@ -132,6 +150,21 @@
     }
   ],
   "amendment_rules": [
+    {
+      "id": "rule:us-co:local-building-amendments",
+      "code_family": "building",
+      "level": "local",
+      "posture": "local_adoption_and_amendment_record_required",
+      "summary": "The applicable local adoption instrument and amendments must be retrieved for the location.",
+      "source_ids": [
+        "src:us-co:accessibility-local",
+        "src:us-co:energy-local"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.8
+      }
+    },
     {
       "id": "rule:us-co:local-electrical-administration",
       "code_family": "electrical",
