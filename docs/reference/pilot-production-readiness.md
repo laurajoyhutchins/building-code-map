@@ -54,6 +54,8 @@ CI fails when a profile is changed to `verified` before this gate is satisfied.
 
 The regulatory-data CI job uploads both the nationwide coverage report and the scoped pilot-readiness report in JSON and Markdown. Review the scoped report when changing a production manifest; a green job must show no blocked state, no premature verified profile, and no unresolved signal for a promoted scope. The scoped readiness report is the authority for promotion, while the nationwide report remains the broader inventory and maintenance view.
 
+The completed issue #31 audit reports all three defined scopes as `production_ready`, with no blocked state, no review signal, and no prematurely verified profile.
+
 ## Source health
 
 The scheduled `Regulatory source health` workflow checks every official URL in the compiled pilot profiles. It records HTTP status, redirects, the final URL, and availability in JSON and Markdown artifacts. A redirect is classified as `moved` so the canonical source URL can be updated instead of silently relying on redirect behavior.
