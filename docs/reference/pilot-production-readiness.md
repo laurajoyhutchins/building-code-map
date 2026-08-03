@@ -14,6 +14,16 @@ Each pilot has a manifest in `reports/production/` that declares:
 
 The manifest does not alter runtime resolution. It is an acceptance contract over the compiled state profile and rule pack.
 
+## Defined production scopes
+
+The production claim is deliberately narrower than the repository's complete research surface:
+
+- **Colorado:** electrical determinations from July 1, 2020 through August 2, 2026, including the statewide 2020, 2023, and 2026 NEC windows; Denver and unincorporated Larimer County administration; and state inspection of public schools and state buildings. Ordinary building, fire, and energy adoption remains a local-record result outside this production scope.
+- **Florida:** building, residential, and energy determinations from January 1, 2020 through August 2, 2026, including the 6th Edition (2017), 7th Edition (2020), and 8th Edition (2023) windows; Orlando and unincorporated Orange County administration; and the represented public-school enforcement exception.
+- **New Jersey:** building and operational-fire determinations from January 1, 2020 through August 2, 2026, including UCC transition windows, current and prior building subcodes, current and prior State Fire Prevention Code editions, Trenton administration, and the represented state-project review path.
+
+A production-ready scope does not convert an unresolved location-specific question into a definitive answer. The resolver must still preserve local-record requirements, transition choices, missing evidence, and conflicts where the supplied geographic or project context does not select a supported fixture.
+
 ## Promotion gate
 
 Run:
@@ -38,7 +48,7 @@ A state is `production_ready` only when all of the following hold:
 7. Every primary source has a current `available` health record.
 8. No supported claim remains conflicting or partially verified.
 
-CI fails when a profile is changed to `verified` before this gate is satisfied. The initial manifests intentionally expose the remaining research gaps and do not promote any pilot.
+CI fails when a profile is changed to `verified` before this gate is satisfied.
 
 ## Source health
 
