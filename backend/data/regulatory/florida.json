@@ -484,8 +484,8 @@
         }
       ],
       "required_local_records": [
-        "Local technical amendments and administrative procedures",
-        "Current local enforcing agency contact and permit requirements"
+        "Current local technical amendments and administrative procedures",
+        "Current local enforcing agency and permit requirements"
       ],
       "warnings": [
         "The statewide code baseline must be combined with the applicable local amendments and permit administration."
@@ -520,8 +520,8 @@
         }
       ],
       "required_local_records": [
-        "Local technical amendments and administrative procedures",
-        "Current county enforcing agency contact and permit requirements"
+        "Current county technical amendments and administrative procedures",
+        "Current county enforcing agency and permit requirements"
       ],
       "warnings": [
         "The statewide code baseline must be combined with the applicable county amendments and permit administration."

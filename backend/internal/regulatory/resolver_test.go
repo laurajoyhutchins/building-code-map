@@ -79,7 +79,7 @@ func TestResolveFloridaUsesStatewideBuildingCodeWithoutSuppressingLocalFollowUp(
 		t.Fatalf("unexpected adoptions: %#v", result.Adoptions)
 	}
 	assertCandidateKind(t, result, "municipality")
-	assertContains(t, result.RequiredLocalRecords, "Local technical amendments and administrative procedures")
+	assertContains(t, result.RequiredLocalRecords, "Current local technical amendments and administrative procedures")
 	if len(result.AuthorityPath) != 1 {
 		t.Fatalf("expected authority path, got %#v", result.AuthorityPath)
 	}
@@ -91,7 +91,7 @@ func TestResolveFloridaUsesStatewideBuildingCodeWithoutSuppressingLocalFollowUp(
 	}
 }
 
-func TestResolveFloridaHistoricalDateFailsClosedBeforeCurrentEdition(t *testing.T) {
+func TestResolveFloridaHistoricalDateUsesPriorEdition(t *testing.T) {
 	catalog := loadTestCatalog(t)
 	result, err := Resolve(catalog, ResolutionRequest{
 		Context:           &GeographicContext{StateID: "US-FL", StateFIPS: "12", Municipality: &BoundaryMatch{Name: "Orlando"}},
@@ -101,11 +101,11 @@ func TestResolveFloridaHistoricalDateFailsClosedBeforeCurrentEdition(t *testing.
 	if err != nil {
 		t.Fatal(err)
 	}
-	if result.Status != "insufficient_evidence" || len(result.Adoptions) != 0 {
-		t.Fatalf("historical result did not fail closed: %#v", result)
+	if result.Status != "partially_resolved" || len(result.Adoptions) != 1 {
+		t.Fatalf("historical result did not select one prior edition: %#v", result)
 	}
-	if !strings.Contains(strings.Join(result.Warnings, " "), "No supported adoption record") {
-		t.Fatalf("missing historical adoption warning: %#v", result.Warnings)
+	if result.Adoptions[0].ID != "adoption:us-fl:building:2020" {
+		t.Fatalf("historical result selected wrong adoption: %#v", result.Adoptions)
 	}
 }
 
