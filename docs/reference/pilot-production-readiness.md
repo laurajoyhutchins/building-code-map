@@ -52,7 +52,7 @@ CI fails when a profile is changed to `verified` before this gate is satisfied.
 
 ## Audit artifacts
 
-The regulatory-data CI job uploads both the nationwide coverage report and the scoped pilot-readiness report in JSON and Markdown. Review the scoped report when changing a production manifest; a green job must show no blocked state, no premature verified profile, and no unresolved signal for a promoted scope.
+The regulatory-data CI job uploads both the nationwide coverage report and the scoped pilot-readiness report in JSON and Markdown. Review the scoped report when changing a production manifest; a green job must show no blocked state, no premature verified profile, and no unresolved signal for a promoted scope. The scoped readiness report is the authority for promotion, while the nationwide report remains the broader inventory and maintenance view.
 
 ## Source health
 
