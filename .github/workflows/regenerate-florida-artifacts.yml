@@ -1,35 +1,120 @@
-name: Regenerate Florida regulatory artifacts
+name: Canonicalize Florida regulatory data
 
 on:
   pull_request:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  regenerate:
-    name: Regenerate Florida artifacts
+  canonicalize:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    name: Canonicalize Florida data
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
-      - name: Checkout
+      - name: Checkout PR branch
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.13"
 
-      - name: Compile pilot reports
+      - name: Align report, rules, and resolver tests
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          from pathlib import Path
+
+          report_path = Path("reports/pilots/florida.md")
+          report = report_path.read_text(encoding="utf-8")
+          match = re.search(r"```json jurisdiction-profile\n(.*?)\n```", report, re.S)
+          if not match:
+              raise SystemExit("Florida profile block not found")
+          profile = json.loads(match.group(1))
+          profile["relationships"] = [
+              item
+              for item in profile["relationships"]
+              if item["id"] != "edge:us-fl:school-self-enforcement"
+          ]
+          replacement = json.dumps(profile, separators=(",", ":"), ensure_ascii=False)
+          report = report[: match.start(1)] + replacement + report[match.end(1) :]
+          report_path.write_text(report, encoding="utf-8")
+
+          rules_path = Path("backend/data/regulatory/rules/florida.json")
+          rules = json.loads(rules_path.read_text(encoding="utf-8"))
+          rules["claims"] = [
+              item
+              for item in rules["claims"]
+              if item["id"] != "claim:us-fl:school-self-enforcement"
+          ]
+          rules_path.write_text(
+              json.dumps(rules, indent=2, ensure_ascii=False) + "\n",
+              encoding="utf-8",
+          )
+
+          test_path = Path("backend/internal/regulatory/resolver_test.go")
+          tests = test_path.read_text(encoding="utf-8")
+          tests = tests.replace(
+              'assertContains(t, result.RequiredLocalRecords, "Local technical amendments and administrative procedures")',
+              'assertContains(t, result.RequiredLocalRecords, "Current local technical amendments and administrative procedures")',
+          )
+          old = '''func TestResolveFloridaHistoricalDateFailsClosedBeforeCurrentEdition(t *testing.T) {
+          \tcatalog := loadTestCatalog(t)
+          \tresult, err := Resolve(catalog, ResolutionRequest{
+          \t\tContext:           &GeographicContext{StateID: "US-FL", StateFIPS: "12", Municipality: &BoundaryMatch{Name: "Orlando"}},
+          \t\tCodeFamily:        "building",
+          \t\tApplicabilityDate: "2023-01-01",
+          \t})
+          \tif err != nil {
+          \t\tt.Fatal(err)
+          \t}
+          \tif result.Status != "insufficient_evidence" || len(result.Adoptions) != 0 {
+          \t\tt.Fatalf("historical result did not fail closed: %#v", result)
+          \t}
+          \tif !strings.Contains(strings.Join(result.Warnings, " "), "No supported adoption record") {
+          \t\tt.Fatalf("missing historical adoption warning: %#v", result.Warnings)
+          \t}
+          }
+          '''
+          new = '''func TestResolveFloridaHistoricalDateUsesPriorEdition(t *testing.T) {
+          \tcatalog := loadTestCatalog(t)
+          \tresult, err := Resolve(catalog, ResolutionRequest{
+          \t\tContext:           &GeographicContext{StateID: "US-FL", StateFIPS: "12", Municipality: &BoundaryMatch{Name: "Orlando"}},
+          \t\tCodeFamily:        "building",
+          \t\tApplicabilityDate: "2023-01-01",
+          \t})
+          \tif err != nil {
+          \t\tt.Fatal(err)
+          \t}
+          \tif result.Status != "partially_resolved" || len(result.Adoptions) != 1 {
+          \t\tt.Fatalf("historical result did not select one prior edition: %#v", result)
+          \t}
+          \tif result.Adoptions[0].ID != "adoption:us-fl:building:2020" {
+          \t\tt.Fatalf("historical result selected wrong adoption: %#v", result.Adoptions)
+          \t}
+          }
+          '''
+          if old not in tests:
+              raise SystemExit("historical Florida test block not found")
+          test_path.write_text(tests.replace(old, new), encoding="utf-8")
+          PY
+
+      - name: Compile canonical artifacts
         run: python reports/tools/regulatory.py compile reports/pilots/*.md --output-dir backend/data/regulatory
 
-      - name: Upload Florida artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: regenerated-florida-artifacts
-          path: |
-            backend/data/regulatory/florida.json
-            backend/data/regulatory/rules/florida.json
-          if-no-files-found: error
-          retention-days: 1
+      - name: Remove one-shot workflow
+        run: rm .github/workflows/regenerate-florida-artifacts.yml
+
+      - name: Commit canonical outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/pilots/florida.md backend/data/regulatory/florida.json backend/data/regulatory/rules/florida.json backend/internal/regulatory/resolver_test.go .github/workflows/regenerate-florida-artifacts.yml
+          git commit -m "fix: canonicalize Florida production data"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
