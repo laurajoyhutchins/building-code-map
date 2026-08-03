@@ -7,47 +7,77 @@ import (
 	"io"
 	"net/http"
 	"reflect"
+	"sort"
 	"strings"
 
 	"building-code-map/backend/internal/regulatory"
 	"building-code-map/backend/internal/snapshot"
 )
 
+type pointResolutionRequest struct {
+	Point             *regulatory.Point `json:"point"`
+	CodeFamily        string            `json:"code_family,omitempty"`
+	ProjectType       string            `json:"project_type,omitempty"`
+	ApplicabilityDate string            `json:"applicability_date,omitempty"`
+}
+
+type boundaryAmbiguityError struct {
+	LayerFamily string
+	Matches     []regulatory.BoundaryMatch
+}
+
+func (err *boundaryAmbiguityError) Error() string {
+	return fmt.Sprintf("point matched multiple %s boundary observations; confirm the controlling boundary locally", err.LayerFamily)
+}
+
+type boundaryAmbiguityResponse struct {
+	Error        string                     `json:"error"`
+	Code         string                     `json:"code"`
+	LayerFamily  string                     `json:"layer_family"`
+	Observations []regulatory.BoundaryMatch `json:"observations"`
+}
+
 func (h *Handler) handleResolve(w http.ResponseWriter, r *http.Request) {
 	if h.regulatoryCatalog.Len() == 0 {
 		h.writeJSON(w, http.StatusServiceUnavailable, map[string]string{"error": "regulatory policy catalog is unavailable"})
 		return
 	}
-	r.Body = http.MaxBytesReader(w, r.Body, 1<<20)
-	decoder := json.NewDecoder(r.Body)
-	decoder.DisallowUnknownFields()
-	var request regulatory.ResolutionRequest
-	if err := decoder.Decode(&request); err != nil {
-		h.writeJSON(w, http.StatusBadRequest, map[string]string{"error": "invalid resolution request: " + err.Error()})
-		return
-	}
-	if err := ensureSingleJSONValue(decoder); err != nil {
+
+	request, err := decodeStrictRequest[pointResolutionRequest](w, r)
+	if err != nil {
 		h.writeJSON(w, http.StatusBadRequest, map[string]string{"error": err.Error()})
 		return
 	}
-	if request.Context == nil {
-		if request.Point == nil {
-			h.writeJSON(w, http.StatusBadRequest, map[string]string{"error": "point or context is required"})
-			return
-		}
-		context, err := resolveGeographicContext(h.snapshot, h.regulatoryCatalog, *request.Point)
-		if err != nil {
-			h.writeJSON(w, http.StatusUnprocessableEntity, map[string]string{"error": err.Error()})
-			return
-		}
-		request.Context = &context
+	if request.Point == nil {
+		h.writeJSON(w, http.StatusBadRequest, map[string]string{"error": "point is required"})
+		return
 	}
-	result, err := regulatory.Resolve(h.regulatoryCatalog, request)
+
+	result, err := h.resolveRequest(regulatory.ResolutionRequest{
+		Point:             request.Point,
+		CodeFamily:        request.CodeFamily,
+		ProjectType:       request.ProjectType,
+		ApplicabilityDate: request.ApplicabilityDate,
+	})
 	if err != nil {
-		h.writeJSON(w, http.StatusUnprocessableEntity, map[string]string{"error": err.Error()})
+		h.writeResolutionError(w, err)
 		return
 	}
 	h.writeJSON(w, http.StatusOK, result)
+}
+
+func (h *Handler) writeResolutionError(w http.ResponseWriter, err error) {
+	var ambiguity *boundaryAmbiguityError
+	if errors.As(err, &ambiguity) {
+		h.writeJSON(w, http.StatusConflict, boundaryAmbiguityResponse{
+			Error:        ambiguity.Error(),
+			Code:         "boundary_ambiguous",
+			LayerFamily:  ambiguity.LayerFamily,
+			Observations: ambiguity.Matches,
+		})
+		return
+	}
+	h.writeJSON(w, http.StatusUnprocessableEntity, map[string]string{"error": err.Error()})
 }
 
 func ensureSingleJSONValue(decoder *json.Decoder) error {
@@ -64,44 +94,82 @@ func resolveGeographicContext(snap snapshot.Snapshot, catalog regulatory.Catalog
 	if point.Longitude < -180 || point.Longitude > 180 || point.Latitude < -90 || point.Latitude > 90 {
 		return regulatory.GeographicContext{}, errors.New("point coordinates are outside valid longitude/latitude ranges")
 	}
-	context := regulatory.GeographicContext{}
+
+	matchedFeatures := map[string][]snapshot.BoundaryFeature{}
 	for _, feature := range snap.BoundaryFeatures {
-		if !geometryContainsPoint(feature.Geometry, point.Longitude, point.Latitude) {
-			continue
-		}
-		match := regulatory.BoundaryMatch{LayerFamily: feature.LayerFamily, FeatureID: feature.FeatureID, Name: feature.Title, SourceID: feature.SourceID}
-		switch feature.LayerFamily {
-		case "states":
-			fips := firstString(feature.Attributes, "STATEFP", "GEOID")
-			if fips == "" && len(feature.FeatureID) == 2 {
-				fips = feature.FeatureID
-			}
-			context.StateFIPS = fips
-			context.StateName = feature.Title
-			if profile, ok := catalog.Profile("", fips); ok {
-				context.StateID = profile.StateID
-			}
-		case "counties":
-			if context.County == nil {
-				context.County = &match
-			}
-		case "municipalities":
-			if context.Municipality == nil {
-				context.Municipality = &match
-				context.Incorporated = true
-			}
-		case "special_areas":
-			context.SpecialAreas = append(context.SpecialAreas, match)
-		case "tribal_areas":
-			context.TribalAreas = append(context.TribalAreas, match)
-		case "neris_jurisdictions":
-			context.FireJurisdictions = append(context.FireJurisdictions, match)
+		if geometryContainsPoint(feature.Geometry, point.Longitude, point.Latitude) {
+			matchedFeatures[feature.LayerFamily] = append(matchedFeatures[feature.LayerFamily], feature)
 		}
 	}
-	if context.StateFIPS == "" && context.StateID == "" {
+	for layerFamily := range matchedFeatures {
+		sort.Slice(matchedFeatures[layerFamily], func(i, j int) bool {
+			left := matchedFeatures[layerFamily][i]
+			right := matchedFeatures[layerFamily][j]
+			if left.FeatureID != right.FeatureID {
+				return left.FeatureID < right.FeatureID
+			}
+			if left.Title != right.Title {
+				return left.Title < right.Title
+			}
+			return left.SourceID < right.SourceID
+		})
+	}
+
+	for _, layerFamily := range []string{"states", "counties", "municipalities"} {
+		if len(matchedFeatures[layerFamily]) > 1 {
+			return regulatory.GeographicContext{}, &boundaryAmbiguityError{
+				LayerFamily: layerFamily,
+				Matches:     boundaryMatches(matchedFeatures[layerFamily]),
+			}
+		}
+	}
+
+	context := regulatory.GeographicContext{}
+	stateFeatures := matchedFeatures["states"]
+	if len(stateFeatures) == 0 {
 		return regulatory.GeographicContext{}, errors.New("point did not match a supported state boundary")
 	}
+	stateFeature := stateFeatures[0]
+	fips := firstString(stateFeature.Attributes, "STATEFP", "GEOID")
+	if fips == "" && len(stateFeature.FeatureID) == 2 {
+		fips = stateFeature.FeatureID
+	}
+	context.StateFIPS = fips
+	context.StateName = stateFeature.Title
+	if profile, ok := catalog.Profile("", fips); ok {
+		context.StateID = profile.StateID
+	}
+
+	if counties := matchedFeatures["counties"]; len(counties) == 1 {
+		match := boundaryMatch(counties[0])
+		context.County = &match
+	}
+	if municipalities := matchedFeatures["municipalities"]; len(municipalities) == 1 {
+		match := boundaryMatch(municipalities[0])
+		context.Municipality = &match
+		context.Incorporated = true
+	}
+	context.SpecialAreas = boundaryMatches(matchedFeatures["special_areas"])
+	context.TribalAreas = boundaryMatches(matchedFeatures["tribal_areas"])
+	context.FireJurisdictions = boundaryMatches(matchedFeatures["neris_jurisdictions"])
 	return context, nil
+}
+
+func boundaryMatches(features []snapshot.BoundaryFeature) []regulatory.BoundaryMatch {
+	matches := make([]regulatory.BoundaryMatch, 0, len(features))
+	for _, feature := range features {
+		matches = append(matches, boundaryMatch(feature))
+	}
+	return matches
+}
+
+func boundaryMatch(feature snapshot.BoundaryFeature) regulatory.BoundaryMatch {
+	return regulatory.BoundaryMatch{
+		LayerFamily: feature.LayerFamily,
+		FeatureID:   feature.FeatureID,
+		Name:        feature.Title,
+		SourceID:    feature.SourceID,
+	}
 }
 
 func firstString(values map[string]any, keys ...string) string {
@@ -111,7 +179,6 @@ func firstString(values map[string]any, keys ...string) string {
 				return strings.TrimSpace(text)
 			}
 		}
-	}
 	return ""
 }
 
@@ -131,7 +198,6 @@ func geometryContainsPoint(geometry snapshot.Geometry, longitude, latitude float
 				return true
 			}
 		}
-	}
 	return false
 }
 
@@ -190,13 +256,13 @@ func coordinateSlice(value any) ([]any, bool) {
 	if value == nil {
 		return nil, false
 	}
-	rv := reflect.ValueOf(value)
-	if rv.Kind() != reflect.Slice && rv.Kind() != reflect.Array {
+	reflected := reflect.ValueOf(value)
+	if reflected.Kind() != reflect.Slice && reflected.Kind() != reflect.Array {
 		return nil, false
 	}
-	result := make([]any, rv.Len())
-	for i := 0; i < rv.Len(); i++ {
-		result[i] = rv.Index(i).Interface()
+	result := make([]any, reflected.Len())
+	for i := 0; i < reflected.Len(); i++ {
+		result[i] = reflected.Index(i).Interface()
 	}
 	return result, true
 }
