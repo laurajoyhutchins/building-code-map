@@ -31,7 +31,7 @@ func TestResolveColoradoBuildingRequiresLocalAdoptionRecord(t *testing.T) {
 		t.Fatalf("Colorado building resolution must not invent a statewide adoption: %#v", result.Adoptions)
 	}
 	assertCandidateKind(t, result, "municipality")
-	assertContains(t, result.RequiredLocalRecords, "Current municipal building-code adoption ordinance and effective date")
+	assertContains(t, result.RequiredLocalRecords, "Current municipal building, fire, and energy-code adoption instruments")
 	assertRuleKind(t, result, "applicability")
 	assertRuleKind(t, result, "amendment")
 	if result.PolicyBasis == nil || result.PolicyBasis.Status != "local_record_required" {
