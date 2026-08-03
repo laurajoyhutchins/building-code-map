@@ -179,6 +179,7 @@ func firstString(values map[string]any, keys ...string) string {
 				return strings.TrimSpace(text)
 			}
 		}
+	}
 	return ""
 }
 
@@ -198,6 +199,7 @@ func geometryContainsPoint(geometry snapshot.Geometry, longitude, latitude float
 				return true
 			}
 		}
+	}
 	return false
 }
 
