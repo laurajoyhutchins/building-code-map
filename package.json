@@ -18,7 +18,7 @@
     "decision:audit": ".\\tools\\deciduous-audit.cmd",
     "decision:audit:strict": ".\\tools\\deciduous-audit.cmd -Strict",
     "decision:archaeology:validate": "python tools/validate_deciduous_archaeology.py",
-    "decision:archaeology:generate": "python tools/validate_deciduous_archaeology.py --write-db --write-export",
+    "decision:archaeology:generate": "python tools/validate_deciduous_archaeology.py --write-sql --write-db --write-export",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "backend:lint": "cd backend && go vet ./...",
