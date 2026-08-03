@@ -8,11 +8,11 @@ Before this review, the implementation did not fully enforce that architecture. 
 
 This pass fixes those high-confidence authority and runtime-trust defects. The repository can now answer the core question conservatively when all of the following are true:
 
-1. a semantically valid local boundary snapshot covers the input point;
-2. address input, when used, resolves to one unambiguous provenance-bearing candidate;
-3. state, county, and municipality containment is not ambiguous;
-4. a validated regulatory profile supports the matched state, code family, project type, and date;
-5. the result's unresolved records, warnings, evidence, and pilot limitations are preserved through the caller or interface.
+1. A semantically valid local boundary snapshot covers the input point.
+2. Address input, when used, resolves to one unambiguous provenance-bearing candidate.
+3. State, county, and municipality containment is not ambiguous.
+4. A validated regulatory profile supports the matched state, code family, project type, and date.
+5. The result's unresolved records, warnings, evidence, and pilot limitations are preserved through the caller or interface.
 
 It still cannot support a nationwide regulatory-coverage claim, complete historical applicability, or production-grade snapshot refresh and rollback. Those limits are explicit below.
 
@@ -20,22 +20,20 @@ It still cannot support a nationwide regulatory-coverage claim, complete histori
 
 The review followed the repository owner's skill-routing contract rather than blending all guidance into one checklist.
 
-| Phase or boundary | Owning skill | Result |
-| --- | --- | --- |
-| End-to-end source and snapshot trust | `data-engineering-design` | Primary owner; traced source observations through snapshots, API outputs, and publication boundaries |
-| System authority and dependency direction | `architecture-review` | Enforced geocoder → boundary observation → regulatory policy separation |
-| Backend changes | `go-idiomatic` | Added typed internal errors, deterministic ordering, read-only file access, focused packages, and tests |
-| SQLite contract | `sql-idiomatic` | Validated schema-facing semantics and opened boundary SQLite snapshots read-only/query-only |
-| HTTP behavior | `api-philosophy` | Made `/resolve` point-only, classified overlap ambiguity, added capability readiness and CORS preflight |
-| Frontend contract assessment | `typescript-idiomatic` | Confirmed that compile-time interfaces currently substitute for complete runtime response validation; follow-up required |
-| Operational evidence | `logging-philosophy` | Separated readiness evidence from regulatory conclusions; request correlation remains follow-up work |
-| Repository state | `repo-config-governance` | Preserved pins, ignored snapshots, CI lanes, LORE authority, and Deciduous publication boundaries |
-| Documentation | `diataxis-docs` | Updated overview, configuration, and API reference; added this review without turning it into a tutorial |
-| Delivery | `writing-plans`, `test-driven-development`, `testing-philosophy`, `verification-before-completion`, `requesting-code-review`, `yeet` | Committed an implementation plan, added regression tests, used exact-head GitHub Actions, self-reviewed, and published draft PR #41 |
+- **End-to-end source and snapshot trust:** `data-engineering-design` was the primary owner. It traced source observations through snapshots, API outputs, and publication boundaries.
+- **System authority and dependency direction:** `architecture-review` enforced the geocoder to boundary-observation to regulatory-policy separation.
+- **Backend changes:** `go-idiomatic` owned typed internal errors, deterministic ordering, read-only file access, focused packages, and tests.
+- **SQLite contract:** `sql-idiomatic` owned schema-facing semantics and read-only, query-only boundary SQLite access.
+- **HTTP behavior:** `api-philosophy` owned the point-only `/resolve` contract, overlap ambiguity, capability readiness, and CORS preflight.
+- **Frontend contract assessment:** `typescript-idiomatic` identified compile-time interfaces being used where complete runtime response validation is still required.
+- **Operational evidence:** `logging-philosophy` separated readiness evidence from regulatory conclusions and identified request correlation as follow-up work.
+- **Repository state:** `repo-config-governance` preserved pins, ignored snapshots, CI lanes, LORE authority, and Deciduous publication boundaries.
+- **Documentation:** `diataxis-docs` owned the overview, configuration, API reference, and this review.
+- **Delivery:** `writing-plans`, `test-driven-development`, `testing-philosophy`, `verification-before-completion`, `requesting-code-review`, and `yeet` owned planning, regression tests, exact-head verification, self-review, and draft PR publication.
 
 ## Evidence inspected
 
-The review inspected the current `main` branch at `761ddc49bf6dffa50dc0454a5632f04fa3959594`, recent commits and pull requests, open architecture and data-integrity issues, and the implementation areas listed below:
+The review inspected the current `main` branch at `761ddc49bf6dffa50dc0454a5632f04fa3959594`, recent commits and pull requests, open architecture and data-integrity issues, and the following implementation areas:
 
 - repository identity, governance, data-source, security, contribution, license, notice, and configuration documents;
 - frontend package, TypeScript, Vite, API-decoding, public lookup, map, and test contracts;
@@ -90,7 +88,7 @@ The frontend displays a selected geocoding candidate and the regulatory result. 
 
 ### Critical: overlapping authority-bearing polygons were selected arbitrarily
 
-**Previous behavior:** state was overwritten by the last containing feature; county and municipality retained the first containing feature. Snapshot order could change the regulatory context.
+**Previous behavior:** State was overwritten by the last containing feature; county and municipality retained the first containing feature. Snapshot order could change the regulatory context.
 
 **Resolution:** Matches are collected and sorted by stable feature identity. More than one containing state, county, or municipality returns HTTP `409` with code `boundary_ambiguous` and every tied observation. Special, tribal, and fire observations remain complete sorted arrays.
 
@@ -98,7 +96,7 @@ This is intentionally conservative. A future explicit authority rule may resolve
 
 ### High: boundary snapshots lacked a semantic admission contract
 
-**Previous behavior:** loaders proved that tables, JSON, and timestamps could be read. They did not reject duplicate identities, unknown layer references, unsupported geometry, non-finite or out-of-range coordinates, open rings, missing source identity, or unsupported refresh states. The HTTP feature index could silently overwrite duplicate records.
+**Previous behavior:** Loaders proved that tables, JSON, and timestamps could be read. They did not reject duplicate identities, unknown layer references, unsupported geometry, non-finite or out-of-range coordinates, open rings, missing source identity, or unsupported refresh states. The HTTP feature index could silently overwrite duplicate records.
 
 **Resolution:** `Snapshot.Validate()` now enforces:
 
@@ -115,7 +113,7 @@ Every supported loader calls the same validator before returning a snapshot.
 
 ### High: implicit snapshot discovery escaped the repository trust boundary
 
-**Previous behavior:** default discovery could select `C:\tmp\tigerweb_hydrated.sqlite` or `C:\tmp\tigerweb_hydrated.duckdb`. Unknown extensions were treated as DuckDB, producing misleading compatibility-tool errors.
+**Previous behavior:** Default discovery could select `C:\tmp\tigerweb_hydrated.sqlite` or `C:\tmp\tigerweb_hydrated.duckdb`. Unknown extensions were treated as DuckDB, producing misleading compatibility-tool errors.
 
 **Resolution:** The only default is `backend/data/tigerweb.sqlite`. Environment overrides must exist inside the repository checkout. Legacy DuckDB remains supported only through an explicitly selected `.duckdb` path. Unknown extensions return `ErrUnsupportedSnapshotFormat` before DuckDB discovery.
 
@@ -129,15 +127,15 @@ SQLite boundary snapshots are opened read-only and query-only.
 
 ### High: omitted applicability dates were silent assumptions
 
-**Previous behavior:** the regulatory resolver defaulted an omitted date to the current UTC date without identifying that assumption in the public result.
+**Previous behavior:** The regulatory resolver defaulted an omitted date to the current UTC date without identifying that assumption in the public result.
 
 **Resolution:** Public point and address resolution append a warning that identifies the server-selected UTC date and directs the caller to confirm the governing project date. The optional field remains compatible, but the assumption is no longer invisible.
 
 ### Medium: configured cross-origin JSON POST requests lacked preflight behavior
 
-**Previous behavior:** normal allowed-origin responses included `Access-Control-Allow-Origin`, but browser `OPTIONS` requests fell through to `404`.
+**Previous behavior:** Normal allowed-origin responses included `Access-Control-Allow-Origin`, but browser `OPTIONS` requests fell through to `404`.
 
-**Resolution:** allowed preflight requests return `204` with explicit methods, `Content-Type`, cache age, and `Vary`; unconfigured origins receive `403`. CORS is documented as a browser boundary, not authentication.
+**Resolution:** Allowed preflight requests return `204` with explicit methods, `Content-Type`, cache age, and `Vary`; unconfigured origins receive `403`. CORS is documented as a browser boundary, not authentication.
 
 ## Strong existing controls retained
 
@@ -171,31 +169,31 @@ The current boundary snapshot stores layers, features, and one refresh-status ro
 
 The geocoder metadata table records schema version, one source name, and one source vintage. It does not identify input file checksums, build tool revision, build timestamp, row counts, coordinate reference system declaration, quarantine counts, output checksum, or activation receipt.
 
-**Required next result:** define one versioned manifest contract per snapshot family, validate it before activation, build candidate snapshots in staging, run integrity and data-quality checks, atomically activate by identity, and retain a bounded last-known-good rollback reference.
+**Required next result:** Define one versioned manifest contract per snapshot family, validate it before activation, build candidate snapshots in staging, run integrity and data-quality checks, atomically activate by identity, and retain a bounded last-known-good rollback reference.
 
 ### Geocoder positional provenance and ranking contract
 
 An interpolated candidate identifies the source range record but does not return side of street, parity, original endpoints, normalized range direction, interpolation fraction, or the explicit scoring factors that produced confidence. Source priority is implicit rather than a versioned source-specific rule.
 
-**Required next result:** extend candidate provenance and define confidence as a documented quality classification or score decomposition, not an unexplained decimal that downstream interfaces may mistake for probability.
+**Required next result:** Extend candidate provenance and define confidence as a documented quality classification or score decomposition, not an unexplained decimal that downstream interfaces may mistake for probability.
 
 ### Frontend runtime validation
 
 `src/lib/api.ts` uses TypeScript interfaces and generic JSON casts. It transforms snake-case payloads but does not validate all required fields, discriminants, coordinate ranges, URLs, dates, array members, or error envelopes at runtime.
 
-**Required next result:** validate every independently versioned backend response at the network boundary, reject malformed payloads with actionable errors, and test missing, extra, invalid, and forward-compatible fields. Compile-time types must remain a developer aid rather than evidence that network data is valid.
+**Required next result:** Validate every independently versioned backend response at the network boundary, reject malformed payloads with actionable errors, and test missing, extra, invalid, and forward-compatible fields. Compile-time types must remain a developer aid rather than evidence that network data is valid.
 
 ### Frontend ambiguity and degraded-mode presentation
 
 The backend now returns structured boundary ambiguity and capability readiness, but the frontend's generic error path does not yet render tied boundary observations or the readiness matrix. Technical explorer detail can also feel more authoritative merely because it is more detailed.
 
-**Required next result:** present boundary ambiguity as evidence requiring selection or confirmation, distinguish geocoder and regulatory outages, define every verification label, and ensure uncertainty is conveyed through text and structure rather than color or an icon alone.
+**Required next result:** Present boundary ambiguity as evidence requiring selection or confirmation, distinguish geocoder and regulatory outages, define every verification label, and ensure uncertainty is conveyed through text and structure rather than color or an icon alone.
 
 ### Historical validity
 
 Profiles support applicability dates and fail closed where current records do not prove historical applicability. Coverage is not complete for enactment, administrative adoption, effective, operative, mandatory, transition, repeal, supersession, project-grandfathering, and source-observation timelines.
 
-**Required next result:** retain append-only adoption timelines and explicit unsupported historical intervals. Do not infer a historical answer from the latest source.
+**Required next result:** Retain append-only adoption timelines and explicit unsupported historical intervals. Do not infer a historical answer from the latest source.
 
 ### API surface and operational evidence
 
@@ -221,19 +219,49 @@ Issue #3 remains the owner for branch rules, required checks, dependency alerts,
 
 ## Testing assessment
 
-| Area | Current evidence | Important missing evidence |
-| --- | --- | --- |
-| Address normalization | Unit fixtures cover ordinary civic addresses and selected aliases | Rural routes, highway forms, fractions, leading zero policy, locality alias governance, Unicode property cases |
-| Address points | SQLite integration tests and deterministic ranking | Multiple source-priority policies, duplicate coordinates across publishers, stale-source arbitration |
-| Street interpolation | Parity, reversed ranges, zero-length rejection, rollback-safe build | Side of street, endpoint and fraction response provenance, positional uncertainty bands |
-| Boundary geometry | Polygon holes, semantic validator, overlap ambiguity | Enclaves, coastal topology, invalid-geometry repair policy, large multipolygons, antimeridian rejection or support |
-| Regulatory resolution | Three contrasting pilot states, date failure, authority paths, conflicts, source evidence | Complete local/home-rule fixtures, historical timelines, state-owned and special occupancy breadth |
-| Snapshots | SQLite loader integration, semantic negative tests, explicit formats | Manifest/checksum/activation/rollback integration and corruption recovery |
-| HTTP | Strict JSON, body limit, coordinate ranges, point-only contract, CORS, readiness | Stable general error schema, timeout/cancellation, rate and geometry-size limits |
-| Frontend | Type-check, lint, Vitest, build, geocoder provenance display | Runtime response validation, boundary ambiguity UI, readiness/degraded UI, accessibility audit for uncertainty |
-| Regulatory compiler | Python unit tests, report validation, deterministic `--check`, coverage report | Primary-source health automation and complete production-ready state fixtures |
-| LORE | Pinned extract and validate CI | Transactional proposal workflow exercised for this repository, projection freshness display in UI/docs |
-| Deciduous | Wrappers and separate archaeology PR | Merge and audit the canonical graph after PR #40 review; avoid duplicate backfill |
+### Address normalization
+
+Current evidence includes unit fixtures for ordinary civic addresses and selected aliases. Missing evidence includes rural routes, highway forms, fractions, leading-zero policy, locality-alias governance, and Unicode property cases.
+
+### Address points
+
+Current evidence includes SQLite integration tests and deterministic ranking. Missing evidence includes multiple source-priority policies, duplicate coordinates across publishers, and stale-source arbitration.
+
+### Street interpolation
+
+Current evidence includes parity, reversed ranges, zero-length rejection, and rollback-safe build behavior. Missing evidence includes side of street, endpoint and fraction response provenance, and positional uncertainty bands.
+
+### Boundary geometry
+
+Current evidence includes polygon holes, semantic validation, and overlap ambiguity. Missing evidence includes enclaves, coastal topology, invalid-geometry repair policy, large multipolygons, and an explicit antimeridian rejection or support policy.
+
+### Regulatory resolution
+
+Current evidence includes three contrasting pilot states, date failure, authority paths, conflicts, and source evidence. Missing evidence includes complete local and home-rule fixtures, historical timelines, and broader state-owned and special-occupancy cases.
+
+### Snapshots
+
+Current evidence includes SQLite loader integration, semantic negative tests, and explicit format handling. Missing evidence includes manifest, checksum, activation, rollback, and corruption-recovery integration.
+
+### HTTP
+
+Current evidence includes strict JSON, body limits, coordinate ranges, point-only resolution, CORS, and readiness. Missing evidence includes a stable general error schema, timeout and cancellation behavior, rate limits, and geometry-size limits.
+
+### Frontend
+
+Current evidence includes type-checking, linting, Vitest, build verification, and geocoder-provenance display. Missing evidence includes runtime response validation, boundary-ambiguity UI, readiness and degraded UI, and an accessibility audit for uncertainty.
+
+### Regulatory compiler
+
+Current evidence includes Python unit tests, report validation, deterministic `--check`, and coverage reporting. Missing evidence includes primary-source health automation and complete production-ready state fixtures.
+
+### LORE
+
+Current evidence includes pinned extraction and validation in CI. Missing evidence includes an exercised transactional proposal workflow for this repository and projection-freshness display in documentation.
+
+### Deciduous
+
+Current evidence includes wrappers and the separate archaeology PR. Remaining work is to merge and audit the canonical graph after PR #40 review without creating a duplicate backfill.
 
 ## Cross-repository boundaries and follow-up
 
