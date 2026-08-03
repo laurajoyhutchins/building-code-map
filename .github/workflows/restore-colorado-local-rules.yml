@@ -1,0 +1,67 @@
+name: Restore Colorado local rules
+
+on:
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    name: Restore Colorado local rules
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Restore explanatory rules
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("backend/data/regulatory/rules/colorado.json")
+          pack = json.loads(path.read_text(encoding="utf-8"))
+          applicability = {
+              "id": "rule:us-co:building-local-adoption",
+              "code_family": "building",
+              "trigger": "ordinary_local_project",
+              "applies_to": ["incorporated", "unincorporated"],
+              "summary": "Ordinary building-code applicability is resolved from the current local adoption record rather than a single general statewide edition.",
+              "source_ids": ["src:us-co:accessibility-local", "src:us-co:energy-local"],
+              "verification": {"status": "partially_verified", "confidence": 0.8},
+          }
+          amendment = {
+              "id": "rule:us-co:local-building-amendments",
+              "code_family": "building",
+              "level": "local",
+              "posture": "local_adoption_and_amendment_record_required",
+              "summary": "The applicable local adoption instrument and amendments must be retrieved for the location.",
+              "source_ids": ["src:us-co:accessibility-local", "src:us-co:energy-local"],
+              "verification": {"status": "partially_verified", "confidence": 0.8},
+          }
+          pack["applicability_rules"] = [
+              applicability,
+              *[item for item in pack["applicability_rules"] if item["id"] != applicability["id"]],
+          ]
+          pack["amendment_rules"] = [
+              amendment,
+              *[item for item in pack["amendment_rules"] if item["id"] != amendment["id"]],
+          ]
+          path.write_text(json.dumps(pack, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+          PY
+
+      - name: Remove one-shot workflow
+        run: rm .github/workflows/restore-colorado-local-rules.yml
+
+      - name: Commit restored rules
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add backend/data/regulatory/rules/colorado.json .github/workflows/restore-colorado-local-rules.yml
+          git commit -m "fix: preserve Colorado local-record rules"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
