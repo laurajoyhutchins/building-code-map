@@ -22,8 +22,9 @@ cache/
 # Deciduous local database and generated renderings
 .deciduous/*
 !.deciduous/README.md
-!.deciduous/deciduous.sql
+!.deciduous/deciduous.sql.zlib.b85.part-*
 !.deciduous/narratives.md
+docs/graph-data.json
 docs/git-history.json
 docs/decision-graph*.png
 docs/deciduous-graph*.png
