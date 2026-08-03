@@ -32,7 +32,7 @@ provenance:
   source: bootstrap
   transaction: null
   producer: comprehensive-repository-review
-supersedes: decision.point-based-resolution-boundary/1
+supersedes: lore://building-code-map/decision/decision.point-based-resolution-boundary@1
 payload:
   decision: Preserve POST /resolve as a point-only public contract. Normalized geographic context is internal evidence derived from the validated boundary snapshot, not caller input.
   composition: POST /lookup preserves geocoding evidence, uses the selected candidate point, and invokes the same boundary and regulatory path.
