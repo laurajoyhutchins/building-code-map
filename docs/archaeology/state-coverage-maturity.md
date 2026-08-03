@@ -16,11 +16,11 @@ A state file is not complete jurisdictional coverage.
 
 ## Current main
 
-| State | Current status on `main` | Why it was selected | Important gaps |
-| --- | --- | --- | --- |
-| Colorado | Executable pilot, partially verified | Predominantly local adoption plus state electrical override | Municipal adoptions, amendment detail, historical timelines, named local fixtures |
-| Florida | Executable pilot, partially verified | Statewide building-code baseline with local enforcement and amendment follow-up | Local enforcement and amendment evidence, historical and special-project fixtures |
-| New Jersey | Executable pilot, partially verified | Statewide construction subcodes plus separate operational-fire path | Local records, subcode timelines, fire-path details, historical and special-project fixtures |
+| State      | Current status on `main`             | Why it was selected                                                             | Important gaps                                                                               |
+| ---------- | ------------------------------------ | ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Colorado   | Executable pilot, partially verified | Predominantly local adoption plus state electrical override                     | Municipal adoptions, amendment detail, historical timelines, named local fixtures            |
+| Florida    | Executable pilot, partially verified | Statewide building-code baseline with local enforcement and amendment follow-up | Local enforcement and amendment evidence, historical and special-project fixtures            |
+| New Jersey | Executable pilot, partially verified | Statewide construction subcodes plus separate operational-fire path             | Local records, subcode timelines, fire-path details, historical and special-project fixtures |
 
 These are the only confirmed executable pilot profiles on main at the archaeology start SHA.
 
