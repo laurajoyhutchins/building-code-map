@@ -19,9 +19,11 @@ backend/*.egg-info/
 .ruff_cache/
 cache/
 
-# Deciduous database and generated public exports
-.deciduous/
-docs/graph-data.json
+# Deciduous local database and generated renderings
+.deciduous/*
+!.deciduous/README.md
+!.deciduous/deciduous.sql
+!.deciduous/narratives.md
 docs/git-history.json
 docs/decision-graph*.png
 docs/deciduous-graph*.png
