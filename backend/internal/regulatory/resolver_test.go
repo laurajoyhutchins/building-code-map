@@ -109,7 +109,7 @@ func TestResolveFloridaHistoricalDateUsesPriorEdition(t *testing.T) {
 	}
 }
 
-func TestResolveNewJerseyHistoricalDateFailsClosedWithoutEditionTimeline(t *testing.T) {
+func TestResolveNewJerseyHistoricalDatePreservesTransitionEditions(t *testing.T) {
 	catalog := loadTestCatalog(t)
 	result, err := Resolve(catalog, ResolutionRequest{
 		Context:           &GeographicContext{StateID: "US-NJ", StateFIPS: "34", Municipality: &BoundaryMatch{Name: "Trenton"}},
@@ -119,8 +119,15 @@ func TestResolveNewJerseyHistoricalDateFailsClosedWithoutEditionTimeline(t *test
 	if err != nil {
 		t.Fatal(err)
 	}
-	if result.Status != "insufficient_evidence" || len(result.Adoptions) != 0 {
-		t.Fatalf("undated current record leaked into historical result: %#v", result)
+	if result.Status != "partially_resolved" || len(result.Adoptions) != 2 {
+		t.Fatalf("historical transition result = %#v, want two supported editions", result)
+	}
+	ids := map[string]bool{}
+	for _, adoption := range result.Adoptions {
+		ids[adoption.ID] = true
+	}
+	if !ids["adoption:us-nj:building:2015"] || !ids["adoption:us-nj:building:2018"] {
+		t.Fatalf("historical transition editions = %#v", result.Adoptions)
 	}
 }
 
@@ -173,7 +180,7 @@ func TestResolveNewJerseyStateOwnedProjectAppliesProjectOverride(t *testing.T) {
 	if result.Status != "resolved" {
 		t.Fatalf("status = %q, want resolved", result.Status)
 	}
-	assertCandidateAuthority(t, result, "auth:us-nj:codes-standards")
+	assertCandidateAuthority(t, result, "auth:us-nj:bcpr")
 }
 
 func TestResolveSurfacesConflictingRelevantClaims(t *testing.T) {
