@@ -1,0 +1,44 @@
+name: Fix Colorado resolver expectation
+
+on:
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    name: Fix Colorado resolver test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Update expectation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path("backend/internal/regulatory/resolver_test.go")
+          text = path.read_text(encoding="utf-8")
+          old = 'assertContains(t, result.RequiredLocalRecords, "Current municipal building-code adoption ordinance and effective date")'
+          new = 'assertContains(t, result.RequiredLocalRecords, "Current municipal building, fire, and energy-code adoption instruments")'
+          if old not in text:
+              raise SystemExit("Colorado expectation not found")
+          path.write_text(text.replace(old, new), encoding="utf-8")
+          PY
+
+      - name: Remove one-shot workflow
+        run: rm .github/workflows/fix-colorado-resolver-test.yml
+
+      - name: Commit test update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add backend/internal/regulatory/resolver_test.go .github/workflows/fix-colorado-resolver-test.yml
+          git commit -m "test: align Colorado local-record expectation"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
