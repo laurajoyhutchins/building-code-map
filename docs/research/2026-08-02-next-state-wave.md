@@ -8,14 +8,14 @@ This inventory records the first authoritative sources, supported facts, unresol
 
 ## Onboarding order
 
-| State | Track | Primary reason |
-| --- | --- | --- |
-| Virginia | Data-first | Uniform statewide code, strong preemption, local enforcement. |
-| Oregon | Data-first | Excellent official edition and phase-in data by code family. |
-| North Carolina | Data-first with blocker | Current code is clear; replacement date is conditional. |
-| Massachusetts | Resolver extension | Energy code varies by municipality. |
-| New York | Resolver extension | New York City is excluded from the state code; local stricter standards are approved individually. |
-| California | Dedicated subsystem | Multi-agency scope, occupancy routing, and large local-amendment registry. |
+| State          | Track                   | Primary reason                                                                                     |
+| -------------- | ----------------------- | -------------------------------------------------------------------------------------------------- |
+| Virginia       | Data-first              | Uniform statewide code, strong preemption, local enforcement.                                      |
+| Oregon         | Data-first              | Excellent official edition and phase-in data by code family.                                       |
+| North Carolina | Data-first with blocker | Current code is clear; replacement date is conditional.                                            |
+| Massachusetts  | Resolver extension      | Energy code varies by municipality.                                                                |
+| New York       | Resolver extension      | New York City is excluded from the state code; local stricter standards are approved individually. |
+| California     | Dedicated subsystem     | Multi-agency scope, occupancy routing, and large local-amendment registry.                         |
 
 ## Virginia
 
