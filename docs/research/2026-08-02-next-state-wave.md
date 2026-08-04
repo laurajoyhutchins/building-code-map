@@ -5,54 +5,84 @@
 - Scope: Virginia, Oregon, North Carolina, Massachusetts, New York, and California
 - Status: three executable pilots; three resolver-dependent research tracks
 
-This document records the boundary between the implemented state-data wave and the states that still require new resolver capabilities. Executable does not mean complete: every pilot remains source-backed, partially verified, and explicit about required local records.
+This document separates the implemented state-data wave from states that still need new
+resolver capabilities.
 
-## Wave status
+Executable does not mean complete. Every pilot remains source-backed, partially verified,
+and explicit about required local records.
 
-| State | Status | Implemented or blocking boundary |
-| --- | --- | --- |
-| Virginia | Executable pilot | Statewide construction and existing-building baselines, local enforcement candidates, and the 2024-01-18 through 2025-01-17 transition rule. |
-| Oregon | Executable pilot | Current specialty-code adoptions, code-family-specific optional and mandatory dates, local-program candidates, and pending 2026 residential adoption. |
-| North Carolina | Executable pilot | Current 2018 building and residential baselines, local inspection with state supervision, and a conditionally pending 2024 transition without an invented date. |
-| Massachusetts | Research only | Requires municipality-conditioned energy-policy selection before Base, Stretch, and Specialized code paths can be compiled safely. |
-| New York | Research only | Requires explicit geographic exceptions for New York City and provision-level legal-status overrides. |
-| California | Research only | Requires occupancy and state-agency routing plus a separately refreshed local-amendment registry. |
+## Executable pilots
 
-## Implemented profiles
+### Virginia
 
-The human-reviewable source artifacts are:
+Virginia now has an executable pilot for statewide construction and existing-building
+baselines.
+
+The profile records local enforcement candidates and the transition period from 2024-01-18
+through 2025-01-17.
+
+Trade codes, operational fire authority, specialized project paths, and complete historical
+editions remain unresolved.
+
+### Oregon
+
+Oregon now has an executable pilot for the recorded building, existing-building, energy,
+residential, electrical, plumbing, and mechanical specialty-code families.
+
+Optional and mandatory dates remain separate. The anticipated 2026 residential code remains
+pending and is not returned as current.
+
+Local program boundaries, interim amendments, alternate methods, and prior-edition records
+remain incomplete.
+
+### North Carolina
+
+North Carolina now has an executable pilot for the current 2018 building and residential
+codes.
+
+The profile records State Fire Marshal supervision and local inspection candidates. The 2024
+code remains pending because implementation depends on a certification event and statutory
+delay.
+
+No calendar date is inferred. The resolver continues to return the 2018 baseline and requires
+the current certification record.
+
+## Canonical artifacts
 
 - `reports/pilots/virginia.md`
 - `reports/pilots/oregon.md`
 - `reports/pilots/north-carolina.md`
+- `backend/data/regulatory/virginia.json`
+- `backend/data/regulatory/oregon.json`
+- `backend/data/regulatory/north-carolina.json`
+- `backend/data/regulatory/rules/virginia.json`
+- `backend/data/regulatory/rules/oregon.json`
+- `backend/data/regulatory/rules/north-carolina.json`
 
-The compiler projects those reports into `backend/data/regulatory/*.json`. Executable rules, claims, source-health observations, and fixture identifiers live in `backend/data/regulatory/rules/*.json`.
+## Resolver-dependent research tracks
 
-### Virginia
+### Massachusetts
 
-The pilot records the Board of Housing and Community Development as the statewide adopting authority, the 2021 Virginia Construction Code and Existing Building Code, local enforcement candidates, statewide preemption within the USBC scope, and the one-year prior-edition election period. Trade codes, operational fire authority, specialized project paths, and complete historical editions remain unresolved.
+Massachusetts remains research-only.
 
-### Oregon
+Municipality-conditioned policy selection is required before Base, Stretch, and Specialized
+energy-code paths can be compiled safely.
 
-The pilot records current building, existing-building, commercial-energy, residential, electrical, plumbing, and mechanical specialty-code paths. Optional and mandatory dates are represented separately. The anticipated 2026 Oregon Residential Specialty Code remains pending and is not returned as current. Local program boundaries, interim amendments, alternate methods, and prior-edition records remain incomplete.
+### New York
 
-### North Carolina
+New York remains research-only.
 
-The pilot records the current 2018 building and residential codes, the state code councils, State Fire Marshal supervision, and local inspection candidates. The 2024 code remains pending because its implementation depends on a certification event and statutory delay. No calendar date is inferred. The resolver continues to return the 2018 baseline and requires the current certification record.
+The resolver needs an explicit New York City exception and provision-level legal-status
+overrides before the state profile can be executable.
 
-## Deferred resolver capabilities
+### California
 
-### Municipality-conditioned policy
+California remains research-only.
 
-Massachusetts energy-code resolution depends on maintained municipality-level policy and effective dates. A state-wide default plus an unconstrained local override would be unsafe.
+The state needs project and occupancy routing among state agencies and local authorities. It
+also needs a separately refreshed local-ordinance registry.
 
-### Geographic exceptions and provision status
-
-New York requires an explicit New York City exclusion from the state Uniform Code and a way to preserve provision-level suspensions or other legal-status changes without invalidating an entire adoption.
-
-### Multi-agency and occupancy routing
-
-California requires project and occupancy routing among state agencies and local enforcing authorities, plus a versioned local-ordinance registry. This is a dedicated subsystem, not another flat state profile.
+This is a bounded subsystem, not another flat state profile.
 
 ## Cross-state requirements exposed
 
@@ -65,8 +95,8 @@ California requires project and occupancy routing among state agencies and local
 
 ## Next work
 
-- Expand the three executable pilots only through source-backed code-family, authority, amendment, and fixture increments.
+- Expand the executable pilots through source-backed code-family and authority increments.
 - Add prior-edition records before claiming complete historical transition results.
-- Design and test municipality-conditioned policy selection before promoting Massachusetts.
+- Design municipality-conditioned policy selection before promoting Massachusetts.
 - Design geographic exceptions and provision-level status before promoting New York.
-- Design California occupancy routing and local-amendment ingestion as a bounded subsystem before promoting California.
+- Design California routing and amendment ingestion before promoting California.
