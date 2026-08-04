@@ -15,7 +15,7 @@ The product combines three deliberately separate systems: address-to-point geoco
 - Go HTTP API
 - local SQLite boundary snapshots, with legacy DuckDB migration compatibility
 - state, county, municipality, special land-use, American Indian area, and NERIS jurisdiction layers
-- source-backed state jurisdiction and adopted-code policy for pilot states
+- source-backed jurisdiction and adopted-code policy for six executable pilot states: Colorado, Florida, New Jersey, Virginia, Oregon, and North Carolina
 - LORE-compatible semantic documentation trust root
 - read-only GitHub Actions verification for frontend, backend, regulatory data, and repository documentation
 
@@ -135,16 +135,16 @@ Address sources require independent licensing and redistribution review. See [Bu
 - local address or coordinate entry
 - provenance-bearing address-point and interpolated geocoding
 - cached boundary exploration and geographic resolution
-- source-backed pilot-state regulatory resolution
+- source-backed regulatory resolution for six executable pilot states
 - explicit uncertainty and required-local-record outputs
 
 ### Next
 
 - acquire and review production address sources for selected jurisdictions
-- broaden municipal adopted-code coverage
+- deepen code-family, authority, amendment, and fixture coverage within the executable pilots
 - add reproducible boundary and address refresh workflows
 - improve candidate ranking using deterministic source-specific rules
-- extend source-backed regulatory profiles beyond the pilot states
+- design municipality-conditioned policy, geographic exceptions, provision-level status, and multi-agency routing before promoting Massachusetts, New York, or California
 
 ### Later
 
