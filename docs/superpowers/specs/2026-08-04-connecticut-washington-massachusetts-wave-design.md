@@ -2,376 +2,391 @@
 
 - Design date: 2026-08-04
 - Repository: `laurajoyhutchins/building-code-map`
-- Status: approved design, awaiting owner review of the committed specification
-- Depends on: the Virginia, Oregon, and North Carolina executable wave in draft PR #39, or equivalent changes merged to `main`
+- Status: approved design, awaiting owner review of this committed specification
+- Dependency: the Virginia, Oregon, and North Carolina executable wave in draft PR #39, or equivalent changes merged to `main`
 
 ## Decision
 
-Implement the next state-expansion wave as a mixed portfolio:
+Implement the next expansion wave as:
 
-1. Connecticut, using the existing resolver to strengthen permit-application-date history.
-2. Washington, using the existing resolver to add a broad statewide code-family pilot while preserving separate authority boundaries.
-3. Massachusetts, after adding one generic jurisdiction-conditioned policy-layer capability for municipal energy-code selection.
+1. Connecticut, exercising existing date-aware resolution.
+2. Washington, exercising existing statewide code-family and authority modeling.
+3. Massachusetts, adding one generic jurisdiction-conditioned policy-layer capability for municipal energy-code selection.
 
-This wave deliberately combines two low-friction state profiles with one bounded resolver extension. It must not create state-name branches in the resolver or turn Massachusetts into a one-off special case.
+The wave combines two low-friction pilots with one bounded resolver extension. It must not add state-name branches to the resolver or create a Massachusetts-only data path.
 
 ## Why this composition
 
-The repository already supports source-backed state profiles, code-family overrides, date rules, pending adoptions, local enforcement candidates, and explicit unresolved records. Connecticut and Washington fit those concepts.
+The repository already supports state profiles, code-family overrides, date rules, pending adoptions, authority candidates, source evidence, and explicit uncertainty. Connecticut and Washington fit those concepts.
 
-Massachusetts exposes a reusable missing capability: a statewide baseline can be modified by a municipality-selected policy tier whose legal effect begins on a recorded date. The state publishes a current municipality-by-municipality inventory for all 351 municipalities, including Base, Stretch, or Specialized energy-code status and effective date. That makes Massachusetts a suitable first jurisdiction-conditioned policy layer, provided the system preserves source snapshots, canonical municipality identity, temporal validity, and uncertainty.
+Massachusetts exposes one reusable gap: a statewide baseline can be modified by a municipality-selected policy tier whose legal effect begins on a recorded date. Massachusetts publishes a current inventory covering all 351 municipalities and identifies each municipality's Base, Stretch, or Specialized energy-code tier and effective date.
+
+This is a better capability increment than attempting New York geographic exceptions or California multi-agency project routing in the same wave.
 
 ## Alternatives considered
 
-### Throughput-only wave
+### Throughput only
 
-Connecticut, Washington, South Carolina, and New Mexico could be implemented without a resolver extension. This would maximize state count but postpone a known architecture gap and leave Massachusetts research-only.
+Connecticut, Washington, South Carolina, and New Mexico would increase state count fastest, but would postpone a known resolver gap.
 
-### Capability-only wave
+### Capability heavy
 
-Massachusetts, New York, and California could be used to expand the resolver aggressively. This would combine municipality-conditioned policies, geographic exceptions, provision-level legal status, multi-agency project routing, and local amendment registries in one wave. The result would be too broad to verify cleanly.
+Massachusetts, New York, and California would combine municipality-conditioned policies, geographic exceptions, provision-level legal status, agency routing, and local amendment registries. That is too broad for one verifiable wave.
 
 ### Selected mixed wave
 
-Connecticut and Washington exercise the current model. Massachusetts adds exactly one generic capability. New York and California remain deferred until their distinct routing problems can be designed independently.
+Connecticut and Washington validate the current architecture. Massachusetts adds exactly one reusable capability. New York and California remain separately bounded future designs.
 
-## Governing principles
+## Governing boundaries
 
-The implementation must preserve the distinction among:
+The implementation must preserve distinctions among:
 
-- address and normalized location input;
+- location input and normalized address;
 - geographic boundary observations;
-- canonical legal jurisdiction identity;
-- statewide code adoptions;
+- legal jurisdiction identity;
+- statewide adoption records;
 - municipality-conditioned policy selections;
-- effective-date observations;
+- applicable dates;
 - enforcement authority;
 - source snapshots;
-- compiler output;
+- compiled records;
 - resolver conclusions;
-- unresolved or stale evidence.
+- stale, incomplete, conflicting, or unresolved evidence.
 
-A municipality name match, program designation, map color, or current web-table row must not silently become a timeless legal conclusion.
+A municipality name, map color, community designation, or current web row must not become a timeless legal conclusion.
 
-## Scope
-
-### Connecticut pilot
+## Connecticut pilot
 
 Connecticut is the historical-date pilot.
 
-Minimum executable scope:
+### Minimum scope
 
-- record the current 2022 Connecticut State Building Code;
-- record the 2018 and 2016 predecessor editions as historical adoptions;
-- use permit-application date as the controlling temporal input for the recorded code families;
-- implement at least building and residential code-family resolution;
-- preserve the state adopting authority and local enforcement candidates;
-- record errata as source evidence without treating an errata publication date as a new code-edition effective date;
-- return unresolved results for code families or project paths not independently verified.
+- Record the current 2022 Connecticut State Building Code.
+- Record the 2018 and 2016 predecessor editions as historical adoptions.
+- Implement at least building and residential resolution.
+- Preserve the state adopting authority and local enforcement candidates.
+- Record errata as evidence without treating an errata publication date as a new edition effective date.
+- Leave unverified families and project paths unresolved.
 
-Required boundary behavior:
+### Date semantics
 
-- a permit application dated 2022-09-30 resolves to the 2018 edition for covered families;
-- a permit application dated 2022-10-01 resolves to the 2022 edition;
-- a permit application dated 2018-09-30 resolves to the 2016 edition;
-- a permit application dated 2018-10-01 resolves to the 2018 edition;
-- a query without the controlling permit-application date must not pretend to provide a historical edition choice.
+The existing request field `applicability_date` is reused. For covered Connecticut families, it represents the permit-application date because the official edition history is keyed to permit applications.
 
-Additional code families may be added only when their exact Connecticut adoption, amendment, authority, and temporal scope are independently source-backed. They are not required for pilot completion.
+The resolver does not gain a Connecticut-specific date field. The Connecticut profile and rule pack must explain the controlling date meaning and require the permit record as evidence.
 
-### Washington pilot
+A caller that omits `applicability_date` receives the existing current-date default. That result may answer a current query, but must not be presented as a historical permit-date determination.
+
+### Required boundaries
+
+- 2018-09-30 selects the 2016 edition.
+- 2018-10-01 selects the 2018 edition.
+- 2022-09-30 selects the 2018 edition.
+- 2022-10-01 selects the 2022 edition.
+- A historical conclusion lacking the permit-application date remains insufficiently supported.
+
+Additional code families are optional and require exact adoption, amendment, authority, and temporal evidence.
+
+## Washington pilot
 
 Washington is the broad statewide-family pilot.
 
-Minimum executable scope:
+### Minimum scope
 
-- record the 2021 Washington State Building Code family effective 2024-03-15;
-- cover building, existing building, residential, mechanical, fire, plumbing, commercial energy, and residential energy where official state sources support exact mappings;
-- preserve the State Building Code Council as the adopting authority for those recorded families;
-- preserve local administering and enforcement candidates separately from statewide adoption;
-- record the 2024 adoption cycle as pending rulemaking without assigning operative dates before final adopted rules provide them;
-- keep electrical adoption outside the State Building Code Council family and identify the Department of Labor and Industries as a separate authority path requiring its own source-backed profile increment;
-- leave the wildland-urban-interface path unresolved in this pilot because the 2026 reserved-status and mapping dependencies require separate treatment.
+- Record the 2021 Washington State Building Code family effective 2024-03-15.
+- Cover building, existing building, residential, mechanical, fire, plumbing, commercial energy, and residential energy where official sources support exact mappings.
+- Preserve the State Building Code Council as adopting authority for those families.
+- Preserve local administration and enforcement separately.
+- Record the 2024 adoption cycle as pending rulemaking without inferred operative dates.
+- Preserve electrical adoption as a separate Department of Labor and Industries authority path.
+- Leave wildland-urban-interface resolution outside this pilot because the 2026 reserved-status and mapping dependencies require separate treatment.
 
-Required boundary behavior:
+### Required boundaries
 
-- an applicable date of 2024-03-14 resolves to the prior recorded edition for covered families when the predecessor record is present;
-- an applicable date of 2024-03-15 resolves to the 2021 edition;
-- pending 2024-cycle records never appear as current adoptions;
-- an electrical query does not inherit an International Residential Code electrical chapter or a State Building Code Council adoption by implication;
-- unresolved local amendments and enforcement details remain visible.
+- 2024-03-14 selects the prior recorded edition when that predecessor is modeled.
+- 2024-03-15 selects the 2021 edition.
+- Pending 2024-cycle records never appear as current.
+- Electrical queries do not inherit an IRC electrical chapter or State Building Code Council adoption by implication.
+- Local amendments and enforcement details remain explicit unresolved records where not verified.
 
-### Massachusetts pilot
+## Massachusetts pilot
 
 Massachusetts is the capability pilot.
 
-Minimum executable scope:
+### Minimum scope
 
-- record the statewide 10th-edition building-code baseline and its verified effective/concurrency history;
-- record statewide Base energy-code adoptions for residential and commercial energy;
-- record Stretch and Specialized energy-code adoption bundles from 225 CMR 22 and 225 CMR 23;
-- compile a versioned snapshot of the official municipal energy-code inventory covering all 351 municipalities;
-- select Base, Stretch, or Specialized policy by canonical municipality identity and applicable date;
-- preserve the municipality record, source snapshot, effective date, and verification state in the resolver result;
-- keep non-energy local rules and amendments outside the policy-layer mechanism.
+- Record the statewide 10th-edition building-code baseline and verified concurrency history.
+- Record statewide Base residential and commercial energy adoptions.
+- Record Stretch and Specialized residential and commercial adoption bundles from 225 CMR 22 and 225 CMR 23.
+- Compile a versioned snapshot of the official municipal inventory covering all 351 municipalities.
+- Select Base, Stretch, or Specialized by canonical municipality identity and applicable date.
+- Preserve the municipality record, source snapshot, effective date, and verification state in the result.
+- Keep non-energy local rules outside the policy-layer mechanism.
 
-The policy-layer capability is limited to selecting among already modeled adoption bundles. It does not interpret ordinance text, infer amendments, or rewrite statewide adoption records.
+The new mechanism selects among modeled adoption bundles. It does not interpret ordinances, infer amendments, or rewrite statewide adoption records.
 
 ## Jurisdiction-conditioned policy-layer contract
 
-### Data ownership
+### Data ownership and loading
 
-The state profile owns statewide authorities and adoption records.
+State profiles continue to own statewide authorities and adoptions.
 
-A separate policy-layer artifact owns municipality-conditioned selections. The initial artifact should be stored under a generic regulatory-data namespace rather than embedded in Massachusetts-specific resolver code, for example:
+Policy layers are independent catalog artifacts stored under a generic namespace:
+
+`backend/data/regulatory/policy-layers/`
+
+The Massachusetts artifact is:
 
 `backend/data/regulatory/policy-layers/massachusetts-energy.json`
 
-The exact filename may follow repository naming conventions, but the compiled concept must remain a generic policy layer.
+The catalog loads and validates profiles, rule packs, and policy layers. It indexes policy layers by normalized `state_id` and `code_family`.
+
+State profiles remain schema version 1.0. No mechanical migration of existing profiles is required. Cross-artifact validation ensures that policy-layer adoption IDs exist in the referenced state profile.
+
+The policy-layer schema begins at version 1.0.
 
 ### Layer fields
 
-Each policy layer must contain:
+Each layer contains:
 
 - `schema_version`;
 - stable `layer_id`;
 - `state_id`;
-- one or more applicable `code_family` values;
+- covered `code_families`;
 - `jurisdiction_kind`, initially `municipality`;
-- `selector_key`, referencing the canonical legal-jurisdiction identifier emitted by the jurisdiction pipeline;
+- `selector_key`, initially `geography.municipality.feature_id`;
 - source snapshot metadata;
 - expected and observed coverage counts;
-- a deterministic content hash;
-- one or more policy-tier definitions;
+- deterministic content hash;
+- policy-tier definitions;
 - jurisdiction policy records;
 - verification metadata.
 
+Only one active layer may exist for a state and code family.
+
 ### Policy tiers
 
-The Massachusetts layer has exactly three mutually exclusive tiers:
+The Massachusetts layer defines exactly three mutually exclusive tiers:
 
 - `base`;
 - `stretch`;
 - `specialized`.
 
-A tier selects an adoption bundle rather than manufacturing a new adoption at query time.
+A tier selects an adoption bundle rather than creating an adoption during resolution.
 
-- Base selects the statewide Base residential or commercial energy adoption.
-- Stretch selects the applicable Stretch adoption bundle.
-- Specialized selects the applicable Stretch provisions plus the Specialized appendices represented by the modeled Specialized adoption bundle.
+- Base selects the statewide Base adoption.
+- Stretch selects the applicable Stretch bundle.
+- Specialized selects the modeled Stretch provisions plus Specialized appendices as one defined bundle.
 
-The resolver must select exactly one tier for each covered municipality, code family, and applicable date. It must never combine Base, Stretch, and Specialized as three independent current alternatives.
+The resolver selects exactly one tier for each covered municipality, family, and date. It must not present all three as concurrent alternatives.
 
 ### Jurisdiction records
 
-Each jurisdiction policy record must contain:
+Each record contains:
 
-- canonical `jurisdiction_id`;
-- human-readable municipality name for auditability only;
+- canonical `jurisdiction_id`, equal to the municipality boundary `feature_id` used by the legal-jurisdiction pipeline;
+- municipality name for audit only;
 - `policy_tier_id`;
 - `effective_from`;
 - optional `effective_through`;
-- optional `adopted_on` when an official source establishes it;
-- source identifier and source-row locator;
+- optional `adopted_on` only when an official source establishes it;
+- source identifier and row locator;
 - verification status and confidence;
-- optional notes describing incomplete history.
+- notes identifying incomplete history when needed.
 
-Missing adoption dates remain null. They must not be copied from effective dates or inferred from program membership.
+Missing adoption dates remain absent. They are not copied from effective dates or inferred from program membership.
 
 ### Canonical identity
 
-Runtime matching must use the canonical legal-jurisdiction identifier already produced by the location and authority pipeline. Free-text municipality-name matching is prohibited at resolution time.
+Resolution uses `GeographicContext.Municipality.FeatureID`. Runtime free-text municipality matching is prohibited.
 
-Ingestion may use a reviewed alias table to map official source names to canonical IDs. The compiler must reject:
+Ingestion may use a reviewed alias table to map official names to canonical feature IDs. Compilation rejects:
 
-- duplicate canonical municipality IDs;
-- source rows that map to multiple jurisdictions;
-- canonical jurisdictions with conflicting active tiers;
+- duplicate canonical IDs;
+- one source row mapped to multiple jurisdictions;
+- conflicting active tiers;
 - unrecognized source municipalities;
-- coverage counts other than 351 for a snapshot declared complete.
+- missing canonical municipalities;
+- any snapshot claiming complete coverage with a count other than 351.
 
 ### Temporal behavior
 
-Policy records are intervals, not timeless labels.
+Policy records are intervals.
 
-The evaluator selects the record whose interval contains the applicable date. When the current official inventory supplies only the current tier and its effective date, the compiler must not infer the prior tier. Queries before that effective date remain unresolved unless a predecessor interval is independently sourced.
+The evaluator selects the record containing `applicability_date`. When the official inventory supplies only a current tier and its effective date, the compiler does not infer the prior tier. Earlier queries remain unresolved unless a predecessor interval is independently sourced.
 
-A future effective date remains pending and does not alter the current result.
+Future records remain pending until their effective date.
 
-### Freshness and source snapshots
+### Source snapshots and freshness
 
-The resolver performs no live web scraping.
+The resolver performs no live scraping.
 
-The official Massachusetts inventory is ingested into a normalized, reviewable snapshot that records:
+The normalized snapshot records:
 
 - source URL and title;
-- page observation date;
-- source-declared status date when present;
+- observation date;
+- source-declared status date;
 - extraction method;
-- source record count;
-- normalized record count;
+- source and normalized row counts;
 - canonical match count;
 - content hash;
 - compiler version;
 - refresh due date.
 
-The initial snapshot must have a concrete refresh due date of 2026-09-04. After that date, the system may still report what the snapshot observed, but it must mark current status as stale and require renewed official confirmation rather than presenting the tier as freshly verified.
+The initial snapshot refresh due date is 2026-09-04. After that date, the resolver may report the last observed tier, but must mark it stale, expose the observation date, and require current official confirmation.
 
-Freshness policy remains data-driven through the existing regulatory rule-pack mechanism. No Massachusetts state-name condition belongs in resolver code.
+Freshness remains data-driven through regulatory rules. No Massachusetts condition belongs in resolver code.
+
+## Result contract
+
+The resolution result gains an optional `jurisdiction_policy_selection` object containing:
+
+- layer ID and schema version;
+- jurisdiction ID and name;
+- selected tier ID;
+- selected adoption IDs;
+- effective interval;
+- source snapshot ID and observation date;
+- freshness state;
+- verification metadata.
+
+The existing `adoptions` array continues to contain the adoption records selected for practical applicability. The policy-selection object explains why the municipal bundle was selected.
+
+This is an additive public-result change. `ResultSchemaVersion` advances from `1.0` to `1.1`. Existing result fields retain their meanings.
 
 ## Resolution flow
 
-For a query involving a policy-layer code family:
+For a covered family:
 
-1. Resolve geographic observations and canonical legal jurisdiction through the existing pipeline.
-2. Resolve the statewide state profile and baseline adoption candidates.
-3. Determine whether the requested code family references a policy layer.
-4. Require one unambiguous canonical municipality identifier.
-5. Find the time-valid jurisdiction policy record.
-6. Select the record's policy tier and its pre-modeled adoption bundle.
-7. Return the statewide baseline and municipality policy selection as distinct evidence-bearing objects.
-8. Attach snapshot identity, effective date, source locator, freshness state, and unresolved warnings.
+1. Resolve geography and legal jurisdiction through the existing pipeline.
+2. Resolve the state profile and statewide baseline.
+3. Look up a policy layer by state and code family.
+4. Require one municipality `feature_id` when a layer applies.
+5. Select the time-valid jurisdiction record.
+6. Select the record's pre-modeled adoption bundle.
+7. Return adoptions and a distinct policy-selection provenance object.
+8. Attach snapshot identity, effective dates, freshness, evidence, and unresolved warnings.
 
-The policy selection must not mutate the underlying statewide adoption record. Downstream projections may present the combined practical result, but the normalized response must preserve both claims.
+The policy selection does not mutate statewide adoption records.
 
 ## Failure and uncertainty behavior
 
-The evaluator fails closed when:
+Resolution fails closed when:
 
-- the municipality is missing or ambiguous;
-- the official row cannot be mapped to a canonical jurisdiction;
-- two active records overlap for the same municipality and family;
+- municipality identity is missing or ambiguous;
+- a source row cannot map to one canonical jurisdiction;
+- active records overlap;
 - no time-valid record exists;
-- a policy tier references a missing adoption bundle;
-- source coverage is incomplete while the layer claims complete coverage;
-- the snapshot or compiled artifact fails hash or drift validation.
+- a tier references missing adoptions;
+- a complete snapshot has incomplete coverage;
+- snapshot or generated-artifact hashes fail;
+- multiple layers claim the same state and family.
 
-A stale snapshot is not equivalent to a missing snapshot. The resolver may report the last observed tier, but must downgrade verification, expose the observation date, and require current confirmation.
+A stale snapshot is reported as a stale observation, not erased and not presented as freshly verified.
 
-The resolver must not infer a tier from:
+The resolver must not infer a tier from community-program membership, neighbors, county, population, a municipal website outside the normalized snapshot, a prior or future interval, or the presence of code text.
 
-- Green Community or Climate Leader Community membership;
-- neighboring municipalities;
-- population or county;
-- a municipality's current website without a normalized source record;
-- a prior or later policy interval;
-- the presence of Stretch or Specialized code text in the repository.
+## Compiler and quality reporting
 
-## Compiler and validation design
+The compiler validates:
 
-The regulatory compiler must validate policy layers alongside state profiles and rule packs.
-
-Validation must include:
-
-- schema validation;
-- referential integrity to state profiles, code families, adoption IDs, sources, and canonical jurisdictions;
-- interval ordering and overlap detection;
-- mutually exclusive tier selection;
+- schema and referential integrity;
+- jurisdiction IDs;
+- interval order and overlap;
+- mutually exclusive tiers;
 - source and normalized coverage counts;
-- stable ordering and deterministic serialization;
-- content-hash verification;
-- generated-artifact drift checks;
-- source-health and refresh-due checks.
+- deterministic ordering and serialization;
+- content hashes;
+- generated-artifact drift;
+- freshness rules.
 
-The nationwide quality report must distinguish:
+The nationwide quality report separately reports:
 
-- state profile coverage;
+- state-profile coverage;
 - code-family coverage;
-- municipality policy-layer coverage;
+- policy-layer jurisdiction coverage;
 - current versus historical interval completeness;
-- fresh, stale, partially verified, and unresolved evidence.
+- fresh, stale, partially verified, conflicting, and unresolved evidence.
 
-A state must not be reported as historically complete merely because its current municipal snapshot covers all jurisdictions.
+Complete current municipality coverage must not be described as complete historical coverage.
 
 ## Testing strategy
 
-### Test-first state fixtures
+Add failing tests before each implementation phase.
 
-Add failing resolver tests before each profile or policy artifact exists.
+### Connecticut
 
-Connecticut tests:
-
-- 2016/2018 boundary on 2018-10-01;
-- 2018/2022 boundary on 2022-10-01;
-- missing permit-application date for a historical query;
-- current query for a covered family;
+- 2016/2018 boundary;
+- 2018/2022 boundary;
+- current query using the default applicability date;
+- historical query using an explicit permit-application date;
+- warning or required-record behavior when historical date evidence is absent;
 - unresolved family behavior.
 
-Washington tests:
+### Washington
 
-- 2018/2021 boundary on 2024-03-15;
+- 2018/2021 boundary;
 - current resolution for every included family;
 - pending 2024-cycle exclusion;
 - separate electrical authority behavior;
 - unresolved wildland-urban-interface behavior;
 - local enforcement candidate preservation.
 
-Massachusetts tests:
+### Massachusetts
 
 - one Base municipality;
 - one Stretch municipality;
 - one Specialized municipality;
-- residential and commercial energy bundles;
+- residential and commercial bundles;
 - exact effective-date boundary;
-- future policy record exclusion;
+- future record exclusion;
 - missing predecessor interval;
-- unknown municipality;
-- ambiguous municipality identity;
-- duplicate and overlapping records rejected by the compiler;
-- 350-row incomplete snapshot rejected when declared complete;
-- stale snapshot warning after 2026-09-04;
-- deterministic compilation and drift detection.
+- missing municipality;
+- unknown feature ID;
+- duplicate and overlapping record rejection;
+- 350-row incomplete snapshot rejection;
+- stale warning after 2026-09-04;
+- deterministic compilation and drift detection;
+- result schema version 1.1 and policy-selection provenance.
 
-### Regression requirements
-
-All existing Colorado, Florida, New Jersey, Virginia, Oregon, and North Carolina tests must continue to pass unchanged unless a generic schema migration requires mechanical fixture updates. A generic migration must preserve their observable resolver behavior.
-
-No test may encode a state-name branch as the expected implementation mechanism.
+All existing state tests must continue to pass. Existing profile fixtures should not require migration because the profile schema remains 1.0.
 
 ## Implementation sequence
 
 1. Land or rebase onto the Virginia, Oregon, and North Carolina wave.
-2. Add Connecticut test-first fixtures, profile, rule pack, pilot report, and historical date records.
-3. Add Washington test-first fixtures, profile, rule pack, pilot report, authority separations, and pending-cycle records.
-4. Add policy-layer schema and compiler tests without Massachusetts data.
-5. Add the generic policy-layer evaluator and result-provenance fields.
-6. Ingest and normalize the Massachusetts municipal energy inventory snapshot.
-7. Add Massachusetts statewide profile, energy adoption bundles, rule pack, and pilot report.
-8. Add Massachusetts resolver, compiler, freshness, and coverage tests.
-9. Update readiness documentation, nationwide quality reporting, and public status language.
+2. Add Connecticut test-first fixtures, profile, rules, pilot report, and historical records.
+3. Add Washington test-first fixtures, profile, rules, pilot report, authority separation, and pending records.
+4. Add policy-layer schema, catalog loading, and compiler tests without Massachusetts data.
+5. Add the generic evaluator and result-schema 1.1 provenance object.
+6. Ingest and normalize the Massachusetts municipal snapshot.
+7. Add Massachusetts statewide profile, adoption bundles, rules, and pilot report.
+8. Add Massachusetts resolver, freshness, coverage, and drift tests.
+9. Update readiness documentation and nationwide quality reporting.
 10. Run exact-head backend, regulatory-data, frontend, and documentation verification.
 
-Implementation commits should remain reviewable by phase. The policy-layer engine and the Massachusetts data snapshot should not arrive as one opaque commit.
+The policy engine and Massachusetts dataset remain separate reviewable commits.
 
-## Readiness claims
+## Permitted readiness claims
 
-After this wave, documentation may claim:
+After successful implementation, documentation may claim:
 
-- Connecticut is an executable, partially verified pilot for the recorded families and historical permit-date windows.
-- Washington is an executable, partially verified pilot for the recorded statewide code families.
-- Massachusetts is an executable, partially verified pilot for the statewide baseline and municipality-conditioned energy-code tier selection.
-- the Massachusetts current municipal snapshot has complete 351-municipality identity coverage if the compiler proves it.
+- Connecticut is an executable, partially verified pilot for recorded families and permit-date windows.
+- Washington is an executable, partially verified pilot for recorded statewide families.
+- Massachusetts is an executable, partially verified pilot for statewide baselines and municipality-conditioned energy tiers.
+- The Massachusetts current snapshot covers all 351 municipality identities only when compilation proves it.
 
-Documentation must not claim:
-
-- complete code-family coverage for any of the three states;
-- complete local amendment coverage;
-- complete historical Massachusetts municipal tier history;
-- resolved electrical authority in Washington unless a separate source-backed increment is implemented;
-- resolved Massachusetts non-energy local rules;
-- nationwide jurisdiction-conditioned policy support beyond the generic mechanism and its verified datasets.
+It must not claim complete code-family coverage, complete local amendments, complete Massachusetts policy history, resolved Washington electrical adoption, resolved Massachusetts non-energy local rules, or nationwide policy-layer completeness.
 
 ## Deferred work
 
-South Carolina and New Mexico remain candidates for the next throughput-oriented state wave.
+South Carolina and New Mexico remain candidates for the next throughput wave.
 
-New York remains deferred until the repository has a separately designed geographic-exception and provision-level legal-status mechanism.
+New York remains deferred pending a geographic-exception and provision-status design.
 
-California remains deferred until project/occupancy routing, state-agency jurisdiction, and local-amendment registry ingestion are designed as a bounded subsystem.
+California remains deferred pending a bounded design for project and occupancy routing, state-agency jurisdiction, and local amendment ingestion.
 
 ## Source baseline
 
-Sources verified during design on 2026-08-04 include:
+Verified on 2026-08-04:
 
 ### Connecticut
 
@@ -379,15 +394,15 @@ Sources verified during design on 2026-08-04 include:
 
 ### Washington
 
-- Washington State Building Code Council, State Codes, Regulations & Guidelines: `https://sbcc.wa.gov/state-codes-regulations-guidelines`
-- Washington State Building Code Council, Building Code Amendments: `https://sbcc.wa.gov/state-codes-regulations-guidelines/state-building-code/building-code-amendments`
-- Washington State Building Code Council, 2024 Code Adoption Cycle: `https://sbcc.wa.gov/2024-code-adoption-cycle`
+- State Codes, Regulations & Guidelines: `https://sbcc.wa.gov/state-codes-regulations-guidelines`
+- Building Code Amendments: `https://sbcc.wa.gov/state-codes-regulations-guidelines/state-building-code/building-code-amendments`
+- 2024 Code Adoption Cycle: `https://sbcc.wa.gov/2024-code-adoption-cycle`
 
 ### Massachusetts
 
-- Massachusetts Department of Energy Resources, Massachusetts Building Energy Codes: `https://www.mass.gov/info-details/massachusetts-building-energy-codes`
-- Massachusetts Department of Energy Resources, Building Energy Code Adoption by Municipality: `https://www.mass.gov/info-details/massachusetts-building-energy-code-adoption-by-municipality`
-- Massachusetts 225 CMR 22.00: `https://www.mass.gov/regulations/225-CMR-2200-massachusetts-stretch-code-and-specialized-code-for-low-rise-residential-2025-residential-low-rise-amendments-to-iecc2021-and-irc-2021-chapter-11-energy-efficiency`
-- Massachusetts 225 CMR 23.00: `https://www.mass.gov/regulations/225-CMR-2300-massachusetts-stretch-code-and-specialized-code-for-commercial-multi-family-and-all-other-construction-2025-amendments-to-iecc2021-and-ashrae-standards-901-2019`
+- Massachusetts Building Energy Codes: `https://www.mass.gov/info-details/massachusetts-building-energy-codes`
+- Building Energy Code Adoption by Municipality: `https://www.mass.gov/info-details/massachusetts-building-energy-code-adoption-by-municipality`
+- 225 CMR 22.00: `https://www.mass.gov/regulations/225-CMR-2200-massachusetts-stretch-code-and-specialized-code-for-low-rise-residential-2025-residential-low-rise-amendments-to-iecc2021-and-irc-2021-chapter-11-energy-efficiency`
+- 225 CMR 23.00: `https://www.mass.gov/regulations/225-CMR-2300-massachusetts-stretch-code-and-specialized-code-for-commercial-multi-family-and-all-other-construction-2025-amendments-to-iecc2021-and-ashrae-standards-901-2019`
 
-These sources establish the design baseline, not the complete implementation evidence set. Each executable record still requires exact source attribution and verification during implementation.
+These sources establish the design baseline. Each executable record still requires exact source attribution and implementation-time verification.
