@@ -22,37 +22,31 @@ func ParseAllowedOrigins(rawValue string) []string {
 	if rawValue == "" {
 		return append([]string(nil), defaultAllowedOrigins...)
 	}
-
 	origins := strings.Split(rawValue, ",")
 	validOrigins := make([]string, 0, len(origins))
 	for _, origin := range origins {
 		candidate := strings.TrimRight(strings.TrimSpace(origin), "/")
-		if candidate == "" {
-			continue
-		}
-
-		if isValidOrigin(candidate) {
+		if candidate != "" && isValidOrigin(candidate) {
 			validOrigins = append(validOrigins, candidate)
 		}
 	}
-
 	if len(validOrigins) == 0 {
 		return append([]string(nil), defaultAllowedOrigins...)
 	}
-
 	return validOrigins
 }
 
 type Options struct {
-	AllowedOrigins      []string
-	RegulatoryCatalog   regulatory.Catalog
-	Geocoder            geocoder.Service
-	BoundarySnapshotID  string
-	GeocoderSnapshotID  string
+	AllowedOrigins     []string
+	RegulatoryCatalog  regulatory.Catalog
+	Geocoder           geocoder.Service
+	BoundarySnapshotID string
+	GeocoderSnapshotID string
 }
 
 type Handler struct {
 	snapshot           snapshot.Snapshot
+	boundaryMapRecords []snapshot.BoundaryMapRecord
 	layerIndex         map[string]snapshot.LayerFamily
 	featureIndex       map[string]snapshot.BoundaryFeature
 	allowedOrigins     map[string]struct{}
@@ -67,14 +61,13 @@ func NewHandler(snap snapshot.Snapshot, options ...Options) http.Handler {
 	if len(options) > 0 {
 		opt = options[0]
 	}
-
 	allowedOrigins := opt.AllowedOrigins
 	if len(allowedOrigins) == 0 {
 		allowedOrigins = defaultAllowedOrigins
 	}
-
 	handler := &Handler{
 		snapshot:           snap,
+		boundaryMapRecords: snapshot.MapRecords(snap.BoundaryFeatures),
 		layerIndex:         make(map[string]snapshot.LayerFamily, len(snap.LayerFamilies)),
 		featureIndex:       make(map[string]snapshot.BoundaryFeature, len(snap.BoundaryFeatures)),
 		allowedOrigins:     make(map[string]struct{}, len(allowedOrigins)),
@@ -92,7 +85,6 @@ func NewHandler(snap snapshot.Snapshot, options ...Options) http.Handler {
 	for _, feature := range snap.BoundaryFeatures {
 		handler.featureIndex[featureKey(feature.LayerFamily, feature.FeatureID)] = feature
 	}
-
 	return handler
 }
 
@@ -100,7 +92,6 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if h.handleCORS(w, r) {
 		return
 	}
-
 	switch {
 	case r.Method == http.MethodGet && r.URL.Path == "/health":
 		h.writeJSON(w, http.StatusOK, map[string]string{"status": "ok"})
@@ -109,7 +100,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case r.Method == http.MethodGet && r.URL.Path == "/layers":
 		h.writeJSON(w, http.StatusOK, h.snapshot.LayerFamilies)
 	case r.Method == http.MethodGet && r.URL.Path == "/boundaries":
-		h.writeJSON(w, http.StatusOK, h.snapshot.BoundaryFeatures)
+		h.writeJSON(w, http.StatusOK, h.boundaryMapRecords)
 	case r.Method == http.MethodGet && strings.HasPrefix(r.URL.Path, "/features/"):
 		h.handleFeature(w, r)
 	case r.Method == http.MethodPost && r.URL.Path == "/geocode":
@@ -121,10 +112,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case r.Method == http.MethodGet && r.URL.Path == "/refresh/status":
 		h.writeJSON(w, http.StatusOK, h.snapshot.RefreshStatus)
 	case r.Method == http.MethodPost && r.URL.Path == "/refresh/trigger":
-		h.writeJSON(w, http.StatusOK, map[string]string{
-			"status":  "disabled",
-			"message": "Live refresh is disabled for the cached snapshot.",
-		})
+		h.writeJSON(w, http.StatusOK, map[string]string{"status": "disabled", "message": "Live refresh is disabled for the cached snapshot."})
 	default:
 		http.NotFound(w, r)
 	}
@@ -136,13 +124,11 @@ func (h *Handler) handleFeature(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-
 	feature, found := h.featureIndex[featureKey(layerFamily, featureID)]
 	if !found {
 		http.NotFound(w, r)
 		return
 	}
-
 	h.writeJSON(w, http.StatusOK, feature.Record())
 }
 
@@ -153,7 +139,6 @@ func (h *Handler) handleCORS(w http.ResponseWriter, r *http.Request) bool {
 		w.Header().Set("Access-Control-Allow-Origin", origin)
 		w.Header().Set("Vary", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers")
 	}
-
 	if r.Method != http.MethodOptions {
 		return false
 	}
@@ -179,18 +164,7 @@ func isValidOrigin(origin string) bool {
 	if err != nil {
 		return false
 	}
-
-	if parsed.Scheme != "http" && parsed.Scheme != "https" {
-		return false
-	}
-	if parsed.Host == "" {
-		return false
-	}
-	if parsed.Path != "" || parsed.RawQuery != "" || parsed.Fragment != "" {
-		return false
-	}
-
-	return true
+	return (parsed.Scheme == "http" || parsed.Scheme == "https") && parsed.Host != "" && parsed.Path == "" && parsed.RawQuery == "" && parsed.Fragment == ""
 }
 
 func featureKey(layerFamily, featureID string) string {
