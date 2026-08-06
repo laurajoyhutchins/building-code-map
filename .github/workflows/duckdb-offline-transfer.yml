@@ -26,17 +26,21 @@ jobs:
           mkdir -p "$RUNNER_TEMP/duckdb-transfer"
           cd "$RUNNER_TEMP/duckdb-transfer"
           curl --fail --location --retry 3 \
-            --output duckdb_cli-linux-amd64-musl.zip \
-            https://github.com/duckdb/duckdb/releases/download/v1.5.5/duckdb_cli-linux-amd64-musl.zip
-          actual_size=$(wc -c < duckdb_cli-linux-amd64-musl.zip | tr -d '[:space:]')
-          test "$actual_size" = 22469200
-          echo '4261fe20bab47d92742d5e21eee979e9e81548442985b9e3327725e1f755c910  duckdb_cli-linux-amd64-musl.zip' \
+            --output duckdb_cli-linux-amd64.zip \
+            https://github.com/duckdb/duckdb/releases/download/v1.5.5/duckdb_cli-linux-amd64.zip
+          actual_size=$(wc -c < duckdb_cli-linux-amd64.zip | tr -d '[:space:]')
+          test "$actual_size" = 21263499
+          echo '08c0ca117111fcede14239d0093792352befdc174218c344d232c13279643d05  duckdb_cli-linux-amd64.zip' \
             | sha256sum -c -
-          mapfile -t entries < <(unzip -Z1 duckdb_cli-linux-amd64-musl.zip)
+          mapfile -t entries < <(unzip -Z1 duckdb_cli-linux-amd64.zip)
           test "${#entries[@]}" -eq 1
           test "${entries[0]}" = duckdb
-          unzip -p duckdb_cli-linux-amd64-musl.zip duckdb > duckdb
+          unzip -p duckdb_cli-linux-amd64.zip duckdb > duckdb
           chmod 0755 duckdb
+          file_output=$(file -b duckdb)
+          grep -F 'ELF 64-bit' <<<"$file_output"
+          grep -F 'x86-64' <<<"$file_output"
+          interpreter=$(readelf -l duckdb | sed -n 's/.*Requesting program interpreter: \(.*\)]/\1/p')
           version_output=$(./duckdb --version)
           grep -F 'v1.5.5' <<<"$version_output"
           grep -F 'd8cdaa33fd' <<<"$version_output"
@@ -44,26 +48,20 @@ jobs:
           test "$smoke_output" = 42
           payload_size=$(wc -c < duckdb | tr -d '[:space:]')
           payload_sha=$(sha256sum duckdb | awk '{print $1}')
-          file_output=$(file -b duckdb)
-          grep -F 'ELF 64-bit' <<<"$file_output"
-          grep -F 'x86-64' <<<"$file_output"
-          if readelf -l duckdb | grep -q 'INTERP'; then
-            echo 'DuckDB musl payload unexpectedly has a dynamic interpreter' >&2
-            exit 1
-          fi
-          python3 - "$version_output" "$smoke_output" "$payload_size" "$payload_sha" "$file_output" <<'PY'
+          python3 - "$version_output" "$smoke_output" "$payload_size" "$payload_sha" "$file_output" "$interpreter" <<'PY'
           import json
           import sys
           from pathlib import Path
-          version, smoke, payload_size, payload_sha, file_output = sys.argv[1:]
+          version, smoke, payload_size, payload_sha, file_output, interpreter = sys.argv[1:]
           receipt = {
               "schema_version": 1,
               "release_tag": "v1.5.5",
               "source_commit": "d8cdaa33fda8df955cc76ef58a280f68f4cd43fa",
               "transport": {
-                  "name": "duckdb_cli-linux-amd64-musl.zip",
-                  "bytes": 22469200,
-                  "sha256": "4261fe20bab47d92742d5e21eee979e9e81548442985b9e3327725e1f755c910",
+                  "name": "duckdb_cli-linux-amd64.zip",
+                  "bytes": 21263499,
+                  "sha256": "08c0ca117111fcede14239d0093792352befdc174218c344d232c13279643d05",
+                  "upstream_asset_id": 485846903,
               },
               "payload": {
                   "name": "duckdb",
@@ -71,12 +69,13 @@ jobs:
                   "sha256": payload_sha,
                   "version_output": version,
                   "format": file_output,
+                  "interpreter": interpreter,
               },
               "checks": {
                   "transport_identity": "passed",
                   "archive_shape": "passed",
                   "payload_identity": "passed",
-                  "static_elf": "passed",
+                  "ubuntu_execution": "passed",
                   "version": "passed",
                   "smoke_sql": "passed",
               },
@@ -88,14 +87,13 @@ jobs:
               encoding="utf-8",
           )
           PY
-          cp "$GITHUB_WORKSPACE/LICENSE" building-code-map-license.txt
 
       - name: Upload verified transfer artifact
         uses: actions/upload-artifact@v4
         with:
-          name: duckdb-1.5.5-linux-amd64-musl-transfer
+          name: duckdb-1.5.5-linux-amd64-transfer
           path: |
-            ${{ runner.temp }}/duckdb-transfer/duckdb_cli-linux-amd64-musl.zip
+            ${{ runner.temp }}/duckdb-transfer/duckdb_cli-linux-amd64.zip
             ${{ runner.temp }}/duckdb-transfer/duckdb
             ${{ runner.temp }}/duckdb-transfer/verification.json
           if-no-files-found: error
