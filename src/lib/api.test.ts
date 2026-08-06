@@ -1,11 +1,15 @@
-import { describe, expect, it } from "vitest";
-import { buildApiUrl, getApiBaseUrl } from "./api";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { buildApiUrl, fetchReadiness, getApiBaseUrl } from "./api";
 import {
   decodeGeocodeResult,
   decodeLookupResult,
   decodeReadiness,
   decodeResolutionResult,
 } from "./apiPayloads";
+
+afterEach(() => {
+  vi.unstubAllGlobals();
+});
 
 describe("api url helpers", () => {
   it("defaults to the dev proxy path", () => {
@@ -131,22 +135,24 @@ describe("resolution response decoding", () => {
 });
 
 describe("readiness response decoding", () => {
+  const rawReadiness = {
+    status: "ok",
+    readiness: "degraded",
+    capabilities: {
+      boundary_resolution: {
+        status: "available",
+        required: true,
+        message: "Boundary snapshot loaded.",
+      },
+    },
+    snapshots: {
+      boundary: { status: "verified", snapshot_id: "boundary-2026-08-05" },
+      geocoder: { status: "unavailable" },
+    },
+  };
+
   it("preserves capability and snapshot identity", () => {
-    const result = decodeReadiness({
-      status: "ok",
-      readiness: "degraded",
-      capabilities: {
-        boundary_resolution: {
-          status: "available",
-          required: true,
-          message: "Boundary snapshot loaded.",
-        },
-      },
-      snapshots: {
-        boundary: { status: "verified", snapshot_id: "boundary-2026-08-05" },
-        geocoder: { status: "unavailable" },
-      },
-    });
+    const result = decodeReadiness(rawReadiness);
     expect(result.snapshots.boundary?.snapshotId).toBe("boundary-2026-08-05");
     expect(result.capabilities.boundary_resolution?.required).toBe(true);
   });
@@ -160,6 +166,40 @@ describe("readiness response decoding", () => {
         snapshots: { boundary: { status: "verified" } },
       }),
     ).toThrow(/snapshot_id/);
+  });
+
+  it("forwards cancellation to the readiness request", async () => {
+    const fetchMock = vi.fn(async () => ({
+      ok: true,
+      status: 200,
+      json: async () => rawReadiness,
+    }));
+    vi.stubGlobal("fetch", fetchMock);
+    const controller = new AbortController();
+
+    await fetchReadiness(controller.signal);
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      "/api/ready",
+      expect.objectContaining({ signal: controller.signal }),
+    );
+  });
+
+  it("keeps malformed error payloads inside the typed API boundary", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => ({
+        ok: false,
+        status: 503,
+        json: async () => ["unexpected", "shape"],
+      })),
+    );
+
+    await expect(fetchReadiness()).rejects.toMatchObject({
+      name: "ApiResponseError",
+      status: 503,
+      message: "Request to /ready failed with 503",
+    });
   });
 });
 
