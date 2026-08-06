@@ -37,3 +37,28 @@ Every result carries the source Git commit, engine version, aggregate bundle-man
 ## Determinism
 
 Production code uses an injected `Clock`; tests use `FixedClock`. A fixed query, source data, clock, and bundle identity must produce byte-equivalent normalized results. Diagnostics are explicitly sortable by severity, code, path, and message. No query-time network access is permitted.
+
+## CLI and bundle
+
+The machine-facing CLI is `bcm`. Resolution requires an explicit applicability
+date and writes only JSON to stdout:
+
+```text
+bcm resolve --point <longitude,latitude> --as-of YYYY-MM-DD
+bcm resolve --address <address> --as-of YYYY-MM-DD
+bcm geocode --address <address>
+bcm lookup --point <longitude,latitude>
+bcm inspect bundle
+bcm inspect jurisdiction --id <id>
+bcm serve --http 127.0.0.1:8000
+```
+
+`--pretty` is available for indented output. Exit code 0 means success, 1 an
+unexpected internal failure, 2 invalid arguments, 3 an ambiguous/unresolved
+outcome, and 4 invalid or unavailable bundle data.
+
+The aggregate bundle manifest is content-addressed and identifies the exact
+engine source, boundary snapshot, regulatory catalog, and optional geocoder
+files. PR #45 component manifests remain the authority for component
+activation and last-known-good identity; the aggregate manifest composes those
+identities for a single engine result provenance record.

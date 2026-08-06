@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://building-code-map.example/schemas/engine-error.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["code", "message", "retryable"],
+  "properties": {
+    "code": { "type": "string" },
+    "message": { "type": "string" },
+    "details": { "type": "object" },
+    "retryable": { "type": "boolean" }
+  }
+}
