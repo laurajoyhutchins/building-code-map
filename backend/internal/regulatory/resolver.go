@@ -8,10 +8,18 @@ import (
 )
 
 func Resolve(catalog Catalog, request ResolutionRequest) (ResolutionResult, error) {
+	return ResolveAt(catalog, request, time.Now().UTC())
+}
+
+// ResolveAt resolves a request using the supplied generation time. The
+// explicit time keeps engine results reproducible while Resolve preserves the
+// legacy wall-clock behavior for existing callers.
+func ResolveAt(catalog Catalog, request ResolutionRequest, generatedAt time.Time) (ResolutionResult, error) {
 	if request.Context == nil {
 		return ResolutionResult{}, fmt.Errorf("geographic context is required")
 	}
-	applicabilityDate, err := resolveApplicabilityDate(request.ApplicabilityDate)
+	generatedAt = generatedAt.UTC()
+	applicabilityDate, err := resolveApplicabilityDate(request.ApplicabilityDate, generatedAt)
 	if err != nil {
 		return ResolutionResult{}, err
 	}
@@ -22,7 +30,7 @@ func Resolve(catalog Catalog, request ResolutionRequest) (ResolutionResult, erro
 	if !ok {
 		return ResolutionResult{
 			SchemaVersion:     ResultSchemaVersion,
-			GeneratedAt:       time.Now().UTC(),
+			GeneratedAt:       generatedAt,
 			Geography:         context,
 			CodeFamily:        codeFamily,
 			ProjectType:       projectType,
@@ -126,7 +134,7 @@ func Resolve(catalog Catalog, request ResolutionRequest) (ResolutionResult, erro
 
 	return ResolutionResult{
 		SchemaVersion:        ResultSchemaVersion,
-		GeneratedAt:          time.Now().UTC(),
+		GeneratedAt:          generatedAt,
 		ProfileID:            profile.ProfileID,
 		ProfileLastVerified:  profile.LastVerified,
 		Geography:            context,
@@ -146,10 +154,10 @@ func Resolve(catalog Catalog, request ResolutionRequest) (ResolutionResult, erro
 	}, nil
 }
 
-func resolveApplicabilityDate(value string) (string, error) {
+func resolveApplicabilityDate(value string, now time.Time) (string, error) {
 	value = strings.TrimSpace(value)
 	if value == "" {
-		return time.Now().UTC().Format(time.DateOnly), nil
+		return now.UTC().Format(time.DateOnly), nil
 	}
 	if _, err := time.Parse(time.DateOnly, value); err != nil {
 		return "", fmt.Errorf("applicability_date must use YYYY-MM-DD")
