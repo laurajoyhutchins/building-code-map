@@ -52,7 +52,9 @@ export function PublicLookup(): JSX.Element {
     try {
       query = classifyLocationQuery(location);
     } catch (locationError) {
-      setError(locationError instanceof Error ? locationError : new Error("Enter a valid location."));
+      setError(
+        locationError instanceof Error ? locationError : new Error("Enter a valid location."),
+      );
       return;
     }
 

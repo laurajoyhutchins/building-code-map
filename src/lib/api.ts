@@ -93,7 +93,11 @@ function decodeApiError(payload: unknown, status: number, path: string): ApiResp
     );
   }
   if (raw.status === "not_found") {
-    return new ApiResponseError("The local geocoder could not match that address.", status, "geocoder_not_found");
+    return new ApiResponseError(
+      "The local geocoder could not match that address.",
+      status,
+      "geocoder_not_found",
+    );
   }
   return new ApiResponseError(message, status, code);
 }
@@ -137,9 +141,13 @@ export function fetchFeature(
   featureId: FeatureRecord["featureId"],
   signal?: AbortSignal,
 ): Promise<FeatureRecord> {
-  return readJson(`/features/${layerFamily}/${encodeURIComponent(featureId)}`, decodeFeatureRecord, {
-    signal,
-  });
+  return readJson(
+    `/features/${layerFamily}/${encodeURIComponent(featureId)}`,
+    decodeFeatureRecord,
+    {
+      signal,
+    },
+  );
 }
 
 export interface ResolutionRequestInput {
