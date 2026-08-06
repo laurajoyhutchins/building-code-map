@@ -310,7 +310,13 @@ func loadRuntime(path string) (*runtime, error) {
 }
 
 func regulatoryCatalogRoot(component bundle.Component, path string) string {
-	if component.Recursive {
+	var shape struct {
+		Recursive bool `json:"recursive"`
+	}
+	if raw, err := json.Marshal(component); err == nil {
+		_ = json.Unmarshal(raw, &shape)
+	}
+	if shape.Recursive {
 		return path
 	}
 	return filepath.Dir(path)
