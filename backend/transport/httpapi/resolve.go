@@ -8,7 +8,7 @@ import (
 	"net/http"
 
 	"building-code-map/backend/engine"
-	"building-code-map/backend/internal/regulatory"
+	"building-code-map/backend/regulatory"
 )
 
 type pointResolutionRequest struct {

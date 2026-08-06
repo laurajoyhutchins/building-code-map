@@ -7,9 +7,9 @@ import (
 	"testing"
 	"time"
 
-	"building-code-map/backend/internal/geocoder"
-	"building-code-map/backend/internal/regulatory"
-	"building-code-map/backend/internal/snapshot"
+	"building-code-map/backend/geocoder"
+	"building-code-map/backend/regulatory"
+	"building-code-map/backend/snapshot"
 )
 
 func TestEngineResolveIsDeterministicWithFixedClock(t *testing.T) {

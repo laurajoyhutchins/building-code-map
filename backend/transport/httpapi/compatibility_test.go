@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"building-code-map/backend/internal/geocoder"
-	"building-code-map/backend/internal/regulatory"
-	"building-code-map/backend/internal/snapshot"
+	"building-code-map/backend/geocoder"
+	"building-code-map/backend/regulatory"
+	"building-code-map/backend/snapshot"
 )
 
 func TestLegacyHTTPCompatibilityStatusMatrix(t *testing.T) {
@@ -44,42 +44,42 @@ func TestLegacyHTTPCompatibilityStatusMatrix(t *testing.T) {
 	}{
 		{
 			name:    "health",
-			handler: NewHandler(snapshot.Snapshot{}),
+			handler: NewLegacyHandler(snapshot.Snapshot{}),
 			method:  http.MethodGet,
 			path:    "/health",
 			status:  http.StatusOK,
 		},
 		{
 			name:    "readiness",
-			handler: NewHandler(compatibilitySnapshot()),
+			handler: NewLegacyHandler(compatibilitySnapshot()),
 			method:  http.MethodGet,
 			path:    "/ready",
 			status:  http.StatusOK,
 		},
 		{
 			name:    "layers",
-			handler: NewHandler(compatibilitySnapshot()),
+			handler: NewLegacyHandler(compatibilitySnapshot()),
 			method:  http.MethodGet,
 			path:    "/layers",
 			status:  http.StatusOK,
 		},
 		{
 			name:    "boundaries",
-			handler: NewHandler(compatibilitySnapshot()),
+			handler: NewLegacyHandler(compatibilitySnapshot()),
 			method:  http.MethodGet,
 			path:    "/boundaries",
 			status:  http.StatusOK,
 		},
 		{
 			name:    "feature lookup",
-			handler: NewHandler(compatibilitySnapshot()),
+			handler: NewLegacyHandler(compatibilitySnapshot()),
 			method:  http.MethodGet,
 			path:    "/features/states/08",
 			status:  http.StatusOK,
 		},
 		{
 			name: "geocode success",
-			handler: NewHandler(snapshot.Snapshot{}, Options{Geocoder: fakeGeocoder{result: geocoder.Result{
+			handler: NewLegacyHandler(snapshot.Snapshot{}, Options{Geocoder: fakeGeocoder{result: geocoder.Result{
 				Query: "1600 N Broadway, Denver, CO", Status: geocoder.StatusMatched,
 				Selected: &candidate, Candidates: []geocoder.Candidate{candidate}, Warnings: []string{},
 			}}}),
@@ -87,14 +87,14 @@ func TestLegacyHTTPCompatibilityStatusMatrix(t *testing.T) {
 		},
 		{
 			name: "geocode failure",
-			handler: NewHandler(snapshot.Snapshot{}, Options{Geocoder: fakeGeocoder{result: geocoder.Result{
+			handler: NewLegacyHandler(snapshot.Snapshot{}, Options{Geocoder: fakeGeocoder{result: geocoder.Result{
 				Query: "unknown", Status: geocoder.StatusNotFound, Candidates: []geocoder.Candidate{}, Warnings: []string{},
 			}}}),
 			method: http.MethodPost, path: "/geocode", body: `{"address":"unknown"}`, status: http.StatusUnprocessableEntity,
 		},
 		{
 			name: "lookup success",
-			handler: NewHandler(compatibilitySnapshot(), Options{
+			handler: NewLegacyHandler(compatibilitySnapshot(), Options{
 				RegulatoryCatalog: catalog,
 				Geocoder: fakeGeocoder{result: geocoder.Result{
 					Query: "1600 N Broadway, Denver, CO", Status: geocoder.StatusMatched,
@@ -105,7 +105,7 @@ func TestLegacyHTTPCompatibilityStatusMatrix(t *testing.T) {
 		},
 		{
 			name: "lookup failure",
-			handler: NewHandler(compatibilitySnapshot(), Options{
+			handler: NewLegacyHandler(compatibilitySnapshot(), Options{
 				RegulatoryCatalog: catalog,
 				Geocoder: fakeGeocoder{result: geocoder.Result{
 					Query: "unknown", Status: geocoder.StatusNotFound, Candidates: []geocoder.Candidate{}, Warnings: []string{},
@@ -115,7 +115,7 @@ func TestLegacyHTTPCompatibilityStatusMatrix(t *testing.T) {
 		},
 		{
 			name:    "resolve success",
-			handler: NewHandler(compatibilitySnapshot(), Options{RegulatoryCatalog: catalog}),
+			handler: NewLegacyHandler(compatibilitySnapshot(), Options{RegulatoryCatalog: catalog}),
 			method:  http.MethodPost,
 			path:    "/resolve",
 			body:    `{"point":{"longitude":-104.99,"latitude":39.74},"applicability_date":"2026-08-06"}`,
@@ -123,7 +123,7 @@ func TestLegacyHTTPCompatibilityStatusMatrix(t *testing.T) {
 		},
 		{
 			name:    "malformed JSON",
-			handler: NewHandler(compatibilitySnapshot(), Options{RegulatoryCatalog: catalog}),
+			handler: NewLegacyHandler(compatibilitySnapshot(), Options{RegulatoryCatalog: catalog}),
 			method:  http.MethodPost,
 			path:    "/resolve",
 			body:    `{"point":`,
@@ -131,7 +131,7 @@ func TestLegacyHTTPCompatibilityStatusMatrix(t *testing.T) {
 		},
 		{
 			name:    "invalid coordinates",
-			handler: NewHandler(compatibilitySnapshot(), Options{RegulatoryCatalog: catalog}),
+			handler: NewLegacyHandler(compatibilitySnapshot(), Options{RegulatoryCatalog: catalog}),
 			method:  http.MethodPost,
 			path:    "/resolve",
 			body:    `{"point":{"longitude":181,"latitude":39.74},"applicability_date":"2026-08-06"}`,
@@ -139,7 +139,7 @@ func TestLegacyHTTPCompatibilityStatusMatrix(t *testing.T) {
 		},
 		{
 			name:    "missing regulatory catalog",
-			handler: NewHandler(compatibilitySnapshot()),
+			handler: NewLegacyHandler(compatibilitySnapshot()),
 			method:  http.MethodPost,
 			path:    "/resolve",
 			body:    `{"point":{"longitude":-104.99,"latitude":39.74},"applicability_date":"2026-08-06"}`,
@@ -147,7 +147,7 @@ func TestLegacyHTTPCompatibilityStatusMatrix(t *testing.T) {
 		},
 		{
 			name:    "unsupported state coverage",
-			handler: NewHandler(snapshot.Snapshot{}, Options{RegulatoryCatalog: catalog}),
+			handler: NewLegacyHandler(snapshot.Snapshot{}, Options{RegulatoryCatalog: catalog}),
 			method:  http.MethodPost,
 			path:    "/resolve",
 			body:    `{"point":{"longitude":-104.99,"latitude":39.74},"applicability_date":"2026-08-06"}`,
@@ -155,7 +155,7 @@ func TestLegacyHTTPCompatibilityStatusMatrix(t *testing.T) {
 		},
 		{
 			name: "boundary ambiguity",
-			handler: NewHandler(snapshot.Snapshot{BoundaryFeatures: []snapshot.BoundaryFeature{
+			handler: NewLegacyHandler(snapshot.Snapshot{BoundaryFeatures: []snapshot.BoundaryFeature{
 				{LayerFamily: "states", FeatureID: "08", Title: "Colorado", Attributes: map[string]any{"STATEFP": "08"}, Geometry: testPolygon(0, 0, 10, 10)},
 				{LayerFamily: "states", FeatureID: "12", Title: "Florida", Attributes: map[string]any{"STATEFP": "12"}, Geometry: testPolygon(0, 0, 10, 10)},
 			}}, Options{RegulatoryCatalog: catalog}),
@@ -163,14 +163,14 @@ func TestLegacyHTTPCompatibilityStatusMatrix(t *testing.T) {
 		},
 		{
 			name:    "refresh status",
-			handler: NewHandler(snapshot.Snapshot{}),
+			handler: NewLegacyHandler(snapshot.Snapshot{}),
 			method:  http.MethodGet,
 			path:    "/refresh/status",
 			status:  http.StatusOK,
 		},
 		{
 			name:    "disabled refresh trigger",
-			handler: NewHandler(snapshot.Snapshot{}),
+			handler: NewLegacyHandler(snapshot.Snapshot{}),
 			method:  http.MethodPost,
 			path:    "/refresh/trigger",
 			status:  http.StatusOK,

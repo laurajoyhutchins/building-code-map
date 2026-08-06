@@ -293,7 +293,7 @@ func TestProfilesRoundTripDeterministically(t *testing.T) {
 
 func loadTestCatalog(t *testing.T) Catalog {
 	t.Helper()
-	catalog, err := LoadCatalog(filepath.Join("..", "..", "data", "regulatory"))
+	catalog, err := LoadCatalog(filepath.Join("..", "data", "regulatory"))
 	if err == nil {
 		return catalog
 	}

@@ -9,8 +9,8 @@ import (
 	"strings"
 
 	"building-code-map/backend/engine"
-	"building-code-map/backend/internal/geocoder"
-	"building-code-map/backend/internal/regulatory"
+	"building-code-map/backend/geocoder"
+	"building-code-map/backend/regulatory"
 )
 
 type geocodeRequest struct {
