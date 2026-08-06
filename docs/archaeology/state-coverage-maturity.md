@@ -8,14 +8,12 @@ A state can have a research report without an executable profile, an executable 
 
 ### Executable pilot profiles
 
-| State | Executable | Current maturity |
-| --- | --- | --- |
-| Colorado | Yes | Production-ready declared scope; broader local and historical coverage incomplete |
-| Florida | Yes | Production-ready declared scope; special projects and local details remain bounded by the manifest |
-| New Jersey | Yes | Production-ready declared scope; operational-fire and local depth remain bounded by the manifest |
-| Virginia | Yes | Partially verified pilot |
-| Oregon | Yes | Partially verified pilot with multiple specialty-code timelines |
-| North Carolina | Yes | Partially verified pilot with conditionally pending future transition |
+- **Colorado:** executable; production-ready declared scope; broader local and historical coverage remains incomplete.
+- **Florida:** executable; production-ready declared scope; special projects and local details remain bounded by the manifest.
+- **New Jersey:** executable; production-ready declared scope; operational-fire and local depth remain bounded by the manifest.
+- **Virginia:** executable, partially verified pilot.
+- **Oregon:** executable, partially verified pilot with multiple specialty-code timelines.
+- **North Carolina:** executable, partially verified pilot with a conditionally pending future transition.
 
 The production-readiness audit currently reports three production-ready scopes and no prematurely verified scope. It does not convert the states into complete statewide datasets.
 
