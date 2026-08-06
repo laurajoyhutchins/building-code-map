@@ -55,6 +55,8 @@ func run(args []string) int {
 		return runLookup(args[1:])
 	case "inspect":
 		return runInspect(args[1:])
+	case "snapshot":
+		return runSnapshot(args[1:])
 	case "serve":
 		return runServe(args[1:])
 	case "--help", "-h", "help":
@@ -398,5 +400,5 @@ func writeJSON(value any, pretty bool) {
 func logError(message string) { _, _ = fmt.Fprintln(os.Stderr, message) }
 
 func usage() {
-	logError("bcm resolve|geocode|lookup|inspect|serve")
+	logError("bcm resolve|geocode|lookup|inspect|snapshot|serve")
 }
