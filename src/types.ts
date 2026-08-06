@@ -83,15 +83,42 @@ export interface ReadinessResult {
 export type GeocodeStatus = "matched" | "ambiguous" | "not_found";
 export type GeocodePrecision = "address_point" | "interpolated";
 
+export interface CoordinateEvidence {
+  longitude: number;
+  latitude: number;
+}
+
+export interface InterpolationProvenance {
+  sourceRangeId: string;
+  requestedHouseNumber: number;
+  fromNumber: number;
+  toNumber: number;
+  rangeDirection: "ascending" | "descending";
+  parity: string;
+  side?: string;
+  fromCoordinate: CoordinateEvidence;
+  toCoordinate: CoordinateEvidence;
+  fraction: number;
+  derivedCoordinate: CoordinateEvidence;
+  coordinateReferenceSystem: string;
+  transformationIdentity: string;
+  methodVersion: string;
+  positionalQuality: string;
+}
+
 export interface GeocodeCandidate {
   matchedAddress: string;
   longitude: number;
   latitude: number;
   precision: GeocodePrecision;
   confidence: number;
+  scoreKind: "deterministic_quality";
+  scoreFactors: Record<string, number>;
+  rankingPolicyVersion: string;
   source: string;
   sourceRecordId: string;
   sourceVintage: string;
+  interpolation?: InterpolationProvenance;
 }
 
 export interface GeocodeResult {
