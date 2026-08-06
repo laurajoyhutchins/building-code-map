@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://building-code-map.local/schemas/snapshots/activation-receipt.schema.json",
+  "title": "Building Code Map Snapshot Activation Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "snapshot_id",
+    "activated_at",
+    "last_known_good_snapshot_id",
+    "manifest_sha256"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "snapshot_id": { "type": "string", "minLength": 1 },
+    "activated_at": { "type": "string", "format": "date-time" },
+    "prior_active_snapshot_id": { "type": "string" },
+    "last_known_good_snapshot_id": { "type": "string", "minLength": 1 },
+    "manifest_sha256": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" }
+  }
+}
