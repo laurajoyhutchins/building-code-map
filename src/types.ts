@@ -50,9 +50,14 @@ export interface FeatureRecord extends FeatureSummary {
   geometry?: GeoJSONGeometry;
 }
 
-export interface BoundaryFeatureRecord extends FeatureRecord {
+export interface BoundaryMapRecord extends FeatureSummary {
+  geometryLabel: string;
+  geometrySource?: string | null;
+  lastSyncedAt: string;
   geometry: GeoJSONGeometry;
 }
+
+export type BoundaryFeatureRecord = BoundaryMapRecord;
 
 export interface RefreshStatus {
   status: "ok" | "warning" | "error";
