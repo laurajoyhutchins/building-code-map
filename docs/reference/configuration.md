@@ -19,20 +19,53 @@ This page records which files own which kinds of configuration so the repository
 - [`backend/cmd/server/main.go`](/backend/cmd/server/main.go): Go backend entrypoint and runtime flag handling.
 - [`backend/cmd/geocoder-build/main.go`](/backend/cmd/geocoder-build/main.go): deterministic CSV-to-SQLite geocoder snapshot builder.
 - [`backend/internal/httpapi/handler.go`](/backend/internal/httpapi/handler.go): HTTP routing, CORS handling, and JSON response helpers.
+- [`backend/internal/httpapi/readiness.go`](/backend/internal/httpapi/readiness.go): capability-specific readiness.
 - [`backend/internal/geocoder/`](/backend/internal/geocoder/): address normalization, SQLite matching, interpolation, provenance, and snapshot construction.
-- [`backend/internal/snapshot/snapshot.go`](/backend/internal/snapshot/snapshot.go): SQLite boundary-snapshot loading and cache-path resolution, with DuckDB retained only as a legacy migration fallback.
+- [`backend/internal/snapshot/snapshot.go`](/backend/internal/snapshot/snapshot.go): supported snapshot loaders and workspace-local cache selection.
+- [`backend/internal/snapshot/validate.go`](/backend/internal/snapshot/validate.go): shared semantic validation for every boundary snapshot loader.
 
 ## Backend Snapshots
 
-- `TIGERWEB_CACHE_PATH`: optional boundary-snapshot path inside the repository checkout. If unset, the backend prefers `backend/data/tigerweb.sqlite` and falls back to `backend/data/tigerweb.duckdb` during migration.
-- `TIGERWEB_HYDRATED_CACHE_PATH`: optional hydrated boundary-snapshot override inside the repository checkout. Paths resolving outside the checkout are rejected.
-- `GEOCODER_DATA_PATH`: optional local geocoder SQLite path inside the backend checkout. It overrides `--geocoder-data`. If neither is supplied, the server looks for `backend/data/geocoder.sqlite` when launched from `backend/`.
-- `--geocoder-data`: server flag for a repository-contained geocoder snapshot path.
-- `BACKEND_CORS_ALLOWED_ORIGINS`: optional comma-separated browser origins accepted by the backend. Invalid or empty values fall back to loopback-only defaults.
-- `DUCKDB_EXE`: optional path to the DuckDB CLI used by the legacy boundary loader. `DUCKDB_CLI_PATH` remains a compatibility alias.
-- `backend/data/`: conventional local runtime-snapshot location. Database files in this directory are ignored and must be generated or supplied locally; they are not publication artifacts.
+### Boundary snapshot
 
-The boundary snapshot is required for server startup. The geocoder snapshot is optional. A missing or invalid geocoder snapshot leaves `/geocode` and address-based `/lookup` unavailable while coordinate-based `/resolve`, map layers, and feature inspection continue to work.
+The only implicit default is:
+
+```text
+backend/data/tigerweb.sqlite
+```
+
+Configuration precedence is:
+
+1. an explicit `--cache` server flag;
+2. an existing repository-contained `TIGERWEB_CACHE_PATH` value;
+3. an existing repository-contained `TIGERWEB_HYDRATED_CACHE_PATH` compatibility value;
+4. `backend/data/tigerweb.sqlite`.
+
+Environment overrides that resolve outside the checkout or do not exist are ignored. The server does not search `C:\tmp`, a home directory, or another machine-global cache location.
+
+Supported formats are:
+
+- `.sqlite`
+- `.db`
+- `.duckdb`, only when selected explicitly and a DuckDB CLI is available
+
+Unknown extensions fail before compatibility-tool discovery. The default never falls back silently from missing SQLite data to a DuckDB file.
+
+SQLite boundary snapshots are opened read-only and query-only. Every loader applies the same semantic validator before startup can proceed.
+
+### Geocoder snapshot
+
+- `GEOCODER_DATA_PATH`: optional local geocoder SQLite path inside the backend checkout. It overrides `--geocoder-data`.
+- `--geocoder-data`: server flag for a repository-contained geocoder snapshot path.
+- Default: `backend/data/geocoder.sqlite` when launched from `backend/`.
+
+A missing or invalid geocoder snapshot leaves `/geocode` and address-based `/lookup` unavailable. Boundary inspection remains available. Coordinate-based regulatory resolution also requires validated regulatory profiles, as reported by `/ready`.
+
+### Other runtime settings
+
+- `BACKEND_CORS_ALLOWED_ORIGINS`: comma-separated browser origins accepted by the backend. Invalid or empty values fall back to loopback-only defaults.
+- `DUCKDB_EXE`: optional DuckDB CLI path for an explicitly selected legacy boundary snapshot. `DUCKDB_CLI_PATH` remains a compatibility alias.
+- `backend/data/`: conventional local runtime-snapshot location. Database files in this directory are ignored and must be generated or supplied locally; they are not publication artifacts.
 
 ## Operational Scripts
 
@@ -52,7 +85,7 @@ The boundary snapshot is required for server startup. The geocoder snapshot is o
 - [`reports/tools/generate_report_tracker.py`](/reports/tools/generate_report_tracker.py): report-set dashboard generator for completion, issues, source coverage, and consistency checks.
 - [`reports/tools/reports-status.cmd`](/reports/tools/reports-status.cmd): Windows wrapper for report status.
 
-The backend launcher resolves `go` from `PATH`, runs `go run ./cmd/server`, and waits on `GET /ready` before reporting success. The frontend launcher and package scripts use the same `/api` proxy path.
+The backend launcher resolves `go` from `PATH`, runs `go run ./cmd/server`, and waits on `GET /ready`. A degraded but boundary-usable service returns HTTP `200`; required boundary unavailability returns `503`.
 
 ## Generated or Ignored State
 
@@ -94,3 +127,4 @@ The backend launcher resolves `go` from `PATH`, runs `go run ./cmd/server`, and 
 - Keep secrets, private prompts, absolute home-directory paths, generated decision exports, and hydrated data out of Git history.
 - Treat boundary, address, and regulatory sources as separate provenance domains with independently reviewed redistribution terms.
 - Treat state reports as evidence-bearing research artifacts: retain official-source provenance and label unresolved claims explicitly.
+- Do not describe refresh metadata as a complete source manifest, checksum, activation receipt, or rollback contract.

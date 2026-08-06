@@ -2,9 +2,12 @@ package snapshot
 
 import (
 	"database/sql"
+	"errors"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
+	"time"
 
 	_ "modernc.org/sqlite"
 )
@@ -39,6 +42,30 @@ func TestLoadFileLoadsSQLiteSnapshot(t *testing.T) {
 	}
 	if got := snap.BoundaryFeatures[0].Attributes["STATEFP"]; got != "08" {
 		t.Fatalf("Attributes[STATEFP] = %#v, want %q", got, "08")
+	}
+}
+
+func TestLoadFileRejectsUnsupportedExtensionBeforeDuckDBLookup(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "tigerweb.json")
+	if err := os.WriteFile(path, []byte("{}"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+
+	_, err := LoadFile(path)
+	if !errors.Is(err, ErrUnsupportedSnapshotFormat) {
+		t.Fatalf("LoadFile error = %v, want ErrUnsupportedSnapshotFormat", err)
+	}
+}
+
+func TestDefaultCachePathIsWorkspaceLocalSQLite(t *testing.T) {
+	repoRoot := t.TempDir()
+	got := DefaultCachePath(repoRoot)
+	want := filepath.Join(repoRoot, "backend", "data", "tigerweb.sqlite")
+	if got != want {
+		t.Fatalf("DefaultCachePath() = %q, want %q", got, want)
+	}
+	if strings.Contains(strings.ToLower(got), `c:\tmp`) {
+		t.Fatalf("DefaultCachePath() escaped the workspace: %q", got)
 	}
 }
 
@@ -89,6 +116,120 @@ func TestResolveCachePathIgnoresOutsideWorkspaceOverride(t *testing.T) {
 	want := DefaultCachePath(repoRoot)
 	if got != want {
 		t.Fatalf("ResolveCachePath() = %q, want %q", got, want)
+	}
+}
+
+func TestSnapshotValidateRejectsDuplicateLayerKeys(t *testing.T) {
+	snap := validSnapshot()
+	snap.LayerFamilies = append(snap.LayerFamilies, snap.LayerFamilies[0])
+
+	if err := snap.Validate(); err == nil || !strings.Contains(err.Error(), "duplicate layer family") {
+		t.Fatalf("Validate() error = %v", err)
+	}
+}
+
+func TestSnapshotValidateRejectsDuplicateFeatureIdentity(t *testing.T) {
+	snap := validSnapshot()
+	snap.BoundaryFeatures = append(snap.BoundaryFeatures, snap.BoundaryFeatures[0])
+
+	if err := snap.Validate(); err == nil || !strings.Contains(err.Error(), "duplicate boundary feature") {
+		t.Fatalf("Validate() error = %v", err)
+	}
+}
+
+func TestSnapshotValidateRejectsFeatureWithoutRegisteredLayer(t *testing.T) {
+	snap := validSnapshot()
+	snap.BoundaryFeatures[0].LayerFamily = "counties"
+
+	if err := snap.Validate(); err == nil || !strings.Contains(err.Error(), "unknown layer family") {
+		t.Fatalf("Validate() error = %v", err)
+	}
+}
+
+func TestSnapshotValidateRejectsMissingFeatureIdentity(t *testing.T) {
+	snap := validSnapshot()
+	snap.BoundaryFeatures[0].SourceID = ""
+
+	if err := snap.Validate(); err == nil || !strings.Contains(err.Error(), "source_id") {
+		t.Fatalf("Validate() error = %v", err)
+	}
+}
+
+func TestSnapshotValidateRejectsInvalidGeometry(t *testing.T) {
+	tests := []struct {
+		name     string
+		geometry Geometry
+		want     string
+	}{
+		{
+			name:     "unsupported type",
+			geometry: Geometry{Type: "GeometryCollection", Coordinates: []any{}},
+			want:     "unsupported geometry type",
+		},
+		{
+			name:     "out of range coordinate",
+			geometry: Geometry{Type: "Polygon", Coordinates: [][][]float64{{{181, 37}, {-102, 37}, {-102, 41}, {181, 37}}}},
+			want:     "outside longitude/latitude ranges",
+		},
+		{
+			name:     "open ring",
+			geometry: Geometry{Type: "Polygon", Coordinates: [][][]float64{{{-109, 37}, {-102, 37}, {-102, 41}, {-109, 41}}}},
+			want:     "ring is not closed",
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			snap := validSnapshot()
+			snap.BoundaryFeatures[0].Geometry = test.geometry
+			if err := snap.Validate(); err == nil || !strings.Contains(err.Error(), test.want) {
+				t.Fatalf("Validate() error = %v, want substring %q", err, test.want)
+			}
+		})
+	}
+}
+
+func TestSnapshotValidateRejectsInvalidRefreshStatus(t *testing.T) {
+	snap := validSnapshot()
+	snap.RefreshStatus.Status = "fresh-ish"
+
+	if err := snap.Validate(); err == nil || !strings.Contains(err.Error(), "refresh status") {
+		t.Fatalf("Validate() error = %v", err)
+	}
+}
+
+func validSnapshot() Snapshot {
+	latest := time.Date(2026, 6, 22, 9, 40, 0, 0, time.UTC)
+	return Snapshot{
+		LayerFamilies: []LayerFamily{{
+			Key:            "states",
+			Label:          "States",
+			MartinLayerID:  "tigerweb.states",
+			Description:    "State boundaries mirrored from TIGERweb.",
+			DefaultEnabled: true,
+		}},
+		BoundaryFeatures: []BoundaryFeature{{
+			LayerFamily:    "states",
+			FeatureID:      "08",
+			Title:          "Colorado",
+			Subtitle:       "State boundary",
+			SourceID:       "GEOID=08",
+			GeometryLabel:  "Polygon",
+			GeometrySource: "tigerweb_live",
+			LastSyncedAt:   latest,
+			Geometry: Geometry{
+				Type:        "Polygon",
+				Coordinates: [][][]float64{{{-109, 37}, {-102, 37}, {-102, 41}, {-109, 41}, {-109, 37}}},
+			},
+			Attributes: map[string]any{"STATEFP": "08"},
+		}},
+		RefreshStatus: RefreshStatus{
+			Status:                  "ok",
+			LatestSuccessfulRefresh: latest,
+			LatestAttempt:           latest,
+			NextScheduledRefresh:    latest.Add(24 * time.Hour),
+			Message:                 "Cached boundary snapshot is current.",
+		},
 	}
 }
 
