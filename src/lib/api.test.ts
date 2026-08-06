@@ -109,9 +109,9 @@ describe("resolution response decoding", () => {
   });
 
   it("rejects malformed dates and nested verification records", () => {
-    expect(() =>
-      decodeResolutionResult({ ...rawResolution, generated_at: "yesterday" }),
-    ).toThrow(/generated_at/);
+    expect(() => decodeResolutionResult({ ...rawResolution, generated_at: "yesterday" })).toThrow(
+      /generated_at/,
+    );
     expect(() =>
       decodeResolutionResult({
         ...rawResolution,

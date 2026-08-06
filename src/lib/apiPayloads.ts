@@ -107,7 +107,11 @@ export function decodeLayers(value: unknown): LayerFamilyDefinition[] {
 }
 
 export function decodeBoundaryFeatures(value: unknown): BoundaryFeatureRecord[] {
-  return arrayValue(value, "boundaries", (item, path) => decodeFeature(item, path, true) as BoundaryFeatureRecord);
+  return arrayValue(
+    value,
+    "boundaries",
+    (item, path) => decodeFeature(item, path, true) as BoundaryFeatureRecord,
+  );
 }
 
 export function decodeFeatureRecord(value: unknown): FeatureRecord {
@@ -139,7 +143,12 @@ function decodeAttributes(value: unknown, path: string): Record<string, Attribut
   const raw = record(value, path);
   const result: Record<string, AttributeValue> = {};
   for (const [key, item] of Object.entries(raw)) {
-    if (item !== null && typeof item !== "string" && typeof item !== "number" && typeof item !== "boolean") {
+    if (
+      item !== null &&
+      typeof item !== "string" &&
+      typeof item !== "number" &&
+      typeof item !== "boolean"
+    ) {
       throw new Error(`${path}.${key}: expected a scalar attribute`);
     }
     result[key] = item as AttributeValue;
@@ -185,7 +194,10 @@ export function decodeRefreshStatus(value: unknown): RefreshStatus {
 
 export function decodeGeocodeResult(value: unknown, path = "geocode"): GeocodeResult {
   const raw = record(value, path);
-  const selected = raw.selected === undefined ? undefined : decodeGeocodeCandidate(raw.selected, `${path}.selected`);
+  const selected =
+    raw.selected === undefined
+      ? undefined
+      : decodeGeocodeCandidate(raw.selected, `${path}.selected`);
   return {
     query: nonEmptyString(raw.query, `${path}.query`),
     normalized: optionalString(raw.normalized, `${path}.normalized`),
@@ -202,7 +214,11 @@ function decodeGeocodeCandidate(value: unknown, path: string): GeocodeCandidate 
     matchedAddress: nonEmptyString(raw.matched_address, `${path}.matched_address`),
     longitude: longitude(raw.longitude, `${path}.longitude`),
     latitude: latitude(raw.latitude, `${path}.latitude`),
-    precision: enumValue(raw.precision, ["address_point", "interpolated"] as const, `${path}.precision`),
+    precision: enumValue(
+      raw.precision,
+      ["address_point", "interpolated"] as const,
+      `${path}.precision`,
+    ),
     confidence: finiteNumber(raw.confidence, `${path}.confidence`),
     source: nonEmptyString(raw.source, `${path}.source`),
     sourceRecordId: nonEmptyString(raw.source_record_id, `${path}.source_record_id`),
@@ -242,14 +258,25 @@ export function decodeResolutionResult(value: unknown, path = "resolution"): Res
       stateId: optionalString(geography.state_id, `${path}.geography.state_id`),
       stateFips: optionalString(geography.state_fips, `${path}.geography.state_fips`),
       stateName: optionalString(geography.state_name, `${path}.geography.state_name`),
-      county: geography.county === undefined ? undefined : boundary(geography.county, `${path}.geography.county`),
+      county:
+        geography.county === undefined
+          ? undefined
+          : boundary(geography.county, `${path}.geography.county`),
       municipality:
         geography.municipality === undefined
           ? undefined
           : boundary(geography.municipality, `${path}.geography.municipality`),
       incorporated: booleanValue(geography.incorporated, `${path}.geography.incorporated`),
-      specialAreas: optionalArray(geography.special_areas, `${path}.geography.special_areas`, boundary),
-      tribalAreas: optionalArray(geography.tribal_areas, `${path}.geography.tribal_areas`, boundary),
+      specialAreas: optionalArray(
+        geography.special_areas,
+        `${path}.geography.special_areas`,
+        boundary,
+      ),
+      tribalAreas: optionalArray(
+        geography.tribal_areas,
+        `${path}.geography.tribal_areas`,
+        boundary,
+      ),
       fireJurisdictions: optionalArray(
         geography.fire_jurisdictions,
         `${path}.geography.fire_jurisdictions`,
@@ -263,12 +290,23 @@ export function decodeResolutionResult(value: unknown, path = "resolution"): Res
         ? undefined
         : isoDate(raw.applicability_date, `${path}.applicability_date`),
     status: enumValue(raw.status, resolutionStatuses, `${path}.status`),
-    policyBasis: raw.policy_basis === undefined ? undefined : decodePolicyBasis(raw.policy_basis, `${path}.policy_basis`),
-    authorityCandidates: optionalArray(raw.authority_candidates, `${path}.authority_candidates`, decodeAuthority),
+    policyBasis:
+      raw.policy_basis === undefined
+        ? undefined
+        : decodePolicyBasis(raw.policy_basis, `${path}.policy_basis`),
+    authorityCandidates: optionalArray(
+      raw.authority_candidates,
+      `${path}.authority_candidates`,
+      decodeAuthority,
+    ),
     authorityPath: optionalArray(raw.authority_path, `${path}.authority_path`, decodeRelationship),
     adoptions: optionalArray(raw.adoptions, `${path}.adoptions`, decodeAdoption),
     applicableRules: optionalArray(raw.applicable_rules, `${path}.applicable_rules`, decodeRule),
-    supportingClaims: optionalArray(raw.supporting_claims, `${path}.supporting_claims`, decodeClaim),
+    supportingClaims: optionalArray(
+      raw.supporting_claims,
+      `${path}.supporting_claims`,
+      decodeClaim,
+    ),
     requiredLocalRecords:
       raw.required_local_records === undefined
         ? []
@@ -282,7 +320,8 @@ function decodeVerification(value: unknown, path: string): VerificationRecord {
   const raw = record(value, path);
   return {
     status: nonEmptyString(raw.status, `${path}.status`),
-    confidence: raw.confidence === undefined ? undefined : finiteNumber(raw.confidence, `${path}.confidence`),
+    confidence:
+      raw.confidence === undefined ? undefined : finiteNumber(raw.confidence, `${path}.confidence`),
     notes: optionalString(raw.notes, `${path}.notes`),
   };
 }
@@ -291,26 +330,37 @@ function decodePolicyBasis(value: unknown, path: string): ResolutionResult["poli
   const raw = record(value, path);
   return {
     status: enumValue(raw.status, resolutionStatuses, `${path}.status`),
-    requiredLocalRecords: raw.required_local_records === undefined ? [] : stringArray(raw.required_local_records, `${path}.required_local_records`),
+    requiredLocalRecords:
+      raw.required_local_records === undefined
+        ? []
+        : stringArray(raw.required_local_records, `${path}.required_local_records`),
     warnings: raw.warnings === undefined ? [] : stringArray(raw.warnings, `${path}.warnings`),
-    sourceIds: raw.source_ids === undefined ? [] : stringArray(raw.source_ids, `${path}.source_ids`),
+    sourceIds:
+      raw.source_ids === undefined ? [] : stringArray(raw.source_ids, `${path}.source_ids`),
     verification: decodeVerification(raw.verification, `${path}.verification`),
   };
 }
 
-function decodeAuthority(value: unknown, path: string): ResolutionResult["authorityCandidates"][number] {
+function decodeAuthority(
+  value: unknown,
+  path: string,
+): ResolutionResult["authorityCandidates"][number] {
   const raw = record(value, path);
   return {
     kind: nonEmptyString(raw.kind, `${path}.kind`),
     authorityId: optionalString(raw.authority_id, `${path}.authority_id`),
     name: nonEmptyString(raw.name, `${path}.name`),
     roles: raw.roles === undefined ? [] : stringArray(raw.roles, `${path}.roles`),
-    sourceIds: raw.source_ids === undefined ? [] : stringArray(raw.source_ids, `${path}.source_ids`),
+    sourceIds:
+      raw.source_ids === undefined ? [] : stringArray(raw.source_ids, `${path}.source_ids`),
     verification: decodeVerification(raw.verification, `${path}.verification`),
   };
 }
 
-function decodeRelationship(value: unknown, path: string): ResolutionResult["authorityPath"][number] {
+function decodeRelationship(
+  value: unknown,
+  path: string,
+): ResolutionResult["authorityPath"][number] {
   const raw = record(value, path);
   return {
     id: nonEmptyString(raw.id, `${path}.id`),
@@ -319,7 +369,8 @@ function decodeRelationship(value: unknown, path: string): ResolutionResult["aut
     to: nonEmptyString(raw.to, `${path}.to`),
     scope: raw.scope === undefined ? [] : stringArray(raw.scope, `${path}.scope`),
     summary: optionalString(raw.summary, `${path}.summary`),
-    sourceIds: raw.source_ids === undefined ? [] : stringArray(raw.source_ids, `${path}.source_ids`),
+    sourceIds:
+      raw.source_ids === undefined ? [] : stringArray(raw.source_ids, `${path}.source_ids`),
     verification: decodeVerification(raw.verification, `${path}.verification`),
   };
 }
@@ -328,7 +379,8 @@ function decodeAdoption(value: unknown, path: string): ResolutionResult["adoptio
   const raw = record(value, path);
   const datesRaw = raw.dates === undefined ? {} : record(raw.dates, `${path}.dates`);
   const dates: Record<string, string> = {};
-  for (const [key, date] of Object.entries(datesRaw)) dates[key] = isoDate(date, `${path}.dates.${key}`);
+  for (const [key, date] of Object.entries(datesRaw))
+    dates[key] = isoDate(date, `${path}.dates.${key}`);
   return {
     id: nonEmptyString(raw.id, `${path}.id`),
     codeFamily: nonEmptyString(raw.code_family, `${path}.code_family`),
@@ -336,7 +388,8 @@ function decodeAdoption(value: unknown, path: string): ResolutionResult["adoptio
     stateCodeName: nonEmptyString(raw.state_code_name, `${path}.state_code_name`),
     enforcementModel: nonEmptyString(raw.enforcement_model, `${path}.enforcement_model`),
     dates,
-    sourceIds: raw.source_ids === undefined ? [] : stringArray(raw.source_ids, `${path}.source_ids`),
+    sourceIds:
+      raw.source_ids === undefined ? [] : stringArray(raw.source_ids, `${path}.source_ids`),
     verification: decodeVerification(raw.verification, `${path}.verification`),
   };
 }
@@ -345,10 +398,15 @@ function decodeRule(value: unknown, path: string): ResolutionResult["applicableR
   const raw = record(value, path);
   return {
     id: nonEmptyString(raw.id, `${path}.id`),
-    kind: enumValue(raw.kind, ["applicability", "date", "amendment", "enforcement"] as const, `${path}.kind`),
+    kind: enumValue(
+      raw.kind,
+      ["applicability", "date", "amendment", "enforcement"] as const,
+      `${path}.kind`,
+    ),
     codeFamily: optionalString(raw.code_family, `${path}.code_family`),
     summary: nonEmptyString(raw.summary, `${path}.summary`),
-    sourceIds: raw.source_ids === undefined ? [] : stringArray(raw.source_ids, `${path}.source_ids`),
+    sourceIds:
+      raw.source_ids === undefined ? [] : stringArray(raw.source_ids, `${path}.source_ids`),
     verification: decodeVerification(raw.verification, `${path}.verification`),
   };
 }
@@ -362,7 +420,8 @@ function decodeClaim(value: unknown, path: string): ResolutionResult["supporting
     status: nonEmptyString(raw.status, `${path}.status`),
     value: raw.value,
     conflictGroup: optionalString(raw.conflict_group, `${path}.conflict_group`),
-    sourceIds: raw.source_ids === undefined ? [] : stringArray(raw.source_ids, `${path}.source_ids`),
+    sourceIds:
+      raw.source_ids === undefined ? [] : stringArray(raw.source_ids, `${path}.source_ids`),
     verification: decodeVerification(raw.verification, `${path}.verification`),
   };
 }
@@ -375,11 +434,18 @@ function decodeSource(value: unknown, path: string): ResolutionResult["evidence"
     url: httpUrl(raw.url, `${path}.url`),
     kind: nonEmptyString(raw.kind, `${path}.kind`),
     accessedAt: isoDate(raw.accessed_at, `${path}.accessed_at`),
-    lastCheckedAt: raw.last_checked_at === undefined ? undefined : isoDate(raw.last_checked_at, `${path}.last_checked_at`),
+    lastCheckedAt:
+      raw.last_checked_at === undefined
+        ? undefined
+        : isoDate(raw.last_checked_at, `${path}.last_checked_at`),
     availability:
       raw.availability === undefined
         ? undefined
-        : enumValue(raw.availability, ["available", "unavailable", "moved", "unknown"] as const, `${path}.availability`),
+        : enumValue(
+            raw.availability,
+            ["available", "unavailable", "moved", "unknown"] as const,
+            `${path}.availability`,
+          ),
     caveat: optionalString(raw.caveat, `${path}.caveat`),
   };
 }

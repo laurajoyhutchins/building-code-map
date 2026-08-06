@@ -37,7 +37,11 @@ export function ApiEvidenceNotice({ error }: { error: unknown }): JSX.Element | 
   );
 }
 
-export function ReadinessNotice({ readiness }: { readiness: ReadinessResult | null }): JSX.Element | null {
+export function ReadinessNotice({
+  readiness,
+}: {
+  readiness: ReadinessResult | null;
+}): JSX.Element | null {
   if (!readiness || readiness.readiness === "ready") {
     return null;
   }
@@ -47,7 +51,9 @@ export function ReadinessNotice({ readiness }: { readiness: ReadinessResult | nu
   return (
     <section className="public-message" aria-live="polite">
       <strong>
-        {readiness.readiness === "not_ready" ? "Lookup service not ready" : "Some workflows unavailable"}
+        {readiness.readiness === "not_ready"
+          ? "Lookup service not ready"
+          : "Some workflows unavailable"}
       </strong>
       {unavailable.length > 0 ? (
         <ul>
