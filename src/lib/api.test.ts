@@ -109,9 +109,9 @@ describe("resolution response decoding", () => {
   });
 
   it("rejects malformed dates and nested verification records", () => {
-    expect(() =>
-      decodeResolutionResult({ ...rawResolution, generated_at: "yesterday" }),
-    ).toThrow(/generated_at/);
+    expect(() => decodeResolutionResult({ ...rawResolution, generated_at: "yesterday" })).toThrow(
+      /generated_at/,
+    );
     expect(() =>
       decodeResolutionResult({
         ...rawResolution,
@@ -124,7 +124,7 @@ describe("resolution response decoding", () => {
     expect(() =>
       decodeResolutionResult({
         ...rawResolution,
-        evidence: [{ ...rawResolution.evidence[0], url: "file:\/\/\/private\/code" }],
+        evidence: [{ ...rawResolution.evidence[0], url: "file:///private/code" }],
       }),
     ).toThrow(/HTTP or HTTPS/);
   });
@@ -174,6 +174,9 @@ describe("geocoder response decoding", () => {
       latitude: 39.7411,
       precision: "address_point" as const,
       confidence: 1,
+      score_kind: "deterministic_quality",
+      score_factors: { address_point: 1 },
+      ranking_policy_version: "geocoder-ranking-1.0",
       source: "Denver address points",
       source_record_id: "co-denver-1600",
       source_vintage: "2026-08-01",
@@ -187,6 +190,40 @@ describe("geocoder response decoding", () => {
     expect(result.selected?.sourceRecordId).toBe("co-denver-1600");
     expect(result.selected?.precision).toBe("address_point");
     expect(result.selected?.sourceVintage).toBe("2026-08-01");
+    expect(result.selected?.rankingPolicyVersion).toBe("geocoder-ranking-1.0");
+    expect(result.selected?.scoreFactors).toEqual({ address_point: 1 });
+  });
+
+  it("preserves interpolation provenance and deterministic quality scoring", () => {
+    const result = decodeGeocodeResult({
+      ...rawGeocode,
+      selected: {
+        ...rawGeocode.selected,
+        precision: "interpolated" as const,
+        score_kind: "deterministic_quality",
+        score_factors: { interpolation: 0.8, source_priority: 0.2 },
+        ranking_policy_version: "geocoder-ranking-1.0",
+        interpolation: {
+          source_range_id: "range-17",
+          requested_house_number: 1510,
+          from_number: 1500,
+          to_number: 1520,
+          range_direction: "ascending",
+          parity: "even",
+          from_coordinate: { longitude: -104.99, latitude: 39.74 },
+          to_coordinate: { longitude: -104.98, latitude: 39.75 },
+          fraction: 0.5,
+          derived_coordinate: { longitude: -104.985, latitude: 39.745 },
+          coordinate_reference_system: "EPSG:4326",
+          transformation_identity: "identity",
+          method_version: "linear-v1",
+          positional_quality: "street_range_interpolated",
+        },
+      },
+    });
+    expect(result.selected?.interpolation?.sourceRangeId).toBe("range-17");
+    expect(result.selected?.interpolation?.fraction).toBe(0.5);
+    expect(result.selected?.scoreFactors).toEqual({ interpolation: 0.8, source_priority: 0.2 });
   });
 
   it("rejects invalid coordinates and precision", () => {

@@ -25,12 +25,10 @@ describe("runtime decoding primitives", () => {
   });
 
   it("validates enum members", () => {
-    expect(enumValue("ready", ["ready", "degraded"] as const, "ready.status")).toBe(
-      "ready",
+    expect(enumValue("ready", ["ready", "degraded"] as const, "ready.status")).toBe("ready");
+    expect(() => enumValue("mystery", ["ready", "degraded"] as const, "ready.status")).toThrow(
+      /ready, degraded/,
     );
-    expect(() =>
-      enumValue("mystery", ["ready", "degraded"] as const, "ready.status"),
-    ).toThrow(/ready, degraded/);
   });
 
   it("identifies malformed array members by index", () => {
