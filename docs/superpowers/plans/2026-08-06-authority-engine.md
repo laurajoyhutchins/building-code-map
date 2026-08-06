@@ -145,4 +145,3 @@
 - [ ] Keep legacy routes for the documented compatibility window and remove `cmd/server` only if every script and document uses `bcm serve --http`.
 - [ ] Commit and open draft PR 7 targeting exact PR 6; do not modify Offline Execution.
 - [ ] After predecessor merges, transplant/rebase all seven branches onto updated `main`, retarget each PR, and rerun exact-head verification in order.
-
