@@ -28,6 +28,53 @@ func TestCanonicalJSONIsDeterministic(t *testing.T) {
 	}
 }
 
+func TestFinalizeAndWriteBindsBuiltOutput(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "geocoder.sqlite")
+	if err := os.WriteFile(path, []byte("built snapshot"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	manifest := validManifest("", 0)
+	manifest.SnapshotID = "geocoder-test"
+	manifest.Kind = KindGeocoder
+	manifest.Builder.Tool = "geocoder-build"
+
+	finalized, err := FinalizeAndWrite(path, manifest)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if finalized.OutputSHA256 != digestOf("built snapshot") || finalized.OutputSizeBytes != int64(len("built snapshot")) {
+		t.Fatalf("unexpected output identity: sha=%q size=%d", finalized.OutputSHA256, finalized.OutputSizeBytes)
+	}
+	manifestBytes, err := os.ReadFile(ManifestPath(path))
+	if err != nil {
+		t.Fatal(err)
+	}
+	var written Manifest
+	if err := json.Unmarshal(manifestBytes, &written); err != nil {
+		t.Fatal(err)
+	}
+	if written.OutputSHA256 != finalized.OutputSHA256 || written.OutputSizeBytes != finalized.OutputSizeBytes {
+		t.Fatalf("written manifest does not match finalized identity")
+	}
+}
+
+func TestFinalizeAndWriteRejectsUnsupportedKind(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "snapshot.bin")
+	if err := os.WriteFile(path, []byte("snapshot"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	manifest := validManifest("", 0)
+	manifest.Kind = Kind("unknown")
+	if _, err := FinalizeAndWrite(path, manifest); !errors.Is(err, ErrManifestInvalid) {
+		t.Fatalf("expected invalid manifest, got %v", err)
+	}
+	if _, err := os.Stat(ManifestPath(path)); !os.IsNotExist(err) {
+		t.Fatalf("manifest should not be written for unsupported kind, stat err=%v", err)
+	}
+}
+
 func TestLoadAndVerifyAcceptsMatchingSnapshot(t *testing.T) {
 	dir := t.TempDir()
 	path := filepath.Join(dir, "boundary.sqlite")
