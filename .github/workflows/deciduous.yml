@@ -1,0 +1,48 @@
+name: Deciduous archaeology
+
+on:
+  pull_request:
+    paths:
+      - ".deciduous/**"
+      - "docs/archaeology/**"
+      - "backend/data/regulatory/**"
+      - "reports/production/**"
+      - "tools/validate_deciduous_*.py"
+      - "package.json"
+      - ".github/workflows/deciduous.yml"
+  push:
+    branches: [main]
+    paths:
+      - ".deciduous/**"
+      - "docs/archaeology/**"
+      - "backend/data/regulatory/**"
+      - "reports/production/**"
+      - "tools/validate_deciduous_*.py"
+      - "package.json"
+      - ".github/workflows/deciduous.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deciduous-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Frozen graph and current projections
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Validate archaeology
+        run: python tools/validate_deciduous_current.py --write-sql --write-db --write-export
