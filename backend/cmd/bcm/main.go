@@ -277,7 +277,7 @@ func loadRuntime(path string) (*runtime, error) {
 	}
 	regulatoryComponent := verified.Manifest.Components["regulatory_catalog"]
 	regulatoryPath := filepath.Join(root, filepath.FromSlash(regulatoryComponent.Path))
-	catalog, err := regulatory.LoadCatalog(filepath.Dir(regulatoryPath))
+	catalog, err := regulatory.LoadCatalog(regulatoryCatalogRoot(regulatoryComponent, regulatoryPath))
 	if err != nil {
 		return nil, fmt.Errorf("load regulatory catalog: %w", err)
 	}
@@ -307,6 +307,13 @@ func loadRuntime(path string) (*runtime, error) {
 		return nil, err
 	}
 	return &runtime{manifest: verified, snapshot: snap, catalog: catalog, geocoder: service, database: database, engine: authority}, nil
+}
+
+func regulatoryCatalogRoot(component bundle.Component, path string) string {
+	if component.Recursive {
+		return path
+	}
+	return filepath.Dir(path)
 }
 
 func fixedBundleClock(asOf string) engine.Clock {
