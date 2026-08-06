@@ -124,7 +124,7 @@ describe("resolution response decoding", () => {
     expect(() =>
       decodeResolutionResult({
         ...rawResolution,
-        evidence: [{ ...rawResolution.evidence[0], url: "file:\/\/\/private\/code" }],
+        evidence: [{ ...rawResolution.evidence[0], url: "file:///private/code" }],
       }),
     ).toThrow(/HTTP or HTTPS/);
   });
