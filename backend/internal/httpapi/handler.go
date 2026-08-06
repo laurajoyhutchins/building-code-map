@@ -91,13 +91,15 @@ func NewHandler(snap snapshot.Snapshot, options ...Options) http.Handler {
 }
 
 func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	h.applyCORS(w, r)
+	if h.handleCORS(w, r) {
+		return
+	}
 
 	switch {
 	case r.Method == http.MethodGet && r.URL.Path == "/health":
 		h.writeJSON(w, http.StatusOK, map[string]string{"status": "ok"})
 	case r.Method == http.MethodGet && r.URL.Path == "/ready":
-		h.writeJSON(w, http.StatusOK, map[string]string{"status": "ok"})
+		h.handleReadiness(w)
 	case r.Method == http.MethodGet && r.URL.Path == "/layers":
 		h.writeJSON(w, http.StatusOK, h.snapshot.LayerFamilies)
 	case r.Method == http.MethodGet && r.URL.Path == "/boundaries":
@@ -138,15 +140,26 @@ func (h *Handler) handleFeature(w http.ResponseWriter, r *http.Request) {
 	h.writeJSON(w, http.StatusOK, feature.Record())
 }
 
-func (h *Handler) applyCORS(w http.ResponseWriter, r *http.Request) {
+func (h *Handler) handleCORS(w http.ResponseWriter, r *http.Request) bool {
 	origin := r.Header.Get("Origin")
-	if origin == "" {
-		return
-	}
-	if _, ok := h.allowedOrigins[origin]; ok {
+	_, originAllowed := h.allowedOrigins[origin]
+	if origin != "" && originAllowed {
 		w.Header().Set("Access-Control-Allow-Origin", origin)
-		w.Header().Set("Vary", "Origin")
+		w.Header().Set("Vary", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers")
 	}
+
+	if r.Method != http.MethodOptions {
+		return false
+	}
+	if origin == "" || !originAllowed {
+		h.writeJSON(w, http.StatusForbidden, map[string]string{"error": "CORS origin is not allowed"})
+		return true
+	}
+	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	w.Header().Set("Access-Control-Max-Age", "600")
+	w.WriteHeader(http.StatusNoContent)
+	return true
 }
 
 func (h *Handler) writeJSON(w http.ResponseWriter, status int, payload any) {

@@ -31,7 +31,7 @@ func TestResolveColoradoBuildingRequiresLocalAdoptionRecord(t *testing.T) {
 		t.Fatalf("Colorado building resolution must not invent a statewide adoption: %#v", result.Adoptions)
 	}
 	assertCandidateKind(t, result, "municipality")
-	assertContains(t, result.RequiredLocalRecords, "Current municipal building-code adoption ordinance and effective date")
+	assertContains(t, result.RequiredLocalRecords, "Current municipal building, fire, and energy-code adoption instruments")
 	assertRuleKind(t, result, "applicability")
 	assertRuleKind(t, result, "amendment")
 	if result.PolicyBasis == nil || result.PolicyBasis.Status != "local_record_required" {
@@ -79,7 +79,7 @@ func TestResolveFloridaUsesStatewideBuildingCodeWithoutSuppressingLocalFollowUp(
 		t.Fatalf("unexpected adoptions: %#v", result.Adoptions)
 	}
 	assertCandidateKind(t, result, "municipality")
-	assertContains(t, result.RequiredLocalRecords, "Local technical amendments and administrative procedures")
+	assertContains(t, result.RequiredLocalRecords, "Current local technical amendments and administrative procedures")
 	if len(result.AuthorityPath) != 1 {
 		t.Fatalf("expected authority path, got %#v", result.AuthorityPath)
 	}
@@ -91,7 +91,7 @@ func TestResolveFloridaUsesStatewideBuildingCodeWithoutSuppressingLocalFollowUp(
 	}
 }
 
-func TestResolveFloridaHistoricalDateFailsClosedBeforeCurrentEdition(t *testing.T) {
+func TestResolveFloridaHistoricalDateUsesPriorEdition(t *testing.T) {
 	catalog := loadTestCatalog(t)
 	result, err := Resolve(catalog, ResolutionRequest{
 		Context:           &GeographicContext{StateID: "US-FL", StateFIPS: "12", Municipality: &BoundaryMatch{Name: "Orlando"}},
@@ -101,15 +101,15 @@ func TestResolveFloridaHistoricalDateFailsClosedBeforeCurrentEdition(t *testing.
 	if err != nil {
 		t.Fatal(err)
 	}
-	if result.Status != "insufficient_evidence" || len(result.Adoptions) != 0 {
-		t.Fatalf("historical result did not fail closed: %#v", result)
+	if result.Status != "partially_resolved" || len(result.Adoptions) != 1 {
+		t.Fatalf("historical result did not select one prior edition: %#v", result)
 	}
-	if !strings.Contains(strings.Join(result.Warnings, " "), "No supported adoption record") {
-		t.Fatalf("missing historical adoption warning: %#v", result.Warnings)
+	if result.Adoptions[0].ID != "adoption:us-fl:building:2020" {
+		t.Fatalf("historical result selected wrong adoption: %#v", result.Adoptions)
 	}
 }
 
-func TestResolveNewJerseyHistoricalDateFailsClosedWithoutEditionTimeline(t *testing.T) {
+func TestResolveNewJerseyHistoricalDatePreservesTransitionEditions(t *testing.T) {
 	catalog := loadTestCatalog(t)
 	result, err := Resolve(catalog, ResolutionRequest{
 		Context:           &GeographicContext{StateID: "US-NJ", StateFIPS: "34", Municipality: &BoundaryMatch{Name: "Trenton"}},
@@ -119,8 +119,15 @@ func TestResolveNewJerseyHistoricalDateFailsClosedWithoutEditionTimeline(t *test
 	if err != nil {
 		t.Fatal(err)
 	}
-	if result.Status != "insufficient_evidence" || len(result.Adoptions) != 0 {
-		t.Fatalf("undated current record leaked into historical result: %#v", result)
+	if result.Status != "partially_resolved" || len(result.Adoptions) != 2 {
+		t.Fatalf("historical transition result = %#v, want two supported editions", result)
+	}
+	ids := map[string]bool{}
+	for _, adoption := range result.Adoptions {
+		ids[adoption.ID] = true
+	}
+	if !ids["adoption:us-nj:building:2015"] || !ids["adoption:us-nj:building:2018"] {
+		t.Fatalf("historical transition editions = %#v", result.Adoptions)
 	}
 }
 
@@ -173,7 +180,7 @@ func TestResolveNewJerseyStateOwnedProjectAppliesProjectOverride(t *testing.T) {
 	if result.Status != "resolved" {
 		t.Fatalf("status = %q, want resolved", result.Status)
 	}
-	assertCandidateAuthority(t, result, "auth:us-nj:codes-standards")
+	assertCandidateAuthority(t, result, "auth:us-nj:bcpr")
 }
 
 func TestResolveSurfacesConflictingRelevantClaims(t *testing.T) {

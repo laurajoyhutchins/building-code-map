@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"strings"
 
 	"building-code-map/backend/internal/geocoder"
 	"building-code-map/backend/internal/regulatory"
@@ -22,7 +23,7 @@ type lookupRequest struct {
 }
 
 type lookupResponse struct {
-	Geocode   geocoder.Result             `json:"geocode"`
+	Geocode    geocoder.Result             `json:"geocode"`
 	Resolution regulatory.ResolutionResult `json:"resolution"`
 }
 
@@ -78,24 +79,34 @@ func (h *Handler) handleLookup(w http.ResponseWriter, r *http.Request) {
 		ApplicabilityDate: request.ApplicabilityDate,
 	})
 	if err != nil {
-		h.writeJSON(w, http.StatusUnprocessableEntity, map[string]string{"error": err.Error()})
+		h.writeResolutionError(w, err)
 		return
 	}
 	h.writeJSON(w, http.StatusOK, lookupResponse{Geocode: geocodeResult, Resolution: resolution})
 }
 
 func (h *Handler) resolveRequest(request regulatory.ResolutionRequest) (regulatory.ResolutionResult, error) {
-	if request.Context == nil {
-		if request.Point == nil {
-			return regulatory.ResolutionResult{}, errors.New("point or context is required")
-		}
-		context, err := resolveGeographicContext(h.snapshot, h.regulatoryCatalog, *request.Point)
-		if err != nil {
-			return regulatory.ResolutionResult{}, err
-		}
-		request.Context = &context
+	if request.Point == nil {
+		return regulatory.ResolutionResult{}, errors.New("point is required")
 	}
-	return regulatory.Resolve(h.regulatoryCatalog, request)
+	dateWasAssumed := strings.TrimSpace(request.ApplicabilityDate) == ""
+	context, err := resolveGeographicContext(h.snapshot, h.regulatoryCatalog, *request.Point)
+	if err != nil {
+		return regulatory.ResolutionResult{}, err
+	}
+	request.Context = &context
+	request.Point = nil
+	result, err := regulatory.Resolve(h.regulatoryCatalog, request)
+	if err != nil {
+		return regulatory.ResolutionResult{}, err
+	}
+	if dateWasAssumed {
+		result.Warnings = append(result.Warnings, fmt.Sprintf(
+			"Applicability date was omitted; the server used %s in UTC. Confirm the date that governs the project.",
+			result.ApplicabilityDate,
+		))
+	}
+	return result, nil
 }
 
 func decodeStrictRequest[T any](w http.ResponseWriter, r *http.Request) (T, error) {

@@ -1,8 +1,8 @@
 # Building Code Map
 
-Building Code Map is a local-first project for answering a difficult regulatory question deterministically: **given a location, which authorities and adopted building codes apply?**
+Building Code Map is a local-first project for answering a difficult regulatory question deterministically: **given a location and an as-of date, which authorities may govern it, which adopted-code instruments are supported by evidence, and what still requires confirmation?**
 
-The product combines three deliberately separate systems: address-to-point geocoding, point-to-geographic-boundary resolution, and source-backed regulatory policy. Keeping those boundaries separate preserves provenance and prevents an approximate address match from being mistaken for a regulatory conclusion.
+The product combines three deliberately separate systems: address-to-point geocoding, point-to-geographic-boundary observation, and source-backed regulatory policy. Keeping those boundaries separate preserves provenance and prevents an approximate address match or containing polygon from being mistaken for a regulatory conclusion.
 
 > **Project status:** pre-1.0 research and engineering. Results are not a substitute for confirmation by the controlling authority having jurisdiction, a licensed professional, or current official publications.
 
@@ -13,9 +13,12 @@ The product combines three deliberately separate systems: address-to-point geoco
 - authoritative address-point preference with visibly labeled street-range interpolation
 - React, TypeScript, Vite, and MapLibre GL JS frontend
 - Go HTTP API
-- local SQLite boundary snapshots, with legacy DuckDB migration compatibility
-- state, county, municipality, special land-use, American Indian area, and NERIS jurisdiction layers
+- validated, read-only local SQLite boundary snapshots
+- explicitly configured legacy DuckDB migration compatibility
+- state, county, municipality, special land-use, American Indian area, and NERIS jurisdiction observations
 - source-backed jurisdiction and adopted-code policy for six executable pilot states: Colorado, Florida, New Jersey, Virginia, Oregon, and North Carolina
+- point-only public regulatory resolution with deterministic boundary-ambiguity responses
+- capability-specific readiness for boundary, geocoder, regulatory, and composed lookup paths
 - LORE-compatible semantic documentation trust root
 - read-only GitHub Actions verification for frontend, backend, regulatory data, and repository documentation
 
@@ -28,7 +31,7 @@ The repository intentionally excludes hydrated boundary and geocoder databases. 
 - Node.js 22
 - pnpm 10.12.1-compatible tooling
 - the Go version declared in [`backend/go.mod`](backend/go.mod)
-- a supported boundary snapshot, normally `backend/data/tigerweb.sqlite`
+- a supported boundary snapshot at `backend/data/tigerweb.sqlite`, unless a repository-contained override is configured explicitly
 - optionally, a locally built `backend/data/geocoder.sqlite` for address lookup
 
 Install frontend dependencies from the repository root:
@@ -56,7 +59,7 @@ Then check:
 - backend readiness: `http://127.0.0.1:8000/ready`
 - frontend: the local URL printed by Vite, normally `http://127.0.0.1:5173`
 
-`/health` can succeed without a usable boundary snapshot. `/ready` reports whether the boundary-backed API is usable. A missing geocoder snapshot disables address endpoints but does not disable coordinate lookup or the explorer.
+`/health` proves only that the process responds. `/ready` reports `ready`, `degraded`, or `not_ready` plus capability records. A missing geocoder snapshot disables address geocoding without disabling boundary inspection. Missing regulatory profiles leave geographic capabilities available while code conclusions remain unavailable.
 
 On Windows, `./tools/start.cmd` starts both services and waits for backend readiness. `./tools/health.cmd` probes the running services, and `./tools/stop.cmd` stops the processes launched by the repository scripts.
 
@@ -71,13 +74,17 @@ Local SQLite geocoder -----> provenance-bearing point
 Coordinate input ----------------+
                                   |
                                   v
-                         Boundary resolution
+                    Geographic boundary observations
+                                  |
+                                  v
+              Source-backed policy plus as-of date
                                   |
                                   v
                          Regulatory resolver
                                   |
                                   v
-                  Authorities, adoptions, evidence
+          Candidate authorities, adoptions, evidence,
+                 uncertainty, and local confirmation
 ```
 
 OpenStreetMap is a browser basemap. TIGERweb, NERIS, address sources, and official regulatory sources feed offline ingestion or research workflows; they are not lookup-time browser dependencies.
@@ -95,7 +102,9 @@ The backend exposes:
 - `GET /refresh/status`
 - `POST /refresh/trigger`
 
-`POST /resolve` remains point-based. `POST /lookup` composes local geocoding with that existing resolver and returns both results.
+`POST /resolve` accepts a point, never caller-authored jurisdiction context. The backend derives boundary observations from its validated snapshot before invoking the internal regulatory resolver. Multiple containing states, counties, or municipalities return `409 boundary_ambiguous` with every tied observation instead of selecting the first polygon. `POST /lookup` composes local geocoding with the same point path and returns both results.
+
+When `applicability_date` is omitted, the API uses the current UTC date for compatibility and emits an explicit warning. That default is not evidence of project applicability.
 
 ## Build a Local Geocoder Snapshot
 
@@ -119,10 +128,10 @@ Address sources require independent licensing and redistribution review. See [Bu
 - `backend/internal/geocoder/`: address normalization, SQLite matching, interpolation, provenance, and snapshot construction
 - `backend/internal/httpapi/`: HTTP contracts and address-to-resolution composition
 - `backend/internal/regulatory/`: source-backed policy catalog and generic resolver
-- `backend/internal/snapshot/`: boundary snapshot loading
+- `backend/internal/snapshot/`: boundary snapshot loading and semantic validation
 - `backend/cmd/geocoder-build/`: reproducible geocoder snapshot builder
 - `reports/`: state building-code research artifacts and transformation tooling
-- `docs/`: tutorials, how-to guides, references, explanations, and generated LORE projections
+- `docs/`: tutorials, how-to guides, references, explanations, reviews, and generated LORE projections
 - `.lore/records/`: accepted semantic repository knowledge
 - `skills/maintain-repository-documentation/`: neutral LORE maintenance protocol
 - `tools/`: Windows launch, health, stop, reporting, and Deciduous helpers
@@ -134,16 +143,19 @@ Address sources require independent licensing and redistribution review. See [Bu
 
 - local address or coordinate entry
 - provenance-bearing address-point and interpolated geocoding
-- cached boundary exploration and geographic resolution
+- validated cached boundary exploration and geographic resolution
 - source-backed regulatory resolution for six executable pilot states
-- explicit uncertainty and required-local-record outputs
+- explicit uncertainty, ambiguity, and required-local-record outputs
 
 ### Next
 
 - acquire and review production address sources for selected jurisdictions
+- add complete source manifests, checksums, build identities, activation receipts, and rollback identities to runtime snapshots
 - deepen code-family, authority, amendment, and fixture coverage within the executable pilots
-- add reproducible boundary and address refresh workflows
-- improve candidate ranking using deterministic source-specific rules
+- broaden municipal adopted-code coverage
+- add reproducible boundary refresh and atomic activation workflows
+- improve geocoder ranking and interpolation provenance using deterministic source-specific rules
+- validate frontend API payloads at runtime instead of relying on TypeScript assertions
 - design municipality-conditioned policy, geographic exceptions, provision-level status, and multi-agency routing before promoting Massachusetts, New York, or California
 
 ### Later
@@ -174,7 +186,7 @@ go test ./...
 go vet ./...
 ```
 
-GitHub Actions also validates the repository-local LORE trust root against a pinned public LORE revision.
+GitHub Actions also validates regulatory compilation and the repository-local LORE trust root against a pinned public LORE revision.
 
 ## Documentation
 
@@ -186,6 +198,7 @@ GitHub Actions also validates the repository-local LORE trust root against a pin
 - [Add a boundary layer](docs/how-to/add-boundary-layer.md)
 - [Populate a state report](docs/how-to/populate-state-report-template.md)
 - [Local SQLite geocoder design](docs/superpowers/specs/2026-08-01-local-sqlite-geocoder-design.md)
+- [Comprehensive repository review, 2026-08-03](docs/reviews/2026-08-03-comprehensive-repository-review.md)
 - [Data sources and redistribution boundaries](DATA_SOURCES.md)
 - [Security policy](SECURITY.md)
 - [Contribution guide](CONTRIBUTING.md)
@@ -196,6 +209,7 @@ GitHub Actions also validates the repository-local LORE trust root against a pin
 
 - OpenStreetMap attribution remains visible in the map.
 - Boundary and address sources retain independent provenance and redistribution reviews.
+- Census and NERIS geometry remains geographic evidence, not self-proving regulatory authority.
 - NERIS operational data is not assumed to be redistributable; individual fire departments retain ownership of their data.
 - Model-code and standards text is not included merely because a jurisdiction adopts it.
 - Environment files, logs, local caches, decision databases, prompt-bearing graph exports, and database binaries are ignored.

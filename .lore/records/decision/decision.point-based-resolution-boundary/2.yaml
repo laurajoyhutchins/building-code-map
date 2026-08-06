@@ -1,0 +1,48 @@
+schema_version: 1
+id: decision.point-based-resolution-boundary
+kind: decision
+revision: 2
+status: active
+title: Keep public regulatory resolution point-based
+summary: Public callers provide a point or an address that resolves to a point; only trusted repository code may transform boundary observations into normalized geographic context for the regulatory resolver.
+scope:
+  repository: building-code-map
+  components:
+    - local-sqlite-geocoder
+    - boundary-resolution
+    - regulatory-resolution
+evidence:
+  - revision: 742909b252a1c548a4d243fecdee463aa40bc8ae
+    path: backend/internal/httpapi/resolve.go
+  - revision: 742909b252a1c548a4d243fecdee463aa40bc8ae
+    path: backend/internal/httpapi/geocode.go
+  - revision: 742909b252a1c548a4d243fecdee463aa40bc8ae
+    path: backend/internal/httpapi/resolve_test.go
+disclosure:
+  audiences:
+    - contributors
+    - maintainers
+  tags:
+    - architecture-decision
+    - api
+    - authority-boundary
+    - separation-of-concerns
+  weight: 100
+provenance:
+  source: bootstrap
+  transaction: null
+  producer: comprehensive-repository-review
+supersedes: lore://building-code-map/decision/decision.point-based-resolution-boundary@1
+payload:
+  decision: Preserve POST /resolve as a point-only public contract. Normalized geographic context is internal evidence derived from the validated boundary snapshot, not caller input.
+  composition: POST /lookup preserves geocoding evidence, uses the selected candidate point, and invokes the same boundary and regulatory path.
+  ambiguity_policy: More than one containing state, county, or municipality returns deterministic ambiguity evidence and does not select a policy context by feature order.
+  nonexclusive_observations:
+    - special_areas
+    - tribal_areas
+    - neris_jurisdictions
+  rationale:
+    - Address quality must remain inspectable independently from regulatory conclusions.
+    - Coordinate callers must continue to work without a geocoder snapshot.
+    - Polygon containment must not become caller-authored legal authority.
+    - Address parsing, candidate ranking, and boundary order must not become state regulatory policy.
