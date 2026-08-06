@@ -35,8 +35,10 @@ export function PublicLookup(): JSX.Element {
 
   useEffect(() => {
     const controller = new AbortController();
-    void fetchReadiness()
-      .then(setReadiness)
+    void fetchReadiness(controller.signal)
+      .then((nextReadiness) => {
+        if (!controller.signal.aborted) setReadiness(nextReadiness);
+      })
       .catch((readinessError: unknown) => {
         if (!controller.signal.aborted) setError(readinessError);
       });

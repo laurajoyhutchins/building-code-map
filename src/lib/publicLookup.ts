@@ -91,5 +91,11 @@ export function formatCodeFamily(codeFamily: string | undefined): string {
 export function formatGeocodeSummary(candidate: GeocodeCandidate): string {
   const precision =
     candidate.precision === "address_point" ? "Address point" : "Interpolated street range";
-  return [precision, candidate.source, candidate.sourceVintage].join(" · ");
+  return [
+    precision,
+    candidate.source,
+    candidate.sourceVintage,
+    `deterministic quality ${candidate.confidence.toFixed(2)}`,
+    candidate.rankingPolicyVersion,
+  ].join(" · ");
 }

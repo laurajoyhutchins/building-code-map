@@ -73,16 +73,26 @@ async function readJson<T>(path: string, decode: Decoder<T>, init?: RequestInit)
 }
 
 function decodeApiError(payload: unknown, status: number, path: string): ApiResponseError {
-  const raw = record(payload, `error response from ${path}`);
+  let raw: Record<string, unknown>;
+  try {
+    raw = record(payload, `error response from ${path}`);
+  } catch {
+    return new ApiResponseError(`Request to ${path} failed with ${status}`, status);
+  }
+
   const message =
     typeof raw.error === "string" && raw.error.trim() !== ""
       ? raw.error
       : `Request to ${path} failed with ${status}`;
   const code = typeof raw.code === "string" ? raw.code : undefined;
   if (code === "boundary_ambiguous") {
-    const layerFamily = nonEmptyString(raw.layer_family, "error.layer_family");
-    const observations = arrayValue(raw.observations, "error.observations", decodeBoundaryMatch);
-    return new ApiResponseError(message, status, code, { layerFamily, observations });
+    try {
+      const layerFamily = nonEmptyString(raw.layer_family, "error.layer_family");
+      const observations = arrayValue(raw.observations, "error.observations", decodeBoundaryMatch);
+      return new ApiResponseError(message, status, code, { layerFamily, observations });
+    } catch {
+      return new ApiResponseError(message, status, code);
+    }
   }
   if (raw.status === "ambiguous") {
     const candidates = Array.isArray(raw.candidates) ? raw.candidates.length : 0;
@@ -120,8 +130,8 @@ export function fetchHealth(): Promise<{ status: string }> {
   return readJson("/health", decodeHealth);
 }
 
-export function fetchReadiness(): Promise<ReadinessResult> {
-  return readJson("/ready", decodeReadiness);
+export function fetchReadiness(signal?: AbortSignal): Promise<ReadinessResult> {
+  return readJson("/ready", decodeReadiness, { signal });
 }
 
 export function fetchLayers(): Promise<LayerFamilyDefinition[]> {

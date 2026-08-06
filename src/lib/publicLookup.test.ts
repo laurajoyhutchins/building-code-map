@@ -105,7 +105,7 @@ describe("public result presentation", () => {
     expect(formatCodeFamily(undefined)).toBe("Building codes");
   });
 
-  it("formats geocoder provenance without hiding interpolation", () => {
+  it("shows interpolation, deterministic quality, and ranking identity", () => {
     const candidate: GeocodeCandidate = {
       matchedAddress: "1510 Market St Denver CO 80202",
       longitude: -104.99,
@@ -113,14 +113,20 @@ describe("public result presentation", () => {
       precision: "interpolated",
       confidence: 0.9,
       scoreKind: "deterministic_quality",
-      scoreFactors: { interpolation: 0.9 },
+      scoreFactors: {
+        street_range_base: 0.55,
+        exact_street: 0.05,
+        exact_city: 0.15,
+        exact_postal_code: 0.1,
+        parity_matched: 0.05,
+      },
       rankingPolicyVersion: "geocoder-ranking-1.0",
       source: "Denver address ranges",
       sourceRecordId: "range-1",
       sourceVintage: "2026-08-01",
     };
     expect(formatGeocodeSummary(candidate)).toBe(
-      "Interpolated street range · Denver address ranges · 2026-08-01",
+      "Interpolated street range · Denver address ranges · 2026-08-01 · deterministic quality 0.90 · geocoder-ranking-1.0",
     );
   });
 });
