@@ -10,6 +10,7 @@ This repository uses Diataxis to separate reader intent.
 - [How-to Guides](how-to/populate-state-report-template.md): turn the state report template into a source-backed report.
 - [How-to Guides](how-to/use-decision-graph-for-repo-work.md): keep Deciduous aligned to the repo's real workstreams.
 - [Reference](reference/runtime-and-api.md): look up scripts, endpoints, data shapes, and status behavior.
+- [Reference](reference/geocoder-ranking.md): review deterministic geocoder scoring, ambiguity, source-priority, vintage, and interpolation semantics.
 - [Reference](reference/configuration.md): see which files own runtime, formatting, linting, and generated state.
 - [Reference](reference/repository-governance.md): review merge, ruleset, security, ownership, and exact-head verification policy.
 - [Reference](reference/fema_bcat.md): review the FEMA BCAT source contract and update flow.
