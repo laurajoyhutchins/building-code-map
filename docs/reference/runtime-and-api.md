@@ -89,10 +89,16 @@ A successful result contains the original query, normalized matching form, selec
 - `longitude`
 - `latitude`
 - `precision`: `address_point` or `interpolated`
-- `confidence`
+- `confidence`: an additive deterministic quality score, not a probability
+- `score_kind`: currently `deterministic_quality`
+- `score_factors`: the additive factor breakdown
+- `ranking_policy_version`
 - `source`
 - `source_record_id`
 - `source_vintage`
+- `interpolation`, when `precision` is `interpolated`
+
+The ranking and interpolation contract is defined in [Geocoder Ranking and Interpolation Reference](geocoder-ranking.md). Source vintage is provenance-only in the current policy. Equal or materially close candidates remain ambiguous rather than being selected by source or record order.
 
 Status behavior:
 
@@ -102,7 +108,7 @@ Status behavior:
 - `422`: the address is valid but absent from the local snapshot.
 - `503`: no usable geocoder snapshot is loaded.
 
-An interpolated result remains labeled and includes a warning. It is not an authoritative address point or parcel-level location.
+An interpolated result remains labeled and includes a warning. It is not an authoritative address point, parcel, structure, entrance, rooftop, driveway, delivery, or emergency-access location.
 
 ## `POST /lookup`
 
@@ -125,7 +131,7 @@ A successful response contains two top-level fields:
 }
 ```
 
-The geocoding result remains visible so callers can inspect whether the point came from an address point or interpolation and which source supplied it. Ambiguous and unmatched geocoding results do not proceed to regulatory resolution.
+The geocoding result remains visible so callers can inspect whether the point came from an address point or interpolation, which source supplied it, which ranking policy was used, and which deterministic quality factors contributed. Ambiguous and unmatched geocoding results do not proceed to regulatory resolution.
 
 ## `POST /resolve`
 
@@ -192,7 +198,9 @@ SQLite boundary snapshots are opened read-only. Every supported boundary loader 
 - object-shaped attributes;
 - supported refresh status and coherent timestamps.
 
-The current snapshot contract does not yet contain complete source manifests, checksums, build-tool identities, activation receipts, or rollback identities. Those remain follow-up work and must not be inferred from the refresh-status row.
+Boundary and geocoder startup verify versioned manifest and activation-receipt sidecars before accepting a snapshot. The manifest binds source, builder, record-count, licensing, size, and SHA-256 identity to the output. Readiness reports the verified snapshot identity rather than treating refresh metadata as authority.
+
+The geocoder builder can validate a manifest template and publish a finalized manifest for its output. Complete candidate activation, transaction-wide rollback across the database and sidecars, and publication-approved operational examples remain tracked work; the presence of a finalized manifest alone must not be described as completed activation.
 
 ## Layer Family Keys
 
