@@ -1,11 +1,15 @@
-import { describe, expect, it } from "vitest";
-import { buildApiUrl, getApiBaseUrl } from "./api";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { buildApiUrl, fetchReadiness, getApiBaseUrl } from "./api";
 import {
   decodeGeocodeResult,
   decodeLookupResult,
   decodeReadiness,
   decodeResolutionResult,
 } from "./apiPayloads";
+
+afterEach(() => {
+  vi.unstubAllGlobals();
+});
 
 describe("api url helpers", () => {
   it("defaults to the dev proxy path", () => {
@@ -131,22 +135,24 @@ describe("resolution response decoding", () => {
 });
 
 describe("readiness response decoding", () => {
+  const rawReadiness = {
+    status: "ok",
+    readiness: "degraded",
+    capabilities: {
+      boundary_resolution: {
+        status: "available",
+        required: true,
+        message: "Boundary snapshot loaded.",
+      },
+    },
+    snapshots: {
+      boundary: { status: "verified", snapshot_id: "boundary-2026-08-05" },
+      geocoder: { status: "unavailable" },
+    },
+  };
+
   it("preserves capability and snapshot identity", () => {
-    const result = decodeReadiness({
-      status: "ok",
-      readiness: "degraded",
-      capabilities: {
-        boundary_resolution: {
-          status: "available",
-          required: true,
-          message: "Boundary snapshot loaded.",
-        },
-      },
-      snapshots: {
-        boundary: { status: "verified", snapshot_id: "boundary-2026-08-05" },
-        geocoder: { status: "unavailable" },
-      },
-    });
+    const result = decodeReadiness(rawReadiness);
     expect(result.snapshots.boundary?.snapshotId).toBe("boundary-2026-08-05");
     expect(result.capabilities.boundary_resolution?.required).toBe(true);
   });
@@ -160,6 +166,40 @@ describe("readiness response decoding", () => {
         snapshots: { boundary: { status: "verified" } },
       }),
     ).toThrow(/snapshot_id/);
+  });
+
+  it("forwards cancellation to the readiness request", async () => {
+    const fetchMock = vi.fn(async () => ({
+      ok: true,
+      status: 200,
+      json: async () => rawReadiness,
+    }));
+    vi.stubGlobal("fetch", fetchMock);
+    const controller = new AbortController();
+
+    await fetchReadiness(controller.signal);
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      "/api/ready",
+      expect.objectContaining({ signal: controller.signal }),
+    );
+  });
+
+  it("keeps malformed error payloads inside the typed API boundary", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => ({
+        ok: false,
+        status: 503,
+        json: async () => ["unexpected", "shape"],
+      })),
+    );
+
+    await expect(fetchReadiness()).rejects.toMatchObject({
+      name: "ApiResponseError",
+      status: 503,
+      message: "Request to /ready failed with 503",
+    });
   });
 });
 
@@ -175,7 +215,7 @@ describe("geocoder response decoding", () => {
       precision: "address_point" as const,
       confidence: 1,
       score_kind: "deterministic_quality",
-      score_factors: { address_point: 1 },
+      score_factors: { address_point_base: 0.7, exact_street: 0.05, exact_city: 0.15, exact_postal_code: 0.1 },
       ranking_policy_version: "geocoder-ranking-1.0",
       source: "Denver address points",
       source_record_id: "co-denver-1600",
@@ -185,13 +225,13 @@ describe("geocoder response decoding", () => {
     warnings: [],
   };
 
-  it("preserves selected-point provenance", () => {
+  it("preserves selected-point provenance and deterministic scoring identity", () => {
     const result = decodeGeocodeResult(rawGeocode);
     expect(result.selected?.sourceRecordId).toBe("co-denver-1600");
     expect(result.selected?.precision).toBe("address_point");
     expect(result.selected?.sourceVintage).toBe("2026-08-01");
     expect(result.selected?.rankingPolicyVersion).toBe("geocoder-ranking-1.0");
-    expect(result.selected?.scoreFactors).toEqual({ address_point: 1 });
+    expect(result.selected?.scoreFactors).toEqual(rawGeocode.selected.score_factors);
   });
 
   it("preserves interpolation provenance and deterministic quality scoring", () => {
@@ -200,30 +240,29 @@ describe("geocoder response decoding", () => {
       selected: {
         ...rawGeocode.selected,
         precision: "interpolated" as const,
-        score_kind: "deterministic_quality",
-        score_factors: { interpolation: 0.8, source_priority: 0.2 },
-        ranking_policy_version: "geocoder-ranking-1.0",
+        confidence: 0.9,
+        score_factors: { street_range_base: 0.55, exact_street: 0.05, exact_city: 0.15, exact_postal_code: 0.1, parity_matched: 0.05 },
         interpolation: {
           source_range_id: "range-17",
           requested_house_number: 1510,
           from_number: 1500,
           to_number: 1520,
           range_direction: "ascending",
-          parity: "even",
+          parity: "E",
           from_coordinate: { longitude: -104.99, latitude: 39.74 },
           to_coordinate: { longitude: -104.98, latitude: 39.75 },
           fraction: 0.5,
           derived_coordinate: { longitude: -104.985, latitude: 39.745 },
           coordinate_reference_system: "EPSG:4326",
-          transformation_identity: "identity",
-          method_version: "linear-v1",
-          positional_quality: "street_range_interpolated",
+          transformation_identity: "none",
+          method_version: "linear-street-range-1.0",
+          positional_quality: "street_range_interpolation",
         },
       },
     });
     expect(result.selected?.interpolation?.sourceRangeId).toBe("range-17");
     expect(result.selected?.interpolation?.fraction).toBe(0.5);
-    expect(result.selected?.scoreFactors).toEqual({ interpolation: 0.8, source_priority: 0.2 });
+    expect(result.selected?.scoreFactors.street_range_base).toBe(0.55);
   });
 
   it("rejects invalid coordinates and precision", () => {
