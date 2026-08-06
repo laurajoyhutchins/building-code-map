@@ -1,0 +1,40 @@
+{
+  "schema_version": "1",
+  "engine_version": "0.1.0",
+  "source_commit": "29a5e083750bdeabacdb6cabf0f259273fcdc9a8",
+  "created_at": "2026-08-06T13:11:31Z",
+  "components": {
+    "boundary_snapshot": {
+      "path": "data/authority.snapshot.json",
+      "sha256": "2feb7751a351a84b9b84887bf90991988d0bed0da293563a40b0b55f6e0e2a6f"
+    },
+    "regulatory_catalog": {
+      "path": "data/regulatory",
+      "sha256": "cc0dc65fcecf69d344ccfbf2212d88c542a86317adf62eb4ebaf7b29995a88ac",
+      "recursive": true
+    },
+    "geocoder": {
+      "path": "data/geocoder.sqlite",
+      "sha256": "2dec9b4dca9c07b8ba4b925dbd98ef707b61fec9a520d88bff77e3daed086ab9",
+      "optional": true
+    }
+  },
+  "coverage": {
+    "states": [
+      "CO",
+      "FL",
+      "NC",
+      "NJ",
+      "OR",
+      "VA"
+    ],
+    "code_families": [
+      "building",
+      "electrical",
+      "energy",
+      "fire_operational",
+      "residential"
+    ],
+    "as_of": "2026-08-06"
+  }
+}

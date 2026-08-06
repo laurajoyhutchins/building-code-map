@@ -1,0 +1,187 @@
+{
+  "schema_version": "1.0",
+  "state_id": "US-NC",
+  "source_health": {
+    "src:us-nc:osfm-current-past-codes": {
+      "last_checked_at": "2026-08-04",
+      "availability": "available"
+    },
+    "src:us-nc:osfm-2024-delay": {
+      "last_checked_at": "2026-08-04",
+      "availability": "available"
+    },
+    "src:us-nc:session-law-2025-2": {
+      "last_checked_at": "2026-08-04",
+      "availability": "available"
+    },
+    "src:us-nc:gs-143-138": {
+      "last_checked_at": "2026-08-04",
+      "availability": "available"
+    },
+    "src:us-nc:gs-143-139": {
+      "last_checked_at": "2026-08-04",
+      "availability": "available"
+    },
+    "src:us-nc:gs-160d-1102": {
+      "last_checked_at": "2026-08-04",
+      "availability": "available"
+    }
+  },
+  "applicability_rules": [
+    {
+      "id": "rule:us-nc:2018-building-current",
+      "code_family": "building",
+      "trigger": "covered_building_project",
+      "summary": "The 2018 North Carolina Building Code remains the current statewide building-code baseline until the condition-based 2024 transition becomes effective.",
+      "source_ids": [
+        "src:us-nc:osfm-current-past-codes",
+        "src:us-nc:osfm-2024-delay"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-nc:2018-residential-current",
+      "code_family": "residential",
+      "trigger": "detached_one_two_family_or_townhouse",
+      "summary": "The 2018 North Carolina Residential Code remains the current statewide residential-code baseline until the condition-based 2024 transition becomes effective.",
+      "source_ids": [
+        "src:us-nc:osfm-current-past-codes",
+        "src:us-nc:osfm-2024-delay"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "date_rules": [
+    {
+      "id": "rule:us-nc:2018-building-effective",
+      "code_family": "building",
+      "rule_type": "effective_date",
+      "trigger": "applicability_date",
+      "start_date": "2019-01-01",
+      "prior_code_allowed": false,
+      "summary": "The recorded 2018 North Carolina Building Code is effective on and after January 1, 2019.",
+      "source_ids": [
+        "src:us-nc:osfm-current-past-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-nc:2018-residential-effective",
+      "code_family": "residential",
+      "rule_type": "effective_date",
+      "trigger": "applicability_date",
+      "start_date": "2019-01-01",
+      "prior_code_allowed": false,
+      "summary": "The recorded 2018 North Carolina Residential Code is effective on and after January 1, 2019.",
+      "source_ids": [
+        "src:us-nc:osfm-current-past-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "amendment_rules": [
+    {
+      "id": "rule:us-nc:approved-local-rules",
+      "code_family": "construction_code",
+      "level": "local",
+      "posture": "approved_local_rule_record_required",
+      "summary": "Any local rule that supplements or supersedes the state baseline must be confirmed from the applicable approved local record.",
+      "source_ids": [
+        "src:us-nc:gs-143-138"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.8
+      }
+    }
+  ],
+  "enforcement_rules": [
+    {
+      "id": "rule:us-nc:local-inspection-state-supervision",
+      "code_family": "construction_code",
+      "model": "local_with_state_supervision",
+      "entity_kinds": [
+        "municipality",
+        "county",
+        "joint_department",
+        "contracted_service",
+        "state_arranged_service"
+      ],
+      "authority_ids": [
+        "auth:us-nc:state-fire-marshal"
+      ],
+      "summary": "Local governments ordinarily provide inspection services, while the State Fire Marshal supervises administration and may arrange service when a local program does not provide it.",
+      "source_ids": [
+        "src:us-nc:gs-143-139",
+        "src:us-nc:gs-160d-1102"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.92
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim:us-nc:2018-building-effective-date",
+      "subject_id": "adoption:us-nc:building:2018-code",
+      "field": "dates.effective_date",
+      "status": "supported",
+      "value": "2019-01-01",
+      "source_ids": [
+        "src:us-nc:osfm-current-past-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "claim:us-nc:2024-condition-based-effective-date",
+      "subject_id": "adoption:us-nc:building:2024-code-pending",
+      "field": "dates.effective_date_condition",
+      "status": "supported",
+      "value": "Twelve months after the first day of the month following State Fire Marshal certification of the statutory publication, distribution, and council-constitution conditions.",
+      "source_ids": [
+        "src:us-nc:session-law-2025-2",
+        "src:us-nc:osfm-2024-delay"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "claim:us-nc:2024-current-status",
+      "subject_id": "adoption:us-nc:building:2024-code-pending",
+      "field": "status",
+      "status": "supported",
+      "value": "pending",
+      "source_ids": [
+        "src:us-nc:osfm-current-past-codes",
+        "src:us-nc:osfm-2024-delay"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.9
+      }
+    }
+  ],
+  "resolver_fixture_ids": [
+    "fixture:us-nc:raleigh-building-current",
+    "fixture:us-nc:charlotte-residential-current",
+    "fixture:us-nc:building-2024-pending"
+  ]
+}

@@ -1,0 +1,659 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "state-profile:us-fl",
+  "state_id": "US-FL",
+  "state_name": "Florida",
+  "state_abbreviation": "FL",
+  "state_fips": "12",
+  "status": "verified",
+  "last_verified": "2026-08-02",
+  "sources": [
+    {
+      "id": "src:us-fl:statute-553-73",
+      "title": "Florida Statutes § 553.73 — Florida Building Code",
+      "url": "https://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Statute&URL=0500-0599%2F0553%2FSections%2F0553.73.html",
+      "kind": "statute",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-fl:statute-553-80",
+      "title": "Florida Statutes § 553.80 — enforcement",
+      "url": "https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0500-0599%2F0553%2FSections%2F0553.80.html",
+      "kind": "statute",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-fl:fbc-2017-workplan",
+      "title": "Florida Building Commission — 6th Edition (2017) code update work plan",
+      "url": "https://www.floridabuilding.org/fbc/commission/FBC_1015/Commission/FBC_Workplan.htm",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-fl:fbc-2020-workplan",
+      "title": "Florida Building Commission — 7th Edition (2020) code update work plan",
+      "url": "https://www.floridabuilding.org/fbc/commission/fbc_0817/Commission/FBC_Workplan.htm",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-fl:fbc-current",
+      "title": "Florida Building Commission — current Florida Building Code",
+      "url": "https://www.floridabuilding.org/c/default.aspx?menu=Building_Codes",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-fl:orlando-codes",
+      "title": "City of Orlando — applicable codes for permitting",
+      "url": "https://www.orlando.gov/Building-Development/Permits-Inspections/Get-a-Permit/Permitting-Forms-Documents/Applicable-Codes-for-Permitting",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-fl:orlando-ch13",
+      "title": "City of Orlando Code Chapter 13 — Building Code",
+      "url": "https://library.municode.com/fl/orlando/codes/code_of_ordinances?nodeId=TITIICICO_CH13BUCO",
+      "kind": "municipal_code",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-fl:orange-building-safety",
+      "title": "Orange County Division of Building Safety",
+      "url": "https://orangecountyfl.net/PermitsLicenses/DivisionOfBuildingSafety.aspx",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-fl:orange-ch9",
+      "title": "Orange County Code Chapter 9, Article II — Building Code",
+      "url": "https://library.municode.com/fl/orange_county/codes/code_of_ordinances?nodeId=PTIIORCOCO_CH9BUCORE_ARTIIBUCO",
+      "kind": "county_code",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-fl:ocps-building-code",
+      "title": "Orange County Public Schools — Building Code Compliance",
+      "url": "https://www.ocps.net/building-code-compliance-home",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    }
+  ],
+  "authorities": [
+    {
+      "id": "auth:us-fl:building-commission",
+      "name": "Florida Building Commission",
+      "type": "state_commission",
+      "roles": [
+        "adopts",
+        "maintains",
+        "interprets"
+      ],
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:fbc-current"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "auth:us-fl:orlando-permitting",
+      "name": "City of Orlando Permitting Services",
+      "type": "municipal_department",
+      "roles": [
+        "plan_review",
+        "permits",
+        "inspects",
+        "enforces"
+      ],
+      "source_ids": [
+        "src:us-fl:orlando-codes",
+        "src:us-fl:orlando-ch13"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "auth:us-fl:orange-building-safety",
+      "name": "Orange County Division of Building Safety",
+      "type": "county_department",
+      "roles": [
+        "plan_review",
+        "permits",
+        "inspects",
+        "enforces"
+      ],
+      "source_ids": [
+        "src:us-fl:orange-building-safety",
+        "src:us-fl:orange-ch9"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "auth:us-fl:ocps-code-compliance",
+      "name": "Orange County Public Schools Building Code Compliance",
+      "type": "school_district_department",
+      "roles": [
+        "plan_review",
+        "permits",
+        "inspects",
+        "issues_occupancy_certificates"
+      ],
+      "source_ids": [
+        "src:us-fl:statute-553-80",
+        "src:us-fl:ocps-building-code"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "edge:us-fl:state-code-local-enforcement",
+      "from_id": "auth:us-fl:building-commission",
+      "relationship": "delegates_enforcement_to",
+      "to": "local enforcing agencies",
+      "scope": [
+        "building",
+        "residential",
+        "existing_building",
+        "mechanical",
+        "plumbing",
+        "fuel_gas",
+        "energy"
+      ],
+      "source_ids": [
+        "src:us-fl:statute-553-80"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "adoptions": [
+    {
+      "id": "adoption:us-fl:building:2017",
+      "code_family": "building",
+      "status": "prior",
+      "state_code_name": "Florida Building Code, Building, 6th Edition (2017)",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Building Code",
+        "edition_year": 2015
+      },
+      "adopting_authority_id": "auth:us-fl:building-commission",
+      "enforcement_model": "local",
+      "applies_to": [
+        "new_construction",
+        "alteration",
+        "repair",
+        "addition",
+        "change_of_occupancy"
+      ],
+      "dates": {
+        "effective_date": "2017-12-31",
+        "operative_date": "2017-12-31",
+        "replacement_date": "2020-12-31"
+      },
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:fbc-2017-workplan"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "adoption:us-fl:building:2020",
+      "code_family": "building",
+      "status": "prior",
+      "state_code_name": "Florida Building Code, Building, 7th Edition (2020)",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Building Code",
+        "edition_year": 2018
+      },
+      "adopting_authority_id": "auth:us-fl:building-commission",
+      "enforcement_model": "local",
+      "applies_to": [
+        "new_construction",
+        "alteration",
+        "repair",
+        "addition",
+        "change_of_occupancy"
+      ],
+      "dates": {
+        "effective_date": "2020-12-31",
+        "operative_date": "2020-12-31",
+        "replacement_date": "2023-12-31"
+      },
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:fbc-2020-workplan"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "adoption:us-fl:building:2023",
+      "code_family": "building",
+      "status": "current",
+      "state_code_name": "Florida Building Code, Building, 8th Edition (2023)",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Building Code",
+        "edition_year": 2021
+      },
+      "adopting_authority_id": "auth:us-fl:building-commission",
+      "enforcement_model": "local",
+      "applies_to": [
+        "new_construction",
+        "alteration",
+        "repair",
+        "addition",
+        "change_of_occupancy"
+      ],
+      "dates": {
+        "effective_date": "2023-12-31",
+        "operative_date": "2023-12-31"
+      },
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:fbc-current"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "adoption:us-fl:residential:2017",
+      "code_family": "residential",
+      "status": "prior",
+      "state_code_name": "Florida Building Code, Residential, 6th Edition (2017)",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Residential Code",
+        "edition_year": 2015
+      },
+      "adopting_authority_id": "auth:us-fl:building-commission",
+      "enforcement_model": "local",
+      "applies_to": [
+        "detached_one_two_family",
+        "townhouses"
+      ],
+      "dates": {
+        "effective_date": "2017-12-31",
+        "operative_date": "2017-12-31",
+        "replacement_date": "2020-12-31"
+      },
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:fbc-2017-workplan"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "adoption:us-fl:residential:2020",
+      "code_family": "residential",
+      "status": "prior",
+      "state_code_name": "Florida Building Code, Residential, 7th Edition (2020)",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Residential Code",
+        "edition_year": 2018
+      },
+      "adopting_authority_id": "auth:us-fl:building-commission",
+      "enforcement_model": "local",
+      "applies_to": [
+        "detached_one_two_family",
+        "townhouses"
+      ],
+      "dates": {
+        "effective_date": "2020-12-31",
+        "operative_date": "2020-12-31",
+        "replacement_date": "2023-12-31"
+      },
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:fbc-2020-workplan"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "adoption:us-fl:residential:2023",
+      "code_family": "residential",
+      "status": "current",
+      "state_code_name": "Florida Building Code, Residential, 8th Edition (2023)",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Residential Code",
+        "edition_year": 2021
+      },
+      "adopting_authority_id": "auth:us-fl:building-commission",
+      "enforcement_model": "local",
+      "applies_to": [
+        "detached_one_two_family",
+        "townhouses"
+      ],
+      "dates": {
+        "effective_date": "2023-12-31",
+        "operative_date": "2023-12-31"
+      },
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:fbc-current"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "adoption:us-fl:energy:2017",
+      "code_family": "energy",
+      "status": "prior",
+      "state_code_name": "Florida Building Code, Energy Conservation, 6th Edition (2017)",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Energy Conservation Code",
+        "edition_year": 2015
+      },
+      "adopting_authority_id": "auth:us-fl:building-commission",
+      "enforcement_model": "local",
+      "applies_to": [
+        "commercial",
+        "residential"
+      ],
+      "dates": {
+        "effective_date": "2017-12-31",
+        "operative_date": "2017-12-31",
+        "replacement_date": "2020-12-31"
+      },
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:fbc-2017-workplan"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "adoption:us-fl:energy:2020",
+      "code_family": "energy",
+      "status": "prior",
+      "state_code_name": "Florida Building Code, Energy Conservation, 7th Edition (2020)",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Energy Conservation Code",
+        "edition_year": 2018
+      },
+      "adopting_authority_id": "auth:us-fl:building-commission",
+      "enforcement_model": "local",
+      "applies_to": [
+        "commercial",
+        "residential"
+      ],
+      "dates": {
+        "effective_date": "2020-12-31",
+        "operative_date": "2020-12-31",
+        "replacement_date": "2023-12-31"
+      },
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:fbc-2020-workplan"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "adoption:us-fl:energy:2023",
+      "code_family": "energy",
+      "status": "current",
+      "state_code_name": "Florida Building Code, Energy Conservation, 8th Edition (2023)",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Energy Conservation Code",
+        "edition_year": 2021
+      },
+      "adopting_authority_id": "auth:us-fl:building-commission",
+      "enforcement_model": "local",
+      "applies_to": [
+        "commercial",
+        "residential"
+      ],
+      "dates": {
+        "effective_date": "2023-12-31",
+        "operative_date": "2023-12-31"
+      },
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:fbc-current"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "defaults": {
+    "incorporated": {
+      "status": "partially_resolved",
+      "authority_candidates": [
+        {
+          "kind": "municipality",
+          "source_ids": [
+            "src:us-fl:statute-553-80"
+          ],
+          "label": "Local building department",
+          "roles": [
+            "plan_review",
+            "permits",
+            "inspects",
+            "enforces"
+          ]
+        },
+        {
+          "kind": "state_authority",
+          "source_ids": [
+            "src:us-fl:statute-553-73"
+          ],
+          "authority_id": "auth:us-fl:building-commission"
+        }
+      ],
+      "required_local_records": [
+        "Current local technical amendments and administrative procedures",
+        "Current local enforcing agency and permit requirements"
+      ],
+      "warnings": [
+        "The statewide code baseline must be combined with the applicable local amendments and permit administration."
+      ],
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:statute-553-80"
+      ]
+    },
+    "unincorporated": {
+      "status": "partially_resolved",
+      "authority_candidates": [
+        {
+          "kind": "county",
+          "source_ids": [
+            "src:us-fl:statute-553-80"
+          ],
+          "label": "County building department",
+          "roles": [
+            "plan_review",
+            "permits",
+            "inspects",
+            "enforces"
+          ]
+        },
+        {
+          "kind": "state_authority",
+          "source_ids": [
+            "src:us-fl:statute-553-73"
+          ],
+          "authority_id": "auth:us-fl:building-commission"
+        }
+      ],
+      "required_local_records": [
+        "Current county technical amendments and administrative procedures",
+        "Current county enforcing agency and permit requirements"
+      ],
+      "warnings": [
+        "The statewide code baseline must be combined with the applicable county amendments and permit administration."
+      ],
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:statute-553-80"
+      ]
+    }
+  },
+  "code_family_overrides": {
+    "building": {
+      "status": "partially_resolved",
+      "adoption_ids": [
+        "adoption:us-fl:building:2017",
+        "adoption:us-fl:building:2020",
+        "adoption:us-fl:building:2023"
+      ],
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:fbc-2017-workplan",
+        "src:us-fl:fbc-2020-workplan",
+        "src:us-fl:fbc-current"
+      ]
+    },
+    "residential": {
+      "status": "partially_resolved",
+      "adoption_ids": [
+        "adoption:us-fl:residential:2017",
+        "adoption:us-fl:residential:2020",
+        "adoption:us-fl:residential:2023"
+      ],
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:fbc-2017-workplan",
+        "src:us-fl:fbc-2020-workplan",
+        "src:us-fl:fbc-current"
+      ]
+    },
+    "energy": {
+      "status": "partially_resolved",
+      "adoption_ids": [
+        "adoption:us-fl:energy:2017",
+        "adoption:us-fl:energy:2020",
+        "adoption:us-fl:energy:2023"
+      ],
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:fbc-2017-workplan",
+        "src:us-fl:fbc-2020-workplan",
+        "src:us-fl:fbc-current"
+      ]
+    },
+    "fire_operational": {
+      "status": "partially_resolved",
+      "authority_candidates": [
+        {
+          "kind": "fire_authority",
+          "source_ids": [
+            "src:us-fl:statute-553-80"
+          ],
+          "label": "Fire code enforcing agency",
+          "roles": [
+            "enforces"
+          ]
+        }
+      ],
+      "required_local_records": [
+        "Current Florida Fire Prevention Code enforcement assignment for the property"
+      ],
+      "warnings": [
+        "The construction-code profile does not by itself identify the operational fire-code enforcing agency."
+      ],
+      "source_ids": [
+        "src:us-fl:statute-553-80"
+      ],
+      "replace_authority_candidates": true,
+      "replace_adoptions": true
+    }
+  },
+  "project_type_overrides": {
+    "public_school": {
+      "status": "partially_resolved",
+      "authority_candidates": [
+        {
+          "kind": "project_owner_code_enforcement",
+          "source_ids": [
+            "src:us-fl:statute-553-80"
+          ],
+          "label": "Public school district building-code enforcement office",
+          "roles": [
+            "plan_review",
+            "permits",
+            "inspects",
+            "appeals"
+          ]
+        }
+      ],
+      "required_local_records": [
+        "Identify the school district's certified building-code enforcement office or contracted provider"
+      ],
+      "source_ids": [
+        "src:us-fl:statute-553-80"
+      ]
+    },
+    "state_university": {
+      "status": "partially_resolved",
+      "authority_candidates": [
+        {
+          "kind": "project_owner_code_enforcement",
+          "source_ids": [
+            "src:us-fl:statute-553-80"
+          ],
+          "label": "State university building-code enforcement office",
+          "roles": [
+            "plan_review",
+            "permits",
+            "inspects",
+            "appeals"
+          ]
+        }
+      ],
+      "required_local_records": [
+        "Identify the university's certified building-code enforcement office or contracted provider"
+      ],
+      "source_ids": [
+        "src:us-fl:statute-553-80"
+      ]
+    }
+  },
+  "verification": {
+    "status": "verified",
+    "confidence": 0.95
+  }
+}
