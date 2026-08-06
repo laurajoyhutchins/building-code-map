@@ -1,6 +1,6 @@
 import type {
   BoundaryAmbiguityDetails,
-  BoundaryFeatureRecord,
+  BoundaryMapRecord,
   FeatureRecord,
   GeocodeResult,
   LayerFamilyDefinition,
@@ -12,8 +12,6 @@ import type {
   ResolutionResult,
 } from "../types";
 import {
-  decodeBoundaryFeatures,
-  decodeFeatureRecord,
   decodeGeocodeResult,
   decodeHealth,
   decodeLayers,
@@ -22,10 +20,10 @@ import {
   decodeRefreshStatus,
   decodeResolutionResult,
 } from "./apiPayloads";
+import { decodeBoundaryMapRecords, decodeFeatureDetail } from "./boundaryPayloads";
 import { arrayValue, nonEmptyString, record } from "./runtimeDecode";
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL?.trim() || "/api";
-
 type Decoder<T> = (value: unknown) => T;
 
 export class ApiResponseError extends Error {
@@ -61,9 +59,7 @@ async function readJson<T>(path: string, decode: Decoder<T>, init?: RequestInit)
   } catch {
     throw new ApiResponseError(`Request to ${path} returned invalid JSON`, response.status);
   }
-  if (!response.ok) {
-    throw decodeApiError(payload, response.status, path);
-  }
+  if (!response.ok) throw decodeApiError(payload, response.status, path);
   try {
     return decode(payload);
   } catch (error) {
@@ -74,10 +70,7 @@ async function readJson<T>(path: string, decode: Decoder<T>, init?: RequestInit)
 
 function decodeApiError(payload: unknown, status: number, path: string): ApiResponseError {
   const raw = record(payload, `error response from ${path}`);
-  const message =
-    typeof raw.error === "string" && raw.error.trim() !== ""
-      ? raw.error
-      : `Request to ${path} failed with ${status}`;
+  const message = typeof raw.error === "string" && raw.error.trim() !== "" ? raw.error : `Request to ${path} failed with ${status}`;
   const code = typeof raw.code === "string" ? raw.code : undefined;
   if (code === "boundary_ambiguous") {
     const layerFamily = nonEmptyString(raw.layer_family, "error.layer_family");
@@ -86,15 +79,9 @@ function decodeApiError(payload: unknown, status: number, path: string): ApiResp
   }
   if (raw.status === "ambiguous") {
     const candidates = Array.isArray(raw.candidates) ? raw.candidates.length : 0;
-    return new ApiResponseError(
-      `The address matched ${candidates || "multiple"} locations. Add a ZIP code or more specific locality.`,
-      status,
-      "geocoder_ambiguous",
-    );
+    return new ApiResponseError(`The address matched ${candidates || "multiple"} locations. Add a ZIP code or more specific locality.`, status, "geocoder_ambiguous");
   }
-  if (raw.status === "not_found") {
-    return new ApiResponseError("The local geocoder could not match that address.", status, "geocoder_not_found");
-  }
+  if (raw.status === "not_found") return new ApiResponseError("The local geocoder could not match that address.", status, "geocoder_not_found");
   return new ApiResponseError(message, status, code);
 }
 
@@ -124,22 +111,16 @@ export function fetchLayers(): Promise<LayerFamilyDefinition[]> {
   return readJson("/layers", decodeLayers);
 }
 
-export function fetchBoundaryFeatures(): Promise<BoundaryFeatureRecord[]> {
-  return readJson("/boundaries", decodeBoundaryFeatures);
+export function fetchBoundaryFeatures(): Promise<BoundaryMapRecord[]> {
+  return readJson("/boundaries", decodeBoundaryMapRecords);
 }
 
 export function fetchRefreshStatus(): Promise<RefreshStatus> {
   return readJson("/refresh/status", decodeRefreshStatus);
 }
 
-export function fetchFeature(
-  layerFamily: LayerFamilyKey,
-  featureId: FeatureRecord["featureId"],
-  signal?: AbortSignal,
-): Promise<FeatureRecord> {
-  return readJson(`/features/${layerFamily}/${encodeURIComponent(featureId)}`, decodeFeatureRecord, {
-    signal,
-  });
+export function fetchFeature(layerFamily: LayerFamilyKey, featureId: FeatureRecord["featureId"], signal?: AbortSignal): Promise<FeatureRecord> {
+  return readJson(`/features/${layerFamily}/${encodeURIComponent(featureId)}`, decodeFeatureDetail, { signal });
 }
 
 export interface ResolutionRequestInput {
@@ -163,12 +144,7 @@ export function fetchResolution(input: ResolutionRequestInput): Promise<Resoluti
   return readJson("/resolve", decodeResolutionResult, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      point: { longitude: input.longitude, latitude: input.latitude },
-      code_family: input.codeFamily || undefined,
-      project_type: input.projectType || undefined,
-      applicability_date: input.applicabilityDate || undefined,
-    }),
+    body: JSON.stringify({ point: { longitude: input.longitude, latitude: input.latitude }, code_family: input.codeFamily || undefined, project_type: input.projectType || undefined, applicability_date: input.applicabilityDate || undefined }),
     signal: input.signal,
   });
 }
@@ -186,12 +162,7 @@ export function fetchLookup(input: LookupRequestInput): Promise<LookupResult> {
   return readJson("/lookup", decodeLookupResult, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      address: input.address,
-      code_family: input.codeFamily || undefined,
-      project_type: input.projectType || undefined,
-      applicability_date: input.applicabilityDate || undefined,
-    }),
+    body: JSON.stringify({ address: input.address, code_family: input.codeFamily || undefined, project_type: input.projectType || undefined, applicability_date: input.applicabilityDate || undefined }),
     signal: input.signal,
   });
 }
