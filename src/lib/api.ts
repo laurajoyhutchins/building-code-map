@@ -1,16 +1,46 @@
 import type {
+  BoundaryAmbiguityDetails,
   BoundaryFeatureRecord,
   FeatureRecord,
-  GeocodeCandidate,
   GeocodeResult,
   LayerFamilyDefinition,
   LayerFamilyKey,
   LookupResult,
+  ReadinessResult,
   RefreshStatus,
+  ResolutionBoundaryMatch,
   ResolutionResult,
 } from "../types";
+import {
+  decodeBoundaryFeatures,
+  decodeFeatureRecord,
+  decodeGeocodeResult,
+  decodeHealth,
+  decodeLayers,
+  decodeLookupResult,
+  decodeReadiness,
+  decodeRefreshStatus,
+  decodeResolutionResult,
+} from "./apiPayloads";
+import { arrayValue, nonEmptyString, record } from "./runtimeDecode";
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL?.trim() || "/api";
+
+type Decoder<T> = (value: unknown) => T;
+
+export class ApiResponseError extends Error {
+  readonly status: number;
+  readonly code?: string;
+  readonly details?: BoundaryAmbiguityDetails;
+
+  constructor(message: string, status: number, code?: string, details?: BoundaryAmbiguityDetails) {
+    super(message);
+    this.name = "ApiResponseError";
+    this.status = status;
+    this.code = code;
+    this.details = details;
+  }
+}
 
 export function buildApiUrl(path: string): string {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
@@ -20,33 +50,62 @@ export function buildApiUrl(path: string): string {
   return `${API_BASE.replace(/\/+$/, "")}${normalizedPath}`;
 }
 
-async function readJson<T>(path: string, init?: RequestInit): Promise<T> {
+async function readJson<T>(path: string, decode: Decoder<T>, init?: RequestInit): Promise<T> {
   const { headers: requestHeaders, ...rest } = init ?? {};
   const headers = new Headers(requestHeaders);
   headers.set("Accept", "application/json");
   const response = await fetch(buildApiUrl(path), { headers, ...rest });
-  if (!response.ok) {
-    let message = `Request to ${path} failed with ${response.status}`;
-    try {
-      const payload = (await response.json()) as {
-        error?: string;
-        status?: string;
-        candidates?: unknown[];
-      };
-      if (payload.error) {
-        message = payload.error;
-      } else if (payload.status === "ambiguous") {
-        const count = payload.candidates?.length ?? 0;
-        message = `The address matched ${count || "multiple"} locations. Add a ZIP code or more specific locality.`;
-      } else if (payload.status === "not_found") {
-        message = "The local geocoder could not match that address.";
-      }
-    } catch {
-      // Keep the status-based fallback when the response is not JSON.
-    }
-    throw new Error(message);
+  let payload: unknown;
+  try {
+    payload = await response.json();
+  } catch {
+    throw new ApiResponseError(`Request to ${path} returned invalid JSON`, response.status);
   }
-  return (await response.json()) as T;
+  if (!response.ok) {
+    throw decodeApiError(payload, response.status, path);
+  }
+  try {
+    return decode(payload);
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : "unknown payload error";
+    throw new ApiResponseError(`Invalid response from ${path}: ${detail}`, response.status);
+  }
+}
+
+function decodeApiError(payload: unknown, status: number, path: string): ApiResponseError {
+  const raw = record(payload, `error response from ${path}`);
+  const message =
+    typeof raw.error === "string" && raw.error.trim() !== ""
+      ? raw.error
+      : `Request to ${path} failed with ${status}`;
+  const code = typeof raw.code === "string" ? raw.code : undefined;
+  if (code === "boundary_ambiguous") {
+    const layerFamily = nonEmptyString(raw.layer_family, "error.layer_family");
+    const observations = arrayValue(raw.observations, "error.observations", decodeBoundaryMatch);
+    return new ApiResponseError(message, status, code, { layerFamily, observations });
+  }
+  if (raw.status === "ambiguous") {
+    const candidates = Array.isArray(raw.candidates) ? raw.candidates.length : 0;
+    return new ApiResponseError(
+      `The address matched ${candidates || "multiple"} locations. Add a ZIP code or more specific locality.`,
+      status,
+      "geocoder_ambiguous",
+    );
+  }
+  if (raw.status === "not_found") {
+    return new ApiResponseError("The local geocoder could not match that address.", status, "geocoder_not_found");
+  }
+  return new ApiResponseError(message, status, code);
+}
+
+function decodeBoundaryMatch(value: unknown, path: string): ResolutionBoundaryMatch {
+  const raw = record(value, path);
+  return {
+    layerFamily: nonEmptyString(raw.layer_family, `${path}.layer_family`),
+    featureId: nonEmptyString(raw.feature_id, `${path}.feature_id`),
+    name: nonEmptyString(raw.name, `${path}.name`),
+    sourceId: typeof raw.source_id === "string" ? raw.source_id : undefined,
+  };
 }
 
 export function getApiBaseUrl(): string {
@@ -54,161 +113,33 @@ export function getApiBaseUrl(): string {
 }
 
 export function fetchHealth(): Promise<{ status: string }> {
-  return readJson<{ status: string }>("/health");
+  return readJson("/health", decodeHealth);
+}
+
+export function fetchReadiness(): Promise<ReadinessResult> {
+  return readJson("/ready", decodeReadiness);
 }
 
 export function fetchLayers(): Promise<LayerFamilyDefinition[]> {
-  return readJson<LayerFamilyDefinition[]>("/layers");
+  return readJson("/layers", decodeLayers);
 }
 
 export function fetchBoundaryFeatures(): Promise<BoundaryFeatureRecord[]> {
-  return readJson<BoundaryFeatureRecord[]>("/boundaries");
+  return readJson("/boundaries", decodeBoundaryFeatures);
 }
 
 export function fetchRefreshStatus(): Promise<RefreshStatus> {
-  return readJson<RefreshStatus>("/refresh/status");
+  return readJson("/refresh/status", decodeRefreshStatus);
 }
 
 export function fetchFeature(
   layerFamily: LayerFamilyKey,
   featureId: FeatureRecord["featureId"],
+  signal?: AbortSignal,
 ): Promise<FeatureRecord> {
-  return readJson<FeatureRecord>(`/features/${layerFamily}/${featureId}`);
-}
-
-interface RawVerificationRecord {
-  status: string;
-  confidence?: number;
-  notes?: string;
-}
-
-interface RawBoundaryMatch {
-  layer_family: string;
-  feature_id: string;
-  name: string;
-  source_id?: string;
-}
-
-interface RawSource {
-  id: string;
-  title: string;
-  url: string;
-  kind: string;
-  accessed_at: string;
-  last_checked_at?: string;
-  availability?: "available" | "unavailable" | "moved" | "unknown";
-  caveat?: string;
-}
-
-interface RawPolicyBasis {
-  status: ResolutionResult["status"];
-  required_local_records?: string[];
-  warnings?: string[];
-  source_ids?: string[];
-  verification: RawVerificationRecord;
-}
-
-interface RawRelationship {
-  id: string;
-  from_id: string;
-  relationship: string;
-  to: string;
-  scope?: string[];
-  summary?: string;
-  source_ids?: string[];
-  verification: RawVerificationRecord;
-}
-
-interface RawRuleReference {
-  id: string;
-  kind: "applicability" | "date" | "amendment" | "enforcement";
-  code_family?: string;
-  summary: string;
-  source_ids?: string[];
-  verification: RawVerificationRecord;
-}
-
-interface RawClaim {
-  id: string;
-  subject_id: string;
-  field: string;
-  status: string;
-  value?: unknown;
-  conflict_group?: string;
-  source_ids?: string[];
-  verification: RawVerificationRecord;
-}
-
-interface RawResolutionResult {
-  schema_version: string;
-  generated_at: string;
-  profile_id?: string;
-  profile_last_verified?: string;
-  geography: {
-    state_id?: string;
-    state_fips?: string;
-    state_name?: string;
-    county?: RawBoundaryMatch;
-    municipality?: RawBoundaryMatch;
-    incorporated: boolean;
-    special_areas?: RawBoundaryMatch[];
-    tribal_areas?: RawBoundaryMatch[];
-    fire_jurisdictions?: RawBoundaryMatch[];
-  };
-  code_family?: string;
-  project_type?: string;
-  applicability_date?: string;
-  status: ResolutionResult["status"];
-  policy_basis?: RawPolicyBasis;
-  authority_candidates?: Array<{
-    kind: string;
-    authority_id?: string;
-    name: string;
-    roles?: string[];
-    source_ids?: string[];
-    verification: RawVerificationRecord;
-  }>;
-  authority_path?: RawRelationship[];
-  adoptions?: Array<{
-    id: string;
-    code_family: string;
-    status: string;
-    state_code_name: string;
-    enforcement_model: string;
-    dates?: Record<string, string>;
-    source_ids?: string[];
-    verification: RawVerificationRecord;
-  }>;
-  applicable_rules?: RawRuleReference[];
-  supporting_claims?: RawClaim[];
-  required_local_records?: string[];
-  warnings?: string[];
-  evidence?: RawSource[];
-}
-
-interface RawGeocodeCandidate {
-  matched_address: string;
-  longitude: number;
-  latitude: number;
-  precision: GeocodeCandidate["precision"];
-  confidence: number;
-  source: string;
-  source_record_id: string;
-  source_vintage: string;
-}
-
-interface RawGeocodeResult {
-  query: string;
-  normalized?: string;
-  status: GeocodeResult["status"];
-  selected?: RawGeocodeCandidate;
-  candidates?: RawGeocodeCandidate[];
-  warnings?: string[];
-}
-
-interface RawLookupResult {
-  geocode: RawGeocodeResult;
-  resolution: RawResolutionResult;
+  return readJson(`/features/${layerFamily}/${encodeURIComponent(featureId)}`, decodeFeatureRecord, {
+    signal,
+  });
 }
 
 export interface ResolutionRequestInput {
@@ -217,6 +148,7 @@ export interface ResolutionRequestInput {
   codeFamily?: string;
   projectType?: string;
   applicabilityDate?: string;
+  signal?: AbortSignal;
 }
 
 export interface LookupRequestInput {
@@ -224,141 +156,11 @@ export interface LookupRequestInput {
   codeFamily?: string;
   projectType?: string;
   applicabilityDate?: string;
+  signal?: AbortSignal;
 }
 
-export function decodeResolutionResult(raw: RawResolutionResult): ResolutionResult {
-  const mapBoundary = (match: RawBoundaryMatch) => ({
-    layerFamily: match.layer_family,
-    featureId: match.feature_id,
-    name: match.name,
-    sourceId: match.source_id,
-  });
-
-  return {
-    schemaVersion: raw.schema_version,
-    generatedAt: raw.generated_at,
-    profileId: raw.profile_id,
-    profileLastVerified: raw.profile_last_verified,
-    geography: {
-      stateId: raw.geography.state_id,
-      stateFips: raw.geography.state_fips,
-      stateName: raw.geography.state_name,
-      county: raw.geography.county ? mapBoundary(raw.geography.county) : undefined,
-      municipality: raw.geography.municipality
-        ? mapBoundary(raw.geography.municipality)
-        : undefined,
-      incorporated: raw.geography.incorporated,
-      specialAreas: (raw.geography.special_areas ?? []).map(mapBoundary),
-      tribalAreas: (raw.geography.tribal_areas ?? []).map(mapBoundary),
-      fireJurisdictions: (raw.geography.fire_jurisdictions ?? []).map(mapBoundary),
-    },
-    codeFamily: raw.code_family,
-    projectType: raw.project_type,
-    applicabilityDate: raw.applicability_date,
-    status: raw.status,
-    policyBasis: raw.policy_basis
-      ? {
-          status: raw.policy_basis.status,
-          requiredLocalRecords: raw.policy_basis.required_local_records ?? [],
-          warnings: raw.policy_basis.warnings ?? [],
-          sourceIds: raw.policy_basis.source_ids ?? [],
-          verification: raw.policy_basis.verification,
-        }
-      : undefined,
-    authorityCandidates: (raw.authority_candidates ?? []).map((candidate) => ({
-      kind: candidate.kind,
-      authorityId: candidate.authority_id,
-      name: candidate.name,
-      roles: candidate.roles ?? [],
-      sourceIds: candidate.source_ids ?? [],
-      verification: candidate.verification,
-    })),
-    authorityPath: (raw.authority_path ?? []).map((relationship) => ({
-      id: relationship.id,
-      fromId: relationship.from_id,
-      relationship: relationship.relationship,
-      to: relationship.to,
-      scope: relationship.scope ?? [],
-      summary: relationship.summary,
-      sourceIds: relationship.source_ids ?? [],
-      verification: relationship.verification,
-    })),
-    adoptions: (raw.adoptions ?? []).map((adoption) => ({
-      id: adoption.id,
-      codeFamily: adoption.code_family,
-      status: adoption.status,
-      stateCodeName: adoption.state_code_name,
-      enforcementModel: adoption.enforcement_model,
-      dates: adoption.dates ?? {},
-      sourceIds: adoption.source_ids ?? [],
-      verification: adoption.verification,
-    })),
-    applicableRules: (raw.applicable_rules ?? []).map((rule) => ({
-      id: rule.id,
-      kind: rule.kind,
-      codeFamily: rule.code_family,
-      summary: rule.summary,
-      sourceIds: rule.source_ids ?? [],
-      verification: rule.verification,
-    })),
-    supportingClaims: (raw.supporting_claims ?? []).map((claim) => ({
-      id: claim.id,
-      subjectId: claim.subject_id,
-      field: claim.field,
-      status: claim.status,
-      value: claim.value,
-      conflictGroup: claim.conflict_group,
-      sourceIds: claim.source_ids ?? [],
-      verification: claim.verification,
-    })),
-    requiredLocalRecords: raw.required_local_records ?? [],
-    warnings: raw.warnings ?? [],
-    evidence: (raw.evidence ?? []).map((source) => ({
-      id: source.id,
-      title: source.title,
-      url: source.url,
-      kind: source.kind,
-      accessedAt: source.accessed_at,
-      lastCheckedAt: source.last_checked_at,
-      availability: source.availability,
-      caveat: source.caveat,
-    })),
-  };
-}
-
-function decodeGeocodeCandidate(raw: RawGeocodeCandidate): GeocodeCandidate {
-  return {
-    matchedAddress: raw.matched_address,
-    longitude: raw.longitude,
-    latitude: raw.latitude,
-    precision: raw.precision,
-    confidence: raw.confidence,
-    source: raw.source,
-    sourceRecordId: raw.source_record_id,
-    sourceVintage: raw.source_vintage,
-  };
-}
-
-export function decodeGeocodeResult(raw: RawGeocodeResult): GeocodeResult {
-  return {
-    query: raw.query,
-    normalized: raw.normalized,
-    status: raw.status,
-    selected: raw.selected ? decodeGeocodeCandidate(raw.selected) : undefined,
-    candidates: (raw.candidates ?? []).map(decodeGeocodeCandidate),
-    warnings: raw.warnings ?? [],
-  };
-}
-
-export function decodeLookupResult(raw: RawLookupResult): LookupResult {
-  return {
-    geocode: decodeGeocodeResult(raw.geocode),
-    resolution: decodeResolutionResult(raw.resolution),
-  };
-}
-
-export async function fetchResolution(input: ResolutionRequestInput): Promise<ResolutionResult> {
-  const raw = await readJson<RawResolutionResult>("/resolve", {
+export function fetchResolution(input: ResolutionRequestInput): Promise<ResolutionResult> {
+  return readJson("/resolve", decodeResolutionResult, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -367,12 +169,21 @@ export async function fetchResolution(input: ResolutionRequestInput): Promise<Re
       project_type: input.projectType || undefined,
       applicability_date: input.applicabilityDate || undefined,
     }),
+    signal: input.signal,
   });
-  return decodeResolutionResult(raw);
 }
 
-export async function fetchLookup(input: LookupRequestInput): Promise<LookupResult> {
-  const raw = await readJson<RawLookupResult>("/lookup", {
+export function fetchGeocode(address: string, signal?: AbortSignal): Promise<GeocodeResult> {
+  return readJson("/geocode", decodeGeocodeResult, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ address }),
+    signal,
+  });
+}
+
+export function fetchLookup(input: LookupRequestInput): Promise<LookupResult> {
+  return readJson("/lookup", decodeLookupResult, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -381,6 +192,6 @@ export async function fetchLookup(input: LookupRequestInput): Promise<LookupResu
       project_type: input.projectType || undefined,
       applicability_date: input.applicabilityDate || undefined,
     }),
+    signal: input.signal,
   });
-  return decodeLookupResult(raw);
 }
