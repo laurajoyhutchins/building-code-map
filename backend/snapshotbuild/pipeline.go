@@ -325,11 +325,15 @@ func decodeCounts(raw []byte) (Counts, error) {
 }
 
 func buildManifest(request Request, receipt Receipt) (snapshotmanifest.Manifest, error) {
+	digests := make(map[string]string, len(receipt.Sources))
+	for _, source := range receipt.Sources {
+		digests[source.Name] = source.SHA256
+	}
 	sources := make([]snapshotmanifest.SourceArtifact, 0, len(request.Sources))
 	for _, source := range request.Sources {
-		digest, _, err := digestFile(source.Path)
-		if err != nil {
-			return snapshotmanifest.Manifest{}, err
+		digest, ok := digests[source.Name]
+		if !ok || !validSHA256(digest) {
+			return snapshotmanifest.Manifest{}, fmt.Errorf("prepared source digest missing or invalid for %q", source.Name)
 		}
 		sources = append(sources, snapshotmanifest.SourceArtifact{
 			Publisher:            source.Publisher,
