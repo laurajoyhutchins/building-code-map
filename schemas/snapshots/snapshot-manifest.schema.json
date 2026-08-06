@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://building-code-map.local/schemas/snapshots/snapshot-manifest.schema.json",
+  "title": "Building Code Map Snapshot Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "snapshot_id",
+    "kind",
+    "sources",
+    "builder",
+    "record_counts",
+    "output_sha256",
+    "output_size_bytes",
+    "integrity_checks"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "snapshot_id": { "type": "string", "minLength": 1 },
+    "kind": { "enum": ["boundary", "geocoder"] },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "publisher",
+          "product",
+          "vintage",
+          "locator",
+          "sha256",
+          "retrieved_at",
+          "license_review_status",
+          "redistribution_status"
+        ],
+        "properties": {
+          "publisher": { "type": "string", "minLength": 1 },
+          "product": { "type": "string", "minLength": 1 },
+          "layer": { "type": "string" },
+          "vintage": { "type": "string", "minLength": 1 },
+          "locator": { "type": "string", "minLength": 1 },
+          "sha256": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" },
+          "retrieved_at": { "type": "string", "format": "date-time" },
+          "license_review_status": { "type": "string", "minLength": 1 },
+          "redistribution_status": { "type": "string", "minLength": 1 },
+          "input_crs": { "type": "string" },
+          "transformation": { "type": "string" }
+        }
+      }
+    },
+    "builder": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tool", "version", "revision", "built_at"],
+      "properties": {
+        "tool": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 },
+        "revision": { "type": "string", "minLength": 1 },
+        "built_at": { "type": "string", "format": "date-time" },
+        "output_crs": { "type": "string" }
+      }
+    },
+    "record_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["accepted", "rejected", "duplicate", "quarantined"],
+      "properties": {
+        "accepted": { "type": "integer", "minimum": 0 },
+        "rejected": { "type": "integer", "minimum": 0 },
+        "duplicate": { "type": "integer", "minimum": 0 },
+        "quarantined": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "output_sha256": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" },
+    "output_size_bytes": { "type": "integer", "minimum": 1 },
+    "integrity_checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "status"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["passed", "failed"] },
+          "detail": { "type": "string" }
+        }
+      }
+    }
+  }
+}
