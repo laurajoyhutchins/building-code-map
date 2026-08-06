@@ -36,16 +36,6 @@ func run(args []string, stderr io.Writer) int {
 		fmt.Fprintln(stderr, "at least one of --address-points or --street-ranges is required")
 		return 2
 	}
-	if err := geocoder.BuildSnapshot(geocoder.BuildOptions{
-		OutputPath:       *output,
-		AddressPointsCSV: *addressPoints,
-		StreetRangesCSV:  *streetRanges,
-		SourceName:       *sourceName,
-		SourceVintage:    *sourceVintage,
-	}); err != nil {
-		fmt.Fprintln(stderr, err)
-		return 1
-	}
 	manifestBytes, err := os.ReadFile(*manifestTemplate)
 	if err != nil {
 		fmt.Fprintf(stderr, "read manifest template: %v\n", err)
@@ -58,6 +48,23 @@ func run(args []string, stderr io.Writer) int {
 	}
 	if manifest.Kind != snapshotmanifest.KindGeocoder {
 		fmt.Fprintf(stderr, "manifest template kind must be %q\n", snapshotmanifest.KindGeocoder)
+		return 1
+	}
+	templateValidation := manifest
+	templateValidation.OutputSHA256 = strings.Repeat("0", 64)
+	templateValidation.OutputSizeBytes = 1
+	if err := templateValidation.Validate(snapshotmanifest.KindGeocoder); err != nil {
+		fmt.Fprintln(stderr, err)
+		return 1
+	}
+	if err := geocoder.BuildSnapshot(geocoder.BuildOptions{
+		OutputPath:       *output,
+		AddressPointsCSV: *addressPoints,
+		StreetRangesCSV:  *streetRanges,
+		SourceName:       *sourceName,
+		SourceVintage:    *sourceVintage,
+	}); err != nil {
+		fmt.Fprintln(stderr, err)
 		return 1
 	}
 	if _, err := snapshotmanifest.FinalizeAndWrite(*output, manifest); err != nil {
