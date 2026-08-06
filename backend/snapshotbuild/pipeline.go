@@ -114,6 +114,10 @@ func (p Pipeline) execute(ctx context.Context, request Request, requireOutput bo
 		return AuditReport{}, Receipt{}, nil, err
 	}
 
+	prepared, err = stageSources(prepared, runRoot)
+	if err != nil {
+		return fail(err)
+	}
 	sqlText, normalized, err := renderContract(prepared.request, runRoot)
 	if err != nil {
 		return fail(err)
@@ -243,7 +247,6 @@ func prepare(request Request, requireOutput bool) (preparedRequest, error) {
 		return preparedRequest{}, fmt.Errorf("%w: at least one source is required", ErrInvalidRequest)
 	}
 	seen := map[string]bool{}
-	receipts := make([]SourceReceipt, 0, len(request.Sources))
 	for index, source := range request.Sources {
 		if strings.TrimSpace(source.Name) == "" || strings.TrimSpace(source.Path) == "" {
 			return preparedRequest{}, fmt.Errorf("%w: source %d name and path are required", ErrInvalidRequest, index)
@@ -264,17 +267,64 @@ func prepare(request Request, requireOutput bool) (preparedRequest, error) {
 		if strings.Contains(source.Path, "://") {
 			return preparedRequest{}, fmt.Errorf("%w: remote source locators are not executable inputs", ErrInvalidRequest)
 		}
-		digest, _, err := digestFile(source.Path)
-		if err != nil {
-			return preparedRequest{}, fmt.Errorf("hash source %q: %w", source.Name, err)
-		}
-		receipts = append(receipts, SourceReceipt{Name: source.Name, Locator: source.Locator, SHA256: digest})
 	}
-	sort.Slice(receipts, func(i, j int) bool { return receipts[i].Name < receipts[j].Name })
 	if err := requireSourceNames(request.Kind, seen); err != nil {
 		return preparedRequest{}, err
 	}
-	return preparedRequest{request: request, sourceReceipts: receipts}, nil
+	return preparedRequest{request: request}, nil
+}
+
+func stageSources(prepared preparedRequest, runRoot string) (preparedRequest, error) {
+	sourcesRoot := filepath.Join(runRoot, "sources")
+	if err := os.MkdirAll(sourcesRoot, 0o700); err != nil {
+		return preparedRequest{}, fmt.Errorf("create staged source directory: %w", err)
+	}
+	stagedRequest := prepared.request
+	stagedRequest.Sources = append([]Source(nil), prepared.request.Sources...)
+	receipts := make([]SourceReceipt, 0, len(stagedRequest.Sources))
+	for index := range stagedRequest.Sources {
+		source := &stagedRequest.Sources[index]
+		stagedPath := filepath.Join(sourcesRoot, fmt.Sprintf("%03d%s", index, filepath.Ext(source.Path)))
+		digest, err := copyAndDigest(source.Path, stagedPath)
+		if err != nil {
+			return preparedRequest{}, fmt.Errorf("stage source %q: %w", source.Name, err)
+		}
+		source.Path = stagedPath
+		receipts = append(receipts, SourceReceipt{Name: source.Name, Locator: source.Locator, SHA256: digest})
+	}
+	sort.Slice(receipts, func(i, j int) bool { return receipts[i].Name < receipts[j].Name })
+	return preparedRequest{request: stagedRequest, sourceReceipts: receipts}, nil
+}
+
+func copyAndDigest(sourcePath, stagedPath string) (string, error) {
+	source, err := os.Open(filepath.Clean(sourcePath))
+	if err != nil {
+		return "", err
+	}
+	defer source.Close()
+	staged, err := os.OpenFile(stagedPath, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0o600)
+	if err != nil {
+		return "", err
+	}
+	removeStaged := true
+	defer func() {
+		_ = staged.Close()
+		if removeStaged {
+			_ = os.Remove(stagedPath)
+		}
+	}()
+	hash := sha256.New()
+	if _, err := io.Copy(io.MultiWriter(staged, hash), source); err != nil {
+		return "", err
+	}
+	if err := staged.Sync(); err != nil {
+		return "", err
+	}
+	if err := staged.Close(); err != nil {
+		return "", err
+	}
+	removeStaged = false
+	return hex.EncodeToString(hash.Sum(nil)), nil
 }
 
 func requireSourceNames(kind Kind, seen map[string]bool) error {
