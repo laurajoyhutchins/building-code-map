@@ -98,6 +98,36 @@ func ActivationPath(snapshotPath string) string {
 	return snapshotPath + ".activation.json"
 }
 
+func FinalizeAndWrite(snapshotPath string, manifest Manifest) (Manifest, error) {
+	if manifest.Kind != KindBoundary && manifest.Kind != KindGeocoder {
+		return Manifest{}, fmt.Errorf("%w: unsupported kind %q", ErrManifestInvalid, manifest.Kind)
+	}
+	digest, size, err := fileDigest(snapshotPath)
+	if err != nil {
+		return Manifest{}, err
+	}
+	manifest.OutputSHA256 = digest
+	manifest.OutputSizeBytes = size
+	if err := manifest.Validate(manifest.Kind); err != nil {
+		return Manifest{}, err
+	}
+	manifestBytes, err := CanonicalJSON(manifest)
+	if err != nil {
+		return Manifest{}, fmt.Errorf("encode snapshot manifest: %w", err)
+	}
+	manifestBytes = append(manifestBytes, '\n')
+	manifestPath := ManifestPath(snapshotPath)
+	temporaryPath := manifestPath + ".tmp"
+	if err := os.WriteFile(temporaryPath, manifestBytes, 0o644); err != nil {
+		return Manifest{}, fmt.Errorf("write snapshot manifest: %w", err)
+	}
+	if err := os.Rename(temporaryPath, manifestPath); err != nil {
+		_ = os.Remove(temporaryPath)
+		return Manifest{}, fmt.Errorf("publish snapshot manifest: %w", err)
+	}
+	return manifest, nil
+}
+
 func LoadAndVerify(snapshotPath string, expectedKind Kind) (Verified, error) {
 	manifestPath := ManifestPath(snapshotPath)
 	manifestBytes, err := os.ReadFile(manifestPath)
