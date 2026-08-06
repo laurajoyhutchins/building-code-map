@@ -62,6 +62,24 @@ export interface RefreshStatus {
   message: string;
 }
 
+export interface CapabilityReadiness {
+  status: "available" | "unavailable";
+  required: boolean;
+  message: string;
+}
+
+export interface SnapshotReadiness {
+  status: "verified" | "unidentified" | "unavailable";
+  snapshotId?: string;
+}
+
+export interface ReadinessResult {
+  status: "ok" | "not_ready";
+  readiness: "ready" | "degraded" | "not_ready";
+  capabilities: Record<string, CapabilityReadiness>;
+  snapshots: Record<string, SnapshotReadiness>;
+}
+
 export type GeocodeStatus = "matched" | "ambiguous" | "not_found";
 export type GeocodePrecision = "address_point" | "interpolated";
 
@@ -115,6 +133,11 @@ export interface ResolutionBoundaryMatch {
   featureId: string;
   name: string;
   sourceId?: string;
+}
+
+export interface BoundaryAmbiguityDetails {
+  layerFamily: string;
+  observations: ResolutionBoundaryMatch[];
 }
 
 export interface ResolutionGeography {
