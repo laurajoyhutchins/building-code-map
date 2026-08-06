@@ -1,8 +1,8 @@
 {
   "schema_version": "1",
   "engine_version": "0.1.0",
-  "source_commit": "29a5e083750bdeabacdb6cabf0f259273fcdc9a8",
-  "created_at": "2026-08-06T13:11:31Z",
+  "source_commit": "0b1f82189fb1f97cce7ab0b8970ff810455afffd",
+  "created_at": "2026-08-06T23:52:32Z",
   "components": {
     "boundary_snapshot": {
       "path": "data/authority.snapshot.json",
@@ -15,7 +15,7 @@
     },
     "geocoder": {
       "path": "data/geocoder.sqlite",
-      "sha256": "2dec9b4dca9c07b8ba4b925dbd98ef707b61fec9a520d88bff77e3daed086ab9",
+      "sha256": "f3b8b0782b461a8147f7f546e4ccd528d4467981dcc79e87994583b4ca46a955",
       "optional": true
     }
   },

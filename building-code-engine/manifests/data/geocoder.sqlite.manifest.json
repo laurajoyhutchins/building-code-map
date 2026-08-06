@@ -1,15 +1,15 @@
 {
   "schema_version": "1.0",
-  "snapshot_id": "geocoder-release-29a5e083750b",
+  "snapshot_id": "geocoder-release-0b1f82189fb1",
   "kind": "geocoder",
   "sources": [
     {
       "publisher": "Building Code Map",
       "product": "release geocoder fixtures",
-      "vintage": "29a5e083750bdeabacdb6cabf0f259273fcdc9a8",
+      "vintage": "0b1f82189fb1f97cce7ab0b8970ff810455afffd",
       "locator": "backend/geocoder/testdata",
       "sha256": "635ae6a70342b720ce319c3d4fef5a9e9f7c3f0f9e3cec3c654bbcac2d175177",
-      "retrieved_at": "2026-08-06T07:11:31-06:00",
+      "retrieved_at": "2026-08-06T17:52:32-06:00",
       "license_review_status": "reviewed",
       "redistribution_status": "repository-owned",
       "input_crs": "EPSG:4326",
@@ -19,8 +19,8 @@
   "builder": {
     "tool": "geocoder-build",
     "version": "0.1.0",
-    "revision": "29a5e083750bdeabacdb6cabf0f259273fcdc9a8",
-    "built_at": "2026-08-06T07:11:31-06:00",
+    "revision": "0b1f82189fb1f97cce7ab0b8970ff810455afffd",
+    "built_at": "2026-08-06T17:52:32-06:00",
     "output_crs": "EPSG:4326"
   },
   "record_counts": {
@@ -29,7 +29,7 @@
     "duplicate": 0,
     "quarantined": 0
   },
-  "output_sha256": "2dec9b4dca9c07b8ba4b925dbd98ef707b61fec9a520d88bff77e3daed086ab9",
+  "output_sha256": "f3b8b0782b461a8147f7f546e4ccd528d4467981dcc79e87994583b4ca46a955",
   "output_size_bytes": 36864,
   "integrity_checks": [
     {
