@@ -44,11 +44,11 @@ type SourceArtifact struct {
 }
 
 type Builder struct {
-	Tool       string `json:"tool"`
-	Version    string `json:"version"`
-	Revision   string `json:"revision"`
-	BuiltAt    string `json:"built_at"`
-	OutputCRS  string `json:"output_crs,omitempty"`
+	Tool      string `json:"tool"`
+	Version   string `json:"version"`
+	Revision  string `json:"revision"`
+	BuiltAt   string `json:"built_at"`
+	OutputCRS string `json:"output_crs,omitempty"`
 }
 
 type RecordCounts struct {
@@ -77,12 +77,12 @@ type Manifest struct {
 }
 
 type ActivationReceipt struct {
-	SchemaVersion              string `json:"schema_version"`
-	SnapshotID                 string `json:"snapshot_id"`
-	ActivatedAt                string `json:"activated_at"`
-	PriorActiveSnapshotID      string `json:"prior_active_snapshot_id,omitempty"`
-	LastKnownGoodSnapshotID    string `json:"last_known_good_snapshot_id"`
-	ManifestSHA256             string `json:"manifest_sha256"`
+	SchemaVersion           string `json:"schema_version"`
+	SnapshotID              string `json:"snapshot_id"`
+	ActivatedAt             string `json:"activated_at"`
+	PriorActiveSnapshotID   string `json:"prior_active_snapshot_id,omitempty"`
+	LastKnownGoodSnapshotID string `json:"last_known_good_snapshot_id"`
+	ManifestSHA256          string `json:"manifest_sha256"`
 }
 
 type Verified struct {
@@ -160,9 +160,15 @@ func (m Manifest) Validate(expectedKind Kind) error {
 	if _, err := time.Parse(time.RFC3339, m.Builder.BuiltAt); err != nil {
 		return fmt.Errorf("%w: builder built_at: %v", ErrManifestInvalid, err)
 	}
+	if m.RecordCounts.Accepted < 0 || m.RecordCounts.Rejected < 0 || m.RecordCounts.Duplicate < 0 || m.RecordCounts.Quarantined < 0 {
+		return fmt.Errorf("%w: record counts must be non-negative", ErrManifestInvalid)
+	}
 	for index, source := range m.Sources {
 		if strings.TrimSpace(source.Publisher) == "" || strings.TrimSpace(source.Product) == "" || strings.TrimSpace(source.Vintage) == "" || strings.TrimSpace(source.Locator) == "" || !validDigest(source.SHA256) {
 			return fmt.Errorf("%w: source %d is incomplete", ErrManifestInvalid, index)
+		}
+		if strings.TrimSpace(source.LicenseReviewStatus) == "" || strings.TrimSpace(source.RedistributionStatus) == "" {
+			return fmt.Errorf("%w: source %d licensing status is incomplete", ErrManifestInvalid, index)
 		}
 		if _, err := time.Parse(time.RFC3339, source.RetrievedAt); err != nil {
 			return fmt.Errorf("%w: source %d retrieved_at: %v", ErrManifestInvalid, index, err)
