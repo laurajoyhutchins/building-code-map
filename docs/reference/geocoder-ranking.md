@@ -18,15 +18,14 @@ The JSON field is still named `confidence` for compatibility. It contains a dete
 
 The default policy uses these contributions:
 
-| Factor | Address point | Street range | Meaning |
-| --- | ---: | ---: | --- |
-| Base | `0.70` | `0.55` | Candidate-method starting value |
-| Exact street | `0.05` | `0.05` | Normalized street matches exactly |
-| Exact city | `0.15` | `0.15` | Normalized city matches exactly |
-| Exact postal code | `0.10` | `0.10` | Supplied postal code matches exactly |
-| Postal code not supplied | `0.05` | `0.05` | Query omitted a postal code |
-| Parity matched | n/a | `0.05` | Requested number matches the range parity |
-| Source priority | configurable | configurable | Explicit policy contribution for a named source |
+- address-point base: `0.70`;
+- street-range base: `0.55`;
+- exact normalized street: `0.05`;
+- exact normalized city: `0.15`;
+- exact supplied postal code: `0.10`;
+- postal code not supplied: `0.05`;
+- street-range parity matched: `0.05`;
+- source priority: an optional configured contribution for a named source.
 
 The minimum default quality is `0.85` for address points and `0.75` for street-range interpolation. Candidates within `0.05` of the highest eligible score remain ambiguous.
 
