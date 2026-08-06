@@ -220,9 +220,79 @@ function decodeGeocodeCandidate(value: unknown, path: string): GeocodeCandidate 
       `${path}.precision`,
     ),
     confidence: finiteNumber(raw.confidence, `${path}.confidence`),
+    scoreKind: enumValue(raw.score_kind, ["deterministic_quality"] as const, `${path}.score_kind`),
+    scoreFactors: decodeScoreFactors(raw.score_factors, `${path}.score_factors`),
+    rankingPolicyVersion: nonEmptyString(
+      raw.ranking_policy_version,
+      `${path}.ranking_policy_version`,
+    ),
     source: nonEmptyString(raw.source, `${path}.source`),
     sourceRecordId: nonEmptyString(raw.source_record_id, `${path}.source_record_id`),
     sourceVintage: nonEmptyString(raw.source_vintage, `${path}.source_vintage`),
+    interpolation:
+      raw.interpolation === undefined
+        ? undefined
+        : decodeInterpolationProvenance(raw.interpolation, `${path}.interpolation`),
+  };
+}
+
+function decodeScoreFactors(value: unknown, path: string): Record<string, number> {
+  const raw = record(value, path);
+  const result: Record<string, number> = {};
+  for (const [key, item] of Object.entries(raw)) {
+    result[key] = finiteNumber(item, `${path}.${key}`);
+  }
+  return result;
+}
+
+function decodeInterpolationProvenance(
+  value: unknown,
+  path: string,
+): NonNullable<GeocodeCandidate["interpolation"]> {
+  const raw = record(value, path);
+  return {
+    sourceRangeId: nonEmptyString(raw.source_range_id, `${path}.source_range_id`),
+    requestedHouseNumber: finiteNumber(
+      raw.requested_house_number,
+      `${path}.requested_house_number`,
+    ),
+    fromNumber: finiteNumber(raw.from_number, `${path}.from_number`),
+    toNumber: finiteNumber(raw.to_number, `${path}.to_number`),
+    rangeDirection: enumValue(
+      raw.range_direction,
+      ["ascending", "descending"] as const,
+      `${path}.range_direction`,
+    ),
+    parity: nonEmptyString(raw.parity, `${path}.parity`),
+    side: optionalString(raw.side, `${path}.side`),
+    fromCoordinate: decodeCoordinateEvidence(raw.from_coordinate, `${path}.from_coordinate`),
+    toCoordinate: decodeCoordinateEvidence(raw.to_coordinate, `${path}.to_coordinate`),
+    fraction: finiteNumber(raw.fraction, `${path}.fraction`),
+    derivedCoordinate: decodeCoordinateEvidence(
+      raw.derived_coordinate,
+      `${path}.derived_coordinate`,
+    ),
+    coordinateReferenceSystem: nonEmptyString(
+      raw.coordinate_reference_system,
+      `${path}.coordinate_reference_system`,
+    ),
+    transformationIdentity: nonEmptyString(
+      raw.transformation_identity,
+      `${path}.transformation_identity`,
+    ),
+    methodVersion: nonEmptyString(raw.method_version, `${path}.method_version`),
+    positionalQuality: nonEmptyString(raw.positional_quality, `${path}.positional_quality`),
+  };
+}
+
+function decodeCoordinateEvidence(
+  value: unknown,
+  path: string,
+): { longitude: number; latitude: number } {
+  const raw = record(value, path);
+  return {
+    longitude: longitude(raw.longitude, `${path}.longitude`),
+    latitude: latitude(raw.latitude, `${path}.latitude`),
   };
 }
 

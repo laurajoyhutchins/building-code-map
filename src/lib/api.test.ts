@@ -214,6 +214,14 @@ describe("geocoder response decoding", () => {
       latitude: 39.7411,
       precision: "address_point" as const,
       confidence: 1,
+      score_kind: "deterministic_quality",
+      score_factors: {
+        address_point_base: 0.7,
+        exact_street: 0.05,
+        exact_city: 0.15,
+        exact_postal_code: 0.1,
+      },
+      ranking_policy_version: "geocoder-ranking-1.0",
       source: "Denver address points",
       source_record_id: "co-denver-1600",
       source_vintage: "2026-08-01",
@@ -222,11 +230,50 @@ describe("geocoder response decoding", () => {
     warnings: [],
   };
 
-  it("preserves selected-point provenance", () => {
+  it("preserves selected-point provenance and deterministic scoring identity", () => {
     const result = decodeGeocodeResult(rawGeocode);
     expect(result.selected?.sourceRecordId).toBe("co-denver-1600");
     expect(result.selected?.precision).toBe("address_point");
     expect(result.selected?.sourceVintage).toBe("2026-08-01");
+    expect(result.selected?.rankingPolicyVersion).toBe("geocoder-ranking-1.0");
+    expect(result.selected?.scoreFactors).toEqual(rawGeocode.selected.score_factors);
+  });
+
+  it("preserves interpolation provenance and deterministic quality scoring", () => {
+    const result = decodeGeocodeResult({
+      ...rawGeocode,
+      selected: {
+        ...rawGeocode.selected,
+        precision: "interpolated" as const,
+        confidence: 0.9,
+        score_factors: {
+          street_range_base: 0.55,
+          exact_street: 0.05,
+          exact_city: 0.15,
+          exact_postal_code: 0.1,
+          parity_matched: 0.05,
+        },
+        interpolation: {
+          source_range_id: "range-17",
+          requested_house_number: 1510,
+          from_number: 1500,
+          to_number: 1520,
+          range_direction: "ascending",
+          parity: "E",
+          from_coordinate: { longitude: -104.99, latitude: 39.74 },
+          to_coordinate: { longitude: -104.98, latitude: 39.75 },
+          fraction: 0.5,
+          derived_coordinate: { longitude: -104.985, latitude: 39.745 },
+          coordinate_reference_system: "EPSG:4326",
+          transformation_identity: "none",
+          method_version: "linear-street-range-1.0",
+          positional_quality: "street_range_interpolation",
+        },
+      },
+    });
+    expect(result.selected?.interpolation?.sourceRangeId).toBe("range-17");
+    expect(result.selected?.interpolation?.fraction).toBe(0.5);
+    expect(result.selected?.scoreFactors.street_range_base).toBe(0.55);
   });
 
   it("rejects invalid coordinates and precision", () => {

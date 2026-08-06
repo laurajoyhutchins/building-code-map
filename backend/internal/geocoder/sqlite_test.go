@@ -71,6 +71,12 @@ func TestSQLiteServiceReturnsExactAddressPointWithProvenance(t *testing.T) {
 	if result.Selected.SourceRecordID != "co-denver-1600" {
 		t.Fatalf("source record=%q", result.Selected.SourceRecordID)
 	}
+	if result.Selected.ScoreKind != "deterministic_quality" || result.Selected.RankingPolicyVersion == "" {
+		t.Fatalf("score contract=%#v", result.Selected)
+	}
+	if len(result.Selected.ScoreFactors) == 0 {
+		t.Fatal("expected scoring factors")
+	}
 }
 
 func TestSQLiteServiceRejectsContradictoryLocalityEvidence(t *testing.T) {
@@ -128,6 +134,9 @@ func TestSQLiteServiceReturnsAmbiguousCandidatesWithoutSelectingOne(t *testing.T
 	if len(result.Candidates) != 2 {
 		t.Fatalf("candidates=%d", len(result.Candidates))
 	}
+	if result.Candidates[0].Confidence != result.Candidates[1].Confidence {
+		t.Fatalf("expected deterministic tie, candidates=%#v", result.Candidates)
+	}
 }
 
 func TestSQLiteServiceReturnsNotFound(t *testing.T) {
@@ -155,6 +164,31 @@ func TestSQLiteServiceInterpolatesCompatibleStreetRange(t *testing.T) {
 	}
 	if len(result.Warnings) == 0 {
 		t.Fatal("expected interpolation warning")
+	}
+	provenance := result.Selected.Interpolation
+	if provenance == nil {
+		t.Fatal("expected interpolation provenance")
+	}
+	if provenance.RequestedHouseNumber != 1510 || provenance.FromNumber == provenance.ToNumber {
+		t.Fatalf("range provenance=%#v", provenance)
+	}
+	if provenance.Fraction <= 0 || provenance.Fraction >= 1 {
+		t.Fatalf("fraction=%f", provenance.Fraction)
+	}
+	if provenance.MethodVersion == "" || provenance.CoordinateReferenceSystem != "EPSG:4326" {
+		t.Fatalf("method provenance=%#v", provenance)
+	}
+}
+
+func TestChooseCandidatesDoesNotUseRecordIdentityToResolveEqualQuality(t *testing.T) {
+	base := Result{Status: StatusNotFound, Candidates: []Candidate{}, Warnings: []string{}}
+	candidates := []Candidate{
+		{SourceRecordID: "z", Confidence: 0.95},
+		{SourceRecordID: "a", Confidence: 0.95},
+	}
+	result := chooseCandidates(base, candidates, 0.85)
+	if result.Status != StatusAmbiguous || result.Selected != nil {
+		t.Fatalf("result=%#v", result)
 	}
 }
 

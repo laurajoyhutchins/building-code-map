@@ -13,19 +13,21 @@ import (
 	_ "modernc.org/sqlite"
 )
 
-const (
-	minimumAddressPointConfidence = 0.85
-	minimumRangeConfidence        = 0.75
-	ambiguityGap                  = 0.05
-)
-
 type SQLiteService struct {
-	db *sql.DB
+	db     *sql.DB
+	policy RankingPolicy
 }
 
 func Open(path string) (*SQLiteService, error) {
+	return OpenWithPolicy(path, DefaultRankingPolicy())
+}
+
+func OpenWithPolicy(path string, policy RankingPolicy) (*SQLiteService, error) {
 	if strings.TrimSpace(path) == "" {
 		return nil, errors.New("geocoder snapshot path is required")
+	}
+	if strings.TrimSpace(policy.Version) == "" {
+		return nil, errors.New("geocoder ranking policy version is required")
 	}
 	db, err := sql.Open("sqlite", path)
 	if err != nil {
@@ -49,7 +51,7 @@ func Open(path string) (*SQLiteService, error) {
 		_ = db.Close()
 		return nil, err
 	}
-	return &SQLiteService{db: db}, nil
+	return &SQLiteService{db: db, policy: policy}, nil
 }
 
 func (service *SQLiteService) Close() error {
@@ -99,7 +101,7 @@ func (service *SQLiteService) Geocode(ctx context.Context, query Query) (Result,
 	if err != nil {
 		return Result{}, err
 	}
-	if selected := chooseCandidates(result, addressCandidates, minimumAddressPointConfidence); selected.Status != StatusNotFound {
+	if selected := chooseCandidatesWithGap(result, addressCandidates, service.policy.MinimumAddressPointQuality, service.policy.AmbiguityGap); selected.Status != StatusNotFound {
 		return selected, nil
 	}
 
@@ -107,9 +109,9 @@ func (service *SQLiteService) Geocode(ctx context.Context, query Query) (Result,
 	if err != nil {
 		return Result{}, err
 	}
-	selected := chooseCandidates(result, rangeCandidates, minimumRangeConfidence)
+	selected := chooseCandidatesWithGap(result, rangeCandidates, service.policy.MinimumStreetRangeQuality, service.policy.AmbiguityGap)
 	if selected.Status == StatusMatched {
-		selected.Warnings = append(selected.Warnings, "The point was interpolated from a street range and is not an address-point location.")
+		selected.Warnings = append(selected.Warnings, "The point was interpolated from a street range and is not a parcel, entrance, or address-point location.")
 	}
 	return selected, nil
 }
@@ -157,18 +159,22 @@ LIMIT 20;`,
 			return nil, err
 		}
 		candidate.Precision = PrecisionAddressPoint
-		candidate.Confidence = 0.70
+		candidate.ScoreKind = "deterministic_quality"
+		candidate.RankingPolicyVersion = service.policy.Version
+		candidate.ScoreFactors = map[string]float64{"address_point_base": service.policy.AddressPointBase}
+		candidate.Confidence = service.policy.AddressPointBase
 		if street == parsed.Street {
-			candidate.Confidence += 0.05
+			candidate.Confidence += addFactor(candidate.ScoreFactors, "exact_street", service.policy.ExactStreet)
 		}
 		if city == parsed.City {
-			candidate.Confidence += 0.15
+			candidate.Confidence += addFactor(candidate.ScoreFactors, "exact_city", service.policy.ExactCity)
 		}
 		if parsed.PostalCode == "" {
-			candidate.Confidence += 0.05
+			candidate.Confidence += addFactor(candidate.ScoreFactors, "postal_not_supplied", service.policy.PostalCodeNotSupplied)
 		} else if postalCode == parsed.PostalCode {
-			candidate.Confidence += 0.10
+			candidate.Confidence += addFactor(candidate.ScoreFactors, "exact_postal_code", service.policy.ExactPostalCode)
 		}
+		candidate.Confidence += addFactor(candidate.ScoreFactors, "source_priority", service.policy.sourcePriority(candidate.Source))
 		candidates = append(candidates, candidate)
 	}
 	if err := rows.Err(); err != nil {
@@ -230,32 +236,58 @@ LIMIT 20;`,
 		); err != nil {
 			return nil, err
 		}
-		if !parityMatches(parity, houseNumber) {
+		if fromNumber == toNumber || !parityMatches(parity, houseNumber) {
 			continue
 		}
 		ratio := float64(houseNumber-fromNumber) / float64(toNumber-fromNumber)
+		longitude := fromLongitude + ratio*(toLongitude-fromLongitude)
+		latitude := fromLatitude + ratio*(toLatitude-fromLatitude)
+		direction := "ascending"
+		if toNumber < fromNumber {
+			direction = "descending"
+		}
 		candidate := Candidate{
-			MatchedAddress: parsed.Normalized,
-			Longitude:      fromLongitude + ratio*(toLongitude-fromLongitude),
-			Latitude:       fromLatitude + ratio*(toLatitude-fromLatitude),
-			Precision:      PrecisionInterpolated,
-			Confidence:     0.55,
-			Source:         source,
-			SourceRecordID: sourceRecordID,
-			SourceVintage:  sourceVintage,
+			MatchedAddress:       parsed.Normalized,
+			Longitude:            longitude,
+			Latitude:             latitude,
+			Precision:            PrecisionInterpolated,
+			Confidence:           service.policy.StreetRangeBase,
+			ScoreKind:            "deterministic_quality",
+			ScoreFactors:         map[string]float64{"street_range_base": service.policy.StreetRangeBase},
+			RankingPolicyVersion: service.policy.Version,
+			Source:               source,
+			SourceRecordID:       sourceRecordID,
+			SourceVintage:        sourceVintage,
+			Interpolation: &InterpolationProvenance{
+				SourceRangeID:             sourceRecordID,
+				RequestedHouseNumber:      houseNumber,
+				FromNumber:                fromNumber,
+				ToNumber:                  toNumber,
+				RangeDirection:            direction,
+				Parity:                    parity,
+				FromCoordinate:            Coordinate{Longitude: fromLongitude, Latitude: fromLatitude},
+				ToCoordinate:              Coordinate{Longitude: toLongitude, Latitude: toLatitude},
+				Fraction:                  ratio,
+				DerivedCoordinate:         Coordinate{Longitude: longitude, Latitude: latitude},
+				CoordinateReferenceSystem: "EPSG:4326",
+				TransformationIdentity:    "none",
+				MethodVersion:             InterpolationMethodVersion,
+				PositionalQuality:         "street_range_interpolation",
+			},
 		}
 		if street == parsed.Street {
-			candidate.Confidence += 0.05
+			candidate.Confidence += addFactor(candidate.ScoreFactors, "exact_street", service.policy.ExactStreet)
 		}
 		if city == parsed.City {
-			candidate.Confidence += 0.15
+			candidate.Confidence += addFactor(candidate.ScoreFactors, "exact_city", service.policy.ExactCity)
 		}
 		if parsed.PostalCode == "" {
-			candidate.Confidence += 0.05
+			candidate.Confidence += addFactor(candidate.ScoreFactors, "postal_not_supplied", service.policy.PostalCodeNotSupplied)
 		} else if postalCode == parsed.PostalCode {
-			candidate.Confidence += 0.10
+			candidate.Confidence += addFactor(candidate.ScoreFactors, "exact_postal_code", service.policy.ExactPostalCode)
 		}
-		candidate.Confidence += 0.05
+		candidate.Confidence += addFactor(candidate.ScoreFactors, "parity_matched", service.policy.ParityMatched)
+		candidate.Confidence += addFactor(candidate.ScoreFactors, "source_priority", service.policy.sourcePriority(candidate.Source))
 		candidates = append(candidates, candidate)
 	}
 	if err := rows.Err(); err != nil {
@@ -265,8 +297,15 @@ LIMIT 20;`,
 }
 
 func chooseCandidates(base Result, candidates []Candidate, minimumConfidence float64) Result {
-	sort.Slice(candidates, func(left, right int) bool {
+	return chooseCandidatesWithGap(base, candidates, minimumConfidence, DefaultRankingPolicy().AmbiguityGap)
+}
+
+func chooseCandidatesWithGap(base Result, candidates []Candidate, minimumConfidence, ambiguityGap float64) Result {
+	sort.SliceStable(candidates, func(left, right int) bool {
 		if candidates[left].Confidence == candidates[right].Confidence {
+			if candidates[left].Source != candidates[right].Source {
+				return candidates[left].Source < candidates[right].Source
+			}
 			return candidates[left].SourceRecordID < candidates[right].SourceRecordID
 		}
 		return candidates[left].Confidence > candidates[right].Confidence
