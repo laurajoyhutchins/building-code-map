@@ -19,6 +19,7 @@ import (
 	"building-code-map/backend/regulatory"
 	"building-code-map/backend/snapshot"
 	"building-code-map/backend/transport/httpapi"
+	"building-code-map/backend/transport/mcp"
 )
 
 const (
@@ -228,6 +229,7 @@ func runServe(args []string) int {
 	flags.SetOutput(os.Stderr)
 	address := flags.String("http", "127.0.0.1:8000", "HTTP listen address")
 	bundlePath := flags.String("bundle", "bundle.json", "bundle manifest")
+	mcpStdio := flags.Bool("mcp-stdio", false, "serve MCP over stdio")
 	if err := flags.Parse(args); err != nil {
 		return exitArguments
 	}
@@ -235,6 +237,17 @@ func runServe(args []string) int {
 	if err != nil {
 		logError(err.Error())
 		return exitData
+	}
+	if *mcpStdio {
+		defer runtime.close()
+		if err := mcp.Serve(context.Background(), os.Stdin, os.Stdout, os.Stderr, runtime.engine); err != nil {
+			if errors.Is(err, context.Canceled) {
+				return exitSuccess
+			}
+			logError(err.Error())
+			return exitInternal
+		}
+		return exitSuccess
 	}
 	options := httpapi.Options{
 		Snapshot: snapshotFromRuntime(runtime), RegulatoryCatalog: runtime.catalog, Geocoder: runtime.geocoder,
