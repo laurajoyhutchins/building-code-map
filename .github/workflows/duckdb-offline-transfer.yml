@@ -41,22 +41,33 @@ jobs:
           grep -F 'ELF 64-bit' <<<"$file_output"
           grep -F 'x86-64' <<<"$file_output"
           interpreter=$(readelf -l duckdb | sed -n 's/.*Requesting program interpreter: \(.*\)]/\1/p')
+          test "$interpreter" = /lib64/ld-linux-x86-64.so.2
           version_output=$(./duckdb --version)
-          grep -F 'v1.5.5' <<<"$version_output"
-          grep -F 'd8cdaa33fd' <<<"$version_output"
+          test "$version_output" = 'v1.5.5 (Variegata) d8cdaa33fd'
           smoke_output=$(./duckdb :memory: -csv -noheader -c 'SELECT 42;')
           test "$smoke_output" = 42
           payload_size=$(wc -c < duckdb | tr -d '[:space:]')
           payload_sha=$(sha256sum duckdb | awk '{print $1}')
-          python3 - "$version_output" "$smoke_output" "$payload_size" "$payload_sha" "$file_output" "$interpreter" <<'PY'
+          test "$payload_size" = 61936648
+          test "$payload_sha" = 3d33b1df037cb049155c393778df7853fafb23e9d49d7c9cacdde4dd67155788
+
+          docker pull ubuntu:24.04
+          cold_room_output=$(docker run --rm --network none \
+            --mount type=bind,source="$RUNNER_TEMP/duckdb-transfer",target=/payload,readonly \
+            ubuntu:24.04 \
+            /payload/duckdb :memory: -csv -noheader -c 'SELECT 42;')
+          test "$cold_room_output" = 42
+
+          python3 - "$version_output" "$smoke_output" "$payload_size" "$payload_sha" "$file_output" "$interpreter" "$cold_room_output" "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" <<'PY'
           import json
           import sys
           from pathlib import Path
-          version, smoke, payload_size, payload_sha, file_output, interpreter = sys.argv[1:]
+          version, smoke, payload_size, payload_sha, file_output, interpreter, cold_room, workflow_run = sys.argv[1:]
           receipt = {
               "schema_version": 1,
               "release_tag": "v1.5.5",
               "source_commit": "d8cdaa33fda8df955cc76ef58a280f68f4cd43fa",
+              "workflow_run": workflow_run,
               "transport": {
                   "name": "duckdb_cli-linux-amd64.zip",
                   "bytes": 21263499,
@@ -78,6 +89,13 @@ jobs:
                   "ubuntu_execution": "passed",
                   "version": "passed",
                   "smoke_sql": "passed",
+                  "cold_room": "passed",
+              },
+              "cold_room": {
+                  "driver": "docker",
+                  "image": "ubuntu:24.04",
+                  "network": "none",
+                  "smoke_output": cold_room,
               },
               "smoke_sql": "SELECT 42;",
               "smoke_output": smoke,
