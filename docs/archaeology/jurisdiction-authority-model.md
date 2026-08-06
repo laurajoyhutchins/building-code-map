@@ -1,79 +1,66 @@
 # Jurisdiction and authority model
 
-## Geographic containment
+## Core distinction
 
-The boundary snapshot can supply containment matches for:
+A containing polygon is a geographic observation. A governing authority is a legal and administrative conclusion supported by policy and evidence. Building Code Map keeps those concepts separate.
+
+## Geographic observations
+
+The boundary layer may report:
 
 - state;
-- county;
+- county or county equivalent;
 - municipality;
-- special area;
-- tribal area;
-- NERIS fire jurisdiction.
+- incorporated or unincorporated status;
+- special land-use area;
+- American Indian area;
+- NERIS fire-service jurisdiction.
 
-The broader product model anticipates township, borough, utility, flood/NFIP, campus, airport,
-federal, and other special jurisdictions where reliable geometry and legal evidence exist. Their
-presence in the conceptual model does not mean current nationwide datasets are included.
+Peer state, county, or municipality overlaps are explicit ambiguity. Special-area, tribal-area, and NERIS observations remain contextual and are not automatically promoted to adopting or enforcing authority.
 
-## Legal authority
+## Regulatory interpretation
 
-Authority records answer different questions:
+A state profile and its rule pack may produce:
 
-- who adopted the rule;
-- who administers the program;
-- who performs plan review or permitting;
-- who enforces or inspects;
-- whether authority was delegated, reserved, preempted, or shared;
-- whether a code family or project class changes the answer.
+- candidate adopting authorities;
+- candidate enforcing authorities;
+- statewide base-code records;
+- local adoption or amendment requirements;
+- project-type and code-family overrides;
+- delegated or special-program paths;
+- unresolved local records;
+- warnings and source references.
 
-A polygon may identify a relevant entity without proving any of those roles.
+The current result contract is `resolution-result` schema 1.0. Authority is represented through candidates, roles, relationships, and `authority_path`; there is no separate current `authority_graph` schema contract.
 
-## Why a graph is needed
+## Public trust boundary
 
-A flat `city -> edition` table fails when:
+The public API accepts a point and derives observations server-side. It does not accept normalized jurisdiction context as trusted caller input. This prevents a plausible city or county label from bypassing the boundary evidence layer.
 
-- the state adopts a mandatory minimum but a municipality enforces it;
-- electrical authority differs from building authority;
-- fire prevention is operationally separate from construction subcodes;
-- a county governs unincorporated land but not a city;
-- a state agency governs public schools or state-owned facilities;
-- local amendments are allowed only within bounded scope;
-- two official sources conflict;
-- a boundary is known but the adopting instrument is missing.
+## Current strengths
 
-The state profile therefore models authorities, roles, relationships, adoptions, policy rules,
-claims, sources, and verification state. The result emits candidate authorities and an
-`authority_path`.
+- deterministic point-to-observation resolution;
+- explicit overlap ambiguity;
+- generic profile-driven regulatory resolution;
+- separation of adoption, enforcement, and special-program candidates;
+- evidence and verification references;
+- required-local-record and insufficient-evidence outputs.
 
-## Current contract
+## Missing national layer
 
-`schemas/regulatory/resolution-result.schema.json` fixes `schema_version` to `1.0`. It includes:
+The runtime still lacks a canonical nationwide governmental-entity registry connecting:
 
-- normalized geography;
-- resolution status;
-- authority candidates;
-- authority path relationships;
-- adoption records;
-- applicable rules;
-- supporting claims;
-- required local records;
-- warnings;
-- evidence;
-- policy basis.
+```text
+boundary feature
+    -> legal entity
+    -> adoption and amendment powers
+    -> enforcement assignment
+    -> inheritance rule
+    -> validity interval
+```
 
-No separate current schema named `authority_graph` was found on `main`. “Authority graph” is the
-domain model expressed through the state profile and result relationship structures.
+That missing layer is the main obstacle to measuring and completing every U.S. jurisdiction. State-level pilot profiles can identify local follow-up, but they do not yet enumerate and classify every expected municipality, county, township, consolidated government, state agency, or special authority.
 
-## Current containment behavior and risks
+## Safety rule
 
-- polygon holes are respected;
-- points on a segment count as contained;
-- the first county and municipality match are retained;
-- special, tribal, and fire matches accumulate;
-- geometry is not historically versioned;
-- no explicit boundary-dispute object exists;
-- legal authority still depends on policy data after containment;
-- missing or conflicting geometry can make context incomplete before policy resolution.
-
-Temporal boundary changes, point-on-boundary policy, overlapping municipalities, and source conflict
-handling require stronger data and explicit fixtures before being described as complete.
+When legal authority cannot be established from the admitted data and policy, the resolver must return uncertainty or a required confirmation. Geographic plausibility is never enough.

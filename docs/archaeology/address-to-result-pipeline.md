@@ -1,77 +1,49 @@
-# Address-to-result pipeline map
+# Address-to-result pipeline
 
-## 1. Preserve input
+## 1. Preserve the input
 
-The public client retains the entered address or coordinate string. Coordinate parsing and address
-classification are separate. A direct coordinate never needs to be converted into a synthetic
-address.
+The client retains the entered address or coordinate. A coordinate remains a coordinate; it is not converted into a synthetic address.
 
 ## 2. Normalize a civic address
 
-Current normalization:
-
-- trims and collapses whitespace;
-- uppercases comparison fields;
-- removes presentation punctuation;
-- requires exactly three comma-delimited parts;
-- requires a numeric house number with an optional trailing letter;
-- normalizes a bounded list of street suffixes and cardinal directions;
-- normalizes full U.S. state names or two-letter abbreviations;
-- accepts an optional five-digit ZIP or ZIP+4 and stores the five-digit ZIP;
-- rejects PO boxes, blank, incomplete, and malformed input.
-
-The original query and deterministic normalized form both remain available. Unit designators and
-ambiguous locality resolution are not implemented as independent concepts.
+Normalization is deterministic and conservative. It standardizes whitespace, punctuation, bounded street suffixes, directions, state names, and ZIP forms while rejecting blank, incomplete, PO-box, and malformed inputs. The original query and normalized comparison fields remain distinct.
 
 ## 3. Geocode locally
 
-The service queries address points first, constrained by house number, normalized street, city,
-state, and optional ZIP. It uses street ranges only when no address point qualifies. Street ranges
-must contain the house number and match parity. Interpolation is linear between range endpoints.
+The SQLite geocoder prefers qualifying address points. Street-range interpolation is used only when no address point qualifies, and only with range containment and parity checks. Candidate ordering is deterministic. Materially tied candidates return ambiguity instead of arbitrary selection.
 
-Candidate ordering is stable: confidence descending, then source record ID. Materially tied
-qualifying candidates return `ambiguous`; the system does not choose arbitrarily.
+## 4. Preserve point provenance
 
-## 4. Establish a point and its provenance
+A selected candidate includes coordinates, matched address, precision, confidence, source name, source record identifier, and source vintage. `address_point` and `interpolated` are different precision classes. Neither independently proves parcel, rooftop, entrance, or unit accuracy.
 
-A selected candidate includes coordinates, matched address, precision, ranking confidence, source
-name, source record ID, and source vintage. Precision is `address_point` or `interpolated`. It does
-not independently prove rooftop, parcel, entrance, or unit accuracy.
+## 5. Derive geographic observations
 
-## 5. Resolve supported geometries
+The server tests the point against an admitted boundary snapshot. It may observe state, county, municipality, incorporated status, special areas, American Indian areas, and NERIS jurisdictions.
 
-The point is tested against local polygon and multipolygon features. The normalized context may
-include state, county, municipality, incorporated status, special areas, tribal areas, and fire
-jurisdictions. The geometry result is a containment fact, not yet a legal-authority conclusion.
+The observations are not caller-authored trusted context and are not yet legal conclusions. Multiple peer state, county, or municipality matches produce `409 boundary_ambiguous` with all tied evidence.
 
-## 6. Interpret authority policy
+## 6. Interpret regulatory policy
 
-The resolver selects a version-compatible state profile, applies incorporated or unincorporated
-policy, overlays code-family and project-type rules, expands authority candidates, resolves adoption
-identifiers, and keeps source and verification references.
+The resolver selects the compatible state profile, applies date and project-scope rules, expands authority candidates, resolves adoption records, and preserves source and verification references. Special, tribal, and fire-service observations remain contextual unless a policy rule supplies the legal relationship.
 
-## 7. Apply date-aware adoption records
+## 7. Apply the as-of date
 
-An applicability date filters records and rules. The resolver must not answer a historical query
-with a merely current adoption. Unsupported history should remain insufficient or require local
-records.
+Publication, adoption, effective, mandatory, and repeal dates remain distinct. Pending instruments do not become current merely because their edition is newer. An omitted date is visibly defaulted to the current UTC date for compatibility.
 
 ## 8. Emit inspectable outputs
 
-`POST /lookup` returns both geocoding and regulatory results. `POST /resolve` remains the direct
-point or normalized-context surface. The public result shows the matched location, authorities,
-adoptions, special conditions, local confirmation items, jurisdiction structure, warnings, and
-sources.
+`POST /lookup` returns geocoding and regulatory results. `POST /resolve` is point-only. Results expose location evidence, candidate authorities, adoptions, special conditions, local confirmation items, warnings, jurisdiction structure, and sources.
 
 ## Failure boundaries
 
 - invalid address: request rejected;
-- geocoder unavailable: address endpoints unavailable, coordinate resolution remains available;
-- no qualifying candidate: `not_found`;
-- materially tied candidates: `ambiguous`;
-- point outside supported state geometry: resolution fails;
-- missing profile: `insufficient_evidence`;
-- missing local adoption or enforcement record: `local_record_required`;
-- conflicting evidence: `conflicting`.
+- geocoder unavailable: address lookup unavailable while coordinate paths may remain usable;
+- no candidate: `not_found`;
+- tied geocoder candidates: `ambiguous`;
+- tied peer boundary observations: `boundary_ambiguous`;
+- unsupported geography or missing profile: insufficient evidence;
+- missing local adoption, amendment, or enforcement record: local record required;
+- conflicting source claims: conflict preserved;
+- invalid snapshot: capability not admitted.
 
-Each boundary prevents a weaker stage from silently manufacturing confidence for the next stage.
+Each boundary prevents a weaker stage from manufacturing confidence for the next stage.

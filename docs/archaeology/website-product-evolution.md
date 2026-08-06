@@ -1,74 +1,57 @@
-# Website and product-design evolution
+# Website and product evolution
 
-## Technical workbench
+## From explorer to public lookup
 
-The early product surface centered on a MapLibre explorer, boundary layers, feature inspection, and
-resolution panels. That surface was valuable for debugging geometry and source records, but it made
-the user reconstruct the central product question.
+The technical GIS explorer proved that local boundary data could be displayed and inspected, but it was not the right public front door. The product evolved into a search-first address or coordinate lookup while retaining `/explorer` as the technical workbench.
 
-Map-specific correctness work remained important:
+## Evidence-bearing result design
 
-- PR #32 reconciled layers whether map style or registry data arrived first;
-- PR #34 replaced globally assumed feature IDs with `(layerFamily, featureId)`;
-- unresolved issue #7 calls for truly on-demand boundary details.
+The public result is designed to show why a conclusion was produced rather than decorating it with generic trust claims. It can expose:
 
-## Public search-first product
+- original and matched location;
+- geocoder precision and source provenance;
+- boundary observations and ambiguity;
+- candidate authorities and relationships;
+- adopted instruments and temporal status;
+- verification state;
+- required local confirmation;
+- warnings and dated sources.
 
-Merged PR #36 established:
+Generic trust badges and slogan-like assurance copy were removed. Credibility is carried by inspectable evidence and bounded uncertainty.
 
-- a restrained public root route;
-- the technical GIS console at `/explorer`;
-- coordinate input before local geocoding existed;
-- code-family and date controls;
-- plain-language resolution notices;
-- authorities, adopted codes, local confirmation, jurisdiction structure, and sources;
-- responsive layout and accessible form semantics.
+## Current request flow
 
-Merged PR #37 extended the same interface to civic addresses and displayed matched-address precision,
-source, vintage, and interpolation warnings.
+The public client sends:
 
-## Credibility correction
+- an address to `POST /lookup`, which geocodes locally and resolves the resulting point; or
+- coordinates to the point-only `POST /resolve` path.
 
-The product explicitly rejected conspicuous trust signaling such as:
+The client does not supply normalized jurisdiction context as trusted regulatory input. Geographic context is derived by the server from its validated snapshot.
 
-- “Source-backed”;
-- “Uncertainty preserved”;
-- “Verify with the AHJ”;
-- compact trust-badge rows;
-- decorative metrics and runtime telemetry;
-- generic promotional claims.
+## Degraded and ambiguous operation
 
-The concern was not that provenance or caveats were unimportant. The concern was that generic
-assurance language made a rigorous domain product look formulaic or synthetically assembled.
+The backend now reports capability-specific readiness. A missing geocoder does not necessarily disable coordinate inspection. Missing regulatory profiles can leave geographic exploration available without producing code conclusions.
 
-## Active design principle
+Boundary ambiguity is an explicit response, not an invisible first-match choice. Frontend runtime decoding and richer degraded or ambiguous evidence rendering remain follow-up work.
 
-Demonstrate trustworthiness through behavior and detail:
+## Current product truth
 
-- label the matched address and geocoding precision;
-- show effective dates;
-- name authority candidates and roles;
-- surface special conditions;
-- list required local records and warnings;
-- expose jurisdiction relationships;
-- link the actual sources with access and check dates;
-- use restrained, domain-specific language;
-- retain necessary engineering and legal caveats without turning them into badges.
+The website can demonstrate six executable pilot profiles and three production-ready declared scopes. It must not present these as national completeness or complete statewide legal coverage.
 
-## Current implemented visual behavior
+The product should continue to favor precise language:
 
-Current source uses an off-white page, compact borders, blue/green accent variables, oversized
-headline typography, generous spacing, a narrow result measure, and two-column result sections that
-collapse to one column below 720 px. It avoids card grids and decorative status pills.
+- “candidate authority” over “the authority” when evidence is incomplete;
+- “declared production-ready scope” over “state complete”;
+- “address point” or “interpolated” over “exact location”;
+- “current UTC date supplied” over silently implying a project date;
+- “local record required” over filling a gap with a likely answer.
 
-The broader “phthalo” and “web revival” direction is part of historical design context. Only the
-specific CSS and component behavior in the current tree should be claimed as implemented.
+## Deferred product capabilities
 
-## Remaining public-readiness concerns
-
-- the site can be public while supported data remains only three partially verified pilots;
-- missing snapshots and unsupported locations need precise empty and error states;
-- map chunk size remains a build warning;
-- accessibility and responsive behavior have tests and source evidence, but no complete independent
-  audit is recorded;
-- source completeness disclosures must remain tied to actual records, not marketing copy.
+- nationwide jurisdiction and coverage ledger;
+- runtime decoding of every API payload;
+- historical location and regulatory resolution;
+- project-type intake sufficient for specialized agency routing;
+- comprehensive local amendment browsing;
+- source-change notifications and stale-result warnings;
+- publication-grade deployment backed by hydrated, versioned production snapshots.

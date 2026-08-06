@@ -1,61 +1,56 @@
-# State coverage maturity map
+# State coverage maturity
 
-## Maturity vocabulary
+## Maturity is multidimensional
 
-- **Research record:** a human-readable state report or source inventory exists.
-- **Canonical profile:** a versioned machine-readable profile validates.
-- **Executable pilot:** the generic resolver has fixtures and returns source-backed outcomes.
-- **Production-ready scope:** every returned material conclusion for a defined code-family and
-  project scope has current primary-source evidence, complete timelines, local amendment and
-  enforcement records, conflict resolution, and source-health checks.
-- **Nationwide coverage:** production-ready scopes exist broadly enough to answer the intended
-  location population, including local jurisdictions. No repository evidence supports this label
-  today.
+A state can have a research report without an executable profile, an executable profile without complete local records, or a production-ready declared scope without complete statewide coverage. These states must not be collapsed into a single implemented flag.
 
-A state file is not complete jurisdictional coverage.
+## Current inventory
 
-## Current main
+### Executable pilot profiles
 
-| State      | Current status on `main`             | Why it was selected                                                             | Important gaps                                                                               |
-| ---------- | ------------------------------------ | ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| Colorado   | Executable pilot, partially verified | Predominantly local adoption plus state electrical override                     | Municipal adoptions, amendment detail, historical timelines, named local fixtures            |
-| Florida    | Executable pilot, partially verified | Statewide building-code baseline with local enforcement and amendment follow-up | Local enforcement and amendment evidence, historical and special-project fixtures            |
-| New Jersey | Executable pilot, partially verified | Statewide construction subcodes plus separate operational-fire path             | Local records, subcode timelines, fire-path details, historical and special-project fixtures |
+| State | Executable | Current maturity |
+| --- | --- | --- |
+| Colorado | Yes | Production-ready declared scope; broader local and historical coverage incomplete |
+| Florida | Yes | Production-ready declared scope; special projects and local details remain bounded by the manifest |
+| New Jersey | Yes | Production-ready declared scope; operational-fire and local depth remain bounded by the manifest |
+| Virginia | Yes | Partially verified pilot |
+| Oregon | Yes | Partially verified pilot with multiple specialty-code timelines |
+| North Carolina | Yes | Partially verified pilot with conditionally pending future transition |
 
-These are the only confirmed executable pilot profiles on main at the archaeology start SHA.
+The production-readiness audit currently reports three production-ready scopes and no prematurely verified scope. It does not convert the states into complete statewide datasets.
 
-## Broader report inventory
+### Nationwide research artifacts
 
-The repository has broader state research and quality-report machinery. The graph deliberately does
-not equate the presence of a report with executable or local coverage. Draft PR #14 attempted a much
-larger canonical report conversion but remained open and incomplete.
+The repository contains state-level authority-structure, source, and finding artifacts beyond the executable pilots. Their depth and verification vary. They are research inputs, not runtime support merely because a file exists.
 
-## Production-readiness work
+## Recommended coverage ladder
 
-Draft PR #38 introduces stricter manifests and source-health checks. Its reported state is zero
-production-ready pilots and all three needing review. Because it is unmerged, those manifests are
-proposal evidence rather than current architecture.
+- **L0 Inventory:** expected governmental entity exists with stable identifiers.
+- **L1 Authority:** adoption, amendment, and enforcement powers are supported.
+- **L2 Current base instruments:** current code families and editions are verified.
+- **L3 Amendments and local records:** applicable local changes and assignments are represented.
+- **L4 Exceptions:** agency, occupancy, project, geographic, and delegation exceptions are modeled.
+- **L5 Historical:** past intervals and supersession are resolvable.
+- **L6 Monitored:** authoritative sources are checked and stale evidence is surfaced.
 
-## Additional state wave
+The current production gate evaluates declared pilot scopes, not this complete nationwide ladder.
 
-Draft PR #39 covers official-source inventory for Virginia, Oregon, North Carolina, Massachusetts,
-New York, and California and drafts profiles for Virginia, Oregon, and North Carolina. All remain
-needs-review research. None should be named as supported by main.
+## Missing completion denominator
 
-## Criteria for adding a state
+The repository does not yet generate a nationwide expected jurisdiction universe and classify every entity as:
 
-A state should advance through:
+- covered by statewide policy;
+- local adopter;
+- local amender;
+- enforcement-only;
+- delegated;
+- no general authority;
+- inactive;
+- not applicable;
+- unresolved.
 
-1. primary-source inventory;
-2. authority-model analysis;
-3. adoption and date records;
-4. local-adoption and amendment posture;
-5. declarative profile and rule pack;
-6. schema validation;
-7. contrasting incorporated, unincorporated, code-family, date, conflict, and missing-evidence fixtures;
-8. field-aware review;
-9. source-health and staleness controls;
-10. explicit production-ready scope.
+Without that inventory, the system cannot claim that every expected municipality, county, township, consolidated government, state agency, or special authority has been examined.
 
-Home-rule complexity, local-code hosts, inaccessible amendments, historical transitions, and special
-facility authority can make a seemingly simple state substantially harder than another.
+## Next state-program milestone
+
+The next high-leverage milestone is a national jurisdiction spine and coverage ledger. More executable state profiles remain useful, but the spine is what turns additional research into a measurable path toward all U.S. jurisdictions.

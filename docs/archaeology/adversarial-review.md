@@ -1,113 +1,72 @@
-# Adversarial self-review record
+# Adversarial review
 
-The initial graph was reviewed against the repository tree, merge state, current schemas, tests, and
-open work. The following material corrections were applied before publication.
+This review asks how Building Code Map could produce a plausible but unsupported answer even while the software behaves deterministically.
 
-## Presentism
+## Attacks the current architecture resists
 
-**Finding:** The current address-to-result pipeline could be projected backward as the original
-architecture.
+### Caller supplies the desired jurisdiction
 
-**Correction:** The graph records that the first usable milestone accepted coordinates and deferred
-address normalization and geocoding. The local geocoder appears as a later component that composes
-with the existing point-based resolver.
+The public resolver no longer accepts normalized jurisdiction context as trusted input. It accepts a point and derives geographic observations from the admitted snapshot.
 
-## Pilot inflation
+### Overlapping polygons produce an arbitrary winner
 
-**Finding:** Three successful profiles could be described as state support or nationwide progress
-without qualification.
+Peer state, county, and municipality overlaps return deterministic ambiguity with all tied observations. Encounter order is not treated as evidence.
 
-**Correction:** The graph uses `incomplete-data`, distinguishes reports from executable pilots, and
-treats PR #38 and #39 as unmerged proposals. Current main claims only three partially verified pilot
-profiles.
+### A malformed or semantically incomplete snapshot is admitted
 
-## Containment conflation
+Snapshot loaders validate the schema and invariants required by indexes and spatial resolution before making the capability ready.
 
-**Finding:** Polygon matching could be described as jurisdiction resolution in a legal sense.
+### An unknown file is guessed to be DuckDB
 
-**Correction:** Separate nodes and projections distinguish containment from adopting,
-administering, and enforcement authority. Current point-on-boundary and first-match behavior is
-recorded as unresolved.
+SQLite is the workspace-local default. Legacy DuckDB is explicitly selected rather than inferred from an extension or machine-global fallback path.
 
-## Statewide adoption overclaim
+### A future code edition appears current
 
-**Finding:** A statewide baseline could be presented as a complete local result.
+Profiles preserve pending, optional, transition, effective, and mandatory states. The Oregon and North Carolina future records remain excluded until their conditions are supported.
 
-**Correction:** The graph preserves `local_record_required`, local amendment posture, code-family
-splits, and enforcement follow-up. Statewide summaries are a rejected flat model.
+### A pilot is called production-ready because tests are green
 
-## Source authority inflation
+The production gate requires declared scopes, continuous timelines inside those scopes, primary evidence, source health, and evidence-backed fixtures. It also rejects premature verification.
 
-**Finding:** Publisher sites, code-adoption summaries, or public portals could be treated as
-controlling law.
+## Remaining attack paths
 
-**Correction:** The data-source projection distinguishes primary official instruments, official
-administrative publications, secondary research aids, model-code publication identity, and geometry
-sources.
+### Correct state profile, wrong local authority
 
-## Amendment omission
+The repository lacks a canonical national legal-entity and local-authority registry. A state profile may correctly require local records while the system cannot yet prove that every candidate locality has been classified.
 
-**Finding:** The existence of an `amendment` rule kind could be described as amendment coverage.
+### Current geometry answers a historical query
 
-**Correction:** The current outcome is `incomplete-data`, with municipal, appendix, design-criteria,
-historical, and source-access gaps listed.
+Regulatory dates can be historical while address and boundary snapshots are current. Historical containment must remain unsupported unless dated geometry exists.
 
-## Geocoder accuracy inflation
+### Official source is stale, moved, or superseded
 
-**Finding:** Address-point preference could be described as rooftop geocoding.
+Source health checks cover declared pilot scopes, not all state and local records nationwide. A reachable source may also be legally obsolete.
 
-**Correction:** The graph states that source-provided address points inherit source accuracy and
-interpolation is approximate. Deterministic confidence thresholds are not probability calibration.
+### Scope boundary is misunderstood
 
-## Determinism inflation
+A production-ready manifest can be misread as a statewide certification. User interfaces and reports must continue to expose the declared scope and unresolved classes.
 
-**Finding:** Deterministic output and green CI could be described as legal correctness.
+### Special-area containment becomes authority by implication
 
-**Correction:** A dedicated observation states that fixtures and tests validate implementation
-behavior, not nationwide legal or geographic completeness.
+Tribal, fire-service, flood, utility, campus, airport, and other special-purpose observations may be relevant without being adopting authorities. Only explicit policy and evidence may establish the relationship.
 
-## Repository-boundary drift
+### Geocoder confidence becomes parcel certainty
 
-**Finding:** Building Code AST clause parsing and Electrical Equipment Lineage decision logic could
-be assigned to Building Code Map.
+An address point or high-confidence interpolation may still represent the wrong parcel, entrance, unit, or side of a jurisdiction boundary.
 
-**Correction:** The cross-repository projection assigns applicability context to Map, publication
-structure to AST, and product/UL lineage claims to Electrical Equipment Lineage.
+### Deterministic compiler preserves a bad interpretation
 
-## Public-deployment inflation
+Determinism makes a rule reproducible, not legally correct. Accepted profiles still require skeptical source review and bounded claims.
 
-**Finding:** A public site and public repository could be treated as production data maturity.
+## Required reviewer questions
 
-**Correction:** Public readiness and data maturity are separate arcs. Deployment state and runtime
-snapshot vintage remain unresolved because repository evidence does not prove them.
-
-## Trust-language omission
-
-**Finding:** The badge-removal decision could be reduced to generic visual polish.
-
-**Correction:** The graph records the rejected slogan-like trust strategy and the active principle of
-showing provenance, dates, uncertainty, and local follow-up in the result itself.
-
-## LORE confusion
-
-**Finding:** Staged PR #35 could be described as the active LORE adoption or as a local
-reimplementation.
-
-**Correction:** PR #35 is superseded historical readiness. Merged PR #37 is the active pinned trust
-root using LORE's shipped behavior.
-
-## Compatibility fossilization
-
-**Finding:** Current legacy DuckDB and machine-global path fallback could be described as intended
-permanent architecture.
-
-**Correction:** The graph labels it `compatibility-only` and records issue #11 and snapshot
-validation as unresolved.
-
-## Duplicate decision inflation
-
-**Finding:** Individual state additions, map fixes, and UI tweaks could become separate architectural
-decisions.
-
-**Correction:** They are grouped beneath state-maturity, runtime-correctness, and credibility
-decisions unless they changed a repository boundary.
+1. What exact input and as-of date were used?
+2. Was the point sourced or interpolated?
+3. Were any boundary observations ambiguous?
+4. Which legal rule turns containment into candidate authority?
+5. Which instrument performs the adoption?
+6. Are adoption, effective, mandatory, and repeal dates distinguished?
+7. Is the result inside a declared production-ready scope?
+8. What local records or special programs remain unresolved?
+9. Are source identity, retrieval date, and freshness visible?
+10. Would the same evidence support the answer if the map were removed?

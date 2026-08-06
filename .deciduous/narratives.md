@@ -1,164 +1,101 @@
-# Building Code Map Decision Narratives
+# Building Code Map decision narratives
 
-These narratives are root-level reading paths into the canonical Deciduous graph in
-`.deciduous/deciduous.sql`. They summarize causal arcs; they do not replace node evidence.
+These narratives are reading paths through the frozen Deciduous graph. The graph records the repository's causal baseline when archaeology began. The reconciliation below records later merged work without rewriting historical nodes.
+
+## Current reconciliation
+
+Since the baseline was reconstructed, Building Code Map has:
+
+- hardened public resolution so callers provide a point rather than trusted jurisdiction context;
+- made overlapping state, county, and municipality observations deterministic ambiguity instead of encounter-order selection;
+- admitted boundary snapshots only after semantic validation;
+- replaced broad legacy snapshot guessing with a workspace-local SQLite default and explicit DuckDB compatibility;
+- added capability-specific readiness and visible applicability-date defaulting;
+- established scoped production-readiness manifests for Colorado, Florida, and New Jersey;
+- expanded executable regulatory profiles to Virginia, Oregon, and North Carolina.
+
+The repository therefore has six executable pilot profiles and three production-ready **declared scopes**. Neither statement means complete statewide, municipal, historical, or nationwide coverage.
 
 ## 1. From “which code?” to inspectable applicability
 
-Building Code Map began with a deceptively compact engineering question: given a site, which
-authorities and adopted codes apply? Model-code publication, statewide summaries, municipal
-adoption, enforcement responsibility, amendments, special districts, and effective dates are
-different facts. A map or city-to-edition table could display one dimension, but it could not show
-why an edition applies, who enforces it, or what remains unknown. The project therefore became an
-applicability resolver whose useful answer may be “local record required” rather than a convenient
-edition.
+Building Code Map began with a compact question: given a site, which authorities and adopted codes may apply? Publication, adoption, amendment, enforcement, project scope, and effective date are distinct facts. The product therefore became an applicability resolver whose correct result may require a local record rather than fabricate a convenient edition.
 
 Root: `bcm-goal-inspectable-location-applicability`
 
-## 2. The address-to-result pipeline was separated to preserve evidence
+## 2. The address-to-result pipeline preserves evidence
 
-The user-facing contract eventually became address or coordinates in, applicable authority and
-adoption records out. That experience is implemented as explicit stages: normalize a civic address,
-geocode it to a provenance-bearing point, match supported geometries, interpret authority policy,
-filter adoption records by context and date, and render evidence and warnings. `POST /resolve`
-remains point-based. `POST /lookup` composes geocoding with the same resolver. This boundary makes
-a weak address match visible instead of allowing it to masquerade as a regulatory conclusion.
+Address normalization, geocoding, point provenance, boundary observation, regulatory interpretation, and result rendering are explicit stages. `POST /lookup` composes geocoding with the point-only resolver. A weak or ambiguous location match remains visible and cannot silently become a legal conclusion.
 
 Root: `bcm-goal-address-to-adopted-code-contract`
 
-## 3. Local-first means local execution over refreshable public data
+## 3. Local-first means deterministic execution over reviewable artifacts
 
-The architecture is local-first because address privacy, deterministic replay, vendor outages,
-per-query cost, source inspection, and engineering reproducibility matter. It is not a pledge never
-to use networked public sources. TIGER/Line, reviewed address data, NERIS resources, statutes,
-regulations, ordinances, and agency publications enter ingestion or research workflows. Once
-versioned artifacts exist, lookup does not depend on a geocoding or AI service. Dataset size,
-licensing, setup, refresh cadence, and stale-data detection are the price of that independence.
+Public datasets and official legal sources enter acquisition and research workflows. Lookup uses local, versioned artifacts rather than depending on a live geocoder, vendor, or language model. That choice improves privacy and replayability while creating obligations for source licensing, snapshot identity, refresh, and stale-data detection.
 
 Root: `bcm-goal-deterministic-local-first`
 
-## 4. RAG was rejected as final authority, not as a research aid
+## 4. Retrieval is research assistance, not final authority
 
-A retrieval-augmented answer can miss the controlling instrument, retrieve commentary instead of
-law, confuse publication with adoption, overlook supersession, and return a plausible result for
-the wrong jurisdiction. Those failure modes are unacceptable as the final authority-resolution
-engine. The repository instead compiles declarative policy and resolves it deterministically.
-AI-assisted research, extraction, comparison, review, and explanation can still help produce or
-check proposals, but accepted data and validated source relationships govern the result.
+Retrieval can miss controlling instruments, confuse commentary with law, overlook supersession, or answer for the wrong jurisdiction. Accepted declarative policy and verified source relationships govern deterministic results. AI may assist research, extraction, comparison, and review, but it does not become the authority surface.
 
 Root: `bcm-goal-deterministic-local-first`
 
-## 5. Geocoding moved from a deferred assumption to a bounded SQLite component
+## 5. Geocoding became a bounded SQLite component
 
-The first usable milestone intentionally accepted coordinates because address normalization and
-data acquisition were separate problems. The later local geocoder added a conservative U.S.
-civic-address parser, address-point preference, locality-constrained indexed queries, deterministic
-ranking, ambiguity handling, and parity-aware street-range interpolation. Snapshot schema version 1
-uses `geocoder_metadata`, `address_points`, and `street_ranges`. “Address point” describes the input
-record type, not independently verified rooftop accuracy; interpolation is explicitly approximate.
-Units, parcels, landmarks, intersections, rural-route specialization, reverse geocoding, and
-historical address snapshots remain deferred.
+The initial coordinate-first milestone avoided pretending address resolution was solved. The later geocoder added conservative civic-address parsing, address-point preference, deterministic ranking, explicit ambiguity, and parity-aware street-range interpolation. Address points and interpolated points carry different precision and provenance.
 
 Root: `bcm-goal-local-address-front-door`
 
-## 6. Geographic containment is evidence, not legal authority
+## 6. Geographic containment is not legal authority
 
-A coordinate can be contained by several nested and overlapping polygons. State, county,
-municipality, tribal area, fire jurisdiction, flood or special area, and utility territory do not
-automatically have the same adopting or enforcement role. The boundary resolver therefore produces
-geographic context, while state policy profiles identify authority candidates, roles, relationships,
-code-family overrides, and local-record requirements. The current result contract is
-`resolution-result` schema 1.0. No separately versioned current `authority_graph` schema was found
-on `main`; authority is expressed through candidates and `authority_path`.
+A point may intersect nested or overlapping governmental and special-purpose polygons. The boundary layer reports observations. Regulatory profiles interpret candidate authority, code-family scope, inheritance, enforcement, and local-record requirements. Multiple peer state, county, or municipality observations now return explicit ambiguity instead of selecting the first row.
 
 Root: `bcm-goal-resolve-overlapping-jurisdictions`
 
-## 7. Adoption records preserve dates, amendments, conflicts, and missing evidence
+## 7. Adoption records preserve time and uncertainty
 
-A model-code edition can have a publication date, an adopting instrument can have an adoption date,
-and the law can have a different effective, operative, mandatory, replacement, or transition date.
-Statewide minimums can coexist with local amendments or local adoption. The resolver therefore
-supports date-aware records, amendment and enforcement rule kinds, verification state, claims,
-conflicts, required local records, and warnings. The representation is more capable than the current
-dataset: complete municipal amendments, optional appendices, design criteria, climatic values, and
-historical supersession remain major gaps.
+Publication date, adoption date, effective date, mandatory date, transition period, repeal, and source observation are not interchangeable. Profiles and rules preserve pending instruments, verification state, conflicts, special conditions, and required local records. Historical and municipal depth remains incomplete even where current pilot behavior is executable.
 
 Root: `bcm-goal-date-aware-adoption-records`
 
-## 8. Three pilots validated the model without establishing national coverage
+## 8. Pilot waves test regimes without claiming national completeness
 
-Colorado, Florida, and New Jersey were selected because they exercise contrasting authority
-patterns: predominantly local adoption with a state electrical override, a statewide building-code
-baseline with local enforcement and amendment follow-up, and statewide construction subcodes with a
-separate operational-fire path. They are executable profiles on `main`, but intentionally remain
-partially verified. Draft PRs for stricter production-readiness manifests and a six-state research
-wave are not current support. A state report, a draft profile, and complete local coverage are three
-different maturity levels.
+Colorado, Florida, and New Jersey established the first executable profiles and now have production-ready declared scopes. Virginia, Oregon, and North Carolina add statewide-code, specialty-code, local-enforcement, and conditional-transition patterns. All six remain pilot implementations, and the three readiness determinations apply only to their declared manifestations and fixtures.
 
 Root: `bcm-goal-expand-state-coverage-with-thresholds`
 
-## 9. Source roles and publication rights shaped runtime boundaries
+## 9. Source roles and publication rights shape runtime boundaries
 
-Census geometry identifies places but does not establish code adoption. Official statutes,
-regulations, ordinances, and agency records can support legal claims. Secondary summaries help
-research but are not substituted for controlling records. Model-code publishers identify
-publications without proving local adoption. Address and fire-service data have separate ownership,
-cadence, and redistribution questions. Hydrated boundary and geocoder databases stay out of Git;
-the repository publishes reproducible logic, schemas, fixtures, provenance requirements, and
-carefully bounded records instead.
+Census geometry can identify a place without proving legal authority. Statutes, regulations, ordinances, and official agency records support legal claims. Secondary summaries aid discovery. Model-code publications do not prove adoption. Hydrated address and boundary databases remain outside Git unless their provenance and redistribution terms permit publication.
 
 Root: `bcm-goal-govern-source-classes`
 
-## 10. Building Code Map and Building Code AST form a pipeline, not one product
+## 10. Building Code Map and Building Code AST are adjacent products
 
-Building Code Map owns location, jurisdictions, authority relationships, adoptions, amendments,
-effective dates, and applicability. Building Code AST owns faithful structure of selected
-publications: hierarchy, definitions, exceptions, cross-references, tables, figures, source spans,
-and diagnostics. The intended composition is location to authority and adopted source, then source
-artifact to document AST and selected provision. Electrical Equipment Lineage and future compliance
-tools may consume applicability context, but each retains its own evidence and professional-review
-boundary.
+Building Code Map owns location, candidate authorities, adopted instruments, amendments, dates, and applicability uncertainty. Building Code AST owns faithful structure of selected publications, including hierarchy, cross-references, source spans, and diagnostics. Their composition is location to governing source, then source to provision, without merging their evidence boundaries.
 
 Root: `bcm-goal-repository-boundaries`
 
-## 11. LORE was adopted as a trust protocol rather than recreated locally
+## 11. LORE is the durable knowledge trust protocol
 
-An earlier draft prepared repository-local LORE-compatible scaffolding while the upstream workflow
-was stabilizing. The merged implementation instead pins LORE, uses its shipped maintenance skill,
-stores accepted semantic records, reserves proposals and transaction receipts, extracts
-deterministic facts, and treats generated documents as projections. PR #37, not the earlier staged
-draft, is the active trust-root implementation.
+The repository pins LORE, stores accepted semantic records, extracts deterministic facts, and treats generated documentation as projections. Deciduous preserves causal development history; LORE preserves accepted semantic repository knowledge. Neither replaces source-backed regulatory records.
 
 Root: `bcm-goal-durable-repository-knowledge`
 
-## 12. The website learned to demonstrate trust instead of announcing it
+## 12. The website demonstrates evidence rather than announcing trust
 
-The technical GIS explorer was not an adequate public front door. The public root became a
-search-first lookup while `/explorer` retained the workbench. Generic trust badges, promotional
-claims, decorative metrics, and slogan-like assurance copy were removed. Current results demonstrate
-credibility through matched-address provenance, authorities, adopted-code records, effective dates,
-local confirmation items, jurisdiction relationships, and dated source links. Necessary caveats
-remain, but they are not used as decorative credibility tokens.
+The public root became a search-first lookup while the explorer remained available as a technical workbench. Generic trust slogans were removed. Results instead expose matched-location provenance, authority candidates, adoption records, effective dates, warnings, local confirmation items, and dated sources.
 
 Root: `bcm-goal-public-product-interface`
 
-## 13. Compatibility debt remains part of the current architecture
+## 13. Compatibility is now bounded rather than guessed
 
-SQLite is the documented primary local snapshot format, but the boundary loader still retains
-DuckDB support, treats unknown extensions as DuckDB, and searches legacy machine-global `C:\tmp`
-candidates. Map hydration ordering and composite boundary identity defects were fixed, but snapshot
-semantic validation, detail loading, path provenance, temporal geometry, and some overlap behavior
-remain unresolved. These mechanisms are compatibility-bound, not evidence that the target
-architecture was always DuckDB-shaped.
+SQLite is the workspace-local default for boundary snapshots. Legacy DuckDB remains available only through explicit configuration. Snapshot loaders reject unsupported formats and invalid semantic content before runtime admission. Full manifest, activation, rollback, and historical-boundary contracts remain follow-up work.
 
 Root: `bcm-goal-preserve-compatible-runtime-while-maturing`
 
-## 14. Public source availability is not production-grade data coverage
+## 14. Public availability is not nationwide production coverage
 
-The public README, read-only CI, contribution rules, and source-publication boundaries made the
-repository understandable and safer to contribute to. They did not make the datasets nationwide or
-legally complete. Building Code Map remains pre-1.0 research and engineering. The public site and
-green tests prove that the implemented paths are coherent, not that every jurisdiction or amendment
-has been verified.
+The public repository, green CI, six executable pilots, and three production-ready scopes establish that implemented paths are coherent and reviewable. They do not establish complete legal coverage for every municipality, special authority, occupancy, amendment, or historical date. Building Code Map remains pre-1.0 research and engineering.
 
 Root: `bcm-goal-public-repository-credibility`

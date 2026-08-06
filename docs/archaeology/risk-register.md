@@ -1,48 +1,66 @@
-# Unresolved evidence, data-quality, and coverage risks
+# Risk register
 
-## Critical product risks
+## Active high-priority risks
 
-| Risk                                 | Current evidence                                                                                     | Lifecycle                          |
-| ------------------------------------ | ---------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| Local applicability overclaim        | Three pilot profiles remain partially verified; issue #31 is open                                    | `incomplete-data`                  |
-| Amendment incompleteness             | Rule type exists, but municipal and historical amendment coverage is sparse                          | `incomplete-data`                  |
-| Historical-date gaps                 | Resolver is date-aware, but complete adoption, operative, and supersession timelines are not present | `incomplete-data`                  |
-| Geocoder source availability         | Engine exists; production address sources and redistribution decisions do not ship                   | `incomplete-data`                  |
-| Positional accuracy overstatement    | Address points inherit source accuracy; interpolation is approximate                                 | `active limitation`                |
-| Geometry versus legal authority      | Polygon containment cannot establish adopting or enforcement roles                                   | `active boundary`                  |
-| Boundary snapshot provenance         | Legacy machine-global path search and unknown-extension DuckDB fallback remain                       | `compatibility-only`, `unresolved` |
-| Snapshot semantic validation         | Issue #9 describes missing startup invariants; merge evidence was not found                          | `unresolved`                       |
-| Boundary detail payload              | Issue #7 remains evidence of an unresolved summary/detail split                                      | `unresolved`                       |
-| Point-on-boundary and overlap policy | Segment points count as inside; first county/municipality wins                                       | `unresolved`                       |
-| Temporal boundary change             | Geometry is not historically versioned                                                               | `proposed`                         |
-| Source staleness                     | Coverage tooling reports signals, but recurring refresh and enforcement are incomplete               | `incomplete-data`                  |
-| National support claim               | Draft next-state work is unmerged; report presence is not executable support                         | `rejected claim`                   |
-| AI-generated authority               | RAG is not the final resolver; AI output must remain a proposal or research aid                      | `rejected architecture`            |
-| Code-text rights                     | Adopted editions are recorded without bundling protected publications                                | `active boundary`                  |
-| Public site versus data maturity     | The interface is usable while data remains pre-1.0                                                   | `active qualification`             |
+### No national governmental-entity spine
 
-## Claims downgraded during archaeology
+Boundary features and state profiles do not yet form a canonical nationwide registry of legal entities, adoption powers, enforcement assignments, inheritance, and validity intervals. This prevents complete jurisdiction enumeration and reliable national completion metrics.
 
-- “Authority graph version 0.4” was not found as a current main contract. The confirmed executable
-  result schema is `1.0`, and authority relationships are represented through candidates and
-  `authority_path`.
-- “Nationwide coverage” was downgraded to three executable, partially verified pilots plus broader
-  research reports.
-- “Rooftop geocoder” was downgraded to source-provided address points or labeled interpolation.
-- “SQLite-only boundary runtime” was downgraded to SQLite-primary with legacy DuckDB compatibility.
-- “LORE adoption began with PR #35” was corrected: PR #35 was staged and unmerged; PR #37 is the
-  active merged trust root.
-- “Trust badges communicate rigor” was reversed: current product demonstrates provenance in results
-  and deliberately omits generic badge rows.
-- “Green tests prove correctness” was qualified: they prove deterministic implementation behavior
-  for fixtures, not complete legal or geographic data.
+### Local adoption and amendment gaps
 
-## Evidence still unresolved
+The six executable profiles expose required local records but do not comprehensively cover every municipality, county, township, amendment, enforcement contract, special occupancy, or delegated program.
 
-- Exact earliest product naming and any private predecessor design not preserved in the public tree.
-- Complete inventory of state research files versus their field-level freshness.
-- Current production deployment URL and runtime snapshot vintage, because repository evidence does
-  not establish deployment state.
-- Whether issue #7, #9, or #11 has a later unmerged implementation outside the reviewed branches.
-- Complete Go test-function count; standard CI reports package pass status rather than a test total.
-- Independent accessibility audit and mobile-device verification beyond source and automated tests.
+### Historical incompleteness
+
+Selected regulatory transitions are modeled, but historical addresses, boundaries, authorities, adoptions, and amendments are not complete nationwide. Current geometry must not silently answer a historical question.
+
+### Snapshot lifecycle remains incomplete
+
+Snapshots are semantically validated before admission, but complete source manifests, checksums, build identities, atomic activation, rollback identity, and historical snapshot catalogs remain follow-up work.
+
+### Frontend runtime decoding
+
+TypeScript types do not prove that a runtime API payload conforms. The frontend still needs comprehensive decoding and explicit degraded or ambiguous evidence rendering.
+
+### Geocoder provenance depth
+
+The geocoder distinguishes address points from interpolation and preserves source metadata, but source-specific ranking, complete interpolation derivation, unit handling, parcel linkage, and historical address identity remain incomplete.
+
+### Source freshness and legal change
+
+The production gate checks declared sources, but nationwide monitoring does not yet exist. Moved links, superseding instruments, annexations, agency reorganizations, and amended local ordinances can make a once-correct result stale.
+
+## Recently reduced risks
+
+### Caller-authored authority context
+
+Reduced by making public `/resolve` point-only and deriving geographic observations server-side.
+
+### Encounter-order boundary selection
+
+Reduced by returning deterministic ambiguity for overlapping peer state, county, and municipality observations.
+
+### Invalid snapshot admission
+
+Reduced by semantic validation before runtime use.
+
+### Machine-global snapshot guessing
+
+Reduced by using a workspace-local SQLite default and requiring explicit legacy DuckDB configuration.
+
+### Undifferentiated readiness
+
+Reduced by capability-specific readiness and by the scoped pilot production gate.
+
+### Silent date defaulting
+
+Reduced by returning an explicit warning when the server supplies the current UTC applicability date.
+
+## Non-risks that must not be promoted into claims
+
+- six executable profiles do not mean six complete states;
+- three production-ready scopes do not mean three complete statewide datasets;
+- a green pipeline does not establish legal correctness;
+- a containing polygon does not establish adoption or enforcement authority;
+- a state research artifact does not make the state executable;
+- public availability does not make hydrated source data redistributable.

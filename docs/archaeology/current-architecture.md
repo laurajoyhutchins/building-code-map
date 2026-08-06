@@ -1,86 +1,72 @@
-# Current architecture projection
+# Current architecture
 
-## Active request path
+## System boundary
+
+Building Code Map is a local-first applicability resolver. It accepts an address or coordinate, derives a provenance-bearing point, observes containing geographic features, applies source-backed regulatory policy for an as-of date, and returns candidate authorities, adopted instruments, uncertainty, and required confirmation.
+
+It is not a general geocoder, national GIS warehouse, code-text corpus, legal-opinion engine, or substitute for the authority having jurisdiction.
+
+## Runtime flow
 
 ```text
 address input
-  -> conservative civic-address normalization
-  -> local SQLite geocoder schema 1
-  -> selected address point or labeled street-range interpolation
-  -> WGS 84 point
-  -> local boundary snapshot
-  -> normalized geographic context
-  -> versioned state profile and rule pack
-  -> generic regulatory resolver
-  -> resolution-result schema 1.0
-  -> public lookup or technical explorer
+    -> deterministic normalization
+    -> local SQLite geocoder
+    -> address point or labeled interpolation
+    -> provenance-bearing point
+
+coordinate input
+    -> provenance-bearing point
+
+point
+    -> validated local boundary snapshot
+    -> geographic observations
+    -> ambiguity check
+    -> state regulatory profile
+    -> date and project-scope rules
+    -> authority candidates and adoptions
+    -> evidence, warnings, and local-record requirements
 ```
 
-Coordinate input enters at the WGS 84 point and remains usable when no geocoder snapshot is loaded.
+## Public API boundary
 
-## Active components
+`POST /resolve` accepts a point. It does not accept caller-authored normalized jurisdiction context as trusted input. The server derives geographic observations from its admitted boundary snapshot.
 
-### Public application
+`POST /lookup` geocodes an address locally and invokes the same point path. The response preserves both geocoding and regulatory evidence.
 
-The root route is a search-first public lookup. It accepts a U.S. civic address or coordinates, a
-code family, and an applicability date. Results show geocoder provenance when applicable, authority
-candidates, adopted-code records, special conditions, local-confirmation items, jurisdiction
-relationships, and dated source links. `/explorer` retains the GIS workbench.
+If an applicability date is omitted, the compatibility default is the current UTC date and the result carries an explicit warning. The default is not evidence of project applicability.
 
-### Local geocoder
+## Boundary behavior
 
-The Go geocoder uses a separate SQLite snapshot with schema version `1`. Address points and street
-ranges are indexed by normalized fields and source identities. Ranking is deterministic. Address
-points require a minimum confidence of `0.85`; street ranges require `0.75`; top candidates within
-`0.05` are ambiguous. Those numbers are ranking thresholds, not calibrated probability estimates.
+The runtime admits a snapshot only after checking the schema and semantic invariants consumed by spatial indexes and resolution. SQLite is the workspace-local default. Legacy DuckDB compatibility is explicit rather than inferred from an unknown extension or machine-global path.
 
-### Boundary resolver
+State, county, municipality, special-area, American Indian area, and NERIS features are geographic observations. Multiple peer state, county, or municipality matches return deterministic `409 boundary_ambiguous` evidence instead of encounter-order selection. Special-area, tribal-area, and NERIS containment is never automatically promoted to legal authority.
 
-The local snapshot exposes states, counties, municipalities, special areas, tribal areas, and NERIS
-jurisdictions. Polygon and multipolygon containment includes holes. A point on a ring segment is
-treated as contained. The current implementation keeps the first county and municipality match while
-accumulating special, tribal, and fire matches.
+## Regulatory behavior
 
-### Regulatory resolver
+The generic resolver loads declarative profiles and rule packs. It has no state-name branches. Profiles distinguish current, historical, transition, and pending records; authority candidates; enforcement follow-up; code-family overrides; source references; verification status; and required local records.
 
-The generic resolver consumes normalized geography plus optional code family, project type, and
-applicability date. State behavior lives in data, not a state-name switch. The result can be
-`resolved`, `partially_resolved`, `local_record_required`, `ambiguous`, `conflicting`, or
-`insufficient_evidence`.
+Current executable pilot profiles are:
 
-### Regulatory data
+- Colorado
+- Florida
+- New Jersey
+- Virginia
+- Oregon
+- North Carolina
 
-`main` contains executable pilot profiles and rule packs for Colorado, Florida, and New Jersey.
-Their differing authority structures validate the data model, but the profiles remain partially
-verified and do not establish full municipal amendment or historical coverage.
+Colorado, Florida, and New Jersey also have production-ready declared-scope manifests. Those findings are scoped and do not assert complete statewide municipal, amendment, project-type, or historical coverage.
 
-### Knowledge and verification
+## Readiness
 
-LORE is pinned in CI and validates accepted repository records. Deciduous wrappers support local
-decision-graph recovery and audit. The archaeology adds a schema-native seed, generated graph export,
-and deterministic validator.
+`/health` proves process response. `/ready` reports capability-specific readiness for boundary, geocoder, regulatory, and composed lookup paths. A missing geocoder may leave coordinate resolution usable. Missing regulatory profiles leave geographic inspection available without permitting code conclusions.
 
-## Compatibility-bound mechanisms
+## Remaining architectural gaps
 
-- Boundary snapshots can be SQLite or legacy DuckDB.
-- Unknown boundary snapshot extensions currently fall back to DuckDB.
-- Default boundary-path discovery still includes legacy machine-global temporary locations.
-- The technical explorer remains alongside the public product.
-- Existing Deciduous Windows wrappers locate a separately installed executable.
-
-These are current behaviors, not necessarily target architecture.
-
-## Proposed or unmerged
-
-- Production-readiness manifests and source-health checks in draft PR #38.
-- Additional state inventories and draft profiles in PR #39.
-- Stricter report-schema conversion work in draft PR #14.
-- Broader local adoption, amendment, and historical records.
-- Automated boundary and geocoder refresh.
-- PostGIS and vector-tile serving if scale requires them.
-- Unit, parcel, landmark, intersection, reverse, and historical geocoding.
-
-## Not implemented by this archaeology
-
-No geocoder behavior, API schema, jurisdiction data, deployment, website behavior, production
-database, external service, Linear record, release, or merge state is changed.
+- a canonical national governmental-entity and legal-authority registry;
+- explicit state-regime and local-jurisdiction inheritance contracts;
+- production snapshot manifests, checksums, activation receipts, and rollback identity;
+- nationwide local-adoption and amendment coverage;
+- historical address, boundary, authority, and adoption timelines;
+- frontend runtime decoding for every API payload;
+- source-specific geocoder ranking and complete interpolation derivation.

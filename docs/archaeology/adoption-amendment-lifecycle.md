@@ -1,71 +1,66 @@
-# Adoption and amendment lifecycle map
+# Adoption and amendment lifecycle
 
-## Publication is not adoption
+## Distinct records
 
-ICC, NFPA, ASHRAE, and other publishers issue model codes and standards. A jurisdiction applies
-them through a statute, regulation, ordinance, resolution, administrative rule, or other controlling
-instrument. Publication metadata can identify a source edition, but it cannot establish local law.
+Building Code Map treats the following as separate facts:
 
-## Date distinctions
+- model-code publication;
+- enabling authority;
+- adopting instrument;
+- adoption date;
+- effective or operative date;
+- optional transition period;
+- mandatory date;
+- amendment or override;
+- enforcement assignment;
+- repeal or supersession;
+- source observation and verification date.
 
-The data model must keep these dates separate when evidenced:
+A newer publication is not automatically the governing instrument. A department webpage is not automatically an adoption instrument. Local enforcement does not necessarily imply local adoption power.
 
-1. publication date of the model code;
-2. adoption or execution date of the legal instrument;
-3. effective date of the adopted requirement;
-4. operative or mandatory date;
-5. transition or permit-stage date;
-6. replacement, repeal, or supersession date.
+## Executable pilot profiles
 
-The current profiles support date records and applicability filtering, but completeness varies by
-state and code family.
+The repository currently compiles six state profiles:
 
-## Adoption record dimensions
+- Colorado
+- Florida
+- New Jersey
+- Virginia
+- Oregon
+- North Carolina
 
-A supported record may include:
+The profiles exercise different regimes, including primarily local adoption, statewide baselines with local administration, specialty-code families, state trade-code overrides, prior-edition election windows, and future transitions whose operative date depends on an external legal trigger.
 
+Pending Oregon and North Carolina records remain pending until their required conditions are supported. They do not leak into current results.
+
+## Production-readiness scopes
+
+Colorado, Florida, and New Jersey have scoped production manifests that currently pass the repository's readiness audit. The audit requires declared coverage, continuous verified timelines within scope, primary evidence, source health, and evidence-backed fixtures.
+
+A passing scope means only that the declared scope satisfies the gate. It does not establish complete statewide coverage of every:
+
+- municipality or county;
 - code family;
-- model-code edition or state code name;
-- adopting authority;
-- adoption instrument;
-- enforcement model;
-- scope and project class;
-- statewide baseline or local-adoption posture;
-- date fields;
-- source identifiers;
-- verification status and confidence;
-- conflict or unresolved state.
+- local amendment;
+- enforcement contract;
+- special project or occupancy;
+- optional appendix;
+- design criterion;
+- historical interval.
 
-The resolver can return several records when code families or scopes differ.
+Virginia, Oregon, and North Carolina remain executable, partially verified pilots without production-ready manifests.
 
-## Amendments
+## Resolution behavior
 
-The rule-pack model includes `amendment` as a first-class rule kind. It can describe statewide
-amendment sets, local amendment authority, constraints, and source references. This representation
-does not imply comprehensive amendment content.
+For a point, as-of date, and available project context, the resolver:
 
-Major remaining gaps include:
+1. loads the compatible state profile;
+2. derives incorporated or unincorporated policy from boundary observations;
+3. applies code-family and project-type rules;
+4. filters records by temporal status;
+5. expands authority and enforcement candidates;
+6. reports missing local records, conflicts, warnings, and verification status.
 
-- complete municipal amendment inventories;
-- deleted and inserted sections;
-- local design criteria and climatic values;
-- optional chapter and appendix adoption;
-- fire-code appendices;
-- electrical amendments;
-- energy-code compliance pathways;
-- conflicts between ordinances and codified hosts;
-- amendment supersession and historical effective periods;
-- inaccessible or redistribution-sensitive source documents.
+## Required next contract
 
-## Conservative output
-
-When a statewide rule does not establish local applicability, the result should identify candidate
-authorities and required local records. Inferred amendments must not be presented as confirmed. A
-missing date must not be silently replaced with the model-code publication date.
-
-## Current maturity
-
-Colorado, Florida, and New Jersey contain source-backed pilot records and exercise differing models,
-but issue #31 remains the evidence-backed path to production-ready timelines, amendments, local
-fixtures, and special-project coverage. Draft PR #38 is not merged and therefore does not change
-current main classifications.
+Nationwide scaling requires explicit inheritance and local-jurisdiction records so a state rule can be represented once and legally applied to classified entities without duplicating the same adoption thousands of times.
