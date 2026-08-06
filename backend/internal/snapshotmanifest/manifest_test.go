@@ -92,6 +92,60 @@ func TestLoadAndVerifyRejectsFailedIntegrityCheck(t *testing.T) {
 	}
 }
 
+func TestManifestValidateRejectsSchemaInvalidMetadata(t *testing.T) {
+	tests := []struct {
+		name   string
+		mutate func(*Manifest)
+	}{
+		{
+			name: "blank license review status",
+			mutate: func(manifest *Manifest) {
+				manifest.Sources[0].LicenseReviewStatus = "  "
+			},
+		},
+		{
+			name: "blank redistribution status",
+			mutate: func(manifest *Manifest) {
+				manifest.Sources[0].RedistributionStatus = ""
+			},
+		},
+		{
+			name: "negative accepted count",
+			mutate: func(manifest *Manifest) {
+				manifest.RecordCounts.Accepted = -1
+			},
+		},
+		{
+			name: "negative rejected count",
+			mutate: func(manifest *Manifest) {
+				manifest.RecordCounts.Rejected = -1
+			},
+		},
+		{
+			name: "negative duplicate count",
+			mutate: func(manifest *Manifest) {
+				manifest.RecordCounts.Duplicate = -1
+			},
+		},
+		{
+			name: "negative quarantined count",
+			mutate: func(manifest *Manifest) {
+				manifest.RecordCounts.Quarantined = -1
+			},
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			manifest := validManifest(digestOf("abc"), 3)
+			test.mutate(&manifest)
+			if err := manifest.Validate(KindBoundary); !errors.Is(err, ErrManifestInvalid) {
+				t.Fatalf("expected invalid manifest, got %v", err)
+			}
+		})
+	}
+}
+
 func validManifest(outputDigest string, outputSize int64) Manifest {
 	return Manifest{
 		SchemaVersion: SchemaVersion,
@@ -100,9 +154,9 @@ func validManifest(outputDigest string, outputSize int64) Manifest {
 		Sources: []SourceArtifact{{
 			Publisher: "Census", Product: "TIGER/Line", Vintage: "2025", Locator: "source.zip", SHA256: digestOf("source"), RetrievedAt: "2026-08-05T12:00:00Z", LicenseReviewStatus: "reviewed", RedistributionStatus: "allowed",
 		}},
-		Builder: Builder{Tool: "boundary-build", Version: "1.0.0", Revision: "0123456789abcdef0123456789abcdef01234567", BuiltAt: "2026-08-05T12:30:00Z", OutputCRS: "EPSG:4326"},
-		RecordCounts: RecordCounts{Accepted: 1},
-		OutputSHA256: outputDigest,
+		Builder:         Builder{Tool: "boundary-build", Version: "1.0.0", Revision: "0123456789abcdef0123456789abcdef01234567", BuiltAt: "2026-08-05T12:30:00Z", OutputCRS: "EPSG:4326"},
+		RecordCounts:    RecordCounts{Accepted: 1},
+		OutputSHA256:    outputDigest,
 		OutputSizeBytes: outputSize,
 		IntegrityChecks: []IntegrityCheck{{Name: "sqlite-integrity", Status: "passed"}},
 	}
@@ -120,11 +174,11 @@ func writeManifestAndReceipt(t *testing.T, path string, manifest Manifest) {
 	}
 	manifestHash := sha256.Sum256(manifestBytes)
 	receipt := ActivationReceipt{
-		SchemaVersion: SchemaVersion,
-		SnapshotID: manifest.SnapshotID,
-		ActivatedAt: "2026-08-05T12:45:00Z",
+		SchemaVersion:           SchemaVersion,
+		SnapshotID:              manifest.SnapshotID,
+		ActivatedAt:             "2026-08-05T12:45:00Z",
 		LastKnownGoodSnapshotID: manifest.SnapshotID,
-		ManifestSHA256: hex.EncodeToString(manifestHash[:]),
+		ManifestSHA256:          hex.EncodeToString(manifestHash[:]),
 	}
 	receiptBytes, err := json.Marshal(receipt)
 	if err != nil {
