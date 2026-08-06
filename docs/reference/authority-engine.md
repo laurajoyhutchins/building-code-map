@@ -4,7 +4,9 @@ The Building Code Authority Engine is the transport-independent authority for lo
 
 ## Current stack base
 
-The authority-engine stack currently descends from predecessor PR #48 at `d7908d9c4fc55f34d27f204310acc5cdd03919e7`. PR #45 supplies component snapshot manifests and activation identity, PR #47 supplies frontend runtime trust-boundary decoders, and PR #48 supplies geocoder ranking and interpolation provenance. The first engine pull request is temporarily dependent on that open predecessor stack and is not independently mergeable into `main` until those predecessors merge.
+The authority-engine stack currently descends from predecessor PR #48 at `0bc8c4b81996070a4568dd4896dea8ddc47a0c1f`. PR #45 supplies component snapshot manifests and activation identity, PR #47 supplies frontend runtime trust-boundary decoders, and PR #48 supplies geocoder ranking and interpolation provenance, including the completed frontend decoding and presentation path. The first engine pull request is temporarily dependent on that open predecessor stack and is not independently mergeable into `main` until those predecessors merge.
+
+Frontend provenance behavior remains owned by PR #48. Authority-engine branches must not carry a second copy of those frontend changes. When a predecessor head changes, each descendant branch must be transplanted or rebased onto the exact new head, then re-verified before its prior evidence is reused.
 
 ## Query contract
 
