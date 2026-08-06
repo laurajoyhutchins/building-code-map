@@ -16,7 +16,7 @@ The product combines three deliberately separate systems: address-to-point geoco
 - validated, read-only local SQLite boundary snapshots
 - explicitly configured legacy DuckDB migration compatibility
 - state, county, municipality, special land-use, American Indian area, and NERIS jurisdiction observations
-- source-backed state jurisdiction and adopted-code policy for pilot states
+- source-backed jurisdiction and adopted-code policy for six executable pilot states: Colorado, Florida, New Jersey, Virginia, Oregon, and North Carolina
 - point-only public regulatory resolution with deterministic boundary-ambiguity responses
 - capability-specific readiness for boundary, geocoder, regulatory, and composed lookup paths
 - LORE-compatible semantic documentation trust root
@@ -144,18 +144,19 @@ Address sources require independent licensing and redistribution review. See [Bu
 - local address or coordinate entry
 - provenance-bearing address-point and interpolated geocoding
 - validated cached boundary exploration and geographic resolution
-- source-backed pilot-state regulatory resolution
+- source-backed regulatory resolution for six executable pilot states
 - explicit uncertainty, ambiguity, and required-local-record outputs
 
 ### Next
 
 - acquire and review production address sources for selected jurisdictions
 - add complete source manifests, checksums, build identities, activation receipts, and rollback identities to runtime snapshots
+- deepen code-family, authority, amendment, and fixture coverage within the executable pilots
 - broaden municipal adopted-code coverage
 - add reproducible boundary refresh and atomic activation workflows
 - improve geocoder ranking and interpolation provenance using deterministic source-specific rules
 - validate frontend API payloads at runtime instead of relying on TypeScript assertions
-- extend source-backed regulatory profiles beyond the pilot states
+- design municipality-conditioned policy, geographic exceptions, provision-level status, and multi-agency routing before promoting Massachusetts, New York, or California
 
 ### Later
 
