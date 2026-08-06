@@ -1,11 +1,12 @@
 import type {
   BoundaryAmbiguityDetails,
   BoundaryFeatureRecord,
+  EngineProvenance,
+  EngineResult,
   FeatureRecord,
   GeocodeResult,
   LayerFamilyDefinition,
   LayerFamilyKey,
-  LookupResult,
   ReadinessResult,
   RefreshStatus,
   ResolutionBoundaryMatch,
@@ -14,13 +15,12 @@ import type {
 import {
   decodeBoundaryFeatures,
   decodeFeatureRecord,
+  decodeEngineResult,
   decodeGeocodeResult,
   decodeHealth,
   decodeLayers,
-  decodeLookupResult,
   decodeReadiness,
   decodeRefreshStatus,
-  decodeResolutionResult,
 } from "./apiPayloads";
 import { arrayValue, nonEmptyString, record } from "./runtimeDecode";
 
@@ -75,13 +75,20 @@ async function readJson<T>(path: string, decode: Decoder<T>, init?: RequestInit)
 function decodeApiError(payload: unknown, status: number, path: string): ApiResponseError {
   const raw = record(payload, `error response from ${path}`);
   const message =
-    typeof raw.error === "string" && raw.error.trim() !== ""
-      ? raw.error
-      : `Request to ${path} failed with ${status}`;
+    typeof raw.message === "string" && raw.message.trim() !== ""
+      ? raw.message
+      : typeof raw.error === "string" && raw.error.trim() !== ""
+        ? raw.error
+        : `Request to ${path} failed with ${status}`;
   const code = typeof raw.code === "string" ? raw.code : undefined;
+  const details = record(raw.details ?? raw, "error.details");
   if (code === "boundary_ambiguous") {
-    const layerFamily = nonEmptyString(raw.layer_family, "error.layer_family");
-    const observations = arrayValue(raw.observations, "error.observations", decodeBoundaryMatch);
+    const layerFamily = nonEmptyString(details.layer_family, "error.details.layer_family");
+    const observations = arrayValue(
+      details.observations,
+      "error.details.observations",
+      decodeBoundaryMatch,
+    );
     return new ApiResponseError(message, status, code, { layerFamily, observations });
   }
   if (raw.status === "ambiguous") {
@@ -121,7 +128,7 @@ export function fetchHealth(): Promise<{ status: string }> {
 }
 
 export function fetchReadiness(): Promise<ReadinessResult> {
-  return readJson("/ready", decodeReadiness);
+  return readJson("/v1/readiness", decodeReadiness);
 }
 
 export function fetchLayers(): Promise<LayerFamilyDefinition[]> {
@@ -168,7 +175,11 @@ export interface LookupRequestInput {
 }
 
 export function fetchResolution(input: ResolutionRequestInput): Promise<ResolutionResult> {
-  return readJson("/resolve", decodeResolutionResult, {
+  return fetchEngineResolution(input).then((result) => result.resolution);
+}
+
+export function fetchEngineResolution(input: ResolutionRequestInput): Promise<EngineResult> {
+  return readJson("/v1/resolve", decodeEngineResult, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -182,7 +193,7 @@ export function fetchResolution(input: ResolutionRequestInput): Promise<Resoluti
 }
 
 export function fetchGeocode(address: string, signal?: AbortSignal): Promise<GeocodeResult> {
-  return readJson("/geocode", decodeGeocodeResult, {
+  return readJson("/v1/geocode", decodeGeocodeResult, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ address }),
@@ -190,8 +201,8 @@ export function fetchGeocode(address: string, signal?: AbortSignal): Promise<Geo
   });
 }
 
-export function fetchLookup(input: LookupRequestInput): Promise<LookupResult> {
-  return readJson("/lookup", decodeLookupResult, {
+export function fetchLookup(input: LookupRequestInput): Promise<EngineResult> {
+  return readJson("/v1/lookup", decodeEngineResult, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -202,4 +213,34 @@ export function fetchLookup(input: LookupRequestInput): Promise<LookupResult> {
     }),
     signal: input.signal,
   });
+}
+
+export function fetchBundle(signal?: AbortSignal): Promise<EngineProvenance> {
+  return readJson(
+    "/v1/bundle",
+    (value) => {
+      const raw = record(value, "bundle");
+      return {
+        sourceCommit: nonEmptyString(raw.source_commit, "bundle.source_commit"),
+        engineVersion: nonEmptyString(raw.engine_version, "bundle.engine_version"),
+        bundleManifestDigest: nonEmptyString(
+          raw.bundle_manifest_digest,
+          "bundle.bundle_manifest_digest",
+        ),
+        boundarySnapshotDigest: nonEmptyString(
+          raw.boundary_snapshot_digest,
+          "bundle.boundary_snapshot_digest",
+        ),
+        regulatoryCatalogDigest: nonEmptyString(
+          raw.regulatory_catalog_digest,
+          "bundle.regulatory_catalog_digest",
+        ),
+        geocoderSnapshotDigest:
+          typeof raw.geocoder_snapshot_digest === "string"
+            ? raw.geocoder_snapshot_digest
+            : undefined,
+      };
+    },
+    { signal },
+  );
 }

@@ -99,6 +99,11 @@ The backend exposes:
 - `POST /geocode`
 - `POST /lookup`
 - `POST /resolve`
+- `POST /v1/geocode`
+- `POST /v1/lookup`
+- `POST /v1/resolve`
+- `GET /v1/readiness`
+- `GET /v1/bundle`
 - `GET /refresh/status`
 - `POST /refresh/trigger`
 
@@ -125,10 +130,13 @@ Address sources require independent licensing and redistribution review. See [Bu
 ## Repository Layout
 
 - `src/`: public lookup, explorer, map interaction, and frontend data contracts
-- `backend/internal/geocoder/`: address normalization, SQLite matching, interpolation, provenance, and snapshot construction
-- `backend/internal/httpapi/`: HTTP contracts and address-to-resolution composition
-- `backend/internal/regulatory/`: source-backed policy catalog and generic resolver
-- `backend/internal/snapshot/`: boundary snapshot loading and semantic validation
+- `backend/engine/`: deterministic authority resolution, geography orchestration, provenance, and typed contracts
+- `backend/geocoder/`: address normalization, SQLite matching, interpolation, provenance, and snapshot construction
+- `backend/transport/httpapi/`: thin versioned and legacy HTTP adapters
+- `backend/regulatory/`: source-backed policy catalog and generic resolver
+- `backend/snapshot/`: boundary snapshot loading and semantic validation
+- `backend/bundle/`: content-addressed aggregate bundle verification
+- `backend/cmd/bcm/`: machine-safe CLI and shared serving entrypoint
 - `backend/cmd/geocoder-build/`: reproducible geocoder snapshot builder
 - `reports/`: state building-code research artifacts and transformation tooling
 - `docs/`: tutorials, how-to guides, references, explanations, reviews, and generated LORE projections

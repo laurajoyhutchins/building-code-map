@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { buildApiUrl, getApiBaseUrl } from "./api";
 import {
   decodeGeocodeResult,
+  decodeEngineResult,
   decodeLookupResult,
   decodeReadiness,
   decodeResolutionResult,
@@ -127,6 +128,57 @@ describe("resolution response decoding", () => {
         evidence: [{ ...rawResolution.evidence[0], url: "file:///private/code" }],
       }),
     ).toThrow(/HTTP or HTTPS/);
+  });
+});
+
+describe("engine v1 response decoding", () => {
+  it("preserves normalized query, location, provenance, diagnostics, and geocoder evidence", () => {
+    const result = decodeEngineResult({
+      schema_version: "1",
+      query: {
+        point: { longitude: -104.99, latitude: 39.74 },
+        code_family: "building",
+        applicability_date: "2026-07-20",
+        include: ["evidence"],
+      },
+      location: {
+        point: { longitude: -104.99, latitude: 39.74 },
+        geocode: {
+          query: "1510 Market St, Denver, CO",
+          status: "matched",
+          selected: {
+            matched_address: "1510 Market St Denver CO",
+            longitude: -104.99,
+            latitude: 39.74,
+            precision: "interpolated",
+            confidence: 0.9,
+            score_kind: "deterministic_quality",
+            score_factors: { interpolation: 0.9 },
+            ranking_policy_version: "geocoder-ranking-1.0",
+            source: "street ranges",
+            source_record_id: "range-1",
+            source_vintage: "2026-08-01",
+          },
+          candidates: [],
+          warnings: [],
+        },
+      },
+      resolution: rawResolution,
+      provenance: {
+        source_commit: "0123456789abcdef0123456789abcdef01234567",
+        engine_version: "0.1.0",
+        bundle_manifest_digest: "sha256:bundle",
+        boundary_snapshot_digest: "sha256:boundary",
+        regulatory_catalog_digest: "sha256:regulatory",
+      },
+      diagnostics: [{ severity: "warning", code: "example", message: "review" }],
+      future_optional_field: { preserved_by_server: true },
+    });
+    expect(result.query.applicabilityDate).toBe("2026-07-20");
+    expect(result.location.geocode?.selected?.rankingPolicyVersion).toBe("geocoder-ranking-1.0");
+    expect(result.provenance.bundleManifestDigest).toBe("sha256:bundle");
+    expect(result.diagnostics[0]?.code).toBe("example");
+    expect(result.unknownFields?.future_optional_field).toEqual({ preserved_by_server: true });
   });
 });
 

@@ -50,6 +50,8 @@ The frontend requests the API at `/api/*` by default. In local development, Vite
 - `POST /geocode`: resolve a civic address using the optional local SQLite geocoder.
 - `POST /lookup`: geocode a civic address and pass the selected point into boundary and regulatory resolution.
 - `POST /resolve`: resolve a longitude/latitude point. Caller-authored geographic context is not accepted.
+- `POST /v1/geocode`, `POST /v1/lookup`, and `POST /v1/resolve`: versioned engine contracts with typed errors and exact provenance.
+- `GET /v1/readiness` and `GET /v1/bundle`: versioned readiness and identity records.
 - `GET /refresh/status`: read snapshot refresh metadata.
 - `POST /refresh/trigger`: report that live refresh is disabled for the cached snapshot.
 

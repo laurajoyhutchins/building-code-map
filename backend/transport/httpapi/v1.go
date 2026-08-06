@@ -31,8 +31,17 @@ func (h *Handler) handleV1Lookup(w http.ResponseWriter, r *http.Request) {
 		h.writeV1Error(w, engine.EngineError{Code: engine.ErrorInvalidQuery, Message: err.Error()})
 		return
 	}
+	if request.Address != "" {
+		result, err := h.engine.Resolve(r.Context(), request)
+		if err != nil {
+			h.writeV1Error(w, err)
+			return
+		}
+		h.writeJSON(w, http.StatusOK, result)
+		return
+	}
 	if request.Point == nil {
-		h.writeV1Error(w, engine.EngineError{Code: engine.ErrorInvalidQuery, Message: "point is required"})
+		h.writeV1Error(w, engine.EngineError{Code: engine.ErrorInvalidQuery, Message: "point or address is required"})
 		return
 	}
 	result, err := h.engine.Lookup(r.Context(), *request.Point)

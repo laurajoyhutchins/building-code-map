@@ -263,3 +263,45 @@ export interface LookupResult {
   geocode: GeocodeResult;
   resolution: ResolutionResult;
 }
+
+export interface EnginePoint {
+  longitude: number;
+  latitude: number;
+}
+
+export interface EngineProvenance {
+  sourceCommit: string;
+  engineVersion: string;
+  bundleManifestDigest: string;
+  boundarySnapshotDigest: string;
+  regulatoryCatalogDigest: string;
+  geocoderSnapshotDigest?: string;
+}
+
+export interface EngineDiagnostic {
+  severity: string;
+  code: string;
+  message: string;
+  path?: string;
+}
+
+export interface EngineResult {
+  schemaVersion: string;
+  query: {
+    point?: EnginePoint;
+    address?: string;
+    codeFamily?: string;
+    projectType?: string;
+    applicabilityDate: string;
+    include: string[];
+  };
+  location: {
+    point?: EnginePoint;
+    address?: string;
+    geocode?: GeocodeResult;
+  };
+  resolution: ResolutionResult;
+  provenance: EngineProvenance;
+  diagnostics: EngineDiagnostic[];
+  unknownFields?: Record<string, unknown>;
+}

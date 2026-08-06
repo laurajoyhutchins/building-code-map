@@ -6,6 +6,7 @@ import type {
   GeoJSONGeometry,
   GeocodeCandidate,
   GeocodeResult,
+  EngineResult,
   LayerFamilyDefinition,
   LayerFamilyKey,
   LookupResult,
@@ -301,6 +302,88 @@ export function decodeLookupResult(value: unknown): LookupResult {
   return {
     geocode: decodeGeocodeResult(raw.geocode, "lookup.geocode"),
     resolution: decodeResolutionResult(raw.resolution, "lookup.resolution"),
+  };
+}
+
+export function decodeEngineResult(value: unknown, path = "engine result"): EngineResult {
+  const raw = record(value, path);
+  const query = record(raw.query, `${path}.query`);
+  const location = record(raw.location, `${path}.location`);
+  const point = (value: unknown, pointPath: string): { longitude: number; latitude: number } => {
+    const pointRecord = record(value, pointPath);
+    return {
+      longitude: longitude(pointRecord.longitude, `${pointPath}.longitude`),
+      latitude: latitude(pointRecord.latitude, `${pointPath}.latitude`),
+    };
+  };
+  const provenance = record(raw.provenance, `${path}.provenance`);
+  const diagnostics = optionalArray(
+    raw.diagnostics,
+    `${path}.diagnostics`,
+    (value, diagnosticPath) => {
+      const diagnostic = record(value, diagnosticPath);
+      return {
+        severity: nonEmptyString(diagnostic.severity, `${diagnosticPath}.severity`),
+        code: nonEmptyString(diagnostic.code, `${diagnosticPath}.code`),
+        message: nonEmptyString(diagnostic.message, `${diagnosticPath}.message`),
+        path: optionalString(diagnostic.path, `${diagnosticPath}.path`),
+      };
+    },
+  );
+  const knownKeys = new Set([
+    "schema_version",
+    "query",
+    "location",
+    "resolution",
+    "provenance",
+    "diagnostics",
+  ]);
+  const unknownFields = Object.fromEntries(
+    Object.entries(raw).filter(([key]) => !knownKeys.has(key)),
+  );
+  return {
+    schemaVersion: nonEmptyString(raw.schema_version, `${path}.schema_version`),
+    query: {
+      point: query.point === undefined ? undefined : point(query.point, `${path}.query.point`),
+      address: optionalString(query.address, `${path}.query.address`),
+      codeFamily: optionalString(query.code_family, `${path}.query.code_family`),
+      projectType: optionalString(query.project_type, `${path}.query.project_type`),
+      applicabilityDate: isoDate(query.applicability_date, `${path}.query.applicability_date`),
+      include:
+        query.include === undefined ? [] : stringArray(query.include, `${path}.query.include`),
+    },
+    location: {
+      point:
+        location.point === undefined ? undefined : point(location.point, `${path}.location.point`),
+      address: optionalString(location.address, `${path}.location.address`),
+      geocode:
+        location.geocode === undefined
+          ? undefined
+          : decodeGeocodeResult(location.geocode, `${path}.location.geocode`),
+    },
+    resolution: decodeResolutionResult(raw.resolution, `${path}.resolution`),
+    provenance: {
+      sourceCommit: nonEmptyString(provenance.source_commit, `${path}.provenance.source_commit`),
+      engineVersion: nonEmptyString(provenance.engine_version, `${path}.provenance.engine_version`),
+      bundleManifestDigest: nonEmptyString(
+        provenance.bundle_manifest_digest,
+        `${path}.provenance.bundle_manifest_digest`,
+      ),
+      boundarySnapshotDigest: nonEmptyString(
+        provenance.boundary_snapshot_digest,
+        `${path}.provenance.boundary_snapshot_digest`,
+      ),
+      regulatoryCatalogDigest: nonEmptyString(
+        provenance.regulatory_catalog_digest,
+        `${path}.provenance.regulatory_catalog_digest`,
+      ),
+      geocoderSnapshotDigest: optionalString(
+        provenance.geocoder_snapshot_digest,
+        `${path}.provenance.geocoder_snapshot_digest`,
+      ),
+    },
+    diagnostics,
+    ...(Object.keys(unknownFields).length > 0 ? { unknownFields } : {}),
   };
 }
 

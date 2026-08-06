@@ -3,7 +3,7 @@
 ## Project Structure & Module Organization
 
 - `src/` contains the Vite + React frontend. Use `src/components/` for UI, `src/lib/` for client-side logic, and `src/types.ts` for shared TypeScript types.
-- `backend/` contains the Go service. The executable entrypoint is `backend/cmd/server`, with implementation packages under `backend/internal/` and tests beside the Go code.
+- `backend/` contains the Go service. The compatibility entrypoint is `backend/cmd/server`; the reusable engine, public data packages, transports, and tests live beside their implementations.
 - `reports/` contains source-backed state building-code research artifacts and report tooling.
 - `docs/` follows Diátaxis: tutorials, how-to guides, reference, and explanation.
 - `tools/` contains Windows launch, health, stop, report, and Deciduous helpers. Generated runtime state belongs under ignored directories such as `tools/.state/`, `tools/.logs/`, and `cache/`.
@@ -23,6 +23,8 @@ Run frontend commands from the repository root:
 Run backend commands from `backend/`:
 
 - `go run ./cmd/server --addr 127.0.0.1:8000` starts the API.
+- `go run ./cmd/bcm inspect bundle` verifies the local content-addressed bundle.
+- `go run ./cmd/bcm serve --http 127.0.0.1:8000` starts the shared engine serving path.
 - `go test ./...` runs backend tests.
 - `go vet ./...` runs Go static checks.
 - `go fmt ./...` formats Go source.
@@ -33,7 +35,7 @@ On Windows, `tools/start.cmd`, `tools/health.cmd`, and `tools/stop.cmd` operate 
 
 - TypeScript uses 2-space indentation, semicolons, double quotes, PascalCase components, and camelCase functions, variables, and hooks.
 - Keep frontend tests next to their implementation with the `.test.ts` or `.test.tsx` suffix.
-- Go code must remain `gofmt`-formatted. Keep HTTP concerns in `backend/internal/httpapi`, snapshot loading in `backend/internal/snapshot`, and command wiring in `backend/cmd/`.
+- Go code must remain `gofmt`-formatted. Keep HTTP concerns in `backend/transport/httpapi`, snapshot loading in `backend/snapshot`, reusable regulatory and geocoder logic in their public packages, and command wiring in `backend/cmd/`.
 - `.editorconfig`, ESLint, Prettier, TypeScript, and Go tooling define the checked-in baseline. Prefer existing conventions over one-off formatting.
 
 ## Testing Guidelines

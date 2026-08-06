@@ -18,11 +18,11 @@ This page records which files own which kinds of configuration so the repository
 - [`backend/go.sum`](/backend/go.sum): reproducible Go dependency checksums.
 - [`backend/cmd/server/main.go`](/backend/cmd/server/main.go): Go backend entrypoint and runtime flag handling.
 - [`backend/cmd/geocoder-build/main.go`](/backend/cmd/geocoder-build/main.go): deterministic CSV-to-SQLite geocoder snapshot builder.
-- [`backend/internal/httpapi/handler.go`](/backend/internal/httpapi/handler.go): HTTP routing, CORS handling, and JSON response helpers.
-- [`backend/internal/httpapi/readiness.go`](/backend/internal/httpapi/readiness.go): capability-specific readiness.
-- [`backend/internal/geocoder/`](/backend/internal/geocoder/): address normalization, SQLite matching, interpolation, provenance, and snapshot construction.
-- [`backend/internal/snapshot/snapshot.go`](/backend/internal/snapshot/snapshot.go): supported snapshot loaders and workspace-local cache selection.
-- [`backend/internal/snapshot/validate.go`](/backend/internal/snapshot/validate.go): shared semantic validation for every boundary snapshot loader.
+- [`backend/transport/httpapi/handler.go`](/backend/transport/httpapi/handler.go): HTTP routing, CORS handling, and JSON response helpers.
+- [`backend/transport/httpapi/readiness.go`](/backend/transport/httpapi/readiness.go): capability-specific readiness adapter.
+- [`backend/geocoder/`](/backend/geocoder/): address normalization, SQLite matching, interpolation, provenance, and snapshot construction.
+- [`backend/snapshot/snapshot.go`](/backend/snapshot/snapshot.go): supported snapshot loaders and workspace-local cache selection.
+- [`backend/snapshot/validate.go`](/backend/snapshot/validate.go): shared semantic validation for every boundary snapshot loader.
 
 ## Backend Snapshots
 
