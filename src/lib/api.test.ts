@@ -215,7 +215,12 @@ describe("geocoder response decoding", () => {
       precision: "address_point" as const,
       confidence: 1,
       score_kind: "deterministic_quality",
-      score_factors: { address_point_base: 0.7, exact_street: 0.05, exact_city: 0.15, exact_postal_code: 0.1 },
+      score_factors: {
+        address_point_base: 0.7,
+        exact_street: 0.05,
+        exact_city: 0.15,
+        exact_postal_code: 0.1,
+      },
       ranking_policy_version: "geocoder-ranking-1.0",
       source: "Denver address points",
       source_record_id: "co-denver-1600",
@@ -241,7 +246,13 @@ describe("geocoder response decoding", () => {
         ...rawGeocode.selected,
         precision: "interpolated" as const,
         confidence: 0.9,
-        score_factors: { street_range_base: 0.55, exact_street: 0.05, exact_city: 0.15, exact_postal_code: 0.1, parity_matched: 0.05 },
+        score_factors: {
+          street_range_base: 0.55,
+          exact_street: 0.05,
+          exact_city: 0.15,
+          exact_postal_code: 0.1,
+          parity_matched: 0.05,
+        },
         interpolation: {
           source_range_id: "range-17",
           requested_house_number: 1510,
