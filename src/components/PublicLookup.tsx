@@ -1,5 +1,5 @@
-import { useState, type FormEvent, type ReactNode } from "react";
-import { fetchLookup, fetchResolution } from "../lib/api";
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { fetchLookup, fetchReadiness, fetchResolution } from "../lib/api";
 import {
   classifyLocationQuery,
   formatCodeFamily,
@@ -7,7 +7,8 @@ import {
   getResolutionNotice,
   getResolutionPlace,
 } from "../lib/publicLookup";
-import type { GeocodeResult, ResolutionResult } from "../types";
+import type { GeocodeResult, ReadinessResult, ResolutionResult } from "../types";
+import { ApiEvidenceNotice, ReadinessNotice } from "./ApiEvidenceNotice";
 
 const codeFamilies = [
   ["building", "Building"],
@@ -25,10 +26,26 @@ export function PublicLookup(): JSX.Element {
   const [applicabilityDate, setApplicabilityDate] = useState(today);
   const [result, setResult] = useState<ResolutionResult | null>(null);
   const [geocode, setGeocode] = useState<GeocodeResult | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<unknown>(null);
+  const [readiness, setReadiness] = useState<ReadinessResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const requestController = useRef<AbortController | null>(null);
 
   const explorerHref = new URL("explorer", window.location.href).pathname;
+
+  useEffect(() => {
+    const controller = new AbortController();
+    void fetchReadiness(controller.signal)
+      .then((nextReadiness) => {
+        if (!controller.signal.aborted) setReadiness(nextReadiness);
+      })
+      .catch((readinessError: unknown) => {
+        if (!controller.signal.aborted) setError(readinessError);
+      });
+    return () => controller.abort();
+  }, []);
+
+  useEffect(() => () => requestController.current?.abort(), []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -37,10 +54,15 @@ export function PublicLookup(): JSX.Element {
     try {
       query = classifyLocationQuery(location);
     } catch (locationError) {
-      setError(locationError instanceof Error ? locationError.message : "Enter a valid location.");
+      setError(
+        locationError instanceof Error ? locationError : new Error("Enter a valid location."),
+      );
       return;
     }
 
+    requestController.current?.abort();
+    const controller = new AbortController();
+    requestController.current = controller;
     setIsLoading(true);
     setError(null);
     try {
@@ -50,6 +72,7 @@ export function PublicLookup(): JSX.Element {
           latitude: query.point.latitude,
           codeFamily,
           applicabilityDate,
+          signal: controller.signal,
         });
         setGeocode(null);
         setResult(nextResult);
@@ -58,16 +81,21 @@ export function PublicLookup(): JSX.Element {
           address: query.address,
           codeFamily,
           applicabilityDate,
+          signal: controller.signal,
         });
         setGeocode(lookup.geocode);
         setResult(lookup.resolution);
       }
     } catch (requestError) {
+      if (controller.signal.aborted) return;
       setResult(null);
       setGeocode(null);
-      setError(requestError instanceof Error ? requestError.message : "The lookup failed.");
+      setError(requestError instanceof Error ? requestError : new Error("The lookup failed."));
     } finally {
-      setIsLoading(false);
+      if (requestController.current === controller) {
+        requestController.current = null;
+        setIsLoading(false);
+      }
     }
   }
 
@@ -87,6 +115,8 @@ export function PublicLookup(): JSX.Element {
           <h1 id="public-title">Building Code Map</h1>
           <p>Find the building codes and authorities associated with a location.</p>
         </section>
+
+        <ReadinessNotice readiness={readiness} />
 
         <form className="public-search" onSubmit={handleSubmit}>
           <label className="public-search__location">
@@ -126,17 +156,13 @@ export function PublicLookup(): JSX.Element {
               />
             </label>
 
-            <button type="submit" disabled={isLoading}>
+            <button type="submit" disabled={isLoading || readiness?.readiness === "not_ready"}>
               {isLoading ? "Searching…" : "Search"}
             </button>
           </div>
         </form>
 
-        {error ? (
-          <p className="public-message public-message--error" role="alert">
-            {error}
-          </p>
-        ) : null}
+        <ApiEvidenceNotice error={error} />
 
         {result ? <PublicResult result={result} geocode={geocode} /> : null}
       </main>
@@ -187,6 +213,7 @@ function PublicResult({
               <li key={`${authority.kind}:${authority.authorityId ?? authority.name}`}>
                 <strong>{authority.name}</strong>
                 {authority.roles.length > 0 ? <span>{authority.roles.join(", ")}</span> : null}
+                <span>Verification: {authority.verification.status.replace(/_/g, " ")}</span>
               </li>
             ))}
           </ul>
@@ -202,6 +229,7 @@ function PublicResult({
               <li key={adoption.id}>
                 <strong>{adoption.stateCodeName}</strong>
                 <span>{formatAdoptionDetails(adoption)}</span>
+                <span>Verification: {adoption.verification.status.replace(/_/g, " ")}</span>
               </li>
             ))}
           </ul>
@@ -262,6 +290,7 @@ function PublicResult({
                 <span>
                   Accessed {source.accessedAt}
                   {source.lastCheckedAt ? ` · checked ${source.lastCheckedAt}` : ""}
+                  {source.availability ? ` · ${source.availability}` : ""}
                 </span>
               </li>
             ))}
