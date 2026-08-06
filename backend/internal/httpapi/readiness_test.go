@@ -34,21 +34,27 @@ func TestReadinessReportsFullDegradedAndUnavailableCapabilities(t *testing.T) {
 	}
 
 	tests := []struct {
-		name            string
-		handler         http.Handler
-		wantStatus      int
-		wantReadiness   string
+		name             string
+		handler          http.Handler
+		wantStatus       int
+		wantReadiness    string
 		wantAddressState string
+		wantBoundaryID   string
+		wantGeocoderID   string
 	}{
 		{
 			name: "ready",
 			handler: NewHandler(boundarySnapshot, Options{
-				RegulatoryCatalog: catalog,
-				Geocoder:           readinessGeocoder{},
+				RegulatoryCatalog:  catalog,
+				Geocoder:            readinessGeocoder{},
+				BoundarySnapshotID: "boundary-2026-08-05",
+				GeocoderSnapshotID: "geocoder-2026-08-05",
 			}),
 			wantStatus:       http.StatusOK,
 			wantReadiness:    "ready",
 			wantAddressState: "available",
+			wantBoundaryID:   "boundary-2026-08-05",
+			wantGeocoderID:   "geocoder-2026-08-05",
 		},
 		{
 			name:             "degraded",
@@ -82,6 +88,10 @@ func TestReadinessReportsFullDegradedAndUnavailableCapabilities(t *testing.T) {
 				Capabilities map[string]struct {
 					Status string `json:"status"`
 				} `json:"capabilities"`
+				Snapshots map[string]struct {
+					Status     string `json:"status"`
+					SnapshotID string `json:"snapshot_id"`
+				} `json:"snapshots"`
 			}
 			if err := json.Unmarshal(rec.Body.Bytes(), &response); err != nil {
 				t.Fatal(err)
@@ -91,6 +101,12 @@ func TestReadinessReportsFullDegradedAndUnavailableCapabilities(t *testing.T) {
 			}
 			if response.Capabilities["address_lookup"].Status != test.wantAddressState {
 				t.Fatalf("address_lookup=%#v", response.Capabilities["address_lookup"])
+			}
+			if response.Snapshots["boundary"].SnapshotID != test.wantBoundaryID {
+				t.Fatalf("boundary snapshot=%#v", response.Snapshots["boundary"])
+			}
+			if response.Snapshots["geocoder"].SnapshotID != test.wantGeocoderID {
+				t.Fatalf("geocoder snapshot=%#v", response.Snapshots["geocoder"])
 			}
 		})
 	}
