@@ -1,0 +1,242 @@
+package snapshotmanifest
+
+import (
+	"crypto/sha256"
+	"encoding/hex"
+	"encoding/json"
+	"errors"
+	"os"
+	"path/filepath"
+	"testing"
+)
+
+func TestCanonicalJSONIsDeterministic(t *testing.T) {
+	manifest := validManifest("abc", 3)
+	manifest.Sources = append(manifest.Sources, SourceArtifact{
+		Publisher: "A", Product: "First", Vintage: "2025", Locator: "a", SHA256: digestOf("a"), RetrievedAt: "2026-08-05T12:00:00Z", LicenseReviewStatus: "reviewed", RedistributionStatus: "restricted",
+	})
+	first, err := CanonicalJSON(manifest)
+	if err != nil {
+		t.Fatal(err)
+	}
+	second, err := CanonicalJSON(manifest)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if string(first) != string(second) {
+		t.Fatalf("canonical JSON changed between calls")
+	}
+}
+
+func TestFinalizeAndWriteBindsBuiltOutput(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "geocoder.sqlite")
+	if err := os.WriteFile(path, []byte("built snapshot"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	manifest := validManifest("", 0)
+	manifest.SnapshotID = "geocoder-test"
+	manifest.Kind = KindGeocoder
+	manifest.Builder.Tool = "geocoder-build"
+
+	finalized, err := FinalizeAndWrite(path, manifest)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if finalized.OutputSHA256 != digestOf("built snapshot") || finalized.OutputSizeBytes != int64(len("built snapshot")) {
+		t.Fatalf("unexpected output identity: sha=%q size=%d", finalized.OutputSHA256, finalized.OutputSizeBytes)
+	}
+	manifestBytes, err := os.ReadFile(ManifestPath(path))
+	if err != nil {
+		t.Fatal(err)
+	}
+	var written Manifest
+	if err := json.Unmarshal(manifestBytes, &written); err != nil {
+		t.Fatal(err)
+	}
+	if written.OutputSHA256 != finalized.OutputSHA256 || written.OutputSizeBytes != finalized.OutputSizeBytes {
+		t.Fatalf("written manifest does not match finalized identity")
+	}
+}
+
+func TestFinalizeAndWriteRejectsUnsupportedKind(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "snapshot.bin")
+	if err := os.WriteFile(path, []byte("snapshot"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	manifest := validManifest("", 0)
+	manifest.Kind = Kind("unknown")
+	if _, err := FinalizeAndWrite(path, manifest); !errors.Is(err, ErrManifestInvalid) {
+		t.Fatalf("expected invalid manifest, got %v", err)
+	}
+	if _, err := os.Stat(ManifestPath(path)); !os.IsNotExist(err) {
+		t.Fatalf("manifest should not be written for unsupported kind, stat err=%v", err)
+	}
+}
+
+func TestLoadAndVerifyAcceptsMatchingSnapshot(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "boundary.sqlite")
+	if err := os.WriteFile(path, []byte("abc"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	manifest := validManifest(digestOf("abc"), 3)
+	writeManifestAndReceipt(t, path, manifest)
+
+	verified, err := LoadAndVerify(path, KindBoundary)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if verified.Manifest.SnapshotID != "boundary-test" {
+		t.Fatalf("unexpected snapshot id %q", verified.Manifest.SnapshotID)
+	}
+}
+
+func TestLoadAndVerifyRejectsChecksumMismatch(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "boundary.sqlite")
+	if err := os.WriteFile(path, []byte("changed"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	manifest := validManifest(digestOf("abc"), 3)
+	writeManifestAndReceipt(t, path, manifest)
+
+	_, err := LoadAndVerify(path, KindBoundary)
+	if !errors.Is(err, ErrChecksumMismatch) {
+		t.Fatalf("expected checksum mismatch, got %v", err)
+	}
+}
+
+func TestLoadAndVerifyRejectsWrongKind(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "geocoder.sqlite")
+	if err := os.WriteFile(path, []byte("abc"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	manifest := validManifest(digestOf("abc"), 3)
+	writeManifestAndReceipt(t, path, manifest)
+
+	_, err := LoadAndVerify(path, KindGeocoder)
+	if !errors.Is(err, ErrManifestInvalid) {
+		t.Fatalf("expected invalid manifest, got %v", err)
+	}
+}
+
+func TestLoadAndVerifyRejectsFailedIntegrityCheck(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "boundary.sqlite")
+	if err := os.WriteFile(path, []byte("abc"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	manifest := validManifest(digestOf("abc"), 3)
+	manifest.IntegrityChecks[0].Status = "failed"
+	writeManifestAndReceipt(t, path, manifest)
+
+	_, err := LoadAndVerify(path, KindBoundary)
+	if !errors.Is(err, ErrManifestInvalid) {
+		t.Fatalf("expected invalid manifest, got %v", err)
+	}
+}
+
+func TestManifestValidateRejectsSchemaInvalidMetadata(t *testing.T) {
+	tests := []struct {
+		name   string
+		mutate func(*Manifest)
+	}{
+		{
+			name: "blank license review status",
+			mutate: func(manifest *Manifest) {
+				manifest.Sources[0].LicenseReviewStatus = "  "
+			},
+		},
+		{
+			name: "blank redistribution status",
+			mutate: func(manifest *Manifest) {
+				manifest.Sources[0].RedistributionStatus = ""
+			},
+		},
+		{
+			name: "negative accepted count",
+			mutate: func(manifest *Manifest) {
+				manifest.RecordCounts.Accepted = -1
+			},
+		},
+		{
+			name: "negative rejected count",
+			mutate: func(manifest *Manifest) {
+				manifest.RecordCounts.Rejected = -1
+			},
+		},
+		{
+			name: "negative duplicate count",
+			mutate: func(manifest *Manifest) {
+				manifest.RecordCounts.Duplicate = -1
+			},
+		},
+		{
+			name: "negative quarantined count",
+			mutate: func(manifest *Manifest) {
+				manifest.RecordCounts.Quarantined = -1
+			},
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			manifest := validManifest(digestOf("abc"), 3)
+			test.mutate(&manifest)
+			if err := manifest.Validate(KindBoundary); !errors.Is(err, ErrManifestInvalid) {
+				t.Fatalf("expected invalid manifest, got %v", err)
+			}
+		})
+	}
+}
+
+func validManifest(outputDigest string, outputSize int64) Manifest {
+	return Manifest{
+		SchemaVersion: SchemaVersion,
+		SnapshotID:    "boundary-test",
+		Kind:          KindBoundary,
+		Sources: []SourceArtifact{{
+			Publisher: "Census", Product: "TIGER/Line", Vintage: "2025", Locator: "source.zip", SHA256: digestOf("source"), RetrievedAt: "2026-08-05T12:00:00Z", LicenseReviewStatus: "reviewed", RedistributionStatus: "allowed",
+		}},
+		Builder:         Builder{Tool: "boundary-build", Version: "1.0.0", Revision: "0123456789abcdef0123456789abcdef01234567", BuiltAt: "2026-08-05T12:30:00Z", OutputCRS: "EPSG:4326"},
+		RecordCounts:    RecordCounts{Accepted: 1},
+		OutputSHA256:    outputDigest,
+		OutputSizeBytes: outputSize,
+		IntegrityChecks: []IntegrityCheck{{Name: "sqlite-integrity", Status: "passed"}},
+	}
+}
+
+func writeManifestAndReceipt(t *testing.T, path string, manifest Manifest) {
+	t.Helper()
+	manifestBytes, err := CanonicalJSON(manifest)
+	if err != nil {
+		t.Fatal(err)
+	}
+	manifestBytes = append(manifestBytes, '\n')
+	if err := os.WriteFile(ManifestPath(path), manifestBytes, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	manifestHash := sha256.Sum256(manifestBytes)
+	receipt := ActivationReceipt{
+		SchemaVersion:           SchemaVersion,
+		SnapshotID:              manifest.SnapshotID,
+		ActivatedAt:             "2026-08-05T12:45:00Z",
+		LastKnownGoodSnapshotID: manifest.SnapshotID,
+		ManifestSHA256:          hex.EncodeToString(manifestHash[:]),
+	}
+	receiptBytes, err := json.Marshal(receipt)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(ActivationPath(path), receiptBytes, 0o600); err != nil {
+		t.Fatal(err)
+	}
+}
+
+func digestOf(value string) string {
+	digest := sha256.Sum256([]byte(value))
+	return hex.EncodeToString(digest[:])
+}

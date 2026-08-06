@@ -44,18 +44,22 @@ func ParseAllowedOrigins(rawValue string) []string {
 }
 
 type Options struct {
-	AllowedOrigins    []string
-	RegulatoryCatalog regulatory.Catalog
-	Geocoder           geocoder.Service
+	AllowedOrigins      []string
+	RegulatoryCatalog   regulatory.Catalog
+	Geocoder            geocoder.Service
+	BoundarySnapshotID  string
+	GeocoderSnapshotID  string
 }
 
 type Handler struct {
-	snapshot          snapshot.Snapshot
-	layerIndex        map[string]snapshot.LayerFamily
-	featureIndex      map[string]snapshot.BoundaryFeature
-	allowedOrigins    map[string]struct{}
-	regulatoryCatalog regulatory.Catalog
-	geocoder          geocoder.Service
+	snapshot           snapshot.Snapshot
+	layerIndex         map[string]snapshot.LayerFamily
+	featureIndex       map[string]snapshot.BoundaryFeature
+	allowedOrigins     map[string]struct{}
+	regulatoryCatalog  regulatory.Catalog
+	geocoder           geocoder.Service
+	boundarySnapshotID string
+	geocoderSnapshotID string
 }
 
 func NewHandler(snap snapshot.Snapshot, options ...Options) http.Handler {
@@ -70,12 +74,14 @@ func NewHandler(snap snapshot.Snapshot, options ...Options) http.Handler {
 	}
 
 	handler := &Handler{
-		snapshot:          snap,
-		layerIndex:        make(map[string]snapshot.LayerFamily, len(snap.LayerFamilies)),
-		featureIndex:      make(map[string]snapshot.BoundaryFeature, len(snap.BoundaryFeatures)),
-		allowedOrigins:    make(map[string]struct{}, len(allowedOrigins)),
-		regulatoryCatalog: opt.RegulatoryCatalog,
-		geocoder:          opt.Geocoder,
+		snapshot:           snap,
+		layerIndex:         make(map[string]snapshot.LayerFamily, len(snap.LayerFamilies)),
+		featureIndex:       make(map[string]snapshot.BoundaryFeature, len(snap.BoundaryFeatures)),
+		allowedOrigins:     make(map[string]struct{}, len(allowedOrigins)),
+		regulatoryCatalog:  opt.RegulatoryCatalog,
+		geocoder:           opt.Geocoder,
+		boundarySnapshotID: strings.TrimSpace(opt.BoundarySnapshotID),
+		geocoderSnapshotID: strings.TrimSpace(opt.GeocoderSnapshotID),
 	}
 	for _, origin := range allowedOrigins {
 		handler.allowedOrigins[origin] = struct{}{}

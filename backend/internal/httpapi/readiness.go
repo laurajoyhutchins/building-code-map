@@ -8,10 +8,16 @@ type capabilityReadiness struct {
 	Message  string `json:"message"`
 }
 
+type snapshotReadiness struct {
+	Status     string `json:"status"`
+	SnapshotID string `json:"snapshot_id,omitempty"`
+}
+
 type readinessResponse struct {
 	Status       string                         `json:"status"`
 	Readiness    string                         `json:"readiness"`
 	Capabilities map[string]capabilityReadiness `json:"capabilities"`
+	Snapshots    map[string]snapshotReadiness   `json:"snapshots"`
 }
 
 func (h *Handler) handleReadiness(w http.ResponseWriter) {
@@ -52,11 +58,17 @@ func (h *Handler) handleReadiness(w http.ResponseWriter) {
 		),
 	}
 
+	snapshots := map[string]snapshotReadiness{
+		"boundary": snapshotStatus(boundaryAvailable, h.boundarySnapshotID),
+		"geocoder": snapshotStatus(geocoderAvailable, h.geocoderSnapshotID),
+	}
+
 	if !boundaryAvailable {
 		h.writeJSON(w, http.StatusServiceUnavailable, readinessResponse{
 			Status:       "not_ready",
 			Readiness:    "not_ready",
 			Capabilities: capabilities,
+			Snapshots:    snapshots,
 		})
 		return
 	}
@@ -65,6 +77,7 @@ func (h *Handler) handleReadiness(w http.ResponseWriter) {
 			Status:       "ok",
 			Readiness:    "degraded",
 			Capabilities: capabilities,
+			Snapshots:    snapshots,
 		})
 		return
 	}
@@ -72,6 +85,7 @@ func (h *Handler) handleReadiness(w http.ResponseWriter) {
 		Status:       "ok",
 		Readiness:    "ready",
 		Capabilities: capabilities,
+		Snapshots:    snapshots,
 	})
 }
 
@@ -80,4 +94,14 @@ func capabilityStatus(available, required bool, availableMessage, unavailableMes
 		return capabilityReadiness{Status: "available", Required: required, Message: availableMessage}
 	}
 	return capabilityReadiness{Status: "unavailable", Required: required, Message: unavailableMessage}
+}
+
+func snapshotStatus(available bool, snapshotID string) snapshotReadiness {
+	if available && snapshotID != "" {
+		return snapshotReadiness{Status: "verified", SnapshotID: snapshotID}
+	}
+	if available {
+		return snapshotReadiness{Status: "unidentified"}
+	}
+	return snapshotReadiness{Status: "unavailable"}
 }
