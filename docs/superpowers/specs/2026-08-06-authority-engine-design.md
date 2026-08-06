@@ -65,4 +65,3 @@ The aggregate bundle manifest is content-addressed and validates schema version,
 Each PR has its own focused contract and full-suite gate. Tests use small explicit fixtures and cover legacy HTTP behavior, query normalization, coordinate and boundary edge cases, deterministic clocks, provenance completeness, bundle digest validation, CLI stream separation and exit codes, v1 schemas, MCP framing and cancellation, runtime frontend decoding, and cold-room offline startup.
 
 Exact-head evidence records the branch, base, commit SHA, commands, and results in every PR body. Missing Go tooling in the current environment is a verification blocker to report honestly; it is not a reason to weaken the contracts or silently claim a passing check.
-
