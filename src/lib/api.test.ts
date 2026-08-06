@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
+import { buildApiUrl, getApiBaseUrl } from "./api";
 import {
-  buildApiUrl,
   decodeGeocodeResult,
   decodeLookupResult,
+  decodeReadiness,
   decodeResolutionResult,
-  getApiBaseUrl,
-} from "./api";
+} from "./apiPayloads";
 
 describe("api url helpers", () => {
   it("defaults to the dev proxy path", () => {
@@ -90,6 +90,7 @@ const rawResolution = {
       availability: "available" as const,
     },
   ],
+  future_optional_field: { retained_by_server: true },
 };
 
 describe("resolution response decoding", () => {
@@ -105,6 +106,60 @@ describe("resolution response decoding", () => {
     expect(result.evidence[0]?.availability).toBe("available");
     expect(result.adoptions).toEqual([]);
     expect(result.requiredLocalRecords).toEqual([]);
+  });
+
+  it("rejects malformed dates and nested verification records", () => {
+    expect(() =>
+      decodeResolutionResult({ ...rawResolution, generated_at: "yesterday" }),
+    ).toThrow(/generated_at/);
+    expect(() =>
+      decodeResolutionResult({
+        ...rawResolution,
+        policy_basis: { ...rawResolution.policy_basis, verification: null },
+      }),
+    ).toThrow(/policy_basis\.verification/);
+  });
+
+  it("rejects invalid source URLs", () => {
+    expect(() =>
+      decodeResolutionResult({
+        ...rawResolution,
+        evidence: [{ ...rawResolution.evidence[0], url: "file:\/\/\/private\/code" }],
+      }),
+    ).toThrow(/HTTP or HTTPS/);
+  });
+});
+
+describe("readiness response decoding", () => {
+  it("preserves capability and snapshot identity", () => {
+    const result = decodeReadiness({
+      status: "ok",
+      readiness: "degraded",
+      capabilities: {
+        boundary_resolution: {
+          status: "available",
+          required: true,
+          message: "Boundary snapshot loaded.",
+        },
+      },
+      snapshots: {
+        boundary: { status: "verified", snapshot_id: "boundary-2026-08-05" },
+        geocoder: { status: "unavailable" },
+      },
+    });
+    expect(result.snapshots.boundary?.snapshotId).toBe("boundary-2026-08-05");
+    expect(result.capabilities.boundary_resolution?.required).toBe(true);
+  });
+
+  it("rejects verified snapshots without identities", () => {
+    expect(() =>
+      decodeReadiness({
+        status: "ok",
+        readiness: "degraded",
+        capabilities: {},
+        snapshots: { boundary: { status: "verified" } },
+      }),
+    ).toThrow(/snapshot_id/);
   });
 });
 
@@ -132,6 +187,21 @@ describe("geocoder response decoding", () => {
     expect(result.selected?.sourceRecordId).toBe("co-denver-1600");
     expect(result.selected?.precision).toBe("address_point");
     expect(result.selected?.sourceVintage).toBe("2026-08-01");
+  });
+
+  it("rejects invalid coordinates and precision", () => {
+    expect(() =>
+      decodeGeocodeResult({
+        ...rawGeocode,
+        selected: { ...rawGeocode.selected, longitude: 190 },
+      }),
+    ).toThrow(/longitude/);
+    expect(() =>
+      decodeGeocodeResult({
+        ...rawGeocode,
+        selected: { ...rawGeocode.selected, precision: "parcel" },
+      }),
+    ).toThrow(/address_point, interpolated/);
   });
 
   it("decodes a composed address lookup", () => {
