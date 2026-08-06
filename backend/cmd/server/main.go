@@ -13,6 +13,7 @@ import (
 	"building-code-map/backend/internal/httpapi"
 	"building-code-map/backend/internal/regulatory"
 	"building-code-map/backend/internal/snapshot"
+	"building-code-map/backend/internal/snapshotmanifest"
 )
 
 func main() {
@@ -28,6 +29,11 @@ func main() {
 		resolvedCachePath = snapshot.ResolveCachePath("..")
 	}
 
+	boundaryVerification, err := snapshotmanifest.LoadAndVerify(resolvedCachePath, snapshotmanifest.KindBoundary)
+	if err != nil {
+		slog.Error("verify boundary snapshot manifest", "path", resolvedCachePath, "error", err)
+		os.Exit(1)
+	}
 	snap, err := snapshot.LoadFile(resolvedCachePath)
 	if err != nil {
 		slog.Error("load snapshot", "path", resolvedCachePath, "error", err)
@@ -50,14 +56,21 @@ func main() {
 	}
 	var geocoderService geocoder.Service
 	var geocoderDatabase *geocoder.SQLiteService
+	var geocoderSnapshotID string
 	if err == nil {
 		if _, statErr := os.Stat(resolvedGeocoderPath); statErr == nil {
-			geocoderDatabase, err = geocoder.Open(resolvedGeocoderPath)
-			if err != nil {
-				slog.Warn("load geocoder snapshot", "path", resolvedGeocoderPath, "error", err)
+			verification, verifyErr := snapshotmanifest.LoadAndVerify(resolvedGeocoderPath, snapshotmanifest.KindGeocoder)
+			if verifyErr != nil {
+				slog.Warn("verify geocoder snapshot manifest", "path", resolvedGeocoderPath, "error", verifyErr)
 			} else {
-				geocoderService = geocoderDatabase
-				defer geocoderDatabase.Close()
+				geocoderDatabase, err = geocoder.Open(resolvedGeocoderPath)
+				if err != nil {
+					slog.Warn("load geocoder snapshot", "path", resolvedGeocoderPath, "error", err)
+				} else {
+					geocoderService = geocoderDatabase
+					geocoderSnapshotID = verification.Manifest.SnapshotID
+					defer geocoderDatabase.Close()
+				}
 			}
 		} else if !os.IsNotExist(statErr) {
 			slog.Warn("inspect geocoder snapshot", "path", resolvedGeocoderPath, "error", statErr)
@@ -65,9 +78,11 @@ func main() {
 	}
 
 	options := httpapi.Options{
-		AllowedOrigins:    httpapi.ParseAllowedOrigins(os.Getenv("BACKEND_CORS_ALLOWED_ORIGINS")),
-		RegulatoryCatalog: catalog,
-		Geocoder:          geocoderService,
+		AllowedOrigins:     httpapi.ParseAllowedOrigins(os.Getenv("BACKEND_CORS_ALLOWED_ORIGINS")),
+		RegulatoryCatalog:  catalog,
+		Geocoder:           geocoderService,
+		BoundarySnapshotID: boundaryVerification.Manifest.SnapshotID,
+		GeocoderSnapshotID: geocoderSnapshotID,
 	}
 	if trimmed := strings.TrimSpace(*corsOrigins); trimmed != "" {
 		options.AllowedOrigins = httpapi.ParseAllowedOrigins(trimmed)
@@ -78,6 +93,8 @@ func main() {
 		"starting Go backend",
 		"addr", *addr,
 		"cache", resolvedCachePath,
+		"boundary_snapshot_id", boundaryVerification.Manifest.SnapshotID,
+		"geocoder_snapshot_id", geocoderSnapshotID,
 		"regulatory_profiles", catalog.Len(),
 		"geocoder_available", geocoderService != nil,
 	)
