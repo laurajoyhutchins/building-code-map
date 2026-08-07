@@ -6,23 +6,37 @@ temporary_root=$(mktemp -d)
 trap 'rm -rf "$temporary_root"' EXIT
 cp -R "$source_root" "$temporary_root/package"
 
+network_isolator="none"
 if command -v unshare >/dev/null 2>&1 \
   && command -v ip >/dev/null 2>&1 \
   && unshare -n sh -c 'ip link set lo up' >/dev/null 2>&1; then
   network_mode="network-namespace-disabled"
+  network_isolator="network"
+elif command -v unshare >/dev/null 2>&1 \
+  && command -v ip >/dev/null 2>&1 \
+  && unshare -Urn sh -c 'ip link set lo up' >/dev/null 2>&1; then
+  network_mode="network-namespace-disabled"
+  network_isolator="user-network"
 else
   network_mode="network-namespace-fallback"
 fi
 
 printf '%s\n' "$network_mode"
+printf 'network-namespace-isolator=%s\n' "$network_isolator"
 cd "$temporary_root/package"
 
 run() {
-  if [ "$network_mode" = "network-namespace-disabled" ]; then
-    unshare -n sh -c 'ip link set lo up; exec env -i PATH=/usr/bin:/bin HOME=/tmp "$@"' sh "$@"
-  else
-    env -i PATH=/usr/bin:/bin HOME=/tmp "$@"
-  fi
+  case "$network_isolator" in
+    network)
+      unshare -n sh -c 'ip link set lo up; exec env -i PATH=/usr/bin:/bin HOME=/tmp "$@"' sh "$@"
+      ;;
+    user-network)
+      unshare -Urn sh -c 'ip link set lo up; exec env -i PATH=/usr/bin:/bin HOME=/tmp "$@"' sh "$@"
+      ;;
+    *)
+      env -i PATH=/usr/bin:/bin HOME=/tmp "$@"
+      ;;
+  esac
 }
 
 probe_json() {
