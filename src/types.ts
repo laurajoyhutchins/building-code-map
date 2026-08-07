@@ -51,6 +51,7 @@ export interface FeatureRecord extends FeatureSummary {
 }
 
 export interface BoundaryMapRecord extends FeatureSummary {
+  geometryLabel: string;
   geometrySource?: string | null;
   geometry: GeoJSONGeometry;
 }
