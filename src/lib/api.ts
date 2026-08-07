@@ -1,6 +1,6 @@
 import type {
   BoundaryAmbiguityDetails,
-  BoundaryFeatureRecord,
+  BoundaryMapRecord,
   FeatureRecord,
   GeocodeResult,
   LayerFamilyDefinition,
@@ -12,8 +12,6 @@ import type {
   ResolutionResult,
 } from "../types";
 import {
-  decodeBoundaryFeatures,
-  decodeFeatureRecord,
   decodeGeocodeResult,
   decodeHealth,
   decodeLayers,
@@ -22,6 +20,7 @@ import {
   decodeRefreshStatus,
   decodeResolutionResult,
 } from "./apiPayloads";
+import { decodeBoundaryMapRecords, decodeFeatureDetail } from "./boundaryPayloads";
 import { arrayValue, nonEmptyString, record } from "./runtimeDecode";
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL?.trim() || "/api";
@@ -138,8 +137,8 @@ export function fetchLayers(): Promise<LayerFamilyDefinition[]> {
   return readJson("/layers", decodeLayers);
 }
 
-export function fetchBoundaryFeatures(): Promise<BoundaryFeatureRecord[]> {
-  return readJson("/boundaries", decodeBoundaryFeatures);
+export function fetchBoundaryFeatures(): Promise<BoundaryMapRecord[]> {
+  return readJson("/boundaries", decodeBoundaryMapRecords);
 }
 
 export function fetchRefreshStatus(): Promise<RefreshStatus> {
@@ -153,7 +152,7 @@ export function fetchFeature(
 ): Promise<FeatureRecord> {
   return readJson(
     `/features/${layerFamily}/${encodeURIComponent(featureId)}`,
-    decodeFeatureRecord,
+    decodeFeatureDetail,
     {
       signal,
     },
