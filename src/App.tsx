@@ -1,15 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FeatureInspector } from "./components/FeatureInspector";
 import { LayerToggleList } from "./components/LayerToggleList";
 import { MapStage } from "./components/MapStage";
 import { PublicLookup } from "./components/PublicLookup";
 import { ResolutionPanel } from "./components/ResolutionPanel";
 import { StatusBanner } from "./components/StatusBanner";
-import { fetchBoundaryFeatures, fetchLayers, fetchRefreshStatus, getApiBaseUrl } from "./lib/api";
+import {
+  fetchBoundaryFeatures,
+  fetchFeature,
+  fetchLayers,
+  fetchRefreshStatus,
+  getApiBaseUrl,
+} from "./lib/api";
+import { createFeatureDetailLoader } from "./lib/featureDetailLoader";
 import { findFeatureByRef } from "./lib/featureIdentity";
 import { createLayerSelectionMap } from "./lib/layerSelection";
 import type {
   BoundaryFeatureRecord,
+  FeatureRecord,
   FeatureRef,
   LayerFamilyDefinition,
   LayerFamilyKey,
@@ -38,11 +46,19 @@ function ExplorerApp(): JSX.Element {
   const [refreshStatus, setRefreshStatus] = useState<RefreshStatus | null>(null);
   const [boundaryFeatures, setBoundaryFeatures] = useState<BoundaryFeatureRecord[]>([]);
   const [selectedFeatureRef, setSelectedFeatureRef] = useState<FeatureRef | null>(null);
+  const [selectedFeature, setSelectedFeature] = useState<FeatureRecord | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
+  const [isDetailLoading, setIsDetailLoading] = useState(false);
+  const [detailError, setDetailError] = useState<string | null>(null);
+  const detailLoaderRef = useRef<ReturnType<typeof createFeatureDetailLoader> | null>(null);
 
-  const selectedFeature = findFeatureByRef(boundaryFeatures, selectedFeatureRef);
-  const selectedSummary = selectedFeature;
+  if (!detailLoaderRef.current) {
+    detailLoaderRef.current = createFeatureDetailLoader(fetchFeature);
+  }
+
+  const selectedMapFeature = findFeatureByRef(boundaryFeatures, selectedFeatureRef);
+  const selectedSummary = selectedMapFeature;
 
   useEffect(() => {
     let cancelled = false;
@@ -96,6 +112,29 @@ function ExplorerApp(): JSX.Element {
     };
   }, []);
 
+  useEffect(() => {
+    const loader = detailLoaderRef.current;
+    if (!loader) {
+      return;
+    }
+
+    if (!selectedFeatureRef) {
+      loader.cancel();
+      setSelectedFeature(null);
+      setIsDetailLoading(false);
+      setDetailError(null);
+      return;
+    }
+
+    void loader.load(selectedFeatureRef, (state) => {
+      setSelectedFeature(state.feature);
+      setIsDetailLoading(state.isLoading);
+      setDetailError(state.error);
+    });
+
+    return () => loader.cancel();
+  }, [selectedFeatureRef]);
+
   const handleToggleLayer = (key: LayerFamilyKey) => {
     setEnabledLayers((current) => ({
       ...current,
@@ -141,7 +180,7 @@ function ExplorerApp(): JSX.Element {
 
         <MapStage
           layers={layerRegistry}
-          selectedFeature={selectedFeature}
+          selectedFeature={selectedMapFeature}
           enabledLayers={enabledLayers}
           onSelectFeature={(featureRef) => setSelectedFeatureRef(featureRef)}
           refreshStatus={refreshStatus ?? loadingRefreshStatus}
@@ -160,8 +199,8 @@ function ExplorerApp(): JSX.Element {
         <FeatureInspector
           feature={selectedFeature}
           selectedFeature={selectedSummary}
-          isLoading={isLoading}
-          error={loadError}
+          isLoading={isLoading || isDetailLoading}
+          error={detailError ?? loadError}
         />
       </main>
     </div>
