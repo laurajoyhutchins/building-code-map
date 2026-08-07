@@ -1,0 +1,1 @@
+This branch intentionally contains regression tests before the Issue #7 implementation.
