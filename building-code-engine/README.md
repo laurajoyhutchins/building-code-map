@@ -1,7 +1,7 @@
 # Building Code Authority Engine offline package
 
 This package is restored from Building Code Map source commit
-`45b68c89b3623593dde7bca9e1a1f29da96a0531`. It contains the `bcm` binary,
+`e45d3674c09333e1682509e1a1a544363e7ab127`. It contains the `bcm` binary,
 content-addressed bundle data, regulatory profiles, schemas, and checksums.
 
 From this directory:
