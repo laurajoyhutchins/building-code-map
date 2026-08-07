@@ -1,0 +1,61 @@
+name: Export BCM Drive transport
+
+on:
+  push:
+    branches:
+      - ops/export-bcm-d1335a0
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out transport branch
+        uses: actions/checkout@v4
+
+      - name: Bind transport to exact package
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_parent=d1335a0d11cdf5aeb72ef99174aff334db628e2c
+          expected_blob=71c12ade6d14f92a182452e44750a36a15610eaf
+          test "$(git rev-parse HEAD^)" = "$expected_parent"
+          test "$(git rev-parse HEAD:building-code-engine/bin/bcm)" = "$expected_blob"
+          test -x building-code-engine/bin/bcm
+
+      - name: Run committed binary and package verifier
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./building-code-engine/bin/bcm --help > bcm-help.txt
+          ./building-code-engine/verify-offline.sh | tee verify-offline.txt
+          sha256sum building-code-engine/bin/bcm | tee bcm.sha256
+
+      - name: Prepare immutable transport metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p drive-transport
+          cp -a building-code-engine drive-transport/
+          cp bcm-help.txt verify-offline.txt bcm.sha256 drive-transport/
+          cat > drive-transport/transport.json <<'JSON'
+          {
+            "schema_version": "1.0",
+            "source_commit": "d1335a0d11cdf5aeb72ef99174aff334db628e2c",
+            "binary_git_blob": "71c12ade6d14f92a182452e44750a36a15610eaf",
+            "binary_path": "building-code-engine/bin/bcm",
+            "platform": "linux-amd64",
+            "purpose": "Google Drive transport into Offline Execution"
+          }
+          JSON
+
+      - name: Upload exact package
+        uses: actions/upload-artifact@v4
+        with:
+          name: building-code-engine-d1335a0-linux-amd64
+          path: drive-transport
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
