@@ -14,18 +14,16 @@ jobs:
     steps:
       - name: Check out transport branch
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
 
       - name: Bind transport to exact package
         shell: bash
         run: |
           set -euo pipefail
-          expected_parent=d1335a0d11cdf5aeb72ef99174aff334db628e2c
           expected_blob=71c12ade6d14f92a182452e44750a36a15610eaf
-          test "$(git rev-parse HEAD^)" = "$expected_parent"
+          expected_sha256=f87a3cfa0d2e36c940cc705923b2712c94ed2c0b9c2b907f61a1be8f6c3ba309
           test "$(git rev-parse HEAD:building-code-engine/bin/bcm)" = "$expected_blob"
           test -x building-code-engine/bin/bcm
+          test "$(sha256sum building-code-engine/bin/bcm | awk '{print $1}')" = "$expected_sha256"
 
       - name: Run committed binary and package verifier
         shell: bash
@@ -45,8 +43,10 @@ jobs:
           cat > drive-transport/transport.json <<'JSON'
           {
             "schema_version": "1.0",
-            "source_commit": "d1335a0d11cdf5aeb72ef99174aff334db628e2c",
+            "package_commit": "d1335a0d11cdf5aeb72ef99174aff334db628e2c",
+            "source_commit": "0b1f82189fb1f97cce7ab0b8970ff810455afffd",
             "binary_git_blob": "71c12ade6d14f92a182452e44750a36a15610eaf",
+            "binary_sha256": "f87a3cfa0d2e36c940cc705923b2712c94ed2c0b9c2b907f61a1be8f6c3ba309",
             "binary_path": "building-code-engine/bin/bcm",
             "platform": "linux-amd64",
             "purpose": "Google Drive transport into Offline Execution"
