@@ -29,6 +29,7 @@ func TestBoundariesReturnOnlyMapContractFields(t *testing.T) {
 	wantKeys := []string{
 		"feature_id",
 		"geometry",
+		"geometry_label",
 		"geometry_source",
 		"layer_family",
 		"source_id",
