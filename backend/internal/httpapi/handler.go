@@ -53,6 +53,7 @@ type Options struct {
 
 type Handler struct {
 	snapshot           snapshot.Snapshot
+	boundaryMapRecords []snapshot.BoundaryMapRecord
 	layerIndex         map[string]snapshot.LayerFamily
 	featureIndex       map[string]snapshot.BoundaryFeature
 	allowedOrigins     map[string]struct{}
@@ -75,6 +76,7 @@ func NewHandler(snap snapshot.Snapshot, options ...Options) http.Handler {
 
 	handler := &Handler{
 		snapshot:           snap,
+		boundaryMapRecords: snapshot.MapRecords(snap.BoundaryFeatures),
 		layerIndex:         make(map[string]snapshot.LayerFamily, len(snap.LayerFamilies)),
 		featureIndex:       make(map[string]snapshot.BoundaryFeature, len(snap.BoundaryFeatures)),
 		allowedOrigins:     make(map[string]struct{}, len(allowedOrigins)),
@@ -109,7 +111,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case r.Method == http.MethodGet && r.URL.Path == "/layers":
 		h.writeJSON(w, http.StatusOK, h.snapshot.LayerFamilies)
 	case r.Method == http.MethodGet && r.URL.Path == "/boundaries":
-		h.writeJSON(w, http.StatusOK, h.snapshot.BoundaryFeatures)
+		h.writeJSON(w, http.StatusOK, h.boundaryMapRecords)
 	case r.Method == http.MethodGet && strings.HasPrefix(r.URL.Path, "/features/"):
 		h.handleFeature(w, r)
 	case r.Method == http.MethodPost && r.URL.Path == "/geocode":
