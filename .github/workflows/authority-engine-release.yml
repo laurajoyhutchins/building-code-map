@@ -216,9 +216,40 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add building-code-engine
+          git ls-files --error-unmatch building-code-engine/data/geocoder.sqlite >/dev/null
           if git diff --cached --quiet; then
             echo 'release generator produced no package changes' >&2
             exit 1
           fi
           git commit -m 'release: regenerate authority engine package'
+          echo "PACKAGE_COMMIT=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
           git push origin HEAD:build/authority-engine-offline-release
+
+      - name: Prepare immutable Drive transport
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p drive-transport
+          cp -a building-code-engine drive-transport/
+          ./building-code-engine/bin/bcm --help > drive-transport/bcm-help.txt
+          sha256sum building-code-engine/bin/bcm > drive-transport/bcm.sha256
+          cat > drive-transport/transport.json <<JSON
+          {
+            "schema_version": "1.0",
+            "package_commit": "$PACKAGE_COMMIT",
+            "source_commit": "$SOURCE_COMMIT",
+            "binary_path": "building-code-engine/bin/bcm",
+            "binary_sha256": "$(awk '{print $1}' drive-transport/bcm.sha256)",
+            "platform": "linux-amd64",
+            "purpose": "Google Drive transport into Offline Execution"
+          }
+          JSON
+
+      - name: Upload exact package for Drive transport
+        uses: actions/upload-artifact@v4
+        with:
+          name: building-code-engine-${{ env.PACKAGE_COMMIT }}-linux-amd64
+          path: drive-transport
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7
