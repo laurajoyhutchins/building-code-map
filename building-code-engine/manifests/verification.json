@@ -1,7 +1,7 @@
 {
   "schema_version": "1",
-  "generated_at": "2026-08-06T23:52:32Z",
-  "source_commit": "0b1f82189fb1f97cce7ab0b8970ff810455afffd",
+  "generated_at": "2026-08-07T02:58:47Z",
+  "source_commit": "3d8b3f53cf9ebc448fc92d847f9b01054c08f046",
   "build": {
     "go_version": "go1.25.0",
     "goos": "linux",
@@ -10,18 +10,18 @@
     "trimpath": true,
     "build_id_cleared": true,
     "geocoder_source_name": "building-code-map-release-fixtures",
-    "geocoder_source_vintage": "0b1f82189fb1f97cce7ab0b8970ff810455afffd"
+    "geocoder_source_vintage": "3d8b3f53cf9ebc448fc92d847f9b01054c08f046"
   },
   "binary": {
     "path": "bin/bcm",
-    "sha256": "f87a3cfa0d2e36c940cc705923b2712c94ed2c0b9c2b907f61a1be8f6c3ba309"
+    "sha256": "2252b2880b55b81a613276ce67651af84b2c67fcbd6e81b7bf0d1e3827695b2b"
   },
   "geocoder": {
     "path": "data/geocoder.sqlite",
-    "sha256": "f3b8b0782b461a8147f7f546e4ccd528d4467981dcc79e87994583b4ca46a955",
+    "sha256": "df7e31dc1ec81c42197acf7c107928db4c1ff7573e88f32316fe74f03e29d957",
     "snapshot_manifest": {
       "path": "data/geocoder.sqlite.manifest.json",
-      "sha256": "53d2247eaa615f40d6b198d41e96bcf19973d51515ebb3ee76e7ff442c6cc90b"
+      "sha256": "c0e34381ab479e6a38dfe5554b03d07a545293b66ef802ca9da581cda03fc24e"
     }
   },
   "checks": [
@@ -83,5 +83,5 @@
     }
   ],
   "cold_room_mode": "fallback",
-  "workflow_run": "https://github.com/laurajoyhutchins/building-code-map/actions/runs/31132622805"
+  "workflow_run": "https://github.com/laurajoyhutchins/building-code-map/actions/runs/31142903068"
 }
