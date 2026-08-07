@@ -32,7 +32,7 @@ export function decodeBoundaryMapRecords(value: unknown): BoundaryMapRecord[] {
 
 function decodeBoundaryMapRecord(value: unknown, path: string): BoundaryMapRecord {
   const raw = record(value, path);
-  for (const forbidden of ["attributes", "geometry_label", "last_synced_at"] as const) {
+  for (const forbidden of ["attributes", "last_synced_at"] as const) {
     if (forbidden in raw) {
       throw new Error(`${path}.${forbidden}: detail-only field is forbidden in the map payload`);
     }
@@ -43,6 +43,7 @@ function decodeBoundaryMapRecord(value: unknown, path: string): BoundaryMapRecor
     title: nonEmptyString(raw.title, `${path}.title`),
     subtitle: stringValue(raw.subtitle, `${path}.subtitle`),
     sourceId: nonEmptyString(raw.source_id, `${path}.source_id`),
+    geometryLabel: nonEmptyString(raw.geometry_label, `${path}.geometry_label`),
     geometrySource: optionalString(raw.geometry_source, `${path}.geometry_source`),
     geometry: decodeGeometry(raw.geometry, `${path}.geometry`),
   };
