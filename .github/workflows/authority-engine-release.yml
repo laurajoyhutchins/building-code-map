@@ -158,6 +158,29 @@ jobs:
           mv "${first}.manifest.json" "${final}.manifest.json"
           rm -f "$second" "${second}.manifest.json"
 
+      - name: Refresh package README identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - "$SOURCE_COMMIT" <<'PY'
+          import re
+          import sys
+          from pathlib import Path
+
+          path = Path("building-code-engine/README.md")
+          content = path.read_text(encoding="utf-8")
+          updated, count = re.subn(
+              r"(?<=source commit\n)`[0-9a-f]{40}`",
+              f"`{sys.argv[1]}`",
+              content,
+              count=1,
+          )
+          if count != 1:
+              raise SystemExit("README source commit marker was not found exactly once")
+          path.write_text(updated, encoding="utf-8")
+          PY
+          grep -F "$SOURCE_COMMIT" building-code-engine/README.md >/dev/null
+
       - name: Prepare package manifests
         shell: bash
         run: |
@@ -207,6 +230,7 @@ jobs:
           set -euo pipefail
           ./building-code-engine/verify-offline.sh
           ./building-code-engine/cold-room-verify.sh
+          grep -F "$SOURCE_COMMIT" building-code-engine/README.md >/dev/null
           git diff --check
 
       - name: Commit regenerated package
@@ -231,7 +255,8 @@ jobs:
           set -euo pipefail
           mkdir -p drive-transport
           cp -a building-code-engine drive-transport/
-          ./building-code-engine/bin/bcm --help > drive-transport/bcm-help.txt
+          ./building-code-engine/bin/bcm --help > drive-transport/bcm-help.txt 2>&1
+          test -s drive-transport/bcm-help.txt
           sha256sum building-code-engine/bin/bcm > drive-transport/bcm.sha256
           cat > drive-transport/transport.json <<JSON
           {
