@@ -9,6 +9,7 @@ type BoundaryMapRecord struct {
 	Title          string   `json:"title"`
 	Subtitle       string   `json:"subtitle"`
 	SourceID       string   `json:"source_id"`
+	GeometryLabel  string   `json:"geometry_label"`
 	GeometrySource string   `json:"geometry_source"`
 	Geometry       Geometry `json:"geometry"`
 }
@@ -20,6 +21,7 @@ func (feature BoundaryFeature) MapRecord() BoundaryMapRecord {
 		Title:          feature.Title,
 		Subtitle:       feature.Subtitle,
 		SourceID:       feature.SourceID,
+		GeometryLabel:  feature.GeometryLabel,
 		GeometrySource: feature.GeometrySource,
 		Geometry:       feature.Geometry,
 	}
