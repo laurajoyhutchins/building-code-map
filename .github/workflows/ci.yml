@@ -43,10 +43,8 @@ jobs:
       - name: Lint
         run: pnpm lint
 
-      - name: Show canonical formatting diff
-        run: |
-          pnpm exec prettier src/components/PublicLookup.tsx src/lib/api.test.ts src/lib/engineV1.ts --write
-          git diff -- src/components/PublicLookup.tsx src/lib/api.test.ts src/lib/engineV1.ts
+      - name: Check formatting
+        run: pnpm format:check
 
       - name: Test
         run: pnpm test
