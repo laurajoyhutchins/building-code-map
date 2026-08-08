@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 	"testing"
+	"time"
 )
 
 func TestResolveColoradoBuildingRequiresLocalAdoptionRecord(t *testing.T) {
@@ -241,6 +242,21 @@ func TestResolveUnknownStateFailsClosed(t *testing.T) {
 	}
 	if len(result.AuthorityCandidates) != 0 || len(result.Adoptions) != 0 {
 		t.Fatalf("unknown state must not return unsupported conclusions: %#v", result)
+	}
+}
+
+func TestResolveAtUsesExplicitGenerationTime(t *testing.T) {
+	catalog := loadTestCatalog(t)
+	want := time.Date(2026, 8, 6, 12, 34, 56, 0, time.UTC)
+	result, err := ResolveAt(catalog, ResolutionRequest{
+		Context:           &GeographicContext{StateID: "US-CO", StateFIPS: "08"},
+		ApplicabilityDate: "2026-08-06",
+	}, want)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !result.GeneratedAt.Equal(want) {
+		t.Fatalf("generated_at=%s, want %s", result.GeneratedAt, want)
 	}
 }
 

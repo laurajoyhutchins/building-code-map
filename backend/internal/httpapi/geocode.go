@@ -1,12 +1,14 @@
 package httpapi
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"net/http"
 	"strings"
 
+	"building-code-map/backend/engine"
 	"building-code-map/backend/internal/geocoder"
 	"building-code-map/backend/internal/regulatory"
 )
@@ -69,7 +71,7 @@ func (h *Handler) handleLookup(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	resolution, err := h.resolveRequest(regulatory.ResolutionRequest{
+	resolution, err := h.resolveRequest(r.Context(), regulatory.ResolutionRequest{
 		Point: &regulatory.Point{
 			Longitude: geocodeResult.Selected.Longitude,
 			Latitude:  geocodeResult.Selected.Latitude,
@@ -85,28 +87,37 @@ func (h *Handler) handleLookup(w http.ResponseWriter, r *http.Request) {
 	h.writeJSON(w, http.StatusOK, lookupResponse{Geocode: geocodeResult, Resolution: resolution})
 }
 
-func (h *Handler) resolveRequest(request regulatory.ResolutionRequest) (regulatory.ResolutionResult, error) {
+func (h *Handler) resolveRequest(ctx context.Context, request regulatory.ResolutionRequest) (regulatory.ResolutionResult, error) {
 	if request.Point == nil {
 		return regulatory.ResolutionResult{}, errors.New("point is required")
 	}
 	dateWasAssumed := strings.TrimSpace(request.ApplicabilityDate) == ""
-	context, err := resolveGeographicContext(h.snapshot, h.regulatoryCatalog, *request.Point)
+	if dateWasAssumed {
+		request.ApplicabilityDate = h.engineClock.Now().UTC().Format("2006-01-02")
+	}
+	result, err := h.engine.Resolve(ctx, engine.Query{
+		Point:      &engine.Point{Longitude: request.Point.Longitude, Latitude: request.Point.Latitude},
+		CodeFamily: request.CodeFamily, ProjectType: request.ProjectType,
+		ApplicabilityDate: request.ApplicabilityDate,
+	})
 	if err != nil {
 		return regulatory.ResolutionResult{}, err
 	}
-	request.Context = &context
-	request.Point = nil
-	result, err := regulatory.Resolve(h.regulatoryCatalog, request)
+	raw, err := json.Marshal(result.Resolution)
 	if err != nil {
+		return regulatory.ResolutionResult{}, err
+	}
+	var legacy regulatory.ResolutionResult
+	if err := json.Unmarshal(raw, &legacy); err != nil {
 		return regulatory.ResolutionResult{}, err
 	}
 	if dateWasAssumed {
-		result.Warnings = append(result.Warnings, fmt.Sprintf(
+		legacy.Warnings = append(legacy.Warnings, fmt.Sprintf(
 			"Applicability date was omitted; the server used %s in UTC. Confirm the date that governs the project.",
-			result.ApplicabilityDate,
+			legacy.ApplicabilityDate,
 		))
 	}
-	return result, nil
+	return legacy, nil
 }
 
 func decodeStrictRequest[T any](w http.ResponseWriter, r *http.Request) (T, error) {

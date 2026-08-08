@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"testing"
 
+	"building-code-map/backend/engine"
 	"building-code-map/backend/internal/regulatory"
 	"building-code-map/backend/internal/snapshot"
 )
@@ -163,7 +164,8 @@ func TestResolveGeographicContextPreservesNonExclusiveOverlaps(t *testing.T) {
 		{LayerFamily: "neris_jurisdictions", FeatureID: "FD1", Title: "First fire observation", SourceID: "neris=FD1", Geometry: testPolygon(0, 0, 10, 10)},
 	}}
 
-	context, err := resolveGeographicContext(snap, catalog, regulatory.Point{Longitude: 5, Latitude: 5})
+	resolver := engine.NewSnapshotGeographyResolver(snap, catalog)
+	context, err := resolver.ResolveGeography(t.Context(), engine.Point{Longitude: 5, Latitude: 5})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -177,10 +179,13 @@ func TestResolveGeographicContextPreservesNonExclusiveOverlaps(t *testing.T) {
 
 func TestGeometryContainsPointHonorsPolygonHoles(t *testing.T) {
 	geometry := snapshot.Geometry{Type: "Polygon", Coordinates: [][][]float64{{{0, 0}, {10, 0}, {10, 10}, {0, 10}, {0, 0}}, {{4, 4}, {6, 4}, {6, 6}, {4, 6}, {4, 4}}}}
-	if !geometryContainsPoint(geometry, 2, 2) {
-		t.Fatal("outer point should match")
+	resolver := engine.NewSnapshotGeographyResolver(snapshot.Snapshot{BoundaryFeatures: []snapshot.BoundaryFeature{{
+		LayerFamily: "states", FeatureID: "08", Geometry: geometry,
+	}}}, regulatory.EmptyCatalog())
+	if _, err := resolver.ResolveGeography(t.Context(), engine.Point{Longitude: 2, Latitude: 2}); err != nil {
+		t.Fatalf("outer point should match: %v", err)
 	}
-	if geometryContainsPoint(geometry, 5, 5) {
+	if _, err := resolver.ResolveGeography(t.Context(), engine.Point{Longitude: 5, Latitude: 5}); err == nil {
 		t.Fatal("hole point should not match")
 	}
 }
