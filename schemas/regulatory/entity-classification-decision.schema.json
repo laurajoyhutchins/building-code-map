@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/regulatory/entity-classification-decision.schema.json",
+  "title": "Building Code Map Governmental Entity Classification Decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "entity_id",
+    "state_id",
+    "classification",
+    "applicability_date",
+    "records",
+    "source_ids"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "entity_id": { "type": "string", "minLength": 1 },
+    "state_id": { "type": "string", "pattern": "^US-[A-Z]{2}$" },
+    "classification": { "$ref": "#/$defs/classification" },
+    "code_family": { "type": "string", "minLength": 1 },
+    "project_type": { "type": "string", "minLength": 1 },
+    "applicability_date": { "type": "string", "format": "date" },
+    "records": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/record" }
+    },
+    "unresolved_reasons": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "unresolved_dimensions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "local_adoption",
+          "local_amendment",
+          "enforcement",
+          "delegation_contracting",
+          "home_rule",
+          "statewide_inheritance",
+          "unincorporated",
+          "temporal"
+        ]
+      }
+    },
+    "source_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "classification": {
+      "enum": [
+        "covered_by_state",
+        "local_adopter",
+        "local_amender",
+        "enforcement_only",
+        "delegated",
+        "no_general_authority",
+        "inactive",
+        "not_applicable",
+        "unresolved"
+      ]
+    },
+    "power": {
+      "enum": ["adopt", "amend", "administer", "enforce", "delegate", "contract"]
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_id", "kind", "classification", "legal_basis_source_ids"],
+      "properties": {
+        "record_id": { "type": "string", "minLength": 1 },
+        "kind": {
+          "enum": ["legal_status", "local_power", "enforcement", "state_inheritance"]
+        },
+        "classification": { "$ref": "#/$defs/classification" },
+        "code_family": { "type": "string", "minLength": 1 },
+        "project_type": { "type": "string", "minLength": 1 },
+        "scope": { "type": "string", "minLength": 1 },
+        "powers": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/power" }
+        },
+        "adoption_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "rule_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "policy_status": { "type": "string", "minLength": 1 },
+        "legal_basis_source_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "effective_interval": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "start_date": { "type": "string", "format": "date" },
+            "end_date": { "type": "string", "format": "date" }
+          }
+        },
+        "exclusions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "required_local_evidence": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}
