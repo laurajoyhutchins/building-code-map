@@ -61,15 +61,16 @@ func TestCensusCountyMapsToCountyEquivalentWithoutInventingGeometry(t *testing.T
 	}
 }
 
-func TestCensusCountyClassifiedAsCityMapsToIndependentCity(t *testing.T) {
+func TestCensusMunicipalCityWithCountyEquivalentFIPSMapsToIndependentCity(t *testing.T) {
 	entity, err := GovernmentalEntityFromCensusUnit(CensusGovernmentUnitRecord{
-		CensusID:                 "va-city",
-		UnitName:                 "CITY OF EXAMPLE",
-		UnitType:                 "1 - COUNTY",
+		CensusID:                 "194178",
+		UnitName:                 "CITY OF RICHMOND",
+		UnitType:                 "2 - MUNICIPAL",
 		PoliticalCodeDescription: "CITY",
 		State:                    "VA",
 		FIPSState:                "51",
 		FIPSCounty:               "760",
+		FIPSPlace:                "67000",
 		Active:                   "Y",
 	}, "src:census-government-units-2025")
 	if err != nil {
