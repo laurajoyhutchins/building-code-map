@@ -33,14 +33,14 @@ jobs:
           go run ./cmd/coverage-ledger-build generate \
             --inventory-root data/governmental-entities/2025 \
             --regimes-root data/state-regimes \
-            --output data/coverage/pilot-building-2026-08-08.json \
+            --output data/jurisdiction-coverage/pilot-building-2026-08-08.json \
             --states US-CO,US-FL,US-NC,US-NJ,US-OR,US-VA \
             --code-family building \
             --applicability-date 2026-08-08
           go run ./cmd/coverage-ledger-build validate \
             --inventory-root data/governmental-entities/2025 \
             --regimes-root data/state-regimes \
-            --output data/coverage/pilot-building-2026-08-08.json \
+            --output data/jurisdiction-coverage/pilot-building-2026-08-08.json \
             --states US-CO,US-FL,US-NC,US-NJ,US-OR,US-VA \
             --code-family building \
             --applicability-date 2026-08-08
@@ -49,11 +49,12 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if [[ -z "$(git status --porcelain -- backend/data/coverage/pilot-building-2026-08-08.json)" ]]; then
+          path='backend/data/jurisdiction-coverage/pilot-building-2026-08-08.json'
+          if [[ -z "$(git status --porcelain -- "$path")" ]]; then
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add backend/data/coverage/pilot-building-2026-08-08.json
+          git add "$path"
           git commit -m 'data: generate pilot building coverage ledger'
           git push origin HEAD:feature/pilot-entity-coverage-ledger
