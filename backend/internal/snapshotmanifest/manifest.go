@@ -129,29 +129,9 @@ func FinalizeAndWrite(snapshotPath string, manifest Manifest) (Manifest, error) 
 }
 
 func LoadAndVerify(snapshotPath string, expectedKind Kind) (Verified, error) {
-	manifestPath := ManifestPath(snapshotPath)
-	manifestBytes, err := os.ReadFile(manifestPath)
-	if err != nil {
-		if os.IsNotExist(err) {
-			return Verified{}, fmt.Errorf("%w: %s", ErrManifestMissing, manifestPath)
-		}
-		return Verified{}, fmt.Errorf("read snapshot manifest: %w", err)
-	}
-
-	var manifest Manifest
-	if err := json.Unmarshal(manifestBytes, &manifest); err != nil {
-		return Verified{}, fmt.Errorf("%w: decode manifest: %v", ErrManifestInvalid, err)
-	}
-	if err := manifest.Validate(expectedKind); err != nil {
-		return Verified{}, err
-	}
-
-	digest, size, err := fileDigest(snapshotPath)
+	manifest, manifestBytes, err := loadAndVerifySnapshot(snapshotPath, expectedKind)
 	if err != nil {
 		return Verified{}, err
-	}
-	if !strings.EqualFold(digest, manifest.OutputSHA256) || size != manifest.OutputSizeBytes {
-		return Verified{}, fmt.Errorf("%w: expected sha256=%s size=%d, got sha256=%s size=%d", ErrChecksumMismatch, manifest.OutputSHA256, manifest.OutputSizeBytes, digest, size)
 	}
 
 	receiptBytes, err := os.ReadFile(ActivationPath(snapshotPath))
@@ -169,6 +149,34 @@ func LoadAndVerify(snapshotPath string, expectedKind Kind) (Verified, error) {
 		return Verified{}, err
 	}
 	return Verified{Manifest: manifest, Receipt: receipt}, nil
+}
+
+func loadAndVerifySnapshot(snapshotPath string, expectedKind Kind) (Manifest, []byte, error) {
+	manifestPath := ManifestPath(snapshotPath)
+	manifestBytes, err := os.ReadFile(manifestPath)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return Manifest{}, nil, fmt.Errorf("%w: %s", ErrManifestMissing, manifestPath)
+		}
+		return Manifest{}, nil, fmt.Errorf("read snapshot manifest: %w", err)
+	}
+
+	var manifest Manifest
+	if err := json.Unmarshal(manifestBytes, &manifest); err != nil {
+		return Manifest{}, nil, fmt.Errorf("%w: decode manifest: %v", ErrManifestInvalid, err)
+	}
+	if err := manifest.Validate(expectedKind); err != nil {
+		return Manifest{}, nil, err
+	}
+
+	digest, size, err := fileDigest(snapshotPath)
+	if err != nil {
+		return Manifest{}, nil, err
+	}
+	if !strings.EqualFold(digest, manifest.OutputSHA256) || size != manifest.OutputSizeBytes {
+		return Manifest{}, nil, fmt.Errorf("%w: expected sha256=%s size=%d, got sha256=%s size=%d", ErrChecksumMismatch, manifest.OutputSHA256, manifest.OutputSizeBytes, digest, size)
+	}
+	return manifest, manifestBytes, nil
 }
 
 func (m Manifest) Validate(expectedKind Kind) error {
