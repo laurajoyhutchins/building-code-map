@@ -131,7 +131,7 @@ func TestActivateRollsBackWholeGenerationWhenSidecarReplacementFails(t *testing.
 	writeSnapshotFixture(t, activePath, "old", "old-snapshot")
 	writeSnapshotFixture(t, candidatePath, "new", "new-snapshot")
 
-	manifestRollbackBlocker := ManifestPath(activePath) + ".rollback"
+	manifestRollbackBlocker := ManifestPath(activePath + ".rollback")
 	if err := os.MkdirAll(manifestRollbackBlocker, 0o700); err != nil {
 		t.Fatal(err)
 	}
