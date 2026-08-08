@@ -61,6 +61,42 @@ func TestActivateLeavesActiveSnapshotUntouchedWhenCandidateFailsVerification(t *
 	}
 }
 
+func TestActivateRollsBackWholeGenerationWhenSidecarReplacementFails(t *testing.T) {
+	dir := t.TempDir()
+	activePath := filepath.Join(dir, "active.sqlite")
+	candidatePath := filepath.Join(dir, "candidate.sqlite")
+
+	writeSnapshotFixture(t, activePath, "old", "old-snapshot")
+	writeSnapshotFixture(t, candidatePath, "new", "new-snapshot")
+
+	manifestRollbackBlocker := ManifestPath(activePath) + ".rollback"
+	if err := os.MkdirAll(manifestRollbackBlocker, 0o700); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(manifestRollbackBlocker, "keep"), []byte("block"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+
+	if _, err := Activate(candidatePath, activePath, KindBoundary, time.Now()); err == nil {
+		t.Fatal("expected activation failure")
+	}
+
+	verified, err := LoadAndVerify(activePath, KindBoundary)
+	if err != nil {
+		t.Fatalf("active generation must remain valid after failed activation: %v", err)
+	}
+	if verified.Manifest.SnapshotID != "old-snapshot" {
+		t.Fatalf("active id=%q", verified.Manifest.SnapshotID)
+	}
+	contents, err := os.ReadFile(activePath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if string(contents) != "old" {
+		t.Fatalf("active contents=%q", contents)
+	}
+}
+
 func writeSnapshotFixture(t *testing.T, path, contents, snapshotID string) {
 	t.Helper()
 	if err := os.WriteFile(path, []byte(contents), 0o600); err != nil {
