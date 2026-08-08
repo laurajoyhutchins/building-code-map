@@ -4,6 +4,7 @@
   "publisher": "U.S. Census Bureau",
   "product": "2025 Government Units Listing",
   "release_date": "2025-09-24",
+  "accessed_at": "2026-08-08",
   "landing_page": "https://www.census.gov/programs-surveys/gus/technical-documentation/file-layouts/annual-organization-public-use-file.html",
   "archive_url": "https://www2.census.gov/programs-surveys/gus/datasets/2025/gov_units_2025.zip",
   "archive_sha256": "e8b17c3928fb95fa7355a1ce7795fc7de8874c64e9ac7cd9506d6a6515d953f8",
