@@ -21,6 +21,12 @@ import {
   decodeResolutionResult,
 } from "./apiPayloads";
 import { decodeBoundaryMapRecords, decodeFeatureDetail } from "./boundaryPayloads";
+import {
+  decodeEngineProvenance,
+  decodeEngineResult,
+  type EngineProvenance,
+  type EngineResult,
+} from "./engineV1";
 import { arrayValue, nonEmptyString, record } from "./runtimeDecode";
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL?.trim() || "/api";
@@ -80,28 +86,45 @@ function decodeApiError(payload: unknown, status: number, path: string): ApiResp
   }
 
   const message =
-    typeof raw.error === "string" && raw.error.trim() !== ""
-      ? raw.error
-      : `Request to ${path} failed with ${status}`;
+    typeof raw.message === "string" && raw.message.trim() !== ""
+      ? raw.message
+      : typeof raw.error === "string" && raw.error.trim() !== ""
+        ? raw.error
+        : `Request to ${path} failed with ${status}`;
   const code = typeof raw.code === "string" ? raw.code : undefined;
+
   if (code === "boundary_ambiguous") {
     try {
-      const layerFamily = nonEmptyString(raw.layer_family, "error.layer_family");
-      const observations = arrayValue(raw.observations, "error.observations", decodeBoundaryMatch);
+      const details = raw.details === undefined ? raw : record(raw.details, "error.details");
+      const layerFamily = nonEmptyString(details.layer_family, "error.details.layer_family");
+      const observations = arrayValue(
+        details.observations,
+        "error.details.observations",
+        decodeBoundaryMatch,
+      );
       return new ApiResponseError(message, status, code, { layerFamily, observations });
     } catch {
       return new ApiResponseError(message, status, code);
     }
   }
-  if (raw.status === "ambiguous") {
-    const candidates = Array.isArray(raw.candidates) ? raw.candidates.length : 0;
+  if (code === "address_ambiguous" || raw.status === "ambiguous") {
+    const details =
+      typeof raw.details === "object" && raw.details !== null && !Array.isArray(raw.details)
+        ? (raw.details as Record<string, unknown>)
+        : raw;
+    const candidateCount =
+      typeof details.candidate_count === "number"
+        ? details.candidate_count
+        : Array.isArray(raw.candidates)
+          ? raw.candidates.length
+          : undefined;
     return new ApiResponseError(
-      `The address matched ${candidates || "multiple"} locations. Add a ZIP code or more specific locality.`,
+      `The address matched ${candidateCount || "multiple"} locations. Add a ZIP code or more specific locality.`,
       status,
       "geocoder_ambiguous",
     );
   }
-  if (raw.status === "not_found") {
+  if (code === "address_not_found" || raw.status === "not_found") {
     return new ApiResponseError(
       "The local geocoder could not match that address.",
       status,
@@ -130,7 +153,7 @@ export function fetchHealth(): Promise<{ status: string }> {
 }
 
 export function fetchReadiness(signal?: AbortSignal): Promise<ReadinessResult> {
-  return readJson("/ready", decodeReadiness, { signal });
+  return readJson("/v1/readiness", decodeReadiness, { signal });
 }
 
 export function fetchLayers(): Promise<LayerFamilyDefinition[]> {
@@ -190,8 +213,22 @@ export function fetchResolution(input: ResolutionRequestInput): Promise<Resoluti
   });
 }
 
+export function fetchEngineResolution(input: ResolutionRequestInput): Promise<EngineResult> {
+  return readJson("/v1/resolve", decodeEngineResult, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      point: { longitude: input.longitude, latitude: input.latitude },
+      code_family: input.codeFamily || undefined,
+      project_type: input.projectType || undefined,
+      applicability_date: input.applicabilityDate || undefined,
+    }),
+    signal: input.signal,
+  });
+}
+
 export function fetchGeocode(address: string, signal?: AbortSignal): Promise<GeocodeResult> {
-  return readJson("/geocode", decodeGeocodeResult, {
+  return readJson("/v1/geocode", decodeGeocodeResult, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ address }),
@@ -211,4 +248,22 @@ export function fetchLookup(input: LookupRequestInput): Promise<LookupResult> {
     }),
     signal: input.signal,
   });
+}
+
+export function fetchEngineAddressResolution(input: LookupRequestInput): Promise<EngineResult> {
+  return readJson("/v1/resolve", decodeEngineResult, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      address: input.address,
+      code_family: input.codeFamily || undefined,
+      project_type: input.projectType || undefined,
+      applicability_date: input.applicabilityDate || undefined,
+    }),
+    signal: input.signal,
+  });
+}
+
+export function fetchBundle(signal?: AbortSignal): Promise<EngineProvenance> {
+  return readJson("/v1/bundle", decodeEngineProvenance, { signal });
 }

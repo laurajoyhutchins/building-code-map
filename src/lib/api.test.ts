@@ -1,11 +1,17 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { buildApiUrl, fetchReadiness, getApiBaseUrl } from "./api";
+import {
+  buildApiUrl,
+  fetchEngineAddressResolution,
+  fetchReadiness,
+  getApiBaseUrl,
+} from "./api";
 import {
   decodeGeocodeResult,
   decodeLookupResult,
   decodeReadiness,
   decodeResolutionResult,
 } from "./apiPayloads";
+import { decodeEngineResult } from "./engineV1";
 
 afterEach(() => {
   vi.unstubAllGlobals();
@@ -97,6 +103,55 @@ const rawResolution = {
   future_optional_field: { retained_by_server: true },
 };
 
+const rawEngineResult = {
+  schema_version: "1",
+  query: {
+    address: "1600 N Broadway, Denver, CO 80202",
+    code_family: "building",
+    applicability_date: "2026-07-20",
+  },
+  location: {
+    address: "1600 N Broadway, Denver, CO 80202",
+    point: { longitude: -104.9876, latitude: 39.7411 },
+    geocode: {
+      query: "1600 N Broadway, Denver, CO 80202",
+      normalized: "1600 N BROADWAY, DENVER, CO 80202",
+      status: "matched" as const,
+      selected: {
+        matched_address: "1600 N Broadway St Denver CO 80202",
+        longitude: -104.9876,
+        latitude: 39.7411,
+        precision: "address_point" as const,
+        confidence: 1,
+        score_kind: "deterministic_quality",
+        score_factors: {
+          address_point_base: 0.7,
+          exact_street: 0.05,
+          exact_city: 0.15,
+          exact_postal_code: 0.1,
+        },
+        ranking_policy_version: "geocoder-ranking-1.0",
+        source: "Denver address points",
+        source_record_id: "co-denver-1600",
+        source_vintage: "2026-08-01",
+      },
+      candidates: [],
+      warnings: [],
+    },
+  },
+  resolution: rawResolution,
+  provenance: {
+    source_commit: "0123456789abcdef0123456789abcdef01234567",
+    engine_version: "0.1.0",
+    bundle_manifest_digest: "sha256:bundle",
+    boundary_snapshot_digest: "sha256:boundary",
+    regulatory_catalog_digest: "sha256:regulatory",
+    geocoder_snapshot_digest: "sha256:geocoder",
+  },
+  diagnostics: [{ severity: "warning", code: "example", message: "review" }],
+  future_optional_field: { preserved_by_server: true },
+};
+
 describe("resolution response decoding", () => {
   it("maps the complete versioned provenance contract without inventing missing records", () => {
     const result = decodeResolutionResult(rawResolution);
@@ -134,6 +189,46 @@ describe("resolution response decoding", () => {
   });
 });
 
+describe("engine v1 response decoding", () => {
+  it("preserves normalized query, geocoder evidence, provenance, diagnostics, and unknown fields", () => {
+    const result = decodeEngineResult(rawEngineResult);
+
+    expect(result.query.applicabilityDate).toBe("2026-07-20");
+    expect(result.location.geocode?.selected?.rankingPolicyVersion).toBe("geocoder-ranking-1.0");
+    expect(result.location.geocode?.selected?.scoreFactors.address_point_base).toBe(0.7);
+    expect(result.provenance.bundleManifestDigest).toBe("sha256:bundle");
+    expect(result.diagnostics[0]?.code).toBe("example");
+    expect(result.unknownFields?.future_optional_field).toEqual({ preserved_by_server: true });
+  });
+
+  it("routes civic-address resolution through v1 resolve rather than the point-only lookup route", async () => {
+    const fetchMock = vi.fn(async () => ({
+      ok: true,
+      status: 200,
+      json: async () => rawEngineResult,
+    }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    await fetchEngineAddressResolution({
+      address: "1600 N Broadway, Denver, CO 80202",
+      codeFamily: "building",
+      applicabilityDate: "2026-07-20",
+    });
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      "/api/v1/resolve",
+      expect.objectContaining({
+        method: "POST",
+        body: JSON.stringify({
+          address: "1600 N Broadway, Denver, CO 80202",
+          code_family: "building",
+          applicability_date: "2026-07-20",
+        }),
+      }),
+    );
+  });
+});
+
 describe("readiness response decoding", () => {
   const rawReadiness = {
     status: "ok",
@@ -168,7 +263,7 @@ describe("readiness response decoding", () => {
     ).toThrow(/snapshot_id/);
   });
 
-  it("forwards cancellation to the readiness request", async () => {
+  it("forwards cancellation to the versioned readiness request", async () => {
     const fetchMock = vi.fn(async () => ({
       ok: true,
       status: 200,
@@ -180,7 +275,7 @@ describe("readiness response decoding", () => {
     await fetchReadiness(controller.signal);
 
     expect(fetchMock).toHaveBeenCalledWith(
-      "/api/ready",
+      "/api/v1/readiness",
       expect.objectContaining({ signal: controller.signal }),
     );
   });
@@ -198,37 +293,13 @@ describe("readiness response decoding", () => {
     await expect(fetchReadiness()).rejects.toMatchObject({
       name: "ApiResponseError",
       status: 503,
-      message: "Request to /ready failed with 503",
+      message: "Request to /v1/readiness failed with 503",
     });
   });
 });
 
 describe("geocoder response decoding", () => {
-  const rawGeocode = {
-    query: "1600 N Broadway, Denver, CO 80202",
-    normalized: "1600 N BROADWAY, DENVER, CO 80202",
-    status: "matched" as const,
-    selected: {
-      matched_address: "1600 N Broadway St Denver CO 80202",
-      longitude: -104.9876,
-      latitude: 39.7411,
-      precision: "address_point" as const,
-      confidence: 1,
-      score_kind: "deterministic_quality",
-      score_factors: {
-        address_point_base: 0.7,
-        exact_street: 0.05,
-        exact_city: 0.15,
-        exact_postal_code: 0.1,
-      },
-      ranking_policy_version: "geocoder-ranking-1.0",
-      source: "Denver address points",
-      source_record_id: "co-denver-1600",
-      source_vintage: "2026-08-01",
-    },
-    candidates: [],
-    warnings: [],
-  };
+  const rawGeocode = rawEngineResult.location.geocode;
 
   it("preserves selected-point provenance and deterministic scoring identity", () => {
     const result = decodeGeocodeResult(rawGeocode);
@@ -291,7 +362,7 @@ describe("geocoder response decoding", () => {
     ).toThrow(/address_point, interpolated/);
   });
 
-  it("decodes a composed address lookup", () => {
+  it("decodes a composed legacy address lookup", () => {
     const result = decodeLookupResult({
       geocode: rawGeocode,
       resolution: rawResolution,
