@@ -7,9 +7,9 @@ import (
 	"strings"
 
 	"building-code-map/backend/engine"
-	"building-code-map/backend/internal/geocoder"
-	"building-code-map/backend/internal/regulatory"
-	"building-code-map/backend/internal/snapshot"
+	"building-code-map/backend/geocoder"
+	"building-code-map/backend/regulatory"
+	"building-code-map/backend/snapshot"
 )
 
 var defaultAllowedOrigins = []string{
@@ -45,6 +45,7 @@ func ParseAllowedOrigins(rawValue string) []string {
 }
 
 type Options struct {
+	Snapshot           snapshot.Snapshot
 	AllowedOrigins     []string
 	RegulatoryCatalog  regulatory.Catalog
 	Geocoder           geocoder.Service
@@ -68,7 +69,49 @@ type Handler struct {
 	geocoderSnapshotID string
 }
 
-func NewHandler(snap snapshot.Snapshot, options ...Options) http.Handler {
+// NewHandler adapts one authority engine to the HTTP transport. The engine
+// owns all location and regulatory decisions; options only provide transport
+// configuration and cached records used by legacy browsing endpoints.
+func NewHandler(authority engine.Engine, opt Options) http.Handler {
+	if authority == nil {
+		panic("httpapi: nil authority engine")
+	}
+	if opt.Clock == nil {
+		opt.Clock = engine.RealClock{}
+	}
+	snap := opt.Snapshot
+	allowedOrigins := opt.AllowedOrigins
+	if len(allowedOrigins) == 0 {
+		allowedOrigins = defaultAllowedOrigins
+	}
+	handler := &Handler{
+		snapshot:           snap,
+		boundaryMapRecords: snapshot.MapRecords(snap.BoundaryFeatures),
+		layerIndex:         make(map[string]snapshot.LayerFamily, len(snap.LayerFamilies)),
+		featureIndex:       make(map[string]snapshot.BoundaryFeature, len(snap.BoundaryFeatures)),
+		allowedOrigins:     make(map[string]struct{}, len(allowedOrigins)),
+		regulatoryCatalog:  opt.RegulatoryCatalog,
+		geocoder:           opt.Geocoder,
+		engine:             authority,
+		engineClock:        opt.Clock,
+		boundarySnapshotID: strings.TrimSpace(opt.BoundarySnapshotID),
+		geocoderSnapshotID: strings.TrimSpace(opt.GeocoderSnapshotID),
+	}
+	for _, origin := range allowedOrigins {
+		handler.allowedOrigins[origin] = struct{}{}
+	}
+	for _, layer := range snap.LayerFamilies {
+		handler.layerIndex[layer.Key] = layer
+	}
+	for _, feature := range snap.BoundaryFeatures {
+		handler.featureIndex[featureKey(feature.LayerFamily, feature.FeatureID)] = feature
+	}
+	return handler
+}
+
+// NewLegacyHandler keeps the current website-server construction usable while
+// callers migrate to NewHandler and an explicitly constructed engine.
+func NewLegacyHandler(snap snapshot.Snapshot, options ...Options) http.Handler {
 	opt := Options{RegulatoryCatalog: regulatory.EmptyCatalog()}
 	if len(options) > 0 {
 		opt = options[0]
@@ -148,6 +191,16 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		h.handleLookup(w, r)
 	case r.Method == http.MethodPost && r.URL.Path == "/resolve":
 		h.handleResolve(w, r)
+	case r.Method == http.MethodPost && r.URL.Path == "/v1/geocode":
+		h.handleV1Geocode(w, r)
+	case r.Method == http.MethodPost && r.URL.Path == "/v1/lookup":
+		h.handleV1Lookup(w, r)
+	case r.Method == http.MethodPost && r.URL.Path == "/v1/resolve":
+		h.handleV1Resolve(w, r)
+	case r.Method == http.MethodGet && r.URL.Path == "/v1/readiness":
+		h.handleV1Readiness(w, r)
+	case r.Method == http.MethodGet && r.URL.Path == "/v1/bundle":
+		h.handleV1Bundle(w, r)
 	case r.Method == http.MethodGet && r.URL.Path == "/refresh/status":
 		h.writeJSON(w, http.StatusOK, h.snapshot.RefreshStatus)
 	case r.Method == http.MethodPost && r.URL.Path == "/refresh/trigger":

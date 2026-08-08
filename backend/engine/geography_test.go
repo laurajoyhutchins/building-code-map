@@ -5,8 +5,8 @@ import (
 	"errors"
 	"testing"
 
-	"building-code-map/backend/internal/regulatory"
-	"building-code-map/backend/internal/snapshot"
+	"building-code-map/backend/regulatory"
+	"building-code-map/backend/snapshot"
 )
 
 func TestSnapshotGeographyResolverHonorsPolygonHolesAndStableOverlaps(t *testing.T) {

@@ -9,11 +9,12 @@ import (
 	"path/filepath"
 	"strings"
 
-	"building-code-map/backend/internal/geocoder"
-	"building-code-map/backend/internal/httpapi"
-	"building-code-map/backend/internal/regulatory"
-	"building-code-map/backend/internal/snapshot"
+	"building-code-map/backend/engine"
+	"building-code-map/backend/geocoder"
 	"building-code-map/backend/internal/snapshotmanifest"
+	"building-code-map/backend/regulatory"
+	"building-code-map/backend/snapshot"
+	"building-code-map/backend/transport/httpapi"
 )
 
 func main() {
@@ -78,6 +79,7 @@ func main() {
 	}
 
 	options := httpapi.Options{
+		Snapshot:           snap,
 		AllowedOrigins:     httpapi.ParseAllowedOrigins(os.Getenv("BACKEND_CORS_ALLOWED_ORIGINS")),
 		RegulatoryCatalog:  catalog,
 		Geocoder:           geocoderService,
@@ -88,7 +90,20 @@ func main() {
 		options.AllowedOrigins = httpapi.ParseAllowedOrigins(trimmed)
 	}
 
-	handler := httpapi.NewHandler(snap, options)
+	authority, err := engine.New(engine.Config{
+		Snapshot:          snap,
+		RegulatoryCatalog: catalog,
+		Geocoder:          geocoderService,
+		BundleIdentity: engine.BundleIdentity{
+			BoundarySnapshotDigest: boundaryVerification.Manifest.SnapshotID,
+			GeocoderSnapshotDigest: geocoderSnapshotID,
+		},
+	})
+	if err != nil {
+		slog.Error("construct authority engine", "error", err)
+		os.Exit(1)
+	}
+	handler := httpapi.NewHandler(authority, options)
 	slog.Info(
 		"starting Go backend",
 		"addr", *addr,

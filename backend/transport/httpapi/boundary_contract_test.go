@@ -10,8 +10,8 @@ import (
 	"testing"
 	"time"
 
-	"building-code-map/backend/internal/httpapi"
-	"building-code-map/backend/internal/snapshot"
+	"building-code-map/backend/snapshot"
+	"building-code-map/backend/transport/httpapi"
 )
 
 func TestBoundariesReturnOnlyMapContractFields(t *testing.T) {
@@ -89,7 +89,7 @@ func TestBoundaryPayloadSizeDoesNotScaleWithRawAttributes(t *testing.T) {
 }
 
 func boundaryContractHandler() http.Handler {
-	return httpapi.NewHandler(snapshot.Snapshot{
+	return httpapi.NewLegacyHandler(snapshot.Snapshot{
 		BoundaryFeatures: []snapshot.BoundaryFeature{
 			{
 				LayerFamily:    "states",
