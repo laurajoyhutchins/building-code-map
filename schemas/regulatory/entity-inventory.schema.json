@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/regulatory/entity-inventory.schema.json",
+  "title": "Building Code Map Governmental Entity Inventory",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "inventory_id", "generated_at", "sources", "entities"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "inventory_id": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "state-profile.schema.json#/$defs/source" }
+    },
+    "entities": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "governmental-entity.schema.json" }
+    }
+  }
+}
