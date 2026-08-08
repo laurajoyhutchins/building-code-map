@@ -1,4 +1,4 @@
-name: Generate pilot entity coverage ledger
+name: Canonicalize pilot entity coverage implementation
 
 on:
   push:
@@ -11,11 +11,11 @@ permissions:
   contents: write
 
 jobs:
-  generate:
+  canonicalize:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Checkout exact generator head
+      - name: Checkout branch
         uses: actions/checkout@v4
         with:
           ref: feature/pilot-entity-coverage-ledger
@@ -26,48 +26,45 @@ jobs:
           go-version-file: backend/go.mod
           cache-dependency-path: backend/go.sum
 
-      - name: Generate and validate canonical pilot ledger
-        working-directory: backend
-        run: |
-          set -euo pipefail
-          go run ./cmd/coverage-ledger-build generate \
-            --inventory-root data/governmental-entities/2025 \
-            --regimes-root data/state-regimes \
-            --output data/jurisdiction-coverage/pilot-building-2026-08-08.json \
-            --states US-CO,US-FL,US-NC,US-NJ,US-OR,US-VA \
-            --code-family building \
-            --applicability-date 2026-08-08
-          go run ./cmd/coverage-ledger-build validate \
-            --inventory-root data/governmental-entities/2025 \
-            --regimes-root data/state-regimes \
-            --output data/jurisdiction-coverage/pilot-building-2026-08-08.json \
-            --states US-CO,US-FL,US-NC,US-NJ,US-OR,US-VA \
-            --code-family building \
-            --applicability-date 2026-08-08
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
 
-      - name: Print coverage summaries
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          data = json.loads(Path('backend/data/jurisdiction-coverage/pilot-building-2026-08-08.json').read_text())
-          print('NATIONAL', json.dumps(data['summary'], sort_keys=True))
-          for state in data['states']:
-              print(state['state_id'], json.dumps(state['summary'], sort_keys=True))
-          print('FRESHNESS', json.dumps(data['freshness'], sort_keys=True))
-          print('LAND_AREA', json.dumps(data['land_area'], sort_keys=True))
-          PY
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
 
-      - name: Commit generated ledger
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Canonicalize Go and schema formatting
+        run: |
+          gofmt -w \
+            backend/regulatory/coverage_ledger.go \
+            backend/regulatory/coverage_ledger_io.go \
+            backend/regulatory/coverage_ledger_test.go \
+            backend/cmd/coverage-ledger-build/main.go
+          pnpm exec prettier schemas/regulatory/entity-coverage-ledger.schema.json --write
+
+      - name: Commit canonical formatting
         shell: bash
         run: |
           set -euo pipefail
-          path='backend/data/jurisdiction-coverage/pilot-building-2026-08-08.json'
-          if [[ -z "$(git status --porcelain -- "$path")" ]]; then
+          paths=(
+            backend/regulatory/coverage_ledger.go
+            backend/regulatory/coverage_ledger_io.go
+            backend/regulatory/coverage_ledger_test.go
+            backend/cmd/coverage-ledger-build/main.go
+            schemas/regulatory/entity-coverage-ledger.schema.json
+          )
+          if [[ -z "$(git status --porcelain -- "${paths[@]}")" ]]; then
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add "$path"
-          git commit -m 'data: generate pilot building coverage ledger'
+          git add "${paths[@]}"
+          git commit -m 'style: canonicalize pilot coverage implementation'
           git push origin HEAD:feature/pilot-entity-coverage-ledger
