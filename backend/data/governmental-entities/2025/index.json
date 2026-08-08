@@ -1,0 +1,623 @@
+{
+  "schema_version": "1.0",
+  "source_id": "src:census-government-units-2025",
+  "generated_at": "2026-08-08T16:21:43Z",
+  "total_entities": 38704,
+  "entity_type_counts": {
+    "consolidated_government": 24,
+    "county_equivalent": 3031,
+    "minor_civil_division": 16184,
+    "municipality": 19465
+  },
+  "classification_counts": {
+    "inactive": 84,
+    "unresolved": 38620
+  },
+  "states": [
+    {
+      "state_id": "US-AK",
+      "total_entities": 164,
+      "entity_type_counts": {
+        "consolidated_government": 3,
+        "county_equivalent": 15,
+        "municipality": 146
+      },
+      "classification_counts": {
+        "unresolved": 164
+      }
+    },
+    {
+      "state_id": "US-AL",
+      "total_entities": 531,
+      "entity_type_counts": {
+        "county_equivalent": 67,
+        "minor_civil_division": 1,
+        "municipality": 463
+      },
+      "classification_counts": {
+        "unresolved": 531
+      }
+    },
+    {
+      "state_id": "US-AR",
+      "total_entities": 575,
+      "entity_type_counts": {
+        "county_equivalent": 75,
+        "municipality": 500
+      },
+      "classification_counts": {
+        "unresolved": 575
+      }
+    },
+    {
+      "state_id": "US-AZ",
+      "total_entities": 106,
+      "entity_type_counts": {
+        "county_equivalent": 15,
+        "municipality": 91
+      },
+      "classification_counts": {
+        "unresolved": 106
+      }
+    },
+    {
+      "state_id": "US-CA",
+      "total_entities": 540,
+      "entity_type_counts": {
+        "consolidated_government": 1,
+        "county_equivalent": 57,
+        "municipality": 482
+      },
+      "classification_counts": {
+        "unresolved": 540
+      }
+    },
+    {
+      "state_id": "US-CO",
+      "total_entities": 335,
+      "entity_type_counts": {
+        "consolidated_government": 2,
+        "county_equivalent": 62,
+        "municipality": 271
+      },
+      "classification_counts": {
+        "inactive": 2,
+        "unresolved": 333
+      }
+    },
+    {
+      "state_id": "US-CT",
+      "total_entities": 178,
+      "entity_type_counts": {
+        "minor_civil_division": 148,
+        "municipality": 30
+      },
+      "classification_counts": {
+        "unresolved": 178
+      }
+    },
+    {
+      "state_id": "US-DC",
+      "total_entities": 1,
+      "entity_type_counts": {
+        "municipality": 1
+      },
+      "classification_counts": {
+        "unresolved": 1
+      }
+    },
+    {
+      "state_id": "US-DE",
+      "total_entities": 60,
+      "entity_type_counts": {
+        "county_equivalent": 3,
+        "municipality": 57
+      },
+      "classification_counts": {
+        "unresolved": 60
+      }
+    },
+    {
+      "state_id": "US-FL",
+      "total_entities": 477,
+      "entity_type_counts": {
+        "county_equivalent": 66,
+        "municipality": 411
+      },
+      "classification_counts": {
+        "unresolved": 477
+      }
+    },
+    {
+      "state_id": "US-GA",
+      "total_entities": 689,
+      "entity_type_counts": {
+        "consolidated_government": 6,
+        "county_equivalent": 152,
+        "municipality": 531
+      },
+      "classification_counts": {
+        "unresolved": 689
+      }
+    },
+    {
+      "state_id": "US-HI",
+      "total_entities": 4,
+      "entity_type_counts": {
+        "consolidated_government": 1,
+        "county_equivalent": 3
+      },
+      "classification_counts": {
+        "unresolved": 4
+      }
+    },
+    {
+      "state_id": "US-IA",
+      "total_entities": 1041,
+      "entity_type_counts": {
+        "county_equivalent": 99,
+        "minor_civil_division": 2,
+        "municipality": 940
+      },
+      "classification_counts": {
+        "unresolved": 1041
+      }
+    },
+    {
+      "state_id": "US-ID",
+      "total_entities": 243,
+      "entity_type_counts": {
+        "county_equivalent": 44,
+        "municipality": 199
+      },
+      "classification_counts": {
+        "inactive": 1,
+        "unresolved": 242
+      }
+    },
+    {
+      "state_id": "US-IL",
+      "total_entities": 2821,
+      "entity_type_counts": {
+        "county_equivalent": 102,
+        "minor_civil_division": 1425,
+        "municipality": 1294
+      },
+      "classification_counts": {
+        "unresolved": 2821
+      }
+    },
+    {
+      "state_id": "US-IN",
+      "total_entities": 1660,
+      "entity_type_counts": {
+        "county_equivalent": 91,
+        "minor_civil_division": 1003,
+        "municipality": 566
+      },
+      "classification_counts": {
+        "unresolved": 1660
+      }
+    },
+    {
+      "state_id": "US-KS",
+      "total_entities": 1981,
+      "entity_type_counts": {
+        "consolidated_government": 2,
+        "county_equivalent": 103,
+        "minor_civil_division": 1254,
+        "municipality": 622
+      },
+      "classification_counts": {
+        "inactive": 46,
+        "unresolved": 1935
+      }
+    },
+    {
+      "state_id": "US-KY",
+      "total_entities": 530,
+      "entity_type_counts": {
+        "consolidated_government": 2,
+        "county_equivalent": 118,
+        "municipality": 410
+      },
+      "classification_counts": {
+        "inactive": 1,
+        "unresolved": 529
+      }
+    },
+    {
+      "state_id": "US-LA",
+      "total_entities": 364,
+      "entity_type_counts": {
+        "consolidated_government": 3,
+        "county_equivalent": 60,
+        "municipality": 301
+      },
+      "classification_counts": {
+        "unresolved": 364
+      }
+    },
+    {
+      "state_id": "US-MA",
+      "total_entities": 357,
+      "entity_type_counts": {
+        "county_equivalent": 5,
+        "minor_civil_division": 294,
+        "municipality": 58
+      },
+      "classification_counts": {
+        "unresolved": 357
+      }
+    },
+    {
+      "state_id": "US-MD",
+      "total_entities": 180,
+      "entity_type_counts": {
+        "county_equivalent": 23,
+        "municipality": 157
+      },
+      "classification_counts": {
+        "unresolved": 180
+      }
+    },
+    {
+      "state_id": "US-ME",
+      "total_entities": 497,
+      "entity_type_counts": {
+        "county_equivalent": 16,
+        "minor_civil_division": 458,
+        "municipality": 23
+      },
+      "classification_counts": {
+        "unresolved": 497
+      }
+    },
+    {
+      "state_id": "US-MI",
+      "total_entities": 1856,
+      "entity_type_counts": {
+        "county_equivalent": 83,
+        "minor_civil_division": 1240,
+        "municipality": 533
+      },
+      "classification_counts": {
+        "unresolved": 1856
+      }
+    },
+    {
+      "state_id": "US-MN",
+      "total_entities": 2720,
+      "entity_type_counts": {
+        "county_equivalent": 87,
+        "minor_civil_division": 1777,
+        "municipality": 856
+      },
+      "classification_counts": {
+        "unresolved": 2720
+      }
+    },
+    {
+      "state_id": "US-MO",
+      "total_entities": 1337,
+      "entity_type_counts": {
+        "county_equivalent": 114,
+        "minor_civil_division": 283,
+        "municipality": 940
+      },
+      "classification_counts": {
+        "inactive": 6,
+        "unresolved": 1331
+      }
+    },
+    {
+      "state_id": "US-MS",
+      "total_entities": 381,
+      "entity_type_counts": {
+        "county_equivalent": 82,
+        "municipality": 299
+      },
+      "classification_counts": {
+        "unresolved": 381
+      }
+    },
+    {
+      "state_id": "US-MT",
+      "total_entities": 183,
+      "entity_type_counts": {
+        "consolidated_government": 1,
+        "county_equivalent": 54,
+        "minor_civil_division": 2,
+        "municipality": 126
+      },
+      "classification_counts": {
+        "unresolved": 183
+      }
+    },
+    {
+      "state_id": "US-NC",
+      "total_entities": 651,
+      "entity_type_counts": {
+        "county_equivalent": 100,
+        "municipality": 551
+      },
+      "classification_counts": {
+        "inactive": 1,
+        "unresolved": 650
+      }
+    },
+    {
+      "state_id": "US-ND",
+      "total_entities": 1710,
+      "entity_type_counts": {
+        "county_equivalent": 53,
+        "minor_civil_division": 1302,
+        "municipality": 355
+      },
+      "classification_counts": {
+        "inactive": 1,
+        "unresolved": 1709
+      }
+    },
+    {
+      "state_id": "US-NE",
+      "total_entities": 971,
+      "entity_type_counts": {
+        "county_equivalent": 93,
+        "minor_civil_division": 350,
+        "municipality": 528
+      },
+      "classification_counts": {
+        "inactive": 17,
+        "unresolved": 954
+      }
+    },
+    {
+      "state_id": "US-NH",
+      "total_entities": 246,
+      "entity_type_counts": {
+        "county_equivalent": 10,
+        "minor_civil_division": 223,
+        "municipality": 13
+      },
+      "classification_counts": {
+        "unresolved": 246
+      }
+    },
+    {
+      "state_id": "US-NJ",
+      "total_entities": 585,
+      "entity_type_counts": {
+        "county_equivalent": 21,
+        "minor_civil_division": 241,
+        "municipality": 323
+      },
+      "classification_counts": {
+        "unresolved": 585
+      }
+    },
+    {
+      "state_id": "US-NM",
+      "total_entities": 138,
+      "entity_type_counts": {
+        "county_equivalent": 33,
+        "municipality": 105
+      },
+      "classification_counts": {
+        "unresolved": 138
+      }
+    },
+    {
+      "state_id": "US-NV",
+      "total_entities": 35,
+      "entity_type_counts": {
+        "county_equivalent": 16,
+        "municipality": 19
+      },
+      "classification_counts": {
+        "unresolved": 35
+      }
+    },
+    {
+      "state_id": "US-NY",
+      "total_entities": 1581,
+      "entity_type_counts": {
+        "county_equivalent": 57,
+        "minor_civil_division": 930,
+        "municipality": 594
+      },
+      "classification_counts": {
+        "inactive": 1,
+        "unresolved": 1580
+      }
+    },
+    {
+      "state_id": "US-OH",
+      "total_entities": 2321,
+      "entity_type_counts": {
+        "county_equivalent": 88,
+        "minor_civil_division": 1308,
+        "municipality": 925
+      },
+      "classification_counts": {
+        "unresolved": 2321
+      }
+    },
+    {
+      "state_id": "US-OK",
+      "total_entities": 672,
+      "entity_type_counts": {
+        "county_equivalent": 77,
+        "municipality": 595
+      },
+      "classification_counts": {
+        "inactive": 4,
+        "unresolved": 668
+      }
+    },
+    {
+      "state_id": "US-OR",
+      "total_entities": 277,
+      "entity_type_counts": {
+        "county_equivalent": 36,
+        "minor_civil_division": 1,
+        "municipality": 240
+      },
+      "classification_counts": {
+        "unresolved": 277
+      }
+    },
+    {
+      "state_id": "US-PA",
+      "total_entities": 2623,
+      "entity_type_counts": {
+        "county_equivalent": 66,
+        "minor_civil_division": 1543,
+        "municipality": 1014
+      },
+      "classification_counts": {
+        "inactive": 1,
+        "unresolved": 2622
+      }
+    },
+    {
+      "state_id": "US-RI",
+      "total_entities": 39,
+      "entity_type_counts": {
+        "minor_civil_division": 31,
+        "municipality": 8
+      },
+      "classification_counts": {
+        "unresolved": 39
+      }
+    },
+    {
+      "state_id": "US-SC",
+      "total_entities": 317,
+      "entity_type_counts": {
+        "county_equivalent": 46,
+        "municipality": 271
+      },
+      "classification_counts": {
+        "unresolved": 317
+      }
+    },
+    {
+      "state_id": "US-SD",
+      "total_entities": 1268,
+      "entity_type_counts": {
+        "county_equivalent": 66,
+        "minor_civil_division": 892,
+        "municipality": 310
+      },
+      "classification_counts": {
+        "inactive": 1,
+        "unresolved": 1267
+      }
+    },
+    {
+      "state_id": "US-TN",
+      "total_entities": 437,
+      "entity_type_counts": {
+        "consolidated_government": 3,
+        "county_equivalent": 92,
+        "municipality": 342
+      },
+      "classification_counts": {
+        "unresolved": 437
+      }
+    },
+    {
+      "state_id": "US-TX",
+      "total_entities": 1480,
+      "entity_type_counts": {
+        "county_equivalent": 254,
+        "municipality": 1226
+      },
+      "classification_counts": {
+        "inactive": 2,
+        "unresolved": 1478
+      }
+    },
+    {
+      "state_id": "US-UT",
+      "total_entities": 284,
+      "entity_type_counts": {
+        "county_equivalent": 29,
+        "municipality": 255
+      },
+      "classification_counts": {
+        "unresolved": 284
+      }
+    },
+    {
+      "state_id": "US-VA",
+      "total_entities": 322,
+      "entity_type_counts": {
+        "county_equivalent": 95,
+        "municipality": 227
+      },
+      "classification_counts": {
+        "unresolved": 322
+      }
+    },
+    {
+      "state_id": "US-VT",
+      "total_entities": 288,
+      "entity_type_counts": {
+        "county_equivalent": 14,
+        "minor_civil_division": 235,
+        "municipality": 39
+      },
+      "classification_counts": {
+        "unresolved": 288
+      }
+    },
+    {
+      "state_id": "US-WA",
+      "total_entities": 321,
+      "entity_type_counts": {
+        "county_equivalent": 39,
+        "minor_civil_division": 1,
+        "municipality": 281
+      },
+      "classification_counts": {
+        "unresolved": 321
+      }
+    },
+    {
+      "state_id": "US-WI",
+      "total_entities": 1920,
+      "entity_type_counts": {
+        "county_equivalent": 72,
+        "minor_civil_division": 1240,
+        "municipality": 608
+      },
+      "classification_counts": {
+        "unresolved": 1920
+      }
+    },
+    {
+      "state_id": "US-WV",
+      "total_entities": 285,
+      "entity_type_counts": {
+        "county_equivalent": 55,
+        "municipality": 230
+      },
+      "classification_counts": {
+        "unresolved": 285
+      }
+    },
+    {
+      "state_id": "US-WY",
+      "total_entities": 122,
+      "entity_type_counts": {
+        "county_equivalent": 23,
+        "municipality": 99
+      },
+      "classification_counts": {
+        "unresolved": 122
+      }
+    }
+  ]
+}

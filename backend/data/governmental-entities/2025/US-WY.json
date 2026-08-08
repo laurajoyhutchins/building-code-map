@@ -1,0 +1,5875 @@
+{
+  "schema_version": "1.0",
+  "inventory_id": "census-government-units-2025:us-wy",
+  "generated_at": "2026-08-08T16:21:43Z",
+  "sources": [
+    {
+      "id": "src:census-government-units-2025",
+      "title": "2025 Government Units Listing",
+      "url": "https://www.census.gov/programs-surveys/gus/technical-documentation/file-layouts/annual-organization-public-use-file.html",
+      "kind": "governmental_inventory",
+      "accessed_at": "2026-08-08",
+      "last_checked_at": "2026-08-08",
+      "availability": "available",
+      "caveat": "This source establishes government-unit identity, source classification, activity status, and source-provided identifiers. It does not establish building-code adoption, amendment, administration, enforcement authority, or legal boundary geometry."
+    }
+  ],
+  "entities": [
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:115476",
+      "official_name": "COUNTY OF LARAMIE",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "115476"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "115476"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99021"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 100984,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:115478",
+      "official_name": "COUNTY OF PARK",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "115478"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "115478"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "029"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99029"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 30735,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:115483",
+      "official_name": "COUNTY OF WASHAKIE",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "115483"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "115483"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "043"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99043"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 7710,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:136948",
+      "official_name": "COUNTY OF JOHNSON",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136948"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136948"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "019"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99019"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8759,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:136949",
+      "official_name": "COUNTY OF NIOBRARA",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136949"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136949"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "027"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99027"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2354,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:136950",
+      "official_name": "COUNTY OF SUBLETTE",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136950"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136950"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "035"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99035"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8969,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:136951",
+      "official_name": "COUNTY OF WESTON",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136951"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136951"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "045"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99045"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 6808,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:177831",
+      "official_name": "COUNTY OF BIG HORN",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177831"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177831"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99003"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 12018,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:177832",
+      "official_name": "COUNTY OF CAMPBELL",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177832"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177832"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99005"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 47498,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:177833",
+      "official_name": "COUNTY OF CONVERSE",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177833"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177833"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99009"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 13809,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:177834",
+      "official_name": "COUNTY OF CROOK",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177834"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177834"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "011"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99011"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 7592,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:177835",
+      "official_name": "COUNTY OF GOSHEN",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177835"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177835"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "015"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99015"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 12642,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:177836",
+      "official_name": "COUNTY OF HOT SPRINGS",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177836"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177836"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "017"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99017"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4661,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:177837",
+      "official_name": "COUNTY OF NATRONA",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177837"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177837"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99025"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 79941,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:177838",
+      "official_name": "COUNTY OF PLATTE",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177838"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177838"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "031"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99031"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8546,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:177839",
+      "official_name": "COUNTY OF SWEETWATER",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177839"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177839"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "037"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99037"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 41249,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:177840",
+      "official_name": "COUNTY OF TETON",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177840"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177840"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "039"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99039"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 23232,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:177841",
+      "official_name": "COUNTY OF UINTA",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177841"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177841"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "041"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99041"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 20745,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:188086",
+      "official_name": "COUNTY OF CARBON",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "188086"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "188086"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99007"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 14334,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:191900",
+      "official_name": "COUNTY OF ALBANY",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "191900"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "191900"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99001"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 38257,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:194269",
+      "official_name": "COUNTY OF LINCOLN",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "194269"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "194269"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "023"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99023"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 20880,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:205726",
+      "official_name": "COUNTY OF FREMONT",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "205726"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "205726"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99013"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 39815,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:county_equivalent:census-government-unit:212989",
+      "official_name": "COUNTY OF SHERIDAN",
+      "entity_type": "county_equivalent",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "212989"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "212989"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "033"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99033"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 32519,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:115485",
+      "official_name": "TOWN OF BASIN",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "115485"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "115485"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "05320"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1330,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:115488",
+      "official_name": "TOWN OF SINCLAIR",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "115488"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "115488"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "71150"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 363,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:115489",
+      "official_name": "TOWN OF HULETT",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "115489"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "115489"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "011"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "39105"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 326,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:115490",
+      "official_name": "TOWN OF PAVILLION",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "115490"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "115490"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "60130"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 226,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:115491",
+      "official_name": "TOWN OF LAGRANGE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "115491"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "115491"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "015"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "43745"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 378,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:115492",
+      "official_name": "CITY OF CHEYENNE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "115492"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "115492"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "13900"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 65168,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:115495",
+      "official_name": "CITY OF KEMMERER",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "115495"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "115495"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "023"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "42005"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2393,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:115496",
+      "official_name": "TOWN OF EDGERTON",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "115496"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "115496"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "23155"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 154,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:115497",
+      "official_name": "TOWN OF EVANSVILLE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "115497"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "115497"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "25765"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2778,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:115498",
+      "official_name": "TOWN OF BAR NUNN",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "115498"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "115498"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "05245"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3001,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:115499",
+      "official_name": "TOWN OF MEETEETSE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "115499"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "115499"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "029"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "51720"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 314,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:115501",
+      "official_name": "TOWN OF HARTVILLE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "115501"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "115501"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "031"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "35625"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 65,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:115504",
+      "official_name": "TOWN OF BIG PINEY",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "115504"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "115504"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "035"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "07060"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 396,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:115507",
+      "official_name": "TOWN OF UPTON",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "115507"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "115507"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "045"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "79125"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 888,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:136952",
+      "official_name": "TOWN OF ROCK RIVER",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136952"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136952"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "67090"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 218,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:136953",
+      "official_name": "TOWN OF LOVELL",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136953"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136953"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "47950"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2350,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:136954",
+      "official_name": "TOWN OF WRIGHT",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136954"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136954"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "85015"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1653,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:136955",
+      "official_name": "TOWN OF ELK MOUNTAIN",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136955"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136955"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "24025"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 149,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:136956",
+      "official_name": "TOWN OF GLENROCK",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136956"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136956"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "32435"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2421,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:136957",
+      "official_name": "TOWN OF MOORCROFT",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136957"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136957"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "011"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "54185"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1001,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:136958",
+      "official_name": "TOWN OF HUDSON",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136958"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136958"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "38960"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 435,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:136959",
+      "official_name": "CITY OF LANDER",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136959"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136959"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "44760"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 7615,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:136960",
+      "official_name": "TOWN OF LINGLE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136960"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136960"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "015"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "46790"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 398,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:136961",
+      "official_name": "TOWN OF KAYCEE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136961"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136961"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "019"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "41353"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 281,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:136962",
+      "official_name": "TOWN OF BURNS",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136962"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136962"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "11265"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 368,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:136963",
+      "official_name": "TOWN OF THAYNE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136963"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136963"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "023"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "76370"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 433,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:136964",
+      "official_name": "CITY OF CASPER",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136964"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136964"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "13150"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 58720,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:136965",
+      "official_name": "TOWN OF MANVILLE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136965"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136965"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "027"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "50270"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 92,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:136966",
+      "official_name": "TOWN OF DAYTON",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136966"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136966"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "033"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "19385"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 827,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:136967",
+      "official_name": "TOWN OF PINEDALE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136967"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136967"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "035"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "61580"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2034,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:136968",
+      "official_name": "CITY OF EVANSTON",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136968"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136968"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "041"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "25620"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 11807,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177842",
+      "official_name": "CITY OF LARAMIE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177842"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177842"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "45050"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 32152,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177843",
+      "official_name": "TOWN OF BYRON",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177843"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177843"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "11700"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 574,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177844",
+      "official_name": "TOWN OF COWLEY",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177844"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177844"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "17645"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 845,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177845",
+      "official_name": "TOWN OF FRANNIE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177845"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177845"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "29825"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 146,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177846",
+      "official_name": "TOWN OF MANDERSON",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177846"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177846"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "49980"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 91,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177847",
+      "official_name": "TOWN OF BURLINGTON",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177847"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177847"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "11120"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 370,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177848",
+      "official_name": "TOWN OF DIXON",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177848"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177848"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "20690"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 73,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177850",
+      "official_name": "TOWN OF GRAND ENCAMPMENT",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177850"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177850"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "24750"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 450,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177851",
+      "official_name": "CITY OF RAWLINS",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177851"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177851"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "63900"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8032,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177852",
+      "official_name": "CITY OF DOUGLAS",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177852"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177852"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "21125"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 6449,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177853",
+      "official_name": "TOWN OF LOST SPRINGS",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177853"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177853"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "47805"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177854",
+      "official_name": "TOWN OF SUNDANCE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177854"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177854"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "011"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "74195"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1098,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177855",
+      "official_name": "TOWN OF PINE HAVEN",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177855"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177855"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "011"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "61610"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 543,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177856",
+      "official_name": "TOWN OF SHOSHONI",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177856"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177856"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "70570"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 495,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177857",
+      "official_name": "TOWN OF FORT LARAMIE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177857"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177857"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "015"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "28230"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 215,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177858",
+      "official_name": "TOWN OF EAST THERMOPOLIS",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177858"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177858"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "017"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "22720"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 236,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177859",
+      "official_name": "TOWN OF THERMOPOLIS",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177859"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177859"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "017"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "76515"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2742,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177860",
+      "official_name": "TOWN OF BUFFALO",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177860"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177860"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "019"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "10685"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4621,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177861",
+      "official_name": "TOWN OF ALBIN",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177861"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177861"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "00825"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 160,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177862",
+      "official_name": "TOWN OF COKEVILLE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177862"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177862"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "023"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "15905"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 492,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177863",
+      "official_name": "TOWN OF DIAMONDVILLE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177863"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177863"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "023"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "20110"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 524,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177864",
+      "official_name": "TOWN OF ALPINE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177864"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177864"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "023"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "01695"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1332,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177865",
+      "official_name": "TOWN OF OPAL",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177865"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177865"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "023"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "57810"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 65,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177866",
+      "official_name": "TOWN OF LA BARGE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177866"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177866"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "023"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "43455"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 396,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177867",
+      "official_name": "TOWN OF MILLS",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177867"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177867"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "53460"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4517,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177868",
+      "official_name": "TOWN OF LUSK",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177868"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177868"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "027"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "48530"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1445,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177869",
+      "official_name": "TOWN OF VAN TASSELL",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177869"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177869"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "027"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "79705"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 22,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177870",
+      "official_name": "CITY OF CODY",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177870"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177870"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "029"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "15760"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 10240,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177871",
+      "official_name": "TOWN OF CHUGWATER",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177871"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177871"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "031"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "14165"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 171,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177872",
+      "official_name": "TOWN OF GLENDO",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177872"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177872"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "031"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "32290"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 238,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177873",
+      "official_name": "TOWN OF WHEATLAND",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177873"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177873"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "031"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "83040"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3509,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177874",
+      "official_name": "TOWN OF RANCHESTER",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177874"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177874"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "033"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "63755"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1168,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177875",
+      "official_name": "TOWN OF MARBLETON",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177875"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177875"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "035"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "50415"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 861,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177876",
+      "official_name": "TOWN OF GRANGER",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177876"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177876"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "037"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "32870"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 93,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177877",
+      "official_name": "TOWN OF BAIROIL",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177877"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177877"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "037"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "04885"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 66,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177878",
+      "official_name": "TOWN OF LYMAN",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177878"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177878"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "041"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "48675"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2189,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:177879",
+      "official_name": "CITY OF WORLAND",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "177879"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "177879"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "043"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "84925"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4785,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:183798",
+      "official_name": "TOWN OF JACKSON",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "183798"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "183798"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "039"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "40120"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 10639,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:183799",
+      "official_name": "TOWN OF MEDICINE BOW",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "183799"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "183799"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "51575"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 238,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:188095",
+      "official_name": "TOWN OF GREYBULL",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "188095"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "188095"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "33885"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1709,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:188097",
+      "official_name": "TOWN OF KIRBY",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "188097"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "188097"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "017"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "42730"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 76,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:191901",
+      "official_name": "TOWN OF DEAVER",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "191901"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "191901"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "19530"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 169,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:191902",
+      "official_name": "TOWN OF SARATOGA",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "191902"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "191902"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "68685"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1752,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:191903",
+      "official_name": "TOWN OF YODER",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "191903"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "191903"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "015"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "86665"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 132,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:191904",
+      "official_name": "CITY OF POWELL",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "191904"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "191904"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "029"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "62450"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 6488,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:191905",
+      "official_name": "TOWN OF TEN SLEEP",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "191905"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "191905"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "043"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "75790"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 257,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:194270",
+      "official_name": "TOWN OF PINE BLUFFS",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "194270"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "194270"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "61435"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1121,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:194271",
+      "official_name": "TOWN OF CLEARMONT",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "194271"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "194271"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "033"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "15325"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 123,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:194272",
+      "official_name": "TOWN OF WAMSUTTER",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "194272"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "194272"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "037"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "81300"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 197,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:198292",
+      "official_name": "TOWN OF BEAR RIVER",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "198292"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "198292"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "041"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "05625"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 528,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:205727",
+      "official_name": "TOWN OF AFTON",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "205727"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "205727"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "023"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "00245"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2270,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:205728",
+      "official_name": "TOWN OF GUERNSEY",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "205728"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "205728"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "031"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "34320"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1104,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:205729",
+      "official_name": "CITY OF GREEN RIVER",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "205729"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "205729"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "037"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "33740"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 11496,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:209932",
+      "official_name": "CITY OF GILLETTE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "209932"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "209932"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "31855"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 33496,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:209933",
+      "official_name": "TOWN OF HANNA",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "209933"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "209933"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "35335"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 668,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:209934",
+      "official_name": "TOWN OF RIVERSIDE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "209934"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "209934"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "66075"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 63,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:209935",
+      "official_name": "TOWN OF ROLLING HILLS",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "209935"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "209935"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "67440"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 426,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:209936",
+      "official_name": "TOWN OF DUBOIS",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "209936"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "209936"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "21415"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 990,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:209937",
+      "official_name": "CITY OF RIVERTON",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "209937"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "209937"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "66220"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 10923,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:209938",
+      "official_name": "CITY OF TORRINGTON",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "209938"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "209938"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "015"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "77530"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 6212,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:209939",
+      "official_name": "CITY OF SHERIDAN",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "209939"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "209939"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "033"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "69845"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 19543,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:209940",
+      "official_name": "TOWN OF SUPERIOR",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "209940"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "209940"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "037"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "74775"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 182,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:209941",
+      "official_name": "TOWN OF MOUNTAIN VIEW",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "209941"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "209941"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "041"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "55345"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1280,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:209942",
+      "official_name": "CITY OF NEWCASTLE",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "209942"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "209942"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "045"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "56215"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3326,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:211495",
+      "official_name": "CITY OF ROCK SPRINGS",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "211495"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "211495"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "037"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "67235"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 22954,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:212155",
+      "official_name": "TOWN OF MIDWEST",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "212155"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "212155"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "52445"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 286,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:217919",
+      "official_name": "TOWN OF STAR VALLEY RANCH",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "217919"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "217919"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "023"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "73180"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2042,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-wy:municipality:census-government-unit:225105",
+      "official_name": "TOWN OF BAGGS",
+      "entity_type": "municipality",
+      "state_id": "US-WY",
+      "state_fips": "56",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "225105"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "225105"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "56"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "04740"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 405,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    }
+  ]
+}

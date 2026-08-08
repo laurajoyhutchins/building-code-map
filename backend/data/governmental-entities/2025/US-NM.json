@@ -1,0 +1,6643 @@
+{
+  "schema_version": "1.0",
+  "inventory_id": "census-government-units-2025:us-nm",
+  "generated_at": "2026-08-08T16:21:43Z",
+  "sources": [
+    {
+      "id": "src:census-government-units-2025",
+      "title": "2025 Government Units Listing",
+      "url": "https://www.census.gov/programs-surveys/gus/technical-documentation/file-layouts/annual-organization-public-use-file.html",
+      "kind": "governmental_inventory",
+      "accessed_at": "2026-08-08",
+      "last_checked_at": "2026-08-08",
+      "availability": "available",
+      "caveat": "This source establishes government-unit identity, source classification, activity status, and source-provided identifiers. It does not establish building-code adoption, amendment, administration, enforcement authority, or legal boundary geometry."
+    }
+  ],
+  "entities": [
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:109313",
+      "official_name": "COUNTY OF COLFAX",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "109313"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "109313"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99007"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 12255,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:109314",
+      "official_name": "COUNTY OF GRANT",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "109314"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "109314"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "017"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99017"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 27472,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:109315",
+      "official_name": "COUNTY OF MORA",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "109315"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "109315"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "033"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99033"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4123,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:109317",
+      "official_name": "COUNTY OF TAOS",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "109317"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "109317"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "055"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99055"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 34405,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:131017",
+      "official_name": "COUNTY OF CHAVES",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131017"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131017"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99005"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 63561,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:131018",
+      "official_name": "COUNTY OF DONA ANA",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131018"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131018"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99013"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 225210,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:131019",
+      "official_name": "COUNTY OF HIDALGO",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131019"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131019"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "023"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99023"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3965,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:131020",
+      "official_name": "COUNTY OF LUNA",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131020"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131020"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "029"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99029"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 25316,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:131021",
+      "official_name": "COUNTY OF OTERO",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131021"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131021"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "035"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99035"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 68835,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:131022",
+      "official_name": "COUNTY OF SANDOVAL",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131022"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131022"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "043"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99043"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 155936,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:131023",
+      "official_name": "COUNTY OF SOCORRO",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131023"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131023"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "053"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99053"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 15963,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:131024",
+      "official_name": "COUNTY OF VALENCIA",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131024"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131024"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "061"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99061"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 79141,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:139308",
+      "official_name": "COUNTY OF HARDING",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "139308"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "139308"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99021"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 624,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:170363",
+      "official_name": "COUNTY OF CATRON",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170363"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170363"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99003"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3825,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:170364",
+      "official_name": "COUNTY OF CURRY",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170364"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170364"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99009"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 47222,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:170365",
+      "official_name": "COUNTY OF DE BACA",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170365"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170365"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "011"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99011"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1657,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:170366",
+      "official_name": "COUNTY OF EDDY",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170366"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170366"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "015"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99015"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 60275,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:170367",
+      "official_name": "COUNTY OF GUADALUPE",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170367"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170367"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "019"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99019"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4292,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:170368",
+      "official_name": "COUNTY OF LINCOLN",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170368"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170368"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "027"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99027"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 20029,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:170369",
+      "official_name": "COUNTY OF LOS ALAMOS",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170369"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170369"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "028"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99028"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 19444,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:170370",
+      "official_name": "COUNTY OF MCKINLEY",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170370"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170370"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "031"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99031"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 68797,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:170371",
+      "official_name": "COUNTY OF QUAY",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170371"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170371"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "037"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99037"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8510,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:170372",
+      "official_name": "COUNTY OF RIO ARRIBA",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170372"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170372"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "039"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99039"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 39876,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:170373",
+      "official_name": "COUNTY OF ROOSEVELT",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170373"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170373"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "041"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99041"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 18787,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:170374",
+      "official_name": "COUNTY OF SAN MIGUEL",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170374"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170374"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "047"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99047"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 26668,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:170375",
+      "official_name": "COUNTY OF SANTA FE",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170375"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170375"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "049"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99049"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 155956,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:170376",
+      "official_name": "COUNTY OF TORRANCE",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170376"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170376"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "057"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99057"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 15633,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:170377",
+      "official_name": "COUNTY OF UNION",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170377"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170377"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "059"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99059"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3964,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:186594",
+      "official_name": "COUNTY OF CIBOLA",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "186594"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "186594"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "006"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99006"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 26780,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:193756",
+      "official_name": "COUNTY OF LEA",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "193756"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "193756"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99025"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 72101,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:193757",
+      "official_name": "COUNTY OF SIERRA",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "193757"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "193757"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "051"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99051"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 11488,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:208788",
+      "official_name": "COUNTY OF BERNALILLO",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "208788"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "208788"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99001"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 671586,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:county_equivalent:census-government-unit:213102",
+      "official_name": "COUNTY OF SAN JUAN",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "213102"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "213102"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "045"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99045"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 120675,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:109318",
+      "official_name": "TOWN OF DEXTER",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "109318"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "109318"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "20620"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1054,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:109319",
+      "official_name": "CITY OF RATON",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "109319"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "109319"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "62060"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 5978,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:109322",
+      "official_name": "VILLAGE OF LOVING",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "109322"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "109322"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "015"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "44420"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1330,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:109323",
+      "official_name": "CITY OF EUNICE",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "109323"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "109323"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "25450"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2944,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:109324",
+      "official_name": "TOWN OF TATUM",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "109324"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "109324"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "76620"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 681,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:109325",
+      "official_name": "CITY OF GALLUP",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "109325"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "109325"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "031"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "28460"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 20451,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:109328",
+      "official_name": "TOWN OF ELIDA",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "109328"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "109328"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "041"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "23000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 156,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:109329",
+      "official_name": "CITY OF SANTA FE",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "109329"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "109329"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "049"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "70500"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 89167,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:109330",
+      "official_name": "VILLAGE OF MAGDALENA",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "109330"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "109330"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "053"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "46310"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 779,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:109331",
+      "official_name": "VILLAGE OF ENCINO",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "109331"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "109331"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "057"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "24610"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 56,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:131025",
+      "official_name": "VILLAGE OF RESERVE",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131025"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131025"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "62620"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 311,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:131026",
+      "official_name": "VILLAGE OF MAXWELL",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131026"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131026"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "47080"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 223,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:131027",
+      "official_name": "VILLAGE OF ANGEL FIRE",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131027"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131027"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "03400"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1176,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:131028",
+      "official_name": "CITY OF SUNLAND PARK",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131028"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131028"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "75640"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 17689,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:131029",
+      "official_name": "VILLAGE OF HOPE",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131029"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131029"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "015"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "33290"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 109,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:131030",
+      "official_name": "CITY OF BAYARD",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131030"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131030"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "017"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "06270"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2064,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:131031",
+      "official_name": "CITY OF HOBBS",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131031"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131031"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "32520"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 39386,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:131032",
+      "official_name": "VILLAGE OF CLOUDCROFT",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131032"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131032"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "035"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "16280"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 758,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:131033",
+      "official_name": "CITY OF TUCUMCARI",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131033"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131033"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "037"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "79910"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 5123,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:131034",
+      "official_name": "VILLAGE OF CHAMA",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131034"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131034"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "039"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "13970"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 912,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:131035",
+      "official_name": "VILLAGE OF PECOS",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131035"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131035"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "047"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "55620"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1380,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:131036",
+      "official_name": "CITY OF ELEPHANT BUTTE",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131036"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131036"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "051"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "22720"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1443,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:131037",
+      "official_name": "VILLAGE OF WILLIAMSBURG",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131037"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131037"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "051"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "85300"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 463,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:131038",
+      "official_name": "TOWN OF RED RIVER",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131038"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131038"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "055"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "62200"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 537,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:131039",
+      "official_name": "TOWN OF ESTANCIA",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131039"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131039"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "057"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "25380"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1295,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:131040",
+      "official_name": "VILLAGE OF WILLARD",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131040"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131040"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "057"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "85160"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 212,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:131041",
+      "official_name": "CITY OF GRANTS",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "131041"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "131041"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "006"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "30490"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8996,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170378",
+      "official_name": "CITY OF ALBUQUERQUE",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170378"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170378"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "02000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 560274,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170379",
+      "official_name": "VILLAGE OF LOS RANCHOS DE ALBUQUERQUE",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170379"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170379"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "43930"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 5828,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170380",
+      "official_name": "TOWN OF LAKE ARTHUR",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170380"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170380"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "37840"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 374,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170381",
+      "official_name": "VILLAGE OF EAGLE NEST",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170381"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170381"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "22020"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 316,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170382",
+      "official_name": "CITY OF CLOVIS",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170382"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170382"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "16420"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 37612,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170383",
+      "official_name": "CITY OF TEXICO",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170383"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170383"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "77250"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 922,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170384",
+      "official_name": "TOWN OF MESILLA",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170384"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170384"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "48060"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1792,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170385",
+      "official_name": "CITY OF CARLSBAD",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170385"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170385"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "015"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "12150"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 31499,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170386",
+      "official_name": "VILLAGE OF SANTA CLARA",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170386"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170386"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "017"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "70270"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1608,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170387",
+      "official_name": "TOWN OF HURLEY",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170387"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170387"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "017"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "33850"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1230,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170388",
+      "official_name": "VILLAGE OF MOSQUERO",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170388"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170388"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "50300"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 92,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170389",
+      "official_name": "CITY OF LORDSBURG",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170389"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170389"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "023"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "42180"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2203,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170390",
+      "official_name": "CITY OF JAL",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170390"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170390"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "35040"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2105,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170391",
+      "official_name": "VILLAGE OF CAPITAN",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170391"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170391"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "027"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "11800"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1393,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170392",
+      "official_name": "TOWN OF CARRIZOZO",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170392"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170392"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "027"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "12500"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 960,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170393",
+      "official_name": "CITY OF RUIDOSO DOWNS",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170393"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170393"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "027"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "65280"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2579,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170394",
+      "official_name": "VILLAGE OF COLUMBUS",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170394"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170394"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "029"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "17050"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1450,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170395",
+      "official_name": "VILLAGE OF WAGON MOUND",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170395"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170395"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "033"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "83340"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 265,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170396",
+      "official_name": "CITY OF ALAMOGORDO",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170396"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170396"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "035"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "01780"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 31284,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170397",
+      "official_name": "VILLAGE OF TULAROSA",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170397"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170397"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "035"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "79980"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2599,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170398",
+      "official_name": "VILLAGE OF SAN JON",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170398"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170398"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "037"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "68150"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 190,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170399",
+      "official_name": "VILLAGE OF LOGAN",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170399"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170399"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "037"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "42040"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 959,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170400",
+      "official_name": "CITY OF ESPANOLA",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170400"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170400"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "039"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "25170"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 10431,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170401",
+      "official_name": "CITY OF PORTALES",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170401"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170401"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "041"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "59260"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 11859,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170402",
+      "official_name": "VILLAGE OF CAUSEY",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170402"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170402"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "041"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "12850"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 68,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170403",
+      "official_name": "VILLAGE OF JEMEZ SPRINGS",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170403"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170403"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "043"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "35320"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 202,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170404",
+      "official_name": "CITY OF RIO RANCHO",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170404"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170404"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "043"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "63460"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 110660,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170405",
+      "official_name": "VILLAGE OF SAN YSIDRO",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170405"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170405"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "043"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "71020"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 168,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170406",
+      "official_name": "CITY OF FARMINGTON",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170406"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170406"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "045"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "25800"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 46237,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170407",
+      "official_name": "CITY OF LAS VEGAS",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170407"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170407"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "047"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "39940"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 12905,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170408",
+      "official_name": "TOWN OF EDGEWOOD",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170408"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170408"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "049"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "22380"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 6130,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170409",
+      "official_name": "VILLAGE OF TAOS SKI VALLEY",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170409"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170409"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "055"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "76480"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 81,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170410",
+      "official_name": "CITY OF MORIARTY",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170410"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170410"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "057"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "50160"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2010,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170411",
+      "official_name": "TOWN OF MOUNTAINAIR",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170411"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170411"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "057"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "50370"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 908,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170412",
+      "official_name": "VILLAGE OF FOLSOM",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170412"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170412"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "059"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "26780"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 47,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170413",
+      "official_name": "CITY OF BELEN",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170413"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170413"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "061"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "06480"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 7474,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:170414",
+      "official_name": "VILLAGE OF MILAN",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "170414"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "170414"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "006"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "48620"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2457,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:184186",
+      "official_name": "CITY OF AZTEC",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "184186"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "184186"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "045"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "05780"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 6130,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:184187",
+      "official_name": "CITY OF BLOOMFIELD",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "184187"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "184187"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "045"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "07880"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 7349,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:184188",
+      "official_name": "CITY OF SOCORRO",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "184188"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "184188"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "053"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "73540"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8361,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:186595",
+      "official_name": "VILLAGE OF HATCH",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "186595"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "186595"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "31820"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1568,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:186596",
+      "official_name": "VILLAGE OF RUIDOSO",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "186596"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "186596"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "027"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "65210"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 7663,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:186597",
+      "official_name": "VILLAGE OF HOUSE",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "186597"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "186597"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "037"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "33710"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 55,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:186598",
+      "official_name": "TOWN OF CLAYTON",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "186598"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "186598"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "059"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "15720"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2581,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:190924",
+      "official_name": "TOWN OF SILVER CITY",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "190924"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "190924"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "017"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "73260"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 9377,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:190925",
+      "official_name": "VILLAGE OF CUBA",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "190925"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "190925"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "043"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "19150"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 638,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:193758",
+      "official_name": "CITY OF ROSWELL",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "193758"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "193758"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "64930"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 47109,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:193759",
+      "official_name": "CITY OF ARTESIA",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "193759"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "193759"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "015"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "05220"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 12326,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:193760",
+      "official_name": "VILLAGE OF DORA",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "193760"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "193760"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "041"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "21180"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 115,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:193761",
+      "official_name": "CITY OF TRUTH OR CONSEQUENCES",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "193761"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "193761"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "051"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "79840"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 6000,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:202183",
+      "official_name": "VILLAGE OF GRADY",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "202183"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "202183"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "30210"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 84,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:202184",
+      "official_name": "VILLAGE OF CORONA",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "202184"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "202184"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "027"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "17680"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 128,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:202185",
+      "official_name": "TOWN OF BERNALILLO",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "202185"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "202185"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "043"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "06970"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 9114,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:202186",
+      "official_name": "VILLAGE OF BOSQUE FARMS",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "202186"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "202186"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "061"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "08580"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4076,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:204940",
+      "official_name": "VILLAGE OF MELROSE",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "204940"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "204940"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "47570"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 603,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:204941",
+      "official_name": "VILLAGE OF ROY",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "204941"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "204941"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "65070"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 185,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:204942",
+      "official_name": "CITY OF DEMING",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "204942"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "204942"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "029"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "20270"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 14603,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:204943",
+      "official_name": "VILLAGE OF FLOYD",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "204943"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "204943"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "041"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "26570"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 85,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:208789",
+      "official_name": "VILLAGE OF TIJERAS",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "208789"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "208789"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "77880"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 463,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:208790",
+      "official_name": "VILLAGE OF CIMARRON",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "208790"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "208790"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "15440"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 789,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:208791",
+      "official_name": "TOWN OF SPRINGER",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "208791"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "208791"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "74800"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 927,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:208792",
+      "official_name": "VILLAGE OF FORT SUMNER",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "208792"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "208792"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "011"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "27340"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 863,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:208793",
+      "official_name": "CITY OF LAS CRUCES",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "208793"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "208793"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "39380"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 114892,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:208794",
+      "official_name": "TOWN OF VAUGHN",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "208794"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "208794"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "019"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "82570"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 267,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:208795",
+      "official_name": "VILLAGE OF VIRDEN",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "208795"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "208795"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "023"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "83200"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 120,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:208796",
+      "official_name": "CITY OF LOVINGTON",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "208796"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "208796"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "44490"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 11237,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:208797",
+      "official_name": "VILLAGE OF CORRALES",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "208797"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "208797"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "043"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "17960"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8616,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:208798",
+      "official_name": "TOWN OF TAOS",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "208798"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "208798"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "055"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "76200"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 6427,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:208799",
+      "official_name": "VILLAGE OF QUESTA",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "208799"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "208799"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "055"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "60870"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1797,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:208800",
+      "official_name": "VILLAGE OF DES MOINES",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "208800"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "208800"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "059"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "20480"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 112,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:208801",
+      "official_name": "VILLAGE OF LOS LUNAS",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "208801"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "208801"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "061"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "43370"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 19079,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:211787",
+      "official_name": "VILLAGE OF GRENVILLE",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "211787"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "211787"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "059"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "30770"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 25,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:221117",
+      "official_name": "TOWN OF PERALTA",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "221117"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "221117"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "061"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "56180"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3428,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:225420",
+      "official_name": "CITY OF ANTHONY",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "225420"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "225420"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "03820"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8726,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:225829",
+      "official_name": "TOWN OF HAGERMAN",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "225829"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "225829"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "31330"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 954,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:225830",
+      "official_name": "CITY OF SANTA ROSA",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "225830"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "225830"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "019"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "70670"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2769,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:244807",
+      "official_name": "TOWN OF KIRTLAND",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "244807"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "244807"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "045"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "36230"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 576,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nm:municipality:census-government-unit:244814",
+      "official_name": "CITY OF RIO COMMUNITIES",
+      "entity_type": "municipality",
+      "state_id": "US-NM",
+      "state_fips": "35",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "244814"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "244814"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "35"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "061"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "63145"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4907,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2899 @@
+{
+  "schema_version": "1.0",
+  "inventory_id": "census-government-units-2025:us-de",
+  "generated_at": "2026-08-08T16:21:43Z",
+  "sources": [
+    {
+      "id": "src:census-government-units-2025",
+      "title": "2025 Government Units Listing",
+      "url": "https://www.census.gov/programs-surveys/gus/technical-documentation/file-layouts/annual-organization-public-use-file.html",
+      "kind": "governmental_inventory",
+      "accessed_at": "2026-08-08",
+      "last_checked_at": "2026-08-08",
+      "availability": "available",
+      "caveat": "This source establishes government-unit identity, source classification, activity status, and source-provided identifiers. It does not establish building-code adoption, amendment, administration, enforcement authority, or legal boundary geometry."
+    }
+  ],
+  "entities": [
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:county_equivalent:census-government-unit:101811",
+      "official_name": "COUNTY OF NEW CASTLE",
+      "entity_type": "county_equivalent",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "101811"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "101811"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99003"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 578592,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:county_equivalent:census-government-unit:124143",
+      "official_name": "COUNTY OF KENT",
+      "entity_type": "county_equivalent",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "124143"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "124143"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99001"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 189789,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:county_equivalent:census-government-unit:193140",
+      "official_name": "COUNTY OF SUSSEX",
+      "entity_type": "county_equivalent",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "193140"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "193140"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99005"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 263509,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:101812",
+      "official_name": "TOWN OF FARMINGTON",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "101812"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "101812"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "25840"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 99,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:101813",
+      "official_name": "TOWN OF LEIPSIC",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "101813"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "101813"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "41700"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 185,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:101814",
+      "official_name": "TOWN OF VIOLA",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "101814"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "101814"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "74330"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 147,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:101815",
+      "official_name": "CITY OF NEWARK",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "101815"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "101815"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "50670"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 30169,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:101817",
+      "official_name": "VILLAGE OF ARDENTOWN",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "101817"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "101817"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "01660"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 254,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:101818",
+      "official_name": "TOWN OF BLADES",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "101818"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "101818"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "06730"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1295,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:101819",
+      "official_name": "TOWN OF FRANKFORD",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "101819"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "101819"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "28310"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 878,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:101820",
+      "official_name": "TOWN OF MILLSBORO",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "101820"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "101820"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "47940"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 7637,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:101821",
+      "official_name": "TOWN OF SOUTH BETHANY",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "101821"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "101821"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "67700"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 504,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:124144",
+      "official_name": "TOWN OF CAMDEN",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "124144"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "124144"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "10760"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4188,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:124145",
+      "official_name": "TOWN OF FELTON",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "124145"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "124145"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "26620"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1356,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:124146",
+      "official_name": "TOWN OF HOUSTON",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "124146"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "124146"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "36760"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 398,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:124147",
+      "official_name": "TOWN OF BELLEFONTE",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "124147"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "124147"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "04650"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1233,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:124148",
+      "official_name": "TOWN OF ODESSA",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "124148"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "124148"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "54050"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 364,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:124149",
+      "official_name": "VILLAGE OF ARDEN",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "124149"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "124149"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "01400"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 433,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:124150",
+      "official_name": "TOWN OF BETHEL",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "124150"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "124150"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "05820"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 259,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:124151",
+      "official_name": "TOWN OF ELLENDALE",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "124151"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "124151"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "24020"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 541,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:124152",
+      "official_name": "TOWN OF MILLVILLE",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "124152"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "124152"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "48200"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2049,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:124153",
+      "official_name": "CITY OF REHOBOTH BEACH",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "124153"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "124153"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "60290"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1220,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:124154",
+      "official_name": "TOWN OF HENLOPEN ACRES",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "124154"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "124154"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "33900"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 152,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161520",
+      "official_name": "TOWN OF BOWERS",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161520"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161520"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "07250"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 285,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161521",
+      "official_name": "TOWN OF CLAYTON",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161521"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161521"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "15440"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4399,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161522",
+      "official_name": "TOWN OF FREDERICA",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161522"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161522"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "28440"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1116,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161523",
+      "official_name": "CITY OF HARRINGTON",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161523"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161523"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "33120"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3860,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161524",
+      "official_name": "TOWN OF HARTLY",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161524"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161524"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "33250"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 77,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161525",
+      "official_name": "TOWN OF SMYRNA",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161525"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161525"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "67310"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 13277,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161526",
+      "official_name": "TOWN OF WOODSIDE",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161526"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161526"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "80830"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 195,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161527",
+      "official_name": "TOWN OF WYOMING",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161527"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161527"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "81350"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1868,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161528",
+      "official_name": "TOWN OF ELSMERE",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161528"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161528"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "24540"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 6157,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161529",
+      "official_name": "CITY OF WILMINGTON",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161529"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161529"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "77580"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 71675,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161530",
+      "official_name": "TOWN OF TOWNSEND",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161530"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161530"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "72510"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2832,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161531",
+      "official_name": "VILLAGE OF ARDENCROFT",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161531"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161531"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "01530"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 229,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "VILLAGE"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161532",
+      "official_name": "TOWN OF BETHANY BEACH",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161532"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161532"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "05690"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1059,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161533",
+      "official_name": "TOWN OF BRIDGEVILLE",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161533"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161533"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "08680"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2829,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161534",
+      "official_name": "TOWN OF DAGSBORO",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161534"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161534"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "18950"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 961,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161535",
+      "official_name": "TOWN OF DELMAR",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161535"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161535"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "20380"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2216,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161536",
+      "official_name": "TOWN OF GREENWOOD",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161536"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161536"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "31560"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1089,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161537",
+      "official_name": "CITY OF LEWES",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161537"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161537"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "41830"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3604,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161538",
+      "official_name": "CITY OF MILFORD",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161538"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161538"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "47420"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 13289,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161539",
+      "official_name": "TOWN OF MILTON",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161539"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161539"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "48330"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3675,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161540",
+      "official_name": "CITY OF SEAFORD",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161540"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161540"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "64320"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8735,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161541",
+      "official_name": "TOWN OF SELBYVILLE",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161541"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161541"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "64840"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3184,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161542",
+      "official_name": "TOWN OF FENWICK ISLAND",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161542"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161542"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "26880"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 376,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:161543",
+      "official_name": "TOWN OF DEWEY BEACH",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "161543"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "161543"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "20900"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 393,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:183874",
+      "official_name": "TOWN OF GEORGETOWN",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "183874"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "183874"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "29090"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 7873,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:184693",
+      "official_name": "TOWN OF SLAUGHTER BEACH",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "184693"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "184693"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "67050"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 241,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:189794",
+      "official_name": "TOWN OF LITTLE CREEK",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "189794"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "189794"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "42870"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 200,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:189795",
+      "official_name": "TOWN OF LAUREL",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "189795"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "189795"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "41310"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4275,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:193141",
+      "official_name": "TOWN OF KENTON",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "193141"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "193141"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "39100"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 226,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:193142",
+      "official_name": "TOWN OF NEWPORT",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "193142"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "193142"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "51190"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 896,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:194930",
+      "official_name": "TOWN OF MIDDLETOWN",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "194930"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "194930"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "47030"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 25022,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:207644",
+      "official_name": "TOWN OF CHESWOLD",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "207644"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "207644"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "14660"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2257,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:207645",
+      "official_name": "CITY OF DOVER",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "207645"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "207645"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "21200"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 39894,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:207646",
+      "official_name": "TOWN OF MAGNOLIA",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "207646"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "207646"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "44430"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 285,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:207647",
+      "official_name": "CITY OF DELAWARE CITY",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "207647"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "207647"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "19730"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1905,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:207648",
+      "official_name": "CITY OF NEW CASTLE",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "207648"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "207648"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "50800"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 5549,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-de:municipality:census-government-unit:212958",
+      "official_name": "TOWN OF OCEAN VIEW",
+      "entity_type": "municipality",
+      "state_id": "US-DE",
+      "state_fips": "10",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "212958"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "212958"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "10"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "53920"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2937,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    }
+  ]
+}

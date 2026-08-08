@@ -1,0 +1,1891 @@
+{
+  "schema_version": "1.0",
+  "inventory_id": "census-government-units-2025:us-ri",
+  "generated_at": "2026-08-08T16:21:43Z",
+  "sources": [
+    {
+      "id": "src:census-government-units-2025",
+      "title": "2025 Government Units Listing",
+      "url": "https://www.census.gov/programs-surveys/gus/technical-documentation/file-layouts/annual-organization-public-use-file.html",
+      "kind": "governmental_inventory",
+      "accessed_at": "2026-08-08",
+      "last_checked_at": "2026-08-08",
+      "availability": "available",
+      "caveat": "This source establishes government-unit identity, source classification, activity status, and source-provided identifiers. It does not establish building-code adoption, amendment, administration, enforcement authority, or legal boundary geometry."
+    }
+  ],
+  "entities": [
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:112813",
+      "official_name": "TOWN OF COVENTRY",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "112813"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "112813"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "18640"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 35819,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:112816",
+      "official_name": "TOWN OF GLOCESTER",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "112816"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "112816"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "30340"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 10200,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:134387",
+      "official_name": "TOWN OF WARREN",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "134387"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "134387"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "73760"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 11125,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:134388",
+      "official_name": "TOWN OF TIVERTON",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "134388"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "134388"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "70880"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 16035,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:134389",
+      "official_name": "TOWN OF NORTH PROVIDENCE",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "134389"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "134389"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "51760"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 33902,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:134390",
+      "official_name": "TOWN OF RICHMOND",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "134390"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "134390"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "61160"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8133,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:174834",
+      "official_name": "TOWN OF BARRINGTON",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "174834"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "174834"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "05140"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 17061,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:174835",
+      "official_name": "TOWN OF BRISTOL",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "174835"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "174835"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "09280"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 22069,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:174836",
+      "official_name": "TOWN OF EAST GREENWICH",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "174836"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "174836"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "22240"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 14626,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:174837",
+      "official_name": "TOWN OF WEST WARWICK",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "174837"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "174837"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "78440"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 31151,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:174838",
+      "official_name": "TOWN OF MIDDLETOWN",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "174838"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "174838"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "45460"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 16588,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:174839",
+      "official_name": "TOWN OF BURRILLVILLE",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "174839"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "174839"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "11800"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 16393,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:174840",
+      "official_name": "TOWN OF CUMBERLAND",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "174840"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "174840"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "20080"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 36591,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:174841",
+      "official_name": "TOWN OF JOHNSTON",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "174841"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "174841"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "37720"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 29679,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:174842",
+      "official_name": "TOWN OF LINCOLN",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "174842"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "174842"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "41500"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 22846,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:174843",
+      "official_name": "TOWN OF NORTH SMITHFIELD",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "174843"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "174843"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "52480"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 12601,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:174844",
+      "official_name": "TOWN OF HOPKINTON",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "174844"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "174844"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "35380"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8400,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:174845",
+      "official_name": "TOWN OF SOUTH KINGSTOWN",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "174845"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "174845"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "67460"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 32025,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:174846",
+      "official_name": "TOWN OF WESTERLY",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "174846"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "174846"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "77000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 23223,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:174847",
+      "official_name": "TOWN OF NEW SHOREHAM",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "174847"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "174847"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "50500"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1404,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:183880",
+      "official_name": "TOWN OF FOSTER",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "183880"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "183880"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "27460"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4493,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:183881",
+      "official_name": "TOWN OF JAMESTOWN",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "183881"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "183881"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "36820"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 5488,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:183882",
+      "official_name": "TOWN OF LITTLE COMPTON",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "183882"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "183882"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "42400"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3557,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:183883",
+      "official_name": "TOWN OF NARRAGANSETT",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "183883"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "183883"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "48340"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 14409,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:183884",
+      "official_name": "TOWN OF SCITUATE",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "183884"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "183884"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "64220"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 10494,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:183885",
+      "official_name": "TOWN OF SMITHFIELD",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "183885"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "183885"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "66200"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 22090,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:183886",
+      "official_name": "TOWN OF WEST GREENWICH",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "183886"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "183886"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "77720"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 6683,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:187439",
+      "official_name": "TOWN OF NORTH KINGSTOWN",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "187439"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "187439"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "51580"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 27771,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:191473",
+      "official_name": "TOWN OF EXETER",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "191473"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "191473"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "25300"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 6581,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:194034",
+      "official_name": "TOWN OF CHARLESTOWN",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "194034"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "194034"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "14500"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8036,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:minor_civil_division:census-government-unit:209435",
+      "official_name": "TOWN OF PORTSMOUTH",
+      "entity_type": "minor_civil_division",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "209435"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "209435"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "57880"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 17447,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "3 - TOWNSHIP",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:municipality:census-government-unit:112807",
+      "official_name": "CITY OF WARWICK",
+      "entity_type": "municipality",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "112807"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "112807"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "74300"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 82999,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:municipality:census-government-unit:112811",
+      "official_name": "CITY OF PROVIDENCE",
+      "entity_type": "municipality",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "112811"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "112811"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "59000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 190792,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:municipality:census-government-unit:134385",
+      "official_name": "CITY OF CENTRAL FALLS",
+      "entity_type": "municipality",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "134385"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "134385"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "14140"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 22543,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:municipality:census-government-unit:134386",
+      "official_name": "CITY OF WOONSOCKET",
+      "entity_type": "municipality",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "134386"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "134386"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "80780"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 43135,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:municipality:census-government-unit:174832",
+      "official_name": "CITY OF NEWPORT",
+      "entity_type": "municipality",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "174832"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "174832"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "49960"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 24717,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:municipality:census-government-unit:174833",
+      "official_name": "CITY OF PAWTUCKET",
+      "entity_type": "municipality",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "174833"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "174833"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "54640"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 75321,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:municipality:census-government-unit:194033",
+      "official_name": "CITY OF EAST PROVIDENCE",
+      "entity_type": "municipality",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "194033"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "194033"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "22960"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 46900,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-ri:municipality:census-government-unit:209434",
+      "official_name": "CITY OF CRANSTON",
+      "entity_type": "municipality",
+      "state_id": "US-RI",
+      "state_fips": "44",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "209434"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "209434"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "44"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "19180"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 82635,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    }
+  ]
+}
