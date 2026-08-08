@@ -6,6 +6,7 @@ import (
 	"net/url"
 	"strings"
 
+	"building-code-map/backend/engine"
 	"building-code-map/backend/internal/geocoder"
 	"building-code-map/backend/internal/regulatory"
 	"building-code-map/backend/internal/snapshot"
@@ -44,11 +45,13 @@ func ParseAllowedOrigins(rawValue string) []string {
 }
 
 type Options struct {
-	AllowedOrigins      []string
-	RegulatoryCatalog   regulatory.Catalog
-	Geocoder            geocoder.Service
-	BoundarySnapshotID  string
-	GeocoderSnapshotID  string
+	AllowedOrigins     []string
+	RegulatoryCatalog  regulatory.Catalog
+	Geocoder           geocoder.Service
+	Clock              engine.Clock
+	BundleIdentity     engine.BundleIdentity
+	BoundarySnapshotID string
+	GeocoderSnapshotID string
 }
 
 type Handler struct {
@@ -59,6 +62,8 @@ type Handler struct {
 	allowedOrigins     map[string]struct{}
 	regulatoryCatalog  regulatory.Catalog
 	geocoder           geocoder.Service
+	engine             engine.Engine
+	engineClock        engine.Clock
 	boundarySnapshotID string
 	geocoderSnapshotID string
 }
@@ -67,6 +72,27 @@ func NewHandler(snap snapshot.Snapshot, options ...Options) http.Handler {
 	opt := Options{RegulatoryCatalog: regulatory.EmptyCatalog()}
 	if len(options) > 0 {
 		opt = options[0]
+	}
+	clock := opt.Clock
+	if clock == nil {
+		clock = engine.RealClock{}
+	}
+	identity := opt.BundleIdentity
+	if identity.BoundarySnapshotDigest == "" {
+		identity.BoundarySnapshotDigest = strings.TrimSpace(opt.BoundarySnapshotID)
+	}
+	if identity.GeocoderSnapshotDigest == "" {
+		identity.GeocoderSnapshotDigest = strings.TrimSpace(opt.GeocoderSnapshotID)
+	}
+	authorityEngine, err := engine.New(engine.Config{
+		Snapshot:          snap,
+		RegulatoryCatalog: opt.RegulatoryCatalog,
+		Geocoder:          opt.Geocoder,
+		Clock:             clock,
+		BundleIdentity:    identity,
+	})
+	if err != nil {
+		panic(err)
 	}
 
 	allowedOrigins := opt.AllowedOrigins
@@ -82,6 +108,8 @@ func NewHandler(snap snapshot.Snapshot, options ...Options) http.Handler {
 		allowedOrigins:     make(map[string]struct{}, len(allowedOrigins)),
 		regulatoryCatalog:  opt.RegulatoryCatalog,
 		geocoder:           opt.Geocoder,
+		engine:             authorityEngine,
+		engineClock:        clock,
 		boundarySnapshotID: strings.TrimSpace(opt.BoundarySnapshotID),
 		geocoderSnapshotID: strings.TrimSpace(opt.GeocoderSnapshotID),
 	}
