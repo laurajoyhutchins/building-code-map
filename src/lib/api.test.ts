@@ -1,10 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import {
-  buildApiUrl,
-  fetchEngineAddressResolution,
-  fetchReadiness,
-  getApiBaseUrl,
-} from "./api";
+import { buildApiUrl, fetchEngineAddressResolution, fetchReadiness, getApiBaseUrl } from "./api";
 import {
   decodeGeocodeResult,
   decodeLookupResult,
