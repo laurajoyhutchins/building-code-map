@@ -120,7 +120,8 @@ export function decodeEngineResult(value: unknown, path = "engine result"): Engi
   return {
     schemaVersion: nonEmptyString(raw.schema_version, `${path}.schema_version`),
     query: {
-      point: query.point === undefined ? undefined : decodePoint(query.point, `${path}.query.point`),
+      point:
+        query.point === undefined ? undefined : decodePoint(query.point, `${path}.query.point`),
       address: optionalString(query.address, `${path}.query.address`),
       codeFamily: optionalString(query.code_family, `${path}.query.code_family`),
       projectType: optionalString(query.project_type, `${path}.query.project_type`),
