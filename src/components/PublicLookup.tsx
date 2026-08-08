@@ -1,9 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
-import {
-  fetchEngineAddressResolution,
-  fetchEngineResolution,
-  fetchReadiness,
-} from "../lib/api";
+import { fetchEngineAddressResolution, fetchEngineResolution, fetchReadiness } from "../lib/api";
 import type { EngineProvenance } from "../lib/engineV1";
 import {
   classifyLocationQuery,
