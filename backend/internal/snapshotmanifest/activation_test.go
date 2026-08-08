@@ -38,6 +38,40 @@ func TestActivateReplacesSnapshotAndRecordsPriorIdentity(t *testing.T) {
 	}
 }
 
+func TestActivateAcceptsBuiltCandidateWithoutActivationReceipt(t *testing.T) {
+	dir := t.TempDir()
+	activePath := filepath.Join(dir, "active.sqlite")
+	candidatePath := filepath.Join(dir, "candidate.sqlite")
+
+	writeSnapshotFixture(t, activePath, "old", "old-snapshot")
+	if err := os.WriteFile(candidatePath, []byte("new"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	manifest := validManifest(digestOf("new"), int64(len("new")))
+	manifest.SnapshotID = "new-snapshot"
+	if _, err := FinalizeAndWrite(candidatePath, manifest); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := os.Stat(ActivationPath(candidatePath)); !os.IsNotExist(err) {
+		t.Fatalf("candidate unexpectedly has activation receipt: %v", err)
+	}
+
+	result, err := Activate(candidatePath, activePath, KindBoundary, time.Date(2026, 8, 8, 15, 0, 0, 0, time.UTC))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if result.Receipt.SnapshotID != "new-snapshot" {
+		t.Fatalf("activated snapshot id=%q", result.Receipt.SnapshotID)
+	}
+	verified, err := LoadAndVerify(activePath, KindBoundary)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if verified.Manifest.SnapshotID != "new-snapshot" {
+		t.Fatalf("active id=%q", verified.Manifest.SnapshotID)
+	}
+}
+
 func TestActivateLeavesActiveSnapshotUntouchedWhenCandidateFailsVerification(t *testing.T) {
 	dir := t.TempDir()
 	activePath := filepath.Join(dir, "active.sqlite")
