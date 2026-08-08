@@ -1,4 +1,4 @@
-name: Inspect county-equivalent city source fields
+name: Generate Census governmental entity corpus
 
 on:
   push:
@@ -8,17 +8,25 @@ on:
       - .github/workflows/census-government-units-generate.yml
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  inspect:
+  generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
-      - name: Checkout exact importer head
+      - name: Checkout exact generator head
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Inspect pinned Census rows
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: backend/go.mod
+          cache-dependency-path: backend/go.sum
+
+      - name: Fetch and verify pinned Census source
         shell: bash
         run: |
           set -euo pipefail
@@ -31,27 +39,45 @@ jobs:
           mkdir "$source_dir"
           unzip -q "$archive" -d "$source_dir"
           echo '840e8b65e5e65325c0a42fb842ea81c0491eae3abd8a41953764044ee9e2a56e  '"$source_dir/Govt_Units_2025_Final.xlsx" | sha256sum --check --strict
-          python reports/tools/census_government_units.py \
-            "$source_dir/Govt_Units_2025_Final.xlsx" \
-            "$RUNNER_TEMP/general-purpose.csv"
-          python - "$RUNNER_TEMP/general-purpose.csv" <<'PY'
-          import csv
-          import sys
+          echo 'd12278a7382943cc12ad501631374bc5c8688ba66292b61b0fe7eff9f4191f6d  '"$source_dir/Government_Units_List_Documentation_2025.pdf" | sha256sum --check --strict
+          echo "CENSUS_WORKBOOK=$source_dir/Govt_Units_2025_Final.xlsx" >> "$GITHUB_ENV"
 
-          names = {"CITY OF RICHMOND", "CITY OF BALTIMORE", "CITY OF ST LOUIS", "CITY OF ST. LOUIS"}
-          with open(sys.argv[1], newline="", encoding="utf-8") as handle:
-              for row in csv.DictReader(handle):
-                  if row["UNIT_NAME"] in names:
-                      print({key: row[key] for key in (
-                          "CENSUS_ID_PID6",
-                          "UNIT_NAME",
-                          "UNIT_TYPE",
-                          "POLITICAL_CODE_DESCRIPTION",
-                          "STATE",
-                          "FIPS_STATE",
-                          "FIPS_COUNTY",
-                          "FIPS_PLACE",
-                          "COUNTY_AREA_NAME",
-                          "ACTIVE",
-                      )})
-          PY
+      - name: Extract pinned General Purpose sheet
+        shell: bash
+        run: |
+          set -euo pipefail
+          python reports/tools/census_government_units.py \
+            "$CENSUS_WORKBOOK" \
+            "$RUNNER_TEMP/general-purpose.csv"
+          test "$(($(wc -l < "$RUNNER_TEMP/general-purpose.csv") - 1))" -eq 38704
+
+      - name: Generate and validate national entity inventories
+        working-directory: backend
+        shell: bash
+        run: |
+          set -euo pipefail
+          generated_at="$(git show -s --format=%cI HEAD)"
+          go run ./cmd/government-entities-build generate \
+            --input "$RUNNER_TEMP/general-purpose.csv" \
+            --output-dir data/governmental-entities/2025 \
+            --source-contract data/governmental-entities/census-government-units-2025.source.json \
+            --generated-at "$generated_at"
+          go run ./cmd/government-entities-build validate \
+            --root data/governmental-entities/2025 \
+            --source-contract data/governmental-entities/census-government-units-2025.source.json
+          test "$(find data/governmental-entities/2025 -maxdepth 1 -type f -name 'US-??.json' | wc -l)" -eq 51
+
+      - name: Commit generated corpus
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check
+          git add backend/data/governmental-entities/2025
+          if git diff --cached --quiet; then
+            echo 'generator produced no corpus changes' >&2
+            exit 1
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'data: regenerate corrected 2025 Census entity inventory'
+          git push origin HEAD:feature/census-government-units-inventory
