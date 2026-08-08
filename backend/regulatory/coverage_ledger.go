@@ -35,37 +35,37 @@ type EntityCoveragePopulationSummary struct {
 }
 
 type EntityCoverageSummary struct {
-	ExpectedEntities              int                                    `json:"expected_entities"`
-	ActiveEntities                int                                    `json:"active_entities"`
-	ClassifiedEntities            int                                    `json:"classified_entities"`
-	VerifiedEntities              int                                    `json:"verified_entities"`
-	InheritedEntities             int                                    `json:"inherited_entities"`
-	RequiresLocalEvidenceEntities int                                    `json:"requires_local_evidence_entities"`
-	UnresolvedEntities            int                                    `json:"unresolved_entities"`
-	InactiveEntities              int                                    `json:"inactive_entities"`
-	ConflictingEntities           int                                    `json:"conflicting_entities"`
-	EntityTypeCounts              map[GovernmentalEntityType]int         `json:"entity_type_counts"`
-	ClassificationCounts          map[JurisdictionClassification]int     `json:"classification_counts"`
-	EvidenceStatusCounts          map[CoverageEvidenceStatus]int          `json:"evidence_status_counts"`
-	Population                    EntityCoveragePopulationSummary         `json:"population"`
+	ExpectedEntities              int                                `json:"expected_entities"`
+	ActiveEntities                int                                `json:"active_entities"`
+	ClassifiedEntities            int                                `json:"classified_entities"`
+	VerifiedEntities              int                                `json:"verified_entities"`
+	InheritedEntities             int                                `json:"inherited_entities"`
+	RequiresLocalEvidenceEntities int                                `json:"requires_local_evidence_entities"`
+	UnresolvedEntities            int                                `json:"unresolved_entities"`
+	InactiveEntities              int                                `json:"inactive_entities"`
+	ConflictingEntities           int                                `json:"conflicting_entities"`
+	EntityTypeCounts              map[GovernmentalEntityType]int     `json:"entity_type_counts"`
+	ClassificationCounts          map[JurisdictionClassification]int `json:"classification_counts"`
+	EvidenceStatusCounts          map[CoverageEvidenceStatus]int     `json:"evidence_status_counts"`
+	Population                    EntityCoveragePopulationSummary    `json:"population"`
 }
 
 type EntityCoverageEntry struct {
-	EntityID               string                       `json:"entity_id"`
-	OfficialName           string                       `json:"official_name"`
-	EntityType             GovernmentalEntityType       `json:"entity_type"`
-	LegalStatus            LegalStatus                  `json:"legal_status"`
-	Classification         JurisdictionClassification   `json:"classification"`
-	EvidenceStatus         CoverageEvidenceStatus       `json:"evidence_status"`
-	Inherited              bool                         `json:"inherited"`
-	Verified               bool                         `json:"verified"`
-	RequiresLocalEvidence  bool                         `json:"requires_local_evidence"`
-	Population             *EntityPopulation            `json:"population,omitempty"`
-	RequiredLocalEvidence  []string                     `json:"required_local_evidence,omitempty"`
-	UnresolvedReasons      []string                     `json:"unresolved_reasons,omitempty"`
-	UnresolvedDimensions   []string                     `json:"unresolved_dimensions,omitempty"`
-	SourceIDs              []string                     `json:"source_ids"`
-	ClassificationRecords  []EntityClassificationRecord `json:"classification_records,omitempty"`
+	EntityID              string                       `json:"entity_id"`
+	OfficialName          string                       `json:"official_name"`
+	EntityType            GovernmentalEntityType       `json:"entity_type"`
+	LegalStatus           LegalStatus                  `json:"legal_status"`
+	Classification        JurisdictionClassification   `json:"classification"`
+	EvidenceStatus        CoverageEvidenceStatus       `json:"evidence_status"`
+	Inherited             bool                         `json:"inherited"`
+	Verified              bool                         `json:"verified"`
+	RequiresLocalEvidence bool                         `json:"requires_local_evidence"`
+	Population            *EntityPopulation            `json:"population,omitempty"`
+	RequiredLocalEvidence []string                     `json:"required_local_evidence,omitempty"`
+	UnresolvedReasons     []string                     `json:"unresolved_reasons,omitempty"`
+	UnresolvedDimensions  []string                     `json:"unresolved_dimensions,omitempty"`
+	SourceIDs             []string                     `json:"source_ids"`
+	ClassificationRecords []EntityClassificationRecord `json:"classification_records,omitempty"`
 }
 
 type StateEntityCoverage struct {
@@ -73,21 +73,21 @@ type StateEntityCoverage struct {
 	RegimeID           string                `json:"regime_id"`
 	RegimeLastVerified string                `json:"regime_last_verified"`
 	Summary            EntityCoverageSummary `json:"summary"`
-	Entities           []EntityCoverageEntry  `json:"entities"`
+	Entities           []EntityCoverageEntry `json:"entities"`
 }
 
 type EntityCoverageLedger struct {
-	SchemaVersion      string                `json:"schema_version"`
-	InventorySourceID  string                `json:"inventory_source_id"`
-	InventoryGeneratedAt string              `json:"inventory_generated_at"`
-	CodeFamily         string                `json:"code_family"`
-	ProjectType        string                `json:"project_type,omitempty"`
-	ApplicabilityDate  string                `json:"applicability_date"`
-	StateIDs           []string              `json:"state_ids"`
-	Summary            EntityCoverageSummary `json:"summary"`
-	States             []StateEntityCoverage  `json:"states"`
-	Freshness          CoverageAvailability   `json:"freshness"`
-	LandArea           CoverageAvailability   `json:"land_area"`
+	SchemaVersion        string                `json:"schema_version"`
+	InventorySourceID    string                `json:"inventory_source_id"`
+	InventoryGeneratedAt string                `json:"inventory_generated_at"`
+	CodeFamily           string                `json:"code_family"`
+	ProjectType          string                `json:"project_type,omitempty"`
+	ApplicabilityDate    string                `json:"applicability_date"`
+	StateIDs             []string              `json:"state_ids"`
+	Summary              EntityCoverageSummary `json:"summary"`
+	States               []StateEntityCoverage `json:"states"`
+	Freshness            CoverageAvailability  `json:"freshness"`
+	LandArea             CoverageAvailability  `json:"land_area"`
 }
 
 type EntityCoverageLedgerRequest struct {
@@ -128,15 +128,15 @@ func BuildEntityCoverageLedger(request EntityCoverageLedgerRequest) (EntityCover
 	}
 
 	ledger := EntityCoverageLedger{
-		SchemaVersion:       EntityCoverageLedgerSchemaVersion,
-		InventorySourceID:   request.Inventories.Index.SourceID,
+		SchemaVersion:        EntityCoverageLedgerSchemaVersion,
+		InventorySourceID:    request.Inventories.Index.SourceID,
 		InventoryGeneratedAt: request.Inventories.Index.GeneratedAt,
-		CodeFamily:          codeFamily,
-		ProjectType:         projectType,
-		ApplicabilityDate:   date,
-		StateIDs:            stateIDs,
-		Summary:             newEntityCoverageSummary(),
-		States:              make([]StateEntityCoverage, 0, len(stateIDs)),
+		CodeFamily:           codeFamily,
+		ProjectType:          projectType,
+		ApplicabilityDate:    date,
+		StateIDs:             stateIDs,
+		Summary:              newEntityCoverageSummary(),
+		States:               make([]StateEntityCoverage, 0, len(stateIDs)),
 		Freshness: CoverageAvailability{
 			Status: "not_assessed",
 			Reason: "State regime projections expose last_verified but do not yet define a per-source staleness threshold or freshness contract.",
@@ -217,16 +217,16 @@ func buildStateEntityCoverage(inventory EntityInventory, regime StateRegimeSpec,
 func buildEntityCoverageEntry(entity GovernmentalEntity, regime StateRegimeSpec, codeFamily, projectType, date string) (EntityCoverageEntry, error) {
 	if conflictSources := coverageConflictSources(entity, regime, codeFamily, projectType); len(conflictSources) > 0 && entity.LegalStatus != LegalStatusInactive {
 		return EntityCoverageEntry{
-			EntityID:              entity.EntityID,
-			OfficialName:          entity.OfficialName,
-			EntityType:            entity.EntityType,
-			LegalStatus:           entity.LegalStatus,
-			Classification:        ClassificationUnresolved,
-			EvidenceStatus:        CoverageEvidenceConflicting,
-			Population:            entity.Population,
-			UnresolvedReasons:     []string{"applicable regime policy is conflicting"},
-			UnresolvedDimensions:  append([]string(nil), regime.UnresolvedDimensions...),
-			SourceIDs:             sortedUnique(append(append([]string(nil), entity.SourceIDs...), conflictSources...)),
+			EntityID:             entity.EntityID,
+			OfficialName:         entity.OfficialName,
+			EntityType:           entity.EntityType,
+			LegalStatus:          entity.LegalStatus,
+			Classification:       ClassificationUnresolved,
+			EvidenceStatus:       CoverageEvidenceConflicting,
+			Population:           entity.Population,
+			UnresolvedReasons:    []string{"applicable regime policy is conflicting"},
+			UnresolvedDimensions: append([]string(nil), regime.UnresolvedDimensions...),
+			SourceIDs:            sortedUnique(append(append([]string(nil), entity.SourceIDs...), conflictSources...)),
 		}, nil
 	}
 	decision, err := ClassifyGovernmentalEntity(EntityClassificationRequest{

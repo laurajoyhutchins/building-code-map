@@ -11,35 +11,35 @@ func TestBuildEntityCoverageLedgerSeparatesClassificationFromVerifiedApplicabili
 	regime := testCoverageRegime()
 	regime.CodeFamilyPolicies = map[string]ResolutionPolicy{
 		"building": {
-			Status: "partially_resolved",
+			Status:      "partially_resolved",
 			AdoptionIDs: []string{"adoption:state:building"},
-			SourceIDs: []string{"src:state-building"},
+			SourceIDs:   []string{"src:state-building"},
 		},
 	}
 	regime.DateRules = []DateRule{{
-		ID: "rule:state-building-window",
-		CodeFamily: "building",
-		RuleType: "effective_window",
-		Trigger: "applicability_date",
-		StartDate: "2025-01-01",
-		Summary: "Current state building code window.",
-		SourceIDs: []string{"src:state-building-date"},
+		ID:           "rule:state-building-window",
+		CodeFamily:   "building",
+		RuleType:     "effective_window",
+		Trigger:      "applicability_date",
+		StartDate:    "2025-01-01",
+		Summary:      "Current state building code window.",
+		SourceIDs:    []string{"src:state-building-date"},
 		Verification: Verification{Status: "verified"},
 	}}
 	regime.EntityPowerEvidence = []EntityPowerEvidence{
 		{
 			EntityKind: "municipality",
-			Scope: "incorporated",
-			Powers: []RegimePower{RegimePowerAdminister, RegimePowerEnforce},
-			SourceIDs: []string{"src:municipal-enforcement"},
+			Scope:      "incorporated",
+			Powers:     []RegimePower{RegimePowerAdminister, RegimePowerEnforce},
+			SourceIDs:  []string{"src:municipal-enforcement"},
 		},
 	}
 
 	ledger, err := BuildEntityCoverageLedger(EntityCoverageLedgerRequest{
-		Inventories: testCoverageBuild(inventory),
-		Regimes: []StateRegimeSpec{regime},
-		StateIDs: []string{"US-TS"},
-		CodeFamily: "building",
+		Inventories:       testCoverageBuild(inventory),
+		Regimes:           []StateRegimeSpec{regime},
+		StateIDs:          []string{"US-TS"},
+		CodeFamily:        "building",
 		ApplicabilityDate: "2026-08-08",
 	})
 	if err != nil {
@@ -77,16 +77,16 @@ func TestBuildEntityCoverageLedgerDoesNotCallLocalAdopterVerified(t *testing.T) 
 	regime := testCoverageRegime()
 	regime.EntityPowerEvidence = []EntityPowerEvidence{{
 		EntityKind: "municipality",
-		Scope: "incorporated",
-		Powers: []RegimePower{RegimePowerAdopt, RegimePowerEnforce},
-		SourceIDs: []string{"src:local-adoption-authority"},
+		Scope:      "incorporated",
+		Powers:     []RegimePower{RegimePowerAdopt, RegimePowerEnforce},
+		SourceIDs:  []string{"src:local-adoption-authority"},
 	}}
 
 	ledger, err := BuildEntityCoverageLedger(EntityCoverageLedgerRequest{
-		Inventories: testCoverageBuild(testCoverageInventory("US-TS", []GovernmentalEntity{entity})),
-		Regimes: []StateRegimeSpec{regime},
-		StateIDs: []string{"US-TS"},
-		CodeFamily: "building",
+		Inventories:       testCoverageBuild(testCoverageInventory("US-TS", []GovernmentalEntity{entity})),
+		Regimes:           []StateRegimeSpec{regime},
+		StateIDs:          []string{"US-TS"},
+		CodeFamily:        "building",
 		ApplicabilityDate: "2026-08-08",
 	})
 	if err != nil {
@@ -111,10 +111,10 @@ func TestBuildEntityCoverageLedgerKeepsUnresolvedAndInactiveDistinct(t *testing.
 	inactive.Classification = ClassificationInactive
 
 	ledger, err := BuildEntityCoverageLedger(EntityCoverageLedgerRequest{
-		Inventories: testCoverageBuild(testCoverageInventory("US-TS", []GovernmentalEntity{active, inactive})),
-		Regimes: []StateRegimeSpec{testCoverageRegime()},
-		StateIDs: []string{"US-TS"},
-		CodeFamily: "building",
+		Inventories:       testCoverageBuild(testCoverageInventory("US-TS", []GovernmentalEntity{active, inactive})),
+		Regimes:           []StateRegimeSpec{testCoverageRegime()},
+		StateIDs:          []string{"US-TS"},
+		CodeFamily:        "building",
 		ApplicabilityDate: "2026-08-08",
 	})
 	if err != nil {
@@ -133,15 +133,15 @@ func TestBuildEntityCoverageLedgerSurfacesConflictingPolicyWithoutInventingCover
 	entity := testCoverageEntity(t, "001", EntityTypeMunicipality, 90)
 	regime := testCoverageRegime()
 	regime.Territory.Incorporated = ResolutionPolicy{
-		Status: "conflicting",
+		Status:    "conflicting",
 		SourceIDs: []string{"src:conflict-a", "src:conflict-b"},
 	}
 
 	ledger, err := BuildEntityCoverageLedger(EntityCoverageLedgerRequest{
-		Inventories: testCoverageBuild(testCoverageInventory("US-TS", []GovernmentalEntity{entity})),
-		Regimes: []StateRegimeSpec{regime},
-		StateIDs: []string{"US-TS"},
-		CodeFamily: "building",
+		Inventories:       testCoverageBuild(testCoverageInventory("US-TS", []GovernmentalEntity{entity})),
+		Regimes:           []StateRegimeSpec{regime},
+		StateIDs:          []string{"US-TS"},
+		CodeFamily:        "building",
 		ApplicabilityDate: "2026-08-08",
 	})
 	if err != nil {
@@ -158,10 +158,10 @@ func TestBuildEntityCoverageLedgerSurfacesConflictingPolicyWithoutInventingCover
 
 func TestBuildEntityCoverageLedgerRejectsStateOutsideRegimeCorpus(t *testing.T) {
 	_, err := BuildEntityCoverageLedger(EntityCoverageLedgerRequest{
-		Inventories: testCoverageBuild(testCoverageInventory("US-TS", []GovernmentalEntity{testCoverageEntity(t, "001", EntityTypeMunicipality, 1)})),
-		Regimes: nil,
-		StateIDs: []string{"US-TS"},
-		CodeFamily: "building",
+		Inventories:       testCoverageBuild(testCoverageInventory("US-TS", []GovernmentalEntity{testCoverageEntity(t, "001", EntityTypeMunicipality, 1)})),
+		Regimes:           nil,
+		StateIDs:          []string{"US-TS"},
+		CodeFamily:        "building",
 		ApplicabilityDate: "2026-08-08",
 	})
 	if err == nil {
@@ -172,15 +172,15 @@ func TestBuildEntityCoverageLedgerRejectsStateOutsideRegimeCorpus(t *testing.T) 
 func testCoverageEntity(t *testing.T, identity string, entityType GovernmentalEntityType, population int64) GovernmentalEntity {
 	t.Helper()
 	entity, err := NewGovernmentalEntityCandidate(GovernmentalEntityCandidateInput{
-		OfficialName: "Test Government " + identity,
-		EntityType: entityType,
-		StateID: "US-TS",
-		StateFIPS: "99",
-		Identity: CanonicalEntityIdentity{Namespace: "test", Value: identity},
-		LegalStatus: LegalStatusActive,
+		OfficialName:              "Test Government " + identity,
+		EntityType:                entityType,
+		StateID:                   "US-TS",
+		StateFIPS:                 "99",
+		Identity:                  CanonicalEntityIdentity{Namespace: "test", Value: identity},
+		LegalStatus:               LegalStatusActive,
 		HistoricalGeographyStatus: HistoricalGeographyUnavailable,
-		Population: &EntityPopulation{Count: population, SourceYear: "2023"},
-		SourceIDs: []string{"src:test-inventory"},
+		Population:                &EntityPopulation{Count: population, SourceYear: "2023"},
+		SourceIDs:                 []string{"src:test-inventory"},
 	})
 	if err != nil {
 		t.Fatal(err)
@@ -191,10 +191,10 @@ func testCoverageEntity(t *testing.T, identity string, entityType GovernmentalEn
 func testCoverageInventory(stateID string, entities []GovernmentalEntity) EntityInventory {
 	return EntityInventory{
 		SchemaVersion: EntityInventorySchemaVersion,
-		InventoryID: "test-inventory:" + stateID,
-		GeneratedAt: "2026-08-08T00:00:00Z",
-		Sources: []Source{{ID: "src:test-inventory", Title: "Test inventory", URL: "https://example.test/inventory", Kind: "governmental_inventory", AccessedAt: "2026-08-08"}},
-		Entities: entities,
+		InventoryID:   "test-inventory:" + stateID,
+		GeneratedAt:   "2026-08-08T00:00:00Z",
+		Sources:       []Source{{ID: "src:test-inventory", Title: "Test inventory", URL: "https://example.test/inventory", Kind: "governmental_inventory", AccessedAt: "2026-08-08"}},
+		Entities:      entities,
 	}
 }
 
@@ -202,7 +202,7 @@ func testCoverageBuild(inventory EntityInventory) CensusEntityInventoryBuild {
 	inventories := map[string]EntityInventory{inventory.Entities[0].StateID: inventory}
 	return CensusEntityInventoryBuild{
 		Inventories: inventories,
-		Index: indexFromInventories(inventories, "src:test-inventory", "2026-08-08T00:00:00Z"),
+		Index:       indexFromInventories(inventories, "src:test-inventory", "2026-08-08T00:00:00Z"),
 	}
 }
 
