@@ -11,13 +11,14 @@ import (
 	"time"
 
 	"building-code-map/backend/geocoder"
+	"building-code-map/backend/internal/snapshotmanifest"
 	"building-code-map/backend/snapshot"
 	"building-code-map/backend/snapshotbuild"
 )
 
 func runSnapshot(args []string) int {
 	if len(args) == 0 {
-		logError("snapshot requires build or audit")
+		logError("snapshot requires build, audit, or activate")
 		return exitArguments
 	}
 	switch args[0] {
@@ -25,6 +26,8 @@ func runSnapshot(args []string) int {
 		return runSnapshotBuild(args[1:])
 	case "audit":
 		return runSnapshotAudit(args[1:])
+	case "activate":
+		return runSnapshotActivate(args[1:])
 	default:
 		logError("unknown snapshot command: " + args[0])
 		return exitArguments
@@ -119,6 +122,53 @@ func runSnapshotAudit(args []string) int {
 		return exitData
 	}
 	writeJSON(map[string]any{"report": report, "receipt": receipt}, *values.pretty)
+	return exitSuccess
+}
+
+func runSnapshotActivate(args []string) int {
+	flags := flag.NewFlagSet("snapshot activate", flag.ContinueOnError)
+	flags.SetOutput(os.Stderr)
+	kindValue := flags.String("kind", "", "snapshot kind: boundary or geocoder")
+	candidate := flags.String("candidate", "", "verified candidate SQLite snapshot path")
+	active := flags.String("active", "", "active SQLite snapshot path")
+	activatedAtValue := flags.String("activated-at", "", "deterministic RFC3339 activation timestamp")
+	pretty := flags.Bool("pretty", false, "indent JSON output")
+	if err := flags.Parse(args); err != nil {
+		if errors.Is(err, flag.ErrHelp) {
+			return exitSuccess
+		}
+		return exitArguments
+	}
+	var kind snapshotmanifest.Kind
+	switch strings.ToLower(strings.TrimSpace(*kindValue)) {
+	case string(snapshotmanifest.KindBoundary):
+		kind = snapshotmanifest.KindBoundary
+	case string(snapshotmanifest.KindGeocoder):
+		kind = snapshotmanifest.KindGeocoder
+	default:
+		logError("--kind must be boundary or geocoder")
+		return exitArguments
+	}
+	if strings.TrimSpace(*candidate) == "" || strings.TrimSpace(*active) == "" {
+		logError("--candidate and --active are required")
+		return exitArguments
+	}
+	activatedAt, err := time.Parse(time.RFC3339, strings.TrimSpace(*activatedAtValue))
+	if err != nil {
+		logError("--activated-at must be RFC3339: " + err.Error())
+		return exitArguments
+	}
+	result, err := snapshotmanifest.Activate(
+		filepath.Clean(*candidate),
+		filepath.Clean(*active),
+		kind,
+		activatedAt,
+	)
+	if err != nil {
+		logError(err.Error())
+		return exitData
+	}
+	writeJSON(result, *pretty)
 	return exitSuccess
 }
 
