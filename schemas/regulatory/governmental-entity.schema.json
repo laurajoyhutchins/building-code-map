@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/regulatory/governmental-entity.schema.json",
+  "title": "Building Code Map Governmental Entity",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "entity_id",
+    "official_name",
+    "entity_type",
+    "state_id",
+    "state_fips",
+    "identity",
+    "legal_status",
+    "classification",
+    "historical_geography_status",
+    "source_ids"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "entity_id": {
+      "type": "string",
+      "pattern": "^gov:us-[a-z]{2}:[a-z_]+:[a-z0-9._-]+:[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "official_name": { "type": "string", "minLength": 1 },
+    "entity_type": {
+      "enum": [
+        "state",
+        "county_equivalent",
+        "municipality",
+        "minor_civil_division",
+        "consolidated_government",
+        "independent_city",
+        "special_district",
+        "tribal_government",
+        "other_governmental_entity"
+      ]
+    },
+    "state_id": { "type": "string", "pattern": "^US-[A-Z]{2}$" },
+    "state_fips": { "type": "string", "pattern": "^[0-9]{2}$" },
+    "identity": { "$ref": "#/$defs/identity" },
+    "external_identifiers": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/externalIdentifier" }
+    },
+    "legal_status": { "enum": ["active", "inactive", "unknown"] },
+    "effective_interval": { "$ref": "#/$defs/effectiveInterval" },
+    "geographies": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/geographyReference" }
+    },
+    "parent_entity_id": { "type": "string", "minLength": 1 },
+    "successor_entity_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "classification": {
+      "enum": [
+        "covered_by_state",
+        "local_adopter",
+        "local_amender",
+        "enforcement_only",
+        "delegated",
+        "no_general_authority",
+        "inactive",
+        "not_applicable",
+        "unresolved"
+      ]
+    },
+    "historical_geography_status": {
+      "enum": ["supported", "current_only", "unavailable"]
+    },
+    "source_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["namespace", "value"],
+      "properties": {
+        "namespace": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9._-]*$"
+        },
+        "value": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+        }
+      }
+    },
+    "externalIdentifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scheme", "value"],
+      "properties": {
+        "scheme": { "type": "string", "minLength": 1 },
+        "value": { "type": "string", "minLength": 1 }
+      }
+    },
+    "effectiveInterval": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "start_date": { "type": "string", "format": "date" },
+        "end_date": { "type": "string", "format": "date" }
+      }
+    },
+    "geographyReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "identifier", "vintage"],
+      "properties": {
+        "kind": { "type": "string", "minLength": 1 },
+        "identifier": { "type": "string", "minLength": 1 },
+        "vintage": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}
