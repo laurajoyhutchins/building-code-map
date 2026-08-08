@@ -35,6 +35,7 @@ type Engine interface {
 	Lookup(context.Context, Point) (LookupResult, error)
 	Readiness(context.Context) Readiness
 	BundleIdentity(context.Context) BundleIdentity
+	GetJurisdiction(context.Context, string) (regulatory.StateProfile, error)
 }
 
 type authorityEngine struct {
@@ -249,6 +250,14 @@ func (engine *authorityEngine) Readiness(context.Context) Readiness {
 
 func (engine *authorityEngine) BundleIdentity(context.Context) BundleIdentity {
 	return engine.identity
+}
+
+func (engine *authorityEngine) GetJurisdiction(_ context.Context, id string) (regulatory.StateProfile, error) {
+	profile, ok := engine.catalog.Profile(id, id)
+	if !ok {
+		return regulatory.StateProfile{}, EngineError{Code: ErrorRegulatoryProfileMissing, Message: "jurisdiction profile not found", Details: map[string]any{"id": id}, Retryable: false}
+	}
+	return profile, nil
 }
 
 func (engine *authorityEngine) provenance() Provenance {
