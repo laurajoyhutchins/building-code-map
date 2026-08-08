@@ -160,6 +160,12 @@ jobs:
         with:
           python-version: "3.13"
 
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: backend/go.mod
+          cache-dependency-path: backend/go.sum
+
       - name: Test compiler, quality reporting, and production gate
         run: python -m unittest discover -s reports/tools -p "test_*.py" -v
 
@@ -168,6 +174,13 @@ jobs:
 
       - name: Verify compiled profiles are current
         run: python reports/tools/regulatory.py compile reports/pilots/*.md --output-dir backend/data/regulatory --check
+
+      - name: Validate national governmental entity inventory
+        working-directory: backend
+        run: >-
+          go run ./cmd/government-entities-build validate
+          --root data/governmental-entities/2025
+          --source-contract data/governmental-entities/census-government-units-2025.source.json
 
       - name: Generate nationwide quality report
         run: >-

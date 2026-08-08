@@ -72,6 +72,11 @@
     "historical_geography_status": {
       "enum": ["supported", "current_only", "unavailable"]
     },
+    "population": { "$ref": "#/$defs/population" },
+    "source_classifications": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/sourceClassification" }
+    },
     "source_ids": {
       "type": "array",
       "minItems": 1,
@@ -120,6 +125,25 @@
         "kind": { "type": "string", "minLength": 1 },
         "identifier": { "type": "string", "minLength": 1 },
         "vintage": { "type": "string", "minLength": 1 }
+      }
+    },
+    "population": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "source_year"],
+      "properties": {
+        "count": { "type": "integer", "minimum": 0 },
+        "source_year": { "type": "string", "pattern": "^[0-9]{4}$" }
+      }
+    },
+    "sourceClassification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system", "unit_type"],
+      "properties": {
+        "system": { "type": "string", "minLength": 1 },
+        "unit_type": { "type": "string", "minLength": 1 },
+        "political_code_description": { "type": "string", "minLength": 1 }
       }
     }
   }

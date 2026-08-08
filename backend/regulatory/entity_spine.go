@@ -15,29 +15,29 @@ const (
 type GovernmentalEntityType string
 
 const (
-	EntityTypeState                  GovernmentalEntityType = "state"
-	EntityTypeCountyEquivalent       GovernmentalEntityType = "county_equivalent"
-	EntityTypeMunicipality           GovernmentalEntityType = "municipality"
-	EntityTypeMinorCivilDivision     GovernmentalEntityType = "minor_civil_division"
-	EntityTypeConsolidatedGovernment GovernmentalEntityType = "consolidated_government"
-	EntityTypeIndependentCity        GovernmentalEntityType = "independent_city"
-	EntityTypeSpecialDistrict        GovernmentalEntityType = "special_district"
-	EntityTypeTribalGovernment       GovernmentalEntityType = "tribal_government"
+	EntityTypeState                   GovernmentalEntityType = "state"
+	EntityTypeCountyEquivalent        GovernmentalEntityType = "county_equivalent"
+	EntityTypeMunicipality            GovernmentalEntityType = "municipality"
+	EntityTypeMinorCivilDivision      GovernmentalEntityType = "minor_civil_division"
+	EntityTypeConsolidatedGovernment  GovernmentalEntityType = "consolidated_government"
+	EntityTypeIndependentCity         GovernmentalEntityType = "independent_city"
+	EntityTypeSpecialDistrict         GovernmentalEntityType = "special_district"
+	EntityTypeTribalGovernment        GovernmentalEntityType = "tribal_government"
 	EntityTypeOtherGovernmentalEntity GovernmentalEntityType = "other_governmental_entity"
 )
 
 type JurisdictionClassification string
 
 const (
-	ClassificationCoveredByState    JurisdictionClassification = "covered_by_state"
-	ClassificationLocalAdopter      JurisdictionClassification = "local_adopter"
-	ClassificationLocalAmender      JurisdictionClassification = "local_amender"
-	ClassificationEnforcementOnly   JurisdictionClassification = "enforcement_only"
-	ClassificationDelegated         JurisdictionClassification = "delegated"
+	ClassificationCoveredByState     JurisdictionClassification = "covered_by_state"
+	ClassificationLocalAdopter       JurisdictionClassification = "local_adopter"
+	ClassificationLocalAmender       JurisdictionClassification = "local_amender"
+	ClassificationEnforcementOnly    JurisdictionClassification = "enforcement_only"
+	ClassificationDelegated          JurisdictionClassification = "delegated"
 	ClassificationNoGeneralAuthority JurisdictionClassification = "no_general_authority"
-	ClassificationInactive          JurisdictionClassification = "inactive"
-	ClassificationNotApplicable     JurisdictionClassification = "not_applicable"
-	ClassificationUnresolved        JurisdictionClassification = "unresolved"
+	ClassificationInactive           JurisdictionClassification = "inactive"
+	ClassificationNotApplicable      JurisdictionClassification = "not_applicable"
+	ClassificationUnresolved         JurisdictionClassification = "unresolved"
 )
 
 type LegalStatus string
@@ -77,23 +77,36 @@ type EntityGeographyReference struct {
 	Vintage    string `json:"vintage"`
 }
 
+type EntityPopulation struct {
+	Count      int64  `json:"count"`
+	SourceYear string `json:"source_year"`
+}
+
+type EntitySourceClassification struct {
+	System                   string `json:"system"`
+	UnitType                 string `json:"unit_type"`
+	PoliticalCodeDescription string `json:"political_code_description,omitempty"`
+}
+
 type GovernmentalEntity struct {
-	SchemaVersion             string                     `json:"schema_version"`
-	EntityID                  string                     `json:"entity_id"`
-	OfficialName              string                     `json:"official_name"`
-	EntityType                GovernmentalEntityType     `json:"entity_type"`
-	StateID                   string                     `json:"state_id"`
-	StateFIPS                 string                     `json:"state_fips"`
-	Identity                  CanonicalEntityIdentity    `json:"identity"`
-	ExternalIdentifiers       []ExternalEntityIdentifier `json:"external_identifiers,omitempty"`
-	LegalStatus               LegalStatus                `json:"legal_status"`
-	EffectiveInterval         EntityEffectiveInterval    `json:"effective_interval,omitempty"`
-	Geographies               []EntityGeographyReference `json:"geographies,omitempty"`
-	ParentEntityID            string                     `json:"parent_entity_id,omitempty"`
-	SuccessorEntityIDs        []string                   `json:"successor_entity_ids,omitempty"`
-	Classification           JurisdictionClassification `json:"classification"`
-	HistoricalGeographyStatus HistoricalGeographyStatus  `json:"historical_geography_status"`
-	SourceIDs                 []string                   `json:"source_ids"`
+	SchemaVersion              string                       `json:"schema_version"`
+	EntityID                   string                       `json:"entity_id"`
+	OfficialName               string                       `json:"official_name"`
+	EntityType                 GovernmentalEntityType       `json:"entity_type"`
+	StateID                    string                       `json:"state_id"`
+	StateFIPS                  string                       `json:"state_fips"`
+	Identity                   CanonicalEntityIdentity      `json:"identity"`
+	ExternalIdentifiers        []ExternalEntityIdentifier   `json:"external_identifiers,omitempty"`
+	LegalStatus                LegalStatus                  `json:"legal_status"`
+	EffectiveInterval          EntityEffectiveInterval      `json:"effective_interval,omitempty"`
+	Geographies                []EntityGeographyReference   `json:"geographies,omitempty"`
+	ParentEntityID             string                       `json:"parent_entity_id,omitempty"`
+	SuccessorEntityIDs         []string                     `json:"successor_entity_ids,omitempty"`
+	Classification            JurisdictionClassification   `json:"classification"`
+	HistoricalGeographyStatus  HistoricalGeographyStatus    `json:"historical_geography_status"`
+	Population                 *EntityPopulation             `json:"population,omitempty"`
+	SourceClassifications      []EntitySourceClassification `json:"source_classifications,omitempty"`
+	SourceIDs                  []string                     `json:"source_ids"`
 }
 
 type GovernmentalEntityCandidateInput struct {
@@ -109,21 +122,24 @@ type GovernmentalEntityCandidateInput struct {
 	ParentEntityID            string
 	SuccessorEntityIDs        []string
 	HistoricalGeographyStatus HistoricalGeographyStatus
+	Population                *EntityPopulation
+	SourceClassifications     []EntitySourceClassification
 	SourceIDs                 []string
 }
 
 type EntityInventory struct {
-	SchemaVersion string                `json:"schema_version"`
-	InventoryID   string                `json:"inventory_id"`
-	GeneratedAt   string                `json:"generated_at"`
-	Sources       []Source              `json:"sources"`
-	Entities      []GovernmentalEntity  `json:"entities"`
+	SchemaVersion string               `json:"schema_version"`
+	InventoryID   string               `json:"inventory_id"`
+	GeneratedAt   string               `json:"generated_at"`
+	Sources       []Source             `json:"sources"`
+	Entities      []GovernmentalEntity `json:"entities"`
 }
 
 var (
-	stateIDPattern       = regexp.MustCompile(`^US-[A-Z]{2}$`)
-	stateFIPSPattern     = regexp.MustCompile(`^[0-9]{2}$`)
-	identityPartPattern  = regexp.MustCompile(`^[A-Za-z0-9][A-Za-z0-9._-]*$`)
+	stateIDPattern      = regexp.MustCompile(`^US-[A-Z]{2}$`)
+	stateFIPSPattern    = regexp.MustCompile(`^[0-9]{2}$`)
+	identityPartPattern = regexp.MustCompile(`^[A-Za-z0-9][A-Za-z0-9._-]*$`)
+	populationYearPattern = regexp.MustCompile(`^[0-9]{4}$`)
 )
 
 func NewGovernmentalEntityCandidate(input GovernmentalEntityCandidateInput) (GovernmentalEntity, error) {
@@ -155,6 +171,8 @@ func NewGovernmentalEntityCandidate(input GovernmentalEntityCandidateInput) (Gov
 		SuccessorEntityIDs:        append([]string(nil), input.SuccessorEntityIDs...),
 		Classification:           ClassificationUnresolved,
 		HistoricalGeographyStatus: historical,
+		Population:                cloneEntityPopulation(input.Population),
+		SourceClassifications:     append([]EntitySourceClassification(nil), input.SourceClassifications...),
 		SourceIDs:                 append([]string(nil), input.SourceIDs...),
 	}
 	if err := validateGovernmentalEntity(entity); err != nil {
@@ -282,6 +300,19 @@ func validateGovernmentalEntity(entity GovernmentalEntity) error {
 			return fmt.Errorf("geography %d requires kind, identifier, and vintage", index)
 		}
 	}
+	if entity.Population != nil {
+		if entity.Population.Count < 0 {
+			return fmt.Errorf("population count must be non-negative")
+		}
+		if !populationYearPattern.MatchString(strings.TrimSpace(entity.Population.SourceYear)) {
+			return fmt.Errorf("population source_year must contain four digits")
+		}
+	}
+	for index, classification := range entity.SourceClassifications {
+		if strings.TrimSpace(classification.System) == "" || strings.TrimSpace(classification.UnitType) == "" {
+			return fmt.Errorf("source classification %d requires system and unit_type", index)
+		}
+	}
 	return nil
 }
 
@@ -319,6 +350,14 @@ func validateEffectiveInterval(interval EntityEffectiveInterval) error {
 		return fmt.Errorf("effective_interval end_date precedes start_date")
 	}
 	return nil
+}
+
+func cloneEntityPopulation(population *EntityPopulation) *EntityPopulation {
+	if population == nil {
+		return nil
+	}
+	copy := *population
+	return &copy
 }
 
 func validGovernmentalEntityType(value GovernmentalEntityType) bool {

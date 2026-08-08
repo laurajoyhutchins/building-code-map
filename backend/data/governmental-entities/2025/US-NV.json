@@ -1,0 +1,1699 @@
+{
+  "schema_version": "1.0",
+  "inventory_id": "census-government-units-2025:us-nv",
+  "generated_at": "2026-08-08T16:25:31Z",
+  "sources": [
+    {
+      "id": "src:census-government-units-2025",
+      "title": "2025 Government Units Listing",
+      "url": "https://www.census.gov/programs-surveys/gus/technical-documentation/file-layouts/annual-organization-public-use-file.html",
+      "kind": "governmental_inventory",
+      "accessed_at": "2026-08-08",
+      "last_checked_at": "2026-08-08",
+      "availability": "available",
+      "caveat": "This source establishes government-unit identity, source classification, activity status, and source-provided identifiers. It does not establish building-code adoption, amendment, administration, enforcement authority, or legal boundary geometry."
+    }
+  ],
+  "entities": [
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:county_equivalent:census-government-unit:108904",
+      "official_name": "COUNTY OF ELKO",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "108904"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "108904"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99007"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 54293,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:county_equivalent:census-government-unit:108905",
+      "official_name": "COUNTY OF LINCOLN",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "108905"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "108905"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "017"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99017"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4452,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:county_equivalent:census-government-unit:130688",
+      "official_name": "COUNTY OF CHURCHILL",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "130688"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "130688"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99001"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 25803,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:county_equivalent:census-government-unit:130689",
+      "official_name": "COUNTY OF ESMERALDA",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "130689"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "130689"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99009"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 736,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:county_equivalent:census-government-unit:169979",
+      "official_name": "COUNTY OF CLARK",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "169979"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "169979"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99003"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2336573,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:county_equivalent:census-government-unit:169980",
+      "official_name": "COUNTY OF DOUGLAS",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "169980"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "169980"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99005"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 49545,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:county_equivalent:census-government-unit:169981",
+      "official_name": "COUNTY OF EUREKA",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "169981"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "169981"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "011"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99011"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1917,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:county_equivalent:census-government-unit:169982",
+      "official_name": "COUNTY OF HUMBOLDT",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "169982"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "169982"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99013"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 17136,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:county_equivalent:census-government-unit:169983",
+      "official_name": "COUNTY OF LANDER",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "169983"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "169983"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "015"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99015"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 5769,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:county_equivalent:census-government-unit:169984",
+      "official_name": "COUNTY OF MINERAL",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "169984"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "169984"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99021"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4528,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:county_equivalent:census-government-unit:169985",
+      "official_name": "COUNTY OF NYE",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "169985"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "169985"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "023"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99023"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 55720,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:county_equivalent:census-government-unit:169986",
+      "official_name": "COUNTY OF PERSHING",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "169986"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "169986"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "027"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99027"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 6364,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:county_equivalent:census-government-unit:190871",
+      "official_name": "COUNTY OF LYON",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "190871"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "190871"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "019"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99019"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 62583,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:county_equivalent:census-government-unit:193706",
+      "official_name": "COUNTY OF WASHOE",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "193706"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "193706"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "031"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99031"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 498022,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:county_equivalent:census-government-unit:211204",
+      "official_name": "COUNTY OF STOREY",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "211204"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "211204"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "029"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99029"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4177,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:county_equivalent:census-government-unit:211385",
+      "official_name": "COUNTY OF WHITE PINE",
+      "entity_type": "county_equivalent",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "211385"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "211385"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "033"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99033"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8522,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:independent_city:census-government-unit:194943",
+      "official_name": "CITY OF CARSON CITY",
+      "entity_type": "independent_city",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "194943"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "194943"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "510"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "09700"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 58036,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:municipality:census-government-unit:108907",
+      "official_name": "CITY OF MESQUITE",
+      "entity_type": "municipality",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "108907"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "108907"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "46000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 22786,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:municipality:census-government-unit:108910",
+      "official_name": "CITY OF SPARKS",
+      "entity_type": "municipality",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "108910"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "108910"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "031"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "68400"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 110323,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:municipality:census-government-unit:130690",
+      "official_name": "CITY OF FALLON",
+      "entity_type": "municipality",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "130690"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "130690"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "24100"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 9577,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:municipality:census-government-unit:130691",
+      "official_name": "CITY OF BOULDER",
+      "entity_type": "municipality",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "130691"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "130691"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "06500"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 14828,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:municipality:census-government-unit:130692",
+      "official_name": "CITY OF ELKO",
+      "entity_type": "municipality",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "130692"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "130692"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "22500"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 20785,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:municipality:census-government-unit:130693",
+      "official_name": "CITY OF ELY",
+      "entity_type": "municipality",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "130693"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "130693"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "033"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "23500"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3907,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:municipality:census-government-unit:139229",
+      "official_name": "CITY OF CALIENTE",
+      "entity_type": "municipality",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "139229"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "139229"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "017"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "08500"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 971,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:municipality:census-government-unit:169987",
+      "official_name": "CITY OF HENDERSON",
+      "entity_type": "municipality",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "169987"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "169987"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "31900"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 337305,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:municipality:census-government-unit:169988",
+      "official_name": "CITY OF LAS VEGAS",
+      "entity_type": "municipality",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "169988"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "169988"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "40000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 660929,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:municipality:census-government-unit:169989",
+      "official_name": "CITY OF CARLIN",
+      "entity_type": "municipality",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "169989"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "169989"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "08900"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1990,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:municipality:census-government-unit:169990",
+      "official_name": "CITY OF WEST WENDOVER",
+      "entity_type": "municipality",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "169990"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "169990"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "83730"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4499,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:municipality:census-government-unit:169991",
+      "official_name": "CITY OF WINNEMUCCA",
+      "entity_type": "municipality",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "169991"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "169991"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "84800"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8261,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:municipality:census-government-unit:169992",
+      "official_name": "CITY OF YERINGTON",
+      "entity_type": "municipality",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "169992"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "169992"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "019"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "85400"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3194,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:municipality:census-government-unit:169993",
+      "official_name": "CITY OF RENO",
+      "entity_type": "municipality",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "169993"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "169993"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "031"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "60600"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 274915,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:municipality:census-government-unit:183877",
+      "official_name": "CITY OF WELLS",
+      "entity_type": "municipality",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "183877"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "183877"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "83000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1244,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:municipality:census-government-unit:194952",
+      "official_name": "CITY OF LOVELOCK",
+      "entity_type": "municipality",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "194952"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "194952"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "027"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "43000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1799,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:municipality:census-government-unit:208734",
+      "official_name": "CITY OF NORTH LAS VEGAS",
+      "entity_type": "municipality",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "208734"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "208734"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "51800"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 284771,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-nv:municipality:census-government-unit:213325",
+      "official_name": "CITY OF FERNLEY",
+      "entity_type": "municipality",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "213325"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "213325"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "019"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "24900"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 24744,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    }
+  ]
+}

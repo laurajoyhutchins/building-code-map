@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "inventory_id": "census-government-units-2025:us-dc",
+  "generated_at": "2026-08-08T16:25:31Z",
+  "sources": [
+    {
+      "id": "src:census-government-units-2025",
+      "title": "2025 Government Units Listing",
+      "url": "https://www.census.gov/programs-surveys/gus/technical-documentation/file-layouts/annual-organization-public-use-file.html",
+      "kind": "governmental_inventory",
+      "accessed_at": "2026-08-08",
+      "last_checked_at": "2026-08-08",
+      "availability": "available",
+      "caveat": "This source establishes government-unit identity, source classification, activity status, and source-provided identifiers. It does not establish building-code adoption, amendment, administration, enforcement authority, or legal boundary geometry."
+    }
+  ],
+  "entities": [
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-dc:municipality:census-government-unit:124214",
+      "official_name": "CITY OF WASHINGTON DC",
+      "entity_type": "municipality",
+      "state_id": "US-DC",
+      "state_fips": "11",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "124214"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "124214"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "11"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "50000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 678972,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    }
+  ]
+}

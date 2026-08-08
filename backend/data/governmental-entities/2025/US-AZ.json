@@ -1,0 +1,5107 @@
+{
+  "schema_version": "1.0",
+  "inventory_id": "census-government-units-2025:us-az",
+  "generated_at": "2026-08-08T16:25:31Z",
+  "sources": [
+    {
+      "id": "src:census-government-units-2025",
+      "title": "2025 Government Units Listing",
+      "url": "https://www.census.gov/programs-surveys/gus/technical-documentation/file-layouts/annual-organization-public-use-file.html",
+      "kind": "governmental_inventory",
+      "accessed_at": "2026-08-08",
+      "last_checked_at": "2026-08-08",
+      "availability": "available",
+      "caveat": "This source establishes government-unit identity, source classification, activity status, and source-provided identifiers. It does not establish building-code adoption, amendment, administration, enforcement authority, or legal boundary geometry."
+    }
+  ],
+  "entities": [
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:county_equivalent:census-government-unit:100237",
+      "official_name": "COUNTY OF COCHISE",
+      "entity_type": "county_equivalent",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "100237"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "100237"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99003"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 124640,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:county_equivalent:census-government-unit:100244",
+      "official_name": "COUNTY OF LA PAZ",
+      "entity_type": "county_equivalent",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "100244"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "100244"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "012"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99012"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 16710,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:county_equivalent:census-government-unit:122738",
+      "official_name": "COUNTY OF GRAHAM",
+      "entity_type": "county_equivalent",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122738"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122738"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99009"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 39525,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:county_equivalent:census-government-unit:122739",
+      "official_name": "COUNTY OF NAVAJO",
+      "entity_type": "county_equivalent",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122739"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122739"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "017"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99017"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 109175,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:county_equivalent:census-government-unit:122740",
+      "official_name": "COUNTY OF SANTA CRUZ",
+      "entity_type": "county_equivalent",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122740"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122740"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "023"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99023"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 49158,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:county_equivalent:census-government-unit:160813",
+      "official_name": "COUNTY OF COCONINO",
+      "entity_type": "county_equivalent",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160813"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160813"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99005"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 144472,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:county_equivalent:census-government-unit:160814",
+      "official_name": "COUNTY OF GREENLEE",
+      "entity_type": "county_equivalent",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160814"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160814"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "011"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99011"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 9369,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:county_equivalent:census-government-unit:160815",
+      "official_name": "COUNTY OF MARICOPA",
+      "entity_type": "county_equivalent",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160815"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160815"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99013"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4585871,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:county_equivalent:census-government-unit:160816",
+      "official_name": "COUNTY OF PIMA",
+      "entity_type": "county_equivalent",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160816"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160816"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "019"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99019"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1063162,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:county_equivalent:census-government-unit:160817",
+      "official_name": "COUNTY OF PINAL",
+      "entity_type": "county_equivalent",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160817"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160817"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99021"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 484239,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:county_equivalent:census-government-unit:160818",
+      "official_name": "COUNTY OF YUMA",
+      "entity_type": "county_equivalent",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160818"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160818"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "027"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99027"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 213221,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:county_equivalent:census-government-unit:183707",
+      "official_name": "COUNTY OF MOHAVE",
+      "entity_type": "county_equivalent",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "183707"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "183707"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "015"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99015"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 223682,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:county_equivalent:census-government-unit:193072",
+      "official_name": "COUNTY OF YAVAPAI",
+      "entity_type": "county_equivalent",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "193072"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "193072"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99025"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 249081,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:county_equivalent:census-government-unit:207531",
+      "official_name": "COUNTY OF APACHE",
+      "entity_type": "county_equivalent",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "207531"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "207531"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99001"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 65036,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:county_equivalent:census-government-unit:207532",
+      "official_name": "COUNTY OF GILA",
+      "entity_type": "county_equivalent",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "207532"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "207532"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "99007"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 54003,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "1 - COUNTY",
+          "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:100245",
+      "official_name": "CITY OF BISBEE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "100245"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "100245"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "06260"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4994,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:100246",
+      "official_name": "CITY OF FLAGSTAFF",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "100246"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "100246"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "23620"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 76586,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:100247",
+      "official_name": "TOWN OF MIAMI",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "100247"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "100247"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "46350"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1532,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:100248",
+      "official_name": "TOWN OF PIMA",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "100248"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "100248"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "55560"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3036,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:100249",
+      "official_name": "CITY OF CHANDLER",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "100249"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "100249"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "12000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 280167,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:100250",
+      "official_name": "CITY OF MESA",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "100250"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "100250"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "46000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 511648,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:100251",
+      "official_name": "CITY OF SURPRISE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "100251"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "100251"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "71510"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 158285,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:100252",
+      "official_name": "CITY OF KINGMAN",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "100252"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "100252"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "015"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "37620"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 35334,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:100255",
+      "official_name": "TOWN OF CHINO VALLEY",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "100255"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "100255"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "12840"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 13815,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:100256",
+      "official_name": "TOWN OF QUARTZSITE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "100256"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "100256"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "012"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "58010"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2389,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:122741",
+      "official_name": "TOWN OF EAGAR",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122741"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122741"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "20960"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4437,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:122742",
+      "official_name": "CITY OF BENSON",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122742"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122742"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "05770"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 5337,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:122743",
+      "official_name": "TOWN OF HUACHUCA CITY",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122743"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122743"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "34120"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1600,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:122744",
+      "official_name": "TOWN OF FREDONIA",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122744"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122744"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "25720"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1302,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:122745",
+      "official_name": "TOWN OF WINKELMAN",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122745"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122745"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "83790"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 294,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:122746",
+      "official_name": "TOWN OF DUNCAN",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122746"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122746"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "011"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "20750"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 670,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:122747",
+      "official_name": "CITY OF EL MIRAGE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122747"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122747"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "22220"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 35850,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:122748",
+      "official_name": "CITY OF GOODYEAR",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122748"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122748"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "28380"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 111805,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:122749",
+      "official_name": "TOWN OF CAREFREE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122749"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122749"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "10180"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3642,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:122750",
+      "official_name": "TOWN OF GUADALUPE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122750"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122750"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "30270"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 5217,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:122751",
+      "official_name": "TOWN OF COLORADO CITY",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122751"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122751"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "015"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "14870"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2734,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:122752",
+      "official_name": "CITY OF SOUTH TUCSON",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122752"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122752"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "019"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "68850"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4521,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:122753",
+      "official_name": "CITY OF CASA GRANDE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122753"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122753"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "10530"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 63743,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:122754",
+      "official_name": "TOWN OF FLORENCE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122754"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122754"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "23760"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 24291,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:122755",
+      "official_name": "TOWN OF SUPERIOR",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122755"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122755"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "71300"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2571,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:122756",
+      "official_name": "CITY OF SOMERTON",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "122756"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "122756"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "027"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "68080"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 14594,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:137165",
+      "official_name": "TOWN OF QUEEN CREEK",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "137165"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "137165"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "58150"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 76570,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:137166",
+      "official_name": "CITY OF YUMA",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "137166"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "137166"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "027"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "85540"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 100858,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160819",
+      "official_name": "CITY OF ST JOHNS",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160819"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160819"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "62350"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3362,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160820",
+      "official_name": "TOWN OF SPRINGERVILLE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160820"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160820"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "001"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "68990"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1727,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160821",
+      "official_name": "CITY OF DOUGLAS",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160821"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160821"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "20050"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 15638,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160822",
+      "official_name": "CITY OF SIERRA VISTA",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160822"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160822"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "66820"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 44431,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160823",
+      "official_name": "CITY OF TOMBSTONE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160823"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160823"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "74400"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1312,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160824",
+      "official_name": "CITY OF WILLCOX",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160824"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160824"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "003"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "83090"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3202,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160825",
+      "official_name": "CITY OF WILLIAMS",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160825"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160825"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "83160"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3463,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160826",
+      "official_name": "CITY OF PAGE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160826"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160826"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "51810"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 7320,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160827",
+      "official_name": "CITY OF GLOBE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160827"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160827"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "28030"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 7179,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160828",
+      "official_name": "TOWN OF HAYDEN",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160828"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160828"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "32020"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 516,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160829",
+      "official_name": "TOWN OF CLIFTON",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160829"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160829"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "011"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "14380"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3780,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160830",
+      "official_name": "TOWN OF BUCKEYE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160830"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160830"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "07940"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 108909,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160831",
+      "official_name": "TOWN OF GILBERT",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160831"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160831"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "27400"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 275411,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160832",
+      "official_name": "CITY OF PEORIA",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160832"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160832"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "54050"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 198750,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160833",
+      "official_name": "CITY OF TEMPE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160833"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160833"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "73000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 189834,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160834",
+      "official_name": "CITY OF LITCHFIELD PARK",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160834"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160834"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "41330"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 6884,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160835",
+      "official_name": "TOWN OF YOUNGTOWN",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160835"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160835"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "85400"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 6919,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160836",
+      "official_name": "CITY OF BULLHEAD CITY",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160836"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160836"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "015"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "08220"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 43302,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160837",
+      "official_name": "CITY OF LAKE HAVASU CITY",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160837"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160837"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "015"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "39370"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 59257,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160838",
+      "official_name": "CITY OF HOLBROOK",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160838"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160838"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "017"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "33280"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4833,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160839",
+      "official_name": "TOWN OF TAYLOR",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160839"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160839"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "017"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "72420"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4272,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160840",
+      "official_name": "CITY OF TUCSON",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160840"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160840"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "019"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "77000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 547239,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160841",
+      "official_name": "TOWN OF MARANA",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160841"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160841"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "019"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "44270"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 58430,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160842",
+      "official_name": "CITY OF COOLIDGE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160842"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160842"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "15500"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 18293,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160843",
+      "official_name": "CITY OF ELOY",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160843"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160843"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "22360"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 18528,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160844",
+      "official_name": "TOWN OF MAMMOTH",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160844"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160844"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "43990"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1133,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160845",
+      "official_name": "CITY OF APACHE JUNCTION",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160845"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160845"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "02830"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 41153,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160846",
+      "official_name": "CITY OF NOGALES",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160846"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160846"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "023"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "49640"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 19702,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160847",
+      "official_name": "TOWN OF CAMP VERDE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160847"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160847"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "09690"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 12489,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160848",
+      "official_name": "CITY OF COTTONWOOD",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160848"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160848"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "16410"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 13124,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160849",
+      "official_name": "TOWN OF PRESCOTT VALLEY",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160849"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160849"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "57450"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 50045,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160851",
+      "official_name": "CITY OF SAN LUIS",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160851"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160851"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "027"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "63470"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 37966,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:160853",
+      "official_name": "TOWN OF PARKER",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "160853"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "160853"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "012"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "53070"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3400,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:183703",
+      "official_name": "TOWN OF ORO VALLEY",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "183703"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "183703"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "019"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "51600"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 48311,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:183705",
+      "official_name": "TOWN OF SAHUARITA",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "183705"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "183705"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "019"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "62140"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 36356,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:183709",
+      "official_name": "TOWN OF JEROME",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "183709"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "183709"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "36290"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 460,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:183710",
+      "official_name": "CITY OF SAFFORD",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "183710"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "183710"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "62000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 10270,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:184344",
+      "official_name": "TOWN OF KEARNY",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "184344"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "184344"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "37200"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1817,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:189585",
+      "official_name": "CITY OF SCOTTSDALE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "189585"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "189585"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "65000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 244394,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:189586",
+      "official_name": "CITY OF PRESCOTT",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "189586"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "189586"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "57380"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 47757,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:193073",
+      "official_name": "TOWN OF PAYSON",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "193073"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "193073"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "53700"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 16731,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:193074",
+      "official_name": "CITY OF SHOW LOW",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "193074"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "193074"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "017"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "66470"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 12192,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:193075",
+      "official_name": "TOWN OF PATAGONIA",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "193075"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "193075"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "023"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "53490"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 789,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:201330",
+      "official_name": "TOWN OF WICKENBURG",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "201330"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "201330"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "82740"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8123,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:201331",
+      "official_name": "CITY OF WINSLOW",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "201331"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "201331"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "017"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "83930"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8517,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:201332",
+      "official_name": "CITY OF SEDONA",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "201332"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "201332"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "65350"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 9819,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:203930",
+      "official_name": "TOWN OF FOUNTAIN HILLS",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "203930"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "203930"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "25300"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 23611,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:203931",
+      "official_name": "TOWN OF SNOWFLAKE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "203931"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "203931"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "017"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "67800"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 6670,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:203932",
+      "official_name": "TOWN OF CLARKDALE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "203932"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "203932"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "13890"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4904,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:203933",
+      "official_name": "TOWN OF WELLTON",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "203933"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "203933"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "027"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "81480"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2572,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:207533",
+      "official_name": "TOWN OF THATCHER",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "207533"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "207533"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "009"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "73420"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 5486,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:207534",
+      "official_name": "CITY OF AVONDALE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "207534"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "207534"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "04720"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 93545,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:207535",
+      "official_name": "CITY OF GLENDALE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "207535"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "207535"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "27820"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 253855,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:207536",
+      "official_name": "CITY OF PHOENIX",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "207536"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "207536"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "55000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1650070,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:207537",
+      "official_name": "TOWN OF CAVE CREEK",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "207537"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "207537"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "11300"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 5152,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:207538",
+      "official_name": "TOWN OF PARADISE VALLEY",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "207538"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "207538"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "52930"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 12502,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:207539",
+      "official_name": "TOWN OF GILA BEND",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "207539"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "207539"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "27050"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 1854,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:207540",
+      "official_name": "TOWN OF PINETOP-LAKESIDE",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "207540"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "207540"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "017"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "55980"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4191,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:213143",
+      "official_name": "CITY OF TOLLESON",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "213143"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "213143"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "013"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "74190"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 7173,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:215070",
+      "official_name": "CITY OF MARICOPA",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "215070"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "215070"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "021"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "44410"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 71022,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:215758",
+      "official_name": "TOWN OF DEWEY-HUMBOLDT",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "215758"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "215758"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "025"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "19145"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4540,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:216998",
+      "official_name": "TOWN OF STAR VALLEY",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "216998"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "216998"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "007"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "69480"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 2545,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-az:municipality:census-government-unit:224827",
+      "official_name": "TOWN OF TUSAYAN",
+      "entity_type": "municipality",
+      "state_id": "US-AZ",
+      "state_fips": "04",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "224827"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "224827"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "04"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "005"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "77490"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 583,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "TOWN"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    }
+  ]
+}

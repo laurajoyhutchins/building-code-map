@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/regulatory/entity-inventory-index.schema.json",
+  "title": "Building Code Map Governmental Entity Inventory Index",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "source_id",
+    "generated_at",
+    "total_entities",
+    "entity_type_counts",
+    "classification_counts",
+    "states"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "source_id": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "total_entities": { "type": "integer", "minimum": 1 },
+    "entity_type_counts": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "classification_counts": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "states": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/stateSummary" }
+    }
+  },
+  "$defs": {
+    "stateSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state_id", "total_entities", "entity_type_counts", "classification_counts"],
+      "properties": {
+        "state_id": { "type": "string", "pattern": "^US-[A-Z]{2}$" },
+        "total_entities": { "type": "integer", "minimum": 1 },
+        "entity_type_counts": {
+          "type": "object",
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        },
+        "classification_counts": {
+          "type": "object",
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}
