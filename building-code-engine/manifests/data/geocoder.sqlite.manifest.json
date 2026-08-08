@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "snapshot_id": "geocoder-release-e45d3674c093",
+  "kind": "geocoder",
+  "sources": [
+    {
+      "publisher": "Building Code Map",
+      "product": "release geocoder fixtures",
+      "vintage": "e45d3674c09333e1682509e1a1a544363e7ab127",
+      "locator": "backend/geocoder/testdata",
+      "sha256": "635ae6a70342b720ce319c3d4fef5a9e9f7c3f0f9e3cec3c654bbcac2d175177",
+      "retrieved_at": "2026-08-06T21:04:11-06:00",
+      "license_review_status": "reviewed",
+      "redistribution_status": "repository-owned",
+      "input_crs": "EPSG:4326",
+      "transformation": "normalized deterministic fixture import"
+    }
+  ],
+  "builder": {
+    "tool": "geocoder-build",
+    "version": "0.1.0",
+    "revision": "e45d3674c09333e1682509e1a1a544363e7ab127",
+    "built_at": "2026-08-06T21:04:11-06:00",
+    "output_crs": "EPSG:4326"
+  },
+  "record_counts": {
+    "accepted": 5,
+    "rejected": 0,
+    "duplicate": 0,
+    "quarantined": 0
+  },
+  "output_sha256": "17faa294a3c17ffc3475d53e5722be98af1facb8037b59a936f2fb278c877bbf",
+  "output_size_bytes": 36864,
+  "integrity_checks": [
+    {
+      "name": "fixture-import",
+      "status": "passed"
+    }
+  ]
+}

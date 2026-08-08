@@ -1,0 +1,569 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "state-profile:us-nj",
+  "state_id": "US-NJ",
+  "state_name": "New Jersey",
+  "state_abbreviation": "NJ",
+  "state_fips": "34",
+  "status": "verified",
+  "last_verified": "2026-08-02",
+  "sources": [
+    {
+      "id": "src:us-nj:ucc",
+      "title": "New Jersey DCA — Uniform Construction Code, N.J.A.C. 5:23",
+      "url": "https://www.nj.gov/dca/codes/codreg/ucc.shtml",
+      "kind": "administrative_code",
+      "accessed_at": "2026-08-02",
+      "caveat": "Courtesy copies; official administrative rules govern if discrepancies exist."
+    },
+    {
+      "id": "src:us-nj:current-codes",
+      "title": "New Jersey DCA — current adopted UCC model codes",
+      "url": "https://www.nj.gov/dca/codes/codreg/current.shtml",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-nj:previous-codes",
+      "title": "New Jersey DCA — previously adopted UCC model codes and grace period",
+      "url": "https://www.nj.gov/dca/codes/codreg/previous.shtml",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-nj:codes-about",
+      "title": "New Jersey DCA — Division of Codes and Standards",
+      "url": "https://www.nj.gov/dca/codes/about.shtml",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-nj:local-enforcement",
+      "title": "New Jersey DCA — local and regional code enforcement",
+      "url": "https://www.nj.gov/dca/codes/offices/localcode.shtml",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-nj:bcpr",
+      "title": "New Jersey DCA — Bureau of Construction Project Review",
+      "url": "https://www.nj.gov/dca/codes/offices/bcpr.shtml",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-nj:fire-safety",
+      "title": "New Jersey DCA — Division of Fire Safety",
+      "url": "https://www.nj.gov/dca/dfs/",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-nj:fire-codes",
+      "title": "New Jersey DCA — fire codes and rule adoptions",
+      "url": "https://www.nj.gov/dca/dfs/codes/",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-nj:ifc-2018",
+      "title": "International Code Council — 2018 International Fire Code, New Jersey Edition",
+      "url": "https://codes.iccsafe.org/content/NJFC2018P1",
+      "kind": "official_code_publisher",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-nj:trenton-tech",
+      "title": "City of Trenton — Division of Technical Services",
+      "url": "https://www.trentonnj.org/239/Division-of-Technical-Services",
+      "kind": "official_web",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-nj:trenton-ch42",
+      "title": "City of Trenton Code Chapter 42 — Building Construction",
+      "url": "https://ecode360.com/9130420",
+      "kind": "municipal_code",
+      "accessed_at": "2026-08-02"
+    },
+    {
+      "id": "src:us-nj:trenton-ch97",
+      "title": "City of Trenton Code Chapter 97 — Uniform Fire Code",
+      "url": "https://ecode360.com/9130950",
+      "kind": "municipal_code",
+      "accessed_at": "2026-08-02"
+    }
+  ],
+  "authorities": [
+    {
+      "id": "auth:us-nj:codes-standards",
+      "name": "New Jersey Division of Codes and Standards",
+      "type": "state_agency",
+      "roles": [
+        "adopts",
+        "oversees_enforcement",
+        "state_enforcement"
+      ],
+      "source_ids": [
+        "src:us-nj:ucc",
+        "src:us-nj:codes-about"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "auth:us-nj:division-fire-safety",
+      "name": "New Jersey Division of Fire Safety",
+      "type": "state_agency",
+      "roles": [
+        "administers_uniform_fire_code",
+        "enforces_state_fire_code",
+        "monitors_local_enforcement"
+      ],
+      "source_ids": [
+        "src:us-nj:fire-safety",
+        "src:us-nj:fire-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "auth:us-nj:bcpr",
+      "name": "New Jersey Bureau of Construction Project Review",
+      "type": "state_bureau",
+      "roles": [
+        "plan_review",
+        "issues_releases",
+        "state_project_review"
+      ],
+      "source_ids": [
+        "src:us-nj:bcpr"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "auth:us-nj:trenton-technical-services",
+      "name": "City of Trenton Division of Technical Services",
+      "type": "municipal_department",
+      "roles": [
+        "plan_review",
+        "permits",
+        "inspects",
+        "enforces"
+      ],
+      "source_ids": [
+        "src:us-nj:trenton-tech",
+        "src:us-nj:trenton-ch42"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "auth:us-nj:trenton-fire-enforcement",
+      "name": "City of Trenton local fire enforcing agency",
+      "type": "municipal_department",
+      "roles": [
+        "fire_inspections",
+        "fire_permits",
+        "enforces",
+        "appeals"
+      ],
+      "source_ids": [
+        "src:us-nj:trenton-ch97",
+        "src:us-nj:trenton-tech"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "edge:us-nj:ucc-local-enforcement",
+      "from_id": "auth:us-nj:codes-standards",
+      "relationship": "oversees",
+      "to": "municipal and regional enforcing agencies",
+      "scope": [
+        "construction_code"
+      ],
+      "source_ids": [
+        "src:us-nj:codes-about",
+        "src:us-nj:local-enforcement"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "edge:us-nj:state-project-review",
+      "from_id": "auth:us-nj:codes-standards",
+      "relationship": "assigns_project_review_to",
+      "to": "auth:us-nj:bcpr",
+      "scope": [
+        "state_owned",
+        "public_school",
+        "health_care",
+        "casino",
+        "high_rise"
+      ],
+      "source_ids": [
+        "src:us-nj:bcpr"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "edge:us-nj:fire-local-enforcement",
+      "from_id": "auth:us-nj:division-fire-safety",
+      "relationship": "authorizes_local_enforcement_by",
+      "to": "local fire enforcing agencies",
+      "scope": [
+        "fire_operational"
+      ],
+      "source_ids": [
+        "src:us-nj:fire-safety",
+        "src:us-nj:trenton-ch97"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "adoptions": [
+    {
+      "id": "adoption:us-nj:building:2015",
+      "code_family": "building",
+      "status": "prior",
+      "state_code_name": "New Jersey Building Subcode — IBC 2015, New Jersey Edition",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Building Code",
+        "edition_year": 2015
+      },
+      "adopting_authority_id": "auth:us-nj:codes-standards",
+      "enforcement_model": "hybrid",
+      "applies_to": [
+        "construction",
+        "alteration",
+        "repair",
+        "rehabilitation"
+      ],
+      "dates": {
+        "effective_date": "2015-09-21",
+        "operative_date": "2015-09-21",
+        "replacement_date": "2020-03-03"
+      },
+      "source_ids": [
+        "src:us-nj:ucc",
+        "src:us-nj:previous-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "adoption:us-nj:building:2018",
+      "code_family": "building",
+      "status": "prior",
+      "state_code_name": "New Jersey Building Subcode — IBC 2018, New Jersey Edition",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Building Code",
+        "edition_year": 2018
+      },
+      "adopting_authority_id": "auth:us-nj:codes-standards",
+      "enforcement_model": "hybrid",
+      "applies_to": [
+        "construction",
+        "alteration",
+        "repair",
+        "rehabilitation"
+      ],
+      "dates": {
+        "effective_date": "2019-09-03",
+        "operative_date": "2019-09-03",
+        "replacement_date": "2023-03-06"
+      },
+      "source_ids": [
+        "src:us-nj:ucc",
+        "src:us-nj:previous-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "adoption:us-nj:building:2021",
+      "code_family": "building",
+      "status": "current",
+      "state_code_name": "New Jersey Building Subcode — IBC 2021, New Jersey Edition",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Building Code",
+        "edition_year": 2021
+      },
+      "adopting_authority_id": "auth:us-nj:codes-standards",
+      "enforcement_model": "hybrid",
+      "applies_to": [
+        "construction",
+        "alteration",
+        "repair",
+        "rehabilitation"
+      ],
+      "dates": {
+        "effective_date": "2022-09-06",
+        "operative_date": "2022-09-06"
+      },
+      "source_ids": [
+        "src:us-nj:ucc",
+        "src:us-nj:current-codes",
+        "src:us-nj:previous-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "adoption:us-nj:fire:2015",
+      "code_family": "fire_operational",
+      "status": "prior",
+      "state_code_name": "New Jersey State Fire Prevention Code — 2015 International Fire Code, New Jersey Edition",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Fire Code",
+        "edition_year": 2015
+      },
+      "adopting_authority_id": "auth:us-nj:division-fire-safety",
+      "enforcement_model": "hybrid",
+      "applies_to": [
+        "fire_prevention",
+        "life_hazard_uses",
+        "operational_fire_safety"
+      ],
+      "dates": {
+        "effective_date": "2018-02-05",
+        "operative_date": "2018-02-05",
+        "replacement_date": "2024-10-15"
+      },
+      "source_ids": [
+        "src:us-nj:fire-safety",
+        "src:us-nj:fire-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "adoption:us-nj:fire:2018",
+      "code_family": "fire_operational",
+      "status": "current",
+      "state_code_name": "New Jersey State Fire Prevention Code — 2018 International Fire Code, New Jersey Edition",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Fire Code",
+        "edition_year": 2018
+      },
+      "adopting_authority_id": "auth:us-nj:division-fire-safety",
+      "enforcement_model": "hybrid",
+      "applies_to": [
+        "fire_prevention",
+        "life_hazard_uses",
+        "operational_fire_safety"
+      ],
+      "dates": {
+        "effective_date": "2024-10-15",
+        "operative_date": "2024-10-15"
+      },
+      "source_ids": [
+        "src:us-nj:fire-safety",
+        "src:us-nj:fire-codes",
+        "src:us-nj:ifc-2018"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "defaults": {
+    "incorporated": {
+      "status": "partially_resolved",
+      "authority_candidates": [
+        {
+          "kind": "municipality",
+          "source_ids": [
+            "src:us-nj:local-enforcement"
+          ],
+          "label": "Municipal or regional construction code enforcing agency",
+          "roles": [
+            "plan_review",
+            "permits",
+            "inspects",
+            "enforces"
+          ]
+        },
+        {
+          "kind": "state_authority",
+          "source_ids": [
+            "src:us-nj:ucc",
+            "src:us-nj:local-enforcement"
+          ],
+          "authority_id": "auth:us-nj:codes-standards"
+        }
+      ],
+      "adoption_ids": [
+        "adoption:us-nj:building:2015",
+        "adoption:us-nj:building:2018",
+        "adoption:us-nj:building:2021"
+      ],
+      "required_local_records": [
+        "Current municipal or regional enforcing agency",
+        "Project-specific state plan-review assignment"
+      ],
+      "source_ids": [
+        "src:us-nj:ucc",
+        "src:us-nj:local-enforcement"
+      ]
+    },
+    "unincorporated": {
+      "status": "partially_resolved",
+      "authority_candidates": [
+        {
+          "kind": "state_authority",
+          "source_ids": [
+            "src:us-nj:local-enforcement"
+          ],
+          "authority_id": "auth:us-nj:codes-standards"
+        }
+      ],
+      "adoption_ids": [
+        "adoption:us-nj:building:2015",
+        "adoption:us-nj:building:2018",
+        "adoption:us-nj:building:2021"
+      ],
+      "required_local_records": [
+        "Resolve the responsible municipality or DCA regional enforcing agency"
+      ],
+      "warnings": [
+        "New Jersey geographic data should ordinarily resolve a municipality; an unincorporated result requires geographic review."
+      ],
+      "source_ids": [
+        "src:us-nj:ucc",
+        "src:us-nj:local-enforcement"
+      ]
+    }
+  },
+  "code_family_overrides": {
+    "building": {
+      "status": "partially_resolved",
+      "adoption_ids": [
+        "adoption:us-nj:building:2015",
+        "adoption:us-nj:building:2018",
+        "adoption:us-nj:building:2021"
+      ],
+      "source_ids": [
+        "src:us-nj:ucc",
+        "src:us-nj:current-codes",
+        "src:us-nj:previous-codes"
+      ]
+    },
+    "fire_operational": {
+      "status": "partially_resolved",
+      "authority_candidates": [
+        {
+          "kind": "fire_authority",
+          "source_ids": [
+            "src:us-nj:fire-safety"
+          ],
+          "label": "Local fire code enforcing agency",
+          "roles": [
+            "inspects",
+            "permits",
+            "enforces"
+          ]
+        },
+        {
+          "kind": "state_authority",
+          "source_ids": [
+            "src:us-nj:fire-safety"
+          ],
+          "authority_id": "auth:us-nj:division-fire-safety"
+        }
+      ],
+      "adoption_ids": [
+        "adoption:us-nj:fire:2015",
+        "adoption:us-nj:fire:2018"
+      ],
+      "required_local_records": [
+        "Whether the property is locally enforced or state enforced under the Uniform Fire Code"
+      ],
+      "source_ids": [
+        "src:us-nj:fire-safety",
+        "src:us-nj:fire-codes",
+        "src:us-nj:ifc-2018"
+      ],
+      "replace_authority_candidates": true,
+      "replace_adoptions": true
+    }
+  },
+  "project_type_overrides": {
+    "state_owned": {
+      "status": "resolved",
+      "authority_candidates": [
+        {
+          "kind": "state_authority",
+          "source_ids": [
+            "src:us-nj:bcpr"
+          ],
+          "authority_id": "auth:us-nj:bcpr"
+        }
+      ],
+      "required_local_records": [
+        "Project-specific DCA plan review and release record"
+      ],
+      "source_ids": [
+        "src:us-nj:bcpr"
+      ]
+    },
+    "public_school": {
+      "status": "partially_resolved",
+      "authority_candidates": [
+        {
+          "kind": "state_authority",
+          "source_ids": [
+            "src:us-nj:bcpr"
+          ],
+          "authority_id": "auth:us-nj:bcpr"
+        }
+      ],
+      "required_local_records": [
+        "Project-specific DCA or local plan review assignment"
+      ],
+      "source_ids": [
+        "src:us-nj:bcpr"
+      ]
+    }
+  },
+  "verification": {
+    "status": "verified",
+    "confidence": 0.95
+  }
+}

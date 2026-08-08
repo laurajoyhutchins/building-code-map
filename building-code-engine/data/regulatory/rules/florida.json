@@ -1,0 +1,397 @@
+{
+  "schema_version": "1.0",
+  "state_id": "US-FL",
+  "source_health": {
+    "src:us-fl:statute-553-73": {
+      "last_checked_at": "2026-08-02",
+      "availability": "available"
+    },
+    "src:us-fl:statute-553-80": {
+      "last_checked_at": "2026-08-02",
+      "availability": "available"
+    },
+    "src:us-fl:fbc-2017-workplan": {
+      "last_checked_at": "2026-08-02",
+      "availability": "available"
+    },
+    "src:us-fl:fbc-2020-workplan": {
+      "last_checked_at": "2026-08-02",
+      "availability": "available"
+    },
+    "src:us-fl:fbc-current": {
+      "last_checked_at": "2026-08-02",
+      "availability": "available"
+    },
+    "src:us-fl:orlando-codes": {
+      "last_checked_at": "2026-08-02",
+      "availability": "available"
+    },
+    "src:us-fl:orlando-ch13": {
+      "last_checked_at": "2026-08-02",
+      "availability": "available"
+    },
+    "src:us-fl:orange-building-safety": {
+      "last_checked_at": "2026-08-02",
+      "availability": "available"
+    },
+    "src:us-fl:orange-ch9": {
+      "last_checked_at": "2026-08-02",
+      "availability": "available"
+    },
+    "src:us-fl:ocps-building-code": {
+      "last_checked_at": "2026-08-02",
+      "availability": "available"
+    }
+  },
+  "applicability_rules": [
+    {
+      "id": "rule:us-fl:statewide-building",
+      "code_family": "building",
+      "trigger": "ordinary_project",
+      "applies_to": [
+        "new_construction",
+        "alteration",
+        "repair",
+        "addition",
+        "change_of_occupancy"
+      ],
+      "summary": "Florida's statewide building-code volume supplies the baseline construction code, subject to permitted local amendments and local administration.",
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:statute-553-80"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-fl:statewide-residential",
+      "code_family": "residential",
+      "trigger": "detached_one_two_family_or_townhouse",
+      "summary": "Florida's statewide residential volume supplies the baseline for covered one- and two-family dwellings and townhouses.",
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:statute-553-80"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-fl:statewide-energy",
+      "code_family": "energy",
+      "trigger": "covered_building_project",
+      "summary": "Florida's statewide energy-conservation volume supplies the baseline energy code for covered projects.",
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:statute-553-80"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-fl:public-school-enforcement",
+      "code_family": "construction_code",
+      "project_types": [
+        "public_school"
+      ],
+      "trigger": "public_school_project",
+      "summary": "A public school district may perform plan review, permitting, inspections, and appeals for its own facilities under section 553.80; the responsible district record identifies the administering office.",
+      "source_ids": [
+        "src:us-fl:statute-553-80",
+        "src:us-fl:ocps-building-code"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "date_rules": [
+    {
+      "id": "rule:us-fl:building:2017-effective",
+      "code_family": "building",
+      "rule_type": "effective_window",
+      "trigger": "applicability_date",
+      "start_date": "2017-12-31",
+      "prior_code_allowed": false,
+      "summary": "The Florida building volume of the 6th Edition (2017) applies during this recorded statewide window.",
+      "source_ids": [
+        "src:us-fl:fbc-2017-workplan"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      },
+      "end_date": "2020-12-30"
+    },
+    {
+      "id": "rule:us-fl:building:2020-effective",
+      "code_family": "building",
+      "rule_type": "effective_window",
+      "trigger": "applicability_date",
+      "start_date": "2020-12-31",
+      "prior_code_allowed": false,
+      "summary": "The Florida building volume of the 7th Edition (2020) applies during this recorded statewide window.",
+      "source_ids": [
+        "src:us-fl:fbc-2020-workplan"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      },
+      "end_date": "2023-12-30"
+    },
+    {
+      "id": "rule:us-fl:building:2023-effective",
+      "code_family": "building",
+      "rule_type": "effective_window",
+      "trigger": "applicability_date",
+      "start_date": "2023-12-31",
+      "prior_code_allowed": false,
+      "summary": "The Florida building volume of the 8th Edition (2023) applies during this recorded statewide window.",
+      "source_ids": [
+        "src:us-fl:fbc-current"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-fl:residential:2017-effective",
+      "code_family": "residential",
+      "rule_type": "effective_window",
+      "trigger": "applicability_date",
+      "start_date": "2017-12-31",
+      "prior_code_allowed": false,
+      "summary": "The Florida residential volume of the 6th Edition (2017) applies during this recorded statewide window.",
+      "source_ids": [
+        "src:us-fl:fbc-2017-workplan"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      },
+      "end_date": "2020-12-30"
+    },
+    {
+      "id": "rule:us-fl:residential:2020-effective",
+      "code_family": "residential",
+      "rule_type": "effective_window",
+      "trigger": "applicability_date",
+      "start_date": "2020-12-31",
+      "prior_code_allowed": false,
+      "summary": "The Florida residential volume of the 7th Edition (2020) applies during this recorded statewide window.",
+      "source_ids": [
+        "src:us-fl:fbc-2020-workplan"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      },
+      "end_date": "2023-12-30"
+    },
+    {
+      "id": "rule:us-fl:residential:2023-effective",
+      "code_family": "residential",
+      "rule_type": "effective_window",
+      "trigger": "applicability_date",
+      "start_date": "2023-12-31",
+      "prior_code_allowed": false,
+      "summary": "The Florida residential volume of the 8th Edition (2023) applies during this recorded statewide window.",
+      "source_ids": [
+        "src:us-fl:fbc-current"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-fl:energy:2017-effective",
+      "code_family": "energy",
+      "rule_type": "effective_window",
+      "trigger": "applicability_date",
+      "start_date": "2017-12-31",
+      "prior_code_allowed": false,
+      "summary": "The Florida energy volume of the 6th Edition (2017) applies during this recorded statewide window.",
+      "source_ids": [
+        "src:us-fl:fbc-2017-workplan"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      },
+      "end_date": "2020-12-30"
+    },
+    {
+      "id": "rule:us-fl:energy:2020-effective",
+      "code_family": "energy",
+      "rule_type": "effective_window",
+      "trigger": "applicability_date",
+      "start_date": "2020-12-31",
+      "prior_code_allowed": false,
+      "summary": "The Florida energy volume of the 7th Edition (2020) applies during this recorded statewide window.",
+      "source_ids": [
+        "src:us-fl:fbc-2020-workplan"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      },
+      "end_date": "2023-12-30"
+    },
+    {
+      "id": "rule:us-fl:energy:2023-effective",
+      "code_family": "energy",
+      "rule_type": "effective_window",
+      "trigger": "applicability_date",
+      "start_date": "2023-12-31",
+      "prior_code_allowed": false,
+      "summary": "The Florida energy volume of the 8th Edition (2023) applies during this recorded statewide window.",
+      "source_ids": [
+        "src:us-fl:fbc-current"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "amendment_rules": [
+    {
+      "id": "rule:us-fl:local-technical-amendments",
+      "code_family": "construction_code",
+      "level": "local",
+      "posture": "verified_local_amendment_record_required",
+      "summary": "The applicable local code chapter and administrative procedures remain part of a production result even though the statewide code supplies the baseline.",
+      "source_ids": [
+        "src:us-fl:statute-553-73",
+        "src:us-fl:orlando-ch13",
+        "src:us-fl:orange-ch9"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "enforcement_rules": [
+    {
+      "id": "rule:us-fl:local-enforcement",
+      "code_family": "construction_code",
+      "model": "local_with_state_oversight",
+      "entity_kinds": [
+        "municipality",
+        "county",
+        "state_commission"
+      ],
+      "authority_ids": [
+        "auth:us-fl:building-commission",
+        "auth:us-fl:orlando-permitting",
+        "auth:us-fl:orange-building-safety"
+      ],
+      "summary": "Local enforcing agencies perform plan review, permitting, inspections, and code enforcement under the statewide Florida Building Code framework.",
+      "source_ids": [
+        "src:us-fl:statute-553-80",
+        "src:us-fl:orlando-codes",
+        "src:us-fl:orange-building-safety"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-fl:school-district-enforcement",
+      "code_family": "construction_code",
+      "model": "public_owner_self_enforcement",
+      "entity_kinds": [
+        "public_school_district"
+      ],
+      "authority_ids": [
+        "auth:us-fl:ocps-code-compliance"
+      ],
+      "summary": "Orange County Public Schools Building Code Compliance administers plan review, permits, inspections, and occupancy certification for OCPS facilities.",
+      "source_ids": [
+        "src:us-fl:statute-553-80",
+        "src:us-fl:ocps-building-code"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim:us-fl:2017-effective",
+      "subject_id": "adoption:us-fl:building:2017",
+      "field": "dates.effective_date",
+      "status": "supported",
+      "value": "2017-12-31",
+      "source_ids": [
+        "src:us-fl:fbc-2017-workplan"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "claim:us-fl:2020-effective",
+      "subject_id": "adoption:us-fl:building:2020",
+      "field": "dates.effective_date",
+      "status": "supported",
+      "value": "2020-12-31",
+      "source_ids": [
+        "src:us-fl:fbc-2020-workplan"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "claim:us-fl:2023-effective",
+      "subject_id": "adoption:us-fl:building:2023",
+      "field": "dates.effective_date",
+      "status": "supported",
+      "value": "2023-12-31",
+      "source_ids": [
+        "src:us-fl:fbc-current"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "claim:us-fl:local-enforcement-path",
+      "subject_id": "edge:us-fl:state-code-local-enforcement",
+      "field": "relationship",
+      "status": "supported",
+      "value": "delegates_enforcement_to",
+      "source_ids": [
+        "src:us-fl:statute-553-80"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "resolver_fixture_ids": [
+    "fixture:us-fl:orlando-building-current",
+    "fixture:us-fl:orlando-building-historical",
+    "fixture:us-fl:orange-county-energy",
+    "fixture:us-fl:ocps-public-school",
+    "fixture:us-fl:missing-local-record",
+    "fixture:us-fl:conflicting-edition-claim"
+  ]
+}

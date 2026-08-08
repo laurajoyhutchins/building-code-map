@@ -38,3 +38,6 @@ docs/deciduous-graph*.dot
 *.sqlite
 *.sqlite-wal
 *.sqlite-shm
+
+# Canonical self-contained authority-engine release payload
+!building-code-engine/data/geocoder.sqlite

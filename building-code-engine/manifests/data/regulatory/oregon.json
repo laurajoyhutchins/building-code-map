@@ -1,0 +1,498 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "state-profile:us-or",
+  "state_id": "US-OR",
+  "state_name": "Oregon",
+  "state_abbreviation": "OR",
+  "state_fips": "41",
+  "status": "partially_verified",
+  "last_verified": "2026-08-04",
+  "sources": [
+    {
+      "id": "src:us-or:bcd-state-code",
+      "title": "Oregon Building Codes Division — Oregon State Building Code",
+      "url": "https://www.oregon.gov/bcd/codes-stand/pages/index.aspx",
+      "kind": "official_web",
+      "accessed_at": "2026-08-04"
+    },
+    {
+      "id": "src:us-or:bcd-adopted-codes",
+      "title": "Oregon Building Codes Division — Adopted codes online",
+      "url": "https://www.oregon.gov/bcd/codes-stand/pages/adopted-codes.aspx",
+      "kind": "official_web",
+      "accessed_at": "2026-08-04"
+    },
+    {
+      "id": "src:us-or:bcd-ossc-2025",
+      "title": "Oregon Building Codes Division — 2025 OSSC adoption",
+      "url": "https://www.oregon.gov/bcd/codes-stand/Pages/ossc-adoption.aspx",
+      "kind": "official_web",
+      "accessed_at": "2026-08-04"
+    },
+    {
+      "id": "src:us-or:bcd-oeesc-2025",
+      "title": "Oregon Building Codes Division — 2025 OEESC",
+      "url": "https://www.oregon.gov/bcd/codes-stand/Pages/oeesc-adoption.aspx",
+      "kind": "official_web",
+      "accessed_at": "2026-08-04"
+    },
+    {
+      "id": "src:us-or:bcd-omsc-2025",
+      "title": "Oregon Building Codes Division — 2025 OMSC adoption",
+      "url": "https://www.oregon.gov/bcd/codes-stand/Pages/omsc-adoption.aspx",
+      "kind": "official_web",
+      "accessed_at": "2026-08-04"
+    },
+    {
+      "id": "src:us-or:bcd-orsc-2026-process",
+      "title": "Oregon Building Codes Division — 2026 ORSC adoption process",
+      "url": "https://www.oregon.gov/bcd/codes-stand/Pages/orsc-adoption.aspx",
+      "kind": "official_web",
+      "accessed_at": "2026-08-04"
+    },
+    {
+      "id": "src:us-or:bcd-code-history",
+      "title": "Oregon Building Codes Division — Codebook history",
+      "url": "https://www.oregon.gov/bcd/codes-stand/pages/codebook-history.aspx",
+      "kind": "official_web",
+      "accessed_at": "2026-08-04"
+    }
+  ],
+  "authorities": [
+    {
+      "id": "auth:us-or:building-codes-division",
+      "name": "Oregon Building Codes Division",
+      "type": "state_agency",
+      "roles": [
+        "adopts",
+        "amends",
+        "interprets",
+        "administers_specialty_code_programs"
+      ],
+      "source_ids": [
+        "src:us-or:bcd-state-code",
+        "src:us-or:bcd-adopted-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "relationships": [],
+  "adoptions": [
+    {
+      "id": "adoption:us-or:building:2025-ossc",
+      "code_family": "building",
+      "status": "current",
+      "state_code_name": "2025 Oregon Structural Specialty Code",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Building Code",
+        "edition_year": 2024
+      },
+      "adopting_authority_id": "auth:us-or:building-codes-division",
+      "enforcement_model": "local_with_state_oversight",
+      "applies_to": [
+        "commercial",
+        "new_construction",
+        "alteration",
+        "repair"
+      ],
+      "dates": {
+        "effective_date": "2025-10-01",
+        "operative_date": "2025-10-01",
+        "mandatory_date": "2026-04-01"
+      },
+      "source_ids": [
+        "src:us-or:bcd-ossc-2025",
+        "src:us-or:bcd-adopted-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "adoption:us-or:existing-building:2025-ossc",
+      "code_family": "existing_building",
+      "status": "current",
+      "state_code_name": "2025 Oregon Structural Specialty Code — existing-building provisions",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Existing Building Code",
+        "edition_year": 2024
+      },
+      "adopting_authority_id": "auth:us-or:building-codes-division",
+      "enforcement_model": "local_with_state_oversight",
+      "applies_to": [
+        "existing_buildings",
+        "alteration",
+        "repair"
+      ],
+      "dates": {
+        "effective_date": "2025-10-01",
+        "operative_date": "2025-10-01",
+        "mandatory_date": "2026-04-01"
+      },
+      "source_ids": [
+        "src:us-or:bcd-ossc-2025",
+        "src:us-or:bcd-adopted-codes"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.92
+      }
+    },
+    {
+      "id": "adoption:us-or:energy:2025-oeesc",
+      "code_family": "energy",
+      "status": "current",
+      "state_code_name": "2025 Oregon Energy Efficiency Specialty Code",
+      "base_model_code": {
+        "publisher": "ASHRAE",
+        "name": "ANSI/ASHRAE/IES Standard 90.1",
+        "edition_year": 2022
+      },
+      "adopting_authority_id": "auth:us-or:building-codes-division",
+      "enforcement_model": "local_with_state_oversight",
+      "applies_to": [
+        "commercial_energy"
+      ],
+      "dates": {
+        "effective_date": "2025-01-01",
+        "operative_date": "2025-01-01",
+        "mandatory_date": "2025-07-01"
+      },
+      "source_ids": [
+        "src:us-or:bcd-oeesc-2025",
+        "src:us-or:bcd-adopted-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "adoption:us-or:residential:2023-orsc",
+      "code_family": "residential",
+      "status": "current",
+      "state_code_name": "2023 Oregon Residential Specialty Code",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Residential Code",
+        "edition_year": 2021
+      },
+      "adopting_authority_id": "auth:us-or:building-codes-division",
+      "enforcement_model": "local_with_state_oversight",
+      "applies_to": [
+        "detached_one_two_family",
+        "townhouses"
+      ],
+      "dates": {
+        "effective_date": "2023-10-01",
+        "operative_date": "2023-10-01",
+        "mandatory_date": "2024-04-01"
+      },
+      "source_ids": [
+        "src:us-or:bcd-adopted-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "adoption:us-or:electrical:2023-oesc",
+      "code_family": "electrical",
+      "status": "current",
+      "state_code_name": "2023 Oregon Electrical Specialty Code",
+      "base_model_code": {
+        "publisher": "NFPA",
+        "name": "NFPA 70 National Electrical Code",
+        "edition_year": 2023
+      },
+      "adopting_authority_id": "auth:us-or:building-codes-division",
+      "enforcement_model": "local_with_state_oversight",
+      "applies_to": [
+        "electrical_installations"
+      ],
+      "dates": {
+        "effective_date": "2023-10-01",
+        "operative_date": "2023-10-01"
+      },
+      "source_ids": [
+        "src:us-or:bcd-adopted-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.93
+      }
+    },
+    {
+      "id": "adoption:us-or:plumbing:2023-opsc",
+      "code_family": "plumbing",
+      "status": "current",
+      "state_code_name": "2023 Oregon Plumbing Specialty Code",
+      "base_model_code": {
+        "publisher": "IAPMO",
+        "name": "Uniform Plumbing Code",
+        "edition_year": 2021
+      },
+      "adopting_authority_id": "auth:us-or:building-codes-division",
+      "enforcement_model": "local_with_state_oversight",
+      "applies_to": [
+        "plumbing_installations"
+      ],
+      "dates": {
+        "effective_date": "2023-10-01",
+        "operative_date": "2023-10-01"
+      },
+      "source_ids": [
+        "src:us-or:bcd-adopted-codes"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "adoption:us-or:mechanical:2025-omsc",
+      "code_family": "mechanical",
+      "status": "current",
+      "state_code_name": "2025 Oregon Mechanical Specialty Code",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Mechanical Code",
+        "edition_year": 2024
+      },
+      "adopting_authority_id": "auth:us-or:building-codes-division",
+      "enforcement_model": "local_with_state_oversight",
+      "applies_to": [
+        "mechanical_systems"
+      ],
+      "dates": {
+        "effective_date": "2025-10-01",
+        "operative_date": "2025-10-01",
+        "mandatory_date": "2026-04-01"
+      },
+      "source_ids": [
+        "src:us-or:bcd-omsc-2025",
+        "src:us-or:bcd-adopted-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "adoption:us-or:residential:2026-orsc-pending",
+      "code_family": "residential",
+      "status": "pending",
+      "state_code_name": "2026 Oregon Residential Specialty Code",
+      "base_model_code": {
+        "publisher": "ICC",
+        "name": "International Residential Code",
+        "edition_year": 2024
+      },
+      "adopting_authority_id": "auth:us-or:building-codes-division",
+      "enforcement_model": "local_with_state_oversight",
+      "applies_to": [
+        "detached_one_two_family",
+        "townhouses"
+      ],
+      "dates": {},
+      "source_ids": [
+        "src:us-or:bcd-orsc-2026-process"
+      ],
+      "verification": {
+        "status": "needs_review",
+        "confidence": 0.8,
+        "notes": "The official page gives an anticipated October 1, 2026 adoption date. No effective, operative, or mandatory date is asserted until formal adoption."
+      }
+    }
+  ],
+  "defaults": {
+    "incorporated": {
+      "status": "partially_resolved",
+      "authority_candidates": [
+        {
+          "kind": "state_authority",
+          "authority_id": "auth:us-or:building-codes-division",
+          "roles": [
+            "adopts",
+            "amends",
+            "interprets"
+          ],
+          "source_ids": [
+            "src:us-or:bcd-state-code"
+          ]
+        },
+        {
+          "kind": "municipality",
+          "label": "Local building department or delegated program",
+          "roles": [
+            "permits",
+            "inspects",
+            "enforces"
+          ],
+          "source_ids": [
+            "src:us-or:bcd-state-code"
+          ]
+        }
+      ],
+      "required_local_records": [
+        "Identity and service area of the enforcing building program",
+        "Permit application date and documented code-edition election during any applicable phase-in period",
+        "Applicable interim amendments, errata, statewide alternate methods, and project-specific interpretations"
+      ],
+      "warnings": [
+        "Local enforcement delegation and any project-specific local authority still require confirmation."
+      ],
+      "source_ids": [
+        "src:us-or:bcd-state-code",
+        "src:us-or:bcd-adopted-codes"
+      ]
+    },
+    "unincorporated": {
+      "status": "partially_resolved",
+      "authority_candidates": [
+        {
+          "kind": "state_authority",
+          "authority_id": "auth:us-or:building-codes-division",
+          "roles": [
+            "adopts",
+            "amends",
+            "interprets"
+          ],
+          "source_ids": [
+            "src:us-or:bcd-state-code"
+          ]
+        },
+        {
+          "kind": "county",
+          "label": "County building department or delegated program",
+          "roles": [
+            "permits",
+            "inspects",
+            "enforces"
+          ],
+          "source_ids": [
+            "src:us-or:bcd-state-code"
+          ]
+        }
+      ],
+      "required_local_records": [
+        "Identity and service area of the enforcing building program",
+        "Permit application date and documented code-edition election during any applicable phase-in period",
+        "Applicable interim amendments, errata, statewide alternate methods, and project-specific interpretations"
+      ],
+      "warnings": [
+        "Local enforcement delegation and any project-specific local authority still require confirmation."
+      ],
+      "source_ids": [
+        "src:us-or:bcd-state-code",
+        "src:us-or:bcd-adopted-codes"
+      ]
+    }
+  },
+  "code_family_overrides": {
+    "building": {
+      "status": "partially_resolved",
+      "adoption_ids": [
+        "adoption:us-or:building:2025-ossc"
+      ],
+      "required_local_records": [
+        "Permit application date and documented code-edition election during any applicable phase-in period"
+      ],
+      "source_ids": [
+        "src:us-or:bcd-ossc-2025",
+        "src:us-or:bcd-adopted-codes"
+      ]
+    },
+    "existing_building": {
+      "status": "partially_resolved",
+      "adoption_ids": [
+        "adoption:us-or:existing-building:2025-ossc"
+      ],
+      "required_local_records": [
+        "Project scope, permit application date, code-edition election, and applicable interim amendments"
+      ],
+      "source_ids": [
+        "src:us-or:bcd-ossc-2025",
+        "src:us-or:bcd-adopted-codes"
+      ]
+    },
+    "energy": {
+      "status": "partially_resolved",
+      "adoption_ids": [
+        "adoption:us-or:energy:2025-oeesc"
+      ],
+      "required_local_records": [
+        "Project classification, permit application date, and applicable statewide alternate methods"
+      ],
+      "source_ids": [
+        "src:us-or:bcd-oeesc-2025"
+      ]
+    },
+    "residential": {
+      "status": "partially_resolved",
+      "adoption_ids": [
+        "adoption:us-or:residential:2023-orsc"
+      ],
+      "required_local_records": [
+        "Project classification and applicable interim amendments"
+      ],
+      "source_ids": [
+        "src:us-or:bcd-adopted-codes",
+        "src:us-or:bcd-orsc-2026-process"
+      ],
+      "warnings": [
+        "The 2026 Oregon Residential Specialty Code remains pending and is not returned as current."
+      ]
+    },
+    "electrical": {
+      "status": "partially_resolved",
+      "adoption_ids": [
+        "adoption:us-or:electrical:2023-oesc"
+      ],
+      "required_local_records": [
+        "Identity of the enforcing electrical program and current Oregon amendments"
+      ],
+      "source_ids": [
+        "src:us-or:bcd-adopted-codes"
+      ]
+    },
+    "plumbing": {
+      "status": "partially_resolved",
+      "adoption_ids": [
+        "adoption:us-or:plumbing:2023-opsc"
+      ],
+      "required_local_records": [
+        "Identity of the enforcing plumbing program and current Oregon amendments"
+      ],
+      "source_ids": [
+        "src:us-or:bcd-adopted-codes"
+      ]
+    },
+    "mechanical": {
+      "status": "partially_resolved",
+      "adoption_ids": [
+        "adoption:us-or:mechanical:2025-omsc"
+      ],
+      "required_local_records": [
+        "Permit application date and documented code-edition election during any applicable phase-in period"
+      ],
+      "source_ids": [
+        "src:us-or:bcd-omsc-2025",
+        "src:us-or:bcd-adopted-codes"
+      ]
+    }
+  },
+  "project_type_overrides": {},
+  "verification": {
+    "status": "partially_verified",
+    "confidence": 0.88,
+    "notes": "Current specialty-code editions and phase-in dates are source-backed. Local program boundaries, special-project allocations, and all interim amendments remain incomplete."
+  }
+}
