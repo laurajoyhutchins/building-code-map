@@ -78,10 +78,11 @@ func Activate(candidatePath, activePath string, expectedKind Kind, activatedAt t
 		return ActivationResult{}, fmt.Errorf("verify staged snapshot: %w", err)
 	}
 
+	rollbackPath := activePath + ".rollback"
 	replacements := []fileReplacement{
-		{staged: stagedSnapshot, destination: activePath, backup: activePath + ".rollback"},
-		{staged: stagedManifest, destination: ManifestPath(activePath), backup: ManifestPath(activePath) + ".rollback"},
-		{staged: stagedReceipt, destination: ActivationPath(activePath), backup: ActivationPath(activePath) + ".rollback"},
+		{staged: stagedSnapshot, destination: activePath, backup: rollbackPath},
+		{staged: stagedManifest, destination: ManifestPath(activePath), backup: ManifestPath(rollbackPath)},
+		{staged: stagedReceipt, destination: ActivationPath(activePath), backup: ActivationPath(rollbackPath)},
 	}
 	if err := replaceGeneration(replacements); err != nil {
 		return ActivationResult{}, err
