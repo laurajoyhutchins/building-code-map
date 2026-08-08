@@ -8,8 +8,7 @@ key_findings:
   - src:usa-pa:pcca-act-45
   - src:usa-pa:dli-ucc-rac-2021-cycle
 - topic: Primary building code edition
-  finding:
-  - '2026-01-01'
+  finding: '2026-01-01'
   confidence: 0.91
   source_ids:
   - src:usa-pa:pa-code-403-21
@@ -52,8 +51,7 @@ key_findings:
   - src:usa-pa:pa-code-403-102
   - src:usa-pa:dli-municipal-code-change-ordinances
 - topic: Effective / transition rule
-  finding:
-  - '2026-01-01'
+  finding: '2026-01-01'
   confidence: 0.81
   source_ids:
   - src:usa-pa:dli-ucc-rac-2021-cycle

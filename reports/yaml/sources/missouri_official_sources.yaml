@@ -2,148 +2,242 @@
 official_sources:
 - source_id: src:usa-mo:dnr-codes-by-jurisdiction
   title: Energy Codes by Jurisdiction
-  publisher___maintainer: Missouri Department of Natural Resources, Division of Energy
   source_type: agency_html
+  publisher: Missouri Department of Natural Resources, Division of Energy
   url: https://dnr.mo.gov/energy/efficiency/codes-jurisdiction
-  accessed: '2026-06-26'
-  key_fields_supported: Local code adoption discovery; county/city code-list caveat
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Local code adoption discovery; county/city code-list caveat
   caveats:
   - DNR states lists are general
   - may omit amendments and trade codes
   - and local jurisdiction should be contacted for current details.
+  notes: []
+  details: []
 - source_id: src:usa-mo:rsmo-67-280
   title: RSMo 67.280, Communities may incorporate by reference certain technical codes
-  publisher___maintainer: Missouri Revisor of Statutes
   source_type: statute_html
+  publisher: Missouri Revisor of Statutes
   url: https://revisor.mo.gov/main/OneSection.aspx?section=67.280
-  accessed: '2026-06-26'
-  key_fields_supported: Local technical-code adoption by reference; community definition;
-    90-day filing rule
-  caveats: Revisor site states online statutes are uncertified and unofficial.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Local technical-code adoption by reference; community definition; 90-day filing
+    rule
+  caveats:
+  - Revisor site states online statutes are uncertified and unofficial.
+  notes: []
+  details: []
 - source_id: src:usa-mo:rsmo-64-170
   title: RSMo 64.170, County commissions control construction
-  publisher___maintainer: Missouri Revisor of Statutes
   source_type: statute_html
+  publisher: Missouri Revisor of Statutes
   url: https://revisor.mo.gov/main/OneSection.aspx?section=64.170
-  accessed: '2026-06-26'
-  key_fields_supported: First/second class county building, electrical, plumbing,
-    permit, inspection, fee, and voter-approval authority
-  caveats: Revisor site states online statutes are uncertified and unofficial.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - First/second class county building, electrical, plumbing, permit, inspection,
+    fee, and voter-approval authority
+  caveats:
+  - Revisor site states online statutes are uncertified and unofficial.
+  notes: []
+  details: []
 - source_id: src:usa-mo:rsmo-89-020
   title: RSMo 89.020, Powers of municipal legislative body
-  publisher___maintainer: Missouri Revisor of Statutes
   source_type: statute_html
+  publisher: Missouri Revisor of Statutes
   url: https://revisor.mo.gov/main/OneSection.aspx?section=89.020
-  accessed: '2026-06-26'
-  key_fields_supported: Municipal authority over building height/stories/size and
-    land-use/zoning controls
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Municipal authority over building height/stories/size and land-use/zoning controls
   caveats:
   - Zoning authority is not identical to full building-code authority
   - Revisor caveat applies.
+  notes: []
+  details: []
 - source_id: src:usa-mo:rsmo-321-228
   title: RSMo 321.228, Residential construction regulatory system and fire protection
     districts
-  publisher___maintainer: Missouri Revisor of Statutes
   source_type: statute_html
+  publisher: Missouri Revisor of Statutes
   url: https://revisor.mo.gov/main/OneSection.aspx?section=321.228
-  accessed: '2026-06-26'
-  key_fields_supported: Residential construction regulatory systems; fire district
-    preemption/retained authority
-  caveats: Revisor site states online statutes are uncertified and unofficial.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Residential construction regulatory systems; fire district preemption/retained
+    authority
+  caveats:
+  - Revisor site states online statutes are uncertified and unofficial.
+  notes: []
+  details: []
 - source_id: src:usa-mo:dfs-fire-faq
   title: 'Frequently Asked Questions: Does Missouri have a statewide fire code?'
-  publisher___maintainer: Missouri Department of Public Safety, Division of Fire Safety
   source_type: agency_html
+  publisher: Missouri Department of Public Safety, Division of Fire Safety
   url: https://dfs.dps.mo.gov/about/faqs.php
-  accessed: '2026-06-26'
-  key_fields_supported: No statewide fire code; licensed-facility caveat; local fire
-    code confirmation
-  caveats: FAQ page is authoritative agency guidance but not a codified rule.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - No statewide fire code; licensed-facility caveat; local fire code confirmation
+  caveats:
+  - FAQ page is authoritative agency guidance but not a codified rule.
+  notes: []
+  details: []
 - source_id: src:usa-mo:csr-20-2030-2
   title: 20 CSR 2030-2.040, Evaluation Criteria for Building Design
-  publisher___maintainer: Missouri Secretary of State, Code of State Regulations
   source_type: csr_pdf
+  publisher: Missouri Secretary of State, Code of State Regulations
   url: https://www.sos.mo.gov/cmsimages/adrules/csr/current/20csr/20c2030-2.pdf
-  accessed: '2026-06-26'
-  key_fields_supported: 2018 IBC professional-conduct evaluation criteria where no
-    local building code exists; effective history
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - 2018 IBC professional-conduct evaluation criteria where no local building code
+    exists; effective history
   caveats:
   - PDF includes incorporated material note
   - CSR current-version caveat applies.
+  notes: []
+  details: []
 - source_id: src:usa-mo:dps-dfs-elevator-code-adoptions
   title: Code Adoptions - Elevators and Related Equipment
-  publisher___maintainer: Missouri Department of Public Safety, Division of Fire Safety
   source_type: agency_html
+  publisher: Missouri Department of Public Safety, Division of Fire Safety
   url: https://dfs.dps.mo.gov/programs/elevator/2007-code-adoption.php
-  accessed: '2026-06-26'
-  key_fields_supported: Elevator/equipment standards by installation date; ASME A17.1
-    2016 after 2020-04-30; ANSI A117.1 2009 for new passenger elevators/platform lifts
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Elevator/equipment standards by installation date; ASME A17.1 2016 after 2020-04-30;
+    ANSI A117.1 2009 for new passenger elevators/platform lifts
   caveats:
   - Agency page summarizes adopted standards
   - confirm against CSR for production use.
+  notes: []
+  details: []
 - source_id: src:usa-mo:dps-dfs-elevator-code-info
   title: Elevator Safety Code Information
-  publisher___maintainer: Missouri Department of Public Safety, Division of Fire Safety
   source_type: agency_html
+  publisher: Missouri Department of Public Safety, Division of Fire Safety
   url: https://dfs.dps.mo.gov/programs/elevator/elevator-safety-code.php
-  accessed: '2026-06-26'
-  key_fields_supported: Elevator code info, permits, operating certificates, local
-    ordinance caveat
-  caveats: Agency page should be reconciled with current CSR and permit forms.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Elevator code info, permits, operating certificates, local ordinance caveat
+  caveats:
+  - Agency page should be reconciled with current CSR and permit forms.
+  notes: []
+  details: []
 - source_id: src:usa-mo:rsmo-8-812
   title: RSMo 8.812, Minimum energy efficiency standards for state buildings
-  publisher___maintainer: Missouri Revisor of Statutes
   source_type: statute_html
+  publisher: Missouri Revisor of Statutes
   url: https://revisor.mo.gov/main/OneSection.aspx?section=8.812
-  accessed: '2026-06-26'
-  key_fields_supported: State-building energy standard statutory basis; 2009-07-01
-    design trigger; exemptions
-  caveats: Revisor site states online statutes are uncertified and unofficial.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State-building energy standard statutory basis; 2009-07-01 design trigger; exemptions
+  caveats:
+  - Revisor site states online statutes are uncertified and unofficial.
+  notes: []
+  details: []
 - source_id: src:usa-mo:csr-10-140-7-010
   title: 10 CSR 140-7.010, State Building Minimum Energy Efficiency Standards
-  publisher___maintainer: Missouri Secretary of State, Code of State Regulations
   source_type: csr_pdf
+  publisher: Missouri Secretary of State, Code of State Regulations
   url: https://www.sos.mo.gov/cmsimages/adrules/csr/current/10csr/10c140-7.pdf
-  accessed: '2026-06-26'
-  key_fields_supported: Minimum energy efficiency standard definition; ASHRAE 90.1/90.2/CABO
-    MEC latest; three-month update rule; applicability
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Minimum energy efficiency standard definition; ASHRAE 90.1/90.2/CABO MEC latest;
+    three-month update rule; applicability
   caveats:
   - CSR current-version caveat applies
   - incorporated standards are not reproduced in full.
+  notes: []
+  details: []
 - source_id: src:usa-mo:rsmo-319-200
   title: RSMo 319.200, seismic construction and renovation ordinances
-  publisher___maintainer: Missouri Revisor of Statutes
   source_type: statute_html
+  publisher: Missouri Revisor of Statutes
   url: https://revisor.mo.gov/main/OneSection.aspx?section=319.200
-  accessed: '2026-06-26'
-  key_fields_supported: New Madrid seismic ordinance obligation and model-code standard
-    references
-  caveats: Requires separate list of covered jurisdictions from state geologist/USGS/SEMA.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - New Madrid seismic ordinance obligation and model-code standard references
+  caveats:
+  - Requires separate list of covered jurisdictions from state geologist/USGS/SEMA.
+  notes: []
+  details: []
 - source_id: src:usa-mo:rsmo-319-203
   title: RSMo 319.203, seismic ordinance applicability and exceptions
-  publisher___maintainer: Missouri Revisor of Statutes
   source_type: statute_html
+  publisher: Missouri Revisor of Statutes
   url: https://revisor.mo.gov/main/OneSection.aspx?section=319.203
-  accessed: '2026-06-26'
-  key_fields_supported: Seismic applicability for leases/buildings and exclusions
-  caveats: Revisor site states online statutes are uncertified and unofficial.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Seismic applicability for leases/buildings and exclusions
+  caveats:
+  - Revisor site states online statutes are uncertified and unofficial.
+  notes: []
+  details: []
 - source_id: src:usa-mo:revisor-certification-status
   title: Missouri Revisor homepage certification status
-  publisher___maintainer: Missouri Revisor of Statutes
   source_type: official_site_caveat
+  publisher: Missouri Revisor of Statutes
   url: https://revisor.mo.gov/
-  accessed: '2026-06-26'
-  key_fields_supported: Caveat that online statutes are uncertified and unofficial;
-    effective-date update note
-  caveats: Use certified publication for legal-grade verification.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Caveat that online statutes are uncertified and unofficial; effective-date update
+    note
+  caveats:
+  - Use certified publication for legal-grade verification.
+  notes: []
+  details: []
 - source_id: src:usa-mo:sos-csr-current-caveat
   title: Code of State Regulations current-version caveat
-  publisher___maintainer: Missouri Secretary of State
   source_type: official_site_caveat
+  publisher: Missouri Secretary of State
   url: https://www.sos.mo.gov/adrules/csr/current/19csr/19csr
-  accessed: '2026-06-26'
-  key_fields_supported: CSR updated monthly; some current rules may not yet be effective;
-    rule effective date controls
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - CSR updated monthly; some current rules may not yet be effective; rule effective
+    date controls
   caveats:
   - Page is a general CSR caveat
   - apply to current CSR PDFs.
+  notes: []
+  details: []

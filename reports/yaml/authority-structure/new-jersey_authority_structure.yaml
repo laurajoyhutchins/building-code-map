@@ -1,23 +1,21 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: ahj:usa-nj:dca-commissioner-and-division-codes-standards
-- field: Authority name
-  value: New Jersey Department of Community Affairs, Commissioner / Division of Codes
-    and Standards
-- field: Authority type
-  value: state_department
-- field: Legal basis
-  value: State Uniform Construction Code Act, N.J.S.A. 52:27D-119 et seq.; N.J.A.C.
-    5:23
-- field: Role
-  value: Adopt and administer the State Uniform Construction Code; adopt subcodes;
+- authority_id: ahj:usa-nj:dca-commissioner-and-division-codes-standards
+  authority_name: New Jersey Department of Community Affairs, Commissioner / Division
+    of Codes and Standards
+  authority_type: state_department
+  legal_basis:
+  - State Uniform Construction Code Act, N.J.S.A. 52:27D-119 et seq.
+  - N.J.A.C. 5:23
+  role: Adopt and administer the State Uniform Construction Code; adopt subcodes;
     publish and maintain UCC regulations; monitor local enforcing agencies; perform
     State-reserved review/enforcement where required.
-- field: Enforcement model
-  value: statewide_code_with_local_enforcing_agencies_and_state_reserved_activities
-- field: Source IDs
-  value: src:usa-nj:ucc-act-dca-pdf; src:usa-nj:njac-5-23-1; src:usa-nj:njac-5-23-3;
-    src:usa-nj:njac-5-23-4
-- field: Verification status
-  value: partially_verified
+  enforcement_model: statewide_code_with_local_enforcing_agencies_and_state_reserved_activities
+  source_ids:
+  - src:usa-nj:ucc-act-dca-pdf
+  - src:usa-nj:njac-5-23-1
+  - src:usa-nj:njac-5-23-3
+  - src:usa-nj:njac-5-23-4
+  verification_status:
+  - partially_verified
+  parent_agency: null

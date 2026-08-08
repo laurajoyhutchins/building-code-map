@@ -1,222 +1,407 @@
 ---
 official_sources:
 - source_id: src:usa-wi:dsps-commercial-buildings
+  title: DSPS Commercial Buildings program page
   source_type: agency_page
-  title___description: DSPS Commercial Buildings program page
   publisher: Wisconsin DSPS
-  url___locator: https://dsps.wi.gov/Pages/Programs/CommercialBuildings/Default.aspx
-  key_fields_supported: DIS commercial authority, local certified municipalities,
-    CBC 2021 ICC update, 2025-11-01 compliance date, DSPS code inserts, SPS 365 venting
-    note
+  url: https://dsps.wi.gov/Pages/Programs/CommercialBuildings/Default.aspx
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_current_page
+  supports:
+  - DIS commercial authority, local certified municipalities, CBC 2021 ICC update,
+    2025-11-01 compliance date, DSPS code inserts, SPS 365 venting note
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:dsps-plan-review
+  title: DSPS Division of Industry Services Plan Review page
   source_type: agency_page
-  title___description: DSPS Division of Industry Services Plan Review page
   publisher: Wisconsin DSPS
-  url___locator: https://dsps.wi.gov/Pages/Programs/PlanReview/Default.aspx
-  key_fields_supported: Plan review thresholds, required system reviews, CBC 2021
-    update dates, delegated agents, voluntary commercial electrical plan review note
+  url: https://dsps.wi.gov/Pages/Programs/PlanReview/Default.aspx
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_current_page
+  supports:
+  - Plan review thresholds, required system reviews, CBC 2021 update dates, delegated
+    agents, voluntary commercial electrical plan review note
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:dsps-rules-index
+  title: DSPS Administrative Rules and Statutes page
   source_type: agency_page
-  title___description: DSPS Administrative Rules and Statutes page
   publisher: Wisconsin DSPS
-  url___locator: https://dsps.wi.gov/Pages/Programs/AdministrativeRules.aspx
-  key_fields_supported: Chapter list for SPS 314, 316, 318, 320 to 325, 361 to 366,
-    381 to 387; statutes chapters 101 and 145
+  url: https://dsps.wi.gov/Pages/Programs/AdministrativeRules.aspx
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_index
+  supports:
+  - Chapter list for SPS 314, 316, 318, 320 to 325, 361 to 366, 381 to 387; statutes
+    chapters 101 and 145
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:dsps-pending-rules
+  title: DSPS Pending Rules page
   source_type: agency_page
-  title___description: DSPS Pending Rules page
   publisher: Wisconsin DSPS
-  url___locator: https://dsps.wi.gov/Pages/RulesStatutes/PendingRules.aspx
-  key_fields_supported: Future rule statuses and effective dates for SPS 316 and SPS
-    381 to 387; drafting status for SPS 314 and SPS 320 to 325
+  url: https://dsps.wi.gov/Pages/RulesStatutes/PendingRules.aspx
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_current_page
+  supports:
+  - Future rule statuses and effective dates for SPS 316 and SPS 381 to 387; drafting
+    status for SPS 314 and SPS 320 to 325
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:sps-361-366
+  title: Wisconsin Commercial Building Code chapters SPS 361 to 366
   source_type: admin_code
-  title___description: Wisconsin Commercial Building Code chapters SPS 361 to 366
   publisher: Wisconsin Legislature / LRB
-  url___locator: https://docs.legis.wisconsin.gov/code/admin_code/sps/safety_and_buildings_and_environment/361_366
-  key_fields_supported: Commercial code chapter structure; 2021 IBC incorporation
-    through SPS 361.05; related 2021 ICC code set by DSPS template
+  url: https://docs.legis.wisconsin.gov/code/admin_code/sps/safety_and_buildings_and_environment/361_366
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_code
+  supports:
+  - Commercial code chapter structure; 2021 IBC incorporation through SPS 361.05;
+    related 2021 ICC code set by DSPS template
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:dsps-cbc-code-template
+  title: Commercial Buildings code template / code legend
   source_type: agency_template_pdf
-  title___description: Commercial Buildings code template / code legend
   publisher: Wisconsin DSPS
-  url___locator: https://dsps.wi.gov/Documents/Programs/CommercialBuildings/codetemplate.pdf
-  key_fields_supported: 2025 Wisconsin SPS 361 to 366, 2021 IBC, 2021 IEBC, 2021 IECC,
-    2021 IMC, 2021 IFGC, 2017 ICC A117.1
+  url: https://dsps.wi.gov/Documents/Programs/CommercialBuildings/codetemplate.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_template_caveated
+  supports:
+  - 2025 Wisconsin SPS 361 to 366, 2021 IBC, 2021 IEBC, 2021 IECC, 2021 IMC, 2021
+    IFGC, 2017 ICC A117.1
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:cr23-007
+  title: CR 23-007 Wisconsin Commercial Building Code update
   source_type: register_rule
-  title___description: CR 23-007 Wisconsin Commercial Building Code update
   publisher: Wisconsin Legislature / LRB
-  url___locator: https://docs.legis.wisconsin.gov/code/register/2025
-  key_fields_supported: Register/order metadata for CBC update; effective date context
+  url: https://docs.legis.wisconsin.gov/code/register/2025
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_register_caveated
+  supports:
+  - Register/order metadata for CBC update; effective date context
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:dsps-cbc-2025-release
+  title: Upgraded Commercial Building Code to Take Effect September 1
   source_type: agency_news_pdf
-  title___description: Upgraded Commercial Building Code to Take Effect September
-    1
   publisher: Wisconsin DSPS
-  url___locator: https://dsps.wi.gov/Documents/NewsMedia/20250730CommercialBuildingCodeNewsRelease.pdf
-  key_fields_supported: 2025 CBC update context, Sept. 1 effective date, supplemental
-    submission alignment
+  url: https://dsps.wi.gov/Documents/NewsMedia/20250730CommercialBuildingCodeNewsRelease.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_news_superseded_for_deadline
+  supports:
+  - 2025 CBC update context, Sept. 1 effective date, supplemental submission alignment
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:dsps-cbc-extension-2025
+  title: DSPS Provides Extension to Building Professionals
   source_type: agency_news_pdf
-  title___description: DSPS Provides Extension to Building Professionals
   publisher: Wisconsin DSPS
-  url___locator: https://dsps.wi.gov/Documents/NewsMedia/20250916CBC_ExtensionNewsRelease.pdf
-  key_fields_supported: CBC grace-period extension context; current page used for
-    final 2025-11-01 compliance date
+  url: https://dsps.wi.gov/Documents/NewsMedia/20250916CBC_ExtensionNewsRelease.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_news_caveated
+  supports:
+  - CBC grace-period extension context; current page used for final 2025-11-01 compliance
+    date
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:dsps-udc-page
+  title: One- & Two-Family Uniform Dwelling Code page
   source_type: agency_page
-  title___description: One- & Two-Family Uniform Dwelling Code page
   publisher: Wisconsin DSPS
-  url___locator: https://dsps.wi.gov/Pages/Programs/UDC/Default.aspx
-  key_fields_supported: UDC statewide scope since 1980-06-01; enforcement in all municipalities;
-    UDC credentials/materials role
+  url: https://dsps.wi.gov/Pages/Programs/UDC/Default.aspx
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_current_page
+  supports:
+  - UDC statewide scope since 1980-06-01; enforcement in all municipalities; UDC credentials/materials
+    role
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:sps-320-325
+  title: Wisconsin Uniform Dwelling Code chapters SPS 320 to 325
   source_type: admin_code
-  title___description: Wisconsin Uniform Dwelling Code chapters SPS 320 to 325
   publisher: Wisconsin Legislature / LRB
-  url___locator: https://docs.legis.wisconsin.gov/code/admin_code/sps/safety_and_buildings_and_environment/320_325
-  key_fields_supported: UDC chapter structure and administrative rule location
+  url: https://docs.legis.wisconsin.gov/code/admin_code/sps/safety_and_buildings_and_environment/320_325
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_code
+  supports:
+  - UDC chapter structure and administrative rule location
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:udc-scope-2025
+  title: 'Statement of Scope: SPS 302, 305, and 320 to 325, Update to UDC'
   source_type: rulemaking_pdf
-  title___description: 'Statement of Scope: SPS 302, 305, and 320 to 325, Update to
-    UDC'
   publisher: Wisconsin DSPS
-  url___locator: https://dsps.wi.gov/Documents/RulesStatutes/SPS320to325NPPH.pdf
-  key_fields_supported: Pending UDC update; statewide uniform UDC purpose; last comprehensive
-    update effective 2016-01-01
+  url: https://dsps.wi.gov/Documents/RulesStatutes/SPS320to325NPPH.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_rulemaking_pdf
+  supports:
+  - Pending UDC update; statewide uniform UDC purpose; last comprehensive update effective
+    2016-01-01
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:sps-314
+  title: SPS 314 Fire Prevention
   source_type: admin_code
-  title___description: SPS 314 Fire Prevention
   publisher: Wisconsin Legislature / LRB
-  url___locator: https://docs.legis.wisconsin.gov/code/admin_code/sps/safety_and_buildings_and_environment/314
-  key_fields_supported: Fire prevention chapter location
+  url: https://docs.legis.wisconsin.gov/code/admin_code/sps/safety_and_buildings_and_environment/314
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_code
+  supports:
+  - Fire prevention chapter location
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:fire-scope-2025
+  title: 'Statement of Scope: SPS 302, 305, and 314 Fire Prevention Code Review'
   source_type: rulemaking_pdf
-  title___description: 'Statement of Scope: SPS 302, 305, and 314 Fire Prevention
-    Code Review'
   publisher: Wisconsin DSPS
-  url___locator: https://dsps.wi.gov/Documents/RulesStatutes/SPS314AS2.pdf
-  key_fields_supported: Current SPS 314 references 2012 NFPA 1; proposed review may
-    consider 2024 NFPA 1; statutory authority excerpts; affected fire departments/municipalities
+  url: https://dsps.wi.gov/Documents/RulesStatutes/SPS314AS2.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_rulemaking_pdf
+  supports:
+  - Current SPS 314 references 2012 NFPA 1; proposed review may consider 2024 NFPA
+    1; statutory authority excerpts; affected fire departments/municipalities
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:dsps-fire-prevention
+  title: DSPS Fire Prevention program / reporting page
   source_type: agency_page
-  title___description: DSPS Fire Prevention program / reporting page
   publisher: Wisconsin DSPS
-  url___locator: https://dsps.wi.gov/Pages/Programs/FirePrevention/Default.aspx
-  key_fields_supported: Fire-prevention program reference and reporting context
+  url: https://dsps.wi.gov/Pages/Programs/FirePrevention/Default.aspx
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_page_limited_use
+  supports:
+  - Fire-prevention program reference and reporting context
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:sps-316
+  title: SPS 316 Electrical
   source_type: admin_code
-  title___description: SPS 316 Electrical
   publisher: Wisconsin Legislature / LRB
-  url___locator: https://docs.legis.wisconsin.gov/code/admin_code/sps/safety_and_buildings_and_environment/316
-  key_fields_supported: Electrical code chapter location
+  url: https://docs.legis.wisconsin.gov/code/admin_code/sps/safety_and_buildings_and_environment/316
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_code
+  supports:
+  - Electrical code chapter location
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:electrical-cr26-016
+  title: CR 26-016 / SPS 316 Electrical Code update materials
   source_type: rulemaking_pdf_register
-  title___description: CR 26-016 / SPS 316 Electrical Code update materials
   publisher: Wisconsin DSPS and Wisconsin Legislature / LRB
-  url___locator: https://docs.legis.wisconsin.gov/code/register/2026/842a1/register/rule_notices/cr_26_016_hearing_information/cr_26_016_rule_text
-  key_fields_supported: Current SPS 316 adopts 2017 NEC; update adopts 2023 NEC; effective
-    date confirmed by pending-rules page
+  url: https://docs.legis.wisconsin.gov/code/register/2026/842a1/register/rule_notices/cr_26_016_hearing_information/cr_26_016_rule_text
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_rulemaking_caveated
+  supports:
+  - Current SPS 316 adopts 2017 NEC; update adopts 2023 NEC; effective date confirmed
+    by pending-rules page
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:sps-381-387
+  title: SPS 381 to 387 Wisconsin Plumbing Code
   source_type: admin_code
-  title___description: SPS 381 to 387 Wisconsin Plumbing Code
   publisher: Wisconsin Legislature / LRB
-  url___locator: https://docs.legis.wisconsin.gov/code/admin_code/sps/safety_and_buildings_and_environment/381_387
-  key_fields_supported: Plumbing code chapter set
+  url: https://docs.legis.wisconsin.gov/code/admin_code/sps/safety_and_buildings_and_environment/381_387
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_code
+  supports:
+  - Plumbing code chapter set
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:plumbing-cr26-019
+  title: CR 26-019 / SPS 381 to 387 Plumbing Code Review
   source_type: register_rule
-  title___description: CR 26-019 / SPS 381 to 387 Plumbing Code Review
   publisher: Wisconsin Legislature / LRB
-  url___locator: https://docs.legis.wisconsin.gov/code/register/2026/845a3/register/cr/cr_26_019_rule_text/cr_26_019_rule_text
-  key_fields_supported: Wisconsin Plumbing Code uniform applicability; future update
-    context
+  url: https://docs.legis.wisconsin.gov/code/register/2026/845a3/register/cr/cr_26_019_rule_text/cr_26_019_rule_text
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_register_rule
+  supports:
+  - Wisconsin Plumbing Code uniform applicability; future update context
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:sps-318
+  title: SPS 318 Elevators, Escalators and Lift Devices
   source_type: admin_code
-  title___description: SPS 318 Elevators, Escalators and Lift Devices
   publisher: Wisconsin Legislature / LRB
-  url___locator: https://docs.legis.wisconsin.gov/code/admin_code/sps/safety_and_buildings_and_environment/318
-  key_fields_supported: Conveyance chapter identification
+  url: https://docs.legis.wisconsin.gov/code/admin_code/sps/safety_and_buildings_and_environment/318
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_code
+  supports:
+  - Conveyance chapter identification
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:stat-101-02
+  title: Wis. Stat. § 101.02, DSPS powers/duties
   source_type: statute
-  title___description: "Wis. Stat. \xA7 101.02, DSPS powers/duties"
   publisher: Wisconsin Legislature / LRB
-  url___locator: https://docs.legis.wisconsin.gov/statutes/statutes/101/02
-  key_fields_supported: General DSPS powers and standards authority
+  url: https://docs.legis.wisconsin.gov/statutes/statutes/101/02
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_statute
+  supports:
+  - General DSPS powers and standards authority
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:stat-101-02-local-standards
+  title: Wis. Stat. § 101.02(7r), local minimum standards for public buildings/places
+    of employment
   source_type: statute
-  title___description: "Wis. Stat. \xA7 101.02(7r), local minimum standards for public\
-    \ buildings/places of employment"
   publisher: Wisconsin Legislature / LRB
-  url___locator: https://docs.legis.wisconsin.gov/document/statutes/101.02%287r%29%28f%29
-  key_fields_supported: Local commercial/public-building strict-conformity rule and
-    exceptions
+  url: https://docs.legis.wisconsin.gov/document/statutes/101.02%287r%29%28f%29
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_statute_snippet
+  supports:
+  - Local commercial/public-building strict-conformity rule and exceptions
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:stat-101-12
+  title: Wis. Stat. § 101.12, plan review for public buildings/places of employment
   source_type: statute
-  title___description: "Wis. Stat. \xA7 101.12, plan review for public buildings/places\
-    \ of employment"
   publisher: Wisconsin Legislature / LRB
-  url___locator: https://docs.legis.wisconsin.gov/statutes/statutes/101/12
-  key_fields_supported: Plan-review legal basis
+  url: https://docs.legis.wisconsin.gov/statutes/statutes/101/12
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_statute
+  supports:
+  - Plan-review legal basis
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:stat-101-14
+  title: Wis. Stat. § 101.14, fire detection/prevention/suppression rule authority
   source_type: statute
-  title___description: "Wis. Stat. \xA7 101.14, fire detection/prevention/suppression\
-    \ rule authority"
   publisher: Wisconsin Legislature / LRB
-  url___locator: https://docs.legis.wisconsin.gov/statutes/statutes/101/14
-  key_fields_supported: Fire-prevention statutory authority
+  url: https://docs.legis.wisconsin.gov/statutes/statutes/101/14
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_statute
+  supports:
+  - Fire-prevention statutory authority
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:stat-101-63
+  title: Wis. Stat. § 101.63, UDC standards authority
   source_type: statute
-  title___description: "Wis. Stat. \xA7 101.63, UDC standards authority"
   publisher: Wisconsin Legislature / LRB
-  url___locator: https://docs.legis.wisconsin.gov/statutes/statutes/101/63
-  key_fields_supported: UDC standards and inspection procedures authority
+  url: https://docs.legis.wisconsin.gov/statutes/statutes/101/63
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_statute
+  supports:
+  - UDC standards and inspection procedures authority
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:stat-101-65
+  title: Wis. Stat. § 101.65, municipal authority over one- and two-family dwellings
   source_type: statute
-  title___description: "Wis. Stat. \xA7 101.65, municipal authority over one- and\
-    \ two-family dwellings"
   publisher: Wisconsin Legislature / LRB
-  url___locator: https://docs.legis.wisconsin.gov/document/statutes/101.65%281%29%28c%29
-  key_fields_supported: Municipal UDC jurisdiction and enforcement
+  url: https://docs.legis.wisconsin.gov/document/statutes/101.65%281%29%28c%29
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_statute_snippet
+  supports:
+  - Municipal UDC jurisdiction and enforcement
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:stat-101-82
+  title: Wis. Stat. § 101.82, state electrical wiring code
   source_type: statute
-  title___description: "Wis. Stat. \xA7 101.82, state electrical wiring code"
   publisher: Wisconsin Legislature / LRB
-  url___locator: https://docs.legis.wisconsin.gov/statutes/statutes/101/82
-  key_fields_supported: Electrical code statutory authority
+  url: https://docs.legis.wisconsin.gov/statutes/statutes/101/82
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_statute
+  supports:
+  - Electrical code statutory authority
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-wi:court-abc-madison-2023
+  title: Associated Builders & Contractors of Wisconsin, Inc. v. City of Madison discussion
+    of Wis. Stat. § 101.02(7r)
   source_type: court_opinion_pdf
-  title___description: "Associated Builders & Contractors of Wisconsin, Inc. v. City\
-    \ of Madison discussion of Wis. Stat. \xA7 101.02(7r)"
   publisher: Wisconsin Court of Appeals
-  url___locator: https://www.wicourts.gov/ca/opinion/DisplayDocument.pdf?content=pdf&seqNo=711316
-  key_fields_supported: "Legal context for preemption/local ordinance classification\
-    \ under \xA7 101.02(7r)"
+  url: https://www.wicourts.gov/ca/opinion/DisplayDocument.pdf?content=pdf&seqNo=711316
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_court_supplement
+  supports:
+  - Legal context for preemption/local ordinance classification under § 101.02(7r)
+  caveats: []
+  notes: []
+  details: []

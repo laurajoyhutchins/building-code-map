@@ -1,165 +1,286 @@
 ---
 official_sources:
 - source_id: src:usa-sd:sdcl-11-10-5
-  title: "SDCL \xA7 11-10-5, New construction standards--Building code ordinance"
-  publisher___agency: South Dakota Legislature / Legislative Research Council
-  url: https://sdlegislature.gov/Statutes/11-10-5
+  title: SDCL § 11-10-5, New construction standards--Building code ordinance
   source_type: statute
-  accessed: '2026-06-26'
+  publisher: South Dakota Legislature / Legislative Research Council
+  url: https://sdlegislature.gov/Statutes/11-10-5
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - 2021 IBC local ordinance baseline
   - local amendment filing
   - exclusions
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-sd:sdcl-11-10-6
-  title: "SDCL \xA7 11-10-6, New construction standards--No building code ordinance"
-  publisher___agency: South Dakota Legislature / Legislative Research Council
-  url: https://sdlegislature.gov/Statutes/11-10-6
+  title: SDCL § 11-10-6, New construction standards--No building code ordinance
   source_type: statute
-  accessed: '2026-06-26'
+  publisher: South Dakota Legislature / Legislative Research Council
+  url: https://sdlegislature.gov/Statutes/11-10-6
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - 2021 IBC default design standard
   - local administration/enforcement
   - commencement trigger
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-sd:sdcl-11-10-7
-  title: "SDCL \xA7 11-10-7, Energy conservation code adopted as voluntary standard"
-  publisher___agency: South Dakota Legislature / Legislative Research Council
+  title: SDCL § 11-10-7, Energy conservation code adopted as voluntary standard
+  source_type: statute
+  publisher: South Dakota Legislature / Legislative Research Council
   url: https://sdlegislature.gov/Statutes/11-10-7
-  source_type: statute
-  accessed: '2026-06-26'
-  supports: 2009 IECC voluntary residential standard
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - 2009 IECC voluntary residential standard
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-sd:sdcl-11-10-11
-  title: "SDCL \xA7 11-10-11, Property maintenance--Local ordinance--Required standards--Modifications"
-  publisher___agency: South Dakota Legislature / Legislative Research Council
-  url: https://sdlegislature.gov/Statutes/11-10-11
+  title: SDCL § 11-10-11, Property maintenance--Local ordinance--Required standards--Modifications
   source_type: statute
-  accessed: '2026-06-26'
+  publisher: South Dakota Legislature / Legislative Research Council
+  url: https://sdlegislature.gov/Statutes/11-10-11
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - 2021 IPMC local ordinance baseline
   - local amendment filing
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-sd:sdcl-11-10-12
-  title: "SDCL \xA7 11-10-12, Enactment of standards of International Residential\
-    \ Code"
-  publisher___agency: South Dakota Legislature / Legislative Research Council
-  url: https://sdlegislature.gov/Statutes/11-10-12
+  title: SDCL § 11-10-12, Enactment of standards of International Residential Code
   source_type: statute
-  accessed: '2026-06-26'
+  publisher: South Dakota Legislature / Legislative Research Council
+  url: https://sdlegislature.gov/Statutes/11-10-12
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Municipal IRC adoption
   - anti-sprinkler and no-more-stringent limits
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-sd:sdcl-11-10-13
-  title: "SDCL \xA7 11-10-13, Commission/workgroup of building codes"
-  publisher___agency: South Dakota Legislature / Legislative Research Council
-  url: https://sdlegislature.gov/Statutes/11-10-13
+  title: SDCL § 11-10-13, Commission/workgroup of building codes
   source_type: statute
-  accessed: '2026-06-26'
-  supports: Board of Technical Professions workgroup review cycle
+  publisher: South Dakota Legislature / Legislative Research Council
+  url: https://sdlegislature.gov/Statutes/11-10-13
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Board of Technical Professions workgroup review cycle
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-sd:sb-129-2026
   title: 2026 Senate Bill 129, update references to 2024 standard building codes
-  publisher___agency: South Dakota Legislature / MyLRC
-  url: https://sdlegislature.gov/Session/Bill/27050 and https://mylrc.sdlegislature.gov/api/Documents/297175.pdf
   source_type: enacted bill / official bill text
-  accessed: '2026-06-26'
+  publisher: South Dakota Legislature / MyLRC
+  url: https://sdlegislature.gov/Session/Bill/27050 and https://mylrc.sdlegislature.gov/api/Documents/297175.pdf
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Pending 2024 IBC/IPMC/IRC updates
   - 2026-07-01 default commencement trigger
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-sd:btp-workgroup-2025
   title: State of South Dakota Summary Report, 2025 Building Codes Review
-  publisher___agency: South Dakota Board of Technical Professions / Department of
-    Labor and Regulation
-  url: https://dlr.sd.gov/btp/documents/BOTP-Workgroup-Summary-Report.pdf
   source_type: official workgroup report
-  accessed: '2026-06-26'
+  publisher: South Dakota Board of Technical Professions / Department of Labor and
+    Regulation
+  url: https://dlr.sd.gov/btp/documents/BOTP-Workgroup-Summary-Report.pdf
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Review cycle
   - referenced Title 11 model codes
   - recommendation context
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-sd:dlr-electrical-home
   title: South Dakota Electrical Commission homepage
-  publisher___agency: South Dakota Department of Labor and Regulation
-  url: https://dlr.sd.gov/electrical/default.aspx
   source_type: agency page
-  accessed: '2026-06-26'
+  publisher: South Dakota Department of Labor and Regulation
+  url: https://dlr.sd.gov/electrical/default.aspx
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Electrical Commission role
   - 2023 NEC permit transition
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-sd:arsd-20-44
   title: ARSD Article 20:44, Electricians
-  publisher___agency: South Dakota Legislature / Legislative Research Council
-  url: https://sdlegislature.gov/Rules/Administrative/20%3A44
   source_type: administrative rule
-  accessed: '2026-06-26'
-  supports: Electrical rule structure
+  publisher: South Dakota Legislature / Legislative Research Council
+  url: https://sdlegislature.gov/Rules/Administrative/20%3A44
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Electrical rule structure
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-sd:arsd-20-44-22-01
   title: ARSD 20:44:22:01, Adoption of National Electrical Code
-  publisher___agency: South Dakota Legislature / Legislative Research Council
-  url: https://sdlegislature.gov/Rules/Administrative/20%3A44%3A22%3A01
   source_type: administrative rule
-  accessed: '2026-06-26'
-  supports: NEC conformity rule
+  publisher: South Dakota Legislature / Legislative Research Council
+  url: https://sdlegislature.gov/Rules/Administrative/20%3A44%3A22%3A01
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - NEC conformity rule
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-sd:dlr-plumbing-laws
   title: South Dakota Plumbing Commission, South Dakota Laws and Rules
-  publisher___agency: South Dakota Department of Labor and Regulation
-  url: https://dlr.sd.gov/plumbing/laws.aspx
   source_type: agency page
-  accessed: '2026-06-26'
+  publisher: South Dakota Department of Labor and Regulation
+  url: https://dlr.sd.gov/plumbing/laws.aspx
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Plumbing statutes/rules path
   - 2024 UPC adoption process and filing/effective rule
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-sd:dlr-plumbing-inspections
   title: South Dakota Plumbing Commission, Inspections
-  publisher___agency: South Dakota Department of Labor and Regulation
-  url: https://dlr.sd.gov/plumbing/inspections.aspx
   source_type: agency page
-  accessed: '2026-06-26'
+  publisher: South Dakota Department of Labor and Regulation
+  url: https://dlr.sd.gov/plumbing/inspections.aspx
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - 2024 UPC provisional effective date
   - inspection certificate requirement
   - city exceptions
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-sd:arsd-20-54
   title: ARSD Article 20:54, State Plumbing Code
-  publisher___agency: South Dakota Legislature / Legislative Research Council
-  url: https://sdlegislature.gov/Rules/Administrative/20%3A54
   source_type: administrative rule
-  accessed: '2026-06-26'
-  supports: State plumbing code rules and 2024 UPC references
+  publisher: South Dakota Legislature / Legislative Research Council
+  url: https://sdlegislature.gov/Rules/Administrative/20%3A54
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State plumbing code rules and 2024 UPC references
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-sd:dps-fire-laws
   title: DPS State Fire Laws page
-  publisher___agency: South Dakota Department of Public Safety
-  url: https://www.sd.gov/dps?id=kb_article_view&sys_kb_id=9673c7194725aa90237fbd51026d43f0
   source_type: agency page
-  accessed: '2026-06-26'
-  supports: State Fire Marshal program summaries and ARSD 61:15 plan-review scope
+  publisher: South Dakota Department of Public Safety
+  url: https://www.sd.gov/dps?id=kb_article_view&sys_kb_id=9673c7194725aa90237fbd51026d43f0
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State Fire Marshal program summaries and ARSD 61:15 plan-review scope
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-sd:sdcl-34-29b-2
-  title: "SDCL \xA7 34-29B-2, State Fire Marshal program and rules"
-  publisher___agency: South Dakota Legislature / Legislative Research Council
-  url: https://sdlegislature.gov/Statutes/34-29B-2
+  title: SDCL § 34-29B-2, State Fire Marshal program and rules
   source_type: statute
-  accessed: '2026-06-26'
+  publisher: South Dakota Legislature / Legislative Research Council
+  url: https://sdlegislature.gov/Statutes/34-29B-2
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Fire prevention
   - investigation
   - training
   - education program and rule authority
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-sd:sdcl-34-29b-3
-  title: "SDCL \xA7 34-29B-3, State Fire Marshal appointment and deputies"
-  publisher___agency: South Dakota Legislature / Legislative Research Council
+  title: SDCL § 34-29B-3, State Fire Marshal appointment and deputies
+  source_type: statute
+  publisher: South Dakota Legislature / Legislative Research Council
   url: https://sdlegislature.gov/Statutes/34-29B-3
-  source_type: statute
-  accessed: '2026-06-26'
-  supports: State Fire Marshal authority structure
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State Fire Marshal authority structure
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-sd:sdcl-34-29b-25
-  title: "SDCL \xA7 34-29B-25, Standards of municipal regulations"
-  publisher___agency: South Dakota Legislature / Legislative Research Council
-  url: https://sdlegislature.gov/Statutes/34-29B-25
+  title: SDCL § 34-29B-25, Standards of municipal regulations
   source_type: statute
-  accessed: '2026-06-26'
+  publisher: South Dakota Legislature / Legislative Research Council
+  url: https://sdlegislature.gov/Statutes/34-29B-25
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Municipal fire regulations at least equal to state standards
   - more stringent local requirements allowed
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-sd:arsd-61-15-01-01
   title: ARSD 61:15:01:01, Conformity with national standards
-  publisher___agency: South Dakota Legislature / Legislative Research Council
-  url: https://sdlegislature.gov/Rules/Administrative/61%3A15%3A01%3A01
   source_type: administrative rule
-  accessed: '2026-06-26'
-  supports: 2015 IBC/IFC/IMC fire-safety standards
+  publisher: South Dakota Legislature / Legislative Research Council
+  url: https://sdlegislature.gov/Rules/Administrative/61%3A15%3A01%3A01
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - 2015 IBC/IFC/IMC fire-safety standards
+  caveats: []
+  notes: []
+  details: []

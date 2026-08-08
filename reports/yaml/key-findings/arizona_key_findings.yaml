@@ -30,10 +30,10 @@ key_findings:
   source_ids:
   - src:usa-az:aac:r4-36-201
 - topic: Public buildings
-  finding: "Public buildings follow applicable local building, plumbing, electrical,\
-    \ fire, and mechanical codes; if no local codes exist, they use the State Fire\
-    \ Code plus the largest city in the county's building, plumbing, electrical,\
-    \ and mechanical codes."
+  finding: Public buildings follow applicable local building, plumbing, electrical,
+    fire, and mechanical codes; if no local codes exist, they use the State Fire Code
+    plus the largest city in the county's building, plumbing, electrical, and mechanical
+    codes.
   confidence: 0.95
   source_ids:
   - src:usa-az:ars:34-461

@@ -1,25 +1,23 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: '`ahj:usa-ky:dhbc`'
-- field: Authority name
-  value: Kentucky Department of Housing, Buildings and Construction
-- field: Authority type
-  value: state_department
-- field: Legal basis
-  value: KRS 198B.040(7); KRS 198B.050; 815 KAR 7:120; 815 KAR 7:125
-- field: Role
-  value: Promulgates, administers, and enforces the mandatory uniform state building
+- authority_id: ahj:usa-ky:dhbc
+  authority_name: Kentucky Department of Housing, Buildings and Construction
+  authority_type: state_department
+  legal_basis:
+  - KRS 198B.040(7)
+  - KRS 198B.050
+  - 815 KAR 7:120
+  - 815 KAR 7:125
+  role: Promulgates, administers, and enforces the mandatory uniform state building
     code and the Kentucky amendments to the model codes.
-- field: Enforcement model
-  value: Statewide uniform code with state and local enforcement responsibilities.
+  enforcement_model: Statewide uniform code with state and local enforcement responsibilities.
     DHBC retains plan-review, inspection, and enforcement responsibilities for specified
     buildings and may preempt deficient expanded local programs.
-- field: Source IDs
-  value:
+  source_ids:
   - src:usa-ky:815-kar-7-120
   - src:usa-ky:815-kar-7-125
   - src:usa-ky:dhbc-building-code-enforcement
   - src:usa-ky:815-kar-7-110
-- field: Verification status
-  value: partially_verified
+  verification_status:
+  - partially_verified
+  parent_agency: null

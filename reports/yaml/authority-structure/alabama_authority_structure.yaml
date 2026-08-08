@@ -4,65 +4,74 @@ authority_structure:
   authority_name: Alabama Department of Finance, Real Property Management, Division
     of Construction Management
   authority_type: state agency division
-  verified_role: Adopts/administers Alabama State Building Code for defined project
-    scope
-  legal___regulatory_basis:
+  legal_basis:
   - Ala. Admin. Code ch. 355-12-1
   - DCM State Building Code page
+  role: Adopts/administers Alabama State Building Code for defined project scope
   enforcement_model: state review/enforcement within limited statutory/regulatory
     scope
-  status:
+  source_ids: []
+  verification_status:
   - verified
+  parent_agency: null
 - authority_id: ahj:usa-al:sfmo
-  authority_name: "Alabama State Fire Marshal's Office"
+  authority_name: Alabama State Fire Marshal's Office
   authority_type: state fire authority / division of Alabama Department of Insurance
-  verified_role: Adopts/enforces fire, life-safety, and fire-prevention regulations;
-    adopts 2021 IFC with exceptions
-  legal___regulatory_basis:
-  - Ala. Code Title 36
-  - ch. 19
+  legal_basis:
+  - Ala. Code Title 36, ch. 19
   - Ala. Admin. Code 482-2-101
+  role: Adopts/enforces fire, life-safety, and fire-prevention regulations; adopts
+    2021 IFC with exceptions
   enforcement_model: state fire/life-safety authority
-  status:
+  source_ids: []
+  verification_status:
   - partially_verified
+  parent_agency: null
 - authority_id: ahj:usa-al:hblb
   authority_name: Alabama Home Builders Licensure Board
   authority_type: state licensing/code authority
-  verified_role: Sole authority for Alabama Residential Building Code and Residential
-    Energy Code
-  legal___regulatory_basis:
-  - "Ala. Code \xA7\xA7 34-14A-12"
-  - 34-14A-80 through 34-14A-83
+  legal_basis:
+  - Ala. Code §§ 34-14A-12, 34-14A-80 through 34-14A-83
   - Ala. Admin. Code ch. 465-X
+  role: Sole authority for Alabama Residential Building Code and Residential Energy
+    Code
   enforcement_model: board adopts; local jurisdictions generally enforce
-  status:
+  source_ids: []
+  verification_status:
   - verified
+  parent_agency: null
 - authority_id: ahj:usa-al:hblb-rcac
   authority_name: Residential Building Code Advisory Council
   authority_type: advisory council
-  verified_role: Develops/proposes residential building and energy code recommendations
-    to HBLB
-  legal___regulatory_basis:
-  - "Ala. Code \xA7 34-14A-82"
+  legal_basis:
+  - Ala. Code § 34-14A-82
+  role: Develops/proposes residential building and energy code recommendations to
+    HBLB
   enforcement_model: advisory only; board adopts or rejects
-  status:
+  source_ids: []
+  verification_status:
   - verified
+  parent_agency: null
 - authority_id: ahj:usa-al:genconbd
   authority_name: Alabama Licensing Board for General Contractors / Commercial Energy
     Code function
   authority_type: state board
-  verified_role: Commercial energy code authority after transfer from ADECA
-  legal___regulatory_basis:
+  legal_basis:
   - Requires direct extraction from current General Contractors Board materials
+  role: Commercial energy code authority after transfer from ADECA
   enforcement_model: pending / transition
-  status:
+  source_ids: []
+  verification_status:
   - partially_verified
+  parent_agency: null
 - authority_id: ahj:usa-al:local
   authority_name: Counties and municipalities
   authority_type: local governments
-  verified_role: May adopt/enforce local building codes within statutory limits
-  legal___regulatory_basis:
+  legal_basis:
   - HBLB law and local enabling authorities
+  role: May adopt/enforce local building codes within statutory limits
   enforcement_model: local permitting / inspection / enforcement
-  status:
+  source_ids: []
+  verification_status:
   - partially_verified
+  parent_agency: null

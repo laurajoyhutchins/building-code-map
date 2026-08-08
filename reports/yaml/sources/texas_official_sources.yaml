@@ -3,222 +3,410 @@ official_sources:
 - source_id: src:usa-tx:lg-ch214
   title: Texas Local Government Code Chapter 214, Municipal Regulation of Housing
     and Other Structures
-  publisher: Texas Legislature / Texas Constitution and Statutes
   source_type: statute
-  url___locator: https://statutes.capitol.texas.gov/Docs/LG/htm/LG.214.htm
-  accessed: '2026-06-26'
-  coverage: Municipal residential, commercial, electrical, and related code authority
-  reliability: official
+  publisher: Texas Legislature / Texas Constitution and Statutes
+  url: https://statutes.capitol.texas.gov/Docs/LG/htm/LG.214.htm
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Municipal residential, commercial, electrical, and related code authority
+  caveats: []
   notes:
   - Official statute HTML extraction was incomplete in this pass
   - section-level details were cross-checked with official legislative material and
     supplemental courtesy copies.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:capitol-hb0738-2021
   title: HB 738 official legislative analysis / enrolled bill materials, 87th Legislature
-  publisher: Texas Legislature Online
   source_type: legislative material
-  url___locator: https://capitol.texas.gov/
-  accessed: '2026-06-26'
-  coverage: Changed municipal IRC/IBC edition references to codes as existed on 2012-05-01
-  reliability: official
-  notes: Used to support municipal edition-reference update where current-code HTML
-    was not fully extractable.
+  publisher: Texas Legislature Online
+  url: https://capitol.texas.gov/
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Changed municipal IRC/IBC edition references to codes as existed on 2012-05-01
+  caveats: []
+  notes:
+  - Used to support municipal edition-reference update where current-code HTML was
+    not fully extractable.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:lg-ch233
   title: Texas Local Government Code Chapter 233, County Regulation of Housing and
     Other Structures
-  publisher: Texas Legislature / Texas Constitution and Statutes
   source_type: statute
-  url___locator: https://statutes.capitol.texas.gov/Docs/LG/htm/LG.233.htm
-  accessed: '2026-06-26'
-  coverage: County authority including fire-code and unincorporated construction-code
-    streams
-  reliability: official
+  publisher: Texas Legislature / Texas Constitution and Statutes
+  url: https://statutes.capitol.texas.gov/Docs/LG/htm/LG.233.htm
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - County authority including fire-code and unincorporated construction-code streams
+  caveats: []
   notes:
   - Official extraction incomplete
   - 2025 county construction-code provisions require final codified verification.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:capitol-sb2-2025-amendment
   title: Official legislative publication for 2025 county construction-code amendment
     text
-  publisher: Texas Legislature Online
   source_type: legislative material
-  url___locator: https://capitol.texas.gov/
-  accessed: '2026-06-26'
-  coverage: Indicates county residential/commercial code editions as existed on 2018-01-01
+  publisher: Texas Legislature Online
+  url: https://capitol.texas.gov/
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Indicates county residential/commercial code editions as existed on 2018-01-01
     and 2025-09-01 effective path
-  reliability: official
-  notes: Use as a watch source only until final codified text is extracted.
+  caveats: []
+  notes:
+  - Use as a watch source only until final codified text is extracted.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:seco-commercial-energy
   title: Commercial and Multi-family Construction
-  publisher: Texas Comptroller / State Energy Conservation Office
   source_type: agency guidance
-  url___locator: https://comptroller.texas.gov/programs/seco/code/commercial.php
-  accessed: '2026-06-26'
-  coverage: 2015 IECC commercial/multifamily status and 2016-11-01 code history
-  reliability: official
-  notes: Official agency page.
+  publisher: Texas Comptroller / State Energy Conservation Office
+  url: https://comptroller.texas.gov/programs/seco/code/commercial.php
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - 2015 IECC commercial/multifamily status and 2016-11-01 code history
+  caveats: []
+  notes:
+  - Official agency page.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:seco-local-ordinances
   title: Local Ordinances
-  publisher: Texas Comptroller / State Energy Conservation Office
   source_type: agency guidance
-  url___locator: https://comptroller.texas.gov/programs/seco/code/ordinances.php
-  accessed: '2026-06-26'
-  coverage: Statewide energy minimums, local amendments, home-rule/local enforcement
-    language
-  reliability: official
-  notes: Official agency page.
+  publisher: Texas Comptroller / State Energy Conservation Office
+  url: https://comptroller.texas.gov/programs/seco/code/ordinances.php
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Statewide energy minimums, local amendments, home-rule/local enforcement language
+  caveats: []
+  notes:
+  - Official agency page.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:seco-state-funded
   title: State-Funded Buildings
-  publisher: Texas Comptroller / State Energy Conservation Office
   source_type: agency guidance
-  url___locator: https://comptroller.texas.gov/programs/seco/code/state-funded.php
-  accessed: '2026-06-26'
-  coverage: State-funded building energy standards effective 2021-01-01
-  reliability: official
-  notes: Official agency page.
+  publisher: Texas Comptroller / State Energy Conservation Office
+  url: https://comptroller.texas.gov/programs/seco/code/state-funded.php
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State-funded building energy standards effective 2021-01-01
+  caveats: []
+  notes:
+  - Official agency page.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:seco-adoption-process
   title: Energy Code Adoption
-  publisher: Texas Comptroller / State Energy Conservation Office
   source_type: agency guidance
-  url___locator: https://comptroller.texas.gov/programs/seco/code/
-  accessed: '2026-06-26'
-  coverage: SECO adoption process, ESL review, comment period, minimum nine-month
-    effective-date lead time, local amendment process
-  reliability: official
-  notes: Official agency page.
+  publisher: Texas Comptroller / State Energy Conservation Office
+  url: https://comptroller.texas.gov/programs/seco/code/
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - SECO adoption process, ESL review, comment period, minimum nine-month effective-date
+    lead time, local amendment process
+  caveats: []
+  notes:
+  - Official agency page.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:tdlr-ihb-codes
   title: Industrialized Housing and Buildings Mandatory Building Codes
-  publisher: Texas Department of Licensing and Regulation
   source_type: agency guidance
-  url___locator: https://www.tdlr.texas.gov/ihb/codes.htm
-  accessed: '2026-06-26'
-  coverage: IHB mandatory code list and transition rules effective 2024-07-01
-  reliability: official
-  notes: Agency page summarizes 16 TAC 70.100 and 70.101.
+  publisher: Texas Department of Licensing and Regulation
+  url: https://www.tdlr.texas.gov/ihb/codes.htm
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - IHB mandatory code list and transition rules effective 2024-07-01
+  caveats: []
+  notes:
+  - Agency page summarizes 16 TAC 70.100 and 70.101.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:tdlr-ihb-adoption-2024
   title: New Mandatory Building Codes Effective July 1, 2024
-  publisher: Texas Department of Licensing and Regulation
   source_type: agency notice
-  url___locator: https://www.tdlr.texas.gov/ihb/ihb.htm
-  accessed: '2026-06-26'
-  coverage: Council approval, Commission rule adoption, effective date, transition
-    details
-  reliability: official
-  notes: Agency news/notice.
+  publisher: Texas Department of Licensing and Regulation
+  url: https://www.tdlr.texas.gov/ihb/ihb.htm
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Council approval, Commission rule adoption, effective date, transition details
+  caveats: []
+  notes:
+  - Agency news/notice.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:tdlr-ihb-faq
   title: Industrialized Housing and Buildings FAQs
-  publisher: Texas Department of Licensing and Regulation
   source_type: agency FAQ
-  url___locator: https://www.tdlr.texas.gov/ihb/ihbfaq.htm
-  accessed: '2026-06-26'
-  coverage: Local amendment limitations for IHB and municipal acceptance guidance
-  reliability: official
+  publisher: Texas Department of Licensing and Regulation
+  url: https://www.tdlr.texas.gov/ihb/ihbfaq.htm
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Local amendment limitations for IHB and municipal acceptance guidance
+  caveats: []
   notes:
   - FAQ
   - should be paired with Occupations Code Chapter 1202 for production proof.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:tdlr-electrical-compliance
   title: Electricians Compliance Guide
-  publisher: Texas Department of Licensing and Regulation
   source_type: agency guidance
-  url___locator: https://www.tdlr.texas.gov/electricians/compliance-guide.htm
-  accessed: '2026-06-26'
-  coverage: 2023 NEC effective date and permit/start-of-work rule
-  reliability: official
-  notes: Official agency page.
+  publisher: Texas Department of Licensing and Regulation
+  url: https://www.tdlr.texas.gov/electricians/compliance-guide.htm
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - 2023 NEC effective date and permit/start-of-work rule
+  caveats: []
+  notes:
+  - Official agency page.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:tdlr-electrical-laws-rules
   title: Electricians Laws and Rules
-  publisher: Texas Department of Licensing and Regulation
   source_type: agency guidance / legal index
-  url___locator: https://www.tdlr.texas.gov/electricians/laws-rules.htm
-  accessed: '2026-06-26'
-  coverage: Occupations Code Chapter 1305 and 16 TAC Chapter 73 legal basis
-  reliability: official
-  notes: Legal index page.
+  publisher: Texas Department of Licensing and Regulation
+  url: https://www.tdlr.texas.gov/electricians/laws-rules.htm
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Occupations Code Chapter 1305 and 16 TAC Chapter 73 legal basis
+  caveats: []
+  notes:
+  - Legal index page.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:tdi-windstorm-adopted-codes
   title: 'Adopted Building Codes: Windstorm Inspections'
-  publisher: Texas Department of Insurance
   source_type: agency guidance
-  url___locator: https://www.tdi.texas.gov/wind/adoptedbuildingcodes.html
-  accessed: '2026-06-26'
-  coverage: 2024 IRC/IBC WPI-1 windstorm certification effective 2026-04-01
-  reliability: official
+  publisher: Texas Department of Insurance
+  url: https://www.tdi.texas.gov/wind/adoptedbuildingcodes.html
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - 2024 IRC/IBC WPI-1 windstorm certification effective 2026-04-01
+  caveats: []
   notes:
   - Official agency page
   - last updated 2026-04-23.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:tdi-sfmo-standards
   title: Codes and Standards Used for Inspections by the State Fire Marshal
-  publisher: Texas Department of Insurance / State Fire Marshal's Office
   source_type: agency guidance
-  url___locator: https://www.tdi.texas.gov/fire/fmcodes.html
-  accessed: '2026-06-26'
-  coverage: 2021 NFPA 101 and NFPA 1 inspection standards effective 2023-09-01
-  reliability: official
-  notes: Official agency page.
+  publisher: Texas Department of Insurance / State Fire Marshal's Office
+  url: https://www.tdi.texas.gov/fire/fmcodes.html
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - 2021 NFPA 101 and NFPA 1 inspection standards effective 2023-09-01
+  caveats: []
+  notes:
+  - Official agency page.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:tdi-sfmo-rules
   title: Fire Safety Inspection Rules and Statutes
-  publisher: Texas Department of Insurance / State Fire Marshal's Office
   source_type: agency guidance / legal index
-  url___locator: https://www.tdi.texas.gov/fire/fmrules.html
-  accessed: '2026-06-26'
-  coverage: Government Code Chapter 417 and 28 TAC Chapter 34 inspection standards
-    legal basis
-  reliability: official
-  notes: Legal index page.
+  publisher: Texas Department of Insurance / State Fire Marshal's Office
+  url: https://www.tdi.texas.gov/fire/fmrules.html
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Government Code Chapter 417 and 28 TAC Chapter 34 inspection standards legal basis
+  caveats: []
+  notes:
+  - Legal index page.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:tdi-sfmo-inspections
   title: Fire Safety Inspections Services
-  publisher: Texas Department of Insurance / State Fire Marshal's Office
   source_type: agency guidance
-  url___locator: https://www.tdi.texas.gov/fire/fmfsis.html
-  accessed: '2026-06-26'
-  coverage: SFMO inspection request scope and local certified-inspector handoff
-  reliability: official
-  notes: Official agency page.
+  publisher: Texas Department of Insurance / State Fire Marshal's Office
+  url: https://www.tdi.texas.gov/fire/fmfsis.html
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - SFMO inspection request scope and local certified-inspector handoff
+  caveats: []
+  notes:
+  - Official agency page.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:tdlr-tas
   title: Texas Accessibility Standards
-  publisher: Texas Department of Licensing and Regulation
   source_type: agency guidance / standards page
-  url___locator: https://www.tdlr.texas.gov/ab/abtas.htm
-  accessed: '2026-06-26'
-  coverage: 2012 TAS and effective date
-  reliability: official
-  notes: Official agency page.
+  publisher: Texas Department of Licensing and Regulation
+  url: https://www.tdlr.texas.gov/ab/abtas.htm
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - 2012 TAS and effective date
+  caveats: []
+  notes:
+  - Official agency page.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:tdlr-ab-laws-rules
   title: Architectural Barriers Laws and Rules
-  publisher: Texas Department of Licensing and Regulation
   source_type: agency guidance / legal index
-  url___locator: https://www.tdlr.texas.gov/ab/laws-rules.htm
-  accessed: '2026-06-26'
-  coverage: Government Code Chapter 469 and 16 TAC Chapter 68 legal basis
-  reliability: official
-  notes: Legal index page.
+  publisher: Texas Department of Licensing and Regulation
+  url: https://www.tdlr.texas.gov/ab/laws-rules.htm
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Government Code Chapter 469 and 16 TAC Chapter 68 legal basis
+  caveats: []
+  notes:
+  - Legal index page.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:tdlr-ab-faq
   title: Architectural Barriers FAQs
-  publisher: Texas Department of Licensing and Regulation
   source_type: agency FAQ
-  url___locator: https://www.tdlr.texas.gov/ab/abfaq.htm
-  accessed: '2026-06-26'
-  coverage: TAS compliance and submission thresholds
-  reliability: official
+  publisher: Texas Department of Licensing and Regulation
+  url: https://www.tdlr.texas.gov/ab/abfaq.htm
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - TAS compliance and submission thresholds
+  caveats: []
   notes:
   - FAQ
   - use for applicability notes
   - not as sole legal proof.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:tdlr-elevator-laws-rules
   title: Elevator / Escalator Safety Laws and Rules
-  publisher: Texas Department of Licensing and Regulation
   source_type: agency guidance / legal index
-  url___locator: https://www.tdlr.texas.gov/elevator/laws-rules.htm
-  accessed: '2026-06-26'
-  coverage: Health and Safety Code Chapter 754 and 16 TAC Chapter 74 legal basis
-  reliability: official
-  notes: Exact ASME edition not parsed.
+  publisher: Texas Department of Licensing and Regulation
+  url: https://www.tdlr.texas.gov/elevator/laws-rules.htm
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Health and Safety Code Chapter 754 and 16 TAC Chapter 74 legal basis
+  caveats: []
+  notes:
+  - Exact ASME edition not parsed.
+  details:
+  - name: reliability
+    values:
+    - official
 - source_id: src:usa-tx:tdlr-elevator-faq
   title: Elevator / Escalator Safety FAQs
-  publisher: Texas Department of Licensing and Regulation
   source_type: agency FAQ
-  url___locator: https://www.tdlr.texas.gov/elevator/elfaq.htm
-  accessed: '2026-06-26'
-  coverage: Registration/licensing and program-scope support
-  reliability: official
+  publisher: Texas Department of Licensing and Regulation
+  url: https://www.tdlr.texas.gov/elevator/elfaq.htm
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Registration/licensing and program-scope support
+  caveats: []
   notes:
   - FAQ
   - use only as supplemental program-scope support.
+  details:
+  - name: reliability
+    values:
+    - official

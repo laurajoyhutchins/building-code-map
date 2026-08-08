@@ -58,8 +58,7 @@ key_findings:
   - src:usa-va:code-36-98
   - src:usa-va:code-27-97
 - topic: Effective / operative date rule
-  finding:
-  - '2024-01-18'
+  finding: '2024-01-18'
   confidence: 0.86
   source_ids:
   - src:usa-va:dhcd-codes

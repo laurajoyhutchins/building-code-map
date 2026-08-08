@@ -2,169 +2,274 @@
 official_sources:
 - source_id: src:usa-il:cdb-act-20-ilcs-3105
   title: Capital Development Board Act, 20 ILCS 3105
-  publisher: Illinois General Assembly
   source_type: statute
-  url___locator: https://www.ilga.gov/legislation/ILCS/details?ActID=362&ActName=Capital+Development+Board+Act.&ChapAct=20+ILCS+3105%2F&Chapter=&ChapterID=5&MajorTopic=&Print=True&SeqEnd=6000000&SeqStart=100000
+  publisher: Illinois General Assembly
+  url: https://www.ilga.gov/legislation/ILCS/details?ActID=362&ActName=Capital+Development+Board+Act.&ChapAct=20+ILCS+3105%2F&Chapter=&ChapterID=5&MajorTopic=&Print=True&SeqEnd=6000000&SeqStart=100000
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: parsed_core_sections
   supports:
   - CDB authority
   - commercial non-building-code certification
   - local code reporting
   - local structural baseline
-  status: parsed_core_sections
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-il:cdb-building-codes-page
   title: Building Codes and Regulations
-  publisher: Illinois Capital Development Board
   source_type: agency page
-  url___locator: https://cdb.illinois.gov/business/codes/buildingcodesregulations.html
+  publisher: Illinois Capital Development Board
+  url: https://cdb.illinois.gov/business/codes/buildingcodesregulations.html
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: parsed_summary_page
   supports:
   - CDB summary of post-2025 code framework
   - local reporting
   - public schools routing
   - CDB directories
-  status: parsed_summary_page
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-il:energy-efficient-building-act-20-ilcs-3125
   title: Energy Efficient Building Act, 20 ILCS 3125
-  publisher: Illinois General Assembly
   source_type: statute
-  url___locator: https://www.ilga.gov/Legislation/ILCS/Articles?ActID=2614&ChapterID=5
+  publisher: Illinois General Assembly
+  url: https://www.ilga.gov/Legislation/ILCS/Articles?ActID=2614&ChapterID=5
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: parsed_core_sections
   supports:
   - Energy Code adoption authority
   - applicability
   - local limits
   - Stretch Energy Code
-  status: parsed_core_sections
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-il:energy-code-71-iac-600
   title: 71 Ill. Adm. Code 600, Illinois Energy Code
-  publisher: Illinois Joint Committee on Administrative Rules / CDB
   source_type: administrative rule
-  url___locator: https://www.ilga.gov/agencies/JCAR/EntirePart?titlepart=07100600
+  publisher: Illinois Joint Committee on Administrative Rules / CDB
+  url: https://www.ilga.gov/agencies/JCAR/EntirePart?titlepart=07100600
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: parsed_core_sections
   supports:
   - 2024 IECC incorporation
   - energy-code amendments
   - stretch-energy rules
-  status: parsed_core_sections
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-il:energy-code-cdb-page
   title: Illinois Energy Conservation Code page
-  publisher: Illinois Capital Development Board
   source_type: agency page
-  url___locator: https://cdb.illinois.gov/business/codes/illinois-energy-codes/illinois-energy-conservation-code.html
-  supports: 2024 IECC amended effective date for privately funded commercial and residential
-    buildings
+  publisher: Illinois Capital Development Board
+  url: https://cdb.illinois.gov/business/codes/illinois-energy-codes/illinois-energy-conservation-code.html
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: parsed_summary_page
+  supports:
+  - 2024 IECC amended effective date for privately funded commercial and residential
+    buildings
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-il:residential-building-code-act-815-ilcs-670
   title: Residential Building Code Act, 815 ILCS 670
-  publisher: Illinois General Assembly
   source_type: statute
-  url___locator: https://www.ilga.gov/Legislation/ILCS/Articles?ActID=2585&ChapterID=67
-  supports: Residential non-building-code jurisdiction contract/default rule and definitions
+  publisher: Illinois General Assembly
+  url: https://www.ilga.gov/Legislation/ILCS/Articles?ActID=2585&ChapterID=67
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: parsed_core_sections
+  supports:
+  - Residential non-building-code jurisdiction contract/default rule and definitions
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-il:fire-prevention-rules-41-iac-100
   title: 41 Ill. Adm. Code 100, Fire Prevention and Safety
-  publisher: OSFM / Illinois JCAR
   source_type: administrative rule
-  url___locator: https://www.ilga.gov/agencies/JCAR/EntirePart?titlepart=04100100
+  publisher: OSFM / Illinois JCAR
+  url: https://www.ilga.gov/agencies/JCAR/EntirePart?titlepart=04100100
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: parsed_core_sections
   supports:
   - OSFM fire-prevention authority
   - NFPA 101 adoption
   - local equal-or-higher criteria
-  status: parsed_core_sections
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-il:osfm-life-safety-faq
   title: Fire Prevention & Building Safety FAQ
-  publisher: Office of the State Fire Marshal
   source_type: agency FAQ
-  url___locator: https://sfm.illinois.gov/about/divisions/fire-prevention-and-building-safety/frequently-asked-questions.html
+  publisher: Office of the State Fire Marshal
+  url: https://sfm.illinois.gov/about/divisions/fire-prevention-and-building-safety/frequently-asked-questions.html
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: parsed_summary_page
   supports:
   - OSFM NFPA 101 adoption explanation
   - modifications
   - applicability notes
-  status: parsed_summary_page
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-il:plumbing-code-77-iac-890
   title: 77 Ill. Adm. Code 890, Illinois Plumbing Code
-  publisher: IDPH / Illinois JCAR
   source_type: administrative rule
-  url___locator: https://www.ilga.gov/agencies/JCAR/EntirePart?titlepart=07700890
+  publisher: IDPH / Illinois JCAR
+  url: https://www.ilga.gov/agencies/JCAR/EntirePart?titlepart=07700890
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: parsed_core_sections
   supports:
   - Plumbing-code authority
   - applicability
   - variance authority
-  status: parsed_core_sections
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-il:plumbing-license-law-225-ilcs-320
   title: Illinois Plumbing License Law, 225 ILCS 320
-  publisher: Illinois General Assembly
   source_type: statute
-  url___locator: https://www.ilga.gov/Documents/legislation/ilcs/documents/022503200K37.htm
-  supports: Local plumbing permits/inspection authority and licensed-inspector requirement
+  publisher: Illinois General Assembly
+  url: https://www.ilga.gov/Documents/legislation/ilcs/documents/022503200K37.htm
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: parsed_core_section_37
+  supports:
+  - Local plumbing permits/inspection authority and licensed-inspector requirement
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-il:environmental-barriers-act-410-ilcs-25
   title: Environmental Barriers Act, 410 ILCS 25
-  publisher: Illinois General Assembly
   source_type: statute
-  url___locator: https://www.ilga.gov/Legislation/ILCS/Articles?ActID=1519&Chapter=PUBLIC+HEALTH&ChapterID=35&MajorTopic=HEALTH+AND+SAFETY
+  publisher: Illinois General Assembly
+  url: https://www.ilga.gov/Legislation/ILCS/Articles?ActID=1519&Chapter=PUBLIC+HEALTH&ChapterID=35&MajorTopic=HEALTH+AND+SAFETY
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: parsed_core_sections
   supports:
   - CDB adoption of Illinois Accessibility Code
   - project-specific interpretations
   - scope
-  status: parsed_core_sections
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-il:accessibility-code-71-iac-400
   title: 71 Ill. Adm. Code 400, Illinois Accessibility Code
-  publisher: CDB / Illinois JCAR
   source_type: administrative rule
-  url___locator: https://www.ilga.gov/agencies/JCAR/EntirePart?titlepart=07100400
+  publisher: CDB / Illinois JCAR
+  url: https://www.ilga.gov/agencies/JCAR/EntirePart?titlepart=07100400
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: parsed_core_sections
   supports:
   - Accessibility Code purpose
   - effective date
   - force of law
   - AG enforcement
-  status: parsed_core_sections
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-il:school-code-105-ilcs-5-2-3-12
   title: School Code, 105 ILCS 5/2-3.12
-  publisher: Illinois General Assembly
   source_type: statute
-  url___locator: https://www.ilga.gov/documents/legislation/ilcs/documents/010500050K2-3.12.htm
+  publisher: Illinois General Assembly
+  url: https://www.ilga.gov/documents/legislation/ilcs/documents/010500050K2-3.12.htm
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: parsed_core_section
   supports:
   - Health/Life Safety Code as governing code for public schools
   - inspection coordination
   - Article 34 limit
-  status: parsed_core_section
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-il:hls-code-public-schools-23-iac-180
   title: 23 Ill. Adm. Code 180, Health/Life Safety Code for Public Schools
-  publisher: ISBE / Illinois JCAR
   source_type: administrative rule
-  url___locator: https://ilga.gov/agencies/JCAR/EntirePart?titlepart=02300180
+  publisher: ISBE / Illinois JCAR
+  url: https://ilga.gov/agencies/JCAR/EntirePart?titlepart=02300180
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: parsed_core_sections
   supports:
   - 2024 ICC public-school code adoptions
   - scope
   - Article 34 exception
   - substitutions
-  status: parsed_core_sections
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-il:elevator-safety-rules-41-iac-1000
   title: 41 Ill. Adm. Code 1000, Illinois Elevator Safety Rules
-  publisher: OSFM / Illinois JCAR
   source_type: administrative rule
-  url___locator: https://ilga.gov/agencies/JCAR/EntirePart?titlepart=04101000
+  publisher: OSFM / Illinois JCAR
+  url: https://ilga.gov/agencies/JCAR/EntirePart?titlepart=04101000
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: parsed_core_sections
   supports:
   - Elevator/conveyance rule authority
   - scope
   - latest effective date
   - Chicago exception
-  status: parsed_core_sections
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-il:elevator-act-225-ilcs-312
   title: Elevator Safety and Regulation Act, 225 ILCS 312
-  publisher: Illinois General Assembly
   source_type: statute
-  url___locator: https://ilga.gov/Documents/legislation/ilcs/documents/022503120K140.htm
+  publisher: Illinois General Assembly
+  url: https://ilga.gov/Documents/legislation/ilcs/documents/022503120K140.htm
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: parsed_section_140
   supports:
   - Local elevator administrator agreements
   - at-least-as-stringent local standards
   - variance notice
-  status: parsed_section_140
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-il:osfm-elevator-page
   title: Elevator Safety
-  publisher: Office of the State Fire Marshal
   source_type: agency page
-  url___locator: https://sfm.illinois.gov/about/divisions/elevators.html
+  publisher: Office of the State Fire Marshal
+  url: https://sfm.illinois.gov/about/divisions/elevators.html
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: parsed_summary_page
   supports:
   - OSFM Elevator Safety Division role
   - outside-Chicago summary
   - rulemaking notices
-  status: parsed_summary_page
+  caveats: []
+  notes: []
+  details: []

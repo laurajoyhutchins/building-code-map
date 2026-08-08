@@ -1,23 +1,21 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: '`ahj:usa-ut:legislature`'
-- field: Authority name
-  value: Utah Legislature
-- field: Authority type
-  value: statewide legislative code-adopting authority
-- field: Legal basis
-  value: "Utah Code \xA7 15A-1-204; Utah Code \xA7 15A-2-103; Utah Code \xA7 15A-2-101"
-- field: Role
-  value: Adopts the State Construction Code by legislation, including nationally recognized
+- authority_id: ahj:usa-ut:legislature
+  authority_name: Utah Legislature
+  authority_type: statewide legislative code-adopting authority
+  legal_basis:
+  - Utah Code § 15A-1-204
+  - Utah Code § 15A-2-103
+  - Utah Code § 15A-2-101
+  role: Adopts the State Construction Code by legislation, including nationally recognized
     model codes and Utah modifications.
-- field: Enforcement model
-  value: Statewide code followed by the state and political subdivisions; administered/enforced
-    by compliance agencies, local regulators, and state regulators as applicable.
-- field: Source IDs
-  value:
+  enforcement_model: Statewide code followed by the state and political subdivisions;
+    administered/enforced by compliance agencies, local regulators, and state regulators
+    as applicable.
+  source_ids:
   - src:usa-ut:code-15a-1-204
   - src:usa-ut:code-15a-2-103
   - src:usa-ut:code-15a-1-202
-- field: Verification status
-  value: partially_verified
+  verification_status:
+  - partially_verified
+  parent_agency: null

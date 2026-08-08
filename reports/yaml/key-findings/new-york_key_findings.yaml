@@ -48,9 +48,9 @@ key_findings:
   - src:usa-ny:exec-law-381
   - src:usa-ny:dos-enforcement-programs
 - topic: Local amendments
-  finding: "Uniform Code local standards must be higher or more restrictive and require\
-    \ Code Council approval; local energy codes must be more stringent and are subject\
-    \ to filing/review under Energy Law \xA711-109."
+  finding: Uniform Code local standards must be higher or more restrictive and require
+    Code Council approval; local energy codes must be more stringent and are subject
+    to filing/review under Energy Law §11-109.
   confidence: 0.86
   source_ids:
   - src:usa-ny:exec-law-379
@@ -66,8 +66,8 @@ key_findings:
   - src:usa-ny:dos-uniform-code
   - src:usa-ny:dos-faq
 - topic: Suspended provisions
-  finding: "Fossil-fuel-equipment/building-system provisions in 19 NYCRR \xA71240.6\
-    \ and Subpart 1229-2 are suspended under a court stipulation and order."
+  finding: Fossil-fuel-equipment/building-system provisions in 19 NYCRR §1240.6 and
+    Subpart 1229-2 are suspended under a court stipulation and order.
   confidence: 0.88
   source_ids:
   - src:usa-ny:dos-2025-notice-adoption

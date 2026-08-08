@@ -1,9 +1,9 @@
 ---
 key_findings:
 - topic: State building-code model
-  finding: "South Dakota uses a statutory/local-option model: local ordinances must\
-    \ track specified I-Code editions, and \xA7 11-10-6 supplies a default nonresidential\
-    \ design standard where no local ordinance exists."
+  finding: 'South Dakota uses a statutory/local-option model: local ordinances must
+    track specified I-Code editions, and § 11-10-6 supplies a default nonresidential
+    design standard where no local ordinance exists.'
   confidence: 0.78
   source_ids:
   - src:usa-sd:sdcl-11-10-5

@@ -1,113 +1,199 @@
 ---
 official_sources:
 - source_id: src:usa-pa:dli-ucc-home
-  source_name: Uniform Construction Code Home
-  issuer: Pennsylvania Department of Labor & Industry
-  type: agency page
-  url___citation: https://www.pa.gov/agencies/dli/programs-services/labor-management-relations/bureau-of-occupational-and-industrial-safety/uniform-construction-code-home
-  records_supported: statewide UCC program existence and general description
+  title: Uniform Construction Code Home
+  source_type: agency page
+  publisher: Pennsylvania Department of Labor & Industry
+  url: https://www.pa.gov/agencies/dli/programs-services/labor-management-relations/bureau-of-occupational-and-industrial-safety/uniform-construction-code-home
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - statewide UCC program existence and general description
   caveats:
   - Agency web page
   - use statutes and regulations for legal hierarchy
+  notes: []
+  details: []
 - source_id: src:usa-pa:dli-ucc-rac-2021-cycle
-  source_name: Uniform Construction Code Review and Advisory Council / 2021 Code Review
+  title: Uniform Construction Code Review and Advisory Council / 2021 Code Review
     Cycle
-  issuer: Pennsylvania Department of Labor & Industry
-  type: agency page
-  url___citation: https://www.pa.gov/agencies/dli/programs-services/labor-management-relations/bureau-of-occupational-and-industrial-safety/uniform-construction-code-home/review-advisory-council.html
-  records_supported: 2021 triennial cycle; IRRC approval date; publication date; effective
-    date
+  source_type: agency page
+  publisher: Pennsylvania Department of Labor & Industry
+  url: https://www.pa.gov/agencies/dli/programs-services/labor-management-relations/bureau-of-occupational-and-industrial-safety/uniform-construction-code-home/review-advisory-council.html
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - 2021 triennial cycle; IRRC approval date; publication date; effective date
   caveats:
   - Agency status page
   - legal text is in PA Code and PA Bulletin
+  notes: []
+  details: []
 - source_id: src:usa-pa:dli-ucc-regs-statutes
-  source_name: UCC Regulations and Statutes
-  issuer: Pennsylvania Department of Labor & Industry
-  type: agency page
-  url___citation: https://www.pa.gov/agencies/dli/programs-services/labor-management-relations/bureau-of-occupational-and-industrial-safety/uniform-construction-code-home/regulations-statutes.html
-  records_supported: Construction Code Act and UCC regulatory source pointers
+  title: UCC Regulations and Statutes
+  source_type: agency page
+  publisher: Pennsylvania Department of Labor & Industry
+  url: https://www.pa.gov/agencies/dli/programs-services/labor-management-relations/bureau-of-occupational-and-industrial-safety/uniform-construction-code-home/regulations-statutes.html
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Construction Code Act and UCC regulatory source pointers
   caveats:
   - Portal page
   - use linked official statute/regulation text for legal reliance
+  notes: []
+  details: []
 - source_id: src:usa-pa:pcca-act-45
-  source_name: Pennsylvania Construction Code Act, Act 45 of 1999, as amended
-  issuer: Pennsylvania General Assembly
-  type: statute
-  url___citation: https://www.legis.state.pa.us/WU01/LI/LI/US/HTM/1999/0/0045..HTM
-  records_supported: statewide authority, preemption, triennial regulation process,
-    municipal administration, transition rules, local changes, accessibility roles
+  title: Pennsylvania Construction Code Act, Act 45 of 1999, as amended
+  source_type: statute
+  publisher: Pennsylvania General Assembly
+  url: https://www.legis.state.pa.us/WU01/LI/LI/US/HTM/1999/0/0045..HTM
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - statewide authority, preemption, triennial regulation process, municipal administration,
+    transition rules, local changes, accessibility roles
   caveats:
   - Official unconsolidated act page with amendments and compiler notes
   - reconcile with current codification and Act 16 implementation
+  notes: []
+  details: []
 - source_id: src:usa-pa:act-16-2026
-  source_name: Act 16 of 2026 / SB 867 amendments to the Construction Code Act
-  issuer: Pennsylvania General Assembly
-  type: statute amendment
-  url___citation: https://www.legis.state.pa.us/cfdocs/billInfo/billInfo.cfm?sYear=2025&sInd=0&body=S&type=B&bn=867
-  records_supported: accessibility-process risk flag and pending reconciliation
+  title: Act 16 of 2026 / SB 867 amendments to the Construction Code Act
+  source_type: statute amendment
+  publisher: Pennsylvania General Assembly
+  url: https://www.legis.state.pa.us/cfdocs/billInfo/billInfo.cfm?sYear=2025&sInd=0&body=S&type=B&bn=867
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - accessibility-process risk flag and pending reconciliation
   caveats:
   - Official bill/law information
   - detailed regulatory implementation not parsed
+  notes: []
+  details: []
 - source_id: src:usa-pa:pa-code-403-1
-  source_name: "34 Pa. Code \xA7 403.1, Scope"
-  issuer: Pennsylvania Code / Legislative Reference Bureau
-  type: regulation
-  url___citation: https://www.pacodeandbulletin.gov/Display/pacode?file=/secure/pacode/data/034/chapter403/s403.1.html
-  records_supported: UCC scope, transition/g grandfathering, prior-permit logic, effective-history
+  title: 34 Pa. Code § 403.1, Scope
+  source_type: regulation
+  publisher: Pennsylvania Code / Legislative Reference Bureau
+  url: https://www.pacodeandbulletin.gov/Display/pacode?file=/secure/pacode/data/034/chapter403/s403.1.html
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - UCC scope, transition/g grandfathering, prior-permit logic, effective-history
     note
   caveats:
   - Official HTML drawn from PA Code
   - verify printed/code text for production legal citations
+  notes: []
+  details: []
 - source_id: src:usa-pa:pa-code-403-21
-  source_name: "34 Pa. Code \xA7 403.21, Uniform Construction Code"
-  issuer: Pennsylvania Code / Legislative Reference Bureau
-  type: regulation
-  url___citation: https://www.pacodeandbulletin.gov/Display/pacode?file=/secure/pacode/data/034/chapter403/s403.21.html
-  records_supported: current model-code adoption matrix, amendments, IFC reference
-    limitation, IEBC/IECC paths, appendices, plumbing caveat
+  title: 34 Pa. Code § 403.21, Uniform Construction Code
+  source_type: regulation
+  publisher: Pennsylvania Code / Legislative Reference Bureau
+  url: https://www.pacodeandbulletin.gov/Display/pacode?file=/secure/pacode/data/034/chapter403/s403.21.html
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - current model-code adoption matrix, amendments, IFC reference limitation, IEBC/IECC
+    paths, appendices, plumbing caveat
   caveats:
   - Official HTML drawn from PA Code
   - extensive code text should be checked against official publication in edge cases
+  notes: []
+  details: []
 - source_id: src:usa-pa:pa-code-403-43
-  source_name: "34 Pa. Code \xA7 403.43, Grant, denial and effect of permits"
-  issuer: Pennsylvania Code / Legislative Reference Bureau
-  type: regulation
-  url___citation: https://www.pacodeandbulletin.gov/Display/pacode?file=/secure/pacode/data/034/chapter403/s403.43.html
-  records_supported: commercial permit review and permit-validity rules
-  caveats: Official HTML drawn from PA Code
+  title: 34 Pa. Code § 403.43, Grant, denial and effect of permits
+  source_type: regulation
+  publisher: Pennsylvania Code / Legislative Reference Bureau
+  url: https://www.pacodeandbulletin.gov/Display/pacode?file=/secure/pacode/data/034/chapter403/s403.43.html
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - commercial permit review and permit-validity rules
+  caveats:
+  - Official HTML drawn from PA Code
+  notes: []
+  details: []
 - source_id: src:usa-pa:pa-code-403-63
-  source_name: "34 Pa. Code \xA7 403.63, Grant, denial and effect of permits"
-  issuer: Pennsylvania Code / Legislative Reference Bureau
-  type: regulation
-  url___citation: https://www.pacodeandbulletin.gov/Display/pacode?file=/secure/pacode/data/034/chapter403/s403.63.html
-  records_supported: residential permit review and permit-validity rules
-  caveats: Official HTML drawn from PA Code
+  title: 34 Pa. Code § 403.63, Grant, denial and effect of permits
+  source_type: regulation
+  publisher: Pennsylvania Code / Legislative Reference Bureau
+  url: https://www.pacodeandbulletin.gov/Display/pacode?file=/secure/pacode/data/034/chapter403/s403.63.html
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - residential permit review and permit-validity rules
+  caveats:
+  - Official HTML drawn from PA Code
+  notes: []
+  details: []
 - source_id: src:usa-pa:pa-code-403-102
-  source_name: "34 Pa. Code \xA7 403.102, Municipal and third-party agency administration\
-    \ and enforcement"
-  issuer: Pennsylvania Code / Legislative Reference Bureau
-  type: regulation
-  url___citation: https://www.pacodeandbulletin.gov/secure/pacode/data/034/chapter403/034_0403.pdf
-  records_supported: local enforcement options, municipal adoption ordinance, DLI
-    notification, local change review, accessibility official roles
+  title: 34 Pa. Code § 403.102, Municipal and third-party agency administration and
+    enforcement
+  source_type: regulation
+  publisher: Pennsylvania Code / Legislative Reference Bureau
+  url: https://www.pacodeandbulletin.gov/secure/pacode/data/034/chapter403/034_0403.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - local enforcement options, municipal adoption ordinance, DLI notification, local
+    change review, accessibility official roles
   caveats:
   - Official PA Code chapter PDF
-  - "use section number \xA7 403.102 for stable citation and spot-check current codification"
+  - use section number § 403.102 for stable citation and spot-check current codification
+  notes: []
+  details: []
 - source_id: src:usa-pa:pa-bulletin-55-45-ucc-final-omitted
-  source_name: 55 Pa.B. 7701, UCC final-omitted rulemaking, Volume 55, Number 45
-  issuer: Pennsylvania Bulletin / Legislative Reference Bureau
-  type: official rulemaking PDF
-  url___citation: https://pacodeandbulletin.gov/secure/pabulletin/data/vol55/55-45/55_45_rr.pdf
-  records_supported: 2021 triennial rulemaking, effective date, code adoption text,
-    amendments to Chapters 401 and 403
+  title: 55 Pa.B. 7701, UCC final-omitted rulemaking, Volume 55, Number 45
+  source_type: official rulemaking PDF
+  publisher: Pennsylvania Bulletin / Legislative Reference Bureau
+  url: https://pacodeandbulletin.gov/secure/pabulletin/data/vol55/55-45/55_45_rr.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - 2021 triennial rulemaking, effective date, code adoption text, amendments to Chapters
+    401 and 403
   caveats:
   - Official PDF
   - extraction is OCR/text-layout sensitive
   - so use section numbers and PA Code codification for production
+  notes: []
+  details: []
 - source_id: src:usa-pa:dli-municipal-code-change-ordinances
-  source_name: Municipal Code Change Ordinances
-  issuer: Pennsylvania Department of Labor & Industry
-  type: agency registry page
-  url___citation: https://www.pa.gov/agencies/dli/programs-services/labor-management-relations/bureau-of-occupational-and-industrial-safety/uniform-construction-code-home/municipal-ordinances.html
-  records_supported: local amendment registry, DLI decisions on municipal changes
-  caveats: Registry was identified but not exhaustively parsed into local records
+  title: Municipal Code Change Ordinances
+  source_type: agency registry page
+  publisher: Pennsylvania Department of Labor & Industry
+  url: https://www.pa.gov/agencies/dli/programs-services/labor-management-relations/bureau-of-occupational-and-industrial-safety/uniform-construction-code-home/municipal-ordinances.html
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - local amendment registry, DLI decisions on municipal changes
+  caveats:
+  - Registry was identified but not exhaustively parsed into local records
+  notes: []
+  details: []

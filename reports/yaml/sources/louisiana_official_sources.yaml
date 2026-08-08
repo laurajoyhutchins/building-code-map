@@ -2,141 +2,292 @@
 official_sources:
 - source_id: src:usa-la:rs-40-1730-21
   title: R.S. 40:1730.21, Public policy for state uniform construction code
-  issuer___publisher: Louisiana State Legislature
   source_type: statute
-  url___citation: https://www.legis.la.gov/legis/Law.aspx?d=97795
-  date___version: current as displayed 2026-06-25
-  used_for: State uniform construction code purpose and certification purpose
-  accessed: '2026-06-25'
+  publisher: Louisiana State Legislature
+  url: https://www.legis.la.gov/legis/Law.aspx?d=97795
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State uniform construction code purpose and certification purpose
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - current as displayed 2026-06-25
 - source_id: src:usa-la:rs-40-1730-22
   title: R.S. 40:1730.22, Louisiana State Uniform Construction Code Council
-  issuer___publisher: Louisiana State Legislature
   source_type: statute
-  url___citation: https://www.legis.la.gov/Legis/Law.aspx?d=97796
-  date___version: current as displayed 2026-06-25
-  used_for: LSUCCC creation, membership, function, amendment authority
-  accessed: '2026-06-25'
+  publisher: Louisiana State Legislature
+  url: https://www.legis.la.gov/Legis/Law.aspx?d=97796
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - LSUCCC creation, membership, function, amendment authority
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - current as displayed 2026-06-25
 - source_id: src:usa-la:rs-40-1730-23
   title: R.S. 40:1730.23, Enforcement of building codes by municipalities and parishes
-  issuer___publisher: Louisiana State Legislature
   source_type: statute
-  url___citation: https://www.legis.la.gov/Legis/Law.aspx?d=97797
-  date___version: current text with 2026-07-01 notes
-  used_for: Local enforcement mandate and third-party provider limitations
-  accessed: '2026-06-25'
+  publisher: Louisiana State Legislature
+  url: https://www.legis.la.gov/Legis/Law.aspx?d=97797
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Local enforcement mandate and third-party provider limitations
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - current text with 2026-07-01 notes
 - source_id: src:usa-la:rs-40-1730-24
   title: R.S. 40:1730.24, Agreements with other governmental entities; private agreements
-  issuer___publisher: Louisiana State Legislature
   source_type: statute
-  url___citation: https://www.legis.la.gov/legis/Law.aspx?d=97798
-  date___version: current as displayed 2026-06-25
-  used_for: Third-party provider and intergovernmental enforcement agreements
-  accessed: '2026-06-25'
+  publisher: Louisiana State Legislature
+  url: https://www.legis.la.gov/legis/Law.aspx?d=97798
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Third-party provider and intergovernmental enforcement agreements
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - current as displayed 2026-06-25
 - source_id: src:usa-la:rs-40-1730-25
   title: R.S. 40:1730.25, Appointment of building official or contractual arrangement
-  issuer___publisher: Louisiana State Legislature
   source_type: statute
-  url___citation: https://www.legis.la.gov/legis/Law.aspx?d=97799
-  date___version: current as displayed 2026-06-25
-  used_for: Required local building official / contracted equivalent
-  accessed: '2026-06-25'
+  publisher: Louisiana State Legislature
+  url: https://www.legis.la.gov/legis/Law.aspx?d=97799
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Required local building official / contracted equivalent
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - current as displayed 2026-06-25
 - source_id: src:usa-la:rs-40-1730-26
   title: R.S. 40:1730.26, Adoption and promulgation procedures
-  issuer___publisher: Louisiana State Legislature
   source_type: statute
-  url___citation: https://www.legis.la.gov/legis/Law.aspx?d=97800
-  date___version: current as displayed 2026-06-25
-  used_for: LSUCCC adoption, review, update, and amendment procedure
-  accessed: '2026-06-25'
+  publisher: Louisiana State Legislature
+  url: https://www.legis.la.gov/legis/Law.aspx?d=97800
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - LSUCCC adoption, review, update, and amendment procedure
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - current as displayed 2026-06-25
 - source_id: src:usa-la:rs-40-1730-28
   title: R.S. 40:1730.28, Mandatory adoption of certain nationally recognized codes
-  issuer___publisher: Louisiana State Legislature
   source_type: statute
-  url___citation: https://www.legis.la.gov/Legis/Law.aspx?d=97802
-  date___version: current text with 2026-07-01 notes
-  used_for: Statutory code families and IRC applicability
-  accessed: '2026-06-25'
+  publisher: Louisiana State Legislature
+  url: https://www.legis.la.gov/Legis/Law.aspx?d=97802
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Statutory code families and IRC applicability
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - current text with 2026-07-01 notes
 - source_id: src:usa-la:rs-40-1730-28-5
   title: R.S. 40:1730.28.5, Energy code provisions
-  issuer___publisher: Louisiana State Legislature
   source_type: statute
-  url___citation: https://www.legis.la.gov/legis/Law.aspx?d=1296031
-  date___version: current as displayed 2026-06-25
-  used_for: IECC and IRC energy provisions; 2023-07-01 effective date
-  accessed: '2026-06-25'
+  publisher: Louisiana State Legislature
+  url: https://www.legis.la.gov/legis/Law.aspx?d=1296031
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - IECC and IRC energy provisions; 2023-07-01 effective date
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - current as displayed 2026-06-25
 - source_id: src:usa-la:rs-40-1730-40
   title: R.S. 40:1730.40, Municipalities and parishes; home rule charter
-  issuer___publisher: Louisiana State Legislature
   source_type: statute
-  url___citation: https://www.legis.la.gov/legis/Law.aspx?d=587987
-  date___version: current as displayed 2026-06-25
-  used_for: Local administration authority and limitation on local amendment of mandatory
+  publisher: Louisiana State Legislature
+  url: https://www.legis.la.gov/legis/Law.aspx?d=587987
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Local administration authority and limitation on local amendment of mandatory
     code provisions
-  accessed: '2026-06-25'
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - current as displayed 2026-06-25
 - source_id: src:usa-la:rs-40-1578-7
   title: R.S. 40:1578.7, State Uniform Fire Prevention Code
-  issuer___publisher: Louisiana State Legislature
   source_type: statute
-  url___citation: https://www.legis.la.gov/legis/Law.aspx?d=97686
-  date___version: current and 2026-07-01 future text
-  used_for: Fire prevention code, local fire-code path, OSFM rule authority
-  accessed: '2026-06-25'
+  publisher: Louisiana State Legislature
+  url: https://www.legis.la.gov/legis/Law.aspx?d=97686
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Fire prevention code, local fire-code path, OSFM rule authority
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - current and 2026-07-01 future text
 - source_id: src:usa-la:rs-40-1733
   title: R.S. 40:1733, ADA Standards / standards to prevent architectural barriers
-  issuer___publisher: Louisiana State Legislature
   source_type: statute
-  url___citation: https://www.legis.la.gov/legis/Law.aspx?d=97809
-  date___version: current and 2026-07-01 future text
-  used_for: Accessibility standard and pending transition
-  accessed: '2026-06-25'
+  publisher: Louisiana State Legislature
+  url: https://www.legis.la.gov/legis/Law.aspx?d=97809
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Accessibility standard and pending transition
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - current and 2026-07-01 future text
 - source_id: src:usa-la:lsuccc-codes-standards
   title: LSUCCC Codes & Standards page
-  issuer___publisher: Louisiana State Uniform Construction Code Council
   source_type: agency webpage
-  url___citation: https://lsuccc.la/codes-standards/
-  date___version: page footer 2025; accessed 2026-06-25
-  used_for: Source registry of current/prior code documents and ICC Louisiana custom
-    editions
-  accessed: '2026-06-25'
+  publisher: Louisiana State Uniform Construction Code Council
+  url: https://lsuccc.la/codes-standards/
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Source registry of current/prior code documents and ICC Louisiana custom editions
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - page footer 2025; accessed 2026-06-25
 - source_id: src:usa-la:lac-17-i-ucc-2024-03-20
   title: Uniform Construction Codes and Amendments effective 03/20/2024, LAC Title
     17 Part I
-  issuer___publisher: Louisiana State Uniform Construction Code Council
   source_type: administrative-code PDF / agency-published consolidated rule text
-  url___citation: https://lsuccc.la/wp-content/uploads/2025/10/ucc_amendments_03-20-24.pdf
-  date___version: Louisiana Administrative Code March 2024; effective label 2024-03-20
-  used_for: Current code editions and state amendments
-  accessed: '2026-06-25'
+  publisher: Louisiana State Uniform Construction Code Council
+  url: https://lsuccc.la/wp-content/uploads/2025/10/ucc_amendments_03-20-24.pdf
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Current code editions and state amendments
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - Louisiana Administrative Code March 2024; effective label 2024-03-20
 - source_id: src:usa-la:lsuccc-current-codes-2023-10-19
   title: Current codes effective 10-19-23
-  issuer___publisher: Louisiana State Uniform Construction Code Council
   source_type: agency PDF summary
-  url___citation: https://lsuccc.la/wp-content/uploads/2025/10/links_to_current_codes_effective_10-19-23.pdf
-  date___version: '2023-10-19'
-  used_for: Effective-date summary and Register page map
-  accessed: '2026-06-25'
+  publisher: Louisiana State Uniform Construction Code Council
+  url: https://lsuccc.la/wp-content/uploads/2025/10/links_to_current_codes_effective_10-19-23.pdf
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Effective-date summary and Register page map
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - '2023-10-19'
 - source_id: src:usa-la:osfm-codes-rules-laws
   title: Codes, Rules & Laws Enforced by the Louisiana State Fire Marshal
-  issuer___publisher: Louisiana Office of State Fire Marshal
   source_type: agency webpage
-  url___citation: https://www.lasfm.org/plan-review/plan-review-codes-rules-laws/
-  date___version: current page accessed 2026-06-25
-  used_for: OSFM fire, life-safety, accessibility, and adopted LSUCC code references
-  accessed: '2026-06-25'
+  publisher: Louisiana Office of State Fire Marshal
+  url: https://www.lasfm.org/plan-review/plan-review-codes-rules-laws/
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - OSFM fire, life-safety, accessibility, and adopted LSUCC code references
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - current page accessed 2026-06-25
 - source_id: src:usa-la:la-admin-code-june-2023-excerpt
   title: LAC Title 17 Part I, June 2023 excerpt including energy/freeboard updates
-  issuer___publisher: Louisiana DOTD-hosted document / Louisiana Administrative Code
-    excerpt
   source_type: administrative-code PDF excerpt
-  url___citation: https://dotd.la.gov/media/ta0exrvw/updated-ibc-irc-freeboard.pdf
-  date___version: Louisiana Administrative Code June 2023
-  used_for: Freeboard and energy update context
-  accessed: '2026-06-25'
+  publisher: Louisiana DOTD-hosted document / Louisiana Administrative Code excerpt
+  url: https://dotd.la.gov/media/ta0exrvw/updated-ibc-irc-freeboard.pdf
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Freeboard and energy update context
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - Louisiana Administrative Code June 2023
 - source_id: src:usa-la:lsuccc-home-announcements
   title: LSUCCC homepage announcements
-  issuer___publisher: Louisiana State Uniform Construction Code Council
   source_type: agency webpage
-  url___citation: https://lsuccc.la/
-  date___version: current page accessed 2026-06-25
-  used_for: Pending 2023 NEC / 2024 I-Code proposed-language watch item
-  accessed: '2026-06-25'
+  publisher: Louisiana State Uniform Construction Code Council
+  url: https://lsuccc.la/
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Pending 2023 NEC / 2024 I-Code proposed-language watch item
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - current page accessed 2026-06-25

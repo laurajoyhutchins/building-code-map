@@ -1,147 +1,300 @@
 ---
 official_sources:
 - source_id: src:usa-ks:ksreg-2026-hb2739
+  title: Kansas Register, Volume 45, Issue 16, House Bill 2739, Doc. No. 054070
   source_type: session law / Kansas Register publication
-  title___citation: Kansas Register, Volume 45, Issue 16, House Bill 2739, Doc. No.
-    054070
+  publisher: null
   url: https://sos.ks.gov/publications/register/Volume-45/Issues/Issue-16/04-16-26-54070.html
-  date_accessed: '2026-06-25'
-  used_for: Current amendments to K.S.A. 31-133, 31-134, and 58-1401; 2024 IFC rulemaking
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Current amendments to K.S.A. 31-133, 31-134, and 58-1401; 2024 IFC rulemaking
     path; statewide force/inconsistency provisions; effective date from publication.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:ksa-31-132
+  title: K.S.A. 31-132, Fire safety and prevention definitions
   source_type: statute
-  title___citation: K.S.A. 31-132, Fire safety and prevention definitions
+  publisher: null
   url: https://ksrevisor.gov/statutes/chapters/ch31/031_001_0032.html
-  date_accessed: '2026-06-25'
-  used_for: Definitions of municipality, nationally recognized fire prevention code,
-    and nationally recognized building code.
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Definitions of municipality, nationally recognized fire prevention code, and nationally
+    recognized building code.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:ksa-31-134a
+  title: K.S.A. 31-134a, compliance with certain building codes deemed compliance
+    with fire prevention code
   source_type: statute
-  title___citation: K.S.A. 31-134a, compliance with certain building codes deemed
-    compliance with fire prevention code
+  publisher: null
   url: https://ksrevisor.gov/statutes/chapters/ch31/031_001_0034a.html
-  date_accessed: '2026-06-25'
-  used_for: Building-code compliance relationship and State Fire Marshal authority
-    to specify subsequent editions or equivalent nationally recognized building codes.
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Building-code compliance relationship and State Fire Marshal authority to specify
+    subsequent editions or equivalent nationally recognized building codes.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:kar-22-1-fire-prevention-code
+  title: State Fire Marshal Permanent Administrative Regulations, Article 1, Kansas
+    Fire Prevention Code, K.A.R. 22-1-1 through 22-1-4
   source_type: administrative regulation / agency PDF
-  title___citation: State Fire Marshal Permanent Administrative Regulations, Article
-    1, Kansas Fire Prevention Code, K.A.R. 22-1-1 through 22-1-4
+  publisher: null
   url: https://firemarshal.ks.gov/DocumentCenter/View/126/KAR22-1---Kansas-Fire-Prevention-Code-PDF
-  date_accessed: '2026-06-25'
-  used_for: K.A.R. 22-1-1 municipal modification review; 22-1-2 building-code compliance;
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - K.A.R. 22-1-1 municipal modification review; 22-1-2 building-code compliance;
     22-1-3 adopted IBC/IFC/NFPA standards and exclusions; variances.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:ksfm-code-listing
+  title: Kansas Office of the State Fire Marshal, Code Listing
   source_type: agency page
-  title___citation: Kansas Office of the State Fire Marshal, Code Listing
+  publisher: null
   url: https://firemarshal.ks.gov/181/Code-Listing
-  date_accessed: '2026-06-25'
-  used_for: Agency-facing current code listing, including 1997 UBC, 2006 IBC, 2006
-    IFC, and adopted NFPA editions.
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Agency-facing current code listing, including 1997 UBC, 2006 IBC, 2006 IFC, and
+    adopted NFPA editions.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:ksfm-plan-review
+  title: Kansas Office of the State Fire Marshal, Plans Review & Code Footprint Requirements
   source_type: agency page
-  title___citation: Kansas Office of the State Fire Marshal, Plans Review & Code Footprint
-    Requirements
+  publisher: null
   url: https://firemarshal.ks.gov/189/Plans-Review-Code-Footprint
-  date_accessed: '2026-06-25'
-  used_for: Current KSFM plan-review code-footprint summary; current codes for new
-    construction/additions/changes of occupancy; MOU/local jurisdiction collaboration.
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Current KSFM plan-review code-footprint summary; current codes for new construction/additions/changes
+    of occupancy; MOU/local jurisdiction collaboration.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:ksa-31-144
+  title: K.S.A. 31-144, school buildings; inspection; correction of violations
   source_type: statute
-  title___citation: K.S.A. 31-144, school buildings; inspection; correction of violations
+  publisher: null
   url: https://ksrevisor.gov/statutes/chapters/ch31/031_001_0044.html
-  date_accessed: '2026-06-25'
-  used_for: Annual school-building inspection allocation between local fire officials
-    and State Fire Marshal.
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Annual school-building inspection allocation between local fire officials and
+    State Fire Marshal.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:ksa-31-150
+  title: K.S.A. 31-150, school buildings construction, reconstruction, renovation
+    requirements
   source_type: statute
-  title___citation: K.S.A. 31-150, school buildings construction, reconstruction,
-    renovation requirements
+  publisher: null
   url: https://ksrevisor.gov/statutes/chapters/ch31/031_001_0050.html
-  date_accessed: '2026-06-25'
-  used_for: School construction code basis, accessibility, plan certification, postsecondary
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - School construction code basis, accessibility, plan certification, postsecondary
     code-footprint submission, and State Fire Marshal later-edition authority.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:ksreg-2024-kar-22-18-3
+  title: Kansas Register, Volume 43, Issue 11, State Fire Marshal Permanent Administrative
+    Regulations, K.A.R. 22-18-3
   source_type: administrative regulation / Kansas Register publication
-  title___citation: Kansas Register, Volume 43, Issue 11, State Fire Marshal Permanent
-    Administrative Regulations, K.A.R. 22-18-3
+  publisher: null
   url: https://www.kssos.org/publications/Register/Volume-43/Issues/Issue-11/03-14-24-51960.html
-  date_accessed: '2026-06-25'
-  used_for: Current school-building construction regulation tying school construction,
-    NEC wiring, and mobile/modular/portable/relocatable school buildings to K.A.R.
-    22-1-3.
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Current school-building construction regulation tying school construction, NEC
+    wiring, and mobile/modular/portable/relocatable school buildings to K.A.R. 22-1-3.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:kan-const-art12-sec5
+  title: Kansas Constitution, Article 12, Section 5, cities' powers of home rule
   source_type: state constitution
-  title___citation: Kansas Constitution, Article 12, Section 5, cities' powers of
-    home rule
+  publisher: null
   url: https://ksrevisor.gov/kanconst/093_012_0005.html
-  date_accessed: '2026-06-25'
-  used_for: City home-rule baseline and limitations.
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - City home-rule baseline and limitations.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:ksa-19-101a
+  title: K.S.A. 19-101a, county home rule powers
   source_type: statute
-  title___citation: K.S.A. 19-101a, county home rule powers
+  publisher: null
   url: https://ksrevisor.gov/statutes/chapters/ch19/019_001_0001a.html
-  date_accessed: '2026-06-25'
-  used_for: County home-rule baseline and limitations.
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - County home-rule baseline and limitations.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:ksa-58-1402
+  title: K.S.A. 58-1402, accessibility standards for covered dwellings
   source_type: statute
-  title___citation: K.S.A. 58-1402, accessibility standards for covered dwellings
+  publisher: null
   url: https://ksrevisor.gov/statutes/chapters/ch58/058_014_0002.html
-  date_accessed: '2026-06-25'
-  used_for: State accessibility standards for dwellings receiving public financial
-    assistance.
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State accessibility standards for dwellings receiving public financial assistance.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:ksa-58-1403
+  title: K.S.A. 58-1403, application to new dwellings
   source_type: statute
-  title___citation: K.S.A. 58-1403, application to new dwellings
+  publisher: null
   url: https://ksrevisor.gov/statutes/chapters/ch58/058_014_0003.html
-  date_accessed: '2026-06-25'
-  used_for: Scope of accessibility standards for new dwellings.
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Scope of accessibility standards for new dwellings.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:ksa-58-1404
+  title: K.S.A. 58-1404, condition of release of public financial assistance
   source_type: statute
-  title___citation: K.S.A. 58-1404, condition of release of public financial assistance
+  publisher: null
   url: https://ksrevisor.gov/statutes/chapters/ch58/058_014_0004.html
-  date_accessed: '2026-06-25'
-  used_for: Affidavit and future assistance consequence for covered accessibility
-    requirements.
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Affidavit and future assistance consequence for covered accessibility requirements.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:ksfm-elevator-program
+  title: Kansas Office of the State Fire Marshal, Elevator Safety Program
   source_type: agency page
-  title___citation: Kansas Office of the State Fire Marshal, Elevator Safety Program
+  publisher: null
   url: https://firemarshal.ks.gov/342/Elevator-Safety-Program
-  date_accessed: '2026-06-25'
-  used_for: Elevator program authority, registration, inspections, licensing, certificate
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Elevator program authority, registration, inspections, licensing, certificate
     of operation, Wichita local program note, and program scope.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:ksa-44-1801
+  title: K.S.A. 44-1801, Elevator Safety Act citation
   source_type: statute
-  title___citation: K.S.A. 44-1801, Elevator Safety Act citation
+  publisher: null
   url: https://ksrevisor.gov/statutes/chapters/ch44/044_018_0001.html
-  date_accessed: '2026-06-25'
-  used_for: Statutory citation for Elevator Safety Act.
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Statutory citation for Elevator Safety Act.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:ksa-44-1804
-  source_type: statute
-  title___citation: K.S.A. 44-1804, city and county standards not restricted if meeting/exceeding
+  title: K.S.A. 44-1804, city and county standards not restricted if meeting/exceeding
     state act
+  source_type: statute
+  publisher: null
   url: https://ksrevisor.gov/statutes/chapters/ch44/044_018_0004.html
-  date_accessed: '2026-06-25'
-  used_for: Local elevator-program meet-or-exceed rule and notice to State Fire Marshal.
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Local elevator-program meet-or-exceed rule and notice to State Fire Marshal.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:ksa-44-1814
+  title: K.S.A. 44-1814, elevator construction or alteration permits
   source_type: statute
-  title___citation: K.S.A. 44-1814, elevator construction or alteration permits
+  publisher: null
   url: https://ksrevisor.gov/statutes/chapters/ch44/044_018_0014.html
-  date_accessed: '2026-06-25'
-  used_for: State permit requirement and city/county exception for local standards
-    meeting/exceeding state act.
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State permit requirement and city/county exception for local standards meeting/exceeding
+    state act.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:ksa-44-1815
+  title: K.S.A. 44-1815, elevator inspections and testing
   source_type: statute
-  title___citation: K.S.A. 44-1815, elevator inspections and testing
+  publisher: null
   url: https://ksrevisor.gov/statutes/chapters/ch44/044_018_0015.html
-  date_accessed: '2026-06-25'
-  used_for: Elevator inspection intervals, report, correction period, extensions,
-    load tests, and exceptions.
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Elevator inspection intervals, report, correction period, extensions, load tests,
+    and exceptions.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ks:ksfm-asme-a17-1-2022
+  title: Kansas Office of the State Fire Marshal, ASME A17.1 (2022) Effective July
+    1, 2024 notice
   source_type: agency notice / PDF
-  title___citation: Kansas Office of the State Fire Marshal, ASME A17.1 (2022) Effective
-    July 1, 2024 notice
+  publisher: null
   url: https://firemarshal.ks.gov/DocumentCenter/View/1606/07012024-Implementation-of-ASME-A171-2022
-  date_accessed: '2026-06-25'
-  used_for: ASME A17.1 (2022) implementation date and transition for pre-2024-07-01
-    projects.
+  accessed_date: '2026-06-25'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - ASME A17.1 (2022) implementation date and transition for pre-2024-07-01 projects.
+  caveats: []
+  notes: []
+  details: []

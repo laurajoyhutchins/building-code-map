@@ -1,22 +1,20 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: ahj:usa-ok:oubcc
-- field: Authority name
-  value: Oklahoma Uniform Building Code Commission
-- field: Authority type
-  value: statewide code commission within Construction Industries Board
-- field: Legal basis
-  value: "Oklahoma Uniform Building Code Commission Act, 59 O.S. \xA7\xA7 1000.20-1000.30;\
-    \ OUBCC's statutory duty is to review and adopt building codes for residential\
-    \ and commercial construction to be used by all entities in the state."
-- field: Role
-  value: Adopts statewide minimum residential and commercial construction codes; uses
+- authority_id: ahj:usa-ok:oubcc
+  authority_name: Oklahoma Uniform Building Code Commission
+  authority_type: statewide code commission within Construction Industries Board
+  legal_basis:
+  - Oklahoma Uniform Building Code Commission Act, 59 O.S. §§ 1000.20-1000.30
+  - OUBCC's statutory duty is to review and adopt building codes for residential and
+    commercial construction to be used by all entities in the state.
+  role: Adopts statewide minimum residential and commercial construction codes; uses
     rulemaking and technical committees; publishes adopted-code and amendment materials.
-- field: Enforcement model
-  value: statewide minimum code adoption with local and special-state enforcement
-    roles
-- field: Source IDs
-  value: src:usa-ok:oubcc-statute-act; src:usa-ok:oubcc-home; src:usa-ok:oubcc-codes-rules
-- field: Verification status
-  value: verified_for_core_authority
+  enforcement_model: statewide minimum code adoption with local and special-state
+    enforcement roles
+  source_ids:
+  - src:usa-ok:oubcc-statute-act
+  - src:usa-ok:oubcc-home
+  - src:usa-ok:oubcc-codes-rules
+  verification_status:
+  - verified_for_core_authority
+  parent_agency: null

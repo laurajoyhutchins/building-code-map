@@ -1,155 +1,282 @@
 ---
 official_sources:
 - source_id: src:usa-va:dhcd-codes
-  source_type: agency_page
   title: Codes
-  publisher___agency: Virginia Department of Housing and Community Development
-  url: https://www.dhcd.virginia.gov/codes
-  accessed: '2026-06-26'
-  key_fields_supported: Current effective date; 2021 I-Codes; 2020 NEC; DHCD/BHCD
-    code-adoption program.
-- source_id: src:usa-va:dhcd-usbc
   source_type: agency_page
+  publisher: Virginia Department of Housing and Community Development
+  url: https://www.dhcd.virginia.gov/codes
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Current effective date; 2021 I-Codes; 2020 NEC; DHCD/BHCD code-adoption program.
+  caveats: []
+  notes: []
+  details: []
+- source_id: src:usa-va:dhcd-usbc
   title: Virginia Uniform Statewide Building Code (USBC)
-  publisher___agency: Virginia Department of Housing and Community Development
+  source_type: agency_page
+  publisher: Virginia Department of Housing and Community Development
   url: https://www.dhcd.virginia.gov/virginia-uniform-statewide-building-code-usbc
-  accessed: '2026-06-26'
-  key_fields_supported: USBC parts; Board adopts/amends; local building inspections
-    enforcement; appeals overview.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - USBC parts; Board adopts/amends; local building inspections enforcement; appeals
+    overview.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-va:code-36-98
+  title: Code of Virginia § 36-98, Board to promulgate Statewide Code; other codes
+    and regulations superseded; exceptions
   source_type: statute
-  title: "Code of Virginia \xA7 36-98, Board to promulgate Statewide Code; other codes\
-    \ and regulations superseded; exceptions"
-  publisher___agency: Virginia Law / Division of Legislative Automated Systems
+  publisher: Virginia Law / Division of Legislative Automated Systems
   url: https://law.lis.virginia.gov/vacode/title36/chapter6/section36-98/
-  accessed: '2026-06-26'
-  key_fields_supported: Primary building-code authority; statewide preemption.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Primary building-code authority; statewide preemption.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-va:code-36-99
+  title: Code of Virginia § 36-99, Provisions of Code; modifications
   source_type: statute
-  title: "Code of Virginia \xA7 36-99, Provisions of Code; modifications"
-  publisher___agency: Virginia Law / Division of Legislative Automated Systems
+  publisher: Virginia Law / Division of Legislative Automated Systems
   url: https://law.lis.virginia.gov/vacode/title36/chapter6/section36-99/
-  accessed: '2026-06-26'
-  key_fields_supported: Code content, administration/enforcement procedures, model-code
-    standards, accessibility/health/safety policy.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Code content, administration/enforcement procedures, model-code standards, accessibility/health/safety
+    policy.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-va:code-36-105
+  title: Code of Virginia § 36-105, Enforcement of Code; appeals; inspections; permits
   source_type: statute
-  title: "Code of Virginia \xA7 36-105, Enforcement of Code; appeals; inspections;\
-    \ permits"
-  publisher___agency: Virginia Law / Division of Legislative Automated Systems
+  publisher: Virginia Law / Division of Legislative Automated Systems
   url: https://law.lis.virginia.gov/vacode/title36/chapter6/section36-105/
-  accessed: '2026-06-26'
-  key_fields_supported: Local building department enforcement; local appeals board;
-    small-town rule; inspection/fees; existing-building and elevator enforcement.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Local building department enforcement; local appeals board; small-town rule; inspection/fees;
+    existing-building and elevator enforcement.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-va:code-36-105-01
+  title: Code of Virginia § 36-105.01, Elevator inspections by contract
   source_type: statute
-  title: "Code of Virginia \xA7 36-105.01, Elevator inspections by contract"
-  publisher___agency: Virginia Law / Division of Legislative Automated Systems
+  publisher: Virginia Law / Division of Legislative Automated Systems
   url: https://law.lis.virginia.gov/vacode/title36/chapter6/section36-105.01/
-  accessed: '2026-06-26'
-  key_fields_supported: Existing elevator inspection and approved-agency certification
-    authority.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Existing elevator inspection and approved-agency certification authority.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-va:code-36-105-1
+  title: Code of Virginia § 36-105.1, Inspection and review of plans of buildings
+    under construction
   source_type: statute
-  title: "Code of Virginia \xA7 36-105.1, Inspection and review of plans of buildings\
-    \ under construction"
-  publisher___agency: Virginia Law / Division of Legislative Automated Systems
+  publisher: Virginia Law / Division of Legislative Automated Systems
   url: https://law.lis.virginia.gov/vacode/title36/chapter6/section36-105.1/
-  accessed: '2026-06-26'
-  key_fields_supported: Local inspectors' plan review and inspection role; state fire
-    safety transition after completion in non-SFPC-enforcing localities.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Local inspectors' plan review and inspection role; state fire safety transition
+    after completion in non-SFPC-enforcing localities.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-va:code-title36-ch6
-  source_type: statute_index
   title: Code of Virginia Title 36, Chapter 6, Uniform Statewide Building Code
-  publisher___agency: Virginia Law / Division of Legislative Automated Systems
+  source_type: statute_index
+  publisher: Virginia Law / Division of Legislative Automated Systems
   url: https://law.lis.virginia.gov/vacode/title36/chapter6/
-  accessed: '2026-06-26'
-  key_fields_supported: Chapter map; SBCTRB article and appeal provisions for follow-up.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Chapter map; SBCTRB article and appeal provisions for follow-up.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-va:vac-13-5-63
-  source_type: regulation
   title: 13VAC5-63, Virginia Uniform Statewide Building Code
-  publisher___agency: Virginia Administrative Code / Virginia Law
-  url: https://law.lis.virginia.gov/admincodefull/title13/agency5/chapter63/
-  accessed: '2026-06-26'
-  key_fields_supported: VCC/VEBC/VPMC structure; IBC/IEBC/IPMC incorporation; referenced
-    major codes; transition rule; state amendments.
-- source_id: src:usa-va:vac-13-5-63-dir
   source_type: regulation
+  publisher: Virginia Administrative Code / Virginia Law
+  url: https://law.lis.virginia.gov/admincodefull/title13/agency5/chapter63/
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - VCC/VEBC/VPMC structure; IBC/IEBC/IPMC incorporation; referenced major codes;
+    transition rule; state amendments.
+  caveats: []
+  notes: []
+  details: []
+- source_id: src:usa-va:vac-13-5-63-dir
   title: Documents Incorporated by Reference (13VAC5-63)
-  publisher___agency: Virginia Administrative Code / Virginia Law
+  source_type: regulation
+  publisher: Virginia Administrative Code / Virginia Law
   url: https://law.lis.virginia.gov/admincode/title13/agency5/chapter63/section9999/
-  accessed: '2026-06-26'
-  key_fields_supported: Model code and standard editions, including IBC, IECC, IEBC,
-    IFC, IFGC, IMC, IPMC, IPC, IRC, NFPA 70, ICC/ANSI A117.1, ASME elevator standards.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Model code and standard editions, including IBC, IECC, IEBC, IFC, IFGC, IMC, IPMC,
+    IPC, IRC, NFPA 70, ICC/ANSI A117.1, ASME elevator standards.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-va:register-usbc-2021-final
-  source_type: register_notice
   title: Vol. 40 Issue 9 Final Regulation, 13VAC5-63 Virginia Uniform Statewide Building
     Code
-  publisher___agency: Virginia Register of Regulations
-  url: https://register.dls.virginia.gov/details.aspx?id=10921
-  accessed: '2026-06-26'
-  key_fields_supported: '2024-01-18'
-- source_id: src:usa-va:code-27-97
-  source_type: statute
-  title: "Code of Virginia \xA7 27-97, Adoption of Fire Prevention Code"
-  publisher___agency: Virginia Law / Division of Legislative Automated Systems
-  url: https://law.lis.virginia.gov/vacode/title27/chapter9/section27-97/
-  accessed: '2026-06-26'
-  key_fields_supported: SFPC adopting authority; cooperative development with Fire
-    Services Board; local fire-prevention ordinance limits.
-- source_id: src:usa-va:code-27-98
-  source_type: statute
-  title: "Code of Virginia \xA7 27-98, Enforcement of Fire Prevention Code; appeals"
-  publisher___agency: Virginia Law / Division of Legislative Automated Systems
-  url: https://law.lis.virginia.gov/vacode/title27/chapter9/section27-98/
-  accessed: '2026-06-26'
-  key_fields_supported: Local SFPC enforcement election; State Fire Marshal fallback;
-    appeals path; fees/inspection procedures.
-- source_id: src:usa-va:vac-13-5-52-30
-  source_type: regulation
-  title: 13VAC5-52-30, SFPC Section 103 Incorporation by reference
-  publisher___agency: Virginia Administrative Code / Virginia Law
-  url: https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section30/
-  accessed: '2026-06-26'
-  key_fields_supported: 2021 IFC incorporation; IFC Chapter 1 deletion; state amendments
-    and order of precedence; no retroactive IFC fire-protection-system enforcement
-    unless specified by USBC.
-- source_id: src:usa-va:vac-13-5-52-dir
-  source_type: regulation
-  title: Documents Incorporated by Reference (13VAC5-52)
-  publisher___agency: Virginia Administrative Code / Virginia Law
-  url: https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section9999/
-  accessed: '2026-06-26'
-  key_fields_supported: SFPC incorporated standards including 2021 IFC and fire-protection
-    NFPA standards.
-- source_id: src:usa-va:register-sfpc-2021-final
   source_type: register_notice
+  publisher: Virginia Register of Regulations
+  url: https://register.dls.virginia.gov/details.aspx?id=10921
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - '2024-01-18'
+  caveats: []
+  notes: []
+  details: []
+- source_id: src:usa-va:code-27-97
+  title: Code of Virginia § 27-97, Adoption of Fire Prevention Code
+  source_type: statute
+  publisher: Virginia Law / Division of Legislative Automated Systems
+  url: https://law.lis.virginia.gov/vacode/title27/chapter9/section27-97/
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - SFPC adopting authority; cooperative development with Fire Services Board; local
+    fire-prevention ordinance limits.
+  caveats: []
+  notes: []
+  details: []
+- source_id: src:usa-va:code-27-98
+  title: Code of Virginia § 27-98, Enforcement of Fire Prevention Code; appeals
+  source_type: statute
+  publisher: Virginia Law / Division of Legislative Automated Systems
+  url: https://law.lis.virginia.gov/vacode/title27/chapter9/section27-98/
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Local SFPC enforcement election; State Fire Marshal fallback; appeals path; fees/inspection
+    procedures.
+  caveats: []
+  notes: []
+  details: []
+- source_id: src:usa-va:vac-13-5-52-30
+  title: 13VAC5-52-30, SFPC Section 103 Incorporation by reference
+  source_type: regulation
+  publisher: Virginia Administrative Code / Virginia Law
+  url: https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section30/
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - 2021 IFC incorporation; IFC Chapter 1 deletion; state amendments and order of
+    precedence; no retroactive IFC fire-protection-system enforcement unless specified
+    by USBC.
+  caveats: []
+  notes: []
+  details: []
+- source_id: src:usa-va:vac-13-5-52-dir
+  title: Documents Incorporated by Reference (13VAC5-52)
+  source_type: regulation
+  publisher: Virginia Administrative Code / Virginia Law
+  url: https://law.lis.virginia.gov/admincode/title13/agency5/chapter52/section9999/
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - SFPC incorporated standards including 2021 IFC and fire-protection NFPA standards.
+  caveats: []
+  notes: []
+  details: []
+- source_id: src:usa-va:register-sfpc-2021-final
   title: Vol. 40 Issue 9 Final Regulation, 13VAC5-51/52 Virginia Statewide Fire Prevention
     Code
-  publisher___agency: Virginia Register of Regulations
+  source_type: register_notice
+  publisher: Virginia Register of Regulations
   url: https://register.dls.virginia.gov/details.aspx?id=10917
-  accessed: '2026-06-26'
-  key_fields_supported: '2024-01-18'
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - '2024-01-18'
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-va:dhcd-sbctrb
-  source_type: agency_page
   title: State Building Code Technical Review Board (SBCTRB)
-  publisher___agency: Virginia Department of Housing and Community Development
+  source_type: agency_page
+  publisher: Virginia Department of Housing and Community Development
   url: https://www.dhcd.virginia.gov/state-building-code-technical-review-board-sbctrb
-  accessed: '2026-06-26'
-  key_fields_supported: Appeals and interpretations for USBC/SFPC and related regulations.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Appeals and interpretations for USBC/SFPC and related regulations.
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-va:dhcd-2024-cdc
-  source_type: agency_page
   title: 2024 Code Development Cycle
-  publisher___agency: Virginia Department of Housing and Community Development
-  url: https://www.dhcd.virginia.gov/2024-code-development-cycle
-  accessed: '2026-06-26'
-  key_fields_supported: Pending 2024 code cycle; workgroups; base documents; stakeholder
-    meeting dates.
-- source_id: src:usa-va:dhcd-bhcd
   source_type: agency_page
+  publisher: Virginia Department of Housing and Community Development
+  url: https://www.dhcd.virginia.gov/2024-code-development-cycle
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Pending 2024 code cycle; workgroups; base documents; stakeholder meeting dates.
+  caveats: []
+  notes: []
+  details: []
+- source_id: src:usa-va:dhcd-bhcd
   title: Board of Housing and Community Development (BHCD)
-  publisher___agency: Virginia Department of Housing and Community Development
+  source_type: agency_page
+  publisher: Virginia Department of Housing and Community Development
   url: https://www.dhcd.virginia.gov/board-housing-and-community-development-bhcd
-  accessed: '2026-06-26'
-  key_fields_supported: Board composition; 2024 code-development meeting materials;
-    monitoring target.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Board composition; 2024 code-development meeting materials; monitoring target.
+  caveats: []
+  notes: []
+  details: []

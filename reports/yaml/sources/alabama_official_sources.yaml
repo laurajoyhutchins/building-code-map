@@ -4,87 +4,142 @@ official_sources:
   title: Alabama State Building Code page
   source_type: agency_page
   publisher: Alabama Department of Finance / DCM
+  url: null
   accessed_date: '2026-06-25'
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-al:admin-code:355-12-1
   title: Ala. Admin. Code ch. 355-12-1
   source_type: admin_code_pdf
   publisher: Alabama Legislative Services Agency / Administrative Code
+  url: null
   accessed_date: '2026-06-25'
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-al:sfmo:about
   title: Alabama State Fire Marshal About page
   source_type: agency_page
   publisher: Alabama State Fire Marshal's Office
+  url: null
   accessed_date: '2026-06-25'
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-al:sfmo:regulations
   title: Alabama State Fire Marshal Regulations page
   source_type: agency_page
   publisher: Alabama State Fire Marshal's Office
+  url: null
   accessed_date: '2026-06-25'
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-al:sfmo:482-2-101
   title: Fire Marshal Regulation 482-2-101
   source_type: regulation_pdf
   publisher: Alabama State Fire Marshal's Office
+  url: null
   accessed_date: '2026-06-25'
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-al:sfmo:482-2-109
   title: Fire Marshal Regulation 482-2-109
   source_type: regulation_pdf
   publisher: Alabama State Fire Marshal's Office
+  url: null
   accessed_date: '2026-06-25'
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: partially_verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-al:hblb:law-2026
   title: HBLB law and administrative rules compilation
   source_type: statute_and_rule_pdf
   publisher: Alabama Home Builders Licensure Board
+  url: null
   accessed_date: '2026-06-25'
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-al:adeca:305-2-4-legacy
   title: Alabama Energy and Residential Codes Board rules
   source_type: admin_code_pdf
   publisher: ADECA / AERC Board
+  url: null
   accessed_date: '2026-06-25'
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: legacy
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-al:agency:legislature-home
   title: Alabama Legislature home
   source_type: agency_page
   publisher: Alabama Legislature
+  url: null
   accessed_date: '2026-06-24'
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-al:agency:code-portal
   title: Code of Alabama portal
   source_type: code_portal
   publisher: Alabama Legislature
+  url: null
   accessed_date: '2026-06-24'
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: discovery_only
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-al:agency:admin-code
   title: Administrative Code portal
   source_type: admin_code_portal
   publisher: Alabama Legislature
+  url: null
   accessed_date: '2026-06-24'
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []

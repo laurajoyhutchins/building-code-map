@@ -1,223 +1,489 @@
 ---
 official_sources:
 - source_id: src:usa-ne:71-6403-state-building-code
-  title___citation: "Neb. Rev. Stat. \xA7 71-6403, State building code; adopted; amendments"
+  title: Neb. Rev. Stat. § 71-6403, State building code; adopted; amendments
   source_type: statute
+  publisher: null
   url: https://nebraskalegislature.gov/laws/statutes.php?statute=71-6403
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: State building code creation; 2018 IBC, IRC, IEBC, UPC; radon
-    standards included
-  caveat: Official legislature HTML; current text can change after access date.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State building code creation; 2018 IBC, IRC, IEBC, UPC; radon standards included
+  caveats:
+  - Official legislature HTML; current text can change after access date.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:71-6406-local-building-code
-  title___citation: "Neb. Rev. Stat. \xA7 71-6406, County, city, or village; building\
-    \ code; adopt; amend; enforce; copy; fees"
+  title: Neb. Rev. Stat. § 71-6406, County, city, or village; building code; adopt;
+    amend; enforce; copy; fees
   source_type: statute
+  publisher: null
   url: https://nebraskalegislature.gov/laws/statutes.php?statute=71-6406
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: Local adoption/enforcement; two-year fallback; local amendment
-    conformance; clerk-copy rule
-  caveat: Official legislature HTML; current text can change after access date.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Local adoption/enforcement; two-year fallback; local amendment conformance; clerk-copy
+    rule
+  caveats:
+  - Official legislature HTML; current text can change after access date.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:lb131-2021-status
-  title___citation: LB131 bill page, 107th Legislature
+  title: LB131 bill page, 107th Legislature
   source_type: bill history
+  publisher: null
   url: https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=43499
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: Governor approval date; final reading/emergency-clause status;
-    bill history
-  caveat: Bill page is official; operative date is derived from final bill text plus
-    legislative calendar.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Governor approval date; final reading/emergency-clause status; bill history
+  caveats:
+  - Bill page is official; operative date is derived from final bill text plus legislative
+    calendar.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:lb131-2021-final
-  title___citation: Legislative Bill 131 Final Reading PDF, 2021
+  title: Legislative Bill 131 Final Reading PDF, 2021
   source_type: final bill PDF
+  publisher: null
   url: https://nebraskalegislature.gov/FloorDocs/107/PDF/Final/LB131.pdf
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: Operative timing; emergency clause; repeal/original-section
-    update path
-  caveat: PDF parsed by web text; exact section mapping should be verified before
-    verified status.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Operative timing; emergency clause; repeal/original-section update path
+  caveats:
+  - PDF parsed by web text; exact section mapping should be verified before verified
+    status.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:81-1611-energy-code
-  title___citation: "Neb. Rev. Stat. \xA7 81-1611, Nebraska Energy Code; adoption;\
-    \ alternative standards"
+  title: Neb. Rev. Stat. § 81-1611, Nebraska Energy Code; adoption; alternative standards
   source_type: statute
+  publisher: null
   url: https://nebraskalegislature.gov/laws/statutes.php?statute=81-1611
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: 2018 IECC adoption; alternative-standards authority
-  caveat: Official legislature HTML.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - 2018 IECC adoption; alternative-standards authority
+  caveats:
+  - Official legislature HTML.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:dwee-energy-codes
-  title___citation: Nebraska Department of Water, Energy, and Environment, Energy
-    Codes page
+  title: Nebraska Department of Water, Energy, and Environment, Energy Codes page
   source_type: agency page
+  publisher: null
   url: https://dwee.nebraska.gov/state-energy-information/energy-codes
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: 2018 IECC effective 2020-07-01; ASHRAE 90.1-2016 reference;
-    DWEE fallback enforcement
-  caveat: Agency page is official; page text should be monitored for updates.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - 2018 IECC effective 2020-07-01; ASHRAE 90.1-2016 reference; DWEE fallback enforcement
+  caveats:
+  - Agency page is official; page text should be monitored for updates.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:81-1618-local-energy-code
-  title___citation: "Neb. Rev. Stat. \xA7 81-1618, Local energy code; fees; waiver;\
-    \ procedure"
+  title: Neb. Rev. Stat. § 81-1618, Local energy code; fees; waiver; procedure
   source_type: statute
+  publisher: null
   url: https://nebraskalegislature.gov/laws/statutes.php?statute=81-1618
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: Local energy code equivalence; local waiver submission/review
-    procedure
-  caveat: Official legislature HTML.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Local energy code equivalence; local waiver submission/review procedure
+  caveats:
+  - Official legislature HTML.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:72-804-state-building-energy
-  title___citation: "Neb. Rev. Stat. \xA7 72-804, New state building; code requirements"
+  title: Neb. Rev. Stat. § 72-804, New state building; code requirements
   source_type: statute
+  publisher: null
   url: https://nebraskalegislature.gov/laws/statutes.php?statute=72-804
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: New state building and state-owned component energy requirements
-  caveat: Official legislature HTML; source displays 2026 effective date note for
-    unrelated amendment history.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - New state building and state-owned component energy requirements
+  caveats:
+  - Official legislature HTML; source displays 2026 effective date note for unrelated
+    amendment history.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:72-805-state-funded-energy
-  title___citation: "Neb. Rev. Stat. \xA7 72-805, Buildings constructed with state\
-    \ funds; code requirements; exceptions"
+  title: Neb. Rev. Stat. § 72-805, Buildings constructed with state funds; code requirements;
+    exceptions
   source_type: statute
+  publisher: null
   url: https://nebraskalegislature.gov/laws/statutes.php?statute=72-805
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: State-funded building IECC review and exception framework
-  caveat: Official legislature HTML; source displays 2026 effective date note for
-    unrelated amendment history.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State-funded building IECC review and exception framework
+  caveats:
+  - Official legislature HTML; source displays 2026 effective date note for unrelated
+    amendment history.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:76-3504-radon
-  title___citation: "Neb. Rev. Stat. \xA7 76-3504, Radon resistant new construction;\
-    \ minimum standards"
+  title: Neb. Rev. Stat. § 76-3504, Radon resistant new construction; minimum standards
   source_type: statute
+  publisher: null
   url: https://nebraskalegislature.gov/laws/statutes.php?statute=76-3504
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: Radon-resistant new-construction minimum standards and date
-  caveat: Official legislature HTML.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Radon-resistant new-construction minimum standards and date
+  caveats:
+  - Official legislature HTML.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:81-503-01-state-fire-code
-  title___citation: "Neb. Rev. Stat. \xA7 81-503.01, State Fire Code; State Fire Marshal;\
-    \ duties; contents; enforcement; plans"
+  title: Neb. Rev. Stat. § 81-503.01, State Fire Code; State Fire Marshal; duties;
+    contents; enforcement; plans
   source_type: statute
+  publisher: null
   url: https://nebraskalegislature.gov/laws/statutes.php?statute=81-503.01
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: State Fire Marshal adopts/enforces State Fire Code; NFPA 1/NFPA
-    101 baseline; plan review
-  caveat: Official legislature HTML; statutory NFPA editions may differ from later
-    rule details unless rules are parsed.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State Fire Marshal adopts/enforces State Fire Code; NFPA 1/NFPA 101 baseline;
+    plan review
+  caveats:
+  - Official legislature HTML; statutory NFPA editions may differ from later rule
+    details unless rules are parsed.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:sfm-regulations
-  title___citation: Nebraska State Fire Marshal, Regulations page
+  title: Nebraska State Fire Marshal, Regulations page
   source_type: agency page
+  publisher: null
   url: https://sfm.nebraska.gov/regulations
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: Title 153, Title 156, Title 229, Title 230 listings; plan-fee
-    update notice
-  caveat: Official agency page; linked PDFs may be scanned or updated independently.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Title 153, Title 156, Title 229, Title 230 listings; plan-fee update notice
+  caveats:
+  - Official agency page; linked PDFs may be scanned or updated independently.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:title153-ch1-fire-code
-  title___citation: Title 153 - State Fire Marshal, Chapter 1 - Nebraska State Fire
-    Code
+  title: Title 153 - State Fire Marshal, Chapter 1 - Nebraska State Fire Code
   source_type: regulation PDF
+  publisher: null
   url: https://sfm.nebraska.gov/sites/default/files/doc/Title%20153%20Chapter%201%20Stamped.pdf
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: State Fire Code NFPA adopted-code listing; NFPA 1-2012 with
-    Nebraska amendments; NFPA 54/58 editions
-  caveat: Stamped/scanned PDF; extraction is partial and should be verified against
-    Secretary of State rules.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State Fire Code NFPA adopted-code listing; NFPA 1-2012 with Nebraska amendments;
+    NFPA 54/58 editions
+  caveats:
+  - Stamped/scanned PDF; extraction is partial and should be verified against Secretary
+    of State rules.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:title153-ch21-plan-review
-  title___citation: Title 153 - State Fire Marshal, Chapter 21 - Review and Approval
-    of Plans and Fees Assessed
+  title: Title 153 - State Fire Marshal, Chapter 21 - Review and Approval of Plans
+    and Fees Assessed
   source_type: regulation PDF
+  publisher: null
   url: https://sfm.nebraska.gov/sites/default/files/doc/title153-ch21%20Final%202025.pdf
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: Plan-review trigger; exemptions; 180-day approval expiration;
-    late fee
-  caveat: Official agency PDF; parsed text available.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Plan-review trigger; exemptions; 180-day approval expiration; late fee
+  caveats:
+  - Official agency PDF; parsed text available.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:title153-ch22-co
-  title___citation: Title 153 - State Fire Marshal, Chapter 22 - Certificate of Occupancy
+  title: Title 153 - State Fire Marshal, Chapter 22 - Certificate of Occupancy
   source_type: regulation PDF
+  publisher: null
   url: https://sfm.nebraska.gov/sites/default/files/doc/title153-ch22.pdf
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: SFM certificate-of-occupancy rule
-  caveat: Official agency PDF; parsed text available.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - SFM certificate-of-occupancy rule
+  caveats:
+  - Official agency PDF; parsed text available.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:sfm-delegated-local-authority
-  title___citation: Nebraska State Fire Marshal, Delegated Authority and Local Authority
-    page
+  title: Nebraska State Fire Marshal, Delegated Authority and Local Authority page
   source_type: agency page
+  publisher: null
   url: https://sfm.nebraska.gov/delegated-authority-and-local-authority
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: SFM delegated authority; local accessibility review authorities;
-    state-owned/CMS exceptions; religious NAG exemption
-  caveat: Page warns local authority can change without notice; narrative count and
-    displayed list should be reconciled.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - SFM delegated authority; local accessibility review authorities; state-owned/CMS
+    exceptions; religious NAG exemption
+  caveats:
+  - Page warns local authority can change without notice; narrative count and displayed
+    list should be reconciled.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:81-5-147-accessibility
-  title___citation: "Neb. Rev. Stat. \xA7 81-5,147, Buildings and facilities; standards,\
-    \ specifications, and exclusions; adoption"
+  title: Neb. Rev. Stat. § 81-5,147, Buildings and facilities; standards, specifications,
+    and exclusions; adoption
   source_type: statute
+  publisher: null
   url: https://nebraskalegislature.gov/laws/statutes.php?statute=81-5%2C147
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: State Fire Marshal ADA/FHA accessibility-standard adoption
-    authority
-  caveat: Official legislature HTML.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State Fire Marshal ADA/FHA accessibility-standard adoption authority
+  caveats:
+  - Official legislature HTML.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:81-2104-electrical-board
-  title___citation: "Neb. Rev. Stat. \xA7 81-2104, State Electrical Board; powers\
-    \ enumerated"
+  title: Neb. Rev. Stat. § 81-2104, State Electrical Board; powers enumerated
   source_type: statute
+  publisher: null
   url: https://nebraskalegislature.gov/laws/statutes.php?statute=81-2104
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: Electrical Board powers; 2023 NEC basis; 2017 NEC exception
-    sections; enforcement authority
-  caveat: Official legislature HTML.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Electrical Board powers; 2023 NEC basis; 2017 NEC exception sections; enforcement
+    authority
+  caveats:
+  - Official legislature HTML.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:state-electrical-2023-adoption
-  title___citation: Nebraska State Electrical, State Act Update & 2023 Code Adoption
+  title: Nebraska State Electrical, State Act Update & 2023 Code Adoption
   source_type: agency page
+  publisher: null
   url: https://electrical.nebraska.gov/state-act-update-2023-code-adoption
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: 2023 NEC adoption date/effective date; exam/permit transition
-  caveat: "Official agency page; page uses \u201CNational Electric Code\u201D wording,\
-    \ statute controls legal title."
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - 2023 NEC adoption date/effective date; exam/permit transition
+  caveats:
+  - Official agency page; page uses “National Electric Code” wording, statute controls
+    legal title.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:state-electrical-statutes-rules
-  title___citation: Nebraska State Electrical, Statutes & Rules
+  title: Nebraska State Electrical, Statutes & Rules
   source_type: agency page
+  publisher: null
   url: https://electrical.nebraska.gov/statutes-rules
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: State Electrical Act and State Electrical Board rules publication
-    path
-  caveat: Official agency page; linked PDFs not fully parsed.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State Electrical Act and State Electrical Board rules publication path
+  caveats:
+  - Official agency page; linked PDFs not fully parsed.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:sfm-mechanical-safety
-  title___citation: Nebraska State Fire Marshal, Mechanical Safety
+  title: Nebraska State Fire Marshal, Mechanical Safety
   source_type: agency page
+  publisher: null
   url: https://sfm.nebraska.gov/mechanical-safety
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: Boiler and elevator/conveyance program pages and forms
-  caveat: Official agency page; code editions require linked-rule extraction.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Boiler and elevator/conveyance program pages and forms
+  caveats:
+  - Official agency page; code editions require linked-rule extraction.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:sfm-title230-elevator
-  title___citation: Title 230 Chapter 1, Safety Code for Elevators, Escalators and
-    Other Conveyances
+  title: Title 230 Chapter 1, Safety Code for Elevators, Escalators and Other Conveyances
   source_type: regulation PDF
+  publisher: null
   url: https://sfm.nebraska.gov/sites/default/files/doc/Chapter-1.pdf
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: Elevator/conveyance inspection and definitions
-  caveat: Official agency PDF; full rule not parsed.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Elevator/conveyance inspection and definitions
+  caveats:
+  - Official agency PDF; full rule not parsed.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:sfm-title229-boiler
-  title___citation: Nebraska Administrative Code Title 229 - Boiler Safety Code
+  title: Nebraska Administrative Code Title 229 - Boiler Safety Code
   source_type: regulation PDF
+  publisher: null
   url: https://sfm.nebraska.gov/sites/default/files/doc/Title%20229%20With%20TOC.pdf
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: Boiler inspection program path and transfer note
-  caveat: Official agency PDF; full rule not parsed.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Boiler inspection program path and transfer note
+  caveats:
+  - Official agency PDF; full rule not parsed.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:81-5-230-elevator-licensing
-  title___citation: "Neb. Rev. Stat. \xA7 81-5,230, Elevator mechanic license; elevator\
-    \ contractor license; application"
+  title: Neb. Rev. Stat. § 81-5,230, Elevator mechanic license; elevator contractor
+    license; application
   source_type: statute
+  publisher: null
   url: https://nebraskalegislature.gov/laws/statutes.php?statute=81-5%2C230
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: Elevator mechanic/contractor licensing through State Fire
-    Marshal
-  caveat: Official legislature HTML.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Elevator mechanic/contractor licensing through State Fire Marshal
+  caveats:
+  - Official legislature HTML.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:lb611-2025-status
-  title___citation: LB611 bill page, 109th Legislature
+  title: LB611 bill page, 109th Legislature
   source_type: bill history
+  publisher: null
   url: https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=59719
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: 2025 building/energy update proposal; indefinitely postponed
-    2026-04-17
-  caveat: Official bill page.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - 2025 building/energy update proposal; indefinitely postponed 2026-04-17
+  caveats:
+  - Official bill page.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ne:lb801-2026-status
-  title___citation: LB801 bill page, 109th Legislature
+  title: LB801 bill page, 109th Legislature
   source_type: bill history
+  publisher: null
   url: https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=62790
-  version___date_captured: accessed 2026-06-26
-  key_fields_supported: 2026 building/energy update proposal; indefinitely postponed
-    2026-04-17
-  caveat: Official bill page.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - 2026 building/energy update proposal; indefinitely postponed 2026-04-17
+  caveats:
+  - Official bill page.
+  notes: []
+  details:
+  - name: version_date_captured
+    values:
+    - accessed 2026-06-26

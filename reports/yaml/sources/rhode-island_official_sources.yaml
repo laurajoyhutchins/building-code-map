@@ -1,205 +1,469 @@
 ---
 official_sources:
 - source_id: src:usa-ri:bcc-laws-rules
-  title___citation: Laws, Rules and Regulations
-  publisher: Rhode Island Building Code Commission / Official State of Rhode Island
+  title: Laws, Rules and Regulations
   source_type: agency page
-  effective___current_date_captured: page updated 2026-04-07; current code statement
-    effective 2025-12-01
+  publisher: Rhode Island Building Code Commission / Official State of Rhode Island
   url: https://ribcc.ri.gov/forms-resources-and-e-permitting/laws-rules-and-regulations
-  used_for: Overview that Rhode Island incorporated 2021 ICC codes with Rhode Island
-    amendments effective 2025-12-01.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Overview that Rhode Island incorporated 2021 ICC codes with Rhode Island amendments
+    effective 2025-12-01.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - page updated 2026-04-07; current code statement effective 2025-12-01
 - source_id: src:usa-ri:statute-bcsc-adoption
-  title___citation: "R.I. Gen. Laws \xA7 23-27.3-100.1.5"
-  publisher: Rhode Island General Assembly
+  title: R.I. Gen. Laws § 23-27.3-100.1.5
   source_type: statute
-  effective___current_date_captured: current page reviewed 2026-06-26
+  publisher: Rhode Island General Assembly
   url: https://webserver.rilegislature.gov/Statutes/TITLE23/23-27.3/23-1/23-27.3-100.1.5.htm
-  used_for: BCSC authority to adopt/promulgate/administer; statutory code-family structure;
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - BCSC authority to adopt/promulgate/administer; statutory code-family structure;
     NEC framework.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - current page reviewed 2026-06-26
 - source_id: src:usa-ri:statute-local-code-preemption
-  title___citation: "R.I. Gen. Laws \xA7 23-27.3-100.1.7"
-  publisher: Rhode Island General Assembly
+  title: R.I. Gen. Laws § 23-27.3-100.1.7
   source_type: statute
-  effective___current_date_captured: current page reviewed 2026-06-26
+  publisher: Rhode Island General Assembly
   url: https://webserver.rilegislature.gov/Statutes/TITLE23/23-27.3/23-1/23-27.3-100.1.7.htm
-  used_for: Prohibition on future city/town local building codes and ordinances.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Prohibition on future city/town local building codes and ordinances.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - current page reviewed 2026-06-26
 - source_id: src:usa-ri:statute-amendment-petition
-  title___citation: "R.I. Gen. Laws \xA7 23-27.3-109.3"
-  publisher: Rhode Island General Assembly
+  title: R.I. Gen. Laws § 23-27.3-109.3
   source_type: statute
-  effective___current_date_captured: current page reviewed 2026-06-26
+  publisher: Rhode Island General Assembly
   url: https://webserver.rilegislature.gov/Statutes/TITLE23/23-27.3/23-1/23-27.3-109.3.htm
-  used_for: Statewide amendment petition process and binding effect on all cities
-    and towns.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Statewide amendment petition process and binding effect on all cities and towns.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - current page reviewed 2026-06-26
 - source_id: src:usa-ri:statute-local-building-official-appointment
-  title___citation: "R.I. Gen. Laws \xA7 23-27.3-107.1"
-  publisher: Rhode Island General Assembly
+  title: R.I. Gen. Laws § 23-27.3-107.1
   source_type: statute
-  effective___current_date_captured: current page reviewed 2026-06-26
+  publisher: Rhode Island General Assembly
   url: https://webserver.rilegislature.gov/Statutes/TITLE23/23-27.3/23-1/23-27.3-107.1.htm
-  used_for: Local authority appointment of local building officials.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Local authority appointment of local building officials.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - current page reviewed 2026-06-26
 - source_id: src:usa-ri:statute-alternate-local-building-official
-  title___citation: "R.I. Gen. Laws \xA7 23-27.3-107.2"
-  publisher: Rhode Island General Assembly
+  title: R.I. Gen. Laws § 23-27.3-107.2
   source_type: statute
-  effective___current_date_captured: current page reviewed 2026-06-26
+  publisher: Rhode Island General Assembly
   url: https://webserver.rilegislature.gov/Statutes/TITLE23/23-27.3/23-1/23-27.3-107.2.htm
-  used_for: Alternate building official / state service fallback.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Alternate building official / state service fallback.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - current page reviewed 2026-06-26
 - source_id: src:usa-ri:statute-local-building-official-duties
-  title___citation: "R.I. Gen. Laws \xA7\xA7 23-27.3-107.5 and 23-27.3-108.1"
-  publisher: Rhode Island General Assembly
+  title: R.I. Gen. Laws §§ 23-27.3-107.5 and 23-27.3-108.1
   source_type: statute
-  effective___current_date_captured: current pages reviewed 2026-06-26
+  publisher: Rhode Island General Assembly
   url: https://webserver.rilegislature.gov/Statutes/TITLE23/23-27.3/23-1/23-27.3-107.5.htm;
     https://webserver.rilegislature.gov/Statutes/TITLE23/23-27.3/23-1/23-27.3-108.1.htm
-  used_for: Duties and enforcement role of local building official.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Duties and enforcement role of local building official.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - current pages reviewed 2026-06-26
 - source_id: src:usa-ri:statute-state-commissioner-duties
-  title___citation: "R.I. Gen. Laws \xA7 23-27.3-108.2"
-  publisher: Rhode Island General Assembly
+  title: R.I. Gen. Laws § 23-27.3-108.2
   source_type: statute
-  effective___current_date_captured: current page reviewed 2026-06-26
+  publisher: Rhode Island General Assembly
   url: https://webserver.rilegislature.gov/Statutes/TITLE23/23-27.3/23-1/23-27.3-108.2.htm
-  used_for: State Building Code Commissioner duties, interpretation, permit system,
-    state/backstop enforcement.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State Building Code Commissioner duties, interpretation, permit system, state/backstop
+    enforcement.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - current page reviewed 2026-06-26
 - source_id: src:usa-ri:statute-transition-drawings-specs
-  title___citation: "R.I. Gen. Laws \xA7 23-27.3-114.3.1"
-  publisher: Rhode Island General Assembly
+  title: R.I. Gen. Laws § 23-27.3-114.3.1
   source_type: statute
-  effective___current_date_captured: current page reviewed 2026-06-26
+  publisher: Rhode Island General Assembly
   url: https://webserver.rilegislature.gov/Statutes/TITLE23/23-27.3/23-2/23-27.3-114.3.1.htm
-  used_for: Three-month drawings/specifications prior-code transition mechanism.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Three-month drawings/specifications prior-code transition mechanism.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - current page reviewed 2026-06-26
 - source_id: src:usa-ri:ricr-510-00-00-1
-  title___citation: RISBC-1 Rhode Island Building Code, 510-RICR-00-00-1
-  publisher: Rhode Island Department of State / Building Code Commission
+  title: RISBC-1 Rhode Island Building Code, 510-RICR-00-00-1
   source_type: regulation
-  effective___current_date_captured: active effective 2025-12-01
+  publisher: Rhode Island Department of State / Building Code Commission
   url: https://rules.sos.ri.gov/regulations/part/510-00-00-1
-  used_for: Building code adoption, IBC 2021, referenced-code structure, amendments.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Building code adoption, IBC 2021, referenced-code structure, amendments.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - active effective 2025-12-01
 - source_id: src:usa-ri:ricr-510-00-00-2
-  title___citation: RISBC-2 Rhode Island One- and Two-Family Dwelling Code, 510-RICR-00-00-2
-  publisher: Rhode Island Department of State / Building Code Commission
+  title: RISBC-2 Rhode Island One- and Two-Family Dwelling Code, 510-RICR-00-00-2
   source_type: regulation
-  effective___current_date_captured: active effective 2025-12-01
+  publisher: Rhode Island Department of State / Building Code Commission
   url: https://rules.sos.ri.gov/regulations/part/510-00-00-2
-  used_for: Residential code adoption, IRC 2021.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Residential code adoption, IRC 2021.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - active effective 2025-12-01
 - source_id: src:usa-ri:ricr-510-00-00-3
-  title___citation: RISBC-3 Rhode Island Plumbing Code, 510-RICR-00-00-3
-  publisher: Rhode Island Department of State / Building Code Commission
+  title: RISBC-3 Rhode Island Plumbing Code, 510-RICR-00-00-3
   source_type: regulation
-  effective___current_date_captured: active effective 2025-12-01
+  publisher: Rhode Island Department of State / Building Code Commission
   url: https://rules.sos.ri.gov/regulations/part/510-00-00-3
-  used_for: Plumbing code adoption, IPC 2021.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Plumbing code adoption, IPC 2021.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - active effective 2025-12-01
 - source_id: src:usa-ri:ricr-510-00-00-4
-  title___citation: RISBC-4 Rhode Island Mechanical Code, 510-RICR-00-00-4
-  publisher: Rhode Island Department of State / Building Code Commission
+  title: RISBC-4 Rhode Island Mechanical Code, 510-RICR-00-00-4
   source_type: regulation
-  effective___current_date_captured: active effective 2025-12-01
+  publisher: Rhode Island Department of State / Building Code Commission
   url: https://rules.sos.ri.gov/regulations/part/510-00-00-4
-  used_for: Mechanical code adoption, IMC 2021.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Mechanical code adoption, IMC 2021.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - active effective 2025-12-01
 - source_id: src:usa-ri:ricr-510-00-00-5
-  title___citation: RISBC-5 Rhode Island Electrical Code, 510-RICR-00-00-5
-  publisher: Rhode Island Department of State / Building Code Commission
+  title: RISBC-5 Rhode Island Electrical Code, 510-RICR-00-00-5
   source_type: regulation
-  effective___current_date_captured: active effective 2025-12-01
+  publisher: Rhode Island Department of State / Building Code Commission
   url: https://rules.sos.ri.gov/regulations/part/510-00-00-5
-  used_for: Electrical code adoption, NEC 2023.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Electrical code adoption, NEC 2023.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - active effective 2025-12-01
 - source_id: src:usa-ri:ricr-510-00-00-7
-  title___citation: RISBC-7 Rhode Island Existing Building Code, 510-RICR-00-00-7
-  publisher: Rhode Island Department of State / Building Code Commission
+  title: RISBC-7 Rhode Island Existing Building Code, 510-RICR-00-00-7
   source_type: regulation
-  effective___current_date_captured: active effective 2025-12-01
+  publisher: Rhode Island Department of State / Building Code Commission
   url: https://rules.sos.ri.gov/regulations/part/510-00-00-7
-  used_for: Existing building code adoption, IEBC 2021.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Existing building code adoption, IEBC 2021.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - active effective 2025-12-01
 - source_id: src:usa-ri:ricr-510-00-00-8
-  title___citation: RISBC-8 Rhode Island Energy Conservation Code, 510-RICR-00-00-8
-  publisher: Rhode Island Department of State / Building Code Commission
+  title: RISBC-8 Rhode Island Energy Conservation Code, 510-RICR-00-00-8
   source_type: regulation
-  effective___current_date_captured: active effective 2025-12-01
+  publisher: Rhode Island Department of State / Building Code Commission
   url: https://rules.sos.ri.gov/regulations/part/510-00-00-8
-  used_for: Energy code adoption, IECC 2024, appendix notes.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Energy code adoption, IECC 2024, appendix notes.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - active effective 2025-12-01
 - source_id: src:usa-ri:ricr-510-00-00-9
-  title___citation: 510-RICR-00-00-9 State Building Office Projects
-  publisher: Rhode Island Department of State / Building Code Commission
+  title: 510-RICR-00-00-9 State Building Office Projects
   source_type: regulation
-  effective___current_date_captured: active page reviewed 2026-06-26
+  publisher: Rhode Island Department of State / Building Code Commission
   url: https://rules.sos.ri.gov/regulations/part/510-00-00-9
-  used_for: State Building Commissioner role for state projects and local plan-review
-    requests.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State Building Commissioner role for state projects and local plan-review requests.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - active page reviewed 2026-06-26
 - source_id: src:usa-ri:ricr-510-00-00-10
-  title___citation: 510-RICR-00-00-10 Official Interpretations
-  publisher: Rhode Island Department of State / Building Code Commission
+  title: 510-RICR-00-00-10 Official Interpretations
   source_type: regulation
-  effective___current_date_captured: active page reviewed 2026-06-26
+  publisher: Rhode Island Department of State / Building Code Commission
   url: https://rules.sos.ri.gov/regulations/part/510-00-00-10
-  used_for: State Building Commissioner official interpretations and appeal path.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State Building Commissioner official interpretations and appeal path.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - active page reviewed 2026-06-26
 - source_id: src:usa-ri:ricr-510-00-00-11
-  title___citation: 510-RICR-00-00-11 Certification of Building Officials, Building
-    Inspectors and Plans Examiners
-  publisher: Rhode Island Department of State / Building Code Commission
+  title: 510-RICR-00-00-11 Certification of Building Officials, Building Inspectors
+    and Plans Examiners
   source_type: regulation
-  effective___current_date_captured: active page reviewed 2026-06-26
+  publisher: Rhode Island Department of State / Building Code Commission
   url: https://rules.sos.ri.gov/regulations/part/510-00-00-11
-  used_for: Certification context for local building officials and inspectors.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Certification context for local building officials and inspectors.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - active page reviewed 2026-06-26
 - source_id: src:usa-ri:ricr-510-00-00-17
-  title___citation: RISBC-17 Public Meetings Accessibility Standard, 510-RICR-00-00-17
-  publisher: Rhode Island Department of State / Building Code Commission
+  title: RISBC-17 Public Meetings Accessibility Standard, 510-RICR-00-00-17
   source_type: regulation
-  effective___current_date_captured: active effective 2022-01-04
+  publisher: Rhode Island Department of State / Building Code Commission
   url: https://rules.sos.ri.gov/regulations/part/510-00-00-17
-  used_for: Public-meetings accessibility scope; new-construction accessibility cross-reference
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Public-meetings accessibility scope; new-construction accessibility cross-reference
     to State Building Code.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - active effective 2022-01-04
 - source_id: src:usa-ri:ricr-510-00-00-19
-  title___citation: RISBC-19 Rhode Island Fuel Gas Code, 510-RICR-00-00-19
-  publisher: Rhode Island Department of State / Building Code Commission
+  title: RISBC-19 Rhode Island Fuel Gas Code, 510-RICR-00-00-19
   source_type: regulation
-  effective___current_date_captured: active effective 2025-12-01
+  publisher: Rhode Island Department of State / Building Code Commission
   url: https://rules.sos.ri.gov/regulations/part/510-00-00-19
-  used_for: Fuel gas code adoption, IFGC 2021.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Fuel gas code adoption, IFGC 2021.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - active effective 2025-12-01
 - source_id: src:usa-ri:ricr-510-00-00-20
-  title___citation: RISRC-1 State Rehabilitation Building and Fire Code for Existing
-    Structures, 510-RICR-00-00-20
+  title: RISRC-1 State Rehabilitation Building and Fire Code for Existing Structures,
+    510-RICR-00-00-20
+  source_type: regulation
   publisher: Rhode Island Department of State / Joint Committee on Rehabilitation
     Building and Fire Code
-  source_type: regulation
-  effective___current_date_captured: active effective 2025-12-01
   url: https://rules.sos.ri.gov/regulations/part/510-00-00-20
-  used_for: Rehabilitation code authority, purpose, scope, permit-date rule, enforcement.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Rehabilitation code authority, purpose, scope, permit-date rule, enforcement.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - active effective 2025-12-01
 - source_id: src:usa-ri:ricr-450-00-00-1
-  title___citation: Fire Safety Code Board Administrative Rules and Regulations, 450-RICR-00-00-1
-  publisher: Rhode Island Department of State / Fire Safety Code Board
+  title: Fire Safety Code Board Administrative Rules and Regulations, 450-RICR-00-00-1
   source_type: regulation
-  effective___current_date_captured: active page reviewed 2026-06-26
+  publisher: Rhode Island Department of State / Fire Safety Code Board
   url: https://rules.sos.ri.gov/regulations/part/450-00-00-1
-  used_for: Fire Safety Code structure and administrative context.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Fire Safety Code structure and administrative context.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - active page reviewed 2026-06-26
 - source_id: src:usa-ri:ricr-450-00-00-7
-  title___citation: Rhode Island Fire Code, 450-RICR-00-00-7
-  publisher: Rhode Island Department of State / Fire Safety Code Board
+  title: Rhode Island Fire Code, 450-RICR-00-00-7
   source_type: regulation
-  effective___current_date_captured: active effective 2026-03-01
+  publisher: Rhode Island Department of State / Fire Safety Code Board
   url: https://rules.sos.ri.gov/regulations/part/450-00-00-7
-  used_for: NFPA 1 2021 adoption; Fire Safety Code Board / State Fire Marshal AHJ
-    split.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - NFPA 1 2021 adoption; Fire Safety Code Board / State Fire Marshal AHJ split.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - active effective 2026-03-01
 - source_id: src:usa-ri:ricr-450-00-00-8
-  title___citation: Rhode Island Life Safety Code, 450-RICR-00-00-8
-  publisher: Rhode Island Department of State / Fire Safety Code Board
+  title: Rhode Island Life Safety Code, 450-RICR-00-00-8
   source_type: regulation
-  effective___current_date_captured: active effective 2026-03-01
+  publisher: Rhode Island Department of State / Fire Safety Code Board
   url: https://rules.sos.ri.gov/regulations/part/450-00-00-8
-  used_for: NFPA 101 2021 adoption; Fire Safety Code Board / State Fire Marshal AHJ
-    split.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - NFPA 101 2021 adoption; Fire Safety Code Board / State Fire Marshal AHJ split.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - active effective 2026-03-01
 - source_id: src:usa-ri:ricr-450-00-00-10
-  title___citation: Rhode Island Fire Alarm Code, 450-RICR-00-00-10
+  title: Rhode Island Fire Alarm Code, 450-RICR-00-00-10
+  source_type: regulation
   publisher: Rhode Island Department of State / Fire Safety Code Board
-  source_type: regulation
-  effective___current_date_captured: active effective 2026-03-01
   url: https://rules.sos.ri.gov/regulations/part/450-00-00-10
-  used_for: NFPA 72 2022 adoption.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - NFPA 72 2022 adoption.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - active effective 2026-03-01
 - source_id: src:usa-ri:ricr-260-30-10-1
-  title___citation: Elevator Safety Code, 260-RICR-30-10-1
-  publisher: Rhode Island Department of State / Department of Labor and Training
+  title: Elevator Safety Code, 260-RICR-30-10-1
   source_type: regulation
-  effective___current_date_captured: active effective 2022-01-04
+  publisher: Rhode Island Department of State / Department of Labor and Training
   url: https://rules.sos.ri.gov/regulations/part/260-30-10-1
-  used_for: Elevator and conveyance code authority, ASME incorporated standards, DLT
-    permits/inspections.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Elevator and conveyance code authority, ASME incorporated standards, DLT permits/inspections.
+  caveats: []
+  notes: []
+  details:
+  - name: effective_current_date_captured
+    values:
+    - active effective 2022-01-04

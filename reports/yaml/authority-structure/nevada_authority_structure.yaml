@@ -1,21 +1,23 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: ahj:usa-nv:spwd
-- field: Authority name
-  value: Nevada State Public Works Division / State Public Works Board
-- field: Authority type
-  value: state_building_official_for_state_property
-- field: Legal basis
-  value: NRS 341.100; NRS 341.105; NRS 341.1455; NAC 341.045
-- field: Role
-  value: Oversees code compliance and enforcement on state-owned land, issues permits
+- authority_id: ahj:usa-nv:spwd
+  authority_name: Nevada State Public Works Division / State Public Works Board
+  authority_type: state_building_official_for_state_property
+  legal_basis:
+  - NRS 341.100
+  - NRS 341.105
+  - NRS 341.1455
+  - NAC 341.045
+  role: Oversees code compliance and enforcement on state-owned land, issues permits
     for state-owned facilities, and adopts minimum standards for state buildings.
-- field: Enforcement model
-  value: Direct state enforcement for state-owned buildings and buildings held in
-    trust; local enforcement model applies outside this track.
-- field: Source IDs
-  value: src:usa-nv:spwd-permitting; src:usa-nv:nrs-341-100; src:usa-nv:nrs-341-105;
-    src:usa-nv:nrs-341-1455; src:usa-nv:nac-341-045
-- field: Verification status
-  value: partially_verified
+  enforcement_model: Direct state enforcement for state-owned buildings and buildings
+    held in trust; local enforcement model applies outside this track.
+  source_ids:
+  - src:usa-nv:spwd-permitting
+  - src:usa-nv:nrs-341-100
+  - src:usa-nv:nrs-341-105
+  - src:usa-nv:nrs-341-1455
+  - src:usa-nv:nac-341-045
+  verification_status:
+  - partially_verified
+  parent_agency: null

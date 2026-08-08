@@ -1,22 +1,20 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: ahj:usa-ga:dca-board-community-affairs
-- field: Authority name
-  value: Board of Community Affairs and Georgia Department of Community Affairs, Construction
-    Codes and Industrialized Buildings Section
-- field: Authority type
-  value: state_board_and_state_agency
-- field: Legal basis
-  value: O.C.G.A. 8-2-20 et seq. and O.C.G.A. 8-2-23 as referenced in Georgia regulations
+- authority_id: ahj:usa-ga:dca-board-community-affairs
+  authority_name: Board of Community Affairs and Georgia Department of Community Affairs,
+    Construction Codes and Industrialized Buildings Section
+  authority_type: state_board_and_state_agency
+  legal_basis:
+  - O.C.G.A. 8-2-20 et seq. and O.C.G.A. 8-2-23 as referenced in Georgia regulations
     and DCA adoption notices
-- field: Role
-  value: Adopts, revises, and publishes state minimum standard construction codes
-    and Georgia amendments
-- field: Enforcement model
-  value: state_minimum_code_with_optional_local_enforcement
-- field: Source IDs
-  value: src:usa-ga:dca:current-codes; src:usa-ga:dca:new-codes-2026; src:usa-ga:dca:enforcement;
-    src:usa-ga:sos:rule-110-11-1
-- field: Verification status
-  value: verified
+  role: Adopts, revises, and publishes state minimum standard construction codes and
+    Georgia amendments
+  enforcement_model: state_minimum_code_with_optional_local_enforcement
+  source_ids:
+  - src:usa-ga:dca:current-codes
+  - src:usa-ga:dca:new-codes-2026
+  - src:usa-ga:dca:enforcement
+  - src:usa-ga:sos:rule-110-11-1
+  verification_status:
+  - verified
+  parent_agency: null

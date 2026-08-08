@@ -2,121 +2,231 @@
 official_sources:
 - source_id: src:usa-tn:tdci-codes-enforcement
   title: Codes Enforcement
+  source_type: agency_page
   publisher: Tennessee Department of Commerce and Insurance / State Fire Marshal's
     Office
-  source_type: agency_page
-  date___currency: updated after 2025 filing; accessed 2026-06-26
-  access_path: https://www.tn.gov/commerce/fire/codes-enforcement.html
+  url: https://www.tn.gov/commerce/fire/codes-enforcement.html
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - SFMO enforcement role
   - 2025 effective date
   - 120-day transition
   - official links to rules and statute
+  caveats: []
+  notes: []
+  details:
+  - name: date_currency
+    values:
+    - updated after 2025 filing; accessed 2026-06-26
 - source_id: src:usa-tn:tdci-currently-adopted-codes
   title: Tennessee State Fire Marshal's Office Currently Adopted Codes
+  source_type: agency_page
   publisher: Tennessee Department of Commerce and Insurance / State Fire Marshal's
     Office
-  source_type: agency_page
-  date___currency: page last updated 2025-04-17
-  access_path: https://www.tn.gov/commerce/fire/codes-enforcement/history.html
+  url: https://www.tn.gov/commerce/fire/codes-enforcement/history.html
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Current code editions
   - adoption history
   - high-impact amendments appendix
+  caveats: []
+  notes: []
+  details:
+  - name: date_currency
+    values:
+    - page last updated 2025-04-17
 - source_id: src:usa-tn:rule-filing-2025-01-17
   title: Rulemaking Hearing Rule(s) Filing Form, filed 2025-01-17
-  publisher: Tennessee Secretary of State
   source_type: rulemaking_filing_pdf
-  date___currency: filed 2025-01-17; effective 2025-04-17
-  access_path: https://publications.tnsosfiles.com/rules_filings/01-17-25.pdf
+  publisher: Tennessee Secretary of State
+  url: https://publications.tnsosfiles.com/rules_filings/01-17-25.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - 2025 code update filing
   - effective date
   - amendments to 0780-02-02 and related rules
+  caveats: []
+  notes: []
+  details:
+  - name: date_currency
+    values:
+    - filed 2025-01-17; effective 2025-04-17
 - source_id: src:usa-tn:rule-0780-02-02
   title: Tenn. Comp. R. & Regs. Chapter 0780-02-02, Codes and Standards
-  publisher: Tennessee Secretary of State
   source_type: administrative_rule_pdf
-  date___currency: revised 2025-04-17
-  access_path: https://publications.tnsosfiles.com/rules/0780/0780-02/0780-02-02.20250417.pdf
+  publisher: Tennessee Secretary of State
+  url: https://publications.tnsosfiles.com/rules/0780/0780-02/0780-02-02.20250417.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Adoption by reference
   - state amendments
   - local ordinances
   - nonretroactivity
   - conflicts
+  caveats: []
+  notes: []
+  details:
+  - name: date_currency
+    values:
+    - revised 2025-04-17
 - source_id: src:usa-tn:rule-0780-02-03
   title: Tenn. Comp. R. & Regs. Chapter 0780-02-03, Review of Construction Plans and
     Specifications
-  publisher: Tennessee Secretary of State
   source_type: administrative_rule_pdf
-  date___currency: revised 2025-04-23
-  access_path: https://publications.tnsosfiles.com/rules/0780/0780-02/0780-02-03.20250423.pdf
+  publisher: Tennessee Secretary of State
+  url: https://publications.tnsosfiles.com/rules/0780/0780-02/0780-02-03.20250423.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - SFMO plan-review requirements
   - transition rule referenced by TDCI
+  caveats: []
+  notes: []
+  details:
+  - name: date_currency
+    values:
+    - revised 2025-04-23
 - source_id: src:usa-tn:rule-0780-02-23
   title: Tenn. Comp. R. & Regs. Chapter 0780-02-23, One and Two Family Dwellings and
     Townhouses
-  publisher: Tennessee Secretary of State
   source_type: administrative_rule_pdf
-  date___currency: revised 2020-07-16 / later copies found
-  access_path: https://publications.tnsosfiles.com/rules/0780/0780-02/0780-02-23.20200716.pdf
-  supports: Residential IRC/IECC adoption and amendments
+  publisher: Tennessee Secretary of State
+  url: https://publications.tnsosfiles.com/rules/0780/0780-02/0780-02-23.20200716.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Residential IRC/IECC adoption and amendments
+  caveats: []
+  notes: []
+  details:
+  - name: date_currency
+    values:
+    - revised 2020-07-16 / later copies found
 - source_id: src:usa-tn:rule-0780-02-01
   title: Tenn. Comp. R. & Regs. Chapter 0780-02-01, Electrical Installations
-  publisher: Tennessee Secretary of State
   source_type: administrative_rule_pdf
-  date___currency: revised 2025-07-14 search result; NEC 2017 adoption carried forward
-  access_path: https://publications.tnsosfiles.com/rules/0780/0780-02/0780-02-01.20250714.pdf
+  publisher: Tennessee Secretary of State
+  url: https://publications.tnsosfiles.com/rules/0780/0780-02/0780-02-01.20250714.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Electrical installations
   - NEC 2017 adoption
   - electrical exceptions
+  caveats: []
+  notes: []
+  details:
+  - name: date_currency
+    values:
+    - revised 2025-07-14 search result; NEC 2017 adoption carried forward
 - source_id: src:usa-tn:lexis-tca-68-120-101
   title: Tennessee Code Unannotated - Free Public Access
-  publisher: LexisNexis for Tennessee Code public access
   source_type: statutory_code_portal
-  date___currency: current portal accessed 2026-06-26
-  access_path: https://advance.lexis.com/container?config=014CJAA5ZGVhZjA3NS02MmMzLTRlZWQtOGJjNC00YzQ1MmZlNzc2YWYKAFBvZENhdGFsb2e9zYpNUjTRaIWVfyrur9ud
+  publisher: LexisNexis for Tennessee Code public access
+  url: https://advance.lexis.com/container?config=014CJAA5ZGVhZjA3NS02MmMzLTRlZWQtOGJjNC00YzQ1MmZlNzc2YWYKAFBvZENhdGFsb2e9zYpNUjTRaIWVfyrur9ud
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Official/public code access path for T.C.A. Title 68
   - Chapter 120
+  caveats: []
+  notes: []
+  details:
+  - name: date_currency
+    values:
+    - current portal accessed 2026-06-26
 - source_id: src:usa-tn:tdci-opt-out
   title: Statewide Building Construction Code Inspections in Opt-Out or Non-Code Jurisdictions
+  source_type: agency_page
   publisher: Tennessee Department of Commerce and Insurance / State Fire Marshal's
     Office
-  source_type: agency_page
-  date___currency: accessed 2026-06-26
-  access_path: https://www.tn.gov/commerce/fire/residential-permits/opt-out-jurisdictions.html
+  url: https://www.tn.gov/commerce/fire/residential-permits/opt-out-jurisdictions.html
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Residential opt-out/non-code jurisdictions
   - owner-requested SFMO inspection
+  caveats: []
+  notes: []
+  details:
+  - name: date_currency
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-tn:tdci-residential-permits
   title: Residential Permits and Residential Permit FAQs
+  source_type: agency_page
   publisher: Tennessee Department of Commerce and Insurance / State Fire Marshal's
     Office
-  source_type: agency_page
-  date___currency: accessed 2026-06-26
-  access_path: https://www.tn.gov/commerce/fire/residential-permits.html and https://www.tn.gov/commerce/fire/residential-permits/fire-residential-faqs.html
+  url: https://www.tn.gov/commerce/fire/residential-permits.html and https://www.tn.gov/commerce/fire/residential-permits/fire-residential-faqs.html
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - 2018 IRC/IECC residential adoption
   - residential sprinkler status
   - additions over 30 square feet
+  caveats: []
+  notes: []
+  details:
+  - name: date_currency
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-tn:tdci-accessibility-act
   title: Tennessee Public Buildings Accessibility Act
+  source_type: agency_page
   publisher: Tennessee Department of Commerce and Insurance / State Fire Marshal's
     Office
-  source_type: agency_page
-  date___currency: accessed 2026-06-26
-  access_path: https://www.tn.gov/commerce/fire/codes-enforcement/tennessee-public-buildings-accessibility-act.html
+  url: https://www.tn.gov/commerce/fire/codes-enforcement/tennessee-public-buildings-accessibility-act.html
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Accessibility act access path and relationship to Title 68
   - Chapter 120
+  caveats: []
+  notes: []
+  details:
+  - name: date_currency
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-tn:tncourts-code-link
   title: Tennessee Code - Lexis Law Link
-  publisher: Tennessee Administrative Office of the Courts
   source_type: official_referral_page
-  date___currency: accessed 2026-06-26
-  access_path: https://www.tncourts.gov/Tennessee%20Code
-  supports: State court page referring users to Lexis Tennessee Code access
+  publisher: Tennessee Administrative Office of the Courts
+  url: https://www.tncourts.gov/Tennessee%20Code
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State court page referring users to Lexis Tennessee Code access
+  caveats: []
+  notes: []
+  details:
+  - name: date_currency
+    values:
+    - accessed 2026-06-26

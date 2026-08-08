@@ -1,21 +1,18 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: ahj:usa-ak:dps:state-fire-marshal
-- field: Authority name
-  value: Alaska Department of Public Safety, Division of Fire and Life Safety / State
-    Fire Marshal
-- field: Authority type
-  value: state_agency_fire_life_safety_code_authority
-- field: Legal basis
-  value: "AS 18.70.010, AS 18.70.080, 13 AAC 50 \u2014 13 AAC 55"
-- field: Role
-  value: Adopts and administers statewide fire and life-safety construction and operational
+- authority_id: ahj:usa-ak:dps:state-fire-marshal
+  authority_name: Alaska Department of Public Safety, Division of Fire and Life Safety
+    / State Fire Marshal
+  authority_type: state_agency_fire_life_safety_code_authority
+  legal_basis:
+  - AS 18.70.010, AS 18.70.080, 13 AAC 50 — 13 AAC 55
+  role: Adopts and administers statewide fire and life-safety construction and operational
     code requirements, including 2021 IBC, IEBC, IMC, limited IFGC, and IFC adoptions
     with Alaska amendments.
-- field: Enforcement model
-  value: state_led_with_deferred_local_authority
-- field: Source IDs
-  value: src:usa-ak:dps:fire-life-safety-page, src:usa-ak:dps:aac-13-50-55-fire-prevention-pdf
-- field: Verification status
-  value: verified
+  enforcement_model: state_led_with_deferred_local_authority
+  source_ids:
+  - src:usa-ak:dps:fire-life-safety-page
+  - src:usa-ak:dps:aac-13-50-55-fire-prevention-pdf
+  verification_status:
+  - verified
+  parent_agency: null

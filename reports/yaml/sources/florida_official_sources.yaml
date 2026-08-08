@@ -9,6 +9,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-fl:agency:fbc-annual-report-2021
   title: Annual Report FY 2020-2021 / FBC Report to the 2022 Florida Legislature
   source_type: agency_report_pdf
@@ -18,6 +22,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-fl:statute:553.73
   title: Florida Statutes 553.73, Florida Building Code
   source_type: statute
@@ -27,6 +35,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-fl:statute:553.79
   title: Florida Statutes 553.79, permits; applications; issuance; inspections
   source_type: statute
@@ -36,6 +48,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-fl:statute:553.80
   title: Florida Statutes 553.80, enforcement
   source_type: statute
@@ -45,6 +61,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-fl:statute:633.208
   title: Florida Statutes 633.208, minimum firesafety standards
   source_type: statute
@@ -54,6 +74,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-fl:agency:sfm-ffpc
   title: Florida Fire Prevention Code page
   source_type: agency_page
@@ -63,6 +87,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-fl:rule:69a-60
   title: Rule Chapter 69A-60, Florida Administrative Code, The Florida Fire Prevention
     Code
@@ -73,6 +101,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-fl:rule:69a-60.003
   title: Rule 69A-60.003, NFPA 1, the Fire Code, Florida 2021 Edition, Adopted
   source_type: administrative_rule
@@ -82,6 +114,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-fl:rule:69a-60.004
   title: Rule 69A-60.004, NFPA 101, Life Safety Code, Florida 2021 Edition, Adopted
   source_type: administrative_rule
@@ -91,3 +127,7 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []

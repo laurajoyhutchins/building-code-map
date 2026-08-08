@@ -1,18 +1,15 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: ahj:usa-fl:florida-building-commission
-- field: Authority name
-  value: Florida Building Commission
-- field: Authority type
-  value: state_commission
-- field: Legal basis
-  value: Fla. Stat. 553.73
-- field: Role
-  value: Adopts and maintains the Florida Building Code
-- field: Enforcement model
-  value: locally_enforced_with_state_exceptions
-- field: Source IDs
-  value: src:usa-fl:statute:553.73, src:usa-fl:statute:553.80
-- field: Verification status
-  value: verified
+- authority_id: ahj:usa-fl:florida-building-commission
+  authority_name: Florida Building Commission
+  authority_type: state_commission
+  legal_basis:
+  - Fla. Stat. 553.73
+  role: Adopts and maintains the Florida Building Code
+  enforcement_model: locally_enforced_with_state_exceptions
+  source_ids:
+  - src:usa-fl:statute:553.73
+  - src:usa-fl:statute:553.80
+  verification_status:
+  - verified
+  parent_agency: null

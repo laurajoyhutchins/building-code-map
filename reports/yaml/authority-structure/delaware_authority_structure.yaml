@@ -1,23 +1,23 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: ahj:usa-de:split-building-authority
-- field: Authority name
-  value: Split state/local code authority; county and municipal building-code authorities
-    for general building codes
-- field: Authority type
-  value: hybrid_state_local
-- field: Legal basis
-  value: "16 Del. C. \xA7 7601; 16 Del. C. ch. 79; 16 Del. C. ch. 66; 7 DE Admin.\
-    \ Code 2101"
-- field: Role
-  value: Delaware does not present one verified statewide general building-code adoption
+- authority_id: ahj:usa-de:split-building-authority
+  authority_name: Split state/local code authority; county and municipal building-code
+    authorities for general building codes
+  authority_type: hybrid_state_local
+  legal_basis:
+  - 16 Del. C. § 7601
+  - 16 Del. C. ch. 79
+  - 16 Del. C. ch. 66
+  - 7 DE Admin. Code 2101
+  role: Delaware does not present one verified statewide general building-code adoption
     in the sources reviewed. General building-code adoption is local; statewide or
     state-minimum rules apply for energy, plumbing, and fire prevention.
-- field: Enforcement model
-  value: hybrid
-- field: Source IDs
-  value: src:usa-de:code:title16:ch76; src:usa-de:code:title16:ch79; src:usa-de:code:title16:ch66-sc01;
-    src:usa-de:dnrec:building-energy-codes
-- field: Verification status
-  value: partially_verified
+  enforcement_model: hybrid
+  source_ids:
+  - src:usa-de:code:title16:ch76
+  - src:usa-de:code:title16:ch79
+  - src:usa-de:code:title16:ch66-sc01
+  - src:usa-de:dnrec:building-energy-codes
+  verification_status:
+  - partially_verified
+  parent_agency: null

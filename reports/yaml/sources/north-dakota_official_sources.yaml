@@ -1,121 +1,220 @@
 ---
 official_sources:
 - source_id: src:usa-nd:commerce-building-codes
-  source_name: Building Codes
-  publisher___custodian: North Dakota Department of Commerce
+  title: Building Codes
   source_type: agency page
+  publisher: North Dakota Department of Commerce
   url: https://www.commerce.nd.gov/community-services/building-codes
-  key_coverage: Current State Building Code summary, 2024 model-code adoption statement,
-    2026 effective date, links to code book and local enforcement directory
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_current
+  supports:
+  - Current State Building Code summary, 2024 model-code adoption statement, 2026
+    effective date, links to code book and local enforcement directory
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nd:state-building-code-2026-book
-  source_name: 2026 North Dakota State Building Code Book
-  publisher___custodian: North Dakota Department of Commerce, Division of Community
-    Services
+  title: 2026 North Dakota State Building Code Book
   source_type: official PDF
+  publisher: North Dakota Department of Commerce, Division of Community Services
   url: https://www.medialibrary.nd.gov/assetbank-nd/assetfile/156311.pdf
-  key_coverage: 2026 State Building Code, code editions, history, statutory excerpts,
-    administrative rules, local enforcement directory, amendment text
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_current
+  supports:
+  - 2026 State Building Code, code editions, history, statutory excerpts, administrative
+    rules, local enforcement directory, amendment text
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nd:ndcc-54-21-3
-  source_name: North Dakota Century Code Chapter 54-21.3, State Building Code
-  publisher___custodian: North Dakota Legislative Branch
+  title: North Dakota Century Code Chapter 54-21.3, State Building Code
   source_type: statute PDF
+  publisher: North Dakota Legislative Branch
   url: https://ndlegis.gov/cencode/t54c21-3.pdf
-  key_coverage: State Building Code authority, local adoption/enforcement, local amendments,
-    trade-code exclusions
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_current
+  supports:
+  - State Building Code authority, local adoption/enforcement, local amendments, trade-code
+    exclusions
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nd:ndac-108-01-01
-  source_name: North Dakota Administrative Code Chapter 108-01-01, State Building
-    Code
-  publisher___custodian: North Dakota Legislative Branch
+  title: North Dakota Administrative Code Chapter 108-01-01, State Building Code
   source_type: administrative rule PDF
+  publisher: North Dakota Legislative Branch
   url: https://ndlegis.gov/prod/acdata/pdf/108-01-01.pdf
-  key_coverage: Scope, administration, local enforcement, amendment process, limitations,
-    publication requirements
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_current
+  supports:
+  - Scope, administration, local enforcement, amendment process, limitations, publication
+    requirements
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nd:ndac-45-18-01
-  source_name: North Dakota Administrative Code Chapter 45-18-01, State Fire Code
-  publisher___custodian: North Dakota Legislative Branch
+  title: North Dakota Administrative Code Chapter 45-18-01, State Fire Code
   source_type: administrative rule PDF
+  publisher: North Dakota Legislative Branch
   url: https://ndlegis.gov/information/acdata/pdf/45-18-01.pdf
-  key_coverage: State Fire Marshal authority, State Fire Code scope, 2021 IFC adoption
-    with North Dakota modifications, 2024-01-01 effective history
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_current
+  supports:
+  - State Fire Marshal authority, State Fire Code scope, 2021 IFC adoption with North
+    Dakota modifications, 2024-01-01 effective history
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nd:insurance-fire-rulemaking-2026
-  source_name: Article 45-18 Fire Marshal Rulemaking PDF
-  publisher___custodian: North Dakota Insurance Department / State Fire Marshal rulemaking
+  title: Article 45-18 Fire Marshal Rulemaking PDF
   source_type: rulemaking PDF
+  publisher: North Dakota Insurance Department / State Fire Marshal rulemaking
   url: https://www.insurance.nd.gov/sites/www/files/documents/Communications/Rulemaking/2026/Article%2045-18%20-%20Fire%20Marshal.pdf
-  key_coverage: 2026 fire-code rulemaking/redline indicating 2024 IFC update path
-    and State Building Code cross-reference update
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_rulemaking_caveated
+  supports:
+  - 2026 fire-code rulemaking/redline indicating 2024 IFC update path and State Building
+    Code cross-reference update
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nd:ndcc-18-01
-  source_name: North Dakota Century Code Chapter 18-01, Fire Prevention
-  publisher___custodian: North Dakota Legislative Branch
+  title: North Dakota Century Code Chapter 18-01, Fire Prevention
   source_type: statute PDF
+  publisher: North Dakota Legislative Branch
   url: https://ndlegis.gov/cencode/t18c01.pdf
-  key_coverage: State Fire Marshal statutory authority and delegation/enforcement
-    framework
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_current
+  supports:
+  - State Fire Marshal statutory authority and delegation/enforcement framework
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nd:electrical-board-laws-rules
-  source_name: Laws, Rules and Wiring Standards
-  publisher___custodian: North Dakota State Electrical Board
+  title: Laws, Rules and Wiring Standards
   source_type: agency page
+  publisher: North Dakota State Electrical Board
   url: https://www.ndseb.com/laws-rules-wiring-standards/
-  key_coverage: Electrical Board standards page, 2023 laws/rules effective 2024-07-01,
-    NEC/NFPA references
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_current
+  supports:
+  - Electrical Board standards page, 2023 laws/rules effective 2024-07-01, NEC/NFPA
+    references
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nd:ndac-24-1-06-01
-  source_name: North Dakota Administrative Code Chapter 24.1-06-01, Wiring Standards
-  publisher___custodian: North Dakota Legislative Branch
+  title: North Dakota Administrative Code Chapter 24.1-06-01, Wiring Standards
   source_type: administrative rule PDF
+  publisher: North Dakota Legislative Branch
   url: https://ndlegis.gov/information/acdata/pdf/24.1-06-01.pdf
-  key_coverage: Electrical wiring standards, 2023 NEC references, effective-history
-    information
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_current
+  supports:
+  - Electrical wiring standards, 2023 NEC references, effective-history information
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nd:ndac-24-1-2026-supplement
-  source_name: North Dakota Administrative Code 2026 Supplement for Electrical Board
-    Rules
-  publisher___custodian: North Dakota Legislative Branch
+  title: North Dakota Administrative Code 2026 Supplement for Electrical Board Rules
   source_type: administrative-code supplement PDF
+  publisher: North Dakota Legislative Branch
   url: https://ndlegis.gov/admcode/arc202607400.pdf
-  key_coverage: 2026 NEC transition language and July 1, 2026 effective-history markers
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_future_caveated
+  supports:
+  - 2026 NEC transition language and July 1, 2026 effective-history markers
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nd:ndcc-43-09
-  source_name: North Dakota Century Code Chapter 43-09, Electricians
-  publisher___custodian: North Dakota Legislative Branch
+  title: North Dakota Century Code Chapter 43-09, Electricians
   source_type: statute PDF
+  publisher: North Dakota Legislative Branch
   url: https://ndlegis.gov/cencode/t43c09.pdf
-  key_coverage: State Electrical Board jurisdiction, local electrical ordinances,
-    inspection authority, conveyance statutory program
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_current
+  supports:
+  - State Electrical Board jurisdiction, local electrical ordinances, inspection authority,
+    conveyance statutory program
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nd:plumbing-board-laws-rules
-  source_name: Plumbing Laws and Rules
-  publisher___custodian: North Dakota State Plumbing Board
+  title: Plumbing Laws and Rules
   source_type: agency page
+  publisher: North Dakota State Plumbing Board
   url: https://www.ndplumbingboard.com/laws-rules/
-  key_coverage: Plumbing Board statutory background and links to NDAC plumbing rules
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_current
+  supports:
+  - Plumbing Board statutory background and links to NDAC plumbing rules
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nd:ndac-62-01-01
-  source_name: North Dakota Administrative Code Chapter 62-01-01, Organization of
-    Board
-  publisher___custodian: North Dakota Legislative Branch
+  title: North Dakota Administrative Code Chapter 62-01-01, Organization of Board
   source_type: administrative rule PDF
+  publisher: North Dakota Legislative Branch
   url: https://ndlegis.gov/information/acdata/pdf/62-01-01.pdf
-  key_coverage: State Plumbing Board organization and rulemaking/code authority
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_current
+  supports:
+  - State Plumbing Board organization and rulemaking/code authority
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nd:ndac-62-03-1-01
-  source_name: North Dakota Administrative Code Chapter 62-03.1-01, General Provisions
-  publisher___custodian: North Dakota Legislative Branch
+  title: North Dakota Administrative Code Chapter 62-03.1-01, General Provisions
   source_type: administrative rule PDF
+  publisher: North Dakota Legislative Branch
   url: https://ndlegis.gov/information/acdata/pdf/62-03.1-01.pdf
-  key_coverage: 2018 UPC adoption as North Dakota Plumbing Code and board administration
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_current
+  supports:
+  - 2018 UPC adoption as North Dakota Plumbing Code and board administration
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nd:ndac-62-03-1-02
-  source_name: North Dakota Administrative Code Chapter 62-03.1-02, Local Ordinances
-  publisher___custodian: North Dakota Legislative Branch
+  title: North Dakota Administrative Code Chapter 62-03.1-02, Local Ordinances
   source_type: administrative rule PDF
+  publisher: North Dakota Legislative Branch
   url: https://ndlegis.gov/information/acdata/pdf/62-03.1-02.pdf
-  key_coverage: Plumbing interaction with local ordinances and other legal requirements
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_current
+  supports:
+  - Plumbing interaction with local ordinances and other legal requirements
+  caveats: []
+  notes: []
+  details: []

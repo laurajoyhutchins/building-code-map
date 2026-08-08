@@ -14,6 +14,7 @@ authority_structure:
   - src:usa-co:crs-title-31
   verification_status:
   - partially_verified
+  parent_agency: null
 - authority_id: ahj:usa-co:energy-code-board
   authority_name: Colorado Energy Code Board / Colorado Energy Office / Department
     of Local Affairs
@@ -30,6 +31,7 @@ authority_structure:
   - src:usa-co:crs-title-31
   verification_status:
   - partially_verified
+  parent_agency: null
 - authority_id: ahj:usa-co:state-electrical-board
   authority_name: Colorado State Electrical Board
   authority_type: state_trade_code_authority
@@ -44,6 +46,7 @@ authority_structure:
   - src:usa-co:3-ccr-710-1-rule-info
   verification_status:
   - verified
+  parent_agency: null
 - authority_id: ahj:usa-co:state-plumbing-board
   authority_name: Colorado State Plumbing Board
   authority_type: state_trade_code_authority
@@ -58,6 +61,7 @@ authority_structure:
   - src:usa-co:3-ccr-720-1-rule-info
   verification_status:
   - verified
+  parent_agency: null
 - authority_id: ahj:usa-co:dfpc
   authority_name: Colorado Division of Fire Prevention and Control
   authority_type: state_fire_and_life_safety_program_authority
@@ -73,6 +77,7 @@ authority_structure:
   - src:usa-co:8-ccr-1507-30
   verification_status:
   - partially_verified
+  parent_agency: null
 - authority_id: ahj:usa-co:division-of-housing
   authority_name: Colorado Division of Housing / State Housing Board
   authority_type: state_special_building_program_authority
@@ -89,6 +94,7 @@ authority_structure:
   - src:usa-co:session-law-2022-ch301
   verification_status:
   - partially_verified
+  parent_agency: null
 - authority_id: ahj:usa-co:office-of-state-architect
   authority_name: Colorado Office of the State Architect
   authority_type: state_facilities_authority
@@ -101,6 +107,7 @@ authority_structure:
   - src:usa-co:session-law-2022-ch301
   verification_status:
   - partially_verified
+  parent_agency: null
 - authority_id: ahj:usa-co:elevator-safety
   authority_name: Elevator and escalator code authority
   authority_type: state_trade_or_special_program_authority
@@ -115,6 +122,7 @@ authority_structure:
   - src:usa-co:crs-title-31
   verification_status:
   - unresolved
+  parent_agency: null
 - authority_id: ahj:usa-co:accessibility
   authority_name: Accessibility authority
   authority_type: state_or_local_special_program_authority
@@ -126,3 +134,4 @@ authority_structure:
   - src:usa-co:ccr-portal
   verification_status:
   - unresolved
+  parent_agency: null

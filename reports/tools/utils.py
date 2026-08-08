@@ -3,7 +3,22 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-import yaml
+from schemas import (
+    AUTHORITY_ALIASES,
+    OFFICIAL_SOURCE_ALIASES,
+    ValueKind,
+    canonicalize_document,
+    get_schema,
+    normalize_field_name,
+)
+from yaml_io import dump_yaml
+
+
+BACKSLASH = chr(92)
+
+
+class ConversionError(ValueError):
+    """Raised when report content cannot be converted without losing data."""
 
 
 def parse_heading(heading: str) -> tuple[int | None, str]:
@@ -38,32 +53,84 @@ def is_heading_line(line: str, level: int | None, title: str) -> bool:
     return content == title and (level is None or current_level == level)
 
 
-def parse_value(val: str, header: str = "") -> str | int | float | list[str] | None:
-    stripped = val.strip().strip("`")
+def _strip_markdown(value: str) -> str:
+    stripped = value.strip()
+    if stripped.startswith("**") and stripped.endswith("**") and len(stripped) >= 4:
+        stripped = stripped[2:-2].strip()
+    if stripped.startswith("`") and stripped.endswith("`") and stripped.count("`") == 2:
+        stripped = stripped[1:-1].strip()
+    return stripped
 
-    if stripped.lower() in ("null", "none", "n/a"):
-        return None
 
-    is_plural_header = header.endswith("s")
+def _unescape(value: str) -> str:
+    return (
+        value.replace(BACKSLASH + "|", "|")
+        .replace(BACKSLASH + ",", ",")
+        .replace(BACKSLASH + ";", ";")
+        .replace(BACKSLASH * 2, BACKSLASH)
+    )
 
-    if "`" in val and (";" in val or "," in val):
-        items = re.findall(r"`([^`]+)`", val)
-        if items:
-            return items if len(items) > 1 else items[0]
-        return [i.strip().strip("`") for i in re.split(r"[;,]", val) if i.strip()]
 
-    if is_plural_header:
-        if ";" in val or "," in val:
-            items = [i.strip().strip("`") for i in re.split(r"[;,]", val) if i.strip()]
-            return items if len(items) > 1 else items[0] if items else stripped
+def _split_list(value: str, delimiters: tuple[str, ...] = (",", ";")) -> list[str]:
+    stripped = value.strip()
+    if not stripped or stripped.lower() in {"null", "none", "n/a"}:
+        return []
+
+    items: list[str] = []
+    current: list[str] = []
+    in_code = False
+    escaped = False
+
+    for char in stripped:
+        if escaped:
+            current.append(BACKSLASH)
+            current.append(char)
+            escaped = False
+            continue
+        if char == BACKSLASH:
+            escaped = True
+            continue
+        if char == "`":
+            in_code = not in_code
+            current.append(char)
+            continue
+        if char in delimiters and not in_code:
+            item = _unescape(_strip_markdown("".join(current)))
+            if item:
+                items.append(item)
+            current = []
+            continue
+        current.append(char)
+
+    if escaped:
+        current.append(BACKSLASH)
+
+    item = _unescape(_strip_markdown("".join(current)))
+    if item:
+        items.append(item)
+    return items
+
+
+def parse_value(
+    value: str,
+    kind: ValueKind = "string",
+    *,
+    delimiters: tuple[str, ...] = (",", ";"),
+) -> str | int | float | list[str] | None:
+    stripped = _unescape(_strip_markdown(value))
+
+    if kind == "string":
         return stripped
-
-    try:
-        if "." in stripped:
+    if kind == "string_list":
+        return _split_list(value, delimiters)
+    if kind == "nullable_string":
+        return None if stripped.lower() in {"null", "none", "n/a"} else stripped
+    if kind == "number":
+        try:
             return float(stripped)
-        return int(stripped)
-    except ValueError:
-        return stripped
+        except ValueError as exc:
+            raise ConversionError(f"Expected numeric value, got {value!r}.") from exc
+    raise ConversionError(f"Table input cannot directly populate schema type '{kind}'.")
 
 
 def find_table_under_heading(lines: list[str], heading: str) -> list[str]:
@@ -76,7 +143,7 @@ def find_table_under_heading(lines: list[str], heading: str) -> list[str]:
             break
 
     if start_index is None:
-        raise ValueError(f"No '{heading}' heading found.")
+        raise ConversionError(f"No '{heading}' heading found.")
 
     i = start_index + 1
     while i < len(lines) and lines[i].strip() == "":
@@ -93,55 +160,212 @@ def find_table_under_heading(lines: list[str], heading: str) -> list[str]:
             continue
         break
 
+    if not table_lines:
+        raise ConversionError(f"No Markdown table found under '{heading}'.")
     return table_lines
 
 
-class _CleanDumper(yaml.Dumper):
-    """YAML dumper that produces clean, consistently indented output."""
+def split_markdown_row(row: str) -> list[str]:
+    stripped = row.strip()
+    if not stripped.startswith("|") or not stripped.endswith("|"):
+        raise ConversionError("Markdown table rows must begin and end with '|'.")
 
-    def _prepare_tag(self, tag):
-        return tag
+    body = stripped[1:-1]
+    columns: list[str] = []
+    current: list[str] = []
+    in_code = False
+    escaped = False
 
-
-def _represent_none(dumper, _):
-    return dumper.represent_scalar("tag:yaml.org,2002:null", "null")
-
-
-def _represent_str(dumper, data):
-    if data == "":
-        return dumper.represent_scalar("tag:yaml.org,2002:str", data, style="'")
-    return dumper.represent_scalar("tag:yaml.org,2002:str", data)
-
-
-_CleanDumper.add_representer(type(None), _represent_none)
-_CleanDumper.add_representer(str, _represent_str)
-
-
-def table_to_yaml(table_lines: list[str], root_key: str) -> str:
-    if len(table_lines) < 3:
-        raise ValueError(f"Invalid Markdown table under '{root_key}'.")
-
-    headers = [col.strip() for col in table_lines[0].split("|")[1:-1]]
-    data_rows = table_lines[2:]
-    yaml_data = []
-
-    for row in data_rows:
-        columns = [col.strip() for col in row.split("|")[1:-1]]
-        if len(columns) != len(headers):
+    for char in body:
+        if escaped:
+            if char in {"|", BACKSLASH}:
+                current.append(char)
+            else:
+                current.extend((BACKSLASH, char))
+            escaped = False
             continue
+        if char == BACKSLASH:
+            escaped = True
+            continue
+        if char == "`":
+            in_code = not in_code
+            current.append(char)
+            continue
+        if char == "|" and not in_code:
+            columns.append("".join(current).strip())
+            current = []
+            continue
+        current.append(char)
 
-        row_dict = {}
-        for header, val in zip(headers, columns):
-            clean_key = header.lower().replace(" ", "_").replace("/", "_")
-            row_dict[clean_key] = parse_value(val, clean_key)
-        yaml_data.append(row_dict)
+    if escaped:
+        current.append(BACKSLASH)
+    if in_code:
+        raise ConversionError("Markdown table row contains an unclosed inline-code span.")
+    columns.append("".join(current).strip())
+    return columns
 
-    return yaml.dump(
-        {root_key: yaml_data},
-        Dumper=_CleanDumper,
-        sort_keys=False,
-        default_flow_style=False,
-    )
+
+def _context(source_name: str, heading: str, row_number: int | None = None) -> str:
+    context = f"{source_name}, heading '{heading}'"
+    if row_number is not None:
+        context += f", row {row_number}"
+    return context
+
+
+def _validate_separator(row: str, expected_columns: int, source_name: str, heading: str) -> None:
+    columns = split_markdown_row(row)
+    if len(columns) != expected_columns or any(
+        re.fullmatch(r":?-{3,}:?", column) is None for column in columns
+    ):
+        raise ConversionError(
+            f"Invalid Markdown separator row in {_context(source_name, heading)}."
+        )
+
+
+def _canonical_input_field(root_key: str, raw_field: str) -> tuple[str, str, ValueKind]:
+    normalized = normalize_field_name(raw_field)
+    schema = get_schema(root_key)
+    if root_key == "authority_structure":
+        canonical = AUTHORITY_ALIASES.get(normalized)
+        if canonical is None:
+            raise ConversionError(f"Unknown authority field {raw_field!r}.")
+        return normalized, canonical, schema.fields[canonical].kind
+    if root_key == "key_findings":
+        if normalized not in schema.fields:
+            raise ConversionError(f"Unknown key-finding field {raw_field!r}.")
+        return normalized, normalized, schema.fields[normalized].kind
+    if root_key == "official_sources":
+        canonical = OFFICIAL_SOURCE_ALIASES.get(normalized)
+        if canonical is None:
+            return normalized, normalized, "string"
+        return normalized, canonical, schema.fields[canonical].kind
+    raise AssertionError(f"Unhandled root key: {root_key}")
+
+
+def _parse_cell(
+    root_key: str,
+    field: str,
+    value: str,
+    source_name: str,
+    heading: str,
+    row_number: int,
+) -> tuple[str, object]:
+    try:
+        normalized, canonical, kind = _canonical_input_field(root_key, field)
+        delimiters: tuple[str, ...] = (",", ";")
+        if kind == "string_list":
+            if canonical in {"legal_basis", "verification_status"}:
+                delimiters = (";",)
+            elif canonical not in {"source_ids"}:
+                delimiters = (";",)
+        return normalized, parse_value(value, kind, delimiters=delimiters)
+    except (ConversionError, ValueError) as exc:
+        raise ConversionError(
+            f"{_context(source_name, heading, row_number)}, field '{field}': {exc}"
+        ) from exc
+
+
+def _convert_field_value_table(
+    table_lines: list[str], root_key: str, source_name: str, heading: str
+) -> dict[str, object]:
+    headers = tuple(_strip_markdown(header) for header in split_markdown_row(table_lines[0]))
+    if headers != ("Field", "Value"):
+        raise ConversionError(
+            f"Unexpected field/value table headers in {_context(source_name, heading)}: "
+            f"got {headers}."
+        )
+    _validate_separator(table_lines[1], len(headers), source_name, heading)
+
+    record: dict[str, object] = {}
+    for row_number, row in enumerate(table_lines[2:], start=1):
+        try:
+            columns = split_markdown_row(row)
+        except ConversionError as exc:
+            raise ConversionError(f"{_context(source_name, heading, row_number)}: {exc}") from exc
+        if len(columns) != len(headers):
+            raise ConversionError(
+                f"{_context(source_name, heading, row_number)}: expected {len(headers)} columns, "
+                f"got {len(columns)}."
+            )
+        field, parsed = _parse_cell(
+            root_key, columns[0], columns[1], source_name, heading, row_number
+        )
+        if field in record:
+            raise ConversionError(
+                f"{_context(source_name, heading, row_number)}: duplicate field '{field}'."
+            )
+        record[field] = parsed
+    return {root_key: record}
+
+
+def _convert_records_table(
+    table_lines: list[str], root_key: str, source_name: str, heading: str
+) -> dict[str, object]:
+    headers = [_strip_markdown(header) for header in split_markdown_row(table_lines[0])]
+    _validate_separator(table_lines[1], len(headers), source_name, heading)
+
+    normalized_headers: list[str] = []
+    for header in headers:
+        normalized, _, _ = _canonical_input_field(root_key, header)
+        if normalized in normalized_headers:
+            raise ConversionError(
+                f"Duplicate normalized table header '{normalized}' in {_context(source_name, heading)}."
+            )
+        normalized_headers.append(normalized)
+
+    records: list[dict[str, object]] = []
+    for row_number, row in enumerate(table_lines[2:], start=1):
+        try:
+            columns = split_markdown_row(row)
+        except ConversionError as exc:
+            raise ConversionError(f"{_context(source_name, heading, row_number)}: {exc}") from exc
+        if len(columns) != len(headers):
+            raise ConversionError(
+                f"{_context(source_name, heading, row_number)}: expected {len(headers)} columns, "
+                f"got {len(columns)}."
+            )
+
+        record: dict[str, object] = {}
+        for header, value in zip(headers, columns):
+            field, parsed = _parse_cell(
+                root_key, header, value, source_name, heading, row_number
+            )
+            record[field] = parsed
+        records.append(record)
+    return {root_key: records}
+
+
+def table_to_yaml(
+    table_lines: list[str],
+    root_key: str,
+    *,
+    source_name: str = "<memory>",
+    heading: str | None = None,
+) -> str:
+    display_heading = heading or root_key
+    if len(table_lines) < 3:
+        raise ConversionError(
+            f"Invalid Markdown table in {_context(source_name, display_heading)}: "
+            "expected a header, separator, and at least one data row."
+        )
+
+    get_schema(root_key)
+    headers = tuple(_strip_markdown(header) for header in split_markdown_row(table_lines[0]))
+    try:
+        if headers == ("Field", "Value"):
+            raw_document = _convert_field_value_table(
+                table_lines, root_key, source_name, display_heading
+            )
+        else:
+            raw_document = _convert_records_table(
+                table_lines, root_key, source_name, display_heading
+            )
+        canonical = canonicalize_document(raw_document, source_name)
+    except ValueError as exc:
+        if isinstance(exc, ConversionError):
+            raise
+        raise ConversionError(f"{_context(source_name, display_heading)}: {exc}") from exc
+    return dump_yaml(canonical)
 
 
 def resolve_report_paths(reports_arg: list[str] | None, raw_dir: Path) -> list[Path]:

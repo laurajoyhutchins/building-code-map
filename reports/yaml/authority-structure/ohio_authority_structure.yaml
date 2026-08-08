@@ -1,20 +1,19 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: ahj:usa-oh:bbs
-- field: Authority name
-  value: Ohio Board of Building Standards
-- field: Authority type
-  value: statewide building-code board
-- field: Legal basis
-  value: ORC 3781.10; related certification rules in OAC Chapter 4101:7
-- field: Role
-  value: Formulates and adopts statewide construction-code rules; certifies local
-    building departments, personnel, and related program participants.
-- field: Enforcement model
-  value: Statewide minimum code with certified local enforcement and state backstop/specialized
-    enforcement paths.
-- field: Source IDs
-  value: src:usa-oh:orc-3781-10; src:usa-oh:oac-4101-7-1-01; src:usa-oh:oac-4101-7-2-01
-- field: Verification status
-  value: verified_core
+- authority_id: ahj:usa-oh:bbs
+  authority_name: Ohio Board of Building Standards
+  authority_type: statewide building-code board
+  legal_basis:
+  - ORC 3781.10
+  - related certification rules in OAC Chapter 4101:7
+  role: Formulates and adopts statewide construction-code rules; certifies local building
+    departments, personnel, and related program participants.
+  enforcement_model: Statewide minimum code with certified local enforcement and state
+    backstop/specialized enforcement paths.
+  source_ids:
+  - src:usa-oh:orc-3781-10
+  - src:usa-oh:oac-4101-7-1-01
+  - src:usa-oh:oac-4101-7-2-01
+  verification_status:
+  - verified_core
+  parent_agency: null
