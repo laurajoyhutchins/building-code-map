@@ -189,6 +189,17 @@ jobs:
           --profiles-root data/regulatory
           --root data/state-regimes
 
+      - name: Validate pilot entity coverage ledger
+        working-directory: backend
+        run: >-
+          go run ./cmd/coverage-ledger-build validate
+          --inventory-root data/governmental-entities/2025
+          --regimes-root data/state-regimes
+          --output data/jurisdiction-coverage/pilot-building-2026-08-08.json
+          --states US-CO,US-FL,US-NC,US-NJ,US-OR,US-VA
+          --code-family building
+          --applicability-date 2026-08-08
+
       - name: Generate nationwide quality report
         run: >-
           python reports/tools/regulatory.py coverage
