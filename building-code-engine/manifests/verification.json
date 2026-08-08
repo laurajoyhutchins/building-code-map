@@ -1,0 +1,87 @@
+{
+  "schema_version": "1",
+  "generated_at": "2026-08-08T06:00:03Z",
+  "source_commit": "f19664c296ebbc061bf1a836af9609ba20b44c3e",
+  "build": {
+    "go_version": "go1.25.0",
+    "goos": "linux",
+    "goarch": "amd64",
+    "cgo_enabled": "0",
+    "trimpath": true,
+    "build_id_cleared": true,
+    "geocoder_source_name": "building-code-map-release-fixtures",
+    "geocoder_source_vintage": "f19664c296ebbc061bf1a836af9609ba20b44c3e"
+  },
+  "binary": {
+    "path": "bin/bcm",
+    "sha256": "ac968ba2581f68833e30f56f2e1fc81dfd15f370d383de4ac32f00f1126f0ea9"
+  },
+  "geocoder": {
+    "path": "data/geocoder.sqlite",
+    "sha256": "8e8224190e12e37c62c3917efbeb8fab3cb50b205d2a7ab34a0aa2834e713efe",
+    "snapshot_manifest": {
+      "path": "data/geocoder.sqlite.manifest.json",
+      "sha256": "cfeba51ce9ad26789ec33054c3e6a69e68f973832b6d92a31bce544f85e038da"
+    }
+  },
+  "checks": [
+    {
+      "name": "go-test",
+      "status": "passed"
+    },
+    {
+      "name": "go-vet",
+      "status": "passed"
+    },
+    {
+      "name": "deterministic-binary-build",
+      "status": "passed"
+    },
+    {
+      "name": "geocoder-rebuild",
+      "status": "passed"
+    },
+    {
+      "name": "geocoder-byte-reproducibility",
+      "status": "passed"
+    },
+    {
+      "name": "geocoder-manifest-reproducibility",
+      "status": "passed"
+    },
+    {
+      "name": "bundle-inspect",
+      "status": "passed"
+    },
+    {
+      "name": "cli-resolve",
+      "status": "passed"
+    },
+    {
+      "name": "cli-geocode",
+      "status": "passed"
+    },
+    {
+      "name": "http-readiness",
+      "status": "passed"
+    },
+    {
+      "name": "http-resolve",
+      "status": "passed"
+    },
+    {
+      "name": "mcp-initialize",
+      "status": "passed"
+    },
+    {
+      "name": "offline-verification",
+      "status": "passed"
+    },
+    {
+      "name": "cold-room-verification",
+      "status": "passed"
+    }
+  ],
+  "cold_room_mode": "fallback",
+  "workflow_run": "https://github.com/laurajoyhutchins/building-code-map/actions/runs/31242934381"
+}

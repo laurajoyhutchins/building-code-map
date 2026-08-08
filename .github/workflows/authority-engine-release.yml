@@ -1,0 +1,280 @@
+name: Authority engine release regeneration
+
+on:
+  push:
+    branches:
+      - build/authority-engine-offline-release
+    paths:
+      - .github/workflows/authority-engine-release.yml
+      - backend/**
+      - building-code-engine/*.sh
+      - schemas/engine-*.schema.json
+      - tools/regenerate_authority_engine_release.py
+
+permissions:
+  contents: write
+
+concurrency:
+  group: authority-engine-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  regenerate-and-verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out exact source head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: backend/go.mod
+          cache-dependency-path: backend/go.sum
+
+      - name: Record build identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "SOURCE_COMMIT=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          echo "GO_VERSION=$(go version | awk '{print $3}')" >> "$GITHUB_ENV"
+
+      - name: Verify source tree
+        working-directory: backend
+        shell: bash
+        run: |
+          set -euo pipefail
+          go test ./...
+          go vet ./...
+
+      - name: Build deterministic Linux binary
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p building-code-engine/bin
+          cd backend
+          CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+            go build -trimpath -ldflags='-buildid=' \
+            -o ../building-code-engine/bin/bcm ./cmd/bcm
+
+      - name: Build deterministic geocoder snapshot and manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          first="../building-code-engine/data/geocoder.candidate-a.sqlite"
+          second="../building-code-engine/data/geocoder.candidate-b.sqlite"
+          final="../building-code-engine/data/geocoder.sqlite"
+          template="$RUNNER_TEMP/geocoder-manifest-template.json"
+          rm -f building-code-engine/data/geocoder*.sqlite \
+            building-code-engine/data/geocoder*.sqlite.manifest.json
+          python3 - "$template" <<'PY'
+          import csv
+          import hashlib
+          import json
+          import os
+          import subprocess
+          import sys
+          from pathlib import Path
+
+          root = Path.cwd()
+          source_commit = os.environ["SOURCE_COMMIT"]
+          built_at = subprocess.check_output(
+              ["git", "show", "-s", "--format=%cI", source_commit],
+              text=True,
+          ).strip()
+          sources = [
+              root / "backend/geocoder/testdata/address_points.csv",
+              root / "backend/geocoder/testdata/street_ranges.csv",
+          ]
+          digest = hashlib.sha256()
+          accepted = 0
+          for path in sources:
+              file_digest = hashlib.sha256(path.read_bytes()).hexdigest()
+              relative = path.relative_to(root).as_posix()
+              digest.update(f"{relative}\0{file_digest}\n".encode())
+              with path.open(newline="", encoding="utf-8") as handle:
+                  accepted += max(sum(1 for _ in csv.reader(handle)) - 1, 0)
+          manifest = {
+              "schema_version": "1.0",
+              "snapshot_id": f"geocoder-release-{source_commit[:12]}",
+              "kind": "geocoder",
+              "sources": [
+                  {
+                      "publisher": "Building Code Map",
+                      "product": "release geocoder fixtures",
+                      "vintage": source_commit,
+                      "locator": "backend/geocoder/testdata",
+                      "sha256": digest.hexdigest(),
+                      "retrieved_at": built_at,
+                      "license_review_status": "reviewed",
+                      "redistribution_status": "repository-owned",
+                      "input_crs": "EPSG:4326",
+                      "transformation": "normalized deterministic fixture import",
+                  }
+              ],
+              "builder": {
+                  "tool": "geocoder-build",
+                  "version": "0.1.0",
+                  "revision": source_commit,
+                  "built_at": built_at,
+                  "output_crs": "EPSG:4326",
+              },
+              "record_counts": {
+                  "accepted": accepted,
+                  "rejected": 0,
+                  "duplicate": 0,
+                  "quarantined": 0,
+              },
+              "output_sha256": "",
+              "output_size_bytes": 0,
+              "integrity_checks": [
+                  {"name": "fixture-import", "status": "passed"}
+              ],
+          }
+          Path(sys.argv[1]).write_text(
+              json.dumps(manifest, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          PY
+          cd backend
+          build_geocoder() {
+            output=$1
+            go run ./cmd/geocoder-build \
+              --output "$output" \
+              --address-points geocoder/testdata/address_points.csv \
+              --street-ranges geocoder/testdata/street_ranges.csv \
+              --source-name building-code-map-release-fixtures \
+              --source-vintage "$SOURCE_COMMIT" \
+              --manifest-template "$template"
+          }
+          build_geocoder "$first"
+          build_geocoder "$second"
+          cmp "$first" "$second"
+          cmp "${first}.manifest.json" "${second}.manifest.json"
+          mv "$first" "$final"
+          mv "${first}.manifest.json" "${final}.manifest.json"
+          rm -f "$second" "${second}.manifest.json"
+
+      - name: Refresh package README identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - "$SOURCE_COMMIT" <<'PY'
+          import re
+          import sys
+          from pathlib import Path
+
+          path = Path("building-code-engine/README.md")
+          content = path.read_text(encoding="utf-8")
+          updated, count = re.subn(
+              r"(?<=source commit\n)`[0-9a-f]{40}`",
+              f"`{sys.argv[1]}`",
+              content,
+              count=1,
+          )
+          if count != 1:
+              raise SystemExit("README source commit marker was not found exactly once")
+          path.write_text(updated, encoding="utf-8")
+          PY
+          grep -F "$SOURCE_COMMIT" building-code-engine/README.md >/dev/null
+
+      - name: Prepare package manifests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/regenerate_authority_engine_release.py prepare \
+            --source-commit "$SOURCE_COMMIT" \
+            --go-version "$GO_VERSION"
+
+      - name: Verify prepared package offline
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./building-code-engine/verify-offline.sh
+
+      - name: Verify prepared package in cold room
+        id: cold_room
+        shell: bash
+        run: |
+          set -euo pipefail
+          output_file=$(mktemp)
+          trap 'rm -f "$output_file"' EXIT
+          ./building-code-engine/cold-room-verify.sh 2>&1 | tee "$output_file"
+          if grep -q '^network-namespace-disabled$' "$output_file"; then
+            mode=isolated
+          elif grep -q '^network-namespace-fallback$' "$output_file"; then
+            mode=fallback
+          else
+            echo 'cold-room verification did not report a supported network mode' >&2
+            exit 1
+          fi
+          echo "COLD_ROOM_MODE=$mode" >> "$GITHUB_ENV"
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+
+      - name: Finalize verification receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/regenerate_authority_engine_release.py finalize \
+            --source-commit "$SOURCE_COMMIT" \
+            --go-version "$GO_VERSION" \
+            --cold-room-mode "$COLD_ROOM_MODE" \
+            --workflow-run "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+
+      - name: Reverify finalized package
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./building-code-engine/verify-offline.sh
+          ./building-code-engine/cold-room-verify.sh
+          grep -F "$SOURCE_COMMIT" building-code-engine/README.md >/dev/null
+          git diff --check
+
+      - name: Commit regenerated package
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add building-code-engine
+          git ls-files --error-unmatch building-code-engine/data/geocoder.sqlite >/dev/null
+          if git diff --cached --quiet; then
+            echo 'release generator produced no package changes' >&2
+            exit 1
+          fi
+          git commit -m 'release: regenerate authority engine package'
+          echo "PACKAGE_COMMIT=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          git push origin HEAD:build/authority-engine-offline-release
+
+      - name: Prepare immutable Drive transport
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p drive-transport
+          cp -a building-code-engine drive-transport/
+          ./building-code-engine/bin/bcm --help > drive-transport/bcm-help.txt 2>&1
+          test -s drive-transport/bcm-help.txt
+          sha256sum building-code-engine/bin/bcm > drive-transport/bcm.sha256
+          cat > drive-transport/transport.json <<JSON
+          {
+            "schema_version": "1.0",
+            "package_commit": "$PACKAGE_COMMIT",
+            "source_commit": "$SOURCE_COMMIT",
+            "binary_path": "building-code-engine/bin/bcm",
+            "binary_sha256": "$(awk '{print $1}' drive-transport/bcm.sha256)",
+            "platform": "linux-amd64",
+            "purpose": "Google Drive transport into Offline Execution"
+          }
+          JSON
+
+      - name: Upload exact package for Drive transport
+        uses: actions/upload-artifact@v4
+        with:
+          name: building-code-engine-${{ env.PACKAGE_COMMIT }}-linux-amd64
+          path: drive-transport
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7

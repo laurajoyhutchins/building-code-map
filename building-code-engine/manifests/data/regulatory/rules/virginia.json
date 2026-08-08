@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.0",
+  "state_id": "US-VA",
+  "source_health": {
+    "src:us-va:dhcd-codes": {
+      "last_checked_at": "2026-08-04",
+      "availability": "available"
+    },
+    "src:us-va:dhcd-usbc": {
+      "last_checked_at": "2026-08-04",
+      "availability": "available"
+    },
+    "src:us-va:code-36-98": {
+      "last_checked_at": "2026-08-04",
+      "availability": "available"
+    },
+    "src:us-va:code-36-105": {
+      "last_checked_at": "2026-08-04",
+      "availability": "available"
+    },
+    "src:us-va:vac-13-5-63-10": {
+      "last_checked_at": "2026-08-04",
+      "availability": "available"
+    },
+    "src:us-va:vac-13-5-63-30": {
+      "last_checked_at": "2026-08-04",
+      "availability": "available"
+    },
+    "src:us-va:vac-13-5-63-400": {
+      "last_checked_at": "2026-08-04",
+      "availability": "available"
+    }
+  },
+  "applicability_rules": [
+    {
+      "id": "rule:us-va:statewide-vcc",
+      "code_family": "building",
+      "trigger": "covered_construction_or_addition",
+      "summary": "The Virginia Construction Code supplies the statewide baseline for covered construction and additions.",
+      "source_ids": [
+        "src:us-va:dhcd-usbc",
+        "src:us-va:vac-13-5-63-10"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-va:statewide-vebc",
+      "code_family": "existing_building",
+      "trigger": "covered_existing_building_work",
+      "summary": "The Virginia Existing Building Code supplies the statewide baseline for covered rehabilitation work in existing buildings.",
+      "source_ids": [
+        "src:us-va:vac-13-5-63-30",
+        "src:us-va:vac-13-5-63-400"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.9
+      }
+    }
+  ],
+  "date_rules": [
+    {
+      "id": "rule:us-va:2021-vcc-transition",
+      "code_family": "building",
+      "rule_type": "edition_transition",
+      "trigger": "permit_application_date",
+      "start_date": "2024-01-18",
+      "end_date": "2025-01-17",
+      "prior_code_allowed": true,
+      "summary": "During the one-year period beginning January 18, 2024, a permit applicant may elect the 2021 Virginia Construction Code or the immediately prior edition.",
+      "source_ids": [
+        "src:us-va:vac-13-5-63-30"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-va:2021-vcc-mandatory",
+      "code_family": "building",
+      "rule_type": "mandatory_date",
+      "trigger": "permit_application_date",
+      "start_date": "2025-01-18",
+      "prior_code_allowed": false,
+      "summary": "For permit applications on or after January 18, 2025, the recorded 2021 Virginia Construction Code is mandatory unless another specific rule applies.",
+      "source_ids": [
+        "src:us-va:vac-13-5-63-30"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-va:2021-vebc-transition",
+      "code_family": "existing_building",
+      "rule_type": "edition_transition",
+      "trigger": "permit_application_date",
+      "start_date": "2024-01-18",
+      "end_date": "2025-01-17",
+      "prior_code_allowed": true,
+      "summary": "During the one-year period beginning January 18, 2024, covered existing-building work may use the 2021 USBC edition or the immediately prior edition when the permit election rule applies.",
+      "source_ids": [
+        "src:us-va:vac-13-5-63-30",
+        "src:us-va:vac-13-5-63-400"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "rule:us-va:2021-vebc-mandatory",
+      "code_family": "existing_building",
+      "rule_type": "mandatory_date",
+      "trigger": "permit_application_date",
+      "start_date": "2025-01-18",
+      "prior_code_allowed": false,
+      "summary": "For covered permit applications on or after January 18, 2025, the recorded 2021 Virginia Existing Building Code is mandatory unless another specific rule applies.",
+      "source_ids": [
+        "src:us-va:vac-13-5-63-30",
+        "src:us-va:vac-13-5-63-400"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.9
+      }
+    }
+  ],
+  "amendment_rules": [
+    {
+      "id": "rule:us-va:statewide-preemption-local-administration",
+      "code_family": "construction_code",
+      "level": "state",
+      "posture": "statewide_code_local_administration",
+      "authority_id": "auth:us-va:board-housing-community-development",
+      "summary": "The statewide code supersedes local building codes within its statutory scope, while local administrative procedures and identified statutory exceptions still require confirmation.",
+      "source_ids": [
+        "src:us-va:code-36-98",
+        "src:us-va:code-36-105"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.9
+      }
+    }
+  ],
+  "enforcement_rules": [
+    {
+      "id": "rule:us-va:local-building-department-enforcement",
+      "code_family": "construction_code",
+      "model": "local",
+      "entity_kinds": [
+        "municipality",
+        "county",
+        "contracted_building_department"
+      ],
+      "authority_ids": [
+        "auth:us-va:board-housing-community-development"
+      ],
+      "summary": "Local building departments ordinarily administer permits, inspections, and enforcement under the statewide USBC framework.",
+      "source_ids": [
+        "src:us-va:code-36-105"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim:us-va:vcc-effective-date",
+      "subject_id": "adoption:us-va:building:2021-vcc",
+      "field": "dates.effective_date",
+      "status": "supported",
+      "value": "2024-01-18",
+      "source_ids": [
+        "src:us-va:dhcd-codes",
+        "src:us-va:vac-13-5-63-10"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "claim:us-va:preemption",
+      "subject_id": "relationship:us-va:state-code-preempts-local-building-codes",
+      "field": "relationship",
+      "status": "supported",
+      "value": "preempts",
+      "source_ids": [
+        "src:us-va:code-36-98"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "resolver_fixture_ids": [
+    "fixture:us-va:richmond-building-current",
+    "fixture:us-va:norfolk-building-transition",
+    "fixture:us-va:fairfax-existing-building-current"
+  ]
+}

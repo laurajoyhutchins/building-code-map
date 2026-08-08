@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"io/fs"
 	"os"
 	"path/filepath"
 	"sort"
@@ -26,6 +27,7 @@ type Component struct {
 	SHA256       string `json:"sha256"`
 	ManifestPath string `json:"manifest_path,omitempty"`
 	Optional     bool   `json:"optional,omitempty"`
+	Recursive    bool   `json:"recursive,omitempty"`
 }
 
 type Coverage struct {
@@ -100,6 +102,9 @@ func (component Component) Validate(role string) error {
 	if component.Optional && role != "geocoder" {
 		return fmt.Errorf("%w: only geocoder may be optional", ErrInvalid)
 	}
+	if component.Recursive && role != "regulatory_catalog" {
+		return fmt.Errorf("%w: only regulatory_catalog may be recursive", ErrInvalid)
+	}
 	return nil
 }
 
@@ -130,7 +135,7 @@ func LoadAndVerify(path string) (Verified, error) {
 			return Verified{}, fmt.Errorf("%w: components %q and %q reuse path %q", ErrInvalid, previousRole, role, component.Path)
 		}
 		seenPaths[component.Path] = role
-		digest, _, digestErr := FileDigest(componentPath)
+		digest, _, digestErr := ComponentDigest(componentPath, component.Recursive)
 		if digestErr != nil {
 			if component.Optional && os.IsNotExist(digestErr) {
 				continue
@@ -177,6 +182,59 @@ func CanonicalJSON(manifest Manifest) ([]byte, error) {
 	}
 	manifest.Components = ordered
 	return json.MarshalIndent(manifest, "", "  ")
+}
+
+func ComponentDigest(path string, recursive bool) (string, int64, error) {
+	if !recursive {
+		return FileDigest(path)
+	}
+	return DirectoryDigest(path)
+}
+
+func DirectoryDigest(path string) (string, int64, error) {
+	root := filepath.Clean(path)
+	info, err := os.Stat(root)
+	if err != nil {
+		return "", 0, err
+	}
+	if !info.IsDir() {
+		return "", 0, fmt.Errorf("recursive component is not a directory")
+	}
+
+	var files []string
+	if err := filepath.WalkDir(root, func(current string, entry fs.DirEntry, walkErr error) error {
+		if walkErr != nil {
+			return walkErr
+		}
+		if entry.Type().IsRegular() {
+			files = append(files, current)
+		}
+		return nil
+	}); err != nil {
+		return "", 0, err
+	}
+	if len(files) == 0 {
+		return "", 0, fmt.Errorf("recursive component directory is empty")
+	}
+	sort.Strings(files)
+
+	hash := sha256.New()
+	var total int64
+	for _, file := range files {
+		relative, err := filepath.Rel(root, file)
+		if err != nil {
+			return "", 0, err
+		}
+		digest, size, err := FileDigest(file)
+		if err != nil {
+			return "", 0, err
+		}
+		if _, err := fmt.Fprintf(hash, "%s\x00%s\n", filepath.ToSlash(relative), digest); err != nil {
+			return "", 0, err
+		}
+		total += size
+	}
+	return hex.EncodeToString(hash.Sum(nil)), total, nil
 }
 
 func FileDigest(path string) (string, int64, error) {

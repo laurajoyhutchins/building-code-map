@@ -1,0 +1,18 @@
+{
+  "states": [
+    "CO",
+    "FL",
+    "NC",
+    "NJ",
+    "OR",
+    "VA"
+  ],
+  "code_families": [
+    "building",
+    "electrical",
+    "energy",
+    "fire_operational",
+    "residential"
+  ],
+  "as_of": "2026-08-06"
+}
