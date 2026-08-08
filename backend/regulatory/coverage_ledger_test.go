@@ -180,7 +180,7 @@ func testCoverageEntity(t *testing.T, identity string, entityType GovernmentalEn
 		LegalStatus: LegalStatusActive,
 		HistoricalGeographyStatus: HistoricalGeographyUnavailable,
 		Population: &EntityPopulation{Count: population, SourceYear: "2023"},
-		SourceIDs: []string{"src:entity"},
+		SourceIDs: []string{"src:test-inventory"},
 	})
 	if err != nil {
 		t.Fatal(err)
