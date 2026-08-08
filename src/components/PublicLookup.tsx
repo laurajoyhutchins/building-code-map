@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
-import { fetchLookup, fetchReadiness, fetchResolution } from "../lib/api";
+import { fetchEngineAddressResolution, fetchEngineResolution, fetchReadiness } from "../lib/api";
+import type { EngineProvenance } from "../lib/engineV1";
 import {
   classifyLocationQuery,
   formatCodeFamily,
@@ -28,6 +29,7 @@ export function PublicLookup(): JSX.Element {
   const [geocode, setGeocode] = useState<GeocodeResult | null>(null);
   const [error, setError] = useState<unknown>(null);
   const [readiness, setReadiness] = useState<ReadinessResult | null>(null);
+  const [provenance, setProvenance] = useState<EngineProvenance | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const requestController = useRef<AbortController | null>(null);
 
@@ -66,30 +68,30 @@ export function PublicLookup(): JSX.Element {
     setIsLoading(true);
     setError(null);
     try {
-      if (query.kind === "coordinates") {
-        const nextResult = await fetchResolution({
-          longitude: query.point.longitude,
-          latitude: query.point.latitude,
-          codeFamily,
-          applicabilityDate,
-          signal: controller.signal,
-        });
-        setGeocode(null);
-        setResult(nextResult);
-      } else {
-        const lookup = await fetchLookup({
-          address: query.address,
-          codeFamily,
-          applicabilityDate,
-          signal: controller.signal,
-        });
-        setGeocode(lookup.geocode);
-        setResult(lookup.resolution);
-      }
+      const nextResult =
+        query.kind === "coordinates"
+          ? await fetchEngineResolution({
+              longitude: query.point.longitude,
+              latitude: query.point.latitude,
+              codeFamily,
+              applicabilityDate,
+              signal: controller.signal,
+            })
+          : await fetchEngineAddressResolution({
+              address: query.address,
+              codeFamily,
+              applicabilityDate,
+              signal: controller.signal,
+            });
+
+      setGeocode(nextResult.location.geocode ?? null);
+      setResult(nextResult.resolution);
+      setProvenance(nextResult.provenance);
     } catch (requestError) {
       if (controller.signal.aborted) return;
       setResult(null);
       setGeocode(null);
+      setProvenance(null);
       setError(requestError instanceof Error ? requestError : new Error("The lookup failed."));
     } finally {
       if (requestController.current === controller) {
@@ -164,7 +166,7 @@ export function PublicLookup(): JSX.Element {
 
         <ApiEvidenceNotice error={error} />
 
-        {result ? <PublicResult result={result} geocode={geocode} /> : null}
+        {result ? <PublicResult result={result} geocode={geocode} provenance={provenance} /> : null}
       </main>
 
       <footer className="public-footer">
@@ -180,9 +182,11 @@ export function PublicLookup(): JSX.Element {
 function PublicResult({
   result,
   geocode,
+  provenance,
 }: {
   result: ResolutionResult;
   geocode: GeocodeResult | null;
+  provenance: EngineProvenance | null;
 }): JSX.Element {
   const notice = getResolutionNotice(result.status);
   const authorities = result.authorityCandidates;
@@ -204,6 +208,11 @@ function PublicResult({
         ) : null}
         {result.applicabilityDate ? <p>Applicable on {result.applicabilityDate}</p> : null}
         {notice ? <div className="public-message">{notice}</div> : null}
+        {provenance ? (
+          <small>
+            Engine {provenance.engineVersion} · bundle {provenance.bundleManifestDigest}
+          </small>
+        ) : null}
       </header>
 
       <ResultSection title="Authorities">
