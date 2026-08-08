@@ -2,11 +2,11 @@
 
 The Building Code Authority Engine is the transport-independent authority for location, jurisdiction, applicability, regulatory evidence, and bundle identity. It is owned by Building Code Map. Building Code AST remains responsible for parsing and navigating code-document content.
 
-## Current stack base
+## Current integration state
 
-The authority-engine stack currently descends from predecessor PR #48 at `0bc8c4b81996070a4568dd4896dea8ddc47a0c1f`. PR #45 supplies component snapshot manifests and activation identity, PR #47 supplies frontend runtime trust-boundary decoders, and PR #48 supplies geocoder ranking and interpolation provenance, including the completed frontend decoding and presentation path. The first engine pull request is temporarily dependent on that open predecessor stack and is not independently mergeable into `main` until those predecessors merge.
+The engine contracts, reusable core, public geocoder/regulatory/snapshot packages, legacy compatibility transport, and versioned HTTP transport are integrated on `main`. Snapshot manifests and activation identity from PR #45, frontend runtime trust-boundary decoding from PR #47, geocoder ranking and interpolation provenance from PR #48, and compact on-demand boundary detail from PR #58 remain part of the current contract and must be preserved by later transports.
 
-Frontend provenance behavior remains owned by PR #48. Authority-engine branches must not carry a second copy of those frontend changes. When a predecessor head changes, each descendant branch must be transplanted or rebased onto the exact new head, then re-verified before its prior evidence is reused.
+Frontend provenance remains presentation behavior rather than a second authority implementation. Transport layers may adapt engine results, but they must not duplicate ranking, geographic resolution, regulatory policy, snapshot identity, or bundle-identity decisions.
 
 ## Query contract
 
@@ -30,7 +30,7 @@ Engine errors are structured values with `code`, `message`, optional `details`, 
 
 `invalid_query`, `invalid_coordinates`, `address_not_found`, `address_ambiguous`, `boundary_ambiguous`, `outside_supported_coverage`, `regulatory_catalog_unavailable`, `regulatory_profile_missing`, `data_bundle_invalid`, and `internal_error`.
 
-Legacy HTTP routes retain their current response shapes while the engine contract is introduced. Versioned transports will map these errors without changing their meaning.
+Legacy HTTP routes retain their current response shapes. Versioned transports map these errors without changing their meaning.
 
 ## Provenance
 
@@ -39,3 +39,21 @@ Every result carries the source Git commit, engine version, aggregate bundle-man
 ## Determinism
 
 Production code uses an injected `Clock`; tests use `FixedClock`. A fixed query, source data, clock, and bundle identity must produce byte-equivalent normalized results. Diagnostics are explicitly sortable by severity, code, path, and message. No query-time network access is permitted.
+
+## CLI and bundle
+
+The machine-facing CLI is `bcm`. Resolution requires an explicit applicability date and writes only JSON to stdout:
+
+```text
+bcm resolve --point <longitude,latitude> --as-of YYYY-MM-DD
+bcm resolve --address <address> --as-of YYYY-MM-DD
+bcm geocode --address <address>
+bcm lookup --point <longitude,latitude>
+bcm inspect bundle
+bcm inspect jurisdiction --id <id>
+bcm serve --http 127.0.0.1:8000
+```
+
+`--pretty` is available for indented output. Exit code 0 means success, 1 an unexpected internal failure, 2 invalid arguments, 3 an ambiguous/unresolved outcome, and 4 invalid or unavailable bundle data.
+
+The aggregate bundle manifest is content-addressed and identifies the exact engine source, boundary snapshot, regulatory catalog, and optional geocoder files. PR #45 component manifests remain the authority for component activation and last-known-good identity; the aggregate manifest composes those identities for a single engine result provenance record.

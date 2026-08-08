@@ -1,0 +1,21 @@
+{
+  "schema_version": "1",
+  "engine_version": "0.1.0",
+  "source_commit": "95704632d476bf3acd9748f617f9f9792216f294",
+  "created_at": "2026-08-06T00:00:00Z",
+  "components": {
+    "boundary_snapshot": {
+      "path": "testdata/sample_snapshot.json",
+      "sha256": "2feb7751a351a84b9b84887bf90991988d0bed0da293563a40b0b55f6e0e2a6f"
+    },
+    "regulatory_catalog": {
+      "path": "data/regulatory/colorado.json",
+      "sha256": "6e5f10babe15c28c1dfccf415c489f9a03da439e12f1ade4124fa04c0d4c0be7"
+    }
+  },
+  "coverage": {
+    "states": ["CO"],
+    "code_families": ["building"],
+    "as_of": "2026-08-06"
+  }
+}
