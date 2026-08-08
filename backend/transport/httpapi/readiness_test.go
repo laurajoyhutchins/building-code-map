@@ -9,9 +9,9 @@ import (
 	"strings"
 	"testing"
 
-	"building-code-map/backend/internal/geocoder"
-	"building-code-map/backend/internal/regulatory"
-	"building-code-map/backend/internal/snapshot"
+	"building-code-map/backend/geocoder"
+	"building-code-map/backend/regulatory"
+	"building-code-map/backend/snapshot"
 )
 
 type readinessGeocoder struct{}
@@ -44,9 +44,9 @@ func TestReadinessReportsFullDegradedAndUnavailableCapabilities(t *testing.T) {
 	}{
 		{
 			name: "ready",
-			handler: NewHandler(boundarySnapshot, Options{
+			handler: NewLegacyHandler(boundarySnapshot, Options{
 				RegulatoryCatalog:  catalog,
-				Geocoder:            readinessGeocoder{},
+				Geocoder:           readinessGeocoder{},
 				BoundarySnapshotID: "boundary-2026-08-05",
 				GeocoderSnapshotID: "geocoder-2026-08-05",
 			}),
@@ -58,16 +58,16 @@ func TestReadinessReportsFullDegradedAndUnavailableCapabilities(t *testing.T) {
 		},
 		{
 			name:             "degraded",
-			handler:          NewHandler(boundarySnapshot),
+			handler:          NewLegacyHandler(boundarySnapshot),
 			wantStatus:       http.StatusOK,
 			wantReadiness:    "degraded",
 			wantAddressState: "unavailable",
 		},
 		{
 			name: "not ready",
-			handler: NewHandler(snapshot.Snapshot{}, Options{
+			handler: NewLegacyHandler(snapshot.Snapshot{}, Options{
 				RegulatoryCatalog: catalog,
-				Geocoder:           readinessGeocoder{},
+				Geocoder:          readinessGeocoder{},
 			}),
 			wantStatus:       http.StatusServiceUnavailable,
 			wantReadiness:    "not_ready",
@@ -113,7 +113,7 @@ func TestReadinessReportsFullDegradedAndUnavailableCapabilities(t *testing.T) {
 }
 
 func TestCORSPreflightAllowsConfiguredOrigin(t *testing.T) {
-	handler := NewHandler(snapshot.Snapshot{}, Options{AllowedOrigins: []string{"https://example.com"}})
+	handler := NewLegacyHandler(snapshot.Snapshot{}, Options{AllowedOrigins: []string{"https://example.com"}})
 	req := httptest.NewRequest(http.MethodOptions, "/lookup", nil)
 	req.Header.Set("Origin", "https://example.com")
 	req.Header.Set("Access-Control-Request-Method", http.MethodPost)
@@ -137,7 +137,7 @@ func TestCORSPreflightAllowsConfiguredOrigin(t *testing.T) {
 }
 
 func TestCORSPreflightRejectsUnconfiguredOrigin(t *testing.T) {
-	handler := NewHandler(snapshot.Snapshot{}, Options{AllowedOrigins: []string{"https://example.com"}})
+	handler := NewLegacyHandler(snapshot.Snapshot{}, Options{AllowedOrigins: []string{"https://example.com"}})
 	req := httptest.NewRequest(http.MethodOptions, "/lookup", nil)
 	req.Header.Set("Origin", "https://untrusted.example")
 	req.Header.Set("Access-Control-Request-Method", http.MethodPost)

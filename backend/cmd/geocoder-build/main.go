@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 
-	"building-code-map/backend/internal/geocoder"
+	"building-code-map/backend/geocoder"
 	"building-code-map/backend/internal/snapshotmanifest"
 )
 

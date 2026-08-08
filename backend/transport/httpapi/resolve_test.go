@@ -9,8 +9,8 @@ import (
 	"testing"
 
 	"building-code-map/backend/engine"
-	"building-code-map/backend/internal/regulatory"
-	"building-code-map/backend/internal/snapshot"
+	"building-code-map/backend/regulatory"
+	"building-code-map/backend/snapshot"
 )
 
 func TestResolveEndpointFindsGeographyAndReturnsLocalRecordRequirement(t *testing.T) {
@@ -18,7 +18,7 @@ func TestResolveEndpointFindsGeographyAndReturnsLocalRecordRequirement(t *testin
 	if err != nil {
 		t.Fatal(err)
 	}
-	handler := NewHandler(snapshot.Snapshot{BoundaryFeatures: []snapshot.BoundaryFeature{
+	handler := NewLegacyHandler(snapshot.Snapshot{BoundaryFeatures: []snapshot.BoundaryFeature{
 		{LayerFamily: "states", FeatureID: "08", Title: "Colorado", SourceID: "GEOID=08", Attributes: map[string]any{"STATEFP": "08"}, Geometry: testPolygon(-109, 37, -102, 41)},
 		{LayerFamily: "counties", FeatureID: "08031", Title: "Denver County", Geometry: testPolygon(-105.2, 39.5, -104.5, 40)},
 		{LayerFamily: "municipalities", FeatureID: "0820000", Title: "Denver", Geometry: testPolygon(-105.1, 39.6, -104.7, 39.9)},
@@ -47,7 +47,7 @@ func TestResolveEndpointRejectsUnknownFields(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	handler := NewHandler(snapshot.Snapshot{}, Options{RegulatoryCatalog: catalog})
+	handler := NewLegacyHandler(snapshot.Snapshot{}, Options{RegulatoryCatalog: catalog})
 	req := httptest.NewRequest(http.MethodPost, "/resolve", bytes.NewBufferString(`{"wat":true}`))
 	rec := httptest.NewRecorder()
 	handler.ServeHTTP(rec, req)
@@ -61,7 +61,7 @@ func TestResolveEndpointRejectsCallerAuthoredGeographicContext(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	handler := NewHandler(snapshot.Snapshot{}, Options{RegulatoryCatalog: catalog})
+	handler := NewLegacyHandler(snapshot.Snapshot{}, Options{RegulatoryCatalog: catalog})
 	req := httptest.NewRequest(http.MethodPost, "/resolve", bytes.NewBufferString(`{
 		"context": {
 			"state_id": "US-FL",
@@ -118,7 +118,7 @@ func TestResolveEndpointReturnsAllAuthorityBearingBoundaryMatchesWhenAmbiguous(t
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			handler := NewHandler(snapshot.Snapshot{BoundaryFeatures: test.features}, Options{RegulatoryCatalog: catalog})
+			handler := NewLegacyHandler(snapshot.Snapshot{BoundaryFeatures: test.features}, Options{RegulatoryCatalog: catalog})
 			body := bytes.NewBufferString(`{"point":{"longitude":5,"latitude":5},"code_family":"building"}`)
 			req := httptest.NewRequest(http.MethodPost, "/resolve", body)
 			rec := httptest.NewRecorder()

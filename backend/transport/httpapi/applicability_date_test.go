@@ -9,8 +9,8 @@ import (
 	"strings"
 	"testing"
 
-	"building-code-map/backend/internal/regulatory"
-	"building-code-map/backend/internal/snapshot"
+	"building-code-map/backend/regulatory"
+	"building-code-map/backend/snapshot"
 )
 
 func TestResolveEndpointDisclosesAssumedApplicabilityDate(t *testing.T) {
@@ -18,7 +18,7 @@ func TestResolveEndpointDisclosesAssumedApplicabilityDate(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	handler := NewHandler(snapshot.Snapshot{BoundaryFeatures: []snapshot.BoundaryFeature{{
+	handler := NewLegacyHandler(snapshot.Snapshot{BoundaryFeatures: []snapshot.BoundaryFeature{{
 		LayerFamily: "states",
 		FeatureID:   "08",
 		Title:       "Colorado",

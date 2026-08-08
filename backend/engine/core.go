@@ -6,9 +6,9 @@ import (
 	"errors"
 	"strings"
 
-	"building-code-map/backend/internal/geocoder"
-	"building-code-map/backend/internal/regulatory"
-	"building-code-map/backend/internal/snapshot"
+	"building-code-map/backend/geocoder"
+	"building-code-map/backend/regulatory"
+	"building-code-map/backend/snapshot"
 )
 
 type BundleIdentity struct {
@@ -34,6 +34,7 @@ type Engine interface {
 	Geocode(context.Context, string) (GeocodeResult, error)
 	Lookup(context.Context, Point) (LookupResult, error)
 	Readiness(context.Context) Readiness
+	BundleIdentity(context.Context) BundleIdentity
 }
 
 type authorityEngine struct {
@@ -244,6 +245,10 @@ func (engine *authorityEngine) Readiness(context.Context) Readiness {
 		readiness = "degraded"
 	}
 	return Readiness{Status: status, Readiness: readiness, Capabilities: capabilities, Snapshots: snapshots}
+}
+
+func (engine *authorityEngine) BundleIdentity(context.Context) BundleIdentity {
+	return engine.identity
 }
 
 func (engine *authorityEngine) provenance() Provenance {

@@ -8,12 +8,12 @@ import (
 	"testing"
 	"time"
 
-	"building-code-map/backend/internal/httpapi"
-	"building-code-map/backend/internal/snapshot"
+	"building-code-map/backend/snapshot"
+	"building-code-map/backend/transport/httpapi"
 )
 
 func TestHandlerServesGoBackendContractRoutes(t *testing.T) {
-	handler := httpapi.NewHandler(snapshot.Snapshot{
+	handler := httpapi.NewLegacyHandler(snapshot.Snapshot{
 		LayerFamilies: []snapshot.LayerFamily{
 			{
 				Key:            "states",
@@ -226,7 +226,7 @@ func TestHandlerServesGoBackendContractRoutes(t *testing.T) {
 }
 
 func TestHandlerAddsAllowedOriginCORSHeader(t *testing.T) {
-	handler := httpapi.NewHandler(snapshot.Snapshot{}, httpapi.Options{
+	handler := httpapi.NewLegacyHandler(snapshot.Snapshot{}, httpapi.Options{
 		AllowedOrigins: []string{"http://127.0.0.1:5173"},
 	})
 

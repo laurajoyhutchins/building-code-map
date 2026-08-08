@@ -67,9 +67,9 @@ type Candidate struct {
 	ScoreKind           string                   `json:"score_kind"`
 	ScoreFactors        map[string]float64       `json:"score_factors"`
 	RankingPolicyVersion string                  `json:"ranking_policy_version"`
-	Source              string                   `json:"source"`
-	SourceRecordID      string                   `json:"source_record_id"`
-	SourceVintage       string                   `json:"source_vintage"`
+	Source              string                  `json:"source"`
+	SourceRecordID      string                  `json:"source_record_id"`
+	SourceVintage       string                  `json:"source_vintage"`
 	Interpolation       *InterpolationProvenance `json:"interpolation,omitempty"`
 }
 

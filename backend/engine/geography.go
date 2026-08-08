@@ -10,8 +10,8 @@ import (
 	"sort"
 	"strings"
 
-	"building-code-map/backend/internal/regulatory"
-	"building-code-map/backend/internal/snapshot"
+	"building-code-map/backend/regulatory"
+	"building-code-map/backend/snapshot"
 )
 
 // GeographyResolver turns a point into the boundary observations used by
