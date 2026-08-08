@@ -26,7 +26,7 @@ jobs:
           go-version-file: backend/go.mod
           cache-dependency-path: backend/go.sum
 
-      - name: Generate and validate pilot ledger
+      - name: Generate and validate canonical pilot ledger
         working-directory: backend
         run: |
           set -euo pipefail
