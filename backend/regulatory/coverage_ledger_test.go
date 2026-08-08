@@ -193,7 +193,7 @@ func testCoverageInventory(stateID string, entities []GovernmentalEntity) Entity
 		SchemaVersion: EntityInventorySchemaVersion,
 		InventoryID: "test-inventory:" + stateID,
 		GeneratedAt: "2026-08-08T00:00:00Z",
-		Sources: []EntitySource{{ID: "src:test-inventory", Title: "Test inventory", Kind: "governmental_inventory", AccessedAt: "2026-08-08"}},
+		Sources: []Source{{ID: "src:test-inventory", Title: "Test inventory", URL: "https://example.test/inventory", Kind: "governmental_inventory", AccessedAt: "2026-08-08"}},
 		Entities: entities,
 	}
 }
