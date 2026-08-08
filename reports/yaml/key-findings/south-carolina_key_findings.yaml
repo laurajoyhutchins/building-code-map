@@ -1,8 +1,8 @@
 ---
 key_findings:
 - topic: Primary adopting authority
-  finding: "The South Carolina Building Codes Council reviews, adopts, modifies, and\
-    \ promulgates the mandatory statewide building-code set referenced in \xA76-9-50."
+  finding: The South Carolina Building Codes Council reviews, adopts, modifies, and
+    promulgates the mandatory statewide building-code set referenced in §6-9-50.
   confidence: 0.9
   source_ids:
   - src:usa-sc:code-title-6-ch9

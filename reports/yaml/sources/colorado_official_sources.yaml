@@ -9,6 +9,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-co:crs-title-31
   title: Colorado Revised Statutes 2024, Title 31, Government - Municipal
   source_type: statute_pdf
@@ -18,6 +22,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-co:session-law-2022-ch301
   title: Session Laws of Colorado 2022, Chapter 301, HB22-1362
   source_type: session_law_pdf
@@ -27,6 +35,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-co:ccr-portal
   title: Code of Colorado Regulations portal
   source_type: rules_portal
@@ -36,6 +48,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-co:dora-electrical
   title: 'Electrical Board: Applications and Forms / program page'
   source_type: agency_page
@@ -46,6 +62,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: supplemental_official
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-co:3-ccr-710-1-rule-info
   title: 3 CCR 710-1 State Electrical Board Rules and Regulations current rule information
   source_type: ccr_rule_info_page
@@ -55,6 +75,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-co:3-ccr-710-1
   title: 3 CCR 710-1 State Electrical Board Rules and Regulations
   source_type: ccr_rule_pdf
@@ -64,6 +88,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-co:3-ccr-720-1-rule-info
   title: 3 CCR 720-1 Plumbing Rules and Regulations current rule information
   source_type: ccr_rule_info_page
@@ -73,6 +101,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-co:3-ccr-720-1
   title: 3 CCR 720-1 Plumbing Rules and Regulations
   source_type: ccr_rule_pdf
@@ -82,6 +114,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-co:8-ccr-1507-101
   title: 8 CCR 1507-101 Building and Fire Code Adoption and Certification of Inspectors
     for Fire & Life Safety Programs Administered by the State of Colorado
@@ -93,6 +129,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-co:8-ccr-1507-30
   title: 8 CCR 1507-30 Code Enforcement and Certification of Inspectors for Public
     Schools, Charter Schools and Junior Colleges
@@ -104,6 +144,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-co:8-ccr-1302-14-rule-info
   title: 8 CCR 1302-14 current rule information
   source_type: ccr_rule_info_page
@@ -113,6 +157,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-co:8-ccr-1302-14
   title: 8 CCR 1302-14 Non-Residential and Residential Factory-Built Structures and
     Tiny Homes; Installations; and Selected No-Local-Standard Scopes
@@ -123,3 +171,7 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []

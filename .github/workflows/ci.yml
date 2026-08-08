@@ -77,6 +77,75 @@ jobs:
       - name: Vet
         run: go vet ./...
 
+  reports:
+    name: Report tooling
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    defaults:
+      run:
+        working-directory: reports
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: reports/pyproject.toml
+
+      - name: Install dependencies
+        run: python -m pip install ".[test]"
+
+      - name: Test
+        run: python -m pytest
+
+      - name: Check canonical artifact serialization
+        id: normalize-artifacts
+        shell: bash
+        run: |
+          set -o pipefail
+          python tools/normalize_artifacts.py --check | tee artifact-normalization.log
+
+      - name: Validate generated artifacts
+        id: validate-artifacts
+        shell: bash
+        run: |
+          set -o pipefail
+          python tools/validate_artifacts.py | tee artifact-validation.log
+
+      - name: Upload report diagnostics
+        if: failure() && (steps.normalize-artifacts.outcome == 'failure' || steps.validate-artifacts.outcome == 'failure')
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-artifact-validation
+          path: |
+            reports/artifact-normalization.log
+            reports/artifact-validation.log
+          if-no-files-found: warn
+
+      - name: Verify table-backed authority regeneration
+        shell: bash
+        run: |
+          output_dir="$(mktemp -d)"
+          mapfile -t reports < <(
+            find raw -maxdepth 1 -type f -name '*.md' ! -name 'alaska.md' -print | sort
+          )
+          python tools/batch_table_to_yaml.py \
+            --output-dir "$output_dir" \
+            "${reports[@]}"
+          for generated in "$output_dir"/*.yaml; do
+            diff -u \
+              "yaml/authority-structure/$(basename "$generated")" \
+              "$generated"
+          done
+
+      - name: Confirm read-only checks
+        run: git diff --exit-code
+
   regulatory-data:
     name: Regulatory data
     runs-on: ubuntu-latest

@@ -1,23 +1,21 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: ahj:usa-nd:commerce-dcs
-- field: Authority name
-  value: North Dakota Department of Commerce, Division of Community Services
-- field: Authority type
-  value: state agency division
-- field: Legal basis
-  value: North Dakota Century Code chapter 54-21.3 and North Dakota Administrative
-    Code article 108-01-01
-- field: Role
-  value: Administers State Building Code rules, publishes the State Building Code
-    book, coordinates Building Code Advisory Committee and eligible-jurisdiction amendment/update
+- authority_id: ahj:usa-nd:commerce-dcs
+  authority_name: North Dakota Department of Commerce, Division of Community Services
+  authority_type: state agency division
+  legal_basis:
+  - North Dakota Century Code chapter 54-21.3 and North Dakota Administrative Code
+    article 108-01-01
+  role: Administers State Building Code rules, publishes the State Building Code book,
+    coordinates Building Code Advisory Committee and eligible-jurisdiction amendment/update
     process
-- field: Enforcement model
-  value: 'hybrid: state code baseline plus local election to administer and enforce,
-    with specific state/local government and school owner responsibilities'
-- field: Source IDs
-  value: src:usa-nd:commerce-building-codes; src:usa-nd:state-building-code-2026-book;
-    src:usa-nd:ndcc-54-21-3; src:usa-nd:ndac-108-01-01
-- field: Verification status
-  value: verified_core
+  enforcement_model: 'hybrid: state code baseline plus local election to administer
+    and enforce, with specific state/local government and school owner responsibilities'
+  source_ids:
+  - src:usa-nd:commerce-building-codes
+  - src:usa-nd:state-building-code-2026-book
+  - src:usa-nd:ndcc-54-21-3
+  - src:usa-nd:ndac-108-01-01
+  verification_status:
+  - verified_core
+  parent_agency: null

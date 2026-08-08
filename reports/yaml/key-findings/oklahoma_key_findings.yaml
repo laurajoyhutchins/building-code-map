@@ -32,9 +32,8 @@ key_findings:
   - src:usa-ok:oubcc-ifc-adoptions
   - src:usa-ok:oubcc-faq
 - topic: Local enforcement
-  finding: "Local jurisdictions enforce adopted minimum codes; CIB and the State Fire\
-    \ Marshal have specified roles in unincorporated areas according to OUBCC'\
-    s FAQ."
+  finding: Local jurisdictions enforce adopted minimum codes; CIB and the State Fire
+    Marshal have specified roles in unincorporated areas according to OUBCC's FAQ.
   confidence: 0.76
   source_ids:
   - src:usa-ok:oubcc-faq

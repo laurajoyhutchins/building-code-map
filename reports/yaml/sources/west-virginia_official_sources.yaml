@@ -1,220 +1,381 @@
 ---
 official_sources:
 - source_id: src:usa-wv:statute:15a-11-1
-  title: "West Virginia Code \xA715A-11-1, State Fire Commission"
+  title: West Virginia Code §15A-11-1, State Fire Commission
+  source_type: statute
   publisher: West Virginia Legislature
-  type: statute
-  date___status: current online code
   url: https://code.wvlegislature.gov/15A-11-1/
-  primary_extracted_fields: State Fire Commission existence/composition.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_html
+  supports:
+  - State Fire Commission existence/composition.
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - current online code
 - source_id: src:usa-wv:statute:15a-11-3
-  title: "West Virginia Code \xA715A-11-3, State Fire Code rule authority"
+  title: West Virginia Code §15A-11-3, State Fire Code rule authority
+  source_type: statute
   publisher: West Virginia Legislature
-  type: statute
-  date___status: current online code
   url: https://code.wvlegislature.gov/15A-11-3/
-  primary_extracted_fields:
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: official_html
+  supports:
   - State Fire Commission authority to propose State Fire Code
   - statewide force/effect.
-  status: official_html
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - current online code
 - source_id: src:usa-wv:statute:15a-11-5
-  title: "West Virginia Code \xA715A-11-5, State Building Code rule authority"
+  title: West Virginia Code §15A-11-5, State Building Code rule authority
+  source_type: statute
   publisher: West Virginia Legislature
-  type: statute
-  date___status: current online code
   url: https://code.wvlegislature.gov/15A-11-5/
-  primary_extracted_fields:
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: official_html
+  supports:
   - State Building Code authority
   - local adoption force/effect
   - local priority rule
   - enforcement responsibility.
-  status: official_html
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - current online code
 - source_id: src:usa-wv:statute:15a-10-1
-  title: "West Virginia Code \xA715A-10-1, State Fire Marshal"
+  title: West Virginia Code §15A-10-1, State Fire Marshal
+  source_type: statute
   publisher: West Virginia Legislature
-  type: statute
-  date___status: current online code
   url: https://code.wvlegislature.gov/15A-10-1/
-  primary_extracted_fields: Office of State Fire Marshal continued and enforcement
-    role context.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_html
+  supports:
+  - Office of State Fire Marshal continued and enforcement role context.
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - current online code
 - source_id: src:usa-wv:statute:15a-10-2
-  title: "West Virginia Code \xA715A-10-2, State Fire Marshal powers and duties"
+  title: West Virginia Code §15A-10-2, State Fire Marshal powers and duties
+  source_type: statute
   publisher: West Virginia Legislature
-  type: statute
-  date___status: current online code
   url: https://code.wvlegislature.gov/15A-10-2/
-  primary_extracted_fields:
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: official_html
+  supports:
   - State Fire Marshal enforcement powers
   - transfer of fire/building-code violation enforcement from Fire Commission to Office
     of State Fire Marshal.
-  status: official_html
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - current online code
 - source_id: src:usa-wv:statute:15a-10-3
-  title: "West Virginia Code \xA715A-10-3, State Fire Marshal enforcement authority"
+  title: West Virginia Code §15A-10-3, State Fire Marshal enforcement authority
+  source_type: statute
   publisher: West Virginia Legislature
-  type: statute
-  date___status: current online code
   url: https://code.wvlegislature.gov/15A-10-3/
-  primary_extracted_fields:
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: official_html
+  supports:
   - State Fire Marshal authority to enforce fire code
   - building code
   - and related laws
   - inspection authority.
-  status: official_html
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - current online code
 - source_id: src:usa-wv:statute:7-1-3n
-  title: "West Virginia Code \xA77-1-3n, county building and housing code authority"
+  title: West Virginia Code §7-1-3n, county building and housing code authority
+  source_type: statute
   publisher: West Virginia Legislature
-  type: statute
-  date___status: current online code
   url: https://code.wvlegislature.gov/7-1-3N/
-  primary_extracted_fields:
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: official_html
+  supports:
   - County authority to adopt building/housing codes
   - requirement to use State Building Code after voidance of existing county code.
-  status: official_html
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - current online code
 - source_id: src:usa-wv:statute:8-12-13
-  title: "West Virginia Code \xA78-12-13, municipal building regulation and State\
-    \ Building Code"
+  title: West Virginia Code §8-12-13, municipal building regulation and State Building
+    Code
+  source_type: statute
   publisher: West Virginia Legislature
-  type: statute
-  date___status: current online code
   url: https://code.wvlegislature.gov/8-12-13/
-  primary_extracted_fields:
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: official_html
+  supports:
   - Municipal building
   - electrical
   - plumbing regulatory authority
   - requirement to use State Building Code after voidance of existing municipal building
     code.
-  status: official_html
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - current online code
 - source_id: src:usa-wv:statute:29-3b-2
-  title: "West Virginia Code \xA729-3B-2, electrician licensing definitions and license\
-    \ requirement"
+  title: West Virginia Code §29-3B-2, electrician licensing definitions and license
+    requirement
+  source_type: statute
   publisher: West Virginia Legislature
-  type: statute
-  date___status: current online code
   url: https://code.wvlegislature.gov/29-3B-2/
-  primary_extracted_fields:
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: official_html
+  supports:
   - State electrical work licensing requirement
   - National Electrical Code definition context.
-  status: official_html
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - current online code
 - source_id: src:usa-wv:statute:29-3b-5
-  title: "West Virginia Code \xA729-3B-5, electrician licensing rules"
+  title: West Virginia Code §29-3B-5, electrician licensing rules
+  source_type: statute
   publisher: West Virginia Legislature
-  type: statute
-  date___status: current online code
   url: https://code.wvlegislature.gov/29-3B-5/
-  primary_extracted_fields:
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: official_html
+  supports:
   - State Fire Marshal rulemaking for electrician licensing
   - examinations
   - and renewals.
-  status: official_html
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - current online code
 - source_id: src:usa-wv:statute:29-3b-9
-  title: "West Virginia Code \xA729-3B-9, local electrician-license limitation"
+  title: West Virginia Code §29-3B-9, local electrician-license limitation
+  source_type: statute
   publisher: West Virginia Legislature
-  type: statute
-  date___status: current online code
   url: https://code.wvlegislature.gov/29-3B-9/
-  primary_extracted_fields: Localities may not require another electrician license
-    from a valid state license holder.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_html
+  supports:
+  - Localities may not require another electrician license from a valid state license
+    holder.
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - current online code
 - source_id: src:usa-wv:statute:29-3c-3
-  title: "West Virginia Code \xA729-3C-3, electrical inspector certification requirement"
+  title: West Virginia Code §29-3C-3, electrical inspector certification requirement
+  source_type: statute
   publisher: West Virginia Legislature
-  type: statute
-  date___status: current online code
   url: https://code.wvlegislature.gov/29-3C-3/
-  primary_extracted_fields: State certification requirement for compensated electrical
-    inspectors and inspector-definition bridge.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_html
+  supports:
+  - State certification requirement for compensated electrical inspectors and inspector-definition
+    bridge.
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - current online code
 - source_id: src:usa-wv:statute:29-3c-4
-  title: "West Virginia Code \xA729-3C-4, electrical inspector certification rules"
+  title: West Virginia Code §29-3C-4, electrical inspector certification rules
+  source_type: statute
   publisher: West Virginia Legislature
-  type: statute
-  date___status: current online code
   url: https://code.wvlegislature.gov/29-3C-4/
-  primary_extracted_fields: State Fire Marshal certification/rulemaking for electrical
-    inspectors.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_html
+  supports:
+  - State Fire Marshal certification/rulemaking for electrical inspectors.
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - current online code
 - source_id: src:usa-wv:osfm:laws-page
   title: Office of the State Fire Marshal Laws page
+  source_type: agency_page
   publisher: West Virginia Office of the State Fire Marshal
-  type: agency_page
-  date___status: accessed 2026-06-26
   url: https://firemarshal.wv.gov/laws
-  primary_extracted_fields:
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: official_html_index
+  supports:
   - Agency index listing fire
   - building
   - licensing
   - certification
   - and related legislative rules.
-  status: official_html_index
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-wv:sos:87-04-rule-page
   title: Secretary of State rule detail, 87 CSR 4, State Building Code
+  source_type: rule_detail
   publisher: West Virginia Secretary of State
-  type: rule_detail
-  date___status: effective 2022-08-01
   url: https://apps.sos.wv.gov/adlaw/csr/rule.aspx?rule=87-04
-  primary_extracted_fields:
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: official_html
+  supports:
   - Rule status
   - filing
   - effective date
   - and rule documents for State Building Code.
-  status: official_html
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - effective 2022-08-01
 - source_id: src:usa-wv:rule:87-04-final-2022
   title: 87 CSR 4, State Building Code, final filed 2022-05-05
+  source_type: administrative_rule_pdf
   publisher: West Virginia Secretary of State / State Fire Commission
-  type: administrative_rule_pdf
-  date___status:
-  - effective 2022-08-01
-  - sunset 2027-08-01
   url: https://apps.sos.wv.gov/adlaw/csr/readfile.aspx?DocId=55263&Format=PDF
-  primary_extracted_fields: Current State Building Code rule text and incorporated
-    model-code package.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_pdf
+  supports:
+  - Current State Building Code rule text and incorporated model-code package.
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - effective 2022-08-01
+    - sunset 2027-08-01
 - source_id: src:usa-wv:sos:87-01-rule-page
   title: Secretary of State rule detail, 87 CSR 1, Fire Code
+  source_type: rule_detail
   publisher: West Virginia Secretary of State
-  type: rule_detail
-  date___status:
-  - active emergency
-  - final effective 2026-07-01
   url: https://apps.sos.wv.gov/adlaw/csr/rule.aspx?rule=87-01
-  primary_extracted_fields:
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: official_html
+  supports:
   - Rule status
   - emergency date
   - final filing
   - and effective date for Fire Code.
-  status: official_html
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - active emergency
+    - final effective 2026-07-01
 - source_id: src:usa-wv:rule:87-01-emergency-2025
   title: 87 CSR 1, Fire Code, emergency filed 2025-03-06
+  source_type: emergency_rule_pdf
   publisher: West Virginia Secretary of State / State Fire Commission
-  type: emergency_rule_pdf
-  date___status: effective 2025-03-06 per SOS rule detail
   url: https://apps.sos.wv.gov/adlaw/csr/readfile.aspx?DocId=57865&Format=PDF
-  primary_extracted_fields: Emergency State Fire Code rule and transition explanation.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_pdf
+  supports:
+  - Emergency State Fire Code rule and transition explanation.
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - effective 2025-03-06 per SOS rule detail
 - source_id: src:usa-wv:rule:87-01-final-2026
   title: 87 CSR 1, Fire Code, final filed 2026-05-13
+  source_type: administrative_rule_pdf
   publisher: West Virginia Secretary of State / State Fire Commission
-  type: administrative_rule_pdf
-  date___status:
-  - effective 2026-07-01
-  - sunset 2031-08-01
   url: https://apps.sos.wv.gov/adlaw/csr/readfile.aspx?DocId=58962&Format=PDF
-  primary_extracted_fields: Final legislative State Fire Code rule and incorporated
-    NFPA 1 / NFPA 101 package.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_pdf
+  supports:
+  - Final legislative State Fire Code rule and incorporated NFPA 1 / NFPA 101 package.
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - effective 2026-07-01
+    - sunset 2031-08-01
 - source_id: src:usa-wv:sos:103-06-rule-page
   title: Secretary of State rule detail, 103 CSR 6, public-sector building-code officials,
     inspectors, and plans examiners
+  source_type: rule_detail
   publisher: West Virginia Secretary of State / Office of State Fire Marshal
-  type: rule_detail
-  date___status: effective 2024-05-01
   url: https://apps.sos.wv.gov/adlaw/csr/rule.aspx?rule=103-06
-  primary_extracted_fields:
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: official_html
+  supports:
   - Certification and continuing education rule for municipal
   - county
   - and other public-sector building-code officials
   - building-code inspectors
   - and plans examiners.
-  status: official_html
+  caveats: []
+  notes: []
+  details:
+  - name: date_status
+    values:
+    - effective 2024-05-01

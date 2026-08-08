@@ -1,26 +1,23 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: ahj:usa-il:cdb
-- field: Authority name
-  value: Illinois Capital Development Board
-- field: Authority type
-  value: state board / statewide building-code coordinating authority
-- field: Legal basis
-  value: Capital Development Board Act, especially 20 ILCS 3105/10.09-1 and 20 ILCS
-    3105/10.18
-- field: Role
-  value: Coordinates statewide construction-code framework; identifies and publishes
+- authority_id: ahj:usa-il:cdb
+  authority_name: Illinois Capital Development Board
+  authority_type: state board / statewide building-code coordinating authority
+  legal_basis:
+  - Capital Development Board Act, especially 20 ILCS 3105/10.09-1 and 20 ILCS 3105/10.18
+  role: Coordinates statewide construction-code framework; identifies and publishes
     reported local building codes; establishes commercial non-building-code certification
     requirements; administers Illinois energy code rulemaking and accessibility-code
     rulemaking; applies stretch-energy requirements to CDB-authorized or CDB-funded
     projects.
-- field: Enforcement model
-  value: 'hybrid_state_local_specialty: local AHJs enforce local building codes; non-building-code
-    commercial projects use qualified-inspector certification; specialty codes are
-    enforced by state or shared authorities.'
-- field: Source IDs
-  value: src:usa-il:cdb-act-20-ilcs-3105; src:usa-il:cdb-building-codes-page; src:usa-il:energy-code-71-iac-600;
-    src:usa-il:accessibility-code-71-iac-400
-- field: Verification status
-  value: partially_verified
+  enforcement_model: 'hybrid_state_local_specialty: local AHJs enforce local building
+    codes; non-building-code commercial projects use qualified-inspector certification;
+    specialty codes are enforced by state or shared authorities.'
+  source_ids:
+  - src:usa-il:cdb-act-20-ilcs-3105
+  - src:usa-il:cdb-building-codes-page
+  - src:usa-il:energy-code-71-iac-600
+  - src:usa-il:accessibility-code-71-iac-400
+  verification_status:
+  - partially_verified
+  parent_agency: null

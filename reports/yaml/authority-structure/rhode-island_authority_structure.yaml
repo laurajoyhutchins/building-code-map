@@ -1,20 +1,18 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: ahj:usa-ri:bcsc
-- field: Authority name
-  value: Building Code Standards Committee
-- field: Authority type
-  value: statewide_code_adopting_authority
-- field: Legal basis
-  value: "R.I. Gen. Laws \xA7 23-27.3-100.1.5; Title 510 RICR authority clauses"
-- field: Role
-  value: Adopt, promulgate, and administer the State Building Code; adopt ICC, NEC,
+- authority_id: ahj:usa-ri:bcsc
+  authority_name: Building Code Standards Committee
+  authority_type: statewide_code_adopting_authority
+  legal_basis:
+  - R.I. Gen. Laws § 23-27.3-100.1.5
+  - Title 510 RICR authority clauses
+  role: Adopt, promulgate, and administer the State Building Code; adopt ICC, NEC,
     and related statewide code rules with Rhode Island amendments.
-- field: Enforcement model
-  value: Statewide code adoption with local building official enforcement and State
-    Building Code Commissioner interpretation/backstop functions.
-- field: Source IDs
-  value: src:usa-ri:statute-bcsc-adoption; src:usa-ri:ricr-510-00-00-1
-- field: Verification status
-  value: partially_verified
+  enforcement_model: Statewide code adoption with local building official enforcement
+    and State Building Code Commissioner interpretation/backstop functions.
+  source_ids:
+  - src:usa-ri:statute-bcsc-adoption
+  - src:usa-ri:ricr-510-00-00-1
+  verification_status:
+  - partially_verified
+  parent_agency: null

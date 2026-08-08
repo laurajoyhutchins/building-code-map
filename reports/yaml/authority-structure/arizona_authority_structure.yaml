@@ -4,8 +4,7 @@ authority_structure:
   authority_name: Municipal code adoption by reference
   authority_type: statute
   legal_basis:
-  - "A.R.S. \xA7\xA7 9-801"
-  - 9-802
+  - A.R.S. §§ 9-801, 9-802
   role: Enables municipalities to adopt codes by reference, including building, electrical,
     fire prevention, WUI, and related codes
   enforcement_model: local_municipal
@@ -14,12 +13,12 @@ authority_structure:
   - src:usa-az:ars:9-802
   verification_status:
   - verified
+  parent_agency: null
 - authority_id: ahj:usa-az:county-code-adoption
   authority_name: County code adoption and enforcement
   authority_type: statute
   legal_basis:
-  - "A.R.S. \xA7\xA7 11-861"
-  - 11-862
+  - A.R.S. §§ 11-861, 11-862
   role: Enables counties to adopt and enforce building and related codes in zoned
     unincorporated areas, with advisory-board requirements and code-source limits
   enforcement_model: county_unincorporated_local_option
@@ -28,12 +27,12 @@ authority_structure:
   - src:usa-az:ars:11-862
   verification_status:
   - verified
+  parent_agency: null
 - authority_id: ahj:usa-az:state-fire-marshal
   authority_name: Office of the State Fire Marshal
   authority_type: statute/rule
   legal_basis:
-  - "A.R.S. \xA7\xA7 37-1381"
-  - 37-1383
+  - A.R.S. §§ 37-1381, 37-1383
   - A.A.C. R4-36-201
   role: Adopts and enforces the State Fire Code, with statutory local exceptions
   enforcement_model: statewide_fire_with_local_exceptions
@@ -43,11 +42,12 @@ authority_structure:
   - src:usa-az:aac:r4-36-201
   verification_status:
   - verified
+  parent_agency: null
 - authority_id: ahj:usa-az:public-building-code-rule
   authority_name: Public building code applicability
   authority_type: statute
   legal_basis:
-  - "A.R.S. \xA7 34-461"
+  - A.R.S. § 34-461
   role: Determines code compliance for public buildings and fallback codes where no
     local codes exist
   enforcement_model: special_state_public_building_rule
@@ -55,11 +55,12 @@ authority_structure:
   - src:usa-az:ars:34-461
   verification_status:
   - verified
+  parent_agency: null
 - authority_id: ahj:usa-az:fire-district-code-authority
   authority_name: Fire district fire-code adoption
   authority_type: statute
   legal_basis:
-  - "A.R.S. \xA7 48-805"
+  - A.R.S. § 48-805
   role: Allows fire districts to adopt nationally recognized fire codes approved by
     the State Fire Marshal after voter approval
   enforcement_model: special_district_fire
@@ -67,6 +68,7 @@ authority_structure:
   - src:usa-az:ars:48-805
   verification_status:
   - verified
+  parent_agency: null
 - authority_id: ahj:usa-az:elevator-conveyance-safety
   authority_name: Elevator and conveyance safety
   authority_type: administrative_rule
@@ -78,3 +80,4 @@ authority_structure:
   - src:usa-az:aac:r20-5-507
   verification_status:
   - verified
+  parent_agency: null

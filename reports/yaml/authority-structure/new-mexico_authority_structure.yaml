@@ -1,22 +1,22 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: ahj:usa-nm:cid
-- field: Authority name
-  value: Construction Industries Division, New Mexico Regulation and Licensing Department
-- field: Authority type
-  value: state_agency
-- field: Legal basis
-  value: Construction Industries Licensing Act; NMSA provisions including Sections
-    60-13-9 and 60-13-44, as referenced in NMAC code rules
-- field: Role
-  value: Administers statewide construction-code rules; adopts building codes and
-    minimum standards recommended by trade bureaus and approved by CIC; administers
-    permits, inspections, plan review, stop-work, and code enforcement where CID has
-    jurisdiction
-- field: Enforcement model
-  value: hybrid_state_and_local_AHJ
-- field: Source IDs
-  value: src:usa-nm:cila-rld-2021; src:usa-nm:nmac-14-5-1; src:usa-nm:nmac-14-5-2; src:usa-nm:nm-register-2023-building
-- field: Verification status
-  value: partially_verified
+- authority_id: ahj:usa-nm:cid
+  authority_name: Construction Industries Division, New Mexico Regulation and Licensing
+    Department
+  authority_type: state_agency
+  legal_basis:
+  - Construction Industries Licensing Act
+  - NMSA provisions including Sections 60-13-9 and 60-13-44, as referenced in NMAC
+    code rules
+  role: Administers statewide construction-code rules; adopts building codes and minimum
+    standards recommended by trade bureaus and approved by CIC; administers permits,
+    inspections, plan review, stop-work, and code enforcement where CID has jurisdiction
+  enforcement_model: hybrid_state_and_local_AHJ
+  source_ids:
+  - src:usa-nm:cila-rld-2021
+  - src:usa-nm:nmac-14-5-1
+  - src:usa-nm:nmac-14-5-2
+  - src:usa-nm:nm-register-2023-building
+  verification_status:
+  - partially_verified
+  parent_agency: null

@@ -9,6 +9,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ar:law-section
   title: Arkansas Law Section
   source_type: law_portal
@@ -18,6 +22,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ar:rules-portal
   title: Code of Arkansas Rules home page
   source_type: rules_portal
@@ -27,6 +35,10 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ar:dps-fire-marshal-page
   title: State Fire Marshal's Office
   source_type: agency_page
@@ -36,9 +48,13 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ar:afpc-2021-rules-clean-copy
-  title: "Proposed Fire Code Rules \u2013 Clean Copy / Arkansas Fire Prevention Code\
-    \ Rules 2021 Edition"
+  title: Proposed Fire Code Rules – Clean Copy / Arkansas Fire Prevention Code Rules
+    2021 Edition
   source_type: proposed_rule_pdf
   publisher: Arkansas Department of Public Safety / Division of Emergency Management
   url: https://dps.arkansas.gov/wp-content/uploads/ASP-Foreword-Fire-Code-Rules-Clean_10-2024.pdf
@@ -46,9 +62,12 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: partial
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ar:fire-marshal-duties-statute-pdf
-  title: "Duties of State Fire Marshal Enforcement Section, A.C.A. \xA7 12-13-105\
-    \ excerpt"
+  title: Duties of State Fire Marshal Enforcement Section, A.C.A. § 12-13-105 excerpt
   source_type: courtesy_statute_pdf
   publisher: Arkansas Department of Public Safety
   url: https://dps.arkansas.gov/wp-content/uploads/2020/05/state_fire_marshal_Duties_of_the_Fire_Marshal_Statute_12132018.pdf
@@ -56,3 +75,7 @@ official_sources:
   snapshot_id: snapshot-pending
   checksum: snapshot-pending
   status: partial
+  supports: []
+  caveats: []
+  notes: []
+  details: []

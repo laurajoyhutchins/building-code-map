@@ -47,9 +47,9 @@ key_findings:
   - src:usa-in:idhs-code-enforcement
   - src:usa-in:iac-675-12-gar-pdf
 - topic: Local amendments
-  finding: "Substantive local deviations from Commission building/fire-safety rules\
-    \ are generally unavailable under IDHS's HEA 1575 posture; administrative\
-    \ local provisions remain."
+  finding: Substantive local deviations from Commission building/fire-safety rules
+    are generally unavailable under IDHS's HEA 1575 posture; administrative local
+    provisions remain.
   confidence: 0.74
   source_ids:
   - src:usa-in:idhs-fpbsc-overview

@@ -9,6 +9,10 @@ official_sources:
   snapshot_id: snapshot_pending
   checksum: checksum_pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ak:dps:aac-13-50-55-fire-prevention-pdf
   title: 13 AAC 50 to 13 AAC 55 Fire Prevention, effective 2022-10-28
   source_type: regulation_pdf
@@ -18,6 +22,10 @@ official_sources:
   snapshot_id: snapshot_pending
   checksum: checksum_pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ak:dolwd:mechanical-inspection-page
   title: Mechanical Inspection
   source_type: agency_page
@@ -28,6 +36,10 @@ official_sources:
   snapshot_id: snapshot_pending
   checksum: checksum_pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ak:dolwd:plumbing-code-pdf
   title: Plumbing Code, Statutes and Regulations, April 2020
   source_type: statute_regulation_publication_pdf
@@ -37,6 +49,10 @@ official_sources:
   snapshot_id: snapshot_pending
   checksum: checksum_pending
   status: caveated_official_publication
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ak:dolwd:electrical-safety-pdf
   title: Electrical Safety, Statutes and Regulations, May 2018
   source_type: statute_regulation_publication_pdf
@@ -46,6 +62,10 @@ official_sources:
   snapshot_id: snapshot_pending
   checksum: checksum_pending
   status: caveated_official_publication_stale_for_current_nec
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ak:dolwd:elevator-safety-pdf
   title: Elevator Safety, Statutes and Regulations
   source_type: statute_regulation_publication_pdf
@@ -55,6 +75,10 @@ official_sources:
   snapshot_id: snapshot_pending
   checksum: checksum_pending
   status: caveated_official_publication
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ak:dolwd:boiler-pressure-vessel-pdf
   title: Boiler and Unfired Pressure Vessel Statutes and Regulations
   source_type: statute_regulation_publication_pdf
@@ -64,6 +88,10 @@ official_sources:
   snapshot_id: snapshot_pending
   checksum: checksum_pending
   status: caveated_official_publication
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ak:ahfc:codes-standards
   title: Codes & Standards
   source_type: agency_page
@@ -73,6 +101,10 @@ official_sources:
   snapshot_id: snapshot_pending
   checksum: checksum_pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ak:ahfc:minimum-construction-standards
   title: Alaska Minimum Construction Standards
   source_type: agency_page
@@ -82,6 +114,10 @@ official_sources:
   snapshot_id: snapshot_pending
   checksum: checksum_pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ak:ahfc:bees
   title: Building Energy Efficiency Standard
   source_type: agency_page
@@ -91,6 +127,10 @@ official_sources:
   snapshot_id: snapshot_pending
   checksum: checksum_pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ak:ahfc:building-code-advisory-council
   title: Ensuring Safety and Energy Efficiency through Building Code Advisory Council
   source_type: agency_blog_page
@@ -100,6 +140,10 @@ official_sources:
   snapshot_id: snapshot_pending
   checksum: checksum_pending
   status: verified_for_monitoring
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ak:ahfc:2018-code-adoption-packet
   title: AHFC Board Packet, 2018 IRC/IECC Adoption Materials
   source_type: board_packet_pdf
@@ -109,6 +153,10 @@ official_sources:
   snapshot_id: snapshot_pending
   checksum: checksum_pending
   status: caveated_adoption_materials
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ak:constitution:article-x
   title: Alaska Constitution, Article X, Local Government
   source_type: constitution
@@ -118,6 +166,10 @@ official_sources:
   snapshot_id: snapshot_pending
   checksum: checksum_pending
   status: verified
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ak:statutes:portal
   title: Alaska Statutes 2024 portal
   source_type: statute_portal
@@ -127,3 +179,7 @@ official_sources:
   snapshot_id: snapshot_pending
   checksum: checksum_pending
   status: verified_as_index
+  supports: []
+  caveats: []
+  notes: []
+  details: []

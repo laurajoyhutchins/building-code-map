@@ -2,124 +2,173 @@
 official_sources:
 - source_id: src:usa-nj:ucc-act-dca-pdf
   title: State Uniform Construction Code Act, N.J.S.A. 52:27D-119 et seq.
-  publisher___custodian: New Jersey Department of Community Affairs / LexisNexis courtesy
-    copy
   source_type: statute_courtesy_pdf
+  publisher: New Jersey Department of Community Affairs / LexisNexis courtesy copy
   url: https://www.nj.gov/dca/codes/codreg/pdf_regs/52_27D_119.pdf
-  accessed: '2026-06-26'
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: partially_verified
   supports:
   - State adopting authority
   - Commissioner powers
   - local enforcement oversight
   - local zoning/licensing carveouts
   - local fire maintenance-code limitations
-  status: partially_verified
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nj:njac-5-23-1
   title: N.J.A.C. 5:23-1, General Provisions
-  publisher___custodian: New Jersey Department of Community Affairs / LexisNexis courtesy
-    copy
   source_type: administrative_rule_courtesy_pdf
+  publisher: New Jersey Department of Community Affairs / LexisNexis courtesy copy
   url: https://www.nj.gov/dca/codes/codreg/pdf_regs/njac_5_23_1.pdf
-  accessed: '2026-06-26'
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: partially_verified
   supports:
   - Authority basis
   - definitions
   - effective/operative date rule
   - six-month grace-period rule
-  status: partially_verified
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nj:njac-5-23-3
   title: N.J.A.C. 5:23-3, Subcodes
-  publisher___custodian: New Jersey Department of Community Affairs / LexisNexis courtesy
-    copy
   source_type: administrative_rule_courtesy_pdf
+  publisher: New Jersey Department of Community Affairs / LexisNexis courtesy copy
   url: https://www.nj.gov/dca/codes/codreg/pdf_regs/njac_5_23_3.pdf
-  accessed: '2026-06-26'
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: partially_verified
   supports:
   - Subcode structure
   - code adoptions
   - statewide uniformity
   - State-reserved activities
-  status: partially_verified
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nj:njac-5-23-4
   title: N.J.A.C. 5:23-4, Enforcing Agencies
-  publisher___custodian: New Jersey Department of Community Affairs / LexisNexis courtesy
-    copy
   source_type: administrative_rule_courtesy_pdf
+  publisher: New Jersey Department of Community Affairs / LexisNexis courtesy copy
   url: https://www.nj.gov/dca/codes/codreg/pdf_regs/njac_5_23_4.pdf
-  accessed: '2026-06-26'
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: partially_verified
   supports:
   - Local enforcing agency administration
   - construction official duties
   - State enforcement role
-  status: partially_verified
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nj:njac-5-23-6
   title: N.J.A.C. 5:23-6, Rehabilitation Subcode
-  publisher___custodian: New Jersey Department of Community Affairs / LexisNexis courtesy
-    copy
   source_type: administrative_rule_courtesy_pdf
+  publisher: New Jersey Department of Community Affairs / LexisNexis courtesy copy
   url: https://www.nj.gov/dca/codes/codreg/pdf_regs/njac_5_23_6.pdf
-  accessed: '2026-06-26'
-  supports: Rehabilitation subcode scope and statewide rehabilitation framework
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
   status: partially_verified
+  supports:
+  - Rehabilitation subcode scope and statewide rehabilitation framework
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nj:dca-current-codes
   title: Current Construction Codes
-  publisher___custodian: New Jersey Department of Community Affairs, Division of Codes
-    and Standards
   source_type: official_agency_webpage
+  publisher: New Jersey Department of Community Affairs, Division of Codes and Standards
   url: https://www.nj.gov/dca/codes/codreg/current.shtml
-  accessed: '2026-06-26'
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: partially_verified
   supports:
   - Current code matrix
   - code family editions
   - DCA adoption-date labels
   - errata and official code links
-  status: partially_verified
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nj:dca-ucc-portal
   title: UCC Code and Regulations portal
-  publisher___custodian: New Jersey Department of Community Affairs, Division of Codes
-    and Standards
   source_type: official_agency_webpage
+  publisher: New Jersey Department of Community Affairs, Division of Codes and Standards
   url: https://www.nj.gov/dca/codes/codreg/ucc.shtml
-  accessed: '2026-06-26'
-  supports: Portal for UCC chapter PDFs and caveat that online PDFs are courtesy copies
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
   status: verified_for_caveat
+  supports:
+  - Portal for UCC chapter PDFs and caveat that online PDFs are courtesy copies
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nj:2021-icode-2020-nec-adoption
   title: 'Adopted Amendments: N.J.A.C. 5:23-3.14, 3.16, 3.17, 3.18, 3.20, 3.21, and
     3.22; 2021 I-Code / 2020 NEC package'
-  publisher___custodian: New Jersey Department of Community Affairs
   source_type: rule_adoption_pdf
+  publisher: New Jersey Department of Community Affairs
   url: https://www.nj.gov/dca/codes/codreg/pdf_rule_adoptions/2021_ICode_2020_NEC_adopt.pdf
-  accessed: '2026-06-26'
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: partially_verified
   supports:
   - R.2022 d.111 adoption package
   - adopted/filed/effective dates for major UCC subcode updates
-  status: partially_verified
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nj:dca-rule-proposals-adoptions
   title: Rule Proposals and Adoptions
-  publisher___custodian: New Jersey Department of Community Affairs, Division of Codes
-    and Standards
   source_type: official_agency_webpage
+  publisher: New Jersey Department of Community Affairs, Division of Codes and Standards
   url: https://www.nj.gov/dca/codes/codreg/rule_proposals_adoptions.shtml
-  accessed: '2026-06-26'
-  supports: Monitoring source for pending and adopted UCC rulemaking
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
   status: partially_verified
+  supports:
+  - Monitoring source for pending and adopted UCC rulemaking
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nj:dca-dfs-codes-regs
   title: Division of Fire Safety Codes and Regulations
-  publisher___custodian: New Jersey Department of Community Affairs, Division of Fire
-    Safety
   source_type: official_agency_webpage
+  publisher: New Jersey Department of Community Affairs, Division of Fire Safety
   url: https://www.nj.gov/dca/dfs/codes/
-  accessed: '2026-06-26'
-  supports: Fire-code rule proposals/adoptions and access point for N.J.A.C. 5:70-76
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
   status: partially_verified
+  supports:
+  - Fire-code rule proposals/adoptions and access point for N.J.A.C. 5:70-76
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nj:fire-code-2023-proposal
   title: 2018 IFC / N.J.A.C. 5:70 proposal materials
-  publisher___custodian: New Jersey Department of Community Affairs, Division of Fire
-    Safety
   source_type: rule_proposal_pdf
+  publisher: New Jersey Department of Community Affairs, Division of Fire Safety
   url: https://www.nj.gov/dca/dfs/pdf/rules/proposal_2018_ifc.pdf
-  accessed: '2026-06-26'
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: supplemental_for_fire_context
   supports:
   - Context for proposed State Fire Prevention Code / 2018 IFC rulemaking
   - not a final-adoption substitute
-  status: supplemental_for_fire_context
+  caveats: []
+  notes: []
+  details: []

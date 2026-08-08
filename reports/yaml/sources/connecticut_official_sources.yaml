@@ -9,6 +9,10 @@ official_sources:
   snapshot_id: snapshot:2026-06-25:ctgov-home
   checksum: null
   status: active
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ct:statute:chap-541
   title: Connecticut General Statutes, Chapter 541
   source_type: statute
@@ -18,6 +22,10 @@ official_sources:
   snapshot_id: snapshot:2026-06-25:chap-541
   checksum: null
   status: active_with_caveat
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ct:agency:building-code-page
   title: Connecticut State Building Code - Regulations
   source_type: agency_page
@@ -27,6 +35,10 @@ official_sources:
   snapshot_id: snapshot:2026-06-25:das-building-code-regulations
   checksum: null
   status: active
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ct:code:2022-csbc-pdf
   title: '2022 Connecticut State Building Code with Errata #1'
   source_type: code_pdf
@@ -36,6 +48,10 @@ official_sources:
   snapshot_id: snapshot:2026-06-25:2022-csbc-final
   checksum: null
   status: active
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ct:agency:fire-codes-overview
   title: CT Fire Safety and Prevention Codes
   source_type: agency_page
@@ -45,6 +61,10 @@ official_sources:
   snapshot_id: snapshot:2026-06-25:das-fire-codes-overview
   checksum: null
   status: active
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ct:agency:fire-codes-docs
   title: CT Fire Safety and Prevention Codes - Documents/Forms
   source_type: agency_page
@@ -54,6 +74,10 @@ official_sources:
   snapshot_id: snapshot:2026-06-25:das-fire-codes-docs
   checksum: null
   status: active
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ct:code:2022-csfsc-pdf
   title: 2022 Connecticut State Fire Safety Code
   source_type: code_pdf
@@ -63,6 +87,10 @@ official_sources:
   snapshot_id: snapshot:2026-06-25:2022-csfsc-final
   checksum: null
   status: active
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ct:code:2022-csfpc-pdf
   title: 2022 Connecticut State Fire Prevention Code
   source_type: code_pdf
@@ -72,6 +100,10 @@ official_sources:
   snapshot_id: snapshot:2026-06-25:2022-csfpc-final
   checksum: null
   status: active
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ct:agency:code-adoption-process
   title: Building and Fire Code Adoption Process
   source_type: agency_page
@@ -81,6 +113,10 @@ official_sources:
   snapshot_id: snapshot:2026-06-25:das-code-adoption-process
   checksum: null
   status: active
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ct:agency:modifications-waivers
   title: Building and Fire Code Modifications, Exemptions and Waivers
   source_type: agency_page
@@ -91,6 +127,10 @@ official_sources:
   snapshot_id: snapshot:2026-06-25:das-modifications-waivers
   checksum: null
   status: active
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ct:agency:elevator-code-page
   title: Safety Code for Elevators and Escalators
   source_type: agency_page
@@ -100,6 +140,10 @@ official_sources:
   snapshot_id: snapshot:2026-06-25:das-elevator-code
   checksum: null
   status: active
+  supports: []
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-ct:agency:boiler-elevator-inspections
   title: Apply for boiler, elevator, and escalator inspections and certifications
   source_type: agency_page
@@ -109,3 +153,7 @@ official_sources:
   snapshot_id: snapshot:2026-06-25:das-boiler-elevator-inspections
   checksum: null
   status: active
+  supports: []
+  caveats: []
+  notes: []
+  details: []

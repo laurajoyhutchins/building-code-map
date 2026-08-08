@@ -1,164 +1,271 @@
 ---
 official_sources:
 - source_id: src:usa-mt:mca-50-60-103
+  title: MCA 50-60-103, Administration by department
   source_type: statute
-  title___citation: MCA 50-60-103, Administration by department
   publisher: Montana Legislature
   url: https://mca.legmt.gov/bills/mca/title_0500/chapter_0600/part_0010/section_0030/0500-0600-0010-0030.html
-  accessed: '2026-06-26'
-  supports: DLI administration duties and consultation with Building Codes Council
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - DLI administration duties and consultation with Building Codes Council
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-mt:mca-50-60-202
+  title: MCA 50-60-202, Department to be sole state agency to promulgate building
+    regulations -- exception
   source_type: statute
-  title___citation: MCA 50-60-202, Department to be sole state agency to promulgate
-    building regulations -- exception
   publisher: Montana Legislature
   url: https://mca.legmt.gov/bills/mca/title_0500/chapter_0600/part_0020/section_0020/0500-0600-0020-0020.html
-  accessed: '2026-06-26'
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - DLI sole state building-regulation authority
   - DOJ exception
   - fire plan/regulation review
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-mt:mca-50-60-203
+  title: MCA 50-60-203, Department to adopt state building code by rule
   source_type: statute
-  title___citation: MCA 50-60-203, Department to adopt state building code by rule
   publisher: Montana Legislature
   url: https://mca.legmt.gov/bills/mca/title_0500/chapter_0600/part_0020/section_0030/0500-0600-0020-0030.html
-  accessed: '2026-06-26'
-  supports: Rulemaking authority and state-building-code formation
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Rulemaking authority and state-building-code formation
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-mt:mca-50-60-106
+  title: MCA 50-60-106, Powers and duties of counties, cities, and towns -- public
+    buildings owned or operated by state agencies
   source_type: statute
-  title___citation: MCA 50-60-106, Powers and duties of counties, cities, and towns
-    -- public buildings owned or operated by state agencies
   publisher: Montana Legislature
   url: https://mca.legmt.gov/bills/mca/title_0500/chapter_0600/part_0010/section_0060/0500-0600-0010-0060.html
-  accessed: '2026-06-26'
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Certified local duties
   - local administration/enforcement powers
   - state-owned building jurisdiction
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-mt:mca-50-60-302
+  title: MCA 50-60-302, Certification of county, city, or town building codes
   source_type: statute
-  title___citation: MCA 50-60-302, Certification of county, city, or town building
-    codes
   publisher: Montana Legislature
   url: https://mca.legmt.gov/bills/mca/title_0500/chapter_0600/part_0030/section_0020/0500-0600-0030-0020.html
-  accessed: '2026-06-26'
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Local enforcement certification
   - filing
   - approval
   - inspector requirements
   - state resumption on revocation
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-mt:mca-50-60-304
+  title: MCA 50-60-304, Area of applicability of county, city, or town building code
+    -- enforcement
   source_type: statute
-  title___citation: MCA 50-60-304, Area of applicability of county, city, or town
-    building code -- enforcement
   publisher: Montana Legislature
   url: https://mca.legmt.gov/bills/mca/title_0500/chapter_0600/part_0030/section_0040/0500-0600-0030-0040.html
-  accessed: '2026-06-26'
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - City/town limits
   - county coverage
   - contract enforcement
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-mt:mca-50-3-102
+  title: MCA 50-3-102, Powers and duties of department regarding state fire prevention
+    and investigation -- rules
   source_type: statute
-  title___citation: MCA 50-3-102, Powers and duties of department regarding state
-    fire prevention and investigation -- rules
   publisher: Montana Legislature
   url: https://mca.legmt.gov/bills/mca/title_0500/chapter_0030/part_0010/section_0020/0500-0030-0010-0020.html
-  accessed: '2026-06-26'
-  supports: Department of Justice / fire-prevention powers and rulemaking
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Department of Justice / fire-prevention powers and rulemaking
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-mt:dli-building-codes-program
+  title: Montana Building Codes Program
   source_type: agency_page
-  title___citation: Montana Building Codes Program
   publisher: Montana Department of Labor & Industry
   url: https://bsd.dli.mt.gov/building-codes-permits/
-  accessed: '2026-06-26'
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Program role
   - statewide code adoption/enforcement
   - state/local split
   - boiler/elevator inspections
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-mt:dli-current-codes
+  title: Current Codes
   source_type: agency_page
-  title___citation: Current Codes
   publisher: Montana Department of Labor & Industry
   url: https://bsd.dli.mt.gov/building-codes-permits/current-codes
-  accessed: '2026-06-26'
-  supports: Current model-code editions and effective dates
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Current model-code editions and effective dates
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-mt:dli-certified-local-programs
+  title: Certified City, County and Town Programs
   source_type: agency_page
-  title___citation: Certified City, County and Town Programs
   publisher: Montana Department of Labor & Industry
   url: https://bsd.dli.mt.gov/building-codes-permits/certified-government
-  accessed: '2026-06-26'
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Local certification requirements
   - local adoption limits
   - state fallback jurisdiction
   - certified-jurisdiction list
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-mt:dli-building-codes-council
+  title: Building Codes Council
   source_type: agency_page
-  title___citation: Building Codes Council
   publisher: Montana Department of Labor & Industry
   url: https://bsd.dli.mt.gov/building-codes-permits/building-codes-council
-  accessed: '2026-06-26'
-  supports: Advisory council role and membership structure
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Advisory council role and membership structure
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-mt:dli-electrical-permits
+  title: Electrical Permits
   source_type: agency_page
-  title___citation: Electrical Permits
   publisher: Montana Department of Labor & Industry
   url: https://bsd.dli.mt.gov/building-codes-permits/permit-applications/electrical-permits/
-  accessed: '2026-06-26'
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Electrical permit and inspection administration
   - NEC compliance statement
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-mt:doj-fpi
+  title: Fire Prevention and Investigations
   source_type: agency_page
-  title___citation: Fire Prevention and Investigations
   publisher: Montana Department of Justice
   url: https://dojmt.gov/dci-home/investigations-bureau/fire-prevention-and-investigations/
-  accessed: '2026-06-26'
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - State Fire Marshal / FPIS role
   - statewide fire prevention/investigation services
   - local-agency support
   - regulation assistance
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-mt:arm-24-301-current-rules
+  title: Administrative Rules of Montana, Title 24, Chapter 301, Building Codes
   source_type: regulation
-  title___citation: Administrative Rules of Montana, Title 24, Chapter 301, Building
-    Codes
   publisher: Montana Secretary of State
   url: https://rules.mt.gov/browse/collections/aec52c46-128e-4279-9068-8af5d5432d74/sections/e89dd2b8-de8d-48d1-9fa2-4cf9bbacb24b
-  accessed: '2026-06-26'
-  supports: Official rules chapter containing building-code adoptions and amendments
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Official rules chapter containing building-code adoptions and amendments
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-mt:arm-24-301-146-permit-transition
+  title: ARM 24.301.146, Modifications to the International Building Code applicable
+    to both DLI and local government code enforcement programs
   source_type: regulation_extract
-  title___citation: ARM 24.301.146, Modifications to the International Building Code
-    applicable to both DLI and local government code enforcement programs
   publisher: Montana Secretary of State / official ARM page; searchable extract used
     due dynamic page limitations
   url: https://rules.mt.gov/search?query=24.301.146
-  accessed: '2026-06-26'
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Permit-issued transition rule
   - IBC amendments
   - fire-reference interface
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-mt:arm-23-12-601
+  title: ARM 23.12.601, Adoption of the International Fire Code (2021 Edition)
   source_type: regulation
-  title___citation: ARM 23.12.601, Adoption of the International Fire Code (2021 Edition)
   publisher: Montana Secretary of State
   url: https://rules.mt.gov/browse/collections/aec52c46-128e-4279-9068-8af5d5432d74/policies/3bc741e2-2367-4657-be3f-ccbb026e8746
-  accessed: '2026-06-26'
-  supports: 2021 IFC adoption by FPIS
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - 2021 IFC adoption by FPIS
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-mt:dli-2026-draft-code-update
+  title: Draft Notice of Proposed Rulemaking, MAR Notice No. 2026-95.2, 2026 Updates
+    to the State Building Code
   source_type: register_notice_draft_pdf
-  title___citation: Draft Notice of Proposed Rulemaking, MAR Notice No. 2026-95.2,
-    2026 Updates to the State Building Code
   publisher: Montana Department of Labor & Industry / Montana Administrative Register
     draft
   url: https://bsd.dli.mt.gov/_docs/building-codes-permits/2024-BUILDING-CODE-ADOPTION-AMENDMENTS.pdf
-  accessed: '2026-06-26'
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Pending/draft updates to 2024 model codes and 2023 NEC
   - source caveat applies
+  caveats: []
+  notes: []
+  details: []

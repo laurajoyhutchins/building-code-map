@@ -1,103 +1,183 @@
 ---
 official_sources:
 - source_id: src:usa-ms:code-public-access
-  source_type: official_code_portal
   title: Mississippi Code Public Access
-  issuer___publisher: LexisNexis for Mississippi Code public access
-  url___location: https://www.lexisnexis.com/hottopics/mscode/
-  date___version: accessed 2026-06-25
-  key_fields_supported: Statutory code portal for Mississippi Code
+  source_type: official_code_portal
+  publisher: LexisNexis for Mississippi Code public access
+  url: https://www.lexisnexis.com/hottopics/mscode/
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Statutory code portal for Mississippi Code
+  caveats: []
   notes:
   - Official/public code portal is not line-addressable in this workflow
   - section text was cross-checked against accessible 2024 HTML convenience copies
     listed as caveated extraction aids.
+  details:
+  - name: date_version
+    values:
+    - accessed 2026-06-25
 - source_id: src:usa-ms:stat-17-2-1
+  title: Miss. Code § 17-2-1, Certain counties required to enforce wind/flood mitigation
+    requirements
   source_type: statute
-  title: "Miss. Code \xA7 17-2-1, Certain counties required to enforce wind/flood\
-    \ mitigation requirements"
-  issuer___publisher: Mississippi Code / public access copy
-  url___location: https://law.justia.com/codes/mississippi/title-17/chapter-2/section-17-2-1/
-  date___version: 2024 accessible copy; official portal cross-check required
-  key_fields_supported: Coastal wind/flood rule; opt-out window; coastal county list
+  publisher: Mississippi Code / public access copy
+  url: https://law.justia.com/codes/mississippi/title-17/chapter-2/section-17-2-1/
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Coastal wind/flood rule; opt-out window; coastal county list
+  caveats: []
   notes:
   - 'Caveat: accessible text is Justia convenience HTML with disclaimer'
   - confirm against official code portal before verified status.
+  details:
+  - name: date_version
+    values:
+    - 2024 accessible copy; official portal cross-check required
 - source_id: src:usa-ms:stat-17-2-3
+  title: Miss. Code § 17-2-3, Creation of Mississippi Building Codes Council
   source_type: statute
-  title: "Miss. Code \xA7 17-2-3, Creation of Mississippi Building Codes Council"
-  issuer___publisher: Mississippi Code / public access copy
-  url___location: https://law.justia.com/codes/mississippi/title-17/chapter-2/section-17-2-3/
-  date___version: 2024 accessible copy; official portal cross-check required
-  key_fields_supported: MBCC creation; membership; model-code adoption/amendment authority;
-    sprinkler limitation; local modification clause
+  publisher: Mississippi Code / public access copy
+  url: https://law.justia.com/codes/mississippi/title-17/chapter-2/section-17-2-3/
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - MBCC creation; membership; model-code adoption/amendment authority; sprinkler
+    limitation; local modification clause
+  caveats: []
   notes:
   - 'Caveat: accessible text is Justia convenience HTML with disclaimer'
   - confirm against official code portal before verified status.
+  details:
+  - name: date_version
+    values:
+    - 2024 accessible copy; official portal cross-check required
 - source_id: src:usa-ms:stat-17-2-4
+  title: Miss. Code § 17-2-4, State Uniform Construction Code; exemptions
   source_type: statute
-  title: "Miss. Code \xA7 17-2-4, State Uniform Construction Code; exemptions"
-  issuer___publisher: Mississippi Code / public access copy
-  url___location: https://law.justia.com/codes/mississippi/title-17/chapter-2/section-17-2-4/
-  date___version: 2024 accessible copy; official portal cross-check required
-  key_fields_supported: State Uniform Construction Code; IBC/IRC/other code subjects;
-    local opt-out; effective date
+  publisher: Mississippi Code / public access copy
+  url: https://law.justia.com/codes/mississippi/title-17/chapter-2/section-17-2-4/
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - State Uniform Construction Code; IBC/IRC/other code subjects; local opt-out; effective
+    date
+  caveats: []
   notes:
   - 'Caveat: accessible text is Justia convenience HTML with disclaimer'
   - confirm against official code portal before verified status.
+  details:
+  - name: date_version
+    values:
+    - 2024 accessible copy; official portal cross-check required
 - source_id: src:usa-ms:stat-17-2-5
+  title: Miss. Code § 17-2-5, Adoption of minimum codes; agreements for enforcement
   source_type: statute
-  title: "Miss. Code \xA7 17-2-5, Adoption of minimum codes; agreements for enforcement"
-  issuer___publisher: Mississippi Code / public access copy
-  url___location: https://law.justia.com/codes/mississippi/title-17/chapter-2/section-17-2-5/
-  date___version: 2024 accessible copy; official portal cross-check required
-  key_fields_supported: Local adoption after 2008; local enforcement; third-party/intergovernmental
-    enforcement agreements
+  publisher: Mississippi Code / public access copy
+  url: https://law.justia.com/codes/mississippi/title-17/chapter-2/section-17-2-5/
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Local adoption after 2008; local enforcement; third-party/intergovernmental enforcement
+    agreements
+  caveats: []
   notes:
   - 'Caveat: accessible text is Justia convenience HTML with disclaimer'
   - confirm against official code portal before verified status.
+  details:
+  - name: date_version
+    values:
+    - 2024 accessible copy; official portal cross-check required
 - source_id: src:usa-ms:stat-17-2-7
+  title: Miss. Code § 17-2-7, Farm structures exempt
   source_type: statute
-  title: "Miss. Code \xA7 17-2-7, Farm structures exempt"
-  issuer___publisher: Mississippi Code / public access copy
-  url___location: https://law.justia.com/codes/mississippi/title-17/chapter-2/section-17-2-7/
-  date___version: 2024 accessible copy; official portal cross-check required
-  key_fields_supported: Farm-structure exemption; affidavit condition; NFIP carveout
+  publisher: Mississippi Code / public access copy
+  url: https://law.justia.com/codes/mississippi/title-17/chapter-2/section-17-2-7/
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Farm-structure exemption; affidavit condition; NFIP carveout
+  caveats: []
   notes:
   - 'Caveat: accessible text is Justia convenience HTML with disclaimer'
   - confirm against official code portal before verified status.
+  details:
+  - name: date_version
+    values:
+    - 2024 accessible copy; official portal cross-check required
 - source_id: src:usa-ms:stat-17-2-9
+  title: Miss. Code § 17-2-9, Certain other buildings/facilities/manufactured housing
+    exempt
   source_type: statute
-  title: "Miss. Code \xA7 17-2-9, Certain other buildings/facilities/manufactured\
-    \ housing exempt"
-  issuer___publisher: Mississippi Code / public access copy
-  url___location: https://law.justia.com/codes/mississippi/title-17/chapter-2/section-17-2-9/
-  date___version: 2024 accessible copy; official portal cross-check required
-  key_fields_supported: Industrial/fairground/recreational/manufactured-housing/salvage
-    timber exemptions; NFIP carveout
+  publisher: Mississippi Code / public access copy
+  url: https://law.justia.com/codes/mississippi/title-17/chapter-2/section-17-2-9/
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Industrial/fairground/recreational/manufactured-housing/salvage timber exemptions;
+    NFIP carveout
+  caveats: []
   notes:
   - 'Caveat: accessible text is Justia convenience HTML with disclaimer'
   - confirm against official code portal before verified status.
+  details:
+  - name: date_version
+    values:
+    - 2024 accessible copy; official portal cross-check required
 - source_id: src:usa-ms:stat-17-2-11
+  title: Miss. Code § 17-2-11, Refrigerant limitation
   source_type: statute
-  title: "Miss. Code \xA7 17-2-11, Refrigerant limitation"
-  issuer___publisher: Mississippi Code / public access copy
-  url___location: https://law.justia.com/codes/mississippi/title-17/chapter-2/section-17-2-11/
-  date___version: 2024 accessible copy; official portal cross-check required
-  key_fields_supported: Building-code prohibition on limiting federally acceptable
-    refrigerants
+  publisher: Mississippi Code / public access copy
+  url: https://law.justia.com/codes/mississippi/title-17/chapter-2/section-17-2-11/
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Building-code prohibition on limiting federally acceptable refrigerants
+  caveats: []
   notes:
   - 'Caveat: accessible text is Justia convenience HTML with disclaimer'
   - confirm against official code portal before verified status.
+  details:
+  - name: date_version
+    values:
+    - 2024 accessible copy; official portal cross-check required
 - source_id: src:usa-ms:admin-19-7-ch7
-  source_type: administrative_rule
   title: Mississippi Administrative Code Title 19, Part 7, Chapter 7, Rules and Regulations
     for the Mississippi Fire Prevention Code
-  issuer___publisher: Mississippi Secretary of State Administrative Code / Mississippi
-    Insurance Department, State Fire Marshal
-  url___location: https://www.sos.ms.gov/adminsearch/ACCode/00000310c.pdf
-  date___version: current compilation accessed 2026-06-25; rule effective 2025-01-01
-  key_fields_supported: MFPC authority, model code, applicability, state/local enforcement,
-    local fire-code substitution, plan review date rule, effective date
+  source_type: administrative_rule
+  publisher: Mississippi Secretary of State Administrative Code / Mississippi Insurance
+    Department, State Fire Marshal
+  url: https://www.sos.ms.gov/adminsearch/ACCode/00000310c.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - MFPC authority, model code, applicability, state/local enforcement, local fire-code
+    substitution, plan review date rule, effective date
+  caveats: []
   notes:
   - Official PDF compilation
   - text extraction and page screenshots reviewed.
+  details:
+  - name: date_version
+    values:
+    - current compilation accessed 2026-06-25; rule effective 2025-01-01

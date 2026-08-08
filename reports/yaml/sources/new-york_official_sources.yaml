@@ -2,63 +2,110 @@
 official_sources:
 - source_id: src:usa-ny:dos-bsc-overview
   title: Building Standards and Codes
-  publisher___agency: New York Department of State
   source_type: agency_page
+  publisher: New York Department of State
   url: https://dos.ny.gov/building-standards-and-codes
-  date___version: accessed 2026-06-26
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - DBSC role
   - Title 19 NYCRR framework
   caveats:
   - Agency web page
   - use statutes/regulations for legal text.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ny:dos-code-development
   title: Code Development
-  publisher___agency: New York Department of State
   source_type: agency_page
+  publisher: New York Department of State
   url: https://dos.ny.gov/code/code-development
-  date___version: accessed 2026-06-26
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Code Council authority
   - local more restrictive / more stringent code review
   caveats:
   - Agency summary
   - cite statutes for controlling legal text.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ny:dos-code-council-page
   title: State Fire Prevention and Building Code Council
-  publisher___agency: New York Department of State
   source_type: agency_page
+  publisher: New York Department of State
   url: https://dos.ny.gov/state-fire-prevention-and-building-code-council
-  date___version: accessed 2026-06-26
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - NYC exception
   - Code Council page
   - local standards table
-  caveats: Local standards table may be stale/partial.
+  caveats:
+  - Local standards table may be stale/partial.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ny:dos-local-standard-list
   title: Code Council approved local standards / energy filings table
-  publisher___agency: New York Department of State
   source_type: agency_page_table
+  publisher: New York Department of State
   url: https://dos.ny.gov/state-fire-prevention-and-building-code-council
-  date___version: visible last-updated marker 2022-09-27
-  supports: Local amendment registry existence and examples
-  caveats: Treat as partial until DOS confirms current registry status.
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Local amendment registry existence and examples
+  caveats:
+  - Treat as partial until DOS confirms current registry status.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - visible last-updated marker 2022-09-27
 - source_id: src:usa-ny:dos-laws-regs
   title: Laws and Regulations, Division of Building Standards and Codes
-  publisher___agency: New York Department of State
   source_type: agency_page
+  publisher: New York Department of State
   url: https://dos.ny.gov/laws-and-regulations-division-building-standards-and-codes
-  date___version: courtesy copies current as of 2026-02-20 per page
-  supports: Title 19 NYCRR parts and statutory links
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Title 19 NYCRR parts and statutory links
   caveats:
   - Courtesy copy
   - verify against official NYCRR/State Register for production.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - courtesy copies current as of 2026-02-20 per page
 - source_id: src:usa-ny:dos-uniform-code
   title: Uniform Fire Prevention and Building Code
-  publisher___agency: New York Department of State
   source_type: agency_page
+  publisher: New York Department of State
   url: https://dos.ny.gov/uniform-fire-prevention-and-building-code
-  date___version: accessed 2026-06-26
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Uniform Code scope
   - NYC exception
@@ -66,12 +113,20 @@ official_sources:
   caveats:
   - Agency summary
   - use statutes/regulations for controlling language.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ny:dos-faq
   title: Division of Building Standards and Codes Frequently Asked Questions
-  publisher___agency: New York Department of State
   source_type: agency_faq
+  publisher: New York Department of State
   url: https://dos.ny.gov/division-building-standards-and-codes-frequently-asked-questions
-  date___version: accessed 2026-06-26
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - NYC exception
   - statewide Energy Code
@@ -80,13 +135,20 @@ official_sources:
   caveats:
   - FAQ includes some legacy 2020 wording elsewhere
   - use only verified current statements and cross-check with Notice/NYCRR.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ny:dos-2025-notice-adoption
   title: 'Notice of Adoption: 2025 Uniform Code and Energy Code update'
-  publisher___agency: New York Department of State
   source_type: adoption_notice
+  publisher: New York Department of State
   url: https://dos.ny.gov/notice-adoption
-  date___version: original adoption 2025-07-25; amended adoption 2025-12-05; effective
-    2025-12-31
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - 2025 code books
   - adoption/effective/mandatory dates
@@ -95,42 +157,77 @@ official_sources:
   caveats:
   - Agency page summarizing State Register notices
   - State Register text should be archived for long-term legal provenance.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - original adoption 2025-07-25; amended adoption 2025-12-05; effective 2025-12-31
 - source_id: src:usa-ny:mulhern-stipulation-order
   title: Mulhern et al. v. Mosley So Ordered Stipulation
-  publisher___agency: U.S. District Court / hosted by NY DOS
   source_type: court_order_pdf
+  publisher: U.S. District Court / hosted by NY DOS
   url: https://dos.ny.gov/mulhern-so-ordered-stipulation-11-18-25
-  date___version: ordered 2025-11-18
-  supports: "Suspension of 19 NYCRR \xA71240.6 and Subpart 1229-2"
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Suspension of 19 NYCRR §1240.6 and Subpart 1229-2
   caveats:
   - PDF hosted by DOS
   - docket should be checked for later modifications.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - ordered 2025-11-18
 - source_id: src:usa-ny:19nycrr-1219
   title: '19 NYCRR Part 1219: Uniform Code definitions and incorporated publications'
-  publisher___agency: New York Department of State
   source_type: regulation_pdf
+  publisher: New York Department of State
   url: https://dos.ny.gov/19-nycrr-part-1219
-  date___version: 2025 rule text
-  supports: Uniform Code composition and code-book definitions
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Uniform Code composition and code-book definitions
   caveats:
   - Courtesy/agency PDF
   - verify official NYCRR text for production.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - 2025 rule text
 - source_id: src:usa-ny:19nycrr-1220
   title: '19 NYCRR Part 1220: Residential Construction'
-  publisher___agency: New York Department of State
   source_type: regulation_pdf
+  publisher: New York Department of State
   url: https://dos.ny.gov/19-nycrr-part-1220
-  date___version: 2025 rule text
-  supports: 2025 RCNYS applicability and incorporation
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - 2025 RCNYS applicability and incorporation
   caveats:
   - Courtesy/agency PDF
   - verify official NYCRR text for production.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - 2025 rule text
 - source_id: src:usa-ny:19nycrr-1221
   title: '19 NYCRR Part 1221: Building Construction'
-  publisher___agency: New York Department of State
   source_type: regulation_pdf
+  publisher: New York Department of State
   url: https://dos.ny.gov/19-nycrr-part-1221
-  date___version: 2025 rule text
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - 2025 BCNYS applicability
   - exceptions
@@ -138,12 +235,20 @@ official_sources:
   caveats:
   - Courtesy/agency PDF
   - verify official NYCRR text for production.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - 2025 rule text
 - source_id: src:usa-ny:19nycrr-1240
   title: '19 NYCRR Part 1240: State Energy Conservation Construction Code'
-  publisher___agency: New York Department of State
   source_type: regulation_pdf
+  publisher: New York Department of State
   url: https://dos.ny.gov/state-energy-conservation-construction-code-0
-  date___version: 2025 rule text
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - 2025 ECCCNYS
   - NYS ASHRAE 90.1-2025
@@ -152,96 +257,181 @@ official_sources:
   caveats:
   - Courtesy/agency PDF
   - fossil-fuel provisions partly suspended by order.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - 2025 rule text
 - source_id: src:usa-ny:exec-law-374
-  title: "Executive Law \xA7374: State Fire Prevention and Building Code Council"
-  publisher___agency: NYSenate.gov / Open Legislation
+  title: 'Executive Law §374: State Fire Prevention and Building Code Council'
   source_type: statute_html
+  publisher: NYSenate.gov / Open Legislation
   url: https://www.nysenate.gov/legislation/laws/EXC/374
-  date___version: accessed 2026-06-26
-  supports: Code Council creation and composition
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Code Council creation and composition
   caveats:
   - Online statute
   - verify session-law amendments if needed.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ny:exec-law-375
-  title: "Executive Law \xA7375: Council powers and duties"
-  publisher___agency: NYSenate.gov / Open Legislation
+  title: 'Executive Law §375: Council powers and duties'
   source_type: statute_html
+  publisher: NYSenate.gov / Open Legislation
   url: https://www.nysenate.gov/legislation/laws/EXC/375
-  date___version: accessed 2026-06-26
-  supports: Code Council powers/duties
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Code Council powers/duties
   caveats:
   - Online statute
   - verify session-law amendments if needed.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ny:exec-law-379
-  title: "Executive Law \xA7379: Higher local standards"
-  publisher___agency: NYSenate.gov / Open Legislation
+  title: 'Executive Law §379: Higher local standards'
   source_type: statute_html
+  publisher: NYSenate.gov / Open Legislation
   url: https://www.nysenate.gov/legislation/laws/EXC/379
-  date___version: accessed 2026-06-26
-  supports: Local higher/more restrictive construction standards
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Local higher/more restrictive construction standards
   caveats:
   - Online statute
   - verify session-law amendments if needed.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ny:exec-law-381
-  title: "Executive Law \xA7381: Administration and enforcement"
-  publisher___agency: NYSenate.gov / Open Legislation
+  title: 'Executive Law §381: Administration and enforcement'
   source_type: statute_html
+  publisher: NYSenate.gov / Open Legislation
   url: https://www.nysenate.gov/legislation/laws/EXC/381
-  date___version: accessed 2026-06-26
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
   supports:
   - Local enforcement model
   - county/SOS fallback
   caveats:
   - Online statute
   - verify session-law amendments if needed.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ny:energy-law-11-109
-  title: "Energy Law \xA711-109: Local energy conservation construction codes"
-  publisher___agency: NYSenate.gov / Open Legislation
+  title: 'Energy Law §11-109: Local energy conservation construction codes'
   source_type: statute_html
+  publisher: NYSenate.gov / Open Legislation
   url: https://www.nysenate.gov/legislation/laws/ENG/11-109
-  date___version: accessed 2026-06-26
-  supports: Local more stringent energy code filing/review
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Local more stringent energy code filing/review
   caveats:
   - Online statute
   - verify session-law amendments if needed.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ny:dos-enforcement-programs
   title: Local Government and State Agency Enforcement Programs
-  publisher___agency: New York Department of State
   source_type: agency_page
+  publisher: New York Department of State
   url: https://dos.ny.gov/code/local-government-state-agency-enforcement-programs
-  date___version: accessed 2026-06-26
-  supports: Local and state agency enforcement reporting and support
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Local and state agency enforcement reporting and support
   caveats:
   - Agency summary
   - detailed Part 1203 rules not fully parsed.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ny:dos-lg07-local-authority
   title: 'Legal Memorandum LG07: The Uniform Code and Local Authority'
-  publisher___agency: New York Department of State
   source_type: agency_legal_memorandum
+  publisher: New York Department of State
   url: https://dos.ny.gov/legal-memorandum-lg07-uniform-code-and-local-authority
-  date___version: accessed 2026-06-26
-  supports: Local authority limits and approval process
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Local authority limits and approval process
   caveats:
   - Informal/non-binding explanatory memorandum
   - not a substitute for statute/regulation.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - accessed 2026-06-26
 - source_id: src:usa-ny:dos-code-outreach-2026-01
   title: '2026 Code Outreach Program: 19 NYCRR changes for 2025 codes'
-  publisher___agency: New York Department of State
   source_type: agency_guidance_pdf
+  publisher: New York Department of State
   url: https://dos.ny.gov/2026-01-nycrr-changes-2025-codes
-  date___version: January 2026
-  supports: Outreach explanation of 2025 code structure and notable changes
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Outreach explanation of 2025 code structure and notable changes
   caveats:
   - Guidance/outreach
   - do not rely on it as controlling legal text.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - January 2026
 - source_id: src:usa-ny:dos-manufactured-housing-2025-uniform
   title: 2025 Uniform Code Adoption PDF / Manufactured Homes Program notice
-  publisher___agency: New York Department of State
   source_type: agency_program_pdf
+  publisher: New York Department of State
   url: https://dos.ny.gov/2025-uniform-code-adoptionpdf
-  date___version: 2025
-  supports: Additional confirmation of Uniform Code adoption/effective date for a
-    program context
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports:
+  - Additional confirmation of Uniform Code adoption/effective date for a program
+    context
   caveats:
   - Program notice
   - use Notice/NYCRR for core adoption fields.
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - '2025'

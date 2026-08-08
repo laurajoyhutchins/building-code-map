@@ -1,23 +1,22 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: ahj:usa-ny:state-fire-prevention-building-code-council
-- field: Authority name
-  value: State Fire Prevention and Building Code Council
-- field: Authority type
-  value: state_code_council
-- field: Legal basis
-  value: "Executive Law Article 18, including \xA7\xA7374-375; Energy Law Article\
-    \ 11 for the Energy Code framework; Title 19 NYCRR implementing rules"
-- field: Role
-  value: Develops, maintains, amends, and updates the Uniform Code and Energy Code;
+- authority_id: ahj:usa-ny:state-fire-prevention-building-code-council
+  authority_name: State Fire Prevention and Building Code Council
+  authority_type: state_code_council
+  legal_basis:
+  - Executive Law Article 18, including §§374-375
+  - Energy Law Article 11 for the Energy Code framework
+  - Title 19 NYCRR implementing rules
+  role: Develops, maintains, amends, and updates the Uniform Code and Energy Code;
     approves qualifying local higher/more restrictive Uniform Code standards and qualifying
     more stringent local energy codes
-- field: Enforcement model
-  value: statewide_code_with_local_administration_and_enforcement; NYC excluded from
-    Uniform Code but included for Energy Code
-- field: Source IDs
-  value: src:usa-ny:dos-code-development; src:usa-ny:exec-law-374; src:usa-ny:exec-law-375;
-    src:usa-ny:dos-code-council-page
-- field: Verification status
-  value: partially_verified
+  enforcement_model: statewide_code_with_local_administration_and_enforcement; NYC
+    excluded from Uniform Code but included for Energy Code
+  source_ids:
+  - src:usa-ny:dos-code-development
+  - src:usa-ny:exec-law-374
+  - src:usa-ny:exec-law-375
+  - src:usa-ny:dos-code-council-page
+  verification_status:
+  - partially_verified
+  parent_agency: null

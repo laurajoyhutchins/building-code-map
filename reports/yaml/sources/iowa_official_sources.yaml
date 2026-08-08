@@ -2,95 +2,192 @@
 official_sources:
 - source_id: src:usa-ia:code-103a
   title: Iowa Code 2026, Chapter 103A, State Building Code
-  publisher___owner: Iowa Legislature
-  type: statute PDF
-  url___location: https://www.legis.iowa.gov/docs/ico/chapter/103A.pdf
-  date___version: Iowa Code 2026 PDF generated 2025-12-09
-  used_for: State building-code authority, applicability, energy statewide provisions,
-    local adoption timing, local enforcement caveats
+  source_type: statute PDF
+  publisher: Iowa Legislature
+  url: https://www.legis.iowa.gov/docs/ico/chapter/103A.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_primary
+  supports:
+  - State building-code authority, applicability, energy statewide provisions, local
+    adoption timing, local enforcement caveats
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - Iowa Code 2026 PDF generated 2025-12-09
 - source_id: src:usa-ia:iac-481-300
-  title: "481\u2014Chapter 300, State Building Code\u2014Administration"
-  publisher___owner: Iowa Legislature / DIAL
-  type: administrative rule PDF
-  url___location: https://www.legis.iowa.gov/docs/iac/chapter/02-18-2026.481.300.pdf
-  date___version: IAC Supplement 2025-11-26; ARC 9473C effective 2025-09-10
-  used_for: Administration, commissioner role, advisory council role, plan review/inspection
+  title: 481—Chapter 300, State Building Code—Administration
+  source_type: administrative rule PDF
+  publisher: Iowa Legislature / DIAL
+  url: https://www.legis.iowa.gov/docs/iac/chapter/02-18-2026.481.300.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
+  status: official_primary
+  supports:
+  - Administration, commissioner role, advisory council role, plan review/inspection
     submission paths
-  status: official_primary
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - IAC Supplement 2025-11-26; ARC 9473C effective 2025-09-10
 - source_id: src:usa-ia:iac-481-301
-  title: "481\u2014Chapter 301, State Building Code"
-  publisher___owner: Iowa Legislature / DIAL
-  type: administrative rule PDF
-  url___location: https://www.legis.iowa.gov/docs/iac/chapter/01-07-2026.481.301.pdf
-  date___version: IAC Supplement 2025-11-26; ARC 9474C effective 2025-09-10
-  used_for: IBC/IRC/IEBC adoptions, energy code, accessibility, transition rule, mechanical/electrical/plumbing
-    cross-references
+  title: 481—Chapter 301, State Building Code
+  source_type: administrative rule PDF
+  publisher: Iowa Legislature / DIAL
+  url: https://www.legis.iowa.gov/docs/iac/chapter/01-07-2026.481.301.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_primary
+  supports:
+  - IBC/IRC/IEBC adoptions, energy code, accessibility, transition rule, mechanical/electrical/plumbing
+    cross-references
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - IAC Supplement 2025-11-26; ARC 9474C effective 2025-09-10
 - source_id: src:usa-ia:code-10a-511
   title: Iowa Code 2026, Section 10A.511, Fire Control Duties
-  publisher___owner: Iowa Legislature
-  type: statute PDF
-  url___location: https://www.legis.iowa.gov/docs/code/10A.511.pdf
-  date___version: Iowa Code 2026 PDF generated 2025-12-09
-  used_for: Fire-control statutory authority and State Fire Marshal consultation
+  source_type: statute PDF
+  publisher: Iowa Legislature
+  url: https://www.legis.iowa.gov/docs/code/10A.511.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_primary
+  supports:
+  - Fire-control statutory authority and State Fire Marshal consultation
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - Iowa Code 2026 PDF generated 2025-12-09
 - source_id: src:usa-ia:iac-481-280
-  title: "481\u2014Chapter 280, Fire Control Administration"
-  publisher___owner: Iowa Legislature / DIAL
-  type: administrative rule PDF
-  url___location: https://www.legis.iowa.gov/docs/iac/chapter/01-07-2026.481.280.pdf
-  date___version: IAC Supplement 2025-11-26; ARC 9477C effective 2025-09-10
-  used_for: IFC 2024 adoption, fire inspections, plan submissions, local fire-ordinance
-    recognition
+  title: 481—Chapter 280, Fire Control Administration
+  source_type: administrative rule PDF
+  publisher: Iowa Legislature / DIAL
+  url: https://www.legis.iowa.gov/docs/iac/chapter/01-07-2026.481.280.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_primary
+  supports:
+  - IFC 2024 adoption, fire inspections, plan submissions, local fire-ordinance recognition
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - IAC Supplement 2025-11-26; ARC 9477C effective 2025-09-10
 - source_id: src:usa-ia:iac-481-404
-  title: "481\u2014Chapter 404, Electrical Inspection Program"
-  publisher___owner: Iowa Legislature / DIAL
-  type: administrative rule PDF
-  url___location: https://www.legis.iowa.gov/docs/iac/chapter/02-18-2026.481.404.pdf
-  date___version: ARC 9033C effective 2025-07-01
-  used_for: State electrical inspection program and 2023 NEC adoption
+  title: 481—Chapter 404, Electrical Inspection Program
+  source_type: administrative rule PDF
+  publisher: Iowa Legislature / DIAL
+  url: https://www.legis.iowa.gov/docs/iac/chapter/02-18-2026.481.404.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_primary
+  supports:
+  - State electrical inspection program and 2023 NEC adoption
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - ARC 9033C effective 2025-07-01
 - source_id: src:usa-ia:iac-481-425
-  title: "481\u2014Chapter 425, State Plumbing Code"
-  publisher___owner: Iowa Legislature / Plumbing and Mechanical Systems Board
-  type: administrative rule PDF
-  url___location: https://www.legis.iowa.gov/docs/iac/chapter/02-18-2026.481.425.pdf
-  date___version: ARC 8958C effective 2025-03-26
-  used_for: 2024 UPC adoption, local administration, local stricter amendments
+  title: 481—Chapter 425, State Plumbing Code
+  source_type: administrative rule PDF
+  publisher: Iowa Legislature / Plumbing and Mechanical Systems Board
+  url: https://www.legis.iowa.gov/docs/iac/chapter/02-18-2026.481.425.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_primary
+  supports:
+  - 2024 UPC adoption, local administration, local stricter amendments
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - ARC 8958C effective 2025-03-26
 - source_id: src:usa-ia:iac-481-426
-  title: "481\u2014Chapter 426, State Mechanical Code"
-  publisher___owner: Iowa Legislature / Plumbing and Mechanical Systems Board
-  type: administrative rule PDF
-  url___location: https://www.legis.iowa.gov/docs/iac/chapter/02-18-2026.481.426.pdf
-  date___version: ARC 8958C effective 2025-03-26
-  used_for: 2024 IMC adoption, fuel-gas references, local administration, local stricter
-    amendments
+  title: 481—Chapter 426, State Mechanical Code
+  source_type: administrative rule PDF
+  publisher: Iowa Legislature / Plumbing and Mechanical Systems Board
+  url: https://www.legis.iowa.gov/docs/iac/chapter/02-18-2026.481.426.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_primary
+  supports:
+  - 2024 IMC adoption, fuel-gas references, local administration, local stricter amendments
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - ARC 8958C effective 2025-03-26
 - source_id: src:usa-ia:code-89a
   title: Iowa Code 2026, Chapter 89A, Elevators
-  publisher___owner: Iowa Legislature
-  type: statute PDF
-  url___location: https://www.legis.iowa.gov/docs/ico/chapter/89A.pdf
-  date___version: Iowa Code 2026 PDF generated 2025-12-09
-  used_for: Iowa State Elevator Code authority, safety board, director enforcement,
-    local conflict rule
+  source_type: statute PDF
+  publisher: Iowa Legislature
+  url: https://www.legis.iowa.gov/docs/ico/chapter/89A.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_primary
+  supports:
+  - Iowa State Elevator Code authority, safety board, director enforcement, local
+    conflict rule
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - Iowa Code 2026 PDF generated 2025-12-09
 - source_id: src:usa-ia:iac-481-371
-  title: "481\u2014Chapter 371, Administration of Conveyance Safety Program"
-  publisher___owner: Iowa Legislature / DIAL
-  type: administrative rule PDF
-  url___location: https://www.legis.iowa.gov/docs/iac/chapter/481.371.pdf
-  date___version: IAC source accessed 2026-06-25
-  used_for: Conveyance program definitions and permit context
+  title: 481—Chapter 371, Administration of Conveyance Safety Program
+  source_type: administrative rule PDF
+  publisher: Iowa Legislature / DIAL
+  url: https://www.legis.iowa.gov/docs/iac/chapter/481.371.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_primary
+  supports:
+  - Conveyance program definitions and permit context
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - IAC source accessed 2026-06-25
 - source_id: src:usa-ia:iac-481-372
-  title: "481\u2014Chapter 372, Conveyances Installed On or After January 1, 1975"
-  publisher___owner: Iowa Legislature / DIAL
-  type: administrative rule PDF
-  url___location: https://www.legis.iowa.gov/docs/iac/chapter/02-18-2026.481.372.pdf
-  date___version: ARC 8774C effective 2025-02-12; IAC Supplement 2025-07-09
-  used_for: Conveyance safety standards by installation date
+  title: 481—Chapter 372, Conveyances Installed On or After January 1, 1975
+  source_type: administrative rule PDF
+  publisher: Iowa Legislature / DIAL
+  url: https://www.legis.iowa.gov/docs/iac/chapter/02-18-2026.481.372.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_primary
+  supports:
+  - Conveyance safety standards by installation date
+  caveats: []
+  notes: []
+  details:
+  - name: date_version
+    values:
+    - ARC 8774C effective 2025-02-12; IAC Supplement 2025-07-09

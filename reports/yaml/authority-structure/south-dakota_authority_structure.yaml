@@ -1,24 +1,23 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: ahj:usa-sd:statutory-local-building-code
-- field: Authority name
-  value: South Dakota Legislature / local units of government under SDCL Title 11,
-    chapter 10
-- field: Authority type
-  value: hybrid_statutory_baseline_and_local_government_adoption
-- field: Legal basis
-  value: "SDCL \xA7\xA7 11-10-5, 11-10-6, 11-10-11, 11-10-12; 2026 SB 129 for pending\
-    \ 2024-code updates"
-- field: Role
-  value: Establishes required model-code editions for local building/property-maintenance
+- authority_id: ahj:usa-sd:statutory-local-building-code
+  authority_name: South Dakota Legislature / local units of government under SDCL
+    Title 11, chapter 10
+  authority_type: hybrid_statutory_baseline_and_local_government_adoption
+  legal_basis:
+  - SDCL §§ 11-10-5, 11-10-6, 11-10-11, 11-10-12
+  - 2026 SB 129 for pending 2024-code updates
+  role: Establishes required model-code editions for local building/property-maintenance
     ordinances, default nonresidential design standard where a local ordinance is
     absent, and municipal residential-code authority limits.
-- field: Enforcement model
-  value: Local administration/enforcement where a local unit adopts an ordinance;
-    statewide enforcement not established for general building construction.
-- field: Source IDs
-  value: src:usa-sd:sdcl-11-10-5; src:usa-sd:sdcl-11-10-6; src:usa-sd:sdcl-11-10-11;
-    src:usa-sd:sdcl-11-10-12; src:usa-sd:sb-129-2026
-- field: Verification status
-  value: partially_verified
+  enforcement_model: Local administration/enforcement where a local unit adopts an
+    ordinance; statewide enforcement not established for general building construction.
+  source_ids:
+  - src:usa-sd:sdcl-11-10-5
+  - src:usa-sd:sdcl-11-10-6
+  - src:usa-sd:sdcl-11-10-11
+  - src:usa-sd:sdcl-11-10-12
+  - src:usa-sd:sb-129-2026
+  verification_status:
+  - partially_verified
+  parent_agency: null

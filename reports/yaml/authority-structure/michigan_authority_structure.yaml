@@ -1,22 +1,21 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: ahj:usa-mi:lara-bcc-director
-- field: Authority name
-  value: Michigan Department of Licensing and Regulatory Affairs (LARA), Director's
-    Office / Bureau of Construction Codes
-- field: Authority type
-  value: state agency / director
-- field: Legal basis
-  value: Stille-DeRossett-Hale Single State Construction Code Act, 1972 PA 230, MCL
-    125.1504, as cited in Michigan Administrative Rules for construction-code parts
-- field: Role
-  value: Promulgates and administers state construction-code rules and statewide code
+- authority_id: ahj:usa-mi:lara-bcc-director
+  authority_name: Michigan Department of Licensing and Regulatory Affairs (LARA),
+    Director's Office / Bureau of Construction Codes
+  authority_type: state agency / director
+  legal_basis:
+  - Stille-DeRossett-Hale Single State Construction Code Act, 1972 PA 230, MCL 125.1504,
+    as cited in Michigan Administrative Rules for construction-code parts
+  role: Promulgates and administers state construction-code rules and statewide code
     adoptions for the construction-code families reviewed here
-- field: Enforcement model
-  value: statewide construction code with state/default and local-assumption enforcement
-    structure; field remains partially verified pending full MCL 125.1508b extraction
-- field: Source IDs
-  value: src:usa-mi:mcl-125-1504; src:usa-mi:admin-part4-building; src:usa-mi:lara-bcc-home
-- field: Verification status
-  value: partially_verified
+  enforcement_model: statewide construction code with state/default and local-assumption
+    enforcement structure; field remains partially verified pending full MCL 125.1508b
+    extraction
+  source_ids:
+  - src:usa-mi:mcl-125-1504
+  - src:usa-mi:admin-part4-building
+  - src:usa-mi:lara-bcc-home
+  verification_status:
+  - partially_verified
+  parent_agency: null

@@ -3,217 +3,425 @@ official_sources:
 - source_id: src:usa-nv:nrs-244-3675
   title: NRS 244.3675 - County regulation of buildings, structures, property and adoption
     of codes
+  source_type: statute
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: statute
-  url___locator: https://www.leg.state.nv.us/NRS/NRS-244.html#NRS244Sec3675
-  key_fields_supported: County local building-code authority
+  url: https://www.leg.state.nv.us/NRS/NRS-244.html#NRS244Sec3675
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - County local building-code authority
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nrs-268-413
   title: NRS 268.413 - City regulation of buildings, structures, property and adoption
     of codes
+  source_type: statute
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: statute
-  url___locator: https://www.leg.state.nv.us/NRS/NRS-268.html#NRS268Sec413
-  key_fields_supported: City local building-code authority
+  url: https://www.leg.state.nv.us/NRS/NRS-268.html#NRS268Sec413
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - City local building-code authority
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nrs-278-580
   title: NRS 278.580 - Adoption of building code and enforcement rules
+  source_type: statute
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: statute
-  url___locator: https://www.leg.state.nv.us/NRS/NRS-278.html#NRS278Sec580
-  key_fields_supported: Local building-code adoption/enforcement authority
+  url: https://www.leg.state.nv.us/NRS/NRS-278.html#NRS278Sec580
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - Local building-code adoption/enforcement authority
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nrs-278-581
   title: NRS 278.581 - Construction and energy codes for counties/cities with population
     trigger
+  source_type: statute
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: statute
-  url___locator: https://www.leg.state.nv.us/NRS/NRS-278.html#NRS278Sec581
-  key_fields_supported: Energy-code construction-start trigger and local enforcement
-    context
+  url: https://www.leg.state.nv.us/NRS/NRS-278.html#NRS278Sec581
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - Energy-code construction-start trigger and local enforcement context
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nrs-278-583
   title: NRS 278.583 - National Electrical Code standards and local modifications
+  source_type: statute
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: statute
-  url___locator: https://www.leg.state.nv.us/NRS/NRS-278.html#NRS278Sec583
-  key_fields_supported: NEC local modification floor
+  url: https://www.leg.state.nv.us/NRS/NRS-278.html#NRS278Sec583
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - NEC local modification floor
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nrs-278-585
   title: NRS 278.585 - Compliance with city/county building codes
+  source_type: statute
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: statute
-  url___locator: https://www.leg.state.nv.us/NRS/NRS-278.html#NRS278Sec585
-  key_fields_supported: Local code compliance and enforcement posture
+  url: https://www.leg.state.nv.us/NRS/NRS-278.html#NRS278Sec585
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - Local code compliance and enforcement posture
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nrs-278-586
   title: NRS 278.586 - Residential fire-sprinkler limits
+  source_type: statute
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: statute
-  url___locator: https://www.leg.state.nv.us/NRS/NRS-278.html#NRS278Sec586
-  key_fields_supported: Local residential sprinkler amendment limits
+  url: https://www.leg.state.nv.us/NRS/NRS-278.html#NRS278Sec586
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - Local residential sprinkler amendment limits
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nrs-341-100
   title: NRS 341.100 - Deputy Administrator for Public Works, Compliance and Code
     Enforcement
+  source_type: statute
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: statute
-  url___locator: https://www.leg.state.nv.us/NRS/NRS-341.html#NRS341Sec100
-  key_fields_supported: SPWD building official / code enforcement authority
+  url: https://www.leg.state.nv.us/NRS/NRS-341.html#NRS341Sec100
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - SPWD building official / code enforcement authority
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nrs-341-105
   title: NRS 341.105 - Enforcement authority of Deputy Administrator
+  source_type: statute
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: statute
-  url___locator: https://www.leg.state.nv.us/NRS/NRS-341.html#NRS341Sec105
-  key_fields_supported: SPWD stop-work and enforcement authority
+  url: https://www.leg.state.nv.us/NRS/NRS-341.html#NRS341Sec105
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - SPWD stop-work and enforcement authority
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nrs-341-1455
   title: NRS 341.1455 - Permits for planning, maintenance or construction of state
     buildings
+  source_type: statute
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: statute
-  url___locator: https://www.leg.state.nv.us/NRS/NRS-341.html#NRS341Sec1455
-  key_fields_supported: SPWD permit authority for state property
+  url: https://www.leg.state.nv.us/NRS/NRS-341.html#NRS341Sec1455
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - SPWD permit authority for state property
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nrs-341-141
   title: NRS 341.141 - State-building exception referenced in NAC 341.045
+  source_type: statute
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: statute
-  url___locator: https://www.leg.state.nv.us/NRS/NRS-341.html#NRS341Sec141
-  key_fields_supported: State-building scope caveat
+  url: https://www.leg.state.nv.us/NRS/NRS-341.html#NRS341Sec141
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - State-building scope caveat
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nac-341-045
   title: NAC 341.045 - Codes adopted by State Public Works Board
+  source_type: regulation
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: regulation
-  url___locator: https://www.leg.state.nv.us/NAC/NAC-341.html#NAC341Sec045
-  key_fields_supported: SPWD state-building code editions and substitutions
+  url: https://www.leg.state.nv.us/NAC/NAC-341.html#NAC341Sec045
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - SPWD state-building code editions and substitutions
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:spwd-permitting
   title: Permitting & Code Enforcement
+  source_type: agency_page
   publisher: Nevada State Public Works Division
-  type: agency_page
-  url___locator: https://publicworks.nv.gov/Services/Permitting___Code_Enforcement/
-  key_fields_supported: SPWD state-owned-land enforcement, permit, plan review, inspection
-    scope
+  url: https://publicworks.nv.gov/Services/Permitting___Code_Enforcement/
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_agency_page
+  supports:
+  - SPWD state-owned-land enforcement, permit, plan review, inspection scope
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:spwd-statutes-regulations
   title: Statutes and Regulations
+  source_type: agency_page
   publisher: Nevada State Public Works Division
-  type: agency_page
-  url___locator: https://publicworks.nv.gov/About/Statutes_and_Regulations/
-  key_fields_supported: SPWD statute/regulation locator
+  url: https://publicworks.nv.gov/About/Statutes_and_Regulations/
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_agency_page
+  supports:
+  - SPWD statute/regulation locator
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:spwd-adopted-codes-2024
   title: 2024 Adopted Codes
+  source_type: pdf
   publisher: Nevada State Public Works Division
-  type: pdf
-  url___locator: https://publicworks.nv.gov/uploadedFiles/publicworksnvgov/content/Services/2024%20Adopted%20Codes.pdf
-  key_fields_supported: SPWD 2024 adopted-code list
+  url: https://publicworks.nv.gov/uploadedFiles/publicworksnvgov/content/Services/2024%20Adopted%20Codes.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_pdf_partial_parse
+  supports:
+  - SPWD 2024 adopted-code list
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:reg-r072-24
   title: Approved Regulation R072-24
+  source_type: pdf
   publisher: Nevada Register
-  type: pdf
-  url___locator: https://www.leg.state.nv.us/Register/2024Register/R072-24AP.pdf
-  key_fields_supported: NAC 341.045 2024-code amendments
+  url: https://www.leg.state.nv.us/Register/2024Register/R072-24AP.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_pdf_partial_parse
+  supports:
+  - NAC 341.045 2024-code amendments
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nrs-701-220
   title: NRS 701.220 - Energy conservation standards in buildings
+  source_type: statute
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: statute
-  url___locator: https://www.leg.state.nv.us/NRS/NRS-701.html#NRS701Sec220
-  key_fields_supported: GOE authority, statewide minimum, local stricter standards
+  url: https://www.leg.state.nv.us/NRS/NRS-701.html#NRS701Sec220
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - GOE authority, statewide minimum, local stricter standards
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nac-701-185
   title: NAC 701.185 - Energy-code adoption by reference
+  source_type: regulation
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: regulation
-  url___locator: https://www.leg.state.nv.us/NAC/NAC-701.html#NAC701Sec185
-  key_fields_supported: IECC adoption by reference
+  url: https://www.leg.state.nv.us/NAC/NAC-701.html#NAC701Sec185
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - IECC adoption by reference
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:goe-building-energy-codes
   title: Building Energy Codes
+  source_type: agency_page
   publisher: Nevada Governor's Office of Energy
-  type: agency_page
-  url___locator: https://energy.nv.gov/Programs/Building_Energy_Codes/
-  key_fields_supported: GOE authority and local incorporation/enforcement summary
+  url: https://energy.nv.gov/Programs/Building_Energy_Codes/
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_agency_page
+  supports:
+  - GOE authority and local incorporation/enforcement summary
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:goe-state-adoption-status
   title: State Adoption Status
+  source_type: agency_page
   publisher: Nevada Governor's Office of Energy
-  type: agency_page
-  url___locator: https://energy.nv.gov/Programs/Building_Energy_Codes/State_Adoption_Status/
-  key_fields_supported: 2024 IECC adoption/effective date and statewide energy status
+  url: https://energy.nv.gov/Programs/Building_Energy_Codes/State_Adoption_Status/
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_agency_page
+  supports:
+  - 2024 IECC adoption/effective date and statewide energy status
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nrs-477-030
   title: NRS 477.030 - Duties of State Fire Marshal; regulations; enforcement
+  source_type: statute
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: statute
-  url___locator: https://www.leg.state.nv.us/NRS/NRS-477.html#NRS477Sec030
-  key_fields_supported: State Fire Marshal authority and local enforcement coordination
+  url: https://www.leg.state.nv.us/NRS/NRS-477.html#NRS477Sec030
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - State Fire Marshal authority and local enforcement coordination
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nac-477-281
   title: NAC 477.281 - Fire-code regulations adopted by reference
+  source_type: regulation
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: regulation
-  url___locator: https://www.leg.state.nv.us/NAC/NAC-477.html#NAC477Sec281
-  key_fields_supported: SFM adopted-code references
+  url: https://www.leg.state.nv.us/NAC/NAC-477.html#NAC477Sec281
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - SFM adopted-code references
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nac-477-283
   title: NAC 477.283 - Fire-code amendments
+  source_type: regulation
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: regulation
-  url___locator: https://www.leg.state.nv.us/NAC/NAC-477.html#NAC477Sec283
-  key_fields_supported: SFM amendments and code substitutions
+  url: https://www.leg.state.nv.us/NAC/NAC-477.html#NAC477Sec283
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - SFM amendments and code substitutions
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:reg-r205-24
   title: Approved Regulation R205-24
+  source_type: pdf
   publisher: Nevada Register
-  type: pdf
-  url___locator: https://www.leg.state.nv.us/Register/2024Register/R205-24AP.pdf
-  key_fields_supported: 2024 SFM fire-code updates and substitutions
+  url: https://www.leg.state.nv.us/Register/2024Register/R205-24AP.pdf
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_pdf_partial_parse
+  supports:
+  - 2024 SFM fire-code updates and substitutions
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:sfm-hot-topics
   title: Hot Topics
+  source_type: agency_page
   publisher: Nevada State Fire Marshal Division
-  type: agency_page
-  url___locator: https://fire.nv.gov/bureaus/FPL/HOT_TOPICS/
-  key_fields_supported: SFM 2024-code enforcement date
+  url: https://fire.nv.gov/bureaus/FPL/HOT_TOPICS/
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_agency_page
+  supports:
+  - SFM 2024-code enforcement date
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:sfm-fire-protection-engineering
   title: Fire Protection Engineering
+  source_type: agency_page
   publisher: Nevada State Fire Marshal Division
-  type: agency_page
-  url___locator: https://fire.nv.gov/bureaus/FPL/Fire_Protection_Engineering/
-  key_fields_supported: SFM code program context and enforcement notices
+  url: https://fire.nv.gov/bureaus/FPL/Fire_Protection_Engineering/
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_agency_page
+  supports:
+  - SFM code program context and enforcement notices
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nrs-455c
   title: NRS Chapter 455C - Elevators and related conveyances
+  source_type: statute
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: statute
-  url___locator: https://www.leg.state.nv.us/NRS/NRS-455C.html
-  key_fields_supported: Elevator/conveyance program authority
+  url: https://www.leg.state.nv.us/NRS/NRS-455C.html
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - Elevator/conveyance program authority
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nac-455c-500
   title: NAC 455C.500 - Codes adopted by reference
+  source_type: regulation
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: regulation
-  url___locator: https://www.leg.state.nv.us/NAC/NAC-455C.html#NAC455CSec500
-  key_fields_supported: Elevator/conveyance code adoption by reference
+  url: https://www.leg.state.nv.us/NAC/NAC-455C.html#NAC455CSec500
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - Elevator/conveyance code adoption by reference
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:nac-455c-516
   title: NAC 455C.516 - Inspection and standards references
+  source_type: regulation
   publisher: Nevada Legislature / Legislative Counsel Bureau
-  type: regulation
-  url___locator: https://www.leg.state.nv.us/NAC/NAC-455C.html#NAC455CSec516
-  key_fields_supported: Elevator/conveyance inspection standards
+  url: https://www.leg.state.nv.us/NAC/NAC-455C.html#NAC455CSec516
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_registry_entry
+  supports:
+  - Elevator/conveyance inspection standards
+  caveats: []
+  notes: []
+  details: []
 - source_id: src:usa-nv:dir-mcs-information
   title: Mechanical Compliance Section information
+  source_type: agency_page
   publisher: Nevada Division of Industrial Relations
-  type: agency_page
-  url___locator: https://dir.nv.gov/Mechanical_Compliance_Section/Information/
-  key_fields_supported: Elevator/conveyance program and adopted-publications context
+  url: https://dir.nv.gov/Mechanical_Compliance_Section/Information/
+  accessed_date: null
+  snapshot_id: null
+  checksum: null
   status: official_agency_page
+  supports:
+  - Elevator/conveyance program and adopted-publications context
+  caveats: []
+  notes: []
+  details: []

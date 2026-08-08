@@ -1,22 +1,23 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: ahj:usa-mt:dli-building-codes-program
-- field: Authority name
-  value: Montana Department of Labor & Industry, Business Standards Division, Building
-    Codes Program / Building and Commercial Measurements Bureau
-- field: Authority type
-  value: state_agency_program
-- field: Legal basis
-  value: MCA 50-60-103; MCA 50-60-202; MCA 50-60-203
-- field: Role
-  value: Administers Montana building-construction standards; adopts the state building
+- authority_id: ahj:usa-mt:dli-building-codes-program
+  authority_name: Montana Department of Labor & Industry, Business Standards Division,
+    Building Codes Program / Building and Commercial Measurements Bureau
+  authority_type: state_agency_program
+  legal_basis:
+  - MCA 50-60-103
+  - MCA 50-60-202
+  - MCA 50-60-203
+  role: Administers Montana building-construction standards; adopts the state building
     code by rule; issues state permits and inspections where the state retains jurisdiction;
     certifies local government code-enforcement programs.
-- field: Enforcement model
-  value: mixed_state_and_certified_local_enforcement
-- field: Source IDs
-  value: src:usa-mt:mca-50-60-103, src:usa-mt:mca-50-60-202, src:usa-mt:mca-50-60-203,
-    src:usa-mt:dli-building-codes-program, src:usa-mt:dli-certified-local-programs
-- field: Verification status
-  value: partially_verified
+  enforcement_model: mixed_state_and_certified_local_enforcement
+  source_ids:
+  - src:usa-mt:mca-50-60-103
+  - src:usa-mt:mca-50-60-202
+  - src:usa-mt:mca-50-60-203
+  - src:usa-mt:dli-building-codes-program
+  - src:usa-mt:dli-certified-local-programs
+  verification_status:
+  - partially_verified
+  parent_agency: null

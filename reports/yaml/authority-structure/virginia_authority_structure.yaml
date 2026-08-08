@@ -1,21 +1,20 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: ahj:usa-va:bhcd
-- field: Authority name
-  value: Virginia Board of Housing and Community Development
-- field: Authority type
-  value: statewide_adopting_board
-- field: Legal basis
-  value: "Code of Virginia \xA7 36-98 directs and empowers the Board to adopt and\
-    \ promulgate the Uniform Statewide Building Code."
-- field: Role
-  value: Adopts and amends the USBC; initiates regulatory actions to incorporate new
+- authority_id: ahj:usa-va:bhcd
+  authority_name: Virginia Board of Housing and Community Development
+  authority_type: statewide_adopting_board
+  legal_basis:
+  - Code of Virginia § 36-98 directs and empowers the Board to adopt and promulgate
+    the Uniform Statewide Building Code.
+  role: Adopts and amends the USBC; initiates regulatory actions to incorporate new
     model-code editions; final regulations are published through the Virginia Register
     / Virginia Administrative Code.
-- field: Enforcement model
-  value: statewide_code_local_enforcement
-- field: Source IDs
-  value: src:usa-va:code-36-98; src:usa-va:dhcd-codes; src:usa-va:dhcd-usbc; src:usa-va:register-usbc-2021-final
-- field: Verification status
-  value: verified_core_authority
+  enforcement_model: statewide_code_local_enforcement
+  source_ids:
+  - src:usa-va:code-36-98
+  - src:usa-va:dhcd-codes
+  - src:usa-va:dhcd-usbc
+  - src:usa-va:register-usbc-2021-final
+  verification_status:
+  - verified_core_authority
+  parent_agency: null

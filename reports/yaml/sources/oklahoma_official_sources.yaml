@@ -1,120 +1,220 @@
 ---
 official_sources:
 - source_id: src:usa-ok:oubcc-home
+  title: Uniform Building Code Commission home page
   source_type: agency_page
-  title___description: Uniform Building Code Commission home page
-  issuer: Oklahoma Uniform Building Code Commission / Oklahoma.gov
-  accessed: '2026-06-26'
+  publisher: Oklahoma Uniform Building Code Commission / Oklahoma.gov
   url: https://oklahoma.gov/oubcc.html
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports: []
+  caveats: []
   notes:
   - Used for OUBCC mission
   - history
   - publication path
   - 2026 code-change proposal / energy committee watch items.
+  details: []
 - source_id: src:usa-ok:oubcc-codes-rules
+  title: Codes & Rules
   source_type: agency_page
-  title___description: Codes & Rules
-  issuer: Oklahoma Uniform Building Code Commission / Oklahoma.gov
-  accessed: '2026-06-26'
+  publisher: Oklahoma Uniform Building Code Commission / Oklahoma.gov
   url: https://oklahoma.gov/oubcc/codes-and-rules.html
-  notes: Used for adopted-code publication path and state-amendment publication note.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports: []
+  caveats: []
+  notes:
+  - Used for adopted-code publication path and state-amendment publication note.
+  details: []
 - source_id: src:usa-ok:oubcc-statute-act
+  title: Uniform Building Code Commission Act, Oklahoma Statute Title 59 §§ 1000.20-1000.30
   source_type: statute_pdf
-  title___description: "Uniform Building Code Commission Act, Oklahoma Statute Title\
-    \ 59 \xA7\xA7 1000.20-1000.30"
-  issuer: Oklahoma Uniform Building Code Commission / Oklahoma.gov
-  accessed: '2026-06-26'
+  publisher: Oklahoma Uniform Building Code Commission / Oklahoma.gov
   url: https://oklahoma.gov/content/dam/ok/en/oubcc/documents/statute-and-updated-versions/2023%2011%2001%20Title%2059%20OUBCC%20Statute.pdf
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports: []
+  caveats: []
   notes:
   - OUBCC labels this as an unofficial copy
   - used because OSCN was not directly retrievable in this pass.
+  details: []
 - source_id: src:usa-ok:oubcc-faq
+  title: OUBCC FAQs
   source_type: agency_page
-  title___description: OUBCC FAQs
-  issuer: Oklahoma Uniform Building Code Commission / Oklahoma.gov
-  accessed: '2026-06-26'
+  publisher: Oklahoma Uniform Building Code Commission / Oklahoma.gov
   url: https://oklahoma.gov/oubcc/faqs.html
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports: []
+  caveats: []
   notes:
   - Used for local enforcement
   - local higher-standard explanation
   - and public-project minimum standards.
+  details: []
 - source_id: src:usa-ok:oubcc-ibc-adoptions
+  title: International Building Code Adoptions
   source_type: agency_page
-  title___description: International Building Code Adoptions
-  issuer: Oklahoma Uniform Building Code Commission / Oklahoma.gov
-  accessed: '2026-06-26'
+  publisher: Oklahoma Uniform Building Code Commission / Oklahoma.gov
   url: https://oklahoma.gov/oubcc/codes-and-rules/international-building-code-adoptions.html
-  notes: Used for IBC 2018 current-adoption row and effective date.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports: []
+  caveats: []
+  notes:
+  - Used for IBC 2018 current-adoption row and effective date.
+  details: []
 - source_id: src:usa-ok:oubcc-irc-adoptions
+  title: International Residential Code Adoptions
   source_type: agency_page
-  title___description: International Residential Code Adoptions
-  issuer: Oklahoma Uniform Building Code Commission / Oklahoma.gov
-  accessed: '2026-06-26'
+  publisher: Oklahoma Uniform Building Code Commission / Oklahoma.gov
   url: https://oklahoma.gov/oubcc/codes-and-rules/international-residential-code-adoptions.html
-  notes: Used for IRC 2018 current-adoption row and effective date.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports: []
+  caveats: []
+  notes:
+  - Used for IRC 2018 current-adoption row and effective date.
+  details: []
 - source_id: src:usa-ok:oubcc-iebc-adoptions
+  title: International Existing Building Code Adoptions
   source_type: agency_page
-  title___description: International Existing Building Code Adoptions
-  issuer: Oklahoma Uniform Building Code Commission / Oklahoma.gov
-  accessed: '2026-06-26'
+  publisher: Oklahoma Uniform Building Code Commission / Oklahoma.gov
   url: https://oklahoma.gov/oubcc/codes-and-rules/international-existing-building-code-adoptions.html
-  notes: Used for IEBC 2018 current-adoption row and effective date.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports: []
+  caveats: []
+  notes:
+  - Used for IEBC 2018 current-adoption row and effective date.
+  details: []
 - source_id: src:usa-ok:oubcc-ifc-adoptions
+  title: International Fire Code Adoptions
   source_type: agency_page
-  title___description: International Fire Code Adoptions
-  issuer: Oklahoma Uniform Building Code Commission / Oklahoma.gov
-  accessed: '2026-06-26'
+  publisher: Oklahoma Uniform Building Code Commission / Oklahoma.gov
   url: https://oklahoma.gov/oubcc/codes-and-rules/international-fire-code-adoptions.html
-  notes: Used for IFC 2018 current-adoption row and effective date.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports: []
+  caveats: []
+  notes:
+  - Used for IFC 2018 current-adoption row and effective date.
+  details: []
 - source_id: src:usa-ok:oubcc-ifgc-adoptions
+  title: International Fuel Gas Code Adoptions
   source_type: agency_page
-  title___description: International Fuel Gas Code Adoptions
-  issuer: Oklahoma Uniform Building Code Commission / Oklahoma.gov
-  accessed: '2026-06-26'
+  publisher: Oklahoma Uniform Building Code Commission / Oklahoma.gov
   url: https://oklahoma.gov/oubcc/codes-and-rules/international-fuel-gas-code-adoptions.html
-  notes: Used for IFGC 2018 current-adoption row and effective date.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports: []
+  caveats: []
+  notes:
+  - Used for IFGC 2018 current-adoption row and effective date.
+  details: []
 - source_id: src:usa-ok:oubcc-imc-adoptions
+  title: International Mechanical Code Adoptions
   source_type: agency_page
-  title___description: International Mechanical Code Adoptions
-  issuer: Oklahoma Uniform Building Code Commission / Oklahoma.gov
-  accessed: '2026-06-26'
+  publisher: Oklahoma Uniform Building Code Commission / Oklahoma.gov
   url: https://oklahoma.gov/oubcc/codes-and-rules/international-mechanical-code-adoptions.html
-  notes: Used for IMC 2018 current-adoption row and effective date.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports: []
+  caveats: []
+  notes:
+  - Used for IMC 2018 current-adoption row and effective date.
+  details: []
 - source_id: src:usa-ok:oubcc-ipc-adoptions
+  title: International Plumbing Code Adoptions
   source_type: agency_page
-  title___description: International Plumbing Code Adoptions
-  issuer: Oklahoma Uniform Building Code Commission / Oklahoma.gov
-  accessed: '2026-06-26'
+  publisher: Oklahoma Uniform Building Code Commission / Oklahoma.gov
   url: https://oklahoma.gov/oubcc/codes-and-rules/international-plumbing-code-adoptions.html
-  notes: Used for IPC 2018 current-adoption row and effective date.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports: []
+  caveats: []
+  notes:
+  - Used for IPC 2018 current-adoption row and effective date.
+  details: []
 - source_id: src:usa-ok:oubcc-nec-adoptions
+  title: National Electrical Code Adoptions
   source_type: agency_page
-  title___description: National Electrical Code Adoptions
-  issuer: Oklahoma Uniform Building Code Commission / Oklahoma.gov
-  accessed: '2026-06-26'
+  publisher: Oklahoma Uniform Building Code Commission / Oklahoma.gov
   url: https://oklahoma.gov/oubcc/codes-and-rules/national-electrical-code-adoptions.html
-  notes: Used for NEC 2023 current-adoption row and effective date.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports: []
+  caveats: []
+  notes:
+  - Used for NEC 2023 current-adoption row and effective date.
+  details: []
 - source_id: src:usa-ok:oubcc-proposed-rules
+  title: Proposed Rules
   source_type: agency_page
-  title___description: Proposed Rules
-  issuer: Oklahoma Uniform Building Code Commission / Oklahoma.gov
-  accessed: '2026-06-26'
+  publisher: Oklahoma Uniform Building Code Commission / Oklahoma.gov
   url: https://oklahoma.gov/oubcc/codes-and-rules/proposed-rules.html
-  notes: Used for 2024-code rulemaking watch items.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports: []
+  caveats: []
+  notes:
+  - Used for 2024-code rulemaking watch items.
+  details: []
 - source_id: src:usa-ok:oubcc-admin-2021-rules
+  title: Title 748 Permanent Rules - Administrative Amended
   source_type: rule_pdf
-  title___description: Title 748 Permanent Rules - Administrative Amended
-  issuer: Oklahoma Uniform Building Code Commission / Oklahoma.gov
-  accessed: '2026-06-26'
+  publisher: Oklahoma Uniform Building Code Commission / Oklahoma.gov
   url: https://oklahoma.gov/content/dam/ok/en/oubcc/documents/rules/2021%2009%2014%20Permanent%20Rules%20-%20Adminstrative%20Amended.pdf
-  notes: Used only to flag that prior Chapter 15 local-code procedure rules are revoked.
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports: []
+  caveats: []
+  notes:
+  - Used only to flag that prior Chapter 15 local-code procedure rules are revoked.
+  details: []
 - source_id: src:usa-ok:odol-elevator-rules
+  title: Elevator Safety Act and Rules
   source_type: rule_pdf
-  title___description: Elevator Safety Act and Rules
-  issuer: Oklahoma Department of Labor / Oklahoma.gov
-  accessed: '2026-06-26'
+  publisher: Oklahoma Department of Labor / Oklahoma.gov
   url: https://oklahoma.gov/content/dam/ok/en/labor/documents/safety-and-health/safety-standards/elevators/Elevator%20Safety%20Act%20and%20Rules%209-15-22.pdf
+  accessed_date: '2026-06-26'
+  snapshot_id: null
+  checksum: null
+  status: null
+  supports: []
+  caveats: []
   notes:
   - Used for elevator/conveyance authority
   - adopted national standards
   - and inspection framework.
+  details: []

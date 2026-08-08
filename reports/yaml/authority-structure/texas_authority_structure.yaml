@@ -1,25 +1,25 @@
 ---
 authority_structure:
-- field: Authority ID
-  value: ahj:usa-tx:hybrid-state-local
-- field: Authority name
-  value: Hybrid Texas state/local construction-code authority model
-- field: Authority type
-  value: hybrid_state_local_model
-- field: Legal basis
-  value: 'Municipal code authority: Texas Local Government Code Chapter 214. County/unincorporated
+- authority_id: ahj:usa-tx:hybrid-state-local
+  authority_name: Hybrid Texas state/local construction-code authority model
+  authority_type: hybrid_state_local_model
+  legal_basis:
+  - 'Municipal code authority: Texas Local Government Code Chapter 214. County/unincorporated
     authority: Texas Local Government Code Chapter 233. Statewide specialized programs
     are administered through SECO/Comptroller, TDLR, TDI/SFMO, and TDI windstorm program
     statutes/rules.'
-- field: Role
-  value: Coordinates multiple independent authority streams rather than one statewide
+  role: Coordinates multiple independent authority streams rather than one statewide
     general building-code adoption body.
-- field: Enforcement model
-  value: Local enforcement for most site-built construction; state-administered or
-    state-standardized enforcement for specialized programs.
-- field: Source IDs
-  value: src:usa-tx:lg-ch214; src:usa-tx:lg-ch233; src:usa-tx:seco-local-ordinances;
-    src:usa-tx:tdlr-ihb-codes; src:usa-tx:tdlr-electrical-laws-rules; src:usa-tx:tdi-sfmo-rules;
-    src:usa-tx:tdi-windstorm-adopted-codes
-- field: Verification status
-  value: partially_verified
+  enforcement_model: Local enforcement for most site-built construction; state-administered
+    or state-standardized enforcement for specialized programs.
+  source_ids:
+  - src:usa-tx:lg-ch214
+  - src:usa-tx:lg-ch233
+  - src:usa-tx:seco-local-ordinances
+  - src:usa-tx:tdlr-ihb-codes
+  - src:usa-tx:tdlr-electrical-laws-rules
+  - src:usa-tx:tdi-sfmo-rules
+  - src:usa-tx:tdi-windstorm-adopted-codes
+  verification_status:
+  - partially_verified
+  parent_agency: null
