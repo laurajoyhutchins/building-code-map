@@ -25,7 +25,7 @@ type fileReplacement struct {
 }
 
 func Activate(candidatePath, activePath string, expectedKind Kind, activatedAt time.Time) (ActivationResult, error) {
-	verified, err := LoadAndVerify(candidatePath, expectedKind)
+	candidateManifest, manifestBytes, err := loadAndVerifySnapshot(candidatePath, expectedKind)
 	if err != nil {
 		return ActivationResult{}, err
 	}
@@ -53,20 +53,16 @@ func Activate(candidatePath, activePath string, expectedKind Kind, activatedAt t
 	if err := copyFile(candidatePath, stagedSnapshot); err != nil {
 		return ActivationResult{}, err
 	}
-	manifestBytes, err := os.ReadFile(ManifestPath(candidatePath))
-	if err != nil {
-		return ActivationResult{}, fmt.Errorf("read candidate manifest: %w", err)
-	}
 	if err := os.WriteFile(stagedManifest, manifestBytes, 0o600); err != nil {
 		return ActivationResult{}, fmt.Errorf("stage manifest: %w", err)
 	}
 	manifestDigest := sha256.Sum256(manifestBytes)
 	receipt := ActivationReceipt{
 		SchemaVersion:           SchemaVersion,
-		SnapshotID:              verified.Manifest.SnapshotID,
+		SnapshotID:              candidateManifest.SnapshotID,
 		ActivatedAt:             activatedAt.UTC().Format(time.RFC3339),
 		PriorActiveSnapshotID:   priorID,
-		LastKnownGoodSnapshotID: verified.Manifest.SnapshotID,
+		LastKnownGoodSnapshotID: candidateManifest.SnapshotID,
 		ManifestSHA256:          hex.EncodeToString(manifestDigest[:]),
 	}
 	receiptBytes, err := json.MarshalIndent(receipt, "", "  ")
