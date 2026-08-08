@@ -48,22 +48,13 @@ func TestClassifyGovernmentalEntityUsesExplicitLocalAdoptionPower(t *testing.T) 
 	}
 }
 
-func TestClassifyGovernmentalEntityUsesLocalAmendmentBeforeEnforcementOnly(t *testing.T) {
+func TestClassifyGovernmentalEntityUsesExplicitLocalAmendPowerBeforeEnforcementOnly(t *testing.T) {
 	regime := testClassificationRegime()
 	regime.EntityPowerEvidence = []EntityPowerEvidence{{
 		EntityKind: "municipality",
 		Scope: "incorporated",
-		Powers: []RegimePower{RegimePowerAdminister, RegimePowerEnforce},
-		SourceIDs: []string{"src:local-enforcement"},
-	}}
-	regime.AmendmentRules = []AmendmentRule{{
-		ID: "rule:local-amendment",
-		CodeFamily: "building",
-		Level: "local",
-		Posture: "local_amendment_permitted",
-		Summary: "Local technical amendments are evidence-backed.",
+		Powers: []RegimePower{RegimePowerAmend, RegimePowerAdminister, RegimePowerEnforce},
 		SourceIDs: []string{"src:local-amendment"},
-		Verification: Verification{Status: "verified"},
 	}}
 
 	decision, err := ClassifyGovernmentalEntity(EntityClassificationRequest{
@@ -76,6 +67,37 @@ func TestClassifyGovernmentalEntityUsesLocalAmendmentBeforeEnforcementOnly(t *te
 	}
 	if decision.Classification != ClassificationLocalAmender {
 		t.Fatalf("classification = %q, want %q", decision.Classification, ClassificationLocalAmender)
+	}
+}
+
+func TestClassifyGovernmentalEntityDoesNotPromoteEveryLocalityFromGeneralAmendmentRule(t *testing.T) {
+	regime := testClassificationRegime()
+	regime.EntityPowerEvidence = []EntityPowerEvidence{{
+		EntityKind: "municipality",
+		Scope: "incorporated",
+		Powers: []RegimePower{RegimePowerAdminister, RegimePowerEnforce},
+		SourceIDs: []string{"src:local-enforcement"},
+	}}
+	regime.AmendmentRules = []AmendmentRule{{
+		ID: "rule:approved-local-rules",
+		CodeFamily: "building",
+		Level: "local",
+		Posture: "approved_local_rule_record_required",
+		Summary: "Any local rule must be confirmed from the applicable approved record.",
+		SourceIDs: []string{"src:local-amendment-framework"},
+		Verification: Verification{Status: "verified"},
+	}}
+
+	decision, err := ClassifyGovernmentalEntity(EntityClassificationRequest{
+		Entity: testClassificationEntity(t, EntityTypeMunicipality),
+		Regime: regime,
+		CodeFamily: "building",
+	})
+	if err != nil {
+		t.Fatalf("ClassifyGovernmentalEntity() error = %v", err)
+	}
+	if decision.Classification != ClassificationEnforcementOnly {
+		t.Fatalf("classification = %q, want %q", decision.Classification, ClassificationEnforcementOnly)
 	}
 }
 
@@ -200,6 +222,9 @@ func TestClassifyGovernmentalEntityCodeFamilyOverrideDoesNotLeakGenericLocalAdop
 	if decision.Classification != ClassificationEnforcementOnly {
 		t.Fatalf("classification = %q, want %q", decision.Classification, ClassificationEnforcementOnly)
 	}
+	if !hasClassificationRecordKind(decision.Records, ClassificationRecordStateInheritance) {
+		t.Fatalf("records = %#v, want retained statewide inheritance record", decision.Records)
+	}
 }
 
 func TestClassifyGovernmentalEntityIndependentCityUsesMunicipalEvidence(t *testing.T) {
@@ -275,6 +300,15 @@ func testClassificationRegime() StateRegimeSpec {
 func containsString(values []string, want string) bool {
 	for _, value := range values {
 		if value == want {
+			return true
+		}
+	}
+	return false
+}
+
+func hasClassificationRecordKind(records []EntityClassificationRecord, kind ClassificationRecordKind) bool {
+	for _, record := range records {
+		if record.Kind == kind {
 			return true
 		}
 	}
