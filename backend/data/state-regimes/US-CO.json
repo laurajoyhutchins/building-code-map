@@ -1,0 +1,445 @@
+{
+  "schema_version": "1.0",
+  "regime_id": "state-regime:us-co",
+  "state_id": "US-CO",
+  "state_name": "Colorado",
+  "state_abbreviation": "CO",
+  "state_fips": "08",
+  "source_profile_id": "state-profile:us-co",
+  "source_profile_status": "verified",
+  "last_verified": "2026-08-02",
+  "dimensions": {
+    "local_adoption": {
+      "status": "evidenced",
+      "source_ids": [
+        "src:us-co:accessibility-local",
+        "src:us-co:energy-local"
+      ]
+    },
+    "local_amendment": {
+      "status": "evidenced",
+      "source_ids": [
+        "src:us-co:accessibility-local",
+        "src:us-co:denver-quick-permits",
+        "src:us-co:electrical-board",
+        "src:us-co:energy-local",
+        "src:us-co:larimer-electrical-permits"
+      ]
+    },
+    "enforcement": {
+      "status": "evidenced",
+      "source_ids": [
+        "src:us-co:accessibility-local",
+        "src:us-co:denver-permits",
+        "src:us-co:denver-quick-permits",
+        "src:us-co:electrical-board",
+        "src:us-co:energy-local",
+        "src:us-co:larimer-building",
+        "src:us-co:larimer-electrical-permits"
+      ]
+    },
+    "delegation_contracting": {
+      "status": "unresolved"
+    },
+    "home_rule": {
+      "status": "unresolved"
+    },
+    "statewide_inheritance": {
+      "status": "unresolved"
+    },
+    "unincorporated": {
+      "status": "evidenced",
+      "source_ids": [
+        "src:us-co:accessibility-local",
+        "src:us-co:energy-local"
+      ]
+    },
+    "temporal": {
+      "status": "evidenced",
+      "source_ids": [
+        "src:us-co:electrical-2020-news",
+        "src:us-co:larimer-adoption-history",
+        "src:us-co:larimer-building",
+        "src:us-co:larimer-codes"
+      ]
+    }
+  },
+  "territory": {
+    "incorporated": {
+      "status": "local_record_required",
+      "authority_candidates": [
+        {
+          "kind": "municipality",
+          "label": "Local building department",
+          "roles": [
+            "adopts",
+            "enforces"
+          ],
+          "source_ids": [
+            "src:us-co:accessibility-local",
+            "src:us-co:energy-local"
+          ]
+        }
+      ],
+      "required_local_records": [
+        "Current municipal building, fire, and energy-code adoption instruments",
+        "Current local amendments and enforcing authorities"
+      ],
+      "warnings": [
+        "Colorado does not provide one general statewide building-code edition for ordinary local construction."
+      ],
+      "source_ids": [
+        "src:us-co:accessibility-local",
+        "src:us-co:energy-local"
+      ]
+    },
+    "unincorporated": {
+      "status": "local_record_required",
+      "authority_candidates": [
+        {
+          "kind": "county",
+          "label": "County building department",
+          "roles": [
+            "adopts",
+            "enforces"
+          ],
+          "source_ids": [
+            "src:us-co:accessibility-local",
+            "src:us-co:energy-local"
+          ]
+        }
+      ],
+      "required_local_records": [
+        "Current county building, fire, and energy-code adoption instruments",
+        "Current county amendments and enforcing authorities"
+      ],
+      "warnings": [
+        "Colorado does not provide one general statewide building-code edition for ordinary local construction."
+      ],
+      "source_ids": [
+        "src:us-co:accessibility-local",
+        "src:us-co:energy-local"
+      ]
+    }
+  },
+  "code_family_policies": {
+    "electrical": {
+      "status": "partially_resolved",
+      "authority_candidates": [
+        {
+          "kind": "state_authority",
+          "authority_id": "auth:us-co:state-electrical-board",
+          "source_ids": [
+            "src:us-co:electrical-board"
+          ]
+        }
+      ],
+      "adoption_ids": [
+        "adoption:us-co:electrical:2020-nec",
+        "adoption:us-co:electrical:2023-nec",
+        "adoption:us-co:electrical:2026-nec"
+      ],
+      "required_local_records": [
+        "Whether the location is inspected by an approved local electrical authority or the State Electrical Board"
+      ],
+      "source_ids": [
+        "src:us-co:electrical-board",
+        "src:us-co:electrical-2020-news",
+        "src:us-co:larimer-adoption-history",
+        "src:us-co:larimer-codes",
+        "src:us-co:larimer-building"
+      ]
+    },
+    "energy": {
+      "status": "local_record_required",
+      "required_local_records": [
+        "Current locally adopted residential and commercial energy-code editions and effective dates"
+      ],
+      "source_ids": [
+        "src:us-co:energy-local"
+      ]
+    }
+  },
+  "project_type_exceptions": {
+    "public_school": {
+      "status": "partially_resolved",
+      "authority_candidates": [
+        {
+          "kind": "state_authority",
+          "authority_id": "auth:us-co:state-electrical-board",
+          "source_ids": [
+            "src:us-co:electrical-board"
+          ]
+        }
+      ],
+      "required_local_records": [
+        "Controlling school-construction and local building-code requirements"
+      ],
+      "source_ids": [
+        "src:us-co:electrical-board"
+      ]
+    },
+    "state_owned": {
+      "status": "partially_resolved",
+      "authority_candidates": [
+        {
+          "kind": "state_authority",
+          "authority_id": "auth:us-co:state-electrical-board",
+          "source_ids": [
+            "src:us-co:electrical-board"
+          ]
+        }
+      ],
+      "required_local_records": [
+        "Controlling state-agency building-code and plan-review requirements"
+      ],
+      "source_ids": [
+        "src:us-co:electrical-board"
+      ]
+    }
+  },
+  "entity_power_evidence": [
+    {
+      "entity_kind": "county",
+      "scope": "unincorporated",
+      "powers": [
+        "adopt",
+        "enforce"
+      ],
+      "source_ids": [
+        "src:us-co:accessibility-local",
+        "src:us-co:energy-local"
+      ]
+    },
+    {
+      "entity_kind": "municipality",
+      "scope": "incorporated",
+      "powers": [
+        "adopt",
+        "enforce"
+      ],
+      "source_ids": [
+        "src:us-co:accessibility-local",
+        "src:us-co:energy-local"
+      ]
+    }
+  ],
+  "required_local_evidence": [
+    "Controlling school-construction and local building-code requirements",
+    "Controlling state-agency building-code and plan-review requirements",
+    "Current county amendments and enforcing authorities",
+    "Current county building, fire, and energy-code adoption instruments",
+    "Current local amendments and enforcing authorities",
+    "Current locally adopted residential and commercial energy-code editions and effective dates",
+    "Current municipal building, fire, and energy-code adoption instruments",
+    "Whether the location is inspected by an approved local electrical authority or the State Electrical Board"
+  ],
+  "applicability_rules": [
+    {
+      "id": "rule:us-co:building-local-adoption",
+      "code_family": "building",
+      "trigger": "ordinary_local_project",
+      "applies_to": [
+        "incorporated",
+        "unincorporated"
+      ],
+      "summary": "Ordinary building-code applicability is resolved from the current local adoption record rather than a single general statewide edition.",
+      "source_ids": [
+        "src:us-co:accessibility-local",
+        "src:us-co:energy-local"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.8
+      }
+    },
+    {
+      "id": "rule:us-co:electrical-state-code",
+      "code_family": "electrical",
+      "trigger": "electrical_installation",
+      "summary": "The State Electrical Board adopts the statewide NEC edition, while electrical permitting and inspection may be performed by the State Board or an approved local authority.",
+      "source_ids": [
+        "src:us-co:electrical-board",
+        "src:us-co:electrical-2020-news",
+        "src:us-co:larimer-codes",
+        "src:us-co:larimer-building"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-co:state-inspected-projects",
+      "code_family": "electrical",
+      "project_types": [
+        "public_school",
+        "state_owned"
+      ],
+      "trigger": "state_inspected_project",
+      "summary": "The State Electrical Board issues permits and performs electrical inspections for public schools and state buildings throughout Colorado.",
+      "source_ids": [
+        "src:us-co:electrical-board"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "date_rules": [
+    {
+      "id": "rule:us-co:electrical:2020-window",
+      "code_family": "electrical",
+      "rule_type": "effective_window",
+      "trigger": "applicability_date",
+      "start_date": "2020-07-01",
+      "end_date": "2023-07-31",
+      "prior_code_allowed": false,
+      "summary": "The 2020 NEC applies during the recorded Colorado electrical-code window beginning July 1, 2020.",
+      "source_ids": [
+        "src:us-co:electrical-2020-news",
+        "src:us-co:larimer-adoption-history"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-co:electrical:2023-window",
+      "code_family": "electrical",
+      "rule_type": "effective_window",
+      "trigger": "applicability_date",
+      "start_date": "2023-08-01",
+      "end_date": "2026-07-31",
+      "prior_code_allowed": false,
+      "summary": "The 2023 NEC applies during the recorded Colorado electrical-code window beginning August 1, 2023.",
+      "source_ids": [
+        "src:us-co:larimer-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-co:electrical:2026-window",
+      "code_family": "electrical",
+      "rule_type": "effective_window",
+      "trigger": "applicability_date",
+      "start_date": "2026-08-01",
+      "prior_code_allowed": false,
+      "summary": "The 2026 NEC applies during the recorded Colorado electrical-code window beginning August 1, 2026.",
+      "source_ids": [
+        "src:us-co:larimer-building"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "amendment_rules": [
+    {
+      "id": "rule:us-co:local-building-amendments",
+      "code_family": "building",
+      "level": "local",
+      "posture": "local_adoption_and_amendment_record_required",
+      "summary": "The applicable local adoption instrument and amendments must be retrieved for the location.",
+      "source_ids": [
+        "src:us-co:accessibility-local",
+        "src:us-co:energy-local"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.8
+      }
+    },
+    {
+      "id": "rule:us-co:local-electrical-administration",
+      "code_family": "electrical",
+      "level": "local",
+      "posture": "state_technical_code_with_local_administration",
+      "summary": "An approved local authority may administer electrical permits, inspections, and local administrative provisions while applying the statewide NEC edition.",
+      "source_ids": [
+        "src:us-co:electrical-board",
+        "src:us-co:larimer-electrical-permits",
+        "src:us-co:denver-quick-permits"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "enforcement_rules": [
+    {
+      "id": "rule:us-co:electrical-hybrid-enforcement",
+      "code_family": "electrical",
+      "model": "hybrid",
+      "entity_kinds": [
+        "state_board",
+        "municipal_electrical_authority",
+        "county_electrical_authority"
+      ],
+      "authority_ids": [
+        "auth:us-co:state-electrical-board",
+        "auth:us-co:larimer-building",
+        "auth:us-co:denver-cpd"
+      ],
+      "summary": "The State Board inspects areas without an approved local authority and all public schools and state buildings; Denver and Larimer County administer the represented local permitting and inspection paths.",
+      "source_ids": [
+        "src:us-co:electrical-board",
+        "src:us-co:larimer-building",
+        "src:us-co:larimer-electrical-permits",
+        "src:us-co:denver-permits",
+        "src:us-co:denver-quick-permits"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "edge:us-co:electrical-hybrid-enforcement",
+      "from_id": "auth:us-co:state-electrical-board",
+      "relationship": "defers_inspection_to",
+      "to": "approved local electrical inspection authorities",
+      "scope": [
+        "electrical"
+      ],
+      "source_ids": [
+        "src:us-co:electrical-board",
+        "src:us-co:larimer-electrical-permits"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "unresolved_dimensions": [
+    "delegation_contracting",
+    "home_rule",
+    "statewide_inheritance"
+  ],
+  "source_ids": [
+    "src:us-co:accessibility-local",
+    "src:us-co:denver-permits",
+    "src:us-co:denver-quick-permits",
+    "src:us-co:electrical-2020-news",
+    "src:us-co:electrical-board",
+    "src:us-co:energy-local",
+    "src:us-co:larimer-adoption-history",
+    "src:us-co:larimer-building",
+    "src:us-co:larimer-codes",
+    "src:us-co:larimer-electrical-permits"
+  ],
+  "verification": {
+    "status": "verified",
+    "confidence": 0.95
+  }
+}

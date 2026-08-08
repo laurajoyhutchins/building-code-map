@@ -1,0 +1,402 @@
+{
+  "schema_version": "1.0",
+  "regime_id": "state-regime:us-va",
+  "state_id": "US-VA",
+  "state_name": "Virginia",
+  "state_abbreviation": "VA",
+  "state_fips": "51",
+  "source_profile_id": "state-profile:us-va",
+  "source_profile_status": "partially_verified",
+  "last_verified": "2026-08-04",
+  "dimensions": {
+    "local_adoption": {
+      "status": "unresolved"
+    },
+    "local_amendment": {
+      "status": "unresolved"
+    },
+    "enforcement": {
+      "status": "evidenced",
+      "source_ids": [
+        "src:us-va:code-36-105"
+      ]
+    },
+    "delegation_contracting": {
+      "status": "unresolved"
+    },
+    "home_rule": {
+      "status": "unresolved"
+    },
+    "statewide_inheritance": {
+      "status": "unresolved"
+    },
+    "unincorporated": {
+      "status": "evidenced",
+      "source_ids": [
+        "src:us-va:code-36-105",
+        "src:us-va:code-36-98"
+      ]
+    },
+    "temporal": {
+      "status": "evidenced",
+      "source_ids": [
+        "src:us-va:dhcd-codes",
+        "src:us-va:vac-13-5-63-10",
+        "src:us-va:vac-13-5-63-30",
+        "src:us-va:vac-13-5-63-400"
+      ]
+    }
+  },
+  "territory": {
+    "incorporated": {
+      "status": "partially_resolved",
+      "authority_candidates": [
+        {
+          "kind": "state_authority",
+          "authority_id": "auth:us-va:board-housing-community-development",
+          "roles": [
+            "adopts",
+            "amends"
+          ],
+          "source_ids": [
+            "src:us-va:dhcd-usbc",
+            "src:us-va:code-36-98"
+          ]
+        },
+        {
+          "kind": "municipality",
+          "label": "Local building department",
+          "roles": [
+            "administers",
+            "enforces",
+            "permits",
+            "inspects"
+          ],
+          "source_ids": [
+            "src:us-va:code-36-105"
+          ]
+        }
+      ],
+      "required_local_records": [
+        "Identity and service area of the enforcing local building department",
+        "Permit application date and documented code-edition election during the 2021-code transition period",
+        "Applicable local administrative procedures that do not conflict with the USBC"
+      ],
+      "warnings": [
+        "This pilot does not yet resolve all trade, fire-prevention, elevator, industrialized-building, or special-project authorities."
+      ],
+      "source_ids": [
+        "src:us-va:code-36-98",
+        "src:us-va:code-36-105"
+      ]
+    },
+    "unincorporated": {
+      "status": "partially_resolved",
+      "authority_candidates": [
+        {
+          "kind": "state_authority",
+          "authority_id": "auth:us-va:board-housing-community-development",
+          "roles": [
+            "adopts",
+            "amends"
+          ],
+          "source_ids": [
+            "src:us-va:dhcd-usbc",
+            "src:us-va:code-36-98"
+          ]
+        },
+        {
+          "kind": "county",
+          "label": "County or contracted building department",
+          "roles": [
+            "administers",
+            "enforces",
+            "permits",
+            "inspects"
+          ],
+          "source_ids": [
+            "src:us-va:code-36-105"
+          ]
+        }
+      ],
+      "required_local_records": [
+        "Identity and service area of the enforcing county or contracted building department",
+        "Permit application date and documented code-edition election during the 2021-code transition period",
+        "Applicable local administrative procedures that do not conflict with the USBC"
+      ],
+      "warnings": [
+        "This pilot does not yet resolve all trade, fire-prevention, elevator, industrialized-building, or special-project authorities."
+      ],
+      "source_ids": [
+        "src:us-va:code-36-98",
+        "src:us-va:code-36-105"
+      ]
+    }
+  },
+  "code_family_policies": {
+    "building": {
+      "status": "partially_resolved",
+      "adoption_ids": [
+        "adoption:us-va:building:2021-vcc"
+      ],
+      "required_local_records": [
+        "Permit application date and documented code-edition election during the 2021-code transition period"
+      ],
+      "source_ids": [
+        "src:us-va:dhcd-codes",
+        "src:us-va:vac-13-5-63-10",
+        "src:us-va:vac-13-5-63-30"
+      ]
+    },
+    "existing_building": {
+      "status": "partially_resolved",
+      "adoption_ids": [
+        "adoption:us-va:existing-building:2021-vebc"
+      ],
+      "required_local_records": [
+        "Project scope, permit application date, and documented code-edition election during the 2021-code transition period"
+      ],
+      "source_ids": [
+        "src:us-va:dhcd-codes",
+        "src:us-va:vac-13-5-63-400",
+        "src:us-va:vac-13-5-63-30"
+      ]
+    }
+  },
+  "entity_power_evidence": [
+    {
+      "entity_kind": "county",
+      "scope": "unincorporated",
+      "powers": [
+        "administer",
+        "enforce"
+      ],
+      "source_ids": [
+        "src:us-va:code-36-105"
+      ]
+    },
+    {
+      "entity_kind": "municipality",
+      "scope": "incorporated",
+      "powers": [
+        "administer",
+        "enforce"
+      ],
+      "source_ids": [
+        "src:us-va:code-36-105"
+      ]
+    },
+    {
+      "entity_kind": "state_authority",
+      "scope": "incorporated",
+      "powers": [
+        "adopt",
+        "amend"
+      ],
+      "source_ids": [
+        "src:us-va:code-36-98",
+        "src:us-va:dhcd-usbc"
+      ]
+    },
+    {
+      "entity_kind": "state_authority",
+      "scope": "unincorporated",
+      "powers": [
+        "adopt",
+        "amend"
+      ],
+      "source_ids": [
+        "src:us-va:code-36-98",
+        "src:us-va:dhcd-usbc"
+      ]
+    }
+  ],
+  "required_local_evidence": [
+    "Applicable local administrative procedures that do not conflict with the USBC",
+    "Identity and service area of the enforcing county or contracted building department",
+    "Identity and service area of the enforcing local building department",
+    "Permit application date and documented code-edition election during the 2021-code transition period",
+    "Project scope, permit application date, and documented code-edition election during the 2021-code transition period"
+  ],
+  "applicability_rules": [
+    {
+      "id": "rule:us-va:statewide-vcc",
+      "code_family": "building",
+      "trigger": "covered_construction_or_addition",
+      "summary": "The Virginia Construction Code supplies the statewide baseline for covered construction and additions.",
+      "source_ids": [
+        "src:us-va:dhcd-usbc",
+        "src:us-va:vac-13-5-63-10"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-va:statewide-vebc",
+      "code_family": "existing_building",
+      "trigger": "covered_existing_building_work",
+      "summary": "The Virginia Existing Building Code supplies the statewide baseline for covered rehabilitation work in existing buildings.",
+      "source_ids": [
+        "src:us-va:vac-13-5-63-30",
+        "src:us-va:vac-13-5-63-400"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.9
+      }
+    }
+  ],
+  "date_rules": [
+    {
+      "id": "rule:us-va:2021-vcc-transition",
+      "code_family": "building",
+      "rule_type": "edition_transition",
+      "trigger": "permit_application_date",
+      "start_date": "2024-01-18",
+      "end_date": "2025-01-17",
+      "prior_code_allowed": true,
+      "summary": "During the one-year period beginning January 18, 2024, a permit applicant may elect the 2021 Virginia Construction Code or the immediately prior edition.",
+      "source_ids": [
+        "src:us-va:vac-13-5-63-30"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-va:2021-vcc-mandatory",
+      "code_family": "building",
+      "rule_type": "mandatory_date",
+      "trigger": "permit_application_date",
+      "start_date": "2025-01-18",
+      "prior_code_allowed": false,
+      "summary": "For permit applications on or after January 18, 2025, the recorded 2021 Virginia Construction Code is mandatory unless another specific rule applies.",
+      "source_ids": [
+        "src:us-va:vac-13-5-63-30"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-va:2021-vebc-transition",
+      "code_family": "existing_building",
+      "rule_type": "edition_transition",
+      "trigger": "permit_application_date",
+      "start_date": "2024-01-18",
+      "end_date": "2025-01-17",
+      "prior_code_allowed": true,
+      "summary": "During the one-year period beginning January 18, 2024, covered existing-building work may use the 2021 USBC edition or the immediately prior edition when the permit election rule applies.",
+      "source_ids": [
+        "src:us-va:vac-13-5-63-30",
+        "src:us-va:vac-13-5-63-400"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "rule:us-va:2021-vebc-mandatory",
+      "code_family": "existing_building",
+      "rule_type": "mandatory_date",
+      "trigger": "permit_application_date",
+      "start_date": "2025-01-18",
+      "prior_code_allowed": false,
+      "summary": "For covered permit applications on or after January 18, 2025, the recorded 2021 Virginia Existing Building Code is mandatory unless another specific rule applies.",
+      "source_ids": [
+        "src:us-va:vac-13-5-63-30",
+        "src:us-va:vac-13-5-63-400"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.9
+      }
+    }
+  ],
+  "amendment_rules": [
+    {
+      "id": "rule:us-va:statewide-preemption-local-administration",
+      "code_family": "construction_code",
+      "level": "state",
+      "authority_id": "auth:us-va:board-housing-community-development",
+      "posture": "statewide_code_local_administration",
+      "summary": "The statewide code supersedes local building codes within its statutory scope, while local administrative procedures and identified statutory exceptions still require confirmation.",
+      "source_ids": [
+        "src:us-va:code-36-98",
+        "src:us-va:code-36-105"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.9
+      }
+    }
+  ],
+  "enforcement_rules": [
+    {
+      "id": "rule:us-va:local-building-department-enforcement",
+      "code_family": "construction_code",
+      "model": "local",
+      "entity_kinds": [
+        "municipality",
+        "county",
+        "contracted_building_department"
+      ],
+      "authority_ids": [
+        "auth:us-va:board-housing-community-development"
+      ],
+      "summary": "Local building departments ordinarily administer permits, inspections, and enforcement under the statewide USBC framework.",
+      "source_ids": [
+        "src:us-va:code-36-105"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relationship:us-va:state-code-preempts-local-building-codes",
+      "from_id": "auth:us-va:board-housing-community-development",
+      "relationship": "preempts",
+      "to": "county, municipal, political-subdivision, and state-agency building codes within USBC scope",
+      "scope": [
+        "construction_code"
+      ],
+      "summary": "The Uniform Statewide Building Code supersedes local and other state-agency building codes within its statutory scope, subject to stated exceptions.",
+      "source_ids": [
+        "src:us-va:code-36-98"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "unresolved_dimensions": [
+    "delegation_contracting",
+    "home_rule",
+    "local_adoption",
+    "local_amendment",
+    "statewide_inheritance"
+  ],
+  "source_ids": [
+    "src:us-va:code-36-105",
+    "src:us-va:code-36-98",
+    "src:us-va:dhcd-codes",
+    "src:us-va:dhcd-usbc",
+    "src:us-va:vac-13-5-63-10",
+    "src:us-va:vac-13-5-63-30",
+    "src:us-va:vac-13-5-63-400"
+  ],
+  "verification": {
+    "status": "partially_verified",
+    "confidence": 0.84,
+    "notes": "Construction and existing-building authority paths are source-backed. Other code families and special-project paths remain outside this pilot scope."
+  }
+}

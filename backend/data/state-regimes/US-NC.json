@@ -1,0 +1,422 @@
+{
+  "schema_version": "1.0",
+  "regime_id": "state-regime:us-nc",
+  "state_id": "US-NC",
+  "state_name": "North Carolina",
+  "state_abbreviation": "NC",
+  "state_fips": "37",
+  "source_profile_id": "state-profile:us-nc",
+  "source_profile_status": "partially_verified",
+  "last_verified": "2026-08-04",
+  "dimensions": {
+    "local_adoption": {
+      "status": "unresolved"
+    },
+    "local_amendment": {
+      "status": "evidenced",
+      "source_ids": [
+        "src:us-nc:gs-143-138"
+      ]
+    },
+    "enforcement": {
+      "status": "evidenced",
+      "source_ids": [
+        "src:us-nc:gs-143-139",
+        "src:us-nc:gs-160d-1102"
+      ]
+    },
+    "delegation_contracting": {
+      "status": "unresolved"
+    },
+    "home_rule": {
+      "status": "unresolved"
+    },
+    "statewide_inheritance": {
+      "status": "unresolved"
+    },
+    "unincorporated": {
+      "status": "evidenced",
+      "source_ids": [
+        "src:us-nc:gs-143-138",
+        "src:us-nc:gs-143-139",
+        "src:us-nc:gs-160d-1102",
+        "src:us-nc:osfm-2024-delay"
+      ]
+    },
+    "temporal": {
+      "status": "evidenced",
+      "source_ids": [
+        "src:us-nc:gs-143-138",
+        "src:us-nc:osfm-current-past-codes"
+      ]
+    }
+  },
+  "territory": {
+    "incorporated": {
+      "status": "partially_resolved",
+      "authority_candidates": [
+        {
+          "kind": "state_authority",
+          "authority_id": "auth:us-nc:state-code-councils",
+          "roles": [
+            "adopt",
+            "amend"
+          ],
+          "source_ids": [
+            "src:us-nc:gs-143-138"
+          ]
+        },
+        {
+          "kind": "state_authority",
+          "authority_id": "auth:us-nc:state-fire-marshal",
+          "roles": [
+            "supervises",
+            "administers"
+          ],
+          "source_ids": [
+            "src:us-nc:gs-143-139"
+          ]
+        },
+        {
+          "kind": "municipality",
+          "label": "Local inspection department or contracted inspection service",
+          "roles": [
+            "permits",
+            "inspects",
+            "enforces"
+          ],
+          "source_ids": [
+            "src:us-nc:gs-160d-1102"
+          ]
+        }
+      ],
+      "required_local_records": [
+        "Identity and service area of the local inspection department or contracted service",
+        "Project type and any state-reserved enforcement allocation",
+        "Applicable local rules approved under state law",
+        "Current State Fire Marshal certification status for the 2024 code transition"
+      ],
+      "warnings": [
+        "The 2024 code remains conditionally pending and is not returned as current.",
+        "The official OSFM notice states that the 2024 code may be considered as an alternative method when requested; project-specific acceptance must be confirmed."
+      ],
+      "source_ids": [
+        "src:us-nc:gs-143-138",
+        "src:us-nc:gs-143-139",
+        "src:us-nc:gs-160d-1102",
+        "src:us-nc:osfm-2024-delay"
+      ]
+    },
+    "unincorporated": {
+      "status": "partially_resolved",
+      "authority_candidates": [
+        {
+          "kind": "state_authority",
+          "authority_id": "auth:us-nc:state-code-councils",
+          "roles": [
+            "adopt",
+            "amend"
+          ],
+          "source_ids": [
+            "src:us-nc:gs-143-138"
+          ]
+        },
+        {
+          "kind": "state_authority",
+          "authority_id": "auth:us-nc:state-fire-marshal",
+          "roles": [
+            "supervises",
+            "administers"
+          ],
+          "source_ids": [
+            "src:us-nc:gs-143-139"
+          ]
+        },
+        {
+          "kind": "county",
+          "label": "County inspection department or contracted inspection service",
+          "roles": [
+            "permits",
+            "inspects",
+            "enforces"
+          ],
+          "source_ids": [
+            "src:us-nc:gs-160d-1102"
+          ]
+        }
+      ],
+      "required_local_records": [
+        "Identity and service area of the county inspection department or contracted service",
+        "Project type and any state-reserved enforcement allocation",
+        "Applicable local rules approved under state law",
+        "Current State Fire Marshal certification status for the 2024 code transition"
+      ],
+      "warnings": [
+        "The 2024 code remains conditionally pending and is not returned as current.",
+        "The official OSFM notice states that the 2024 code may be considered as an alternative method when requested; project-specific acceptance must be confirmed."
+      ],
+      "source_ids": [
+        "src:us-nc:gs-143-138",
+        "src:us-nc:gs-143-139",
+        "src:us-nc:gs-160d-1102",
+        "src:us-nc:osfm-2024-delay"
+      ]
+    }
+  },
+  "code_family_policies": {
+    "building": {
+      "status": "partially_resolved",
+      "adoption_ids": [
+        "adoption:us-nc:building:2018-code"
+      ],
+      "required_local_records": [
+        "Project type, permit record, any approved local rule, and current State Fire Marshal certification status for the 2024 code transition"
+      ],
+      "warnings": [
+        "The pending 2024 code is excluded until its condition-based implementation date is established."
+      ],
+      "source_ids": [
+        "src:us-nc:osfm-current-past-codes",
+        "src:us-nc:osfm-2024-delay",
+        "src:us-nc:session-law-2025-2"
+      ]
+    },
+    "residential": {
+      "status": "partially_resolved",
+      "adoption_ids": [
+        "adoption:us-nc:residential:2018-code"
+      ],
+      "required_local_records": [
+        "Project classification, permit record, any approved local rule, and current State Fire Marshal certification status for the 2024 code transition"
+      ],
+      "warnings": [
+        "The pending 2024 code is excluded until its condition-based implementation date is established."
+      ],
+      "source_ids": [
+        "src:us-nc:osfm-current-past-codes",
+        "src:us-nc:osfm-2024-delay",
+        "src:us-nc:session-law-2025-2"
+      ]
+    }
+  },
+  "entity_power_evidence": [
+    {
+      "entity_kind": "county",
+      "scope": "unincorporated",
+      "powers": [
+        "administer",
+        "enforce"
+      ],
+      "source_ids": [
+        "src:us-nc:gs-160d-1102"
+      ]
+    },
+    {
+      "entity_kind": "municipality",
+      "scope": "incorporated",
+      "powers": [
+        "administer",
+        "enforce"
+      ],
+      "source_ids": [
+        "src:us-nc:gs-160d-1102"
+      ]
+    },
+    {
+      "entity_kind": "state_authority",
+      "scope": "incorporated",
+      "powers": [
+        "adopt",
+        "amend"
+      ],
+      "source_ids": [
+        "src:us-nc:gs-143-138"
+      ]
+    },
+    {
+      "entity_kind": "state_authority",
+      "scope": "incorporated",
+      "powers": [
+        "administer"
+      ],
+      "source_ids": [
+        "src:us-nc:gs-143-139"
+      ]
+    },
+    {
+      "entity_kind": "state_authority",
+      "scope": "unincorporated",
+      "powers": [
+        "adopt",
+        "amend"
+      ],
+      "source_ids": [
+        "src:us-nc:gs-143-138"
+      ]
+    },
+    {
+      "entity_kind": "state_authority",
+      "scope": "unincorporated",
+      "powers": [
+        "administer"
+      ],
+      "source_ids": [
+        "src:us-nc:gs-143-139"
+      ]
+    }
+  ],
+  "required_local_evidence": [
+    "Applicable local rules approved under state law",
+    "Current State Fire Marshal certification status for the 2024 code transition",
+    "Identity and service area of the county inspection department or contracted service",
+    "Identity and service area of the local inspection department or contracted service",
+    "Project classification, permit record, any approved local rule, and current State Fire Marshal certification status for the 2024 code transition",
+    "Project type and any state-reserved enforcement allocation",
+    "Project type, permit record, any approved local rule, and current State Fire Marshal certification status for the 2024 code transition"
+  ],
+  "applicability_rules": [
+    {
+      "id": "rule:us-nc:2018-building-current",
+      "code_family": "building",
+      "trigger": "covered_building_project",
+      "summary": "The 2018 North Carolina Building Code remains the current statewide building-code baseline until the condition-based 2024 transition becomes effective.",
+      "source_ids": [
+        "src:us-nc:osfm-current-past-codes",
+        "src:us-nc:osfm-2024-delay"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-nc:2018-residential-current",
+      "code_family": "residential",
+      "trigger": "detached_one_two_family_or_townhouse",
+      "summary": "The 2018 North Carolina Residential Code remains the current statewide residential-code baseline until the condition-based 2024 transition becomes effective.",
+      "source_ids": [
+        "src:us-nc:osfm-current-past-codes",
+        "src:us-nc:osfm-2024-delay"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "date_rules": [
+    {
+      "id": "rule:us-nc:2018-building-effective",
+      "code_family": "building",
+      "rule_type": "effective_date",
+      "trigger": "applicability_date",
+      "start_date": "2019-01-01",
+      "prior_code_allowed": false,
+      "summary": "The recorded 2018 North Carolina Building Code is effective on and after January 1, 2019.",
+      "source_ids": [
+        "src:us-nc:osfm-current-past-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    },
+    {
+      "id": "rule:us-nc:2018-residential-effective",
+      "code_family": "residential",
+      "rule_type": "effective_date",
+      "trigger": "applicability_date",
+      "start_date": "2019-01-01",
+      "prior_code_allowed": false,
+      "summary": "The recorded 2018 North Carolina Residential Code is effective on and after January 1, 2019.",
+      "source_ids": [
+        "src:us-nc:osfm-current-past-codes"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.95
+      }
+    }
+  ],
+  "amendment_rules": [
+    {
+      "id": "rule:us-nc:approved-local-rules",
+      "code_family": "construction_code",
+      "level": "local",
+      "posture": "approved_local_rule_record_required",
+      "summary": "Any local rule that supplements or supersedes the state baseline must be confirmed from the applicable approved local record.",
+      "source_ids": [
+        "src:us-nc:gs-143-138"
+      ],
+      "verification": {
+        "status": "partially_verified",
+        "confidence": 0.8
+      }
+    }
+  ],
+  "enforcement_rules": [
+    {
+      "id": "rule:us-nc:local-inspection-state-supervision",
+      "code_family": "construction_code",
+      "model": "local_with_state_supervision",
+      "entity_kinds": [
+        "municipality",
+        "county",
+        "joint_department",
+        "contracted_service",
+        "state_arranged_service"
+      ],
+      "authority_ids": [
+        "auth:us-nc:state-fire-marshal"
+      ],
+      "summary": "Local governments ordinarily provide inspection services, while the State Fire Marshal supervises administration and may arrange service when a local program does not provide it.",
+      "source_ids": [
+        "src:us-nc:gs-143-139",
+        "src:us-nc:gs-160d-1102"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.92
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relationship:us-nc:state-fire-marshal-oversees-local-enforcement",
+      "from_id": "auth:us-nc:state-fire-marshal",
+      "relationship": "supervises",
+      "to": "local building-code inspection and enforcement programs",
+      "scope": [
+        "construction_code"
+      ],
+      "summary": "The State Fire Marshal supervises and administers statewide code enforcement while local governments ordinarily provide inspection services.",
+      "source_ids": [
+        "src:us-nc:gs-143-139",
+        "src:us-nc:gs-160d-1102"
+      ],
+      "verification": {
+        "status": "verified",
+        "confidence": 0.92
+      }
+    }
+  ],
+  "unresolved_dimensions": [
+    "delegation_contracting",
+    "home_rule",
+    "local_adoption",
+    "statewide_inheritance"
+  ],
+  "source_ids": [
+    "src:us-nc:gs-143-138",
+    "src:us-nc:gs-143-139",
+    "src:us-nc:gs-160d-1102",
+    "src:us-nc:osfm-2024-delay",
+    "src:us-nc:osfm-current-past-codes",
+    "src:us-nc:session-law-2025-2"
+  ],
+  "verification": {
+    "status": "partially_verified",
+    "confidence": 0.82,
+    "notes": "The current 2018 baseline, local inspection framework, and condition-based 2024 delay are source-backed. Remaining code families and state-reserved project allocations are incomplete."
+  }
+}

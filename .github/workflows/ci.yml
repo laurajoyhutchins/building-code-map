@@ -182,6 +182,13 @@ jobs:
           --root data/governmental-entities/2025
           --source-contract data/governmental-entities/census-government-units-2025.source.json
 
+      - name: Validate pilot state regime projections
+        working-directory: backend
+        run: >-
+          go run ./cmd/state-regimes-build validate
+          --profiles-root data/regulatory
+          --root data/state-regimes
+
       - name: Generate nationwide quality report
         run: >-
           python reports/tools/regulatory.py coverage

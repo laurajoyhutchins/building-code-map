@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/regulatory/state-regime.schema.json",
+  "title": "Building Code Map State Regime Specification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "regime_id",
+    "state_id",
+    "state_name",
+    "state_abbreviation",
+    "state_fips",
+    "source_profile_id",
+    "source_profile_status",
+    "last_verified",
+    "dimensions",
+    "territory",
+    "source_ids",
+    "verification"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "regime_id": { "type": "string", "pattern": "^state-regime:us-[a-z]{2}$" },
+    "state_id": { "type": "string", "pattern": "^US-[A-Z]{2}$" },
+    "state_name": { "type": "string", "minLength": 1 },
+    "state_abbreviation": { "type": "string", "pattern": "^[A-Z]{2}$" },
+    "state_fips": { "type": "string", "pattern": "^[0-9]{2}$" },
+    "source_profile_id": { "type": "string", "minLength": 1 },
+    "source_profile_status": { "enum": ["draft", "partially_verified", "verified", "deprecated"] },
+    "last_verified": { "type": "string", "format": "date" },
+    "dimensions": { "$ref": "#/$defs/dimensions" },
+    "territory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["incorporated", "unincorporated"],
+      "properties": {
+        "incorporated": { "$ref": "state-profile.schema.json#/$defs/policy" },
+        "unincorporated": { "$ref": "state-profile.schema.json#/$defs/policy" }
+      }
+    },
+    "code_family_policies": {
+      "type": "object",
+      "additionalProperties": { "$ref": "state-profile.schema.json#/$defs/policy" }
+    },
+    "project_type_exceptions": {
+      "type": "object",
+      "additionalProperties": { "$ref": "state-profile.schema.json#/$defs/policy" }
+    },
+    "entity_power_evidence": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/entityPowerEvidence" }
+    },
+    "required_local_evidence": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "applicability_rules": {
+      "type": "array",
+      "items": { "$ref": "state-rule-pack.schema.json#/$defs/applicabilityRule" }
+    },
+    "date_rules": {
+      "type": "array",
+      "items": { "$ref": "state-rule-pack.schema.json#/$defs/dateRule" }
+    },
+    "amendment_rules": {
+      "type": "array",
+      "items": { "$ref": "state-rule-pack.schema.json#/$defs/amendmentRule" }
+    },
+    "enforcement_rules": {
+      "type": "array",
+      "items": { "$ref": "state-rule-pack.schema.json#/$defs/enforcementRule" }
+    },
+    "relationships": {
+      "type": "array",
+      "items": { "$ref": "state-profile.schema.json#/$defs/relationship" }
+    },
+    "unresolved_dimensions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "local_adoption",
+          "local_amendment",
+          "enforcement",
+          "delegation_contracting",
+          "home_rule",
+          "statewide_inheritance",
+          "unincorporated",
+          "temporal"
+        ]
+      }
+    },
+    "source_ids": { "$ref": "state-profile.schema.json#/$defs/sourceIds" },
+    "verification": { "$ref": "state-profile.schema.json#/$defs/verification" }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": { "enum": ["evidenced", "partial", "unresolved"] },
+        "source_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "status": { "enum": ["evidenced", "partial"] } },
+            "required": ["status"]
+          },
+          "then": {
+            "required": ["source_ids"],
+            "properties": { "source_ids": { "minItems": 1 } }
+          }
+        }
+      ]
+    },
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "local_adoption",
+        "local_amendment",
+        "enforcement",
+        "delegation_contracting",
+        "home_rule",
+        "statewide_inheritance",
+        "unincorporated",
+        "temporal"
+      ],
+      "properties": {
+        "local_adoption": { "$ref": "#/$defs/evidence" },
+        "local_amendment": { "$ref": "#/$defs/evidence" },
+        "enforcement": { "$ref": "#/$defs/evidence" },
+        "delegation_contracting": { "$ref": "#/$defs/evidence" },
+        "home_rule": { "$ref": "#/$defs/evidence" },
+        "statewide_inheritance": { "$ref": "#/$defs/evidence" },
+        "unincorporated": { "$ref": "#/$defs/evidence" },
+        "temporal": { "$ref": "#/$defs/evidence" }
+      }
+    },
+    "entityPowerEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entity_kind", "scope", "powers", "source_ids"],
+      "properties": {
+        "entity_kind": { "type": "string", "minLength": 1 },
+        "scope": { "type": "string", "minLength": 1 },
+        "powers": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["adopt", "amend", "administer", "enforce", "delegate", "contract"] }
+        },
+        "source_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}
