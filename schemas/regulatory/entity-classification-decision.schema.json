@@ -17,7 +17,7 @@
     "schema_version": { "const": "1.0" },
     "entity_id": { "type": "string", "minLength": 1 },
     "state_id": { "type": "string", "pattern": "^US-[A-Z]{2}$" },
-    "classification": { "$ref": "governmental-entity.schema.json#/$defs/classification" },
+    "classification": { "$ref": "#/$defs/classification" },
     "code_family": { "type": "string", "minLength": 1 },
     "project_type": { "type": "string", "minLength": 1 },
     "applicability_date": { "type": "string", "format": "date" },
