@@ -1,0 +1,229 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/regulatory/entity-coverage-ledger.schema.json",
+  "title": "Building Code Map Entity Coverage Ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "inventory_source_id",
+    "inventory_generated_at",
+    "code_family",
+    "applicability_date",
+    "state_ids",
+    "summary",
+    "states",
+    "freshness",
+    "land_area"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "inventory_source_id": { "type": "string", "minLength": 1 },
+    "inventory_generated_at": { "type": "string", "format": "date-time" },
+    "code_family": { "type": "string", "minLength": 1 },
+    "project_type": { "type": "string", "minLength": 1 },
+    "applicability_date": { "type": "string", "format": "date" },
+    "state_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^US-[A-Z]{2}$" }
+    },
+    "summary": { "$ref": "#/$defs/summary" },
+    "states": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/stateCoverage" }
+    },
+    "freshness": { "$ref": "#/$defs/availability" },
+    "land_area": { "$ref": "#/$defs/availability" }
+  },
+  "$defs": {
+    "entityType": {
+      "enum": [
+        "state",
+        "county_equivalent",
+        "municipality",
+        "minor_civil_division",
+        "consolidated_government",
+        "independent_city",
+        "special_district",
+        "tribal_government",
+        "state_agency",
+        "school_district",
+        "other_general_purpose",
+        "other_special_purpose"
+      ]
+    },
+    "classification": {
+      "enum": [
+        "covered_by_state",
+        "local_adopter",
+        "local_amender",
+        "enforcement_only",
+        "delegated",
+        "no_general_authority",
+        "inactive",
+        "not_applicable",
+        "unresolved"
+      ]
+    },
+    "evidenceStatus": {
+      "enum": [
+        "verified_inheritance",
+        "verified_inheritance_with_local_evidence",
+        "classified_requires_local_evidence",
+        "classified_not_verified",
+        "unresolved",
+        "conflicting",
+        "inactive"
+      ]
+    },
+    "availability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reason"],
+      "properties": {
+        "status": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "populationSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["known_entities", "total", "classified", "verified", "unresolved"],
+      "properties": {
+        "known_entities": { "type": "integer", "minimum": 0 },
+        "total": { "type": "integer", "minimum": 0 },
+        "classified": { "type": "integer", "minimum": 0 },
+        "verified": { "type": "integer", "minimum": 0 },
+        "unresolved": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "entityTypeCounts": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "classificationCounts": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "evidenceStatusCounts": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expected_entities",
+        "active_entities",
+        "classified_entities",
+        "verified_entities",
+        "inherited_entities",
+        "requires_local_evidence_entities",
+        "unresolved_entities",
+        "inactive_entities",
+        "conflicting_entities",
+        "entity_type_counts",
+        "classification_counts",
+        "evidence_status_counts",
+        "population"
+      ],
+      "properties": {
+        "expected_entities": { "type": "integer", "minimum": 0 },
+        "active_entities": { "type": "integer", "minimum": 0 },
+        "classified_entities": { "type": "integer", "minimum": 0 },
+        "verified_entities": { "type": "integer", "minimum": 0 },
+        "inherited_entities": { "type": "integer", "minimum": 0 },
+        "requires_local_evidence_entities": { "type": "integer", "minimum": 0 },
+        "unresolved_entities": { "type": "integer", "minimum": 0 },
+        "inactive_entities": { "type": "integer", "minimum": 0 },
+        "conflicting_entities": { "type": "integer", "minimum": 0 },
+        "entity_type_counts": { "$ref": "#/$defs/entityTypeCounts" },
+        "classification_counts": { "$ref": "#/$defs/classificationCounts" },
+        "evidence_status_counts": { "$ref": "#/$defs/evidenceStatusCounts" },
+        "population": { "$ref": "#/$defs/populationSummary" }
+      }
+    },
+    "population": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "source_year"],
+      "properties": {
+        "count": { "type": "integer", "minimum": 0 },
+        "source_year": { "type": "string", "pattern": "^[0-9]{4}$" }
+      }
+    },
+    "entityCoverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entity_id",
+        "official_name",
+        "entity_type",
+        "legal_status",
+        "classification",
+        "evidence_status",
+        "inherited",
+        "verified",
+        "requires_local_evidence",
+        "source_ids"
+      ],
+      "properties": {
+        "entity_id": { "type": "string", "minLength": 1 },
+        "official_name": { "type": "string", "minLength": 1 },
+        "entity_type": { "$ref": "#/$defs/entityType" },
+        "legal_status": { "enum": ["active", "inactive", "unknown"] },
+        "classification": { "$ref": "#/$defs/classification" },
+        "evidence_status": { "$ref": "#/$defs/evidenceStatus" },
+        "inherited": { "type": "boolean" },
+        "verified": { "type": "boolean" },
+        "requires_local_evidence": { "type": "boolean" },
+        "population": { "$ref": "#/$defs/population" },
+        "required_local_evidence": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "unresolved_reasons": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "unresolved_dimensions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "source_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "classification_records": {
+          "type": "array",
+          "items": {
+            "$ref": "entity-classification-decision.schema.json#/$defs/record"
+          }
+        }
+      }
+    },
+    "stateCoverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state_id", "regime_id", "regime_last_verified", "summary", "entities"],
+      "properties": {
+        "state_id": { "type": "string", "pattern": "^US-[A-Z]{2}$" },
+        "regime_id": { "type": "string", "minLength": 1 },
+        "regime_last_verified": { "type": "string", "format": "date" },
+        "summary": { "$ref": "#/$defs/summary" },
+        "entities": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/entityCoverage" }
+        }
+      }
+    }
+  }
+}
