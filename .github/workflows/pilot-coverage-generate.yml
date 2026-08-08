@@ -49,7 +49,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if git diff --quiet; then
+          if [[ -z "$(git status --porcelain -- backend/data/coverage/pilot-building-2026-08-08.json)" ]]; then
             exit 0
           fi
           git config user.name 'github-actions[bot]'
