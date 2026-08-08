@@ -55,6 +55,8 @@ func run(args []string) int {
 		return runLookup(args[1:])
 	case "inspect":
 		return runInspect(args[1:])
+	case "snapshot":
+		return runSnapshot(args[1:])
 	case "serve":
 		return runServe(args[1:])
 	case "--help", "-h", "help":
@@ -275,7 +277,7 @@ func loadRuntime(path string) (*runtime, error) {
 	}
 	regulatoryComponent := verified.Manifest.Components["regulatory_catalog"]
 	regulatoryPath := filepath.Join(root, filepath.FromSlash(regulatoryComponent.Path))
-	catalog, err := regulatory.LoadCatalog(filepath.Dir(regulatoryPath))
+	catalog, err := regulatory.LoadCatalog(regulatoryCatalogRoot(regulatoryComponent, regulatoryPath))
 	if err != nil {
 		return nil, fmt.Errorf("load regulatory catalog: %w", err)
 	}
@@ -305,6 +307,19 @@ func loadRuntime(path string) (*runtime, error) {
 		return nil, err
 	}
 	return &runtime{manifest: verified, snapshot: snap, catalog: catalog, geocoder: service, database: database, engine: authority}, nil
+}
+
+func regulatoryCatalogRoot(component bundle.Component, path string) string {
+	var shape struct {
+		Recursive bool `json:"recursive"`
+	}
+	if raw, err := json.Marshal(component); err == nil {
+		_ = json.Unmarshal(raw, &shape)
+	}
+	if shape.Recursive {
+		return path
+	}
+	return filepath.Dir(path)
 }
 
 func fixedBundleClock(asOf string) engine.Clock {
@@ -398,5 +413,5 @@ func writeJSON(value any, pretty bool) {
 func logError(message string) { _, _ = fmt.Fprintln(os.Stderr, message) }
 
 func usage() {
-	logError("bcm resolve|geocode|lookup|inspect|serve")
+	logError("bcm resolve|geocode|lookup|inspect|snapshot|serve")
 }
