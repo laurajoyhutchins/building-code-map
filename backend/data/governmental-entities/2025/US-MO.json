@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "inventory_id": "census-government-units-2025:us-mo",
-  "generated_at": "2026-08-08T16:21:43Z",
+  "generated_at": "2026-08-08T16:25:31Z",
   "sources": [
     {
       "id": "src:census-government-units-2025",
@@ -5481,6 +5481,54 @@
           "system": "census-government-units-2025",
           "unit_type": "1 - COUNTY",
           "political_code_description": "COUNTY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-mo:independent_city:census-government-unit:169159",
+      "official_name": "CITY OF ST LOUIS",
+      "entity_type": "independent_city",
+      "state_id": "US-MO",
+      "state_fips": "29",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "169159"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "169159"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "29"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "510"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "65000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 281754,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
         }
       ],
       "source_ids": [
@@ -50354,54 +50402,6 @@
       "historical_geography_status": "unavailable",
       "population": {
         "count": 6538,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-mo:municipality:census-government-unit:169159",
-      "official_name": "CITY OF ST LOUIS",
-      "entity_type": "municipality",
-      "state_id": "US-MO",
-      "state_fips": "29",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "169159"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "169159"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "29"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "510"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "65000"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 281754,
         "source_year": "2023"
       },
       "source_classifications": [

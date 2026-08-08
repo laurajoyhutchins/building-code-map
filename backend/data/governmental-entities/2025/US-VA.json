@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "inventory_id": "census-government-units-2025:us-va",
-  "generated_at": "2026-08-08T16:21:43Z",
+  "generated_at": "2026-08-08T16:25:31Z",
   "sources": [
     {
       "id": "src:census-government-units-2025",
@@ -4577,6 +4577,1830 @@
     },
     {
       "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:114559",
+      "official_name": "CITY OF BRISTOL",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "114559"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "114559"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "520"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "09816"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 16807,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:114563",
+      "official_name": "CITY OF CHESAPEAKE",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "114563"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "114563"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "550"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "16000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 253886,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:136055",
+      "official_name": "CITY OF FAIRFAX",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136055"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136055"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "600"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "26496"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 25144,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:136056",
+      "official_name": "CITY OF HAMPTON",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136056"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136056"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "650"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "35000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 137098,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:136057",
+      "official_name": "CITY OF NORFOLK",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136057"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136057"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "710"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "57000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 230930,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:136058",
+      "official_name": "CITY OF RADFORD",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136058"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136058"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "750"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "65392"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 16971,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:136059",
+      "official_name": "CITY OF EMPORIA",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "136059"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "136059"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "595"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "25808"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 5463,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:176778",
+      "official_name": "CITY OF COLONIAL HEIGHTS",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "176778"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "176778"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "570"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "18448"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 18393,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:176779",
+      "official_name": "CITY OF COVINGTON",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "176779"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "176779"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "580"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "19728"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 5545,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:176780",
+      "official_name": "CITY OF FALLS CHURCH",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "176780"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "176780"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "610"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "27200"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 14685,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:176781",
+      "official_name": "CITY OF FRANKLIN",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "176781"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "176781"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "620"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "29600"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8339,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:176782",
+      "official_name": "CITY OF FREDERICKSBURG",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "176782"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "176782"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "630"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "29744"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 28928,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:176783",
+      "official_name": "CITY OF LEXINGTON",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "176783"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "176783"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "678"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "45512"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 7528,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:176784",
+      "official_name": "CITY OF NEWPORT NEWS",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "176784"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "176784"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "700"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "56000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 183118,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:176785",
+      "official_name": "CITY OF NORTON",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "176785"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "176785"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "720"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "57688"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3492,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:176786",
+      "official_name": "CITY OF PETERSBURG",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "176786"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "176786"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "730"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "61832"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 33309,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:176787",
+      "official_name": "CITY OF ROANOKE",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "176787"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "176787"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "770"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "68000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 97171,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:176788",
+      "official_name": "CITY OF SUFFOLK",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "176788"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "176788"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "800"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "76432"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 100659,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:176789",
+      "official_name": "CITY OF WILLIAMSBURG",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "176789"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "176789"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "830"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "86160"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 15847,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:176790",
+      "official_name": "CITY OF SALEM",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "176790"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "176790"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "775"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "70000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 25600,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:176791",
+      "official_name": "CITY OF POQUOSON",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "176791"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "176791"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "735"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "63768"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 12635,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:191755",
+      "official_name": "CITY OF STAUNTON",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "191755"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "191755"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "790"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "75216"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 25915,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:194177",
+      "official_name": "CITY OF CHARLOTTESVILLE",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "194177"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "194177"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "540"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "14968"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 44983,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:194178",
+      "official_name": "CITY OF RICHMOND",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "194178"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "194178"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "760"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "67000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 229247,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:194635",
+      "official_name": "CITY OF BUENA VISTA",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "194635"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "194635"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "530"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "11032"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 6566,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:194637",
+      "official_name": "CITY OF HARRISONBURG",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "194637"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "194637"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "660"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "35624"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 51082,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:194640",
+      "official_name": "CITY OF MARTINSVILLE",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "194640"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "194640"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "690"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "49784"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 13763,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:194641",
+      "official_name": "CITY OF PORTSMOUTH",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "194641"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "194641"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "740"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "64000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 96793,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:202748",
+      "official_name": "CITY OF DANVILLE",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "202748"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "202748"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "590"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "21344"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 41837,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:202749",
+      "official_name": "CITY OF GALAX",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "202749"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "202749"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "640"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "30208"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 6717,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:202751",
+      "official_name": "CITY OF VIRGINIA BEACH",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "202751"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "202751"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "810"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "82000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 453649,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:202753",
+      "official_name": "CITY OF MANASSAS PARK",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "202753"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "202753"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "685"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "48968"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 16361,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:205577",
+      "official_name": "CITY OF LYNCHBURG",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "205577"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "205577"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "680"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "47672"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 79535,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:205578",
+      "official_name": "CITY OF WAYNESBORO",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "205578"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "205578"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "820"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "83680"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 23182,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:209712",
+      "official_name": "CITY OF ALEXANDRIA",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "209712"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "209712"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "510"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "01000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 155230,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:209713",
+      "official_name": "CITY OF MANASSAS",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "209713"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "209713"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "683"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "48952"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 42696,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:212135",
+      "official_name": "CITY OF HOPEWELL",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "212135"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "212135"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "670"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "38424"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 22752,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-va:independent_city:census-government-unit:212199",
+      "official_name": "CITY OF WINCHESTER",
+      "entity_type": "independent_city",
+      "state_id": "US-VA",
+      "state_fips": "51",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "212199"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "212199"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "51"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "840"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "86720"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 27617,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
       "entity_id": "gov:us-va:municipality:census-government-unit:114538",
       "official_name": "TOWN OF BLOXOM",
       "entity_type": "municipality",
@@ -5385,102 +7209,6 @@
           "system": "census-government-units-2025",
           "unit_type": "2 - MUNICIPAL",
           "political_code_description": "TOWN"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:114559",
-      "official_name": "CITY OF BRISTOL",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "114559"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "114559"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "520"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "09816"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 16807,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:114563",
-      "official_name": "CITY OF CHESAPEAKE",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "114563"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "114563"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "550"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "16000"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 253886,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
         }
       ],
       "source_ids": [
@@ -7113,246 +8841,6 @@
           "system": "census-government-units-2025",
           "unit_type": "2 - MUNICIPAL",
           "political_code_description": "TOWN"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:136055",
-      "official_name": "CITY OF FAIRFAX",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "136055"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "136055"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "600"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "26496"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 25144,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:136056",
-      "official_name": "CITY OF HAMPTON",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "136056"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "136056"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "650"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "35000"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 137098,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:136057",
-      "official_name": "CITY OF NORFOLK",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "136057"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "136057"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "710"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "57000"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 230930,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:136058",
-      "official_name": "CITY OF RADFORD",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "136058"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "136058"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "750"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "65392"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 16971,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:136059",
-      "official_name": "CITY OF EMPORIA",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "136059"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "136059"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "595"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "25808"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 5463,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
         }
       ],
       "source_ids": [
@@ -10721,678 +12209,6 @@
     },
     {
       "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:176778",
-      "official_name": "CITY OF COLONIAL HEIGHTS",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "176778"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "176778"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "570"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "18448"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 18393,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:176779",
-      "official_name": "CITY OF COVINGTON",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "176779"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "176779"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "580"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "19728"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 5545,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:176780",
-      "official_name": "CITY OF FALLS CHURCH",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "176780"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "176780"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "610"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "27200"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 14685,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:176781",
-      "official_name": "CITY OF FRANKLIN",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "176781"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "176781"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "620"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "29600"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 8339,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:176782",
-      "official_name": "CITY OF FREDERICKSBURG",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "176782"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "176782"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "630"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "29744"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 28928,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:176783",
-      "official_name": "CITY OF LEXINGTON",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "176783"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "176783"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "678"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "45512"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 7528,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:176784",
-      "official_name": "CITY OF NEWPORT NEWS",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "176784"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "176784"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "700"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "56000"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 183118,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:176785",
-      "official_name": "CITY OF NORTON",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "176785"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "176785"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "720"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "57688"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 3492,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:176786",
-      "official_name": "CITY OF PETERSBURG",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "176786"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "176786"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "730"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "61832"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 33309,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:176787",
-      "official_name": "CITY OF ROANOKE",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "176787"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "176787"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "770"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "68000"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 97171,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:176788",
-      "official_name": "CITY OF SUFFOLK",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "176788"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "176788"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "800"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "76432"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 100659,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:176789",
-      "official_name": "CITY OF WILLIAMSBURG",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "176789"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "176789"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "830"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "86160"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 15847,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:176790",
-      "official_name": "CITY OF SALEM",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "176790"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "176790"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "775"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "70000"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 25600,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:176791",
-      "official_name": "CITY OF POQUOSON",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "176791"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "176791"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "735"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "63768"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 12635,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
       "entity_id": "gov:us-va:municipality:census-government-unit:183685",
       "official_name": "TOWN OF HERNDON",
       "entity_type": "municipality",
@@ -12017,54 +12833,6 @@
     },
     {
       "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:191755",
-      "official_name": "CITY OF STAUNTON",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "191755"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "191755"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "790"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "75216"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 25915,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
       "entity_id": "gov:us-va:municipality:census-government-unit:194171",
       "official_name": "TOWN OF APPOMATTOX",
       "entity_type": "municipality",
@@ -12353,102 +13121,6 @@
     },
     {
       "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:194177",
-      "official_name": "CITY OF CHARLOTTESVILLE",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "194177"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "194177"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "540"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "14968"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 44983,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:194178",
-      "official_name": "CITY OF RICHMOND",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "194178"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "194178"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "760"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "67000"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 229247,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
       "entity_id": "gov:us-va:municipality:census-government-unit:194633",
       "official_name": "TOWN OF ALTAVISTA",
       "entity_type": "municipality",
@@ -12545,102 +13217,6 @@
     },
     {
       "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:194635",
-      "official_name": "CITY OF BUENA VISTA",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "194635"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "194635"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "530"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "11032"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 6566,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:194637",
-      "official_name": "CITY OF HARRISONBURG",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "194637"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "194637"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "660"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "35624"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 51082,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
       "entity_id": "gov:us-va:municipality:census-government-unit:194638",
       "official_name": "TOWN OF KILMARNOCK",
       "entity_type": "municipality",
@@ -12729,102 +13305,6 @@
           "system": "census-government-units-2025",
           "unit_type": "2 - MUNICIPAL",
           "political_code_description": "TOWN"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:194640",
-      "official_name": "CITY OF MARTINSVILLE",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "194640"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "194640"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "690"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "49784"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 13763,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:194641",
-      "official_name": "CITY OF PORTSMOUTH",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "194641"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "194641"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "740"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "64000"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 96793,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
         }
       ],
       "source_ids": [
@@ -13313,198 +13793,6 @@
     },
     {
       "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:202748",
-      "official_name": "CITY OF DANVILLE",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "202748"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "202748"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "590"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "21344"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 41837,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:202749",
-      "official_name": "CITY OF GALAX",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "202749"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "202749"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "640"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "30208"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 6717,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:202751",
-      "official_name": "CITY OF VIRGINIA BEACH",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "202751"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "202751"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "810"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "82000"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 453649,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:202753",
-      "official_name": "CITY OF MANASSAS PARK",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "202753"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "202753"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "685"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "48968"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 16361,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
       "entity_id": "gov:us-va:municipality:census-government-unit:205571",
       "official_name": "TOWN OF CLINTWOOD",
       "entity_type": "municipality",
@@ -13785,102 +14073,6 @@
           "system": "census-government-units-2025",
           "unit_type": "2 - MUNICIPAL",
           "political_code_description": "TOWN"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:205577",
-      "official_name": "CITY OF LYNCHBURG",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "205577"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "205577"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "680"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "47672"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 79535,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:205578",
-      "official_name": "CITY OF WAYNESBORO",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "205578"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "205578"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "820"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "83680"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 23182,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
         }
       ],
       "source_ids": [
@@ -14993,102 +15185,6 @@
     },
     {
       "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:209712",
-      "official_name": "CITY OF ALEXANDRIA",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "209712"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "209712"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "510"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "01000"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 155230,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:209713",
-      "official_name": "CITY OF MANASSAS",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "209713"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "209713"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "683"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "48952"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 42696,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
       "entity_id": "gov:us-va:municipality:census-government-unit:211472",
       "official_name": "TOWN OF CREWE",
       "entity_type": "municipality",
@@ -15185,54 +15281,6 @@
     },
     {
       "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:212135",
-      "official_name": "CITY OF HOPEWELL",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "212135"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "212135"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "670"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "38424"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 22752,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
       "entity_id": "gov:us-va:municipality:census-government-unit:212198",
       "official_name": "TOWN OF SMITHFIELD",
       "entity_type": "municipality",
@@ -15273,54 +15321,6 @@
           "system": "census-government-units-2025",
           "unit_type": "2 - MUNICIPAL",
           "political_code_description": "TOWN"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-va:municipality:census-government-unit:212199",
-      "official_name": "CITY OF WINCHESTER",
-      "entity_type": "municipality",
-      "state_id": "US-VA",
-      "state_fips": "51",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "212199"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "212199"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "51"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "840"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "86720"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 27617,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
         }
       ],
       "source_ids": [

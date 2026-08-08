@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "inventory_id": "census-government-units-2025:us-in",
-  "generated_at": "2026-08-08T16:21:43Z",
+  "generated_at": "2026-08-08T16:25:31Z",
   "sources": [
     {
       "id": "src:census-government-units-2025",

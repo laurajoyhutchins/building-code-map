@@ -1,13 +1,14 @@
 {
   "schema_version": "1.0",
   "source_id": "src:census-government-units-2025",
-  "generated_at": "2026-08-08T16:21:43Z",
+  "generated_at": "2026-08-08T16:25:31Z",
   "total_entities": 38704,
   "entity_type_counts": {
     "consolidated_government": 24,
     "county_equivalent": 3031,
+    "independent_city": 46,
     "minor_civil_division": 16184,
-    "municipality": 19465
+    "municipality": 19419
   },
   "classification_counts": {
     "inactive": 84,
@@ -255,7 +256,8 @@
       "total_entities": 180,
       "entity_type_counts": {
         "county_equivalent": 23,
-        "municipality": 157
+        "independent_city": 1,
+        "municipality": 156
       },
       "classification_counts": {
         "unresolved": 180
@@ -302,8 +304,9 @@
       "total_entities": 1337,
       "entity_type_counts": {
         "county_equivalent": 114,
+        "independent_city": 1,
         "minor_civil_division": 283,
-        "municipality": 940
+        "municipality": 939
       },
       "classification_counts": {
         "inactive": 6,
@@ -412,7 +415,8 @@
       "total_entities": 35,
       "entity_type_counts": {
         "county_equivalent": 16,
-        "municipality": 19
+        "independent_city": 1,
+        "municipality": 18
       },
       "classification_counts": {
         "unresolved": 35
@@ -532,7 +536,8 @@
       "total_entities": 1480,
       "entity_type_counts": {
         "county_equivalent": 254,
-        "municipality": 1226
+        "independent_city": 5,
+        "municipality": 1221
       },
       "classification_counts": {
         "inactive": 2,
@@ -555,7 +560,8 @@
       "total_entities": 322,
       "entity_type_counts": {
         "county_equivalent": 95,
-        "municipality": 227
+        "independent_city": 38,
+        "municipality": 189
       },
       "classification_counts": {
         "unresolved": 322

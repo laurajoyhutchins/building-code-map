@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "inventory_id": "census-government-units-2025:us-tx",
-  "generated_at": "2026-08-08T16:21:43Z",
+  "generated_at": "2026-08-08T16:25:31Z",
   "sources": [
     {
       "id": "src:census-government-units-2025",
@@ -12209,6 +12209,246 @@
     },
     {
       "schema_version": "1.0",
+      "entity_id": "gov:us-tx:independent_city:census-government-unit:113745",
+      "official_name": "CITY OF NEWCASTLE",
+      "entity_type": "independent_city",
+      "state_id": "US-TX",
+      "state_fips": "48",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "113745"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "113745"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "48"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "503"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "50868"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 535,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-tx:independent_city:census-government-unit:113746",
+      "official_name": "CITY OF CRYSTAL CITY",
+      "entity_type": "independent_city",
+      "state_id": "US-TX",
+      "state_fips": "48",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "113746"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "113746"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "48"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "507"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "18020"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 6099,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-tx:independent_city:census-government-unit:176433",
+      "official_name": "CITY OF OLNEY",
+      "entity_type": "independent_city",
+      "state_id": "US-TX",
+      "state_fips": "48",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "176433"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "176433"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "48"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "503"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "54000"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 3017,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-tx:independent_city:census-government-unit:209642",
+      "official_name": "CITY OF DENVER CITY",
+      "entity_type": "independent_city",
+      "state_id": "US-TX",
+      "state_fips": "48",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "209642"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "209642"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "48"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "501"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "19984"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 4301,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "entity_id": "gov:us-tx:independent_city:census-government-unit:209643",
+      "official_name": "CITY OF GRAHAM",
+      "entity_type": "independent_city",
+      "state_id": "US-TX",
+      "state_fips": "48",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "209643"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "209643"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "48"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "503"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "30392"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 8819,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
       "entity_id": "gov:us-tx:municipality:census-government-unit:100413",
       "official_name": "CITY OF TEXARKANA",
       "entity_type": "municipality",
@@ -19113,102 +19353,6 @@
           "system": "census-government-units-2025",
           "unit_type": "2 - MUNICIPAL",
           "political_code_description": "TOWN"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-tx:municipality:census-government-unit:113745",
-      "official_name": "CITY OF NEWCASTLE",
-      "entity_type": "municipality",
-      "state_id": "US-TX",
-      "state_fips": "48",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "113745"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "113745"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "48"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "503"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "50868"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 535,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-tx:municipality:census-government-unit:113746",
-      "official_name": "CITY OF CRYSTAL CITY",
-      "entity_type": "municipality",
-      "state_id": "US-TX",
-      "state_fips": "48",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "113746"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "113746"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "48"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "507"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "18020"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 6099,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
         }
       ],
       "source_ids": [
@@ -51185,54 +51329,6 @@
     },
     {
       "schema_version": "1.0",
-      "entity_id": "gov:us-tx:municipality:census-government-unit:176433",
-      "official_name": "CITY OF OLNEY",
-      "entity_type": "municipality",
-      "state_id": "US-TX",
-      "state_fips": "48",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "176433"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "176433"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "48"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "503"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "54000"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 3017,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
       "entity_id": "gov:us-tx:municipality:census-government-unit:187638",
       "official_name": "CITY OF LYTLE",
       "entity_type": "municipality",
@@ -67202,102 +67298,6 @@
       "historical_geography_status": "unavailable",
       "population": {
         "count": 1401,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-tx:municipality:census-government-unit:209642",
-      "official_name": "CITY OF DENVER CITY",
-      "entity_type": "municipality",
-      "state_id": "US-TX",
-      "state_fips": "48",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "209642"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "209642"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "48"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "501"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "19984"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 4301,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-tx:municipality:census-government-unit:209643",
-      "official_name": "CITY OF GRAHAM",
-      "entity_type": "municipality",
-      "state_id": "US-TX",
-      "state_fips": "48",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "209643"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "209643"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "48"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "503"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "30392"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 8819,
         "source_year": "2023"
       },
       "source_classifications": [

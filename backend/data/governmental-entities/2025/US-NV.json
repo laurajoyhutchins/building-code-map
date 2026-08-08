@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "inventory_id": "census-government-units-2025:us-nv",
-  "generated_at": "2026-08-08T16:21:43Z",
+  "generated_at": "2026-08-08T16:25:31Z",
   "sources": [
     {
       "id": "src:census-government-units-2025",
@@ -785,6 +785,54 @@
     },
     {
       "schema_version": "1.0",
+      "entity_id": "gov:us-nv:independent_city:census-government-unit:194943",
+      "official_name": "CITY OF CARSON CITY",
+      "entity_type": "independent_city",
+      "state_id": "US-NV",
+      "state_fips": "32",
+      "identity": {
+        "namespace": "census-government-unit",
+        "value": "194943"
+      },
+      "external_identifiers": [
+        {
+          "scheme": "census-government-unit-pid6",
+          "value": "194943"
+        },
+        {
+          "scheme": "government-units-fips-state",
+          "value": "32"
+        },
+        {
+          "scheme": "government-units-fips-county",
+          "value": "510"
+        },
+        {
+          "scheme": "government-units-fips-place",
+          "value": "09700"
+        }
+      ],
+      "legal_status": "active",
+      "effective_interval": {},
+      "classification": "unresolved",
+      "historical_geography_status": "unavailable",
+      "population": {
+        "count": 58036,
+        "source_year": "2023"
+      },
+      "source_classifications": [
+        {
+          "system": "census-government-units-2025",
+          "unit_type": "2 - MUNICIPAL",
+          "political_code_description": "CITY"
+        }
+      ],
+      "source_ids": [
+        "src:census-government-units-2025"
+      ]
+    },
+    {
+      "schema_version": "1.0",
       "entity_id": "gov:us-nv:municipality:census-government-unit:108907",
       "official_name": "CITY OF MESQUITE",
       "entity_type": "municipality",
@@ -1490,54 +1538,6 @@
       "historical_geography_status": "unavailable",
       "population": {
         "count": 1244,
-        "source_year": "2023"
-      },
-      "source_classifications": [
-        {
-          "system": "census-government-units-2025",
-          "unit_type": "2 - MUNICIPAL",
-          "political_code_description": "CITY"
-        }
-      ],
-      "source_ids": [
-        "src:census-government-units-2025"
-      ]
-    },
-    {
-      "schema_version": "1.0",
-      "entity_id": "gov:us-nv:municipality:census-government-unit:194943",
-      "official_name": "CITY OF CARSON CITY",
-      "entity_type": "municipality",
-      "state_id": "US-NV",
-      "state_fips": "32",
-      "identity": {
-        "namespace": "census-government-unit",
-        "value": "194943"
-      },
-      "external_identifiers": [
-        {
-          "scheme": "census-government-unit-pid6",
-          "value": "194943"
-        },
-        {
-          "scheme": "government-units-fips-state",
-          "value": "32"
-        },
-        {
-          "scheme": "government-units-fips-county",
-          "value": "510"
-        },
-        {
-          "scheme": "government-units-fips-place",
-          "value": "09700"
-        }
-      ],
-      "legal_status": "active",
-      "effective_interval": {},
-      "classification": "unresolved",
-      "historical_geography_status": "unavailable",
-      "population": {
-        "count": 58036,
         "source_year": "2023"
       },
       "source_classifications": [
