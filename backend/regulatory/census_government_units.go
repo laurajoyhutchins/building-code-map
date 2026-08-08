@@ -31,7 +31,7 @@ func GovernmentalEntityFromCensusUnit(record CensusGovernmentUnitRecord, sourceI
 	if len(state) != 2 {
 		return GovernmentalEntity{}, fmt.Errorf("state abbreviation must contain two letters")
 	}
-	entityType, err := censusGovernmentalEntityType(record.UnitType, record.PoliticalCodeDescription)
+	entityType, err := censusGovernmentalEntityType(record.UnitType, record.PoliticalCodeDescription, record.FIPSCounty)
 	if err != nil {
 		return GovernmentalEntity{}, err
 	}
@@ -76,7 +76,7 @@ func GovernmentalEntityFromCensusUnit(record CensusGovernmentUnitRecord, sourceI
 	return entity, nil
 }
 
-func censusGovernmentalEntityType(unitType, politicalCode string) (GovernmentalEntityType, error) {
+func censusGovernmentalEntityType(unitType, politicalCode, fipsCounty string) (GovernmentalEntityType, error) {
 	unitType = strings.TrimSpace(unitType)
 	politicalCode = strings.ToUpper(strings.TrimSpace(politicalCode))
 	if isConsolidatedPoliticalCode(politicalCode) {
@@ -84,17 +84,26 @@ func censusGovernmentalEntityType(unitType, politicalCode string) (GovernmentalE
 	}
 	switch unitType {
 	case "1 - COUNTY":
-		if politicalCode == "CITY" {
-			return EntityTypeIndependentCity, nil
-		}
 		return EntityTypeCountyEquivalent, nil
 	case "2 - MUNICIPAL":
+		if politicalCode == "CITY" && isCountyEquivalentFIPS(fipsCounty) {
+			return EntityTypeIndependentCity, nil
+		}
 		return EntityTypeMunicipality, nil
 	case "3 - TOWNSHIP":
 		return EntityTypeMinorCivilDivision, nil
 	default:
 		return "", fmt.Errorf("unsupported Census government unit type %q", unitType)
 	}
+}
+
+func isCountyEquivalentFIPS(value string) bool {
+	value = strings.TrimSpace(value)
+	if len(value) != 3 {
+		return false
+	}
+	code, err := strconv.Atoi(value)
+	return err == nil && code >= 500
 }
 
 func isConsolidatedPoliticalCode(value string) bool {
