@@ -1,6 +1,7 @@
 package regulatory
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -14,11 +15,10 @@ func WriteEntityCoverageLedger(path string, ledger EntityCoverageLedger) error {
 	if err := ValidateEntityCoverageLedger(ledger); err != nil {
 		return err
 	}
-	raw, err := json.MarshalIndent(ledger, "", "  ")
+	raw, err := marshalEntityCoverageLedger(ledger)
 	if err != nil {
 		return err
 	}
-	raw = append(raw, '\n')
 	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
 		return err
 	}
@@ -104,16 +104,31 @@ func ValidateEntityCoverageLedger(ledger EntityCoverageLedger) error {
 }
 
 func ValidateEntityCoverageLedgerFile(request EntityCoverageLedgerRequest, path string) error {
-	existing, err := LoadEntityCoverageLedger(path)
-	if err != nil {
+	if _, err := LoadEntityCoverageLedger(path); err != nil {
 		return err
 	}
 	rebuilt, err := BuildEntityCoverageLedger(request)
 	if err != nil {
 		return err
 	}
-	if !reflect.DeepEqual(existing, rebuilt) {
+	want, err := marshalEntityCoverageLedger(rebuilt)
+	if err != nil {
+		return err
+	}
+	got, err := os.ReadFile(path)
+	if err != nil {
+		return err
+	}
+	if !bytes.Equal(got, want) {
 		return fmt.Errorf("coverage ledger %s is stale; regenerate it", path)
 	}
 	return nil
+}
+
+func marshalEntityCoverageLedger(ledger EntityCoverageLedger) ([]byte, error) {
+	raw, err := json.MarshalIndent(ledger, "", "  ")
+	if err != nil {
+		return nil, err
+	}
+	return append(raw, '\n'), nil
 }
