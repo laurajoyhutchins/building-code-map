@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "source_id": "src:census-government-units-2025",
+  "publisher": "U.S. Census Bureau",
+  "product": "2025 Government Units Listing",
+  "release_date": "2025-09-24",
+  "landing_page": "https://www.census.gov/programs-surveys/gus/technical-documentation/file-layouts/annual-organization-public-use-file.html",
+  "archive_url": "https://www2.census.gov/programs-surveys/gus/datasets/2025/gov_units_2025.zip",
+  "archive_sha256": "e8b17c3928fb95fa7355a1ce7795fc7de8874c64e9ac7cd9506d6a6515d953f8",
+  "workbook": {
+    "path": "Govt_Units_2025_Final.xlsx",
+    "sha256": "840e8b65e5e65325c0a42fb842ea81c0491eae3abd8a41953764044ee9e2a56e"
+  },
+  "documentation": {
+    "path": "Government_Units_List_Documentation_2025.pdf",
+    "sha256": "d12278a7382943cc12ad501631374bc5c8688ba66292b61b0fe7eff9f4191f6d"
+  },
+  "general_purpose": {
+    "sheet": "General Purpose",
+    "record_count": 38704,
+    "unit_types": [
+      "1 - COUNTY",
+      "2 - MUNICIPAL",
+      "3 - TOWNSHIP"
+    ],
+    "columns": [
+      "CENSUS_ID_PID6",
+      "UNIT_NAME",
+      "UNIT_TYPE",
+      "TITLE",
+      "ADDRESS1",
+      "ADDRESS2",
+      "CITY",
+      "STATE",
+      "ZIP",
+      "ZIP4",
+      "WEB_ADDRESS",
+      "POLITICAL_CODE_DESCRIPTION",
+      "POPULATION",
+      "POPULATION_SOURCE_YEAR",
+      "FIPS_STATE",
+      "FIPS_COUNTY",
+      "FIPS_PLACE",
+      "COUNTY_AREA_NAME",
+      "ACTIVE"
+    ]
+  },
+  "scope": {
+    "states_and_dc": 51,
+    "note": "General-purpose county, municipal, and township governments in all 50 states and the District of Columbia."
+  },
+  "authority_boundary": "This source establishes government-unit identity, source classification, activity status, and source-provided identifiers. It does not establish building-code adoption, amendment, administration, enforcement authority, or legal boundary geometry."
+}
