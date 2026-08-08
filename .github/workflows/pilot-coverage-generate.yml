@@ -45,6 +45,19 @@ jobs:
             --code-family building \
             --applicability-date 2026-08-08
 
+      - name: Print coverage summaries
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('backend/data/jurisdiction-coverage/pilot-building-2026-08-08.json').read_text())
+          print('NATIONAL', json.dumps(data['summary'], sort_keys=True))
+          for state in data['states']:
+              print(state['state_id'], json.dumps(state['summary'], sort_keys=True))
+          print('FRESHNESS', json.dumps(data['freshness'], sort_keys=True))
+          print('LAND_AREA', json.dumps(data['land_area'], sort_keys=True))
+          PY
+
       - name: Commit generated ledger
         shell: bash
         run: |
