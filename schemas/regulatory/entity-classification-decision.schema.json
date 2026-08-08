@@ -72,12 +72,7 @@
     "record": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "record_id",
-        "kind",
-        "classification",
-        "legal_basis_source_ids"
-      ],
+      "required": ["record_id", "kind", "classification", "legal_basis_source_ids"],
       "properties": {
         "record_id": { "type": "string", "minLength": 1 },
         "kind": {
