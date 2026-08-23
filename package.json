@@ -1,0 +1,10 @@
+{
+  "name": "building-code-map",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "license": "Apache-2.0",
+  "scripts": {
+    "validate:demo": "node -e \"const fs=require('fs'); const x=JSON.parse(fs.readFileSync('demo/DEMO-XX/project-code-basis.json','utf8')); if(x.jurisdiction_id!=='DEMO-XX') process.exit(1);\""
+  }
+}
