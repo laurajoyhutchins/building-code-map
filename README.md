@@ -17,6 +17,12 @@ The production regulatory corpus is not distributed here. In particular, this re
 
 That separation is intentional. Public software can remain inspectable without turning the maintained production knowledge base into a downloadable artifact.
 
+## Public boundary
+
+The archived BCM alpha repository is historical product state, not an upstream development branch. Material from alpha is review-required by default and must pass the [admission policy](docs/admission-policy.md) before reuse.
+
+The [data visibility contract](docs/data-visibility.md) defines what belongs in the public repository, what a hosted project-scoped response may reveal, and what remains in the production/internal layer. Machine-checkable invariants live in `policy/public-boundary.json` and are enforced by `npm run validate:boundary`.
+
 ## Core semantics
 
 A Building Code Map result should distinguish three outcomes:

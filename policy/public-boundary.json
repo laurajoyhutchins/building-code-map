@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "default_disposition": "review_required",
+  "synthetic_jurisdiction_prefix": "DEMO-",
+  "forbidden_top_level_paths": [
+    "corpus",
+    "production-data",
+    "research"
+  ],
+  "material_classes": {
+    "first_party_software_documentation": {
+      "public_repository": "allowed",
+      "service_response": "allowed",
+      "production_internal": "allowed",
+      "requirements": [
+        "license_confirmed"
+      ]
+    },
+    "synthetic_fixture": {
+      "public_repository": "allowed",
+      "service_response": "allowed",
+      "production_internal": "allowed",
+      "requirements": [
+        "fictional_identifiers"
+      ]
+    },
+    "public_law_government_record": {
+      "public_repository": "reference_only_by_default",
+      "service_response": "citation_and_derived_fact",
+      "production_internal": "allowed",
+      "requirements": [
+        "source_terms_checked"
+      ]
+    },
+    "open_third_party_material": {
+      "public_repository": "conditional",
+      "service_response": "conditional",
+      "production_internal": "conditional",
+      "requirements": [
+        "compatible_license",
+        "attribution_preserved"
+      ]
+    },
+    "restricted_standard_model_code": {
+      "public_repository": "prohibited",
+      "service_response": "derived_fact_and_citation_only",
+      "production_internal": "conditional",
+      "requirements": [
+        "lawful_access",
+        "no_unlicensed_redistribution"
+      ]
+    },
+    "production_regulatory_corpus": {
+      "public_repository": "prohibited",
+      "service_response": "resolved_record_only",
+      "production_internal": "allowed",
+      "requirements": [
+        "no_bulk_export"
+      ]
+    },
+    "alpha_material": {
+      "public_repository": "review_required",
+      "service_response": "review_required",
+      "production_internal": "review_required",
+      "requirements": [
+        "classify_under_non_alpha_class",
+        "license_and_provenance_review",
+        "clean_copy_or_reimplementation"
+      ]
+    }
+  }
+}
