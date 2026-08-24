@@ -5,6 +5,9 @@
   "type": "module",
   "license": "Apache-2.0",
   "scripts": {
-    "validate:demo": "node -e \"const fs=require('fs'); const x=JSON.parse(fs.readFileSync('demo/DEMO-XX/project-code-basis.json','utf8')); if(x.jurisdiction_id!=='DEMO-XX') process.exit(1);\""
+    "test": "node --test",
+    "validate:boundary": "node scripts/public-boundary.mjs",
+    "validate:demo": "node -e \"const fs=require('fs'); const x=JSON.parse(fs.readFileSync('demo/DEMO-XX/project-code-basis.json','utf8')); if(x.jurisdiction_id!=='DEMO-XX') process.exit(1);\"",
+    "validate": "npm run validate:boundary && npm run validate:demo"
   }
 }
