@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "project_id": "DEMO-001",
+  "as_of": "2026-08-22",
+  "jurisdiction_id": "DEMO-XX",
+  "verdict": "conditional",
+  "code_set": [
+    {
+      "family": "building",
+      "edition": "2024",
+      "basis": "Fictional statewide baseline for interface testing only"
+    },
+    {
+      "family": "electrical",
+      "edition": "2023",
+      "basis": "Fictional statewide baseline for interface testing only"
+    }
+  ],
+  "unresolved": [
+    "Confirm the fictional local authority for DEMO-XX before treating this example as verified."
+  ],
+  "evidence": [
+    {
+      "label": "Synthetic demonstration authority",
+      "url": "https://example.invalid/demo-authority"
+    }
+  ]
+}
