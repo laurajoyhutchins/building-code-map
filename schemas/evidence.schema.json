@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://building-code-map.example/schemas/evidence.schema.json",
+  "title": "Building Code Map Exact-Text Evidence",
+  "$defs": {
+    "source_document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "jurisdiction_id"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "kind": { "type": "string", "minLength": 1 },
+        "jurisdiction_id": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "canonical_url": { "type": "string", "format": "uri" }
+      }
+    },
+    "source_artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "document_id", "sha256", "size_bytes"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "document_id": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "size_bytes": { "type": "integer", "minimum": 1 },
+        "source_url": { "type": "string", "format": "uri" },
+        "observed_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "text_anchor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "artifact_id", "text_sha256"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "artifact_id": { "type": "string", "minLength": 1 },
+        "legal_locator": { "type": "string", "minLength": 1 },
+        "start_offset": { "type": "integer", "minimum": 0 },
+        "end_offset": { "type": "integer", "minimum": 1 },
+        "text_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      },
+      "anyOf": [
+        { "required": ["legal_locator"] },
+        { "required": ["start_offset", "end_offset"] }
+      ]
+    },
+    "evidence_link": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "claim_id", "role", "document", "artifact", "anchor"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "claim_id": { "type": "string", "minLength": 1 },
+        "role": {
+          "enum": ["establishes", "corroborates", "contradicts", "defines", "incorporates", "supersedes"]
+        },
+        "document": { "$ref": "#/$defs/source_document" },
+        "artifact": { "$ref": "#/$defs/source_artifact" },
+        "anchor": { "$ref": "#/$defs/text_anchor" },
+        "target_link_id": { "type": "string", "minLength": 1 }
+      }
+    },
+    "evidence_claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "jurisdiction_id", "as_of", "legally_material", "links"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "kind": { "type": "string", "minLength": 1 },
+        "jurisdiction_id": { "type": "string", "minLength": 1 },
+        "as_of": { "type": "string", "format": "date" },
+        "legally_material": { "type": "boolean" },
+        "links": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/evidence_link" }
+        }
+      }
+    }
+  },
+  "$ref": "#/$defs/evidence_claim"
+}
