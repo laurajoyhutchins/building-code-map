@@ -1,28 +1,64 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "project_id": "DEMO-001",
-  "as_of": "2026-08-22",
+  "as_of": "2026-08-25",
+  "inputs": {
+    "address": "100 Demo Plaza",
+    "facts": {
+      "project_type": "tenant-improvement"
+    }
+  },
   "jurisdiction_id": "DEMO-XX",
+  "jurisdiction": {
+    "country_code": "US",
+    "primary_jurisdiction_id": "DEMO-XX",
+    "primary_jurisdiction_name": "Demonstration Jurisdiction"
+  },
   "verdict": "conditional",
   "code_set": [
     {
       "family": "building",
-      "edition": "2024",
-      "basis": "Fictional statewide baseline for interface testing only"
+      "edition": "DEMO-2024",
+      "status": "partially_resolved",
+      "basis": "Fictional baseline for interface testing only"
     },
     {
       "family": "electrical",
-      "edition": "2023",
-      "basis": "Fictional statewide baseline for interface testing only"
+      "edition": "DEMO-2023",
+      "status": "resolved",
+      "basis": "Fictional baseline for interface testing only"
+    }
+  ],
+  "user_facts": {
+    "project_type": "tenant-improvement"
+  },
+  "derived_facts": [
+    {
+      "key": "primary_jurisdiction",
+      "value": "DEMO-XX",
+      "basis": "Synthetic geography resolver"
     }
   ],
   "unresolved": [
-    "Confirm the fictional local authority for DEMO-XX before treating this example as verified."
+    {
+      "kind": "project_fact",
+      "message": "What is the project occupancy?",
+      "fact_key": "occupancy",
+      "code_family": "building"
+    }
+  ],
+  "follow_up_questions": [
+    "What is the project occupancy?"
   ],
   "evidence": [
     {
-      "label": "Synthetic demonstration authority",
-      "url": "https://example.invalid/demo-authority"
+      "id": "DEMO-EVIDENCE-001",
+      "kind": "synthetic"
     }
-  ]
+  ],
+  "provenance": {
+    "engine_version": "demo",
+    "source_commit": "DEMO-COMMIT",
+    "bundle_id": "DEMO-BUNDLE"
+  }
 }
