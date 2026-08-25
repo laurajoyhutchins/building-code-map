@@ -61,12 +61,13 @@ type ResolutionRequirement struct {
 }
 
 type CodeResolution struct {
-	Family     string           `json:"family"`
-	Edition    string           `json:"edition,omitempty"`
-	Status     ResolutionStatus `json:"status"`
-	Basis      string           `json:"basis,omitempty"`
-	Unresolved []string         `json:"unresolved,omitempty"`
-	Evidence   []EvidenceRef    `json:"evidence,omitempty"`
+	Family        string           `json:"family"`
+	Edition       string           `json:"edition,omitempty"`
+	Status        ResolutionStatus `json:"status"`
+	Basis         string           `json:"basis,omitempty"`
+	Unresolved    []string         `json:"unresolved,omitempty"`
+	Evidence      []EvidenceRef    `json:"evidence,omitempty"`
+	ExactEvidence []EvidenceLink   `json:"exact_evidence,omitempty"`
 }
 
 type Provenance struct {
