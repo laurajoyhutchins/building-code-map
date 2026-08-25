@@ -38,6 +38,12 @@ See [Methodology](docs/methodology.md) for more detail.
 
 The current public contract starts with [`project-code-basis.schema.json`](schemas/project-code-basis.schema.json) and the fictional [`DEMO-XX`](demo/DEMO-XX/project-code-basis.json) example.
 
+## Public runtime
+
+The [`engine`](engine/) package is the first public-safe Authority Engine slice. It preserves the project-authored query and error contracts while putting regulatory resolution behind an injected `Provider` interface. That boundary is deliberate: the open-source runtime can execute and validate synthetic resolutions without requiring the maintained regulatory corpus, production geocoder or boundary databases, or restricted source material.
+
+Per-code results keep `unsupported`, `not_applicable`, and `insufficient_evidence` distinct. `not_applicable` requires an affirmative basis; missing evidence cannot silently become non-applicability. Geographic results use country and primary-jurisdiction identity, with state-equivalent metadata optional rather than structural.
+
 ## Data and licensing
 
 This repository is not a bulk download of maintained jurisdiction-by-jurisdiction regulatory research. A hosted Building Code Map service may return project-scoped conclusions, citations, provenance, and unresolved requirements without exposing the complete maintained corpus or restricted source material.
@@ -46,9 +52,10 @@ Third-party laws, government records, model codes, standards, datasets, and othe
 
 ## Validate the public foundation
 
-Requires Node.js 22 or later.
+Requires Node.js 22 or later and Go 1.23 or later.
 
 ```sh
+go test ./...
 npm test
 npm run validate
 ```
