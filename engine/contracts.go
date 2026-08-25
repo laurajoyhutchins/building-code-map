@@ -17,21 +17,23 @@ type Point struct {
 }
 
 type Query struct {
-	Point             *Point       `json:"point,omitempty"`
-	Address           string       `json:"address,omitempty"`
-	CodeFamily        string       `json:"code_family,omitempty"`
-	ProjectType       string       `json:"project_type,omitempty"`
-	ApplicabilityDate string       `json:"applicability_date"`
-	Include           []IncludeKey `json:"include,omitempty"`
+	Point             *Point            `json:"point,omitempty"`
+	Address           string            `json:"address,omitempty"`
+	CodeFamily        string            `json:"code_family,omitempty"`
+	ProjectType       string            `json:"project_type,omitempty"`
+	ProjectFacts      map[string]string `json:"project_facts,omitempty"`
+	ApplicabilityDate string            `json:"applicability_date"`
+	Include           []IncludeKey      `json:"include,omitempty"`
 }
 
 type NormalizedQuery struct {
-	Point             *Point       `json:"point,omitempty"`
-	Address           string       `json:"address,omitempty"`
-	CodeFamily        string       `json:"code_family,omitempty"`
-	ProjectType       string       `json:"project_type,omitempty"`
-	ApplicabilityDate string       `json:"applicability_date"`
-	Include           []IncludeKey `json:"include,omitempty"`
+	Point             *Point            `json:"point,omitempty"`
+	Address           string            `json:"address,omitempty"`
+	CodeFamily        string            `json:"code_family,omitempty"`
+	ProjectType       string            `json:"project_type,omitempty"`
+	ProjectFacts      map[string]string `json:"project_facts,omitempty"`
+	ApplicabilityDate string            `json:"applicability_date"`
+	Include           []IncludeKey      `json:"include,omitempty"`
 }
 
 func NormalizeQuery(query Query) (NormalizedQuery, error) {
@@ -53,10 +55,16 @@ func NormalizeQuery(query Query) (NormalizedQuery, error) {
 		}
 	}
 
+	projectFacts, err := normalizeProjectFacts(query.ProjectFacts)
+	if err != nil {
+		return NormalizedQuery{}, err
+	}
+
 	normalized := NormalizedQuery{
 		Address:           address,
 		CodeFamily:        normalizeText(query.CodeFamily),
 		ProjectType:       normalizeText(query.ProjectType),
+		ProjectFacts:      projectFacts,
 		ApplicabilityDate: parsedDate.Format(time.DateOnly),
 		Include:           normalizeIncludes(query.Include),
 	}
@@ -71,6 +79,25 @@ func NormalizeQuery(query Query) (NormalizedQuery, error) {
 }
 
 func normalizeText(value string) string { return strings.ToLower(strings.TrimSpace(value)) }
+
+func normalizeProjectFacts(values map[string]string) (map[string]string, error) {
+	if len(values) == 0 {
+		return nil, nil
+	}
+	result := make(map[string]string, len(values))
+	for rawKey, rawValue := range values {
+		key := normalizeText(rawKey)
+		value := strings.TrimSpace(rawValue)
+		if key == "" || value == "" {
+			return nil, EngineError{Code: ErrorInvalidQuery, Message: "project facts require non-empty keys and values"}
+		}
+		if existing, ok := result[key]; ok && existing != value {
+			return nil, EngineError{Code: ErrorInvalidQuery, Message: "project facts contain conflicting normalized keys", Details: map[string]any{"key": key}}
+		}
+		result[key] = value
+	}
+	return result, nil
+}
 
 func normalizeIncludes(values []IncludeKey) []IncludeKey {
 	seen := make(map[IncludeKey]struct{}, len(values))
