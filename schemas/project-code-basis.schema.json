@@ -16,10 +16,11 @@
     "unresolved",
     "follow_up_questions",
     "evidence",
+    "exact_evidence",
     "provenance"
   ],
   "properties": {
-    "schema_version": { "const": "0.2" },
+    "schema_version": { "const": "0.3" },
     "project_id": { "type": "string", "minLength": 1 },
     "as_of": { "type": "string", "format": "date" },
     "inputs": {
@@ -132,6 +133,10 @@
           "kind": { "type": "string", "minLength": 1 }
         }
       }
+    },
+    "exact_evidence": {
+      "type": "array",
+      "items": { "$ref": "evidence.schema.json#/$defs/evidence_link" }
     },
     "provenance": {
       "type": "object",
