@@ -23,6 +23,18 @@ var allowedResolutionStatuses = map[ResolutionStatus]struct{}{
 	StatusNotApplicable: {}, StatusInsufficientEvidence: {}, StatusAmbiguous: {}, StatusConflicting: {},
 }
 
+type RequirementKind string
+
+const (
+	RequirementProjectFact    RequirementKind = "project_fact"
+	RequirementLocalRecord    RequirementKind = "local_record"
+	RequirementEvidenceDefect RequirementKind = "evidence_defect"
+)
+
+var allowedRequirementKinds = map[RequirementKind]struct{}{
+	RequirementProjectFact: {}, RequirementLocalRecord: {}, RequirementEvidenceDefect: {},
+}
+
 type JurisdictionContext struct {
 	CountryCode               string `json:"country_code"`
 	PrimaryJurisdictionID     string `json:"primary_jurisdiction_id"`
@@ -33,6 +45,19 @@ type JurisdictionContext struct {
 type EvidenceRef struct {
 	ID   string `json:"id"`
 	Kind string `json:"kind"`
+}
+
+type DerivedFact struct {
+	Key   string `json:"key"`
+	Value string `json:"value"`
+	Basis string `json:"basis,omitempty"`
+}
+
+type ResolutionRequirement struct {
+	ID      string          `json:"id"`
+	Kind    RequirementKind `json:"kind"`
+	Prompt  string          `json:"prompt"`
+	FactKey string          `json:"fact_key,omitempty"`
 }
 
 type CodeResolution struct {
@@ -51,11 +76,13 @@ type Provenance struct {
 }
 
 type Resolution struct {
-	SchemaVersion string              `json:"schema_version"`
-	Query         NormalizedQuery     `json:"query"`
-	Jurisdiction  JurisdictionContext `json:"jurisdiction"`
-	Codes         []CodeResolution    `json:"codes"`
-	Provenance    Provenance          `json:"provenance,omitempty"`
+	SchemaVersion string                  `json:"schema_version"`
+	Query         NormalizedQuery         `json:"query"`
+	Jurisdiction  JurisdictionContext     `json:"jurisdiction"`
+	Codes         []CodeResolution        `json:"codes"`
+	Requirements  []ResolutionRequirement `json:"requirements,omitempty"`
+	DerivedFacts  []DerivedFact           `json:"derived_facts,omitempty"`
+	Provenance    Provenance              `json:"provenance,omitempty"`
 }
 
 type Provider interface {
@@ -102,6 +129,17 @@ func validateResolution(result Resolution) error {
 		}
 		if code.Status == StatusNotApplicable && strings.TrimSpace(code.Basis) == "" {
 			return EngineError{Code: ErrorDataBundleInvalid, Message: "not_applicable requires an affirmative basis", Details: map[string]any{"index": index, "family": code.Family}}
+		}
+	}
+	for index, requirement := range result.Requirements {
+		if strings.TrimSpace(requirement.ID) == "" || strings.TrimSpace(requirement.Prompt) == "" {
+			return EngineError{Code: ErrorDataBundleInvalid, Message: "resolution requirement requires id and prompt", Details: map[string]any{"index": index}}
+		}
+		if _, ok := allowedRequirementKinds[requirement.Kind]; !ok {
+			return EngineError{Code: ErrorDataBundleInvalid, Message: "resolution requirement kind is invalid", Details: map[string]any{"index": index, "kind": requirement.Kind}}
+		}
+		if requirement.Kind == RequirementProjectFact && strings.TrimSpace(requirement.FactKey) == "" {
+			return EngineError{Code: ErrorDataBundleInvalid, Message: "project_fact requirement requires fact_key", Details: map[string]any{"index": index}}
 		}
 	}
 	return nil
