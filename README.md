@@ -44,6 +44,14 @@ The [`engine`](engine/) package is the first public-safe Authority Engine slice.
 
 Per-code results keep `unsupported`, `not_applicable`, and `insufficient_evidence` distinct. `not_applicable` requires an affirmative basis; missing evidence cannot silently become non-applicability. Geographic results use country and primary-jurisdiction identity, with state-equivalent metadata optional rather than structural.
 
+## Project Code Verification
+
+[`ProjectVerifier.VerifyProject`](engine/project.go) is the primary project-level public workflow. Callers provide a project ID, location, applicability date, and any known project facts; they do not have to choose one code family before asking for an answer.
+
+The verifier uses the canonical runtime result and deterministically reduces it to a project verdict. It preserves user-supplied and BCM-derived facts, per-code states, unresolved requirements, evidence identifiers, and runtime provenance. Only structured `project_fact` requirements become follow-up questions. Local-record requirements and evidence defects remain visibly different failure modes.
+
+See [Project Code Verification](docs/project-verification.md) for the public reduction rules and contract semantics.
+
 ## Data and licensing
 
 This repository is not a bulk download of maintained jurisdiction-by-jurisdiction regulatory research. A hosted Building Code Map service may return project-scoped conclusions, citations, provenance, and unresolved requirements without exposing the complete maintained corpus or restricted source material.
