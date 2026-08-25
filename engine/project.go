@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-const ProjectCodeBasisSchemaVersion = "0.2"
+const ProjectCodeBasisSchemaVersion = "0.3"
 
 type ProjectVerdict string
 
@@ -60,6 +60,7 @@ type ProjectCodeBasis struct {
 	Unresolved        []ProjectUnresolved `json:"unresolved"`
 	FollowUpQuestions []string            `json:"follow_up_questions"`
 	Evidence          []EvidenceRef       `json:"evidence"`
+	ExactEvidence     []EvidenceLink      `json:"exact_evidence"`
 	Provenance        Provenance          `json:"provenance"`
 }
 
@@ -88,6 +89,8 @@ func (verifier ProjectVerifier) VerifyProject(ctx context.Context, request Proje
 	unresolved := make([]ProjectUnresolved, 0, len(resolution.Requirements))
 	evidence := make([]EvidenceRef, 0)
 	evidenceSeen := map[string]struct{}{}
+	exactEvidence := make([]EvidenceLink, 0)
+	exactEvidenceSeen := map[string]struct{}{}
 	followUps := make([]string, 0)
 	verdict := ProjectVerified
 
@@ -127,6 +130,13 @@ func (verifier ProjectVerifier) VerifyProject(ctx context.Context, request Proje
 			evidenceSeen[key] = struct{}{}
 			evidence = append(evidence, ref)
 		}
+		for _, link := range code.ExactEvidence {
+			if _, ok := exactEvidenceSeen[link.ID]; ok {
+				continue
+			}
+			exactEvidenceSeen[link.ID] = struct{}{}
+			exactEvidence = append(exactEvidence, link)
+		}
 	}
 
 	sort.Slice(codeSet, func(i, j int) bool {
@@ -141,6 +151,7 @@ func (verifier ProjectVerifier) VerifyProject(ctx context.Context, request Proje
 		}
 		return evidence[i].Kind < evidence[j].Kind
 	})
+	sort.Slice(exactEvidence, func(i, j int) bool { return exactEvidence[i].ID < exactEvidence[j].ID })
 	sort.Strings(followUps)
 
 	return ProjectCodeBasis{
@@ -159,6 +170,7 @@ func (verifier ProjectVerifier) VerifyProject(ctx context.Context, request Proje
 		Unresolved:        unresolved,
 		FollowUpQuestions: followUps,
 		Evidence:          evidence,
+		ExactEvidence:     exactEvidence,
 		Provenance:        resolution.Provenance,
 	}, nil
 }
