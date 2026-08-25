@@ -69,9 +69,13 @@ func TestProjectVerificationMissingEvidenceIsNotNotApplicable(t *testing.T) {
 }
 
 func TestProjectVerificationPreservesFactsEvidenceAndProvenance(t *testing.T) {
+	exact := demoEvidenceLink("DEMO-EXACT", EvidenceEstablishes)
 	runtime := NewRuntime(projectProvider{result: Resolution{
 		Jurisdiction: JurisdictionContext{CountryCode: "US", PrimaryJurisdictionID: "DEMO-XX", PrimaryJurisdictionName: "Demonstration Jurisdiction"},
-		Codes:        []CodeResolution{{Family: "building", Edition: "DEMO-2024", Status: StatusResolved, Basis: "DEMO ordinance", Evidence: []EvidenceRef{{ID: "DEMO-EVIDENCE", Kind: "synthetic"}}}},
+		Codes: []CodeResolution{{
+			Family: "building", Edition: "DEMO-2024", Status: StatusResolved, Basis: "DEMO ordinance",
+			Evidence: []EvidenceRef{{ID: "DEMO-EVIDENCE", Kind: "synthetic"}}, ExactEvidence: []EvidenceLink{exact},
+		}},
 		DerivedFacts: []DerivedFact{{Key: "primary_jurisdiction", Value: "DEMO-XX", Basis: "synthetic resolver"}},
 		Provenance:   Provenance{EngineVersion: "demo", SourceCommit: "DEMO-COMMIT", BundleID: "DEMO-BUNDLE"},
 	}})
@@ -89,6 +93,9 @@ func TestProjectVerificationPreservesFactsEvidenceAndProvenance(t *testing.T) {
 	}
 	if len(basis.Evidence) != 1 || basis.Evidence[0].ID != "DEMO-EVIDENCE" {
 		t.Fatalf("evidence = %#v", basis.Evidence)
+	}
+	if len(basis.ExactEvidence) != 1 || basis.ExactEvidence[0].Anchor.ID != "DEMO-ANCHOR" {
+		t.Fatalf("exact evidence = %#v", basis.ExactEvidence)
 	}
 	if basis.Provenance.BundleID != "DEMO-BUNDLE" {
 		t.Fatalf("provenance = %#v", basis.Provenance)
