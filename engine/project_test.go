@@ -68,6 +68,42 @@ func TestProjectVerificationMissingEvidenceIsNotNotApplicable(t *testing.T) {
 	}
 }
 
+func TestProjectVerificationStructuredEvidenceDefectFailsClosed(t *testing.T) {
+	runtime := NewRuntime(projectProvider{result: Resolution{
+		Jurisdiction: JurisdictionContext{CountryCode: "US", PrimaryJurisdictionID: "DEMO-XX", PrimaryJurisdictionName: "Demonstration Jurisdiction"},
+		Codes:        []CodeResolution{{Family: "building", Edition: "DEMO-2024", Status: StatusResolved, Basis: "DEMO ordinance"}},
+		Requirements: []ResolutionRequirement{{ID: "evidence-conflict", Kind: RequirementEvidenceDefect, Prompt: "DEMO evidence is conflicting"}},
+	}})
+	basis, err := NewProjectVerifier(runtime).VerifyProject(context.Background(), ProjectRequest{ProjectID: "DEMO-005", Address: "100 Demo Plaza", ApplicabilityDate: "2026-08-25"})
+	if err != nil {
+		t.Fatalf("VerifyProject() error = %v", err)
+	}
+	if basis.Verdict != ProjectNotVerified {
+		t.Fatalf("verdict = %q, want not_verified", basis.Verdict)
+	}
+	if len(basis.FollowUpQuestions) != 0 {
+		t.Fatalf("follow_up_questions = %#v, want none for evidence defect", basis.FollowUpQuestions)
+	}
+}
+
+func TestProjectVerificationLocalRecordRequirementRemainsConditional(t *testing.T) {
+	runtime := NewRuntime(projectProvider{result: Resolution{
+		Jurisdiction: JurisdictionContext{CountryCode: "US", PrimaryJurisdictionID: "DEMO-XX", PrimaryJurisdictionName: "Demonstration Jurisdiction"},
+		Codes:        []CodeResolution{{Family: "building", Edition: "DEMO-2024", Status: StatusResolved, Basis: "DEMO ordinance"}},
+		Requirements: []ResolutionRequirement{{ID: "permit-record", Kind: RequirementLocalRecord, Prompt: "Obtain the DEMO permit record"}},
+	}})
+	basis, err := NewProjectVerifier(runtime).VerifyProject(context.Background(), ProjectRequest{ProjectID: "DEMO-006", Address: "100 Demo Plaza", ApplicabilityDate: "2026-08-25"})
+	if err != nil {
+		t.Fatalf("VerifyProject() error = %v", err)
+	}
+	if basis.Verdict != ProjectConditional {
+		t.Fatalf("verdict = %q, want conditional", basis.Verdict)
+	}
+	if len(basis.FollowUpQuestions) != 0 {
+		t.Fatalf("follow_up_questions = %#v, want none for local record", basis.FollowUpQuestions)
+	}
+}
+
 func TestProjectVerificationPreservesFactsEvidenceAndProvenance(t *testing.T) {
 	exact := demoEvidenceLink("DEMO-EXACT", EvidenceEstablishes)
 	runtime := NewRuntime(projectProvider{result: Resolution{
