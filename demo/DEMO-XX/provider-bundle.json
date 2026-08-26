@@ -1,0 +1,135 @@
+{
+  "example_schema": "bcm-provider-bundle-example-v1",
+  "status": "illustrative",
+  "id": "DEMO-BUNDLE",
+  "description": "Fictional logical provider objects used only to demonstrate the public BCM provider boundary.",
+  "jurisdictions": [
+    {
+      "id": "DEMO-XX",
+      "name": "Demonstration Jurisdiction"
+    }
+  ],
+  "authorities": [
+    {
+      "id": "DEMO-AUTHORITY-001",
+      "jurisdiction_id": "DEMO-XX",
+      "name": "Demonstration Building Authority"
+    }
+  ],
+  "regulatory_instruments": [
+    {
+      "id": "DEMO-INSTRUMENT-001",
+      "jurisdiction_id": "DEMO-XX",
+      "title": "Synthetic Demonstration Ordinance",
+      "source_document_id": "DEMO-DOC-001"
+    }
+  ],
+  "code_families": [
+    {
+      "id": "DEMO-CODE-FAMILY-BUILDING",
+      "name": "building"
+    },
+    {
+      "id": "DEMO-CODE-FAMILY-ELECTRICAL",
+      "name": "electrical"
+    }
+  ],
+  "code_editions": [
+    {
+      "id": "DEMO-CODE-EDITION-BUILDING-2024",
+      "family_id": "DEMO-CODE-FAMILY-BUILDING",
+      "edition": "DEMO-2024"
+    },
+    {
+      "id": "DEMO-CODE-EDITION-ELECTRICAL-2023",
+      "family_id": "DEMO-CODE-FAMILY-ELECTRICAL",
+      "edition": "DEMO-2023"
+    }
+  ],
+  "adoptions": [
+    {
+      "id": "DEMO-ADOPTION-001",
+      "authority_id": "DEMO-AUTHORITY-001",
+      "instrument_id": "DEMO-INSTRUMENT-001",
+      "code_edition_id": "DEMO-CODE-EDITION-BUILDING-2024"
+    }
+  ],
+  "amendments": [
+    {
+      "id": "DEMO-AMENDMENT-001",
+      "authority_id": "DEMO-AUTHORITY-001",
+      "instrument_id": "DEMO-INSTRUMENT-001",
+      "adoption_id": "DEMO-ADOPTION-001"
+    }
+  ],
+  "source_documents": [
+    {
+      "id": "DEMO-DOC-001",
+      "kind": "ordinance",
+      "jurisdiction_id": "DEMO-XX",
+      "title": "Synthetic Demonstration Ordinance",
+      "canonical_url": "https://example.invalid/demo-ordinance"
+    }
+  ],
+  "source_artifacts": [
+    {
+      "id": "DEMO-ARTIFACT-001",
+      "document_id": "DEMO-DOC-001",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "size_bytes": 1234,
+      "source_url": "https://example.invalid/demo-ordinance.pdf"
+    }
+  ],
+  "text_anchors": [
+    {
+      "id": "DEMO-ANCHOR-001",
+      "artifact_id": "DEMO-ARTIFACT-001",
+      "legal_locator": "Section 1",
+      "text_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  ],
+  "claims": [
+    {
+      "id": "DEMO-CLAIM-001",
+      "jurisdiction_id": "DEMO-XX",
+      "kind": "code_adoption",
+      "subject_ref": "DEMO-ADOPTION-001"
+    }
+  ],
+  "evidence_links": [
+    {
+      "id": "DEMO-LINK-001",
+      "claim_id": "DEMO-CLAIM-001",
+      "document_id": "DEMO-DOC-001",
+      "artifact_id": "DEMO-ARTIFACT-001",
+      "anchor_id": "DEMO-ANCHOR-001",
+      "role": "establishes"
+    }
+  ],
+  "source_policy_rules": [
+    {
+      "id": "DEMO-SOURCE-POLICY-001",
+      "material_class": "synthetic_example",
+      "public_repository": "allowed"
+    }
+  ],
+  "quality_expectations": [
+    {
+      "dimension": "conformity",
+      "statement": "Stable references in this example resolve to the intended synthetic object type."
+    },
+    {
+      "dimension": "coverage",
+      "statement": "Coverage is limited to the fictional DEMO-XX jurisdiction."
+    },
+    {
+      "dimension": "completeness",
+      "statement": "The example contains one representative synthetic regulatory path and is not a production corpus."
+    }
+  ],
+  "limitations": [
+    "Fictional data only.",
+    "No real regulatory coverage.",
+    "No production provider mapping, source corpus, or infrastructure is represented."
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "apiVersion": "v3.1.0",
+  "kind": "DataContract",
+  "id": "bcm-provider-demo-xx",
+  "name": "BCM synthetic DEMO-XX provider",
+  "version": "1.0.0",
+  "status": "active",
+  "description": {
+    "purpose": "Demonstrate the public BCM provider boundary with fictional regulatory objects.",
+    "usage": "Documentation, CI validation, and public conformance examples only.",
+    "limitations": "DEMO-XX is fictional, provides no real regulatory coverage, and must not be used for real projects."
+  },
+  "authoritativeDefinitions": [
+    {
+      "id": "bcm_methodology",
+      "type": "businessDefinition",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/docs/methodology.md"
+    },
+    {
+      "id": "bcm_provider_profile",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/contracts/provider-contract-profile-v1.md"
+    },
+    {
+      "id": "bcm_evidence_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/evidence.schema.json"
+    },
+    {
+      "id": "bcm_project_result_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/project-code-basis.schema.json"
+    },
+    {
+      "id": "bcm_publication_policy",
+      "type": "businessDefinition",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/docs/publication-policy.md"
+    }
+  ],
+  "customProperties": [
+    {
+      "id": "bcm_profile_version",
+      "property": "bcmProfileVersion",
+      "value": "1.0.0"
+    },
+    {
+      "id": "bcm_provider_bundle_id",
+      "property": "bcmProviderBundleId",
+      "value": "DEMO-BUNDLE"
+    }
+  ]
+}

@@ -42,6 +42,29 @@ test('public fixtures must remain synthetic', () => {
   );
 });
 
+test('synthetic demo contracts and nested provider bundles do not require a root jurisdiction_id', () => {
+  assert.deepEqual(
+    validateSyntheticFixture({ id: 'bcm-provider-demo-xx' }, policy),
+    [],
+  );
+  assert.deepEqual(
+    validateSyntheticFixture({
+      jurisdictions: [{ id: 'DEMO-XX' }],
+      authorities: [{ id: 'DEMO-AUTHORITY-001', jurisdiction_id: 'DEMO-XX' }],
+    }, policy),
+    [],
+  );
+});
+
+test('nested jurisdiction identities in public demo data must remain synthetic', () => {
+  const errors = validateSyntheticFixture({
+    jurisdictions: [{ id: 'CO-DENVER' }],
+    authorities: [{ id: 'DEMO-AUTHORITY-001', jurisdiction_id: 'CO-DENVER' }],
+  }, policy).join('\n');
+  assert.match(errors, /CO-DENVER/);
+  assert.match(errors, /synthetic jurisdiction prefix/);
+});
+
 test('production-data paths cannot appear at repository top level', () => {
   assert.deepEqual(validateRepositoryPaths(['README.md', 'demo', 'docs'], policy), []);
   assert.match(
