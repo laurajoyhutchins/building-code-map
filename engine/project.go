@@ -96,11 +96,18 @@ func (verifier ProjectVerifier) VerifyProject(ctx context.Context, request Proje
 
 	for _, requirement := range resolution.Requirements {
 		unresolved = append(unresolved, ProjectUnresolved{Kind: requirement.Kind, Message: requirement.Prompt, FactKey: requirement.FactKey})
-		if requirement.Kind == RequirementProjectFact {
+		switch requirement.Kind {
+		case RequirementEvidenceDefect:
+			verdict = ProjectNotVerified
+		case RequirementProjectFact:
 			followUps = append(followUps, requirement.Prompt)
-		}
-		if verdict == ProjectVerified {
-			verdict = ProjectConditional
+			if verdict == ProjectVerified {
+				verdict = ProjectConditional
+			}
+		case RequirementLocalRecord:
+			if verdict == ProjectVerified {
+				verdict = ProjectConditional
+			}
 		}
 	}
 
