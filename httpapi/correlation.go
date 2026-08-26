@@ -9,6 +9,7 @@ import (
 	"errors"
 	"io"
 	"net/http"
+	"strconv"
 	"strings"
 	"sync"
 	"sync/atomic"
@@ -18,11 +19,11 @@ import (
 )
 
 const (
-	RequestIDHeader           = "X-Request-ID"
-	UnmatchedRouteClass       = "unmatched"
-	OtherMethodClass          = "OTHER"
-	maxRequestIDLength        = 128
-	generatedRequestIDBytes   = 16
+	RequestIDHeader         = "X-Request-ID"
+	UnmatchedRouteClass     = "unmatched"
+	OtherMethodClass        = "OTHER"
+	maxRequestIDLength      = 128
+	generatedRequestIDBytes = 16
 )
 
 type RuntimeIdentity struct {
@@ -141,7 +142,7 @@ func effectiveRequestID(candidate string) string {
 		return "req_" + hex.EncodeToString(random[:])
 	}
 	sequence := fallbackRequestIDSequence.Add(1)
-	seed := time.Now().UTC().Format(time.RFC3339Nano) + ":" + string(rune(sequence))
+	seed := time.Now().UTC().Format(time.RFC3339Nano) + ":" + strconv.FormatUint(sequence, 10)
 	digest := sha256.Sum256([]byte(seed))
 	return "req_" + hex.EncodeToString(digest[:generatedRequestIDBytes])
 }
