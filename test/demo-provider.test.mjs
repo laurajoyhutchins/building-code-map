@@ -3,7 +3,6 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { validateProviderContract } from '../scripts/provider-contract.mjs';
 
-// RED phase: these tests intentionally require the golden package files before they exist.
 const demoDir = 'demo/DEMO-XX';
 
 function readJson(name) {
