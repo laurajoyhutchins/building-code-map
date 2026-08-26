@@ -1,0 +1,37 @@
+{
+  "apiVersion": "v3.1.0",
+  "kind": "DataContract",
+  "id": "bcm-provider-demo-xx",
+  "name": "BCM synthetic provider",
+  "version": "0.1.0",
+  "status": "active",
+  "description": {
+    "purpose": "Exercise BCM provider contract validation with synthetic data.",
+    "usage": "Automated conformance testing only.",
+    "limitations": "DEMO-XX is fictional and provides no real regulatory coverage."
+  },
+  "authoritativeDefinitions": [
+    {
+      "id": "bcm_methodology",
+      "type": "businessDefinition",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/docs/methodology.md"
+    },
+    {
+      "id": "bcm_profile",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/contracts/provider-contract-profile-v1.md"
+    }
+  ],
+  "customProperties": [
+    {
+      "id": "bcm_profile_version",
+      "property": "bcmProfileVersion",
+      "value": "1.0.0"
+    },
+    {
+      "id": "bcm_provider_bundle_id",
+      "property": "bcmProviderBundleId",
+      "value": "bundle:DEMO-XX:synthetic-v1"
+    }
+  ]
+}
