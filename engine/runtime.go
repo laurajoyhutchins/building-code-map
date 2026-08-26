@@ -131,6 +131,11 @@ func validateResolution(result Resolution) error {
 		if code.Status == StatusNotApplicable && strings.TrimSpace(code.Basis) == "" {
 			return EngineError{Code: ErrorDataBundleInvalid, Message: "not_applicable requires an affirmative basis", Details: map[string]any{"index": index, "family": code.Family}}
 		}
+		for _, link := range code.ExactEvidence {
+			if err := validateEvidenceLink(link, link.ClaimID); err != nil {
+				return err
+			}
+		}
 	}
 	for index, requirement := range result.Requirements {
 		if strings.TrimSpace(requirement.ID) == "" || strings.TrimSpace(requirement.Prompt) == "" {
