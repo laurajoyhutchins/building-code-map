@@ -22,7 +22,7 @@ type ProjectVerifier interface {
 	VerifyProject(ctx context.Context, request engine.ProjectRequest) (engine.ProjectCodeBasis, error)
 }
 
-type Handler struct {
+type projectHandler struct {
 	verifier ProjectVerifier
 }
 
@@ -43,11 +43,11 @@ type requestDecodeError struct {
 	message string
 }
 
-func NewHandler(verifier ProjectVerifier) http.Handler {
-	return Handler{verifier: verifier}
+func NewHandler(verifier ProjectVerifier, sink CompletionSink) http.Handler {
+	return withRequestCorrelation(projectHandler{verifier: verifier}, sink)
 }
 
-func (handler Handler) ServeHTTP(response http.ResponseWriter, request *http.Request) {
+func (handler projectHandler) ServeHTTP(response http.ResponseWriter, request *http.Request) {
 	if request.URL.Path != ProjectVerificationPath {
 		writeError(response, http.StatusNotFound, ErrorBody{Code: "not_found", Message: "route not found"})
 		return
@@ -83,6 +83,7 @@ func (handler Handler) ServeHTTP(response http.ResponseWriter, request *http.Req
 		})
 		return
 	}
+	observeRuntimeIdentity(request.Context(), basis.Provenance)
 	writeJSON(response, http.StatusOK, basis)
 }
 
