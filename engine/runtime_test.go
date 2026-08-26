@@ -52,6 +52,35 @@ func TestNotApplicableRequiresAffirmativeBasis(t *testing.T) {
 	}
 }
 
+func TestRuntimeRejectsMalformedExactEvidence(t *testing.T) {
+	link := demoEvidenceLink("DEMO-LINK", EvidenceEstablishes)
+	link.Artifact.SHA256 = ""
+	runtime := NewRuntime(syntheticProvider{codes: []CodeResolution{{
+		Family: "building", Edition: "DEMO-IBC-2024", Status: StatusResolved, Basis: "DEMO ordinance", ExactEvidence: []EvidenceLink{link},
+	}}})
+
+	_, err := runtime.Resolve(context.Background(), Query{Address: "100 Demo Plaza", ApplicabilityDate: "2026-08-25"})
+	var engineErr EngineError
+	if !errors.As(err, &engineErr) || engineErr.Code != ErrorDataBundleInvalid {
+		t.Fatalf("Resolve() error = %#v, want data_bundle_invalid", err)
+	}
+}
+
+func TestRuntimePreservesValidExactEvidence(t *testing.T) {
+	link := demoEvidenceLink("DEMO-LINK", EvidenceEstablishes)
+	runtime := NewRuntime(syntheticProvider{codes: []CodeResolution{{
+		Family: "building", Edition: "DEMO-IBC-2024", Status: StatusResolved, Basis: "DEMO ordinance", ExactEvidence: []EvidenceLink{link},
+	}}})
+
+	result, err := runtime.Resolve(context.Background(), Query{Address: "100 Demo Plaza", ApplicabilityDate: "2026-08-25"})
+	if err != nil {
+		t.Fatalf("Resolve() error = %v", err)
+	}
+	if len(result.Codes[0].ExactEvidence) != 1 || result.Codes[0].ExactEvidence[0].ID != link.ID {
+		t.Fatalf("exact evidence = %#v", result.Codes[0].ExactEvidence)
+	}
+}
+
 func TestStatusVocabularyKeepsUnsupportedNotApplicableAndInsufficientEvidenceDistinct(t *testing.T) {
 	statuses := []ResolutionStatus{StatusUnsupported, StatusNotApplicable, StatusInsufficientEvidence}
 	if statuses[0] == statuses[1] || statuses[0] == statuses[2] || statuses[1] == statuses[2] {
