@@ -36,6 +36,35 @@ The adapter fails closed at the transport boundary:
 
 These checks happen before the canonical project verifier executes.
 
+## Request correlation
+
+Every response from the public handler includes one effective `X-Request-ID`.
+
+A caller-supplied request ID is preserved only when it is 1 through 128 ASCII characters, begins with an alphanumeric character, and otherwise contains only alphanumeric characters plus `.`, `_`, `:`, or `-`. Missing or invalid values are replaced with an opaque generated ID.
+
+The correlation layer emits a bounded completion record after the request finishes:
+
+```json
+{
+  "request_id": "req_0123456789abcdef0123456789abcdef",
+  "method": "POST",
+  "route_class": "project_code_verification",
+  "status": 200,
+  "duration_ms": 4,
+  "runtime_identity": {
+    "engine_version": "example",
+    "source_commit": "example-commit",
+    "bundle_id": "example-bundle"
+  }
+}
+```
+
+The completion record is intentionally not an access log. It never contains the civic address, raw request body, project facts, source excerpts, response body, query parameters, or raw unmatched path. Unknown methods collapse to `OTHER`; unmatched paths collapse to `unmatched`.
+
+`runtime_identity` appears only when the canonical successful `ProjectCodeBasis.provenance` already contains that identity. The middleware receives it through request context from the canonical project handler rather than parsing or copying the response body.
+
+Completion recording is non-authoritative. A sink error or panic cannot change the HTTP result. `JSONLineSink` is a small standard-library sink for one-record-per-line structured output; hosted runtimes may inject another implementation of the narrow `CompletionSink` interface.
+
 ## Error envelope
 
 Transport and engine failures use one bounded envelope:
@@ -64,6 +93,6 @@ Transport-only codes include `invalid_json`, `request_too_large`, `unsupported_m
 
 ## Dependency injection
 
-`httpapi.NewHandler` accepts a narrow verifier interface with the same `VerifyProject` signature as `engine.ProjectVerifier`. Production hosting can inject the canonical verifier backed by its provider. Public tests use synthetic providers only.
+`httpapi.NewHandler` accepts the narrow verifier interface with the same `VerifyProject` signature as `engine.ProjectVerifier` and an optional `CompletionSink`. Production hosting can inject the canonical verifier backed by its provider and its desired bounded completion sink. Public tests use synthetic providers only.
 
-The public repository therefore defines and tests the HTTP contract without bundling maintained regulatory data, production geocoder or boundary stores, restricted source bytes, or deployment secrets.
+The public repository therefore defines and tests the HTTP and correlation contracts without bundling maintained regulatory data, production geocoder or boundary stores, restricted source bytes, deployment secrets, or a generalized observability stack.
