@@ -39,7 +39,7 @@ func (provider *recordingProvider) Resolve(_ context.Context, query engine.Norma
 
 func handlerForProvider(provider engine.Provider) http.Handler {
 	runtime := engine.NewRuntime(provider)
-	return NewHandler(engine.NewProjectVerifier(runtime))
+	return NewHandler(engine.NewProjectVerifier(runtime), nil)
 }
 
 func projectRequestBody() string {
