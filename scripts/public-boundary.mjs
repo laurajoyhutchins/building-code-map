@@ -34,13 +34,41 @@ export function validatePolicy(policy) {
   return errors;
 }
 
+function collectJurisdictionIds(value, valuePath = '$', results = []) {
+  if (Array.isArray(value)) {
+    value.forEach((item, index) => collectJurisdictionIds(item, `${valuePath}[${index}]`, results));
+    return results;
+  }
+  if (value === null || typeof value !== 'object') return results;
+
+  for (const [key, child] of Object.entries(value)) {
+    const childPath = valuePath === '$' ? key : `${valuePath}.${key}`;
+    if (key === 'jurisdiction_id' || key === 'primary_jurisdiction_id' || key.endsWith('_jurisdiction_id')) {
+      results.push({ path: childPath, value: child });
+    }
+    if (key === 'jurisdictions' && Array.isArray(child)) {
+      child.forEach((jurisdiction, index) => {
+        if (jurisdiction && typeof jurisdiction === 'object' && !Array.isArray(jurisdiction) && 'id' in jurisdiction) {
+          results.push({ path: `${childPath}[${index}].id`, value: jurisdiction.id });
+        }
+      });
+    }
+    collectJurisdictionIds(child, childPath, results);
+  }
+
+  return results;
+}
+
 export function validateSyntheticFixture(fixture, policy) {
   const errors = [];
   const prefix = policy?.synthetic_jurisdiction_prefix;
-  const jurisdictionId = fixture?.jurisdiction_id;
 
-  if (typeof jurisdictionId !== 'string' || !jurisdictionId.startsWith(prefix)) {
-    errors.push(`fixture jurisdiction_id must use synthetic jurisdiction prefix ${prefix}`);
+  for (const identity of collectJurisdictionIds(fixture)) {
+    if (typeof identity.value !== 'string' || !identity.value.startsWith(prefix)) {
+      errors.push(
+        `fixture ${identity.path} ${String(identity.value)} must use synthetic jurisdiction prefix ${prefix}`,
+      );
+    }
   }
 
   return errors;
