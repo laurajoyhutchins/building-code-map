@@ -52,6 +52,14 @@ The verifier uses the canonical runtime result and deterministically reduces it 
 
 See [Project Code Verification](docs/project-verification.md) for the public reduction rules and contract semantics.
 
+## Public HTTP API
+
+The [`httpapi`](httpapi/) package exposes the canonical project verifier at `POST /v1/project-code-basis`. It is a transport adapter only: successful responses are the existing project-code-basis representation, and typed engine errors retain their stable codes across the HTTP boundary.
+
+The adapter uses strict bounded JSON decoding, rejects unknown fields and trailing values, and is dependency-injected so public tests remain synthetic. It does not add production regulatory data, geocoder or boundary stores, source bytes, secrets, or a second decision path.
+
+See [Project Verification HTTP API](docs/http-api.md) for the wire contract and error mapping.
+
 ## Data and licensing
 
 This repository is not a bulk download of maintained jurisdiction-by-jurisdiction regulatory research. A hosted Building Code Map service may return project-scoped conclusions, citations, provenance, and unresolved requirements without exposing the complete maintained corpus or restricted source material.
