@@ -56,9 +56,11 @@ See [Project Code Verification](docs/project-verification.md) for the public red
 
 The [`httpapi`](httpapi/) package exposes the canonical project verifier at `POST /v1/project-code-basis`. It is a transport adapter only: successful responses are the existing project-code-basis representation, and typed engine errors retain their stable codes across the HTTP boundary.
 
-The adapter uses strict bounded JSON decoding, rejects unknown fields and trailing values, and is dependency-injected so public tests remain synthetic. It does not add production regulatory data, geocoder or boundary stores, source bytes, secrets, or a second decision path.
+The adapter uses strict bounded JSON decoding, rejects unknown fields and trailing values, and is dependency-injected so public tests remain synthetic. Every response carries a safe `X-Request-ID`; completion records are deliberately bounded to request ID, method class, stable route class, status, duration, and canonical runtime identity when already available. Civic addresses, raw bodies, project facts, source excerpts, response bodies, and raw unmatched paths are never completion-record fields, and completion logging failure is non-fatal.
 
-See [Project Verification HTTP API](docs/http-api.md) for the wire contract and error mapping.
+It does not add production regulatory data, geocoder or boundary stores, source bytes, secrets, a generalized observability stack, or a second decision path.
+
+See [Project Verification HTTP API](docs/http-api.md) for the wire contract, error mapping, and request-correlation rules.
 
 ## Data and licensing
 
