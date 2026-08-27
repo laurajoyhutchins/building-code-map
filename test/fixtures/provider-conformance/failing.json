@@ -1,0 +1,102 @@
+{
+  "contract": {
+    "bundle_id": "DEMO-WRONG-BUNDLE",
+    "limitations": ""
+  },
+  "bundle": {
+    "id": "DEMO-BUNDLE",
+    "coverage": {
+      "jurisdiction_ids": ["DEMO-MISSING"]
+    },
+    "jurisdictions": [
+      {"id": "DEMO-XX", "name": "Demonstration Jurisdiction"},
+      {"id": "DEMO-XX", "name": "Duplicate Demonstration Jurisdiction"}
+    ],
+    "authorities": [
+      {"id": "DEMO-AUTHORITY-001", "jurisdiction_id": "DEMO-NOT-PRESENT", "name": "Demonstration Authority"}
+    ],
+    "regulatory_instruments": [
+      {"id": "DEMO-INSTRUMENT-001", "jurisdiction_id": "DEMO-XX", "title": "Synthetic Instrument", "source_document_id": "DEMO-DOC-001"}
+    ],
+    "code_families": [
+      {"id": "DEMO-CODE-FAMILY-BUILDING", "name": "building"}
+    ],
+    "code_editions": [
+      {"id": "DEMO-CODE-EDITION-BUILDING-2024", "family_id": "DEMO-CODE-FAMILY-BUILDING", "edition": "DEMO-2024"}
+    ],
+    "adoptions": [
+      {
+        "id": "DEMO-ADOPTION-001",
+        "authority_id": "",
+        "instrument_id": "DEMO-INSTRUMENT-001",
+        "code_edition_id": "DEMO-CODE-EDITION-BUILDING-2024",
+        "effective_from": "2026-02-01",
+        "effective_to": "2026-01-01"
+      }
+    ],
+    "amendments": [],
+    "source_documents": [
+      {"id": "DEMO-DOC-001", "kind": "ordinance", "jurisdiction_id": "DEMO-XX", "title": "Synthetic Instrument"}
+    ],
+    "source_artifacts": [
+      {"id": "DEMO-ARTIFACT-BAD", "document_id": "DEMO-DOC-001", "sha256": "not-a-sha256", "size_bytes": 1234},
+      {"id": "DEMO-ARTIFACT-GOOD", "document_id": "DEMO-DOC-001", "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "size_bytes": 1234}
+    ],
+    "text_anchors": [
+      {"id": "DEMO-ANCHOR-BAD", "artifact_id": "DEMO-ARTIFACT-BAD", "legal_locator": "Section 1", "text_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"},
+      {"id": "DEMO-ANCHOR-GOOD", "artifact_id": "DEMO-ARTIFACT-GOOD", "legal_locator": "Section 2", "text_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"}
+    ],
+    "claims": [
+      {
+        "id": "DEMO-CLAIM-BAD-EXACT",
+        "jurisdiction_id": "DEMO-XX",
+        "kind": "code_adoption",
+        "subject_ref": "DEMO-ADOPTION-001",
+        "status": "resolved",
+        "as_of": "2026-01-15",
+        "legally_material": true
+      },
+      {
+        "id": "DEMO-CLAIM-NO-POLICY",
+        "jurisdiction_id": "DEMO-XX",
+        "kind": "code_adoption",
+        "subject_ref": "DEMO-ADOPTION-001",
+        "status": "resolved",
+        "as_of": "2026-01-15",
+        "legally_material": true
+      }
+    ],
+    "evidence_links": [
+      {"id": "DEMO-LINK-BAD", "claim_id": "DEMO-CLAIM-BAD-EXACT", "document_id": "DEMO-DOC-001", "artifact_id": "DEMO-ARTIFACT-BAD", "anchor_id": "DEMO-ANCHOR-BAD", "role": "establishes"},
+      {"id": "DEMO-LINK-NO-POLICY", "claim_id": "DEMO-CLAIM-NO-POLICY", "document_id": "DEMO-DOC-001", "artifact_id": "DEMO-ARTIFACT-GOOD", "anchor_id": "DEMO-ANCHOR-GOOD", "role": "establishes"}
+    ],
+    "source_policy_rules": [
+      {
+        "id": "DEMO-SOURCE-POLICY-001",
+        "claim_kind": "code_adoption",
+        "jurisdiction_id": "DEMO-XX",
+        "document_id": "DEMO-OTHER-DOC",
+        "effective_from": "2026-01-01"
+      }
+    ],
+    "quality_expectations": [],
+    "limitations": []
+  },
+  "resolution": {
+    "jurisdiction": {
+      "country_code": "US",
+      "primary_jurisdiction_id": "DEMO-XX",
+      "primary_jurisdiction_name": "Demonstration Jurisdiction"
+    },
+    "codes": [
+      {"family": "building", "status": "not_applicable", "basis": ""}
+    ]
+  },
+  "project_code_basis": {
+    "verdict": "conditional",
+    "unresolved": [
+      {"kind": "evidence_defect", "message": "Synthetic evidence defect"}
+    ],
+    "follow_up_questions": ["Synthetic evidence defect"]
+  }
+}
