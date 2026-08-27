@@ -3,6 +3,11 @@
   "status": "illustrative",
   "id": "DEMO-BUNDLE",
   "description": "Fictional logical provider objects used only to demonstrate the public BCM provider boundary.",
+  "coverage": {
+    "jurisdiction_ids": [
+      "DEMO-XX"
+    ]
+  },
   "jurisdictions": [
     {
       "id": "DEMO-XX",
@@ -51,7 +56,8 @@
       "id": "DEMO-ADOPTION-001",
       "authority_id": "DEMO-AUTHORITY-001",
       "instrument_id": "DEMO-INSTRUMENT-001",
-      "code_edition_id": "DEMO-CODE-EDITION-BUILDING-2024"
+      "code_edition_id": "DEMO-CODE-EDITION-BUILDING-2024",
+      "effective_from": "2026-01-01"
     }
   ],
   "amendments": [
@@ -59,7 +65,8 @@
       "id": "DEMO-AMENDMENT-001",
       "authority_id": "DEMO-AUTHORITY-001",
       "instrument_id": "DEMO-INSTRUMENT-001",
-      "adoption_id": "DEMO-ADOPTION-001"
+      "adoption_id": "DEMO-ADOPTION-001",
+      "effective_from": "2026-01-01"
     }
   ],
   "source_documents": [
@@ -93,7 +100,11 @@
       "id": "DEMO-CLAIM-001",
       "jurisdiction_id": "DEMO-XX",
       "kind": "code_adoption",
-      "subject_ref": "DEMO-ADOPTION-001"
+      "subject_ref": "DEMO-ADOPTION-001",
+      "status": "resolved",
+      "basis": "Synthetic adoption claim for conformance testing only.",
+      "as_of": "2026-08-25",
+      "legally_material": true
     }
   ],
   "evidence_links": [
@@ -109,6 +120,10 @@
   "source_policy_rules": [
     {
       "id": "DEMO-SOURCE-POLICY-001",
+      "claim_kind": "code_adoption",
+      "jurisdiction_id": "DEMO-XX",
+      "document_id": "DEMO-DOC-001",
+      "effective_from": "2026-01-01",
       "material_class": "synthetic_example",
       "public_repository": "allowed"
     }

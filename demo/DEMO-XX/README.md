@@ -5,8 +5,10 @@ DEMO-XX is a fully synthetic public example. It has **no real regulatory coverag
 This directory shows three deliberately separate layers:
 
 1. `provider-contract.json` is the ODCS v3.1.0 contract envelope. It identifies the provider agreement, BCM profile version, bundle identity, purpose, usage, limitations, and public authoritative definitions.
-2. `provider-bundle.json` is an **illustrative** logical BCM provider bundle. Its object shape is **not normative**. It demonstrates stable regulatory identities and references without making database tables, storage paths, compiler internals, or private provider mappings part of the public contract. Executable regulatory-integrity rules are defined separately from this example.
+2. `provider-bundle.json` is an **illustrative** logical BCM provider bundle. Its object shape is **not normative**. It demonstrates stable regulatory identities and references without making database tables, storage paths, compiler internals, or private provider mappings part of the public contract. Machine-readable fields for coverage, effective dates, claim evidence, and source policy exist so the public conformance rules can inspect the logical relationships; they do not turn this example into a physical storage schema.
 3. `project-code-basis.json` is a runtime/project result. It records BCM's verdict, unresolved questions, exact evidence, and runtime provenance. It is not a provider contract and it is not the provider bundle.
+
+Executable regulatory-integrity checks are documented in [`contracts/provider-conformance-v1.md`](../../contracts/provider-conformance-v1.md).
 
 ## Identity continuity
 
@@ -24,7 +26,7 @@ The illustrative bundle adds stable synthetic identities for an authority, regul
 
 ## Quality vocabulary
 
-`provider-bundle.json` includes small illustrative expectations for conformity, coverage, and completeness. These are examples of provider-quality vocabulary, not project verdicts. Passing a provider quality rule does not mean a project claim is `verified`.
+`provider-bundle.json` includes small illustrative expectations for conformity, coverage, and completeness. These are examples of provider-quality vocabulary, not project verdicts. Passing provider conformance does not mean a project claim is `verified`. Evidence and project verdicts continue through the existing BCM engine path.
 
 ## Public/private boundary
 

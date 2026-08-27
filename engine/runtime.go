@@ -128,7 +128,7 @@ func validateResolution(result Resolution) error {
 		if _, ok := allowedResolutionStatuses[code.Status]; !ok {
 			return EngineError{Code: ErrorDataBundleInvalid, Message: "code resolution status is invalid", Details: map[string]any{"index": index, "status": code.Status}}
 		}
-		if code.Status == StatusNotApplicable && strings.TrimSpace(code.Basis) == "" {
+		if !hasAffirmativeNotApplicableBasis(code) {
 			return EngineError{Code: ErrorDataBundleInvalid, Message: "not_applicable requires an affirmative basis", Details: map[string]any{"index": index, "family": code.Family}}
 		}
 		for _, link := range code.ExactEvidence {
