@@ -38,6 +38,21 @@ const providerSample = `{
   }
 }`
 
+func sampleForFamily(t *testing.T, source, family string) []byte {
+	t.Helper()
+	var response map[string]any
+	if err := json.Unmarshal([]byte(source), &response); err != nil { t.Fatal(err) }
+	res := response["resolution"].(map[string]any)
+	if family != "electrical" {
+		res["adoptions"] = []any{}
+		res["status"] = "insufficient_evidence"
+		res["required_local_records"] = []any{}
+	}
+	b,err:=json.Marshal(response)
+	if err!=nil { t.Fatal(err) }
+	return b
+}
+
 func mockLegacyProvider(t *testing.T, ready bool, result string) *httptest.Server {
 	t.Helper()
 	return httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -63,7 +78,7 @@ func mockLegacyProvider(t *testing.T, ready bool, result string) *httptest.Serve
 				t.Errorf("unexpected query: %#v", query)
 			}
 			w.Header().Set("Content-Type", "application/json")
-			_, _ = w.Write([]byte(result))
+			_, _ = w.Write(sampleForFamily(t, result, query["code_family"].(string)))
 		default:
 			http.NotFound(w, r)
 		}
@@ -79,17 +94,31 @@ func TestPrivateProviderUsesOneEngineAndPreservesUncertainty(t *testing.T) {
 		ProjectID:"SITE-123",Address:"100 Main St, Denver, CO",ApplicabilityDate:"2026-10-20",
 	})
 	if err != nil { t.Fatal(err) }
-	if result.Verdict != engine.ProjectConditional || result.JurisdictionID != "08" || result.AsOf != "2026-10-20" {
+	if result.Verdict != engine.ProjectNotVerified || result.JurisdictionID != "08" || result.AsOf != "2026-10-20" {
 		t.Fatalf("unexpected project basis: %#v", result)
 	}
-	if len(result.CodeSet)!=1 || result.CodeSet[0].Family!="electrical" || result.CodeSet[0].Status!=engine.StatusLocalRecordRequired {
-		t.Fatalf("adoption incorrectly mapped: %#v", result.CodeSet)
+	if len(result.CodeSet) != 5 { t.Fatalf("incomplete code family set: %#v",result.CodeSet) }
+	var electricalFound bool
+	for _, code := range result.CodeSet {
+		if code.Family == "electrical" {
+			electricalFound = true
+			if code.Status != engine.StatusLocalRecordRequired || code.Edition != "National Electrical Code" {
+				t.Fatalf("wrong adoption translation: %#v",code)
+			}
+		} else if code.Status != engine.StatusInsufficientEvidence {
+			t.Fatalf("unsupported code family was promoted: %#v",code)
+		}
 	}
+	if !electricalFound {t.Fatalf("missing electrical code from %#v",result.CodeSet)}
 	if len(result.Evidence)!=1 || result.Evidence[0].ID!="CO-SRC-1" || result.Provenance.BundleID!="sha256:reviewed" {
 		t.Fatalf("missing real source identity: %#v", result)
 	}
-	if len(result.Unresolved)!=1 || result.Unresolved[0].Message!="Check municipal amendments" {
-		t.Fatalf("local record not preserved: %#v", result.Unresolved)
+	var foundLocalRecord bool
+	for _, unresolved := range result.Unresolved {
+		if unresolved.Message == "electrical: Check municipal amendments" {foundLocalRecord = true}
+	}
+	if !foundLocalRecord || len(result.Unresolved) < 5 {
+		t.Fatalf("code family gaps or local record not preserved: %#v",result.Unresolved)
 	}
 }
 
@@ -157,7 +186,9 @@ func TestPrivateProviderUsesWorkloadIdentityForEveryRequest(t *testing.T) {
 		case "/v1/bundle":
 			_,_=w.Write([]byte(`{"bundle_manifest_digest":"sha256:reviewed"}`))
 		case "/v1/resolve":
-			_,_=w.Write([]byte(providerSample))
+			var request struct{ CodeFamily string `json:"code_family"` }
+			if err:=json.NewDecoder(r.Body).Decode(&request);err!=nil {t.Error(err)}
+			_,_=w.Write(sampleForFamily(t,providerSample,request.CodeFamily))
 		default:
 			http.NotFound(w,r)
 		}
@@ -175,5 +206,5 @@ func TestPrivateProviderUsesWorkloadIdentityForEveryRequest(t *testing.T) {
 		engine.ProjectRequest{ProjectID:"SITE-123",Address:"100 Main St, Denver, CO",ApplicabilityDate:"2026-10-20"},
 	)
 	if err!=nil {t.Fatal(err)}
-	if calls!=3 {t.Fatalf("wanted 3 authenticated calls, got %d",calls)}
+	if calls!=7 {t.Fatalf("wanted 7 authenticated calls, got %d",calls)}
 }
