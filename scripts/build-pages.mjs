@@ -18,15 +18,28 @@ if (!original.includes('<head>') || !original.includes('href="./styles.css"') ||
     !original.includes('src="./app.js"')) {
   throw Error("Public HTML must use relative static paths for Pages subpath hosting.");
 }
-const html = original.replace(
-  "<head>",
-  '<head>\n  <meta name="bcm-static-demo" content="fictional-contract-example">',
-);
+const configured = process.env.BCM_PUBLIC_API_BASE_URL?.trim() || "";
+let apiBase = "";
+if (configured) {
+  let url;
+  try { url = new URL(configured); } catch { throw Error("BCM_PUBLIC_API_BASE_URL must be a valid HTTPS origin"); }
+  if (url.protocol !== "https:" || url.username || url.password || url.search || url.hash ||
+      url.pathname !== "/" || !url.hostname || url.hostname === "laurajoyhutchins.github.io") {
+    throw Error("BCM_PUBLIC_API_BASE_URL must be a separate HTTPS API origin with no path or credentials");
+  }
+  apiBase = url.origin;
+}
+const tag = apiBase
+  ? '<meta name="bcm-live-api" content="' + apiBase + '">'
+  : '<meta name="bcm-static-demo" content="fictional-contract-example">';
+const html = original.replace("<head>", "<head>\n  " + tag);
 fs.rmSync(target, { recursive: true, force: true });
 fs.mkdirSync(target, { recursive: true });
 fs.writeFileSync(path.join(target, "index.html"), html);
 for (const name of ["app.js", "styles.css"]) {
   fs.copyFileSync(path.join(source, name), path.join(target, name));
 }
-fs.writeFileSync(path.join(target, "demo-result.json"), JSON.stringify(example, null, 2) + "\n");
-console.log("Built public Pages artifact: index.html, app.js, styles.css, demo-result.json");
+if (!apiBase) {
+  fs.writeFileSync(path.join(target, "demo-result.json"), JSON.stringify(example, null, 2) + "\n");
+}
+console.log(apiBase ? "Built live API client." : "Built sample-only Pages site.");

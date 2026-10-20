@@ -20,3 +20,31 @@ test("Pages artifact contains only public UI and the fictional contract fixture"
   assert.equal(example.verdict, "conditional");
   assert.ok(example.unresolved.length > 0);
 });
+
+
+test("Live Pages build uses HTTPS API origin and contains no synthetic result", () => {
+  execFileSync(process.execPath, ["scripts/build-pages.mjs"], {
+    env: { ...process.env, BCM_PUBLIC_API_BASE_URL: "https://bcm-api.example.org" },
+  });
+  const target = path.resolve("dist/pages");
+  assert.deepEqual(fs.readdirSync(target).sort(), ["app.js", "index.html", "styles.css"]);
+  const html = fs.readFileSync(path.join(target, "index.html"), "utf8");
+  assert.match(html, /bcm-live-api/);
+  assert.match(html, /https:\/\/bcm-api\.example\.org/);
+  assert.doesNotMatch(html, /bcm-static-demo/);
+});
+
+test("Live Pages build rejects insecure, credential-bearing or path-based origins", () => {
+  const invalid = [
+    "http://bcm-api.example.org",
+    "https://user:password@bcm-api.example.org",
+    "https://bcm-api.example.org/v1",
+    "https://laurajoyhutchins.github.io",
+  ];
+  for (const endpoint of invalid) {
+    assert.throws(() => execFileSync(process.execPath, ["scripts/build-pages.mjs"], {
+      env: { ...process.env, BCM_PUBLIC_API_BASE_URL: endpoint },
+      stdio: "pipe",
+    }), endpoint);
+  }
+});
