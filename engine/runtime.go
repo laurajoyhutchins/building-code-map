@@ -178,8 +178,12 @@ func validateResolution(result Resolution) error {
 // the response. Provider conformance alone cannot verify an individual request.
 func (runtime Runtime) validateResolvedEvidence(result Resolution) error {
 	for index, code := range result.Codes {
-		if code.Status != StatusResolved {
+		if code.Status != StatusResolved && code.Status != StatusNotApplicable {
 			continue
+		}
+		claimKind := "code_adoption"
+		if code.Status == StatusNotApplicable {
+			claimKind = "code_non_applicability"
 		}
 		if len(code.ExactEvidence) == 0 {
 			return EngineError{Code: ErrorDataBundleInvalid, Message: "resolved code requires qualifying exact evidence", Details: map[string]any{"index": index, "family": code.Family}}
@@ -189,7 +193,7 @@ func (runtime Runtime) validateResolvedEvidence(result Resolution) error {
 			return EngineError{Code: ErrorDataBundleInvalid, Message: "resolved code requires an evidence claim id", Details: map[string]any{"index": index}}
 		}
 		claim := EvidenceClaim{
-			ID: claimID, Kind: "code_adoption",
+			ID: claimID, Kind: claimKind,
 			JurisdictionID: result.Jurisdiction.PrimaryJurisdictionID,
 			AsOf: result.Query.ApplicabilityDate,
 			LegallyMaterial: true, Links: code.ExactEvidence,
