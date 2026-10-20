@@ -58,6 +58,10 @@ Open `http://127.0.0.1:8787`, select a project applicability date, and verify th
 
 The intended **single-source software architecture** and private-data migration gates are recorded in [Source ownership](docs/source-ownership.md). The legacy private application is not yet retired. The synthetic demo is a truthful contract/useability reference, not a deployment cutover or a second production engine.
 
+## Public geocoder normalization
+
+The [`geocoder`](geocoder/) package contains the reviewed, deterministic civic-address normalization algorithm carried forward from the private application. It is public-safe and has no database or network dependency. `geocoder.ParseAddress` returns normalized **input**, not a resolved coordinate, geographic jurisdiction, or legal determination. Actual address-point matching, interpolation evidence and private source snapshots remain outside this slice.
+
 ## Project Code Verification
 
 [`ProjectVerifier.VerifyProject`](engine/project.go) is the primary project-level public workflow. Callers provide a project ID, location, applicability date, and any known project facts; they do not have to choose one code family before asking for an answer.
