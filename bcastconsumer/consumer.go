@@ -44,7 +44,7 @@ type Client struct { origin string; HTTP *http.Client }
 func New(origin string) (*Client,error) {
  u,err:=url.Parse(origin)
  if err!=nil || (u.Scheme!="http"&&u.Scheme!="https") || u.Host=="" || u.User!=nil || u.RawQuery!="" || u.Fragment!="" || (u.Path!=""&&u.Path!="/") {return nil,errors.New("BCAST endpoint must be one HTTP(S) origin")}
- return &Client{origin:strings.TrimSuffix(origin,"/"),HTTP:&http.Client{Timeout:15*time.Second}},nil
+ return &Client{origin:strings.TrimSuffix(origin,"/"),HTTP:&http.Client{Timeout:15*time.Second,CheckRedirect:func(_ *http.Request,_ []*http.Request)error{return http.ErrUseLastResponse}}},nil
 }
 func id(prefix string,data any)(string,error){
  var b bytes.Buffer
@@ -126,7 +126,7 @@ func validate(raw map[string]any, requested string)(*Package,error){
  if !only(raw,"schema_version","package_id","package_version","publication","objects")||asString(raw,"schema_version")!="bcast.package/0.2.0"||!expectID(asString(raw,"package_id"),"bcastpkg")||asString(raw,"package_id")!=requested {return bad("package header or requested identity")}
  if v:=asString(raw,"package_version");v==""||len(v)>128{return bad("package version")}
  pub,ok:=raw["publication"].(map[string]any);if !ok||!only(pub,"publication_id","namespace","family","edition","revision","title","issuing_body"){return bad("publication fields")}
- for _,key:=range []string{"revision","title","issuing_body"}{if _,present:=pub[key];present&&asString(pub,key)==""{return bad("empty optional publication field")}}
+ for _,key:=range []string{"revision","title","issuing_body"}{if value,present:=pub[key];present{v,ok:=value.(string);if !ok||v==""{return bad("invalid optional publication field")};max:=map[string]int{"revision":128,"title":512,"issuing_body":256}[key];if len(v)>max{return bad("long publication field")}}}
  ns,fam,edition:=asString(pub,"namespace"),asString(pub,"family"),asString(pub,"edition")
  if !namespace.MatchString(ns)||len(ns)>253||!family.MatchString(fam)||len(fam)>256||edition==""||len(edition)>128||strings.TrimSpace(edition)!=edition{return bad("publication coordinates")}
  for _,r:=range edition+asString(pub,"revision"){if r>127{return bad("non-ASCII edition/revision pending NFC implementation")}}
@@ -140,10 +140,10 @@ func validate(raw map[string]any, requested string)(*Package,error){
   obj,ok:=element.(map[string]any);if !ok||!only(obj,"object_id","kind","locator","parent_id","label","status","content","provenance"){return bad("object shape")}
   kind,loc,oid:=asString(obj,"kind"),asString(obj,"locator"),asString(obj,"object_id")
   if !validObjectKind(kind)||loc==""||len(loc)>512||!validStatus(asString(obj,"status"))||!expectID(oid,"bcastobj"){return bad("object coordinates/status")}
-  for _,key:=range []string{"parent_id","label"}{if _,exists:=obj[key];exists&&asString(obj,key)==""{return bad("empty optional object field")}}
-  if parent,exists:=obj["parent_id"];exists&&!expectID(parent.(string),"bcastobj"){return bad("parent ID")}
+  for _,key:=range []string{"parent_id","label"}{if value,exists:=obj[key];exists{v,ok:=value.(string);if !ok||v==""{return bad("invalid optional object field")};if key=="label"&&len(v)>1024{return bad("long object label")}}}
+  if parent,exists:=obj["parent_id"];exists{v,ok:=parent.(string);if !ok||!expectID(v,"bcastobj"){return bad("parent ID")}}
   if content,exists:=obj["content"];exists{c,ok:=content.(map[string]any);if !ok||!only(c,"media_type","text")||asString(c,"media_type")!="text/plain"{return bad("content")};if _,ok:=c["text"].(string);!ok{return bad("content text")}}
-  if provenance,exists:=obj["provenance"];exists{p,ok:=provenance.(map[string]any);if !ok||!only(p,"citation","source_artifact_sha256")||asString(p,"citation")==""{return bad("provenance")};if v,exists:=p["source_artifact_sha256"];exists&&!shaID.MatchString(v.(string)){return bad("source hash")}}
+  if provenance,exists:=obj["provenance"];exists{p,ok:=provenance.(map[string]any);if !ok||!only(p,"citation","source_artifact_sha256")||asString(p,"citation")==""{return bad("provenance")};if v,exists:=p["source_artifact_sha256"];exists{digest,ok:=v.(string);if !ok||!shaID.MatchString(digest){return bad("source hash")}}}
   expected,e:=id("bcastobj",map[string]any{"publication_id":pubID,"kind":kind,"locator":loc});if e!=nil{return nil,e}
   if expected!=oid||byID[oid]!=nil||coordinates[kind+"\x00"+loc]{return bad("object digest or duplicate")}
   byID[oid]=obj;coordinates[kind+"\x00"+loc]=true;list=append(list,obj)
