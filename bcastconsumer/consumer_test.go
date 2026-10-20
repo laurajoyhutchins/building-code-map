@@ -86,3 +86,31 @@ func TestUnicodeCanonicalJSONMatchesPublicPython(t *testing.T){
  got,err:=id("fixture",map[string]any{"text":"A < & > \u2028 ✓","list":[]any{"ñ","\n","\\","\""}})
  if err!=nil||got!="fixture:sha256:69fdb80ce446e0a67ed96465fec923f3772e93e365eac7dbdfbf6d5f1352b27f"{t.Fatalf("canonical mismatch %s: %v",got,err)}
 }
+
+
+func TestMalformedOptionalReferenceTypesFailClosed(t *testing.T){
+ original:=example(t)
+ id:=asString(original,"package_id")
+ for name,mutate:=range map[string]func(map[string]any){
+  "parent object":func(p map[string]any){p["objects"].([]any)[1].(map[string]any)["parent_id"]=map[string]any{"untrusted":"x"}},
+  "source digest object":func(p map[string]any){p["objects"].([]any)[1].(map[string]any)["provenance"].(map[string]any)["source_artifact_sha256"]=map[string]any{}},
+  "publication revision object":func(p map[string]any){p["publication"].(map[string]any)["revision"]=map[string]any{"unexpected":"value"}},
+ }{
+  t.Run(name,func(t *testing.T){
+   data,_:=json.Marshal(original)
+   var p map[string]any
+   if err:=json.Unmarshal(data,&p);err!=nil{t.Fatal(err)}
+   mutate(p)
+   if _,err:=validate(p,id);err==nil{t.Fatal("accepted malformed nested reference")}
+  })
+ }
+}
+func TestRemoteRedirectIsNotFollowed(t *testing.T){
+ p:=example(t)
+ server:=httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter,r *http.Request){
+  http.Redirect(w,r,"https://example.org/packages/"+asString(p,"package_id"),http.StatusFound)
+ }))
+ defer server.Close()
+ c,err:=New(server.URL);if err!=nil{t.Fatal(err)}
+ if _,err:=c.Fetch(context.Background(),asString(p,"package_id"));err==nil{t.Fatal("accepted cross-origin redirect")}
+}
