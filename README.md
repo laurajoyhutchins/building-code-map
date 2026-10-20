@@ -88,6 +88,10 @@ This repository is not a bulk download of maintained jurisdiction-by-jurisdictio
 
 Third-party laws, government records, model codes, standards, datasets, and other source materials retain their own terms. See the [Publication Policy](docs/publication-policy.md), [Data Visibility Contract](docs/data-visibility.md), and [`NOTICE`](NOTICE).
 
+## Independently reviewed accuracy benchmarking
+
+The [accuracy benchmark](docs/accuracy-benchmark.md) compares the canonical project-code-basis output against separately reviewed regulatory expectations. It distinguishes correct legal assertions, incorrect assertions, refusals to conclude, omitted results, and falsely verified project conclusions. It does **not** claim measured national accuracy until representative, independently verified real-world cases are admitted.
+
 ## Validate the public foundation
 
 Requires Node.js 22 or later and Go 1.23 or later.
