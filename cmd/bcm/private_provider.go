@@ -25,6 +25,7 @@ type privateProvider struct {
 	token  string
 	client *http.Client
 	expectedBundle string
+	identityToken func(context.Context,string) (string,error)
 }
 
 type privateReadiness struct {
@@ -89,7 +90,13 @@ func (p *privateProvider) request(ctx context.Context, method, path string, payl
 	req, err := http.NewRequestWithContext(ctx,method,p.base+path,body)
 	if err != nil { return 0,err }
 	if payload != nil { req.Header.Set("Content-Type", "application/json") }
-	if p.token != "" { req.Header.Set("Authorization","Bearer "+p.token) }
+	if p.identityToken != nil {
+		token,err:=p.identityToken(ctx,p.base)
+		if err!=nil || token=="" {return 0,errors.New("provider identity token unavailable")}
+		req.Header.Set("Authorization","Bearer "+token)
+	} else if p.token != "" {
+		req.Header.Set("Authorization","Bearer "+p.token)
+	}
 	resp,err:=p.client.Do(req)
 	if err != nil { return 0,err }
 	defer resp.Body.Close()
@@ -215,4 +222,21 @@ func (p *privateProvider) Resolve(ctx context.Context, query engine.NormalizedQu
 		})
 	}
 	return result,nil
+}
+
+func cloudRunIdentityToken(ctx context.Context, audience string) (string,error) {
+	metadataURL := "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/identity?audience=" + url.QueryEscape(audience)
+	req,err:=http.NewRequestWithContext(ctx,http.MethodGet,metadataURL,nil)
+	if err!=nil {return "",err}
+	req.Header.Set("Metadata-Flavor","Google")
+	metadataClient:=&http.Client{Timeout:3*time.Second}
+	resp,err:=metadataClient.Do(req)
+	if err!=nil {return "",err}
+	defer resp.Body.Close()
+	if resp.StatusCode!=http.StatusOK {return "",errors.New("cloud identity endpoint unavailable")}
+	encoded,err:=io.ReadAll(io.LimitReader(resp.Body,8192))
+	if err!=nil {return "",err}
+	token:=strings.TrimSpace(string(encoded))
+	if len(token)<30 {return "",errors.New("cloud identity token is empty or invalid")}
+	return token,nil
 }
