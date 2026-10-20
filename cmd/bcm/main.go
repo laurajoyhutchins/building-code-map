@@ -10,6 +10,8 @@ import (
 	"io/fs"
 	"log"
 	"os"
+	"net/url"
+	"time"
 	"net/http"
 	"strings"
 
@@ -90,7 +92,9 @@ func handlerWithProvider(provider engine.Provider, remote *privateProvider, allo
 	mux.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.Header().Set("Cache-Control", "no-store")
-		_ = json.NewEncoder(w).Encode(map[string]string{"status": "ok", "data_scope": "synthetic_demo_only"})
+		scope := "synthetic_demo_only"
+		if remote != nil { scope = "private_provider_adapter" }
+		_ = json.NewEncoder(w).Encode(map[string]string{"status": "ok", "data_scope": scope})
 	})
 	static, err := fs.Sub(webFiles, "web")
 	if err != nil {
@@ -131,11 +135,21 @@ func main() {
 			log.Fatal(err)
 		}
 		origin := os.Getenv("BCM_PUBLIC_ORIGIN")
-		if origin == "" { log.Fatal("BCM_PUBLIC_ORIGIN is required for the live provider") }
+		parsedOrigin, err := url.Parse(origin)
+		if err != nil || parsedOrigin.Scheme != "https" || parsedOrigin.Host == "" ||
+			parsedOrigin.Path != "" || parsedOrigin.RawQuery != "" || parsedOrigin.Fragment != "" {
+			log.Fatal("BCM_PUBLIC_ORIGIN must be an HTTPS origin")
+		}
+		remote.expectedBundle = os.Getenv("BCM_PROVIDER_BUNDLE_DIGEST")
+		if remote.expectedBundle == "" {
+			log.Fatal("BCM_PROVIDER_BUNDLE_DIGEST must pin a reviewed, non-demo runtime bundle")
+		}
 		handler = handlerWithProvider(remote, remote, origin)
 		log.Printf("BCM project verifier listening at %s; remote provider configured", *addr)
 	} else {
 		log.Printf("BCM fictional reference app at http://%s (no real-world coverage)", *addr)
 	}
-	log.Fatal(http.ListenAndServe(*addr, handler))
+	server := &http.Server{Addr: *addr, Handler: handler, ReadHeaderTimeout: 5 * time.Second,
+		ReadTimeout: 15 * time.Second, WriteTimeout: 20 * time.Second, IdleTimeout: 60 * time.Second}
+	log.Fatal(server.ListenAndServe())
 }
