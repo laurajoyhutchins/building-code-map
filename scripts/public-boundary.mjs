@@ -23,6 +23,9 @@ export function validatePolicy(policy) {
   if (!Array.isArray(policy?.forbidden_top_level_paths)) {
     errors.push('forbidden_top_level_paths must be an array');
   }
+  if (!Array.isArray(policy?.approved_top_level_paths) || policy.approved_top_level_paths.length === 0) {
+    errors.push('approved_top_level_paths must be a non-empty array');
+  }
 
   for (const [materialClass, expected] of Object.entries(REQUIRED_PUBLIC_DISPOSITIONS)) {
     const actual = policy?.material_classes?.[materialClass]?.public_repository;
@@ -74,33 +77,100 @@ export function validateSyntheticFixture(fixture, policy) {
   return errors;
 }
 
+// The public tree is a reviewed software distribution, never an implicit
+// regulatory corpus distribution. New data paths require a policy review.
+const NON_REPOSITORY_DIRECTORIES = new Set(['.git', 'node_modules', 'dist', 'coverage']);
+const PROHIBITED_FILE_EXTENSIONS = new Set([
+  '.pdf', '.sqlite', '.duckdb', '.parquet', '.geojson', '.csv', '.zip', '.tar',
+  '.gz', '.db', '.ndjson',
+]);
+const SYNTHETIC_JSON_ROOTS = ['demo/', 'test/fixtures/', 'bcastconsumer/testdata/'];
+
 export function validateRepositoryPaths(topLevelPaths, policy) {
   const errors = [];
   const forbidden = new Set(policy?.forbidden_top_level_paths ?? []);
+  const approved = new Set(policy?.approved_top_level_paths ?? []);
 
   for (const entry of topLevelPaths) {
+    if (NON_REPOSITORY_DIRECTORIES.has(entry)) continue;
     if (forbidden.has(entry)) {
       errors.push(`forbidden top-level path: ${entry}`);
+    } else if (!approved.has(entry)) {
+      errors.push(`unreviewed public top-level path: ${entry}`);
     }
   }
 
   return errors;
 }
 
-function collectJsonFiles(directory) {
-  if (!fs.existsSync(directory)) return [];
-  const files = [];
-
-  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
-    const fullPath = path.join(directory, entry.name);
-    if (entry.isDirectory()) {
-      files.push(...collectJsonFiles(fullPath));
-    } else if (entry.isFile() && entry.name.endsWith('.json')) {
-      files.push(fullPath);
+function collectRepositoryFiles(root, dir = root, result = []) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (NON_REPOSITORY_DIRECTORIES.has(entry.name)) continue;
+    const fullPath = path.join(dir, entry.name);
+    const relativePath = path.relative(root, fullPath).split(path.sep).join('/');
+    if (entry.isSymbolicLink()) {
+      result.push({ path: relativePath, symlink: true });
+    } else if (entry.isDirectory()) {
+      collectRepositoryFiles(root, fullPath, result);
+    } else if (entry.isFile()) {
+      result.push({ path: relativePath, symlink: false });
     }
   }
+  return result;
+}
 
-  return files;
+// Only specifically owned first-party JSON metadata and schemas, or synthetic
+// fixtures, have an implicit public disposition. Every other JSON data path
+// needs an explicit policy change and rights review.
+function jsonDisposition(relativePath) {
+  if (relativePath === 'package.json' || relativePath === 'policy/public-boundary.json') {
+    return 'first-party';
+  }
+  if (relativePath.startsWith('schemas/') && relativePath.endsWith('.schema.json')) {
+    return 'schema';
+  }
+  if (SYNTHETIC_JSON_ROOTS.some((root) => relativePath.startsWith(root))) {
+    return 'synthetic';
+  }
+  return 'review-required';
+}
+
+export function validatePublicArtifact(relativePath, contents, policy) {
+  const errors = [];
+  const normalized = relativePath.replaceAll('\\', '/');
+  const parts = normalized.split('/');
+  if (parts.some((part) => (policy?.forbidden_top_level_paths ?? []).includes(part))) {
+    errors.push('prohibited corpus directory appears within the public path');
+  }
+  if (PROHIBITED_FILE_EXTENSIONS.has(path.posix.extname(normalized).toLowerCase())) {
+    errors.push('data or external-source binary requires private custody and rights review');
+  }
+  if (!normalized.endsWith('.json')) return errors;
+
+  const disposition = jsonDisposition(normalized);
+  if (disposition === 'review-required') {
+    errors.push('unreviewed JSON data path requires explicit public disposition');
+    return errors;
+  }
+  let value;
+  try {
+    value = JSON.parse(contents);
+  } catch {
+    errors.push('JSON content is invalid');
+    return errors;
+  }
+  if (disposition === 'schema') {
+    if (typeof value?.$schema !== 'string' || !value.$schema.includes('json-schema.org')) {
+      errors.push('a public schema path must contain an actual JSON Schema');
+    }
+  }
+  if (disposition === 'synthetic') {
+    errors.push(...validateSyntheticFixture(value, policy));
+    if (!/DEMO-|synthetic|fictional/i.test(contents)) {
+      errors.push('fixture lacks an explicit synthetic marker');
+    }
+  }
+  return errors;
 }
 
 export function validateRepository(rootDir = process.cwd()) {
@@ -111,13 +181,20 @@ export function validateRepository(rootDir = process.cwd()) {
   const topLevelPaths = fs.readdirSync(rootDir, { withFileTypes: true }).map((entry) => entry.name);
   errors.push(...validateRepositoryPaths(topLevelPaths, policy));
 
-  for (const fixturePath of collectJsonFiles(path.join(rootDir, 'demo'))) {
-    const fixture = JSON.parse(fs.readFileSync(fixturePath, 'utf8'));
-    errors.push(...validateSyntheticFixture(fixture, policy).map(
-      (error) => `${path.relative(rootDir, fixturePath)}: ${error}`,
-    ));
+  for (const entry of collectRepositoryFiles(rootDir)) {
+    if (entry.symlink) {
+      errors.push(`${entry.path}: symlink not permitted in the reviewed public tree`);
+      continue;
+    }
+    // Only inspect source text for data-shaped files. Other files have their
+    // public ownership controlled by the approved top-level source roots.
+    const extension = path.posix.extname(entry.path).toLowerCase();
+    const needsContent = extension === '.json';
+    const contents = needsContent ? fs.readFileSync(path.join(rootDir, entry.path), 'utf8') : '';
+    for (const message of validatePublicArtifact(entry.path, contents, policy)) {
+      errors.push(`${entry.path}: ${message}`);
+    }
   }
-
   return errors;
 }
 
