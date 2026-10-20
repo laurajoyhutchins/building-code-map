@@ -26,7 +26,7 @@ func (identityProvider) Resolve(_ context.Context, query engine.NormalizedQuery)
 		Codes: []engine.CodeResolution{{
 			Family:  "building",
 			Edition: "DEMO-2024",
-			Status:  engine.StatusResolved,
+			Status:  engine.StatusPartiallyResolved,
 			Basis:   "Synthetic correlation test",
 		}},
 		Provenance: engine.Provenance{

@@ -30,7 +30,7 @@ func (provider *recordingProvider) Resolve(_ context.Context, query engine.Norma
 		Codes: []engine.CodeResolution{{
 			Family:  "building",
 			Edition: "DEMO-2024",
-			Status:  engine.StatusResolved,
+			Status:  engine.StatusPartiallyResolved,
 			Basis:   "Synthetic HTTP test",
 		}},
 		Provenance: engine.Provenance{EngineVersion: "demo-http"},
@@ -71,7 +71,7 @@ func TestProjectVerificationHTTPUsesCanonicalProjectVerifier(t *testing.T) {
 	if err := json.NewDecoder(response.Body).Decode(&basis); err != nil {
 		t.Fatalf("decode basis: %v", err)
 	}
-	if basis.ProjectID != "DEMO-HTTP" || basis.Verdict != engine.ProjectVerified {
+	if basis.ProjectID != "DEMO-HTTP" || basis.Verdict != engine.ProjectConditional {
 		t.Fatalf("basis = %#v", basis)
 	}
 	if provider.query.CodeFamily != "" {
