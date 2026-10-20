@@ -41,9 +41,9 @@ Otherwise the verifier returns an explicit insufficient, conflicting, or superse
 
 ## Runtime enforcement
 
-The canonical runtime independently verifies every provider-returned `resolved` code-family result before it can become a `verified` project verdict. It uses `VerifyClaimEvidence` with an explicit runtime-owned `SourcePolicy`, not an untrusted policy carried in the provider's answer. No policy, evidence-free resolution, corroboration without establishment, contradiction, supersession, or a disallowed source fails closed.
+The canonical runtime independently verifies every provider-returned `resolved` or `not_applicable` code-family result before it can become a `verified` project verdict. It uses `VerifyClaimEvidence` with an explicit runtime-owned `SourcePolicy`, not an untrusted policy carried in the provider's answer. No policy, evidence-free resolution, corroboration without establishment, contradiction, supersession, or a disallowed source fails closed.
 
-The project-specific evidence claim currently uses the `code_adoption` claim kind. Other legally material resolution kinds require a deliberately reviewed contract extension, not an implicit bypass.
+The project-specific evidence claim uses `code_adoption` for resolved instruments and `code_non_applicability` for affirmative exclusions. Other legally material resolution kinds require a deliberately reviewed contract extension, not an implicit bypass.
 
 ## Source policy
 
