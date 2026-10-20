@@ -140,6 +140,19 @@ func main() {
 			parsedOrigin.Path != "" || parsedOrigin.RawQuery != "" || parsedOrigin.Fragment != "" {
 			log.Fatal("BCM_PUBLIC_ORIGIN must be an HTTPS origin")
 		}
+		switch os.Getenv("BCM_PROVIDER_AUTH_MODE") {
+		case "gcp_id_token":
+			if os.Getenv("BCM_PROVIDER_TOKEN") != "" {
+				log.Fatal("Do not set BCM_PROVIDER_TOKEN with Cloud Run workload identity")
+			}
+			remote.identityToken = cloudRunIdentityToken
+		case "bearer":
+			if os.Getenv("BCM_PROVIDER_TOKEN") == "" {
+				log.Fatal("BCM_PROVIDER_TOKEN is required in bearer mode")
+			}
+		default:
+			log.Fatal("BCM_PROVIDER_AUTH_MODE must be gcp_id_token or bearer for live service")
+		}
 		remote.expectedBundle = os.Getenv("BCM_PROVIDER_BUNDLE_DIGEST")
 		if remote.expectedBundle == "" {
 			log.Fatal("BCM_PROVIDER_BUNDLE_DIGEST must pin a reviewed, non-demo runtime bundle")
