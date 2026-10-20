@@ -4,6 +4,16 @@ const panel = document.querySelector("#result-panel");
 const content = document.querySelector("#result-content");
 const status = document.querySelector("#status");
 let pending = null;
+const staticDemo = document.querySelector('meta[name="bcm-static-demo"]') !== null;
+if (staticDemo) {
+  form.hidden = true;
+  document.querySelector("#lookup-title").textContent = "Fictional project example";
+  document.querySelector(".mode").textContent = "Static showcase · synthetic data only";
+  const note = document.createElement("p");
+  note.textContent = "This page displays a prewritten DEMO-XX contract example. It does not perform a live regulatory lookup. Run the public Go reference app locally to try the synthetic verifier.";
+  form.parentNode.insertBefore(note, form);
+}
+
 
 function element(tag, className, value) {
   const node = document.createElement(tag);
@@ -104,3 +114,20 @@ form.addEventListener("submit", async event => {
     }
   }
 });
+
+if (staticDemo) {
+  status.textContent = "Loading the fictional example.";
+  fetch("./demo-result.json", { cache: "no-store" })
+    .then(response => {
+      if (!response.ok) throw Error("Sample data could not be loaded.");
+      return response.json();
+    })
+    .then(example => {
+      if (example.jurisdiction_id !== "DEMO-XX" || example.verdict !== "conditional") {
+        throw Error("The synthetic example did not pass publication checks.");
+      }
+      render(example);
+      status.textContent = "Prewritten fictional example only. No live verification performed.";
+    })
+    .catch(error => { status.textContent = "Example unavailable: " + error.message; });
+}

@@ -23,3 +23,4 @@ jobs:
       - run: go test ./...
       - run: npm test
       - run: npm run validate
+      - run: npm run build:pages

@@ -44,6 +44,10 @@ The [`engine`](engine/) package is the first public-safe Authority Engine slice.
 
 Per-code results keep `unsupported`, `not_applicable`, and `insufficient_evidence` distinct. `not_applicable` requires an affirmative basis; missing evidence cannot silently become non-applicability. Geographic results use country and primary-jurisdiction identity, with state-equivalent metadata optional rather than structural.
 
+## Public reference website
+
+The [public Pages site](https://laurajoyhutchins.github.io/building-code-map/) displays the existing **fictional DEMO-XX contract fixture**. It is a static showcase, not a live verifier or an assertion of real jurisdiction coverage. See [Website publishing](docs/hosting.md). The interactive synthetic engine remains available through the Go app below.
+
 ## Run the canonical public reference app
 
 The public repository now contains a deliberately **synthetic-only**, standalone application powered by the same `engine.ProjectVerifier` and `httpapi.NewHandler` used by library clients. It does not make real-world regulatory determinations.
