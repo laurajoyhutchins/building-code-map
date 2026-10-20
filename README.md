@@ -44,6 +44,20 @@ The [`engine`](engine/) package is the first public-safe Authority Engine slice.
 
 Per-code results keep `unsupported`, `not_applicable`, and `insufficient_evidence` distinct. `not_applicable` requires an affirmative basis; missing evidence cannot silently become non-applicability. Geographic results use country and primary-jurisdiction identity, with state-equivalent metadata optional rather than structural.
 
+## Run the canonical public reference app
+
+The public repository now contains a deliberately **synthetic-only**, standalone application powered by the same `engine.ProjectVerifier` and `httpapi.NewHandler` used by library clients. It does not make real-world regulatory determinations.
+
+Requires Go 1.23+:
+
+```sh
+go run ./cmd/bcm
+```
+
+Open `http://127.0.0.1:8787`, select a project applicability date, and verify the fictional `100 Demo Plaza, DEMO-XX` address. Changes to project inputs invalidate old results; a non-demo address fails closed rather than invoking an unconfigured provider. There is no frontend dependency install.
+
+The intended **single-source software architecture** and private-data migration gates are recorded in [Source ownership](docs/source-ownership.md). The legacy private application is not yet retired. The synthetic demo is a truthful contract/useability reference, not a deployment cutover or a second production engine.
+
 ## Project Code Verification
 
 [`ProjectVerifier.VerifyProject`](engine/project.go) is the primary project-level public workflow. Callers provide a project ID, location, applicability date, and any known project facts; they do not have to choose one code family before asking for an answer.
