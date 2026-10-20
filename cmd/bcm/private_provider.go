@@ -24,6 +24,7 @@ type privateProvider struct {
 	base   string
 	token  string
 	client *http.Client
+	expectedBundle string
 }
 
 type privateReadiness struct {
@@ -105,7 +106,15 @@ func (p *privateProvider) request(ctx context.Context, method, path string, payl
 func (p *privateProvider) readiness(ctx context.Context) (privateReadiness,error) {
 	var out privateReadiness
 	_,err:=p.request(ctx,http.MethodGet,"/v1/readiness",nil,&out)
-	return out,err
+	if err != nil {return out,err}
+	if p.expectedBundle != "" {
+		var identity struct { BundleManifestDigest string `json:"bundle_manifest_digest"` }
+		if _,err:=p.request(ctx,http.MethodGet,"/v1/bundle",nil,&identity); err!=nil {return out,err}
+		if identity.BundleManifestDigest != p.expectedBundle {
+			return out,errors.New("provider runtime bundle does not match reviewed identity")
+		}
+	}
+	return out,nil
 }
 
 func (p *privateProvider) Resolve(ctx context.Context, query engine.NormalizedQuery) (engine.Resolution,error) {
@@ -136,7 +145,8 @@ func (p *privateProvider) Resolve(ctx context.Context, query engine.NormalizedQu
 	if upstream.SchemaVersion!="1" || r.Geography.JurisdictionID=="" ||
 		r.Geography.JurisdictionName=="" || r.ApplicabilityDate!=query.ApplicabilityDate ||
 		upstream.Provenance.BundleManifestDigest=="" ||
-		upstream.Provenance.SourceCommit=="" {
+		upstream.Provenance.SourceCommit=="" ||
+		(p.expectedBundle!="" && upstream.Provenance.BundleManifestDigest!=p.expectedBundle) {
 		return engine.Resolution{},engine.EngineError{Code:engine.ErrorDataBundleInvalid,Message:"BCM provider response has incomplete identity"}
 	}
 	country:="US"
