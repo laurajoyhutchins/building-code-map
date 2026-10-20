@@ -14,10 +14,10 @@ func (provider projectProvider) Resolve(_ context.Context, query NormalizedQuery
 }
 
 func TestProjectVerificationDoesNotRequireCodeFamily(t *testing.T) {
-	runtime := NewRuntime(projectProvider{result: Resolution{
+	runtime := NewRuntimeWithSourcePolicy(projectProvider{result: Resolution{
 		Jurisdiction: JurisdictionContext{CountryCode: "US", PrimaryJurisdictionID: "DEMO-XX", PrimaryJurisdictionName: "Demonstration Jurisdiction"},
-		Codes:        []CodeResolution{{Family: "building", Edition: "DEMO-2024", Status: StatusResolved, Basis: "DEMO ordinance"}},
-	}})
+		Codes:        []CodeResolution{{Family: "building", Edition: "DEMO-2024", Status: StatusResolved, Basis: "DEMO ordinance", ExactEvidence: []EvidenceLink{demoEvidenceLink("DEMO-ESTABLISHES", EvidenceEstablishes)}}},
+	}}, demoPolicy())
 	basis, err := NewProjectVerifier(runtime).VerifyProject(context.Background(), ProjectRequest{ProjectID: "DEMO-001", Address: "100 Demo Plaza", ApplicabilityDate: "2026-08-25"})
 	if err != nil {
 		t.Fatalf("VerifyProject() error = %v", err)
@@ -71,7 +71,7 @@ func TestProjectVerificationMissingEvidenceIsNotNotApplicable(t *testing.T) {
 func TestProjectVerificationStructuredEvidenceDefectFailsClosed(t *testing.T) {
 	runtime := NewRuntime(projectProvider{result: Resolution{
 		Jurisdiction: JurisdictionContext{CountryCode: "US", PrimaryJurisdictionID: "DEMO-XX", PrimaryJurisdictionName: "Demonstration Jurisdiction"},
-		Codes:        []CodeResolution{{Family: "building", Edition: "DEMO-2024", Status: StatusResolved, Basis: "DEMO ordinance"}},
+		Codes:        []CodeResolution{{Family: "building", Edition: "DEMO-2024", Status: StatusPartiallyResolved, Basis: "DEMO ordinance"}},
 		Requirements: []ResolutionRequirement{{ID: "evidence-conflict", Kind: RequirementEvidenceDefect, Prompt: "DEMO evidence is conflicting"}},
 	}})
 	basis, err := NewProjectVerifier(runtime).VerifyProject(context.Background(), ProjectRequest{ProjectID: "DEMO-005", Address: "100 Demo Plaza", ApplicabilityDate: "2026-08-25"})
@@ -89,7 +89,7 @@ func TestProjectVerificationStructuredEvidenceDefectFailsClosed(t *testing.T) {
 func TestProjectVerificationLocalRecordRequirementRemainsConditional(t *testing.T) {
 	runtime := NewRuntime(projectProvider{result: Resolution{
 		Jurisdiction: JurisdictionContext{CountryCode: "US", PrimaryJurisdictionID: "DEMO-XX", PrimaryJurisdictionName: "Demonstration Jurisdiction"},
-		Codes:        []CodeResolution{{Family: "building", Edition: "DEMO-2024", Status: StatusResolved, Basis: "DEMO ordinance"}},
+		Codes:        []CodeResolution{{Family: "building", Edition: "DEMO-2024", Status: StatusPartiallyResolved, Basis: "DEMO ordinance"}},
 		Requirements: []ResolutionRequirement{{ID: "permit-record", Kind: RequirementLocalRecord, Prompt: "Obtain the DEMO permit record"}},
 	}})
 	basis, err := NewProjectVerifier(runtime).VerifyProject(context.Background(), ProjectRequest{ProjectID: "DEMO-006", Address: "100 Demo Plaza", ApplicabilityDate: "2026-08-25"})
@@ -106,7 +106,7 @@ func TestProjectVerificationLocalRecordRequirementRemainsConditional(t *testing.
 
 func TestProjectVerificationPreservesFactsEvidenceAndProvenance(t *testing.T) {
 	exact := demoEvidenceLink("DEMO-EXACT", EvidenceEstablishes)
-	runtime := NewRuntime(projectProvider{result: Resolution{
+	runtime := NewRuntimeWithSourcePolicy(projectProvider{result: Resolution{
 		Jurisdiction: JurisdictionContext{CountryCode: "US", PrimaryJurisdictionID: "DEMO-XX", PrimaryJurisdictionName: "Demonstration Jurisdiction"},
 		Codes: []CodeResolution{{
 			Family: "building", Edition: "DEMO-2024", Status: StatusResolved, Basis: "DEMO ordinance",
@@ -114,7 +114,7 @@ func TestProjectVerificationPreservesFactsEvidenceAndProvenance(t *testing.T) {
 		}},
 		DerivedFacts: []DerivedFact{{Key: "primary_jurisdiction", Value: "DEMO-XX", Basis: "synthetic resolver"}},
 		Provenance:   Provenance{EngineVersion: "demo", SourceCommit: "DEMO-COMMIT", BundleID: "DEMO-BUNDLE"},
-	}})
+	}}, demoPolicy())
 	basis, err := NewProjectVerifier(runtime).VerifyProject(context.Background(), ProjectRequest{
 		ProjectID: "DEMO-004", Address: "100 Demo Plaza", ApplicabilityDate: "2026-08-25", Facts: map[string]string{" Occupancy ": "Business"},
 	})
