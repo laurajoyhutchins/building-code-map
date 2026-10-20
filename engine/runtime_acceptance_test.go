@@ -89,3 +89,39 @@ func TestMalformedProviderFieldsNeverEnterProjectCodeBasis(t *testing.T) {
 		})
 	}
 }
+
+func TestAffirmativeNonApplicabilityRequiresLegalProof(t *testing.T) {
+	link := demoEvidenceLink("DEMO-NOT-APPLICABLE", EvidenceEstablishes)
+	for _, tt := range []struct {
+		name string
+		policy SourcePolicy
+		links []EvidenceLink
+		wantVerified bool
+	}{
+		{name: "bare provider assertion"},
+		{name: "approved claim", policy: SourcePolicy{Rules: []SourcePolicyRule{{
+			ID: "DEMO-EXCLUSION", ClaimKind: "code_non_applicability",
+			JurisdictionID: "DEMO-XX", DocumentID: "DEMO-DOC", EffectiveFrom: "2026-01-01",
+		}}}, links: []EvidenceLink{link}, wantVerified: true},
+	} {
+		t.Run(tt.name, func(t *testing.T) {
+			runtime := NewRuntimeWithSourcePolicy(syntheticProvider{codes: []CodeResolution{{
+				Family: "fire", Status: StatusNotApplicable, Basis: "Synthetic exclusion",
+				ExactEvidence: tt.links,
+			}}}, tt.policy)
+			basis, err := NewProjectVerifier(runtime).VerifyProject(context.Background(), ProjectRequest{
+				ProjectID: "DEMO-001", Address: "100 Demo Plaza", ApplicabilityDate: "2026-08-25",
+			})
+			if tt.wantVerified {
+				if err != nil || basis.Verdict != ProjectVerified {
+					t.Fatalf("basis=%#v error=%v", basis, err)
+				}
+				return
+			}
+			var engineErr EngineError
+			if !errors.As(err, &engineErr) || engineErr.Code != ErrorDataBundleInvalid {
+				t.Fatalf("error=%v, want data_bundle_invalid", err)
+			}
+		})
+	}
+}
