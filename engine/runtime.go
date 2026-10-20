@@ -90,9 +90,19 @@ type Provider interface {
 	Resolve(context.Context, NormalizedQuery) (Resolution, error)
 }
 
-type Runtime struct{ provider Provider }
+type Runtime struct {
+	provider     Provider
+	sourcePolicy SourcePolicy
+}
 
 func NewRuntime(provider Provider) Runtime { return Runtime{provider: provider} }
+
+// NewRuntimeWithSourcePolicy configures the trusted source policy used to
+// check request-specific resolved claims. A provider cannot set this policy
+// through its Resolution. Without it, resolved claims fail closed.
+func NewRuntimeWithSourcePolicy(provider Provider, policy SourcePolicy) Runtime {
+	return Runtime{provider: provider, sourcePolicy: SourcePolicy{Rules: append([]SourcePolicyRule(nil), policy.Rules...)}}
+}
 
 func (runtime Runtime) Resolve(ctx context.Context, query Query) (Resolution, error) {
 	normalized, err := NormalizeQuery(query)
@@ -109,6 +119,9 @@ func (runtime Runtime) Resolve(ctx context.Context, query Query) (Resolution, er
 	result.SchemaVersion = SchemaVersion
 	result.Query = normalized
 	if err := validateResolution(result); err != nil {
+		return Resolution{}, err
+	}
+	if err := runtime.validateResolvedEvidence(result); err != nil {
 		return Resolution{}, err
 	}
 	return result, nil
@@ -131,10 +144,20 @@ func validateResolution(result Resolution) error {
 		if !hasAffirmativeNotApplicableBasis(code) {
 			return EngineError{Code: ErrorDataBundleInvalid, Message: "not_applicable requires an affirmative basis", Details: map[string]any{"index": index, "family": code.Family}}
 		}
+		for evidenceIndex, ref := range code.Evidence {
+			if strings.TrimSpace(ref.ID) == "" || strings.TrimSpace(ref.Kind) == "" {
+				return EngineError{Code: ErrorDataBundleInvalid, Message: "evidence reference requires id and kind", Details: map[string]any{"code_index": index, "evidence_index": evidenceIndex}}
+			}
+		}
 		for _, link := range code.ExactEvidence {
 			if err := validateEvidenceLink(link, link.ClaimID); err != nil {
 				return err
 			}
+		}
+	}
+	for index, fact := range result.DerivedFacts {
+		if strings.TrimSpace(fact.Key) == "" || strings.TrimSpace(fact.Value) == "" {
+			return EngineError{Code: ErrorDataBundleInvalid, Message: "derived fact requires key and value", Details: map[string]any{"index": index}}
 		}
 	}
 	for index, requirement := range result.Requirements {
@@ -146,6 +169,37 @@ func validateResolution(result Resolution) error {
 		}
 		if requirement.Kind == RequirementProjectFact && strings.TrimSpace(requirement.FactKey) == "" {
 			return EngineError{Code: ErrorDataBundleInvalid, Message: "project_fact requirement requires fact_key", Details: map[string]any{"index": index}}
+		}
+	}
+	return nil
+}
+
+// validateResolvedEvidence checks a claim at the same acceptance boundary as
+// the response. Provider conformance alone cannot verify an individual request.
+func (runtime Runtime) validateResolvedEvidence(result Resolution) error {
+	for index, code := range result.Codes {
+		if code.Status != StatusResolved {
+			continue
+		}
+		if len(code.ExactEvidence) == 0 {
+			return EngineError{Code: ErrorDataBundleInvalid, Message: "resolved code requires qualifying exact evidence", Details: map[string]any{"index": index, "family": code.Family}}
+		}
+		claimID := strings.TrimSpace(code.ExactEvidence[0].ClaimID)
+		if claimID == "" {
+			return EngineError{Code: ErrorDataBundleInvalid, Message: "resolved code requires an evidence claim id", Details: map[string]any{"index": index}}
+		}
+		claim := EvidenceClaim{
+			ID: claimID, Kind: "code_adoption",
+			JurisdictionID: result.Jurisdiction.PrimaryJurisdictionID,
+			AsOf: result.Query.ApplicabilityDate,
+			LegallyMaterial: true, Links: code.ExactEvidence,
+		}
+		verification, err := VerifyClaimEvidence(claim, runtime.sourcePolicy)
+		if err != nil {
+			return err
+		}
+		if verification.Decision != EvidenceVerified {
+			return EngineError{Code: ErrorDataBundleInvalid, Message: "resolved code lacks qualifying evidence under active source policy", Details: map[string]any{"index": index, "family": code.Family, "evidence_decision": verification.Decision}}
 		}
 	}
 	return nil
