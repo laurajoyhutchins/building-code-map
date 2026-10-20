@@ -67,5 +67,31 @@
         "license_and_provenance_reviewed"
       ]
     }
-  }
+  },
+  "approved_top_level_paths": [
+    ".dockerignore",
+    ".github",
+    ".gitignore",
+    "CONTRIBUTING.md",
+    "Dockerfile",
+    "LICENSE",
+    "NOTICE",
+    "README.md",
+    "SECURITY.md",
+    "accuracy",
+    "bcastconsumer",
+    "cmd",
+    "contracts",
+    "demo",
+    "docs",
+    "engine",
+    "geocoder",
+    "go.mod",
+    "httpapi",
+    "package.json",
+    "policy",
+    "schemas",
+    "scripts",
+    "test"
+  ]
 }
