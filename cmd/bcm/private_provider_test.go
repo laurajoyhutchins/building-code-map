@@ -141,3 +141,39 @@ func TestPublicBrowserOriginIsStrictlyScoped(t *testing.T) {
 		}
 	}
 }
+
+func TestPrivateProviderUsesWorkloadIdentityForEveryRequest(t *testing.T) {
+	calls:=0
+	server:=httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter,r *http.Request) {
+		if r.Header.Get("Authorization")!="Bearer signed-test-identity" {
+			t.Errorf("private request was not authenticated: %s",r.URL.Path)
+			w.WriteHeader(http.StatusUnauthorized)
+			return
+		}
+		calls++
+		switch r.URL.Path {
+		case "/v1/readiness":
+			_,_=w.Write([]byte(`{"status":"ok","capabilities":{"address_lookup":{"status":"available"}}}`))
+		case "/v1/bundle":
+			_,_=w.Write([]byte(`{"bundle_manifest_digest":"sha256:reviewed"}`))
+		case "/v1/resolve":
+			_,_=w.Write([]byte(providerSample))
+		default:
+			http.NotFound(w,r)
+		}
+	}))
+	defer server.Close()
+	provider,err:=newPrivateProvider(server.URL,"")
+	if err!=nil {t.Fatal(err)}
+	provider.expectedBundle="sha256:reviewed"
+	provider.identityToken=func(ctx context.Context,audience string)(string,error){
+		if audience!=server.URL {t.Errorf("wrong token audience: %s",audience)}
+		return "signed-test-identity",nil
+	}
+	_,err=engine.NewProjectVerifier(engine.NewRuntime(provider)).VerifyProject(
+		context.Background(),
+		engine.ProjectRequest{ProjectID:"SITE-123",Address:"100 Main St, Denver, CO",ApplicabilityDate:"2026-10-20"},
+	)
+	if err!=nil {t.Fatal(err)}
+	if calls!=3 {t.Fatalf("wanted 3 authenticated calls, got %d",calls)}
+}
