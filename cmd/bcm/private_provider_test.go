@@ -49,6 +49,8 @@ func mockLegacyProvider(t *testing.T, ready bool, result string) *httptest.Serve
 				return
 			}
 			_, _ = w.Write([]byte(`{"status":"ok","capabilities":{"address_lookup":{"status":"available"}}}`))
+		case "/v1/bundle":
+			_, _ = w.Write([]byte(`{"bundle_manifest_digest":"sha256:reviewed"}`))
 		case "/v1/resolve":
 			if r.Method != http.MethodPost {
 				t.Errorf("method = %s", r.Method)
