@@ -1,10 +1,8 @@
 # Building Code Map
 
-**Evidence-first regulatory intelligence for building projects.**
+Building Code Map helps determine which codes apply to a project, what sources support the answer, and which details still need confirmation.
 
-Building Code Map is being built to answer a deceptively difficult question: given a project location, an applicability date, and the facts of the project, which regulatory authorities and code instruments can actually be verified, what evidence supports that answer, and what still requires confirmation?
-
-This repository is the public foundation of that product. It contains the contracts, methodology, examples, and open-source components needed to make Building Code Map inspectable and interoperable.
+This public repository contains the Go engine, API, schemas, and sample application. Production regulatory data is maintained separately.
 
 ## Core semantics
 
@@ -46,7 +44,7 @@ Per-code results keep `unsupported`, `not_applicable`, and `insufficient_evidenc
 
 ## Public reference website
 
-The [public Pages site](https://laurajoyhutchins.github.io/building-code-map/) displays the existing **fictional DEMO-XX contract fixture**. It is a static showcase, not a live verifier or an assertion of real jurisdiction coverage. See [Website publishing](docs/hosting.md). The interactive synthetic engine remains available through the Go app below.
+The [website](https://laurajoyhutchins.github.io/building-code-map/) shows a fictional example. Live lookup is not available there. See [Website publishing](docs/hosting.md), or run the Go app below to test the demo API.
 
 ## Run the canonical public reference app
 

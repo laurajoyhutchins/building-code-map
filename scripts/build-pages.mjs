@@ -20,7 +20,7 @@ if (!original.includes('<head>') || !original.includes('href="./styles.css"') ||
 }
 const html = original
   .replace("<head>", '<head>\n  <meta name="bcm-static-demo" content="fictional-contract-example">')
-  .replace("ENGINE · CANONICAL /v1/project-code-basis", "PUBLIC CONTRACT · SYNTHETIC EXAMPLE");
+  ;
 fs.rmSync(target, { recursive: true, force: true });
 fs.mkdirSync(target, { recursive: true });
 fs.writeFileSync(path.join(target, "index.html"), html);

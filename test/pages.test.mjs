@@ -10,6 +10,8 @@ test("Pages artifact contains only public UI and the fictional contract fixture"
   assert.deepEqual(fs.readdirSync(target).sort(), ["app.js", "demo-result.json", "index.html", "styles.css"]);
   const html = fs.readFileSync(path.join(target, "index.html"), "utf8");
   assert.match(html, /bcm-static-demo/);
+  assert.match(html, /<h1>Building Code Map<\/h1>/);
+  assert.doesNotMatch(html, /A clearer basis for|every building|ENGINE · CANONICAL/);
   assert.match(html, /href="\.\/styles\.css"/);
   assert.match(html, /src="\.\/app\.js"/);
   const example = JSON.parse(fs.readFileSync(path.join(target, "demo-result.json"), "utf8"));

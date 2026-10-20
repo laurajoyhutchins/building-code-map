@@ -7,10 +7,10 @@ let pending = null;
 const staticDemo = document.querySelector('meta[name="bcm-static-demo"]') !== null;
 if (staticDemo) {
   form.hidden = true;
-  document.querySelector("#lookup-title").textContent = "Fictional project example";
-  document.querySelector(".mode").textContent = "Static showcase · synthetic data only";
+  document.querySelector("#lookup-title").textContent = "Sample project";
+  document.querySelector(".mode").textContent = "Sample data";
   const note = document.createElement("p");
-  note.textContent = "This page displays a prewritten DEMO-XX contract example. It does not perform a live regulatory lookup. Run the public Go reference app locally to try the synthetic verifier.";
+  note.textContent = "Example: 100 Demo Plaza, DEMO-XX. Live lookup is not available.";
   form.parentNode.insertBefore(note, form);
 }
 
@@ -31,7 +31,7 @@ function invalidate() {
   content.replaceChildren();
   status.textContent = "";
   submit.disabled = false;
-  submit.firstChild.textContent = "Verify demo project ";
+  submit.firstChild.textContent = "Run demo ";
 }
 form.addEventListener("input", invalidate);
 form.addEventListener("change", invalidate);
@@ -42,7 +42,7 @@ function render(result) {
   addText(heading, "strong", result.verdict.replaceAll("_", " ").toUpperCase());
   addText(heading, "span", result.jurisdiction.primary_jurisdiction_name);
   content.append(heading);
-  const codeHeading = element("h3", "", "Code set");
+  const codeHeading = element("h3", "", "Codes");
   content.append(codeHeading);
   const list = element("ul", "records");
   for (const code of result.code_set || []) {
@@ -54,10 +54,10 @@ function render(result) {
   }
   content.append(list);
   const unresolved = result.unresolved || [];
-  const section = element("h3", "", "Still to verify");
+  const section = element("h3", "", "Open items");
   content.append(section);
   if (!unresolved.length) {
-    addText(content, "p", "No unresolved requirements in this synthetic result.");
+    addText(content, "p", "None recorded.");
   } else {
     const items = element("ul", "requirements");
     for (const entry of unresolved) {
@@ -69,8 +69,7 @@ function render(result) {
     content.append(items);
   }
   const footer = element("p", "provenance");
-  footer.textContent = "Schema " + result.schema_version + " · " + result.as_of
-    + " · bundle " + (result.provenance?.bundle_id || "unavailable");
+  footer.textContent = "As of " + result.as_of;
   content.append(footer);
   panel.hidden = false;
 }
@@ -82,7 +81,7 @@ form.addEventListener("submit", async event => {
   pending = controller;
   submit.disabled = true;
   submit.firstChild.textContent = "Verifying… ";
-  status.textContent = "Checking the fictional project against the public engine.";
+  status.textContent = "Checking sample project…";
   const facts = {};
   const occupancy = document.querySelector("#occupancy").value.trim();
   if (occupancy) facts.occupancy = occupancy;
@@ -103,20 +102,20 @@ form.addEventListener("submit", async event => {
     if (controller.signal.aborted) return;
     if (!response.ok) throw Error(payload.error?.message || "Verification unavailable");
     render(payload);
-    status.textContent = "Synthetic verification complete. This is not a real code determination.";
+    status.textContent = "Demo complete.";
   } catch (error) {
     if (!controller.signal.aborted) status.textContent = "Not verified: " + error.message;
   } finally {
     if (pending === controller) {
       pending = null;
       submit.disabled = false;
-      submit.firstChild.textContent = "Verify demo project ";
+      submit.firstChild.textContent = "Run demo ";
     }
   }
 });
 
 if (staticDemo) {
-  status.textContent = "Loading the fictional example.";
+  status.textContent = "Loading example…";
   fetch("./demo-result.json", { cache: "no-store" })
     .then(response => {
       if (!response.ok) throw Error("Sample data could not be loaded.");
@@ -124,10 +123,10 @@ if (staticDemo) {
     })
     .then(example => {
       if (example.jurisdiction_id !== "DEMO-XX" || example.verdict !== "conditional") {
-        throw Error("The synthetic example did not pass publication checks.");
+        throw Error("Invalid example data.");
       }
       render(example);
-      status.textContent = "Prewritten fictional example only. No live verification performed.";
+      status.textContent = "";
     })
-    .catch(error => { status.textContent = "Example unavailable: " + error.message; });
+    .catch(error => { status.textContent = "Could not load example: " + error.message; });
 }
