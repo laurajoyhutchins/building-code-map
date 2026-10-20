@@ -9,3 +9,15 @@ This is a read-only source-structure dependency, **not an adoption integration**
 Boundary: this first interoperability consumer conservatively rejects non-ASCII publication edition/revision coordinates because full NFC Unicode conformance needs a deliberate standard-library-independent policy. It also does not yet prove the live private BCAST reference server and independently deployed BCM service communicate in production. Those remain separate acceptance evidence. The public BCAST contract, not this client, defines normative semantics.
 
 See [BCAST issue #22](https://github.com/laurajoyhutchins/bcast/issues/22) and [BCAST 1.0 readiness issue #13](https://github.com/laurajoyhutchins/bcast/issues/13).
+
+## Exact-package HTTP interoperability probe
+
+The standalone Go command verifies **all** public BCAST `0.2.0` GET operations for a caller-selected package, without importing the Python BCAST compiler or using any eCFR-specific coordinates:
+
+```sh
+go run ./cmd/bcast-contract-probe \\
+  -base-url http://127.0.0.1:8000 \\
+  -package-id 'bcastpkg:sha256:EXACT_64_DIGIT_CONTENT_DIGEST'
+```
+
+It downloads and independently verifies the complete content-addressed BCAST materialization, checks publication and object IDs and parentage, and compares the public HTTP metadata, object and direct-child results with the verified package. Only the package identifier and object count are printed on success; no actual regulatory prose is logged. This command is an interoperability diagnostic, never a way to approve a jurisdictional code adoption. It requires an already available, authorized BCAST read-only API endpoint and does not create or deploy one.
