@@ -39,6 +39,12 @@ Public evidence links support:
 
 Otherwise the verifier returns an explicit insufficient, conflicting, or superseded decision.
 
+## Runtime enforcement
+
+The canonical runtime independently verifies every provider-returned `resolved` code-family result before it can become a `verified` project verdict. It uses `VerifyClaimEvidence` with an explicit runtime-owned `SourcePolicy`, not an untrusted policy carried in the provider's answer. No policy, evidence-free resolution, corroboration without establishment, contradiction, supersession, or a disallowed source fails closed.
+
+The project-specific evidence claim currently uses the `code_adoption` claim kind. Other legally material resolution kinds require a deliberately reviewed contract extension, not an implicit bypass.
+
 ## Source policy
 
 Source policy is keyed to document identity, claim kind, jurisdiction, and time. It does not authorize evidence merely because a URL, publisher, or informal source tier looks plausible.
