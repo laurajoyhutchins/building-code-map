@@ -46,6 +46,7 @@ type privateResolution struct {
 		Adoptions []struct {
 			CodeFamily  string `json:"code_family"`
 			CodeName    string `json:"code_name"`
+			StateCodeName string `json:"state_code_name"`
 			Status      string `json:"status"`
 			BaseModelCode *struct {
 				EditionYear int `json:"edition_year"`
@@ -124,104 +125,164 @@ func (p *privateProvider) readiness(ctx context.Context) (privateReadiness,error
 	return out,nil
 }
 
-func (p *privateProvider) Resolve(ctx context.Context, query engine.NormalizedQuery) (engine.Resolution,error) {
-	if readiness,err:=p.readiness(ctx); err != nil ||
-		readiness.Capabilities["address_lookup"].Status != "available" {
-		return engine.Resolution{},engine.EngineError{
-			Code:engine.ErrorRegulatoryCatalogUnavailable,Message:"BCM address lookup is not ready",Retryable:true,
+// Resolve asks the private authority for every covered code family. The legacy
+// endpoint resolves one family at a time; an unscoped query returns no adoption
+// evidence and must never masquerade as a complete project code basis.
+func (p *privateProvider) Resolve(ctx context.Context, query engine.NormalizedQuery) (engine.Resolution, error) {
+	readiness, err := p.readiness(ctx)
+	capability := "address_lookup"
+	if query.Point != nil { capability = "coordinate_resolution" }
+	if err != nil || readiness.Status == "not_ready" ||
+		readiness.Capabilities[capability].Status != "available" {
+		return engine.Resolution{}, engine.EngineError{
+			Code: engine.ErrorRegulatoryCatalogUnavailable,
+			Message: "BCM " + capability + " is not ready",
+			Retryable: true,
 		}
 	}
-	request := struct{
+
+	families := []string{"building", "electrical", "energy", "fire_operational", "residential"}
+	if query.CodeFamily != "" { families = []string{query.CodeFamily} }
+	var result engine.Resolution
+	for index, family := range families {
+		part, err := p.resolveFamily(ctx, query, family)
+		if err != nil { return engine.Resolution{}, err }
+		if index == 0 {
+			result = part
+			continue
+		}
+		if result.Jurisdiction != part.Jurisdiction || result.Provenance != part.Provenance {
+			return engine.Resolution{}, engine.EngineError{
+				Code: engine.ErrorDataBundleInvalid,
+				Message: "BCM provider returned inconsistent jurisdiction or bundle identity",
+			}
+		}
+		result.Codes = append(result.Codes, part.Codes...)
+		result.Requirements = append(result.Requirements, part.Requirements...)
+	}
+	if len(query.ProjectFacts) > 0 {
+		result.Requirements = append(result.Requirements, engine.ResolutionRequirement{
+			ID: "project-facts-review", Kind: engine.RequirementLocalRecord,
+			Prompt: "Project facts still require review against local amendments.",
+		})
+	}
+	return result, nil
+}
+
+func (p *privateProvider) resolveFamily(ctx context.Context, query engine.NormalizedQuery, family string) (engine.Resolution, error) {
+	request := struct {
 		Point *engine.Point `json:"point,omitempty"`
 		Address string `json:"address,omitempty"`
 		ApplicabilityDate string `json:"applicability_date"`
 		ProjectType string `json:"project_type,omitempty"`
-	}{query.Point,query.Address,query.ApplicabilityDate,query.ProjectType}
+		CodeFamily string `json:"code_family"`
+	}{query.Point, query.Address, query.ApplicabilityDate, query.ProjectType, family}
 	var upstream privateResolution
-	status,err:=p.request(ctx,http.MethodPost,"/v1/resolve",request,&upstream)
-	if err!=nil {
-		code:=engine.ErrorRegulatoryCatalogUnavailable
+	status, err := p.request(ctx, http.MethodPost, "/v1/resolve", request, &upstream)
+	if err != nil {
+		code := engine.ErrorRegulatoryCatalogUnavailable
 		switch status {
-		case 400: code=engine.ErrorInvalidQuery
-		case 409: code=engine.ErrorAddressAmbiguous
-		case 422: code=engine.ErrorOutsideSupportedCoverage
+		case http.StatusBadRequest: code = engine.ErrorInvalidQuery
+		case http.StatusConflict: code = engine.ErrorAddressAmbiguous
+		case http.StatusUnprocessableEntity: code = engine.ErrorOutsideSupportedCoverage
 		}
-		return engine.Resolution{},engine.EngineError{Code:code,Message:"BCM could not resolve this location and date"}
+		return engine.Resolution{}, engine.EngineError{
+			Code: code, Message: "BCM could not resolve this location and date",
+		}
 	}
-	r:=upstream.Resolution
-	if upstream.SchemaVersion!="1" || r.Geography.JurisdictionID=="" ||
-		r.Geography.JurisdictionName=="" || r.ApplicabilityDate!=query.ApplicabilityDate ||
-		upstream.Provenance.BundleManifestDigest=="" ||
-		upstream.Provenance.SourceCommit=="" ||
-		(p.expectedBundle!="" && upstream.Provenance.BundleManifestDigest!=p.expectedBundle) {
-		return engine.Resolution{},engine.EngineError{Code:engine.ErrorDataBundleInvalid,Message:"BCM provider response has incomplete identity"}
+	r := upstream.Resolution
+	if upstream.SchemaVersion != "1" || r.Geography.JurisdictionID == "" ||
+		r.Geography.JurisdictionName == "" || r.ApplicabilityDate != query.ApplicabilityDate ||
+		upstream.Provenance.BundleManifestDigest == "" || upstream.Provenance.SourceCommit == "" ||
+		(p.expectedBundle != "" && upstream.Provenance.BundleManifestDigest != p.expectedBundle) {
+		return engine.Resolution{}, engine.EngineError{
+			Code: engine.ErrorDataBundleInvalid,
+			Message: "BCM provider response has incomplete identity",
+		}
 	}
-	country:="US"
-	if strings.HasPrefix(r.Geography.JurisdictionID,"CA-") { country="CA" } else if r.Geography.CensusStateEquivalentFIPS=="" {
-		return engine.Resolution{},engine.EngineError{Code:engine.ErrorDataBundleInvalid,Message:"BCM provider country is unknown"}
+	country := "US"
+	if strings.HasPrefix(r.Geography.JurisdictionID, "CA-") {
+		country = "CA"
+	} else if r.Geography.CensusStateEquivalentFIPS == "" {
+		return engine.Resolution{}, engine.EngineError{
+			Code: engine.ErrorDataBundleInvalid, Message: "BCM provider country is unknown",
+		}
 	}
-	result:=engine.Resolution{
-		Jurisdiction:engine.JurisdictionContext{
-			CountryCode:country,PrimaryJurisdictionID:r.Geography.JurisdictionID,
-			PrimaryJurisdictionName:r.Geography.JurisdictionName,
-			CensusStateEquivalentFIPS:r.Geography.CensusStateEquivalentFIPS,
+	result := engine.Resolution{
+		Jurisdiction: engine.JurisdictionContext{
+			CountryCode: country,
+			PrimaryJurisdictionID: r.Geography.JurisdictionID,
+			PrimaryJurisdictionName: r.Geography.JurisdictionName,
+			CensusStateEquivalentFIPS: r.Geography.CensusStateEquivalentFIPS,
 		},
-		Provenance:engine.Provenance{
-			EngineVersion:upstream.Provenance.EngineVersion,
-			SourceCommit:upstream.Provenance.SourceCommit,
-			BundleID:upstream.Provenance.BundleManifestDigest,
+		Provenance: engine.Provenance{
+			EngineVersion: upstream.Provenance.EngineVersion,
+			SourceCommit: upstream.Provenance.SourceCommit,
+			BundleID: upstream.Provenance.BundleManifestDigest,
 		},
 	}
-	statusCode:=engine.StatusInsufficientEvidence
+	codeStatus := engine.StatusInsufficientEvidence
 	switch r.Status {
-	case "local_record_required": statusCode=engine.StatusLocalRecordRequired
-	case "conflicting":statusCode=engine.StatusConflicting
-	case "unsupported":statusCode=engine.StatusUnsupported
-	case "resolved","verified":statusCode=engine.StatusPartiallyResolved // No verified project claim until contract-level evidence is reviewed.
+	case "local_record_required": codeStatus = engine.StatusLocalRecordRequired
+	case "partially_resolved": codeStatus = engine.StatusPartiallyResolved
+	case "conflicting": codeStatus = engine.StatusConflicting
+	case "unsupported": codeStatus = engine.StatusUnsupported
+	case "resolved", "verified":
+		codeStatus = engine.StatusPartiallyResolved // A verified *project* needs independent evidence.
 	}
-	for _,ad:=range r.Adoptions {
-		if strings.TrimSpace(ad.CodeFamily)=="" {continue}
-		codeStatus:=statusCode
-		if ad.Verification.Status!="verified" && codeStatus==engine.StatusPartiallyResolved {
-			codeStatus=engine.StatusInsufficientEvidence
+	for _, ad := range r.Adoptions {
+		if ad.CodeFamily != family {
+			return engine.Resolution{}, engine.EngineError{
+				Code: engine.ErrorDataBundleInvalid,
+				Message: "BCM provider returned an adoption for a different code family",
+			}
 		}
-		edition:=ad.CodeName
-		if edition=="" && ad.BaseModelCode!=nil && ad.BaseModelCode.EditionYear>0 {
-			edition=strconv.Itoa(ad.BaseModelCode.EditionYear)
+		status := codeStatus
+		if ad.Verification.Status != "verified" && status == engine.StatusPartiallyResolved {
+			status = engine.StatusInsufficientEvidence
 		}
-		code:=engine.CodeResolution{
-			Family:ad.CodeFamily,Edition:edition,Status:codeStatus,
-			Basis:"Adoption reported by the BCM source catalog; local applicability may require confirmation.",
+		edition := ad.StateCodeName
+		if edition == "" { edition = ad.CodeName }
+		if edition == "" && ad.BaseModelCode != nil && ad.BaseModelCode.EditionYear > 0 {
+			edition = strconv.Itoa(ad.BaseModelCode.EditionYear)
 		}
-		for _,id:=range ad.SourceIDs {
-			if id!="" {code.Evidence=append(code.Evidence,engine.EvidenceRef{ID:id,Kind:"regulatory_source"})}
+		code := engine.CodeResolution{
+			Family: family, Edition: edition, Status: status,
+			Basis: "Source-backed adoption; local applicability may require confirmation.",
 		}
-		result.Codes=append(result.Codes,code)
+		for _, id := range ad.SourceIDs {
+			if id != "" {
+				code.Evidence = append(code.Evidence, engine.EvidenceRef{
+					ID: id, Kind: "regulatory_source",
+				})
+			}
+		}
+		result.Codes = append(result.Codes, code)
 	}
-	if len(result.Codes)==0 {
-		// Keep unresolved results visible without inventing an adopted edition.
-		family:="unspecified"
-		if query.CodeFamily!="" {family=query.CodeFamily}
-		result.Codes=[]engine.CodeResolution{{Family:family,Status:engine.StatusInsufficientEvidence,
-			Basis:"No supported code adoption was returned for this location and date."}}
+	if len(result.Codes) == 0 {
+		result.Codes = []engine.CodeResolution{{
+			Family: family, Status: engine.StatusInsufficientEvidence,
+			Basis: "No supported code adoption returned for this family, location, and date.",
+			Unresolved: []string{"Confirm the locally applicable " + family + " code adoption."},
+		}}
 	}
-	for i,message:=range r.RequiredLocalRecords {
-		if message!="" {result.Requirements=append(result.Requirements,engine.ResolutionRequirement{
-			ID:fmt.Sprintf("local-%d",i),Kind:engine.RequirementLocalRecord,Prompt:message,
-		})}
+	for i, message := range r.RequiredLocalRecords {
+		if message != "" {
+			result.Requirements = append(result.Requirements, engine.ResolutionRequirement{
+				ID: fmt.Sprintf("%s-local-%d", family, i), Kind: engine.RequirementLocalRecord,
+				Prompt: family + ": " + message,
+			})
+		}
 	}
-	for i,message:=range r.Warnings {
-		if message!="" {result.Requirements=append(result.Requirements,engine.ResolutionRequirement{
-			ID:fmt.Sprintf("warning-%d",i),Kind:engine.RequirementEvidenceDefect,Prompt:message,
-		})}
+	for i, message := range r.Warnings {
+		if message != "" {
+			result.Requirements = append(result.Requirements, engine.ResolutionRequirement{
+				ID: fmt.Sprintf("%s-warning-%d", family, i), Kind: engine.RequirementEvidenceDefect,
+				Prompt: family + ": " + message,
+			})
+		}
 	}
-	if len(query.ProjectFacts)>0 {
-		result.Requirements=append(result.Requirements,engine.ResolutionRequirement{
-			ID:"project-facts-review",Kind:engine.RequirementLocalRecord,
-			Prompt:"Project-specific facts have not yet been checked against local amendments.",
-		})
-	}
-	return result,nil
+	return result, nil
 }
 
 func cloudRunIdentityToken(ctx context.Context, audience string) (string,error) {
