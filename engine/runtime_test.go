@@ -20,7 +20,7 @@ func (provider syntheticProvider) Resolve(_ context.Context, _ NormalizedQuery) 
 
 func TestRuntimeExecutesSyntheticQuery(t *testing.T) {
 	runtime := NewRuntime(syntheticProvider{codes: []CodeResolution{
-		{Family: "building", Edition: "DEMO-IBC-2024", Status: StatusResolved, Basis: "DEMO ordinance"},
+		{Family: "building", Edition: "DEMO-IBC-2024", Status: StatusPartiallyResolved, Basis: "DEMO ordinance"},
 		{Family: "fire", Status: StatusUnsupported},
 		{Family: "energy", Status: StatusInsufficientEvidence, Unresolved: []string{"DEMO local record"}},
 	}})
@@ -68,9 +68,9 @@ func TestRuntimeRejectsMalformedExactEvidence(t *testing.T) {
 
 func TestRuntimePreservesValidExactEvidence(t *testing.T) {
 	link := demoEvidenceLink("DEMO-LINK", EvidenceEstablishes)
-	runtime := NewRuntime(syntheticProvider{codes: []CodeResolution{{
+	runtime := NewRuntimeWithSourcePolicy(syntheticProvider{codes: []CodeResolution{{
 		Family: "building", Edition: "DEMO-IBC-2024", Status: StatusResolved, Basis: "DEMO ordinance", ExactEvidence: []EvidenceLink{link},
-	}}})
+	}}}, demoPolicy())
 
 	result, err := runtime.Resolve(context.Background(), Query{Address: "100 Demo Plaza", ApplicabilityDate: "2026-08-25"})
 	if err != nil {
