@@ -1,9 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 import {
   validatePolicy,
   validateSyntheticFixture,
   validateRepositoryPaths,
+  validatePublicArtifact,
+  validateRepository,
 } from '../scripts/public-boundary.mjs';
 
 const policy = {
@@ -11,6 +16,7 @@ const policy = {
   default_disposition: 'review_required',
   synthetic_jurisdiction_prefix: 'DEMO-',
   forbidden_top_level_paths: ['corpus', 'production-data', 'research'],
+  approved_top_level_paths: ['README.md', 'demo', 'docs', 'test', 'policy', 'schemas'],
   material_classes: {
     external_material: { public_repository: 'review_required' },
     production_regulatory_corpus: { public_repository: 'prohibited' },
@@ -70,5 +76,62 @@ test('production-data paths cannot appear at repository top level', () => {
   assert.match(
     validateRepositoryPaths(['README.md', 'corpus', 'docs'], policy).join('\n'),
     /forbidden top-level path: corpus/,
+  );
+});
+
+test('unreviewed directories are not silently public-safe', () => {
+  assert.match(
+    validateRepositoryPaths(['README.md', 'new-regulatory-dataset'], policy).join('\n'),
+    /unreviewed public top-level path/,
+  );
+});
+
+test('non-fictional jurisdiction data fails outside demo and in alternate fixture directories', () => {
+  const fixture = JSON.stringify({ jurisdiction_id: 'US-CO', status: 'resolved' });
+  for (const place of [
+    'test/fixtures/overlooked.json',
+    'docs/hidden-corpus.json',
+    'unknown-directory/hidden.json',
+  ]) {
+    assert.notEqual(validatePublicArtifact(place, fixture, policy).length, 0, place);
+  }
+  assert.deepEqual(
+    validatePublicArtifact(
+      'test/fixtures/conforming.json',
+      JSON.stringify({ jurisdiction_id: 'DEMO-XX', description: 'synthetic fixture' }),
+      policy,
+    ),
+    [],
+  );
+});
+
+test('regulated attachments and disguised JSON schemas do not bypass review', () => {
+  assert.match(
+    validatePublicArtifact('docs/corpus/source.txt', '', policy).join('\n'),
+    /prohibited corpus directory/,
+  );
+  assert.match(
+    validatePublicArtifact('test/fixtures/agency.pdf', '', policy).join('\n'),
+    /private custody/,
+  );
+  assert.match(
+    validatePublicArtifact('schemas/regulation.schema.json', '{"jurisdiction_id":"US-CO"}', policy).join('\n'),
+    /actual JSON Schema/,
+  );
+});
+
+test('repository-wide validation rejects alternate-path regulatory fixture', (t) => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'bcm-public-boundary-'));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  fs.mkdirSync(path.join(root, 'policy'));
+  fs.mkdirSync(path.join(root, 'test', 'fixtures'), { recursive: true });
+  fs.writeFileSync(path.join(root, 'policy', 'public-boundary.json'), JSON.stringify(policy));
+  fs.writeFileSync(
+    path.join(root, 'test', 'fixtures', 'leak.json'),
+    JSON.stringify({ jurisdiction_id: 'US-CO', title: 'fictional red-team sentinel' }),
+  );
+  assert.match(
+    validateRepository(root).join('\n'),
+    /test\/fixtures\/leak.json.*synthetic jurisdiction prefix/,
   );
 });
