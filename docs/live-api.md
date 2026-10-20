@@ -15,7 +15,10 @@ The public Go service supports a configurable remote provider. Without configura
 - `BCM_PROVIDER_URL`: an HTTPS origin for the private Authority Engine service, accessible to the Go service but **not** exposed by the browser.
 - `BCM_PROVIDER_BUNDLE_DIGEST`: the precise digest from a separately reviewed, non-demo bundle loaded by that private Authority Engine. A digest mismatch prevents live results.
 - `BCM_PUBLIC_ORIGIN`: the public website origin, normally `https://laurajoyhutchins.github.io`. Browser CORS is restricted to this origin.
-- `BCM_PROVIDER_TOKEN`: optional server-side bearer credential for a private provider if that service supports bearer authentication. Never place a credential in GitHub Pages variables.
+- `BCM_PROVIDER_AUTH_MODE`: required for the live Go service. Use `gcp_id_token` when the private Authority Engine is protected by Cloud Run IAM, or `bearer` only when a separate provider explicitly validates bearer tokens.
+- `BCM_PROVIDER_TOKEN`: server-side secret required only in `bearer` mode; prohibited in `gcp_id_token` mode. Never place credentials in GitHub Pages variables.
+
+For Cloud Run, grant the **public API service account** `roles/run.invoker` on the private backend service only. The Go API obtains a short-lived Google-signed identity token from the Cloud Run metadata server with the private service origin as the audience. No service-account key file is required or permitted. Keep the private backend unauthenticated-invoker permission disabled.
 - `PORT`: listen port, defaults to `8080` when the live provider is configured.
 
 The server offers `GET /v1/readiness` for Pages to check the private service's address-lookup capability and expected bundle identity. `GET /health` only establishes process liveness. Neither endpoint implies nationwide coverage.
