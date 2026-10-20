@@ -12,7 +12,7 @@ The input does not contain a required code-family selector. A provider may there
 
 ## Runtime evidence acceptance
 
-The provider's `resolved` status is not proof. Before `ProjectVerifier` reduces any result, the canonical `Runtime` requires an exact, request-specific `code_adoption` claim whose establishing text satisfies the *trusted* `SourcePolicy` for the query jurisdiction and applicability date. Contradicted, superseded, absent, or unapproved evidence fails with `data_bundle_invalid`. Bare source IDs, prose basis, and provider conformance do not promote a claim.
+The provider's `resolved` or `not_applicable` status is not proof. Before `ProjectVerifier` reduces any result, the canonical `Runtime` requires an exact, request-specific `code_adoption` claim whose establishing text satisfies the *trusted* `SourcePolicy` for the query jurisdiction and applicability date. Contradicted, superseded, absent, or unapproved evidence fails with `data_bundle_invalid`. Bare source IDs, prose basis, and provider conformance do not promote a claim.
 
 A production caller must configure its approved policy using `NewRuntimeWithSourcePolicy`. `NewRuntime` without a policy remains suitable for non-resolved or explicitly insufficient results but cannot issue verified resolved determinations. This is deliberately a breaking fail-closed constraint on any integration that previously asserted `resolved` without request-specific evidence.
 
