@@ -74,6 +74,7 @@
     ".gitignore",
     "CONTRIBUTING.md",
     "Dockerfile",
+    "Dockerfile.utility-context",
     "LICENSE",
     "NOTICE",
     "README.md",

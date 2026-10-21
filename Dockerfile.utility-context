@@ -1,0 +1,17 @@
+FROM golang:1.23-alpine AS build
+WORKDIR /src
+COPY go.mod ./
+COPY utilitycontext/ utilitycontext/
+COPY cmd/bcm-utility-api/ cmd/bcm-utility-api/
+RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /bcm-utility-api ./cmd/bcm-utility-api
+
+FROM gcr.io/distroless/static-debian12:nonroot
+COPY --from=build /bcm-utility-api /bcm-utility-api
+# The verified derivative is supplied by the deployment job, never checked in.
+COPY --chown=65532:65532 private-view/county-context.json /data/county-context.json
+USER nonroot:nonroot
+ENV PORT=8080
+ENV BCM_UTILITY_CONTEXT_VIEW_PATH=/data/county-context.json
+ENV BCM_UTILITY_CONTEXT_VIEW_SHA256=16490b5c9db2f4f8a690e9c884890c0276d55b45a7ea85723088ca31f564a58c
+EXPOSE 8080
+ENTRYPOINT ["/bcm-utility-api"]
