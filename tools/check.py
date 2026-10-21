@@ -26,7 +26,7 @@ def main() -> int:
 
     tracked = subprocess.run(
         ["git", "ls-files", "-z", "--", "*.go"], cwd=ROOT, capture_output=True, check=True
-    ).stdout.decode().split("\\0")
+    ).stdout.decode().split(chr(0))
     go_files = [path for path in tracked if path]
     if not go_files:
         raise SystemExit("No tracked Go files; cannot claim formatting passed")
@@ -37,7 +37,7 @@ def main() -> int:
     failures: list[str] = []
     result = subprocess.run(["gofmt", "-l", *go_files], cwd=ROOT, capture_output=True, text=True)
     if result.returncode or result.stdout.strip():
-        print("Unformatted Go source:\\n" + result.stdout + result.stderr, file=sys.stderr)
+        print("Unformatted Go source:\n" + result.stdout + result.stderr, file=sys.stderr)
         failures.append("Go formatting")
     checks = [
         ("Go vet", ["go", "vet", "./..."]),
