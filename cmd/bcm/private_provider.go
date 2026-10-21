@@ -87,6 +87,9 @@ func newPrivateProvider(raw, token string) (*privateProvider, error) {
 	return &privateProvider{base: strings.TrimSuffix(uri.String(), "/"), token: token, client: &http.Client{Timeout: 10 * time.Second}}, nil
 }
 
+// Successful private-provider responses may contain at most 1 MiB of JSON and whitespace.
+const maxPrivateProviderResponseBytes = 1 << 20
+
 func (p *privateProvider) request(ctx context.Context, method, path string, payload any, dst any) (int, error) {
 	var body io.Reader
 	if payload != nil {
@@ -127,8 +130,23 @@ func (p *privateProvider) request(ctx context.Context, method, path string, payl
 		_ = json.NewDecoder(io.LimitReader(resp.Body, 1<<16)).Decode(&e)
 		return resp.StatusCode, fmt.Errorf("upstream rejected request: %s", e.Code)
 	}
-	if err := json.NewDecoder(io.LimitReader(resp.Body, 1<<20)).Decode(dst); err != nil {
+	// Read one byte past the hard ceiling so even trailing whitespace cannot
+	// disguise an oversized response. This bounds memory independently of
+	// the JSON decoder's consumption of the first value.
+	responseBytes, err := io.ReadAll(io.LimitReader(resp.Body, maxPrivateProviderResponseBytes+1))
+	if err != nil {
 		return 0, err
+	}
+	if len(responseBytes) > maxPrivateProviderResponseBytes {
+		return 0, errors.New("provider response exceeds 1 MiB limit")
+	}
+	decoder := json.NewDecoder(bytes.NewReader(responseBytes))
+	if err := decoder.Decode(dst); err != nil {
+		return 0, err
+	}
+	var extra any
+	if err := decoder.Decode(&extra); err != io.EOF {
+		return 0, errors.New("provider response contains trailing content")
 	}
 	return resp.StatusCode, nil
 }
