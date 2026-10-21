@@ -59,8 +59,8 @@ func TestResolvedClaimRequiresRequestSpecificQualifyingEvidence(t *testing.T) {
 
 func TestMalformedProviderFieldsNeverEnterProjectCodeBasis(t *testing.T) {
 	tests := []struct {
-		name      string
-		facts     []DerivedFact
+		name       string
+		facts      []DerivedFact
 		references []EvidenceRef
 	}{
 		{name: "missing derived key", facts: []DerivedFact{{Value: "DEMO-XX"}}},
@@ -76,7 +76,7 @@ func TestMalformedProviderFieldsNeverEnterProjectCodeBasis(t *testing.T) {
 				Jurisdiction: JurisdictionContext{
 					CountryCode: "US", PrimaryJurisdictionID: "DEMO-XX", PrimaryJurisdictionName: "Demo",
 				},
-				Codes: []CodeResolution{{Family: "building", Status: StatusPartiallyResolved, Evidence: tt.references}},
+				Codes:        []CodeResolution{{Family: "building", Status: StatusPartiallyResolved, Evidence: tt.references}},
 				DerivedFacts: tt.facts,
 			}})
 			_, err := NewProjectVerifier(runtime).VerifyProject(context.Background(), ProjectRequest{
@@ -93,9 +93,9 @@ func TestMalformedProviderFieldsNeverEnterProjectCodeBasis(t *testing.T) {
 func TestAffirmativeNonApplicabilityRequiresLegalProof(t *testing.T) {
 	link := demoEvidenceLink("DEMO-NOT-APPLICABLE", EvidenceEstablishes)
 	for _, tt := range []struct {
-		name string
-		policy SourcePolicy
-		links []EvidenceLink
+		name         string
+		policy       SourcePolicy
+		links        []EvidenceLink
 		wantVerified bool
 	}{
 		{name: "bare provider assertion"},

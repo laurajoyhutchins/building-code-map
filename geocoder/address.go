@@ -15,11 +15,11 @@ var ErrInvalidAddress = errors.New("enter a civic address with house number, str
 // ParsedAddress is the normalized, unverified input to a geocoder.
 type ParsedAddress struct {
 	HouseNumber string `json:"house_number"`
-	Street string `json:"street"`
-	City string `json:"city"`
-	State string `json:"state"`
-	PostalCode string `json:"postal_code,omitempty"`
-	Normalized string `json:"normalized"`
+	Street      string `json:"street"`
+	City        string `json:"city"`
+	State       string `json:"state"`
+	PostalCode  string `json:"postal_code,omitempty"`
+	Normalized  string `json:"normalized"`
 }
 
 var (

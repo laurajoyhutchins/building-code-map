@@ -13,9 +13,9 @@ import (
 )
 
 const (
-	ProjectVerificationPath       = "/v1/project-code-basis"
-	ProjectVerificationRouteClass = "project_code_verification"
-	MaxRequestBodyBytes     int64 = 64 * 1024
+	ProjectVerificationPath             = "/v1/project-code-basis"
+	ProjectVerificationRouteClass       = "project_code_verification"
+	MaxRequestBodyBytes           int64 = 64 * 1024
 )
 
 type ProjectVerifier interface {

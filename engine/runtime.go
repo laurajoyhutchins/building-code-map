@@ -201,8 +201,8 @@ func (runtime Runtime) validateResolvedEvidence(result Resolution) error {
 		}
 		claim := EvidenceClaim{
 			ID: claimID, Kind: claimKind,
-			JurisdictionID: result.Jurisdiction.PrimaryJurisdictionID,
-			AsOf: result.Query.ApplicabilityDate,
+			JurisdictionID:  result.Jurisdiction.PrimaryJurisdictionID,
+			AsOf:            result.Query.ApplicabilityDate,
 			LegallyMaterial: true, Links: code.ExactEvidence,
 		}
 		verification, err := VerifyClaimEvidence(claim, runtime.sourcePolicy)

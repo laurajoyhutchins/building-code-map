@@ -44,13 +44,13 @@ func TestProviderConformanceRuleCatalogIsStableAndQualityScoped(t *testing.T) {
 		"BCM-CONF-009",
 	}
 	allowedDimensions := map[string]bool{
-		"accuracy": true,
+		"accuracy":     true,
 		"completeness": true,
-		"conformity": true,
-		"consistency": true,
-		"coverage": true,
-		"timeliness": true,
-		"uniqueness": true,
+		"conformity":   true,
+		"consistency":  true,
+		"coverage":     true,
+		"timeliness":   true,
+		"uniqueness":   true,
 	}
 
 	rules := ProviderConformanceRuleCatalog()
@@ -153,7 +153,7 @@ func TestProviderConformanceDiagnosticsAreDeterministic(t *testing.T) {
 func TestNotApplicableRuleMatchesRuntimeValidation(t *testing.T) {
 	resolution := Resolution{
 		Jurisdiction: JurisdictionContext{CountryCode: "US", PrimaryJurisdictionID: "DEMO-XX", PrimaryJurisdictionName: "Demo"},
-		Codes: []CodeResolution{{Family: "building", Status: StatusNotApplicable}},
+		Codes:        []CodeResolution{{Family: "building", Status: StatusNotApplicable}},
 	}
 
 	diagnostics := ValidateResolutionConformance(resolution)
@@ -167,8 +167,8 @@ func TestNotApplicableRuleMatchesRuntimeValidation(t *testing.T) {
 
 func TestEvidenceDefectRuleChecksProjectOutputWithoutCreatingAnotherVerdictPath(t *testing.T) {
 	project := ProjectCodeBasis{
-		Verdict: ProjectConditional,
-		Unresolved: []ProjectUnresolved{{Kind: RequirementEvidenceDefect, Message: "Synthetic evidence defect"}},
+		Verdict:           ProjectConditional,
+		Unresolved:        []ProjectUnresolved{{Kind: RequirementEvidenceDefect, Message: "Synthetic evidence defect"}},
 		FollowUpQuestions: []string{"Synthetic evidence defect"},
 	}
 

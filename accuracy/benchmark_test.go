@@ -11,7 +11,7 @@ func demoTruth(status engine.ResolutionStatus, edition string) Case {
 		ID: "DEMO-CASE", ProjectID: "DEMO-PROJECT", JurisdictionID: "DEMO-XX",
 		Family: "building", AsOf: "2026-08-25", ReviewedAt: "2026-08-26",
 		SourceIDs: []string{"DEMO-PRIMARY-SOURCE"},
-		Expected: []ExpectedCode{{Status: status, Edition: edition}},
+		Expected:  []ExpectedCode{{Status: status, Edition: edition}},
 	}
 }
 
@@ -25,50 +25,50 @@ func demoResult(status engine.ResolutionStatus, edition string, verdict engine.P
 
 func TestAccuracyBenchmarkDistinguishesCorrectClaimsFromAbstention(t *testing.T) {
 	for _, tt := range []struct {
-		name    string
-		truth   Case
-		actual  engine.ProjectCodeBasis
-		outcome Outcome
+		name          string
+		truth         Case
+		actual        engine.ProjectCodeBasis
+		outcome       Outcome
 		falseVerified bool
 	}{
 		{
-			name: "correct verified edition",
-			truth: demoTruth(engine.StatusResolved, "DEMO-2024"),
-			actual: demoResult(engine.StatusResolved, "DEMO-2024", engine.ProjectVerified),
+			name:    "correct verified edition",
+			truth:   demoTruth(engine.StatusResolved, "DEMO-2024"),
+			actual:  demoResult(engine.StatusResolved, "DEMO-2024", engine.ProjectVerified),
 			outcome: OutcomeCorrect,
 		},
 		{
-			name: "wrong edition is an incorrect assertion",
-			truth: demoTruth(engine.StatusResolved, "DEMO-2024"),
-			actual: demoResult(engine.StatusResolved, "DEMO-2021", engine.ProjectVerified),
+			name:    "wrong edition is an incorrect assertion",
+			truth:   demoTruth(engine.StatusResolved, "DEMO-2024"),
+			actual:  demoResult(engine.StatusResolved, "DEMO-2021", engine.ProjectVerified),
 			outcome: OutcomeFalseClaim, falseVerified: true,
 		},
 		{
-			name: "safe refusal is not an incorrect legal claim",
-			truth: demoTruth(engine.StatusResolved, "DEMO-2024"),
-			actual: demoResult(engine.StatusInsufficientEvidence, "", engine.ProjectNotVerified),
+			name:    "safe refusal is not an incorrect legal claim",
+			truth:   demoTruth(engine.StatusResolved, "DEMO-2024"),
+			actual:  demoResult(engine.StatusInsufficientEvidence, "", engine.ProjectNotVerified),
 			outcome: OutcomeAbstained,
 		},
 		{
-			name: "affirmative non-applicability needs matching legal truth",
-			truth: demoTruth(engine.StatusResolved, "DEMO-2024"),
-			actual: demoResult(engine.StatusNotApplicable, "", engine.ProjectVerified),
+			name:    "affirmative non-applicability needs matching legal truth",
+			truth:   demoTruth(engine.StatusResolved, "DEMO-2024"),
+			actual:  demoResult(engine.StatusNotApplicable, "", engine.ProjectVerified),
 			outcome: OutcomeFalseClaim, falseVerified: true,
 		},
 		{
-			name: "correct conditional assessment",
-			truth: demoTruth(engine.StatusLocalRecordRequired, ""),
-			actual: demoResult(engine.StatusLocalRecordRequired, "", engine.ProjectConditional),
+			name:    "correct conditional assessment",
+			truth:   demoTruth(engine.StatusLocalRecordRequired, ""),
+			actual:  demoResult(engine.StatusLocalRecordRequired, "", engine.ProjectConditional),
 			outcome: OutcomeCorrect,
 		},
 		{
-			name: "verified verdict for unresolved reference is misleading",
-			truth: demoTruth(engine.StatusLocalRecordRequired, ""),
-			actual: demoResult(engine.StatusLocalRecordRequired, "", engine.ProjectVerified),
+			name:    "verified verdict for unresolved reference is misleading",
+			truth:   demoTruth(engine.StatusLocalRecordRequired, ""),
+			actual:  demoResult(engine.StatusLocalRecordRequired, "", engine.ProjectVerified),
 			outcome: OutcomeCorrect, falseVerified: true,
 		},
 		{
-			name: "verified result in wrong jurisdiction",
+			name:  "verified result in wrong jurisdiction",
 			truth: demoTruth(engine.StatusResolved, "DEMO-2024"),
 			actual: func() engine.ProjectCodeBasis {
 				basis := demoResult(engine.StatusResolved, "DEMO-2024", engine.ProjectVerified)
@@ -107,7 +107,7 @@ func TestAccuracyBenchmarkFlagsOmittedCodeFamilyFromVerifiedProject(t *testing.T
 func TestAccuracyBenchmarkRequiresIndependentSourceDenominator(t *testing.T) {
 	c := demoTruth(engine.StatusResolved, "DEMO-2024")
 	for _, tt := range []struct {
-		name string
+		name   string
 		change func(*Case)
 	}{
 		{name: "no primary sources", change: func(c *Case) { c.SourceIDs = nil }},

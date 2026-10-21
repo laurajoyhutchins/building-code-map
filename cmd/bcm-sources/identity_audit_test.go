@@ -24,10 +24,10 @@ func TestPinnedGeometryMatchesSourceIdentities(t *testing.T) {
 
 func TestPinnedGeometryRejectsDrift(t *testing.T) {
 	tests := []struct {
-		name string
-		geometry string
+		name       string
+		geometry   string
 		identities string
-		count int
+		count      int
 	}{
 		{"place code drift", strings.Replace(syntheticGeometry, "90001", "90002", 1), syntheticIdentities, 1},
 		{"name drift", strings.Replace(syntheticGeometry, "FICTIONAL CITY", "OTHER", 1), syntheticIdentities, 1},
