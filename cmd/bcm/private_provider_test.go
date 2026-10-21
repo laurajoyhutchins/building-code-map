@@ -257,7 +257,7 @@ func TestPrivateProviderResponseIsCompleteAndSizeBounded(t *testing.T) {
 		wantError string
 	}{
 		{name: "single JSON value", body: valid},
-		{name: "trailing JSON whitespace", body: valid + " \\n\\t"},
+		{name: "trailing JSON whitespace", body: valid + " \n\t"},
 		{name: "exactly at size limit", body: valid + strings.Repeat(" ", maxPrivateProviderResponseBytes-len(valid))},
 		{name: "second JSON object", body: valid + `{"other":true}`, wantError: "trailing content"},
 		{name: "trailing non-JSON bytes", body: valid + " garbage", wantError: "trailing content"},
