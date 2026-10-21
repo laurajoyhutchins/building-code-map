@@ -12,24 +12,25 @@ import (
  "testing"
 )
 
-const demoDOLA = `[{"id":11,"city":"FICTIONAL-CITY","the_geom":{"type":"MultiPolygon","coordinates":[[[[-105,40],[-104,40],[-104,41],[-105,40]]]]}}]`
+const demoDOLA = `[{"id":"11","city":"90001","first_city":"FICTIONAL-CITY","the_geom":{"type":"MultiPolygon","coordinates":[[[[-105,40],[-104,40],[-104,41],[-105,40]]]]}}]`
 const zeroHash = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 
 func TestNormalizeDOLASyntheticOnly(t *testing.T){
- r,err:=normalizeDOLA(strings.NewReader(demoDOLA),zeroHash);if err!=nil{t.Fatal(err)}
+ r,err:=normalizeDOLA(strings.NewReader(demoDOLA),zeroHash,1);if err!=nil{t.Fatal(err)}
  if len(r.Features)!=1||r.Features[0].Properties["status"]!="geographic_observation_only"{t.Fatalf("unexpected candidate result %+v",r)}
+ if r.Features[0].Properties["jurisdiction_name"]!="FICTIONAL-CITY"||r.Features[0].Properties["source_city_code"]!="90001"{t.Fatalf("name/code mapping incorrect: %+v",r.Features[0].Properties)}
  if _,exists:=r.Features[0].Properties["code_adopted"];exists{t.Fatal("geometry importer asserted adoption")}
 }
 func TestNormalizeRejectsMalformedAndDuplicate(t *testing.T){
  cases:=[]string{
   `[]`,
-  `[{"id":1,"city":"FICTIONAL","the_geom":{"type":"Point","coordinates":[]}}]`,
-  `[{"id":1,"city":"FICTIONAL","the_geom":{"type":"MultiPolygon","coordinates":[[[[-105,40],[-104,40],[-104,41],[-105,40]]]]}},{"id":1,"city":"FICTIONAL","the_geom":{"type":"MultiPolygon","coordinates":[[[[-105,40],[-104,40],[-104,41],[-105,40]]]]}}]`,
-  `[{"id":1,"city":"FICTIONAL","the_geom":{"type":"MultiPolygon","coordinates":[[[[-105,40],[-104,40],[-104,41],[-105,40]]]]}}] {}`,
-  `[{"id":1,"city":"FICTIONAL","the_geom":{"type":"MultiPolygon","coordinates":[[[[-999,40],[-104,40],[-104,41],[-999,40]]]]}}]`,
+  `[{"id":1,"city":"90001","first_city":"FICTIONAL","the_geom":{"type":"Point","coordinates":[]}}]`,
+  `[{"id":1,"city":"90001","first_city":"FICTIONAL","the_geom":{"type":"MultiPolygon","coordinates":[[[[-105,40],[-104,40],[-104,41],[-105,40]]]]}},{"id":1,"city":"90001","first_city":"FICTIONAL","the_geom":{"type":"MultiPolygon","coordinates":[[[[-105,40],[-104,40],[-104,41],[-105,40]]]]}}]`,
+  `[{"id":1,"city":"90001","first_city":"FICTIONAL","the_geom":{"type":"MultiPolygon","coordinates":[[[[-105,40],[-104,40],[-104,41],[-105,40]]]]}}] {}`,
+  `[{"id":1,"city":"90001","first_city":"FICTIONAL","the_geom":{"type":"MultiPolygon","coordinates":[[[[-999,40],[-104,40],[-104,41],[-999,40]]]]}}]`,
  }
- for _,raw:=range cases{if _,err:=normalizeDOLA(strings.NewReader(raw),zeroHash);err==nil{t.Errorf("accepted invalid input: %s",raw)}}
- if _,err:=normalizeDOLA(strings.NewReader(demoDOLA),"wrong");err==nil{t.Fatal("accepted invalid digest")}
+ for _,raw:=range cases{if _,err:=normalizeDOLA(strings.NewReader(raw),zeroHash,1);err==nil{t.Errorf("accepted invalid input: %s",raw)}}
+ if _,err:=normalizeDOLA(strings.NewReader(demoDOLA),"wrong",1);err==nil{t.Fatal("accepted invalid digest")}
 }
 func TestFetchContentIdentifiedAndNoOverwrite(t *testing.T){
  data:=[]byte("FICTIONAL synthetic source bytes")
@@ -52,9 +53,24 @@ func TestFetchFailsClosedOnHashAndSize(t *testing.T){
 func TestNormalizeFileVerifiesReceipt(t *testing.T){
  dir:=t.TempDir();raw:=filepath.Join(dir,"source.json");os.WriteFile(raw,[]byte(demoDOLA),0600)
  sum:=sha256.Sum256([]byte(demoDOLA));sha:=hex.EncodeToString(sum[:]);receiptPath:=raw+".receipt.json"
- if err:=writeNewJSON(receiptPath,Receipt{SourceID:"co-dola-municipal",SHA256:sha});err!=nil{t.Fatal(err)}
- out:=filepath.Join(dir,"features.geojson");if err:=normalizeFile(raw,receiptPath,out);err!=nil{t.Fatal(err)}
+ if err:=writeNewJSON(receiptPath,Receipt{SourceID:"co-dola-municipal",SourceURL:sources[4].URL,SHA256:sha,Bytes:int64(len(demoDOLA)),State:"unreviewed"});err!=nil{t.Fatal(err)}
+ out:=filepath.Join(dir,"features.geojson");if err:=normalizeFile(raw,receiptPath,out,1);err!=nil{t.Fatal(err)}
  if _,err:=os.Stat(out);err!=nil{t.Fatal(err)}
  os.WriteFile(raw,[]byte("altered"),0600)
- if err:=normalizeFile(raw,receiptPath,filepath.Join(dir,"second.geojson"));err==nil{t.Fatal("tampered source admitted")}
+ if err:=normalizeFile(raw,receiptPath,filepath.Join(dir,"second.geojson"),1);err==nil{t.Fatal("tampered source admitted")}
+}
+
+func TestDOLARejectsMissingNameOrIncompleteSnapshot(t *testing.T){
+ raw:=strings.Replace(demoDOLA,`"first_city":"FICTIONAL-CITY"`,`"first_city":""`,1)
+ if _,err:=normalizeDOLA(strings.NewReader(raw),zeroHash,1);err==nil{t.Fatal("missing municipality name accepted")}
+ if _,err:=normalizeDOLA(strings.NewReader(demoDOLA),zeroHash,274);err==nil{t.Fatal("truncated source accepted")}
+ if _,err:=normalizeDOLA(strings.NewReader(demoDOLA),zeroHash,0);err==nil{t.Fatal("missing expected count accepted")}
+}
+func TestDOLARejectsReceiptSourceSpoofing(t *testing.T){
+ dir:=t.TempDir();raw:=filepath.Join(dir,"raw.json")
+ if err:=os.WriteFile(raw,[]byte(demoDOLA),0600);err!=nil{t.Fatal(err)}
+ sum:=sha256.Sum256([]byte(demoDOLA));hash:=hex.EncodeToString(sum[:])
+ receipt:=filepath.Join(dir,"spoof.json")
+ if err:=writeNewJSON(receipt,Receipt{SourceID:"co-dola-municipal",SourceURL:"https://example.com/other.json",SHA256:hash,Bytes:int64(len(demoDOLA)),State:"unreviewed"});err!=nil{t.Fatal(err)}
+ if err:=normalizeFile(raw,receipt,filepath.Join(dir,"out.geojson"),1);err==nil{t.Fatal("spoofed receipt source accepted")}
 }
