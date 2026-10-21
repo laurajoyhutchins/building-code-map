@@ -137,3 +137,47 @@ func TestProjectVerificationPreservesFactsEvidenceAndProvenance(t *testing.T) {
 		t.Fatalf("provenance = %#v", basis.Provenance)
 	}
 }
+
+func TestProjectVerificationRejectsConflictingEvidenceLinkIDAcrossCodes(t *testing.T) {
+	first := demoEvidenceLink("SAME-LINK-ID", EvidenceEstablishes)
+	second := demoEvidenceLink("SAME-LINK-ID", EvidenceCorroborates)
+	runtime := NewRuntimeWithSourcePolicy(projectProvider{result: Resolution{
+		Jurisdiction: JurisdictionContext{
+			CountryCode: "US", PrimaryJurisdictionID: "DEMO-XX",
+			PrimaryJurisdictionName: "Demonstration Jurisdiction",
+		},
+		Codes: []CodeResolution{
+			{Family: "building", Status: StatusResolved, ExactEvidence: []EvidenceLink{first}},
+			{Family: "energy", Status: StatusInsufficientEvidence, ExactEvidence: []EvidenceLink{second}},
+		},
+	}}, demoPolicy())
+	_, err := NewProjectVerifier(runtime).VerifyProject(context.Background(), ProjectRequest{
+		ProjectID: "DEMO-EVIDENCE-CONFLICT", Address: "100 Demo Plaza", ApplicabilityDate: "2026-08-25",
+	})
+	if got := NormalizeError(err).Code; got != ErrorDataBundleInvalid {
+		t.Fatalf("conflicting link ID error = %v (code %s), want %s", err, got, ErrorDataBundleInvalid)
+	}
+}
+
+func TestProjectVerificationAllowsIdenticalEvidenceLinkReusedAcrossCodes(t *testing.T) {
+	same := demoEvidenceLink("SAME-LINK-ID", EvidenceEstablishes)
+	runtime := NewRuntimeWithSourcePolicy(projectProvider{result: Resolution{
+		Jurisdiction: JurisdictionContext{
+			CountryCode: "US", PrimaryJurisdictionID: "DEMO-XX",
+			PrimaryJurisdictionName: "Demonstration Jurisdiction",
+		},
+		Codes: []CodeResolution{
+			{Family: "building", Status: StatusResolved, ExactEvidence: []EvidenceLink{same}},
+			{Family: "energy", Status: StatusResolved, ExactEvidence: []EvidenceLink{same}},
+		},
+	}}, demoPolicy())
+	basis, err := NewProjectVerifier(runtime).VerifyProject(context.Background(), ProjectRequest{
+		ProjectID: "DEMO-EVIDENCE-REUSED", Address: "100 Demo Plaza", ApplicabilityDate: "2026-08-25",
+	})
+	if err != nil {
+		t.Fatalf("identical reused link should be accepted, error = %v", err)
+	}
+	if basis.Verdict != ProjectVerified || len(basis.ExactEvidence) != 1 {
+		t.Fatalf("identical link must be represented once, basis = %#v", basis)
+	}
+}

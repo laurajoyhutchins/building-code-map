@@ -134,6 +134,10 @@ func validateResolution(result Resolution) error {
 	if len(result.Codes) == 0 {
 		return EngineError{Code: ErrorDataBundleInvalid, Message: "resolution requires at least one explicit code-family result"}
 	}
+	// A link ID has one evidence meaning across the entire resolved bundle.
+	// Without this guard, project reduction would keep whichever duplicate
+	// happened to arrive first and silently discard contradictory records.
+	linksByID := make(map[string]EvidenceLink)
 	for index, code := range result.Codes {
 		if strings.TrimSpace(code.Family) == "" {
 			return EngineError{Code: ErrorDataBundleInvalid, Message: "code resolution family is required", Details: map[string]any{"index": index}}
@@ -151,6 +155,9 @@ func validateResolution(result Resolution) error {
 		}
 		for _, link := range code.ExactEvidence {
 			if err := validateEvidenceLink(link, link.ClaimID); err != nil {
+				return err
+			}
+			if err := acceptEvidenceLinkIdentity(linksByID, link); err != nil {
 				return err
 			}
 		}
