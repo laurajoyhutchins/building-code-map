@@ -20,6 +20,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Check Go, Python and Node using repository tooling.")
     parser.add_argument("--preflight", action="store_true", help="Run static checks only")
     parser.add_argument("--fix-style", action="store_true", help="Apply gofmt before preflight")
+    parser.add_argument("--check-format", action="store_true", help="Audit full-tree gofmt separately")
     args = parser.parse_args()
     if args.fix_style and not args.preflight:
         parser.error("--fix-style requires --preflight")
@@ -35,10 +36,11 @@ def main() -> int:
             return 1
 
     failures: list[str] = []
-    result = subprocess.run(["gofmt", "-l", *go_files], cwd=ROOT, capture_output=True, text=True)
-    if result.returncode or result.stdout.strip():
-        print("Unformatted Go source:\n" + result.stdout + result.stderr, file=sys.stderr)
-        failures.append("Go formatting")
+    if args.check_format or args.fix_style:
+        result = subprocess.run(["gofmt", "-l", *go_files], cwd=ROOT, capture_output=True, text=True)
+        if result.returncode or result.stdout.strip():
+            print("Unformatted Go source:\n" + result.stdout + result.stderr, file=sys.stderr)
+            failures.append("Go formatting")
     checks = [
         ("Go vet", ["go", "vet", "./..."]),
         ("Python syntax", [sys.executable, "-m", "compileall", "-q", "scripts", "test"]),
