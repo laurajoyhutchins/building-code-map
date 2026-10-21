@@ -91,18 +91,18 @@ func TestSourcePolicyUsesDocumentIdentityNotURLOrTier(t *testing.T) {
 }
 
 func TestDuplicateEvidenceLinkIdentityFailsClosedOnConflictingRecord(t *testing.T) {
-    first := demoEvidenceLink("DEMO-SHARED-ID", EvidenceEstablishes)
-    conflicting := demoEvidenceLink("DEMO-SHARED-ID", EvidenceCorroborates)
-    _, err := VerifyClaimEvidence(demoClaim(first, conflicting), demoPolicy())
-    if got := NormalizeError(err).Code; got != ErrorDataBundleInvalid {
-        t.Fatalf("conflicting link ID error = %v (code %s), want %s", err, got, ErrorDataBundleInvalid)
-    }
+	first := demoEvidenceLink("DEMO-SHARED-ID", EvidenceEstablishes)
+	conflicting := demoEvidenceLink("DEMO-SHARED-ID", EvidenceCorroborates)
+	_, err := VerifyClaimEvidence(demoClaim(first, conflicting), demoPolicy())
+	if got := NormalizeError(err).Code; got != ErrorDataBundleInvalid {
+		t.Fatalf("conflicting link ID error = %v (code %s), want %s", err, got, ErrorDataBundleInvalid)
+	}
 }
 
 func TestRepeatedIdenticalEvidenceLinkIdentityDoesNotChangeDecision(t *testing.T) {
-    same := demoEvidenceLink("DEMO-SHARED-ID", EvidenceEstablishes)
-    result, err := VerifyClaimEvidence(demoClaim(same, same), demoPolicy())
-    if err != nil || result.Decision != EvidenceVerified {
-        t.Fatalf("repeated same link result = %#v, err = %v", result, err)
-    }
+	same := demoEvidenceLink("DEMO-SHARED-ID", EvidenceEstablishes)
+	result, err := VerifyClaimEvidence(demoClaim(same, same), demoPolicy())
+	if err != nil || result.Decision != EvidenceVerified {
+		t.Fatalf("repeated same link result = %#v, err = %v", result, err)
+	}
 }
