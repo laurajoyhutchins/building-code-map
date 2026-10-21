@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/utility-context.schema.json",
+  "title": "BCM county utility context v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["status", "state", "county", "release_id", "reporting_year", "source_sha256", "sqlite_sha256", "view_sha256", "source_url", "disclaimer", "candidates"],
+  "properties": {
+    "status": {"const": "reported_county_candidates_not_site_verified"},
+    "state": {"type": "string", "pattern": "^[A-Z]{2}$"},
+    "county": {"type": "string", "minLength": 1},
+    "release_id": {"type": "string", "minLength": 1},
+    "reporting_year": {"type": "integer", "minimum": 2000},
+    "source_sha256": {"$ref": "#/$defs/digest"},
+    "sqlite_sha256": {"$ref": "#/$defs/digest"},
+    "view_sha256": {"$ref": "#/$defs/digest"},
+    "source_url": {"type": "string", "pattern": "^https://www\\.eia\\.gov/"},
+    "disclaimer": {"type": "string", "minLength": 1},
+    "candidates": {"type": "array", "items": {"$ref": "#/$defs/candidate"}}
+  },
+  "$defs": {
+    "digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "candidate": {
+      "type": "object", "additionalProperties": false,
+      "required": ["eia_id", "reported_name", "source_sheet", "source_row", "activities"],
+      "properties": {
+        "eia_id": {"type": "integer", "minimum": 1},
+        "reported_name": {"type": "string", "minLength": 1},
+        "source_sheet": {"enum": ["Counties_States", "Counties_Territories"]},
+        "source_row": {"type": "integer", "minimum": 1},
+        "activities": {"type": "array", "items": {
+          "type": "object", "additionalProperties": false,
+          "required": ["code", "value"],
+          "properties": {"code": {"type": "string", "minLength": 1}, "value": {"enum": ["Y", "N"]}}
+        }}
+      }
+    }
+  }
+}

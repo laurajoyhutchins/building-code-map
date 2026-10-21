@@ -17,6 +17,7 @@ import (
 
 	"github.com/laurajoyhutchins/building-code-map/engine"
 	"github.com/laurajoyhutchins/building-code-map/httpapi"
+	"github.com/laurajoyhutchins/building-code-map/utilitycontext"
 )
 
 //go:embed web/*
@@ -67,7 +68,12 @@ func (demoProvider) Resolve(_ context.Context, query engine.NormalizedQuery) (en
 func newHandler() http.Handler { return handlerWithProvider(demoProvider{}, nil, "") }
 
 func handlerWithProvider(provider engine.Provider, remote *privateProvider, allowedOrigin string) http.Handler {
+	return handlerWithUtilityContext(provider, remote, allowedOrigin, nil)
+}
+
+func handlerWithUtilityContext(provider engine.Provider, remote *privateProvider, allowedOrigin string, catalog *utilitycontext.Catalog) http.Handler {
 	mux := http.NewServeMux()
+	if catalog != nil { mux.Handle(utilitycontext.Path, catalog.Handler()) }
 	runtime := engine.NewRuntime(provider)
 	mux.Handle(httpapi.ProjectVerificationPath, httpapi.NewHandler(engine.NewProjectVerifier(runtime), nil))
 	if remote != nil {
@@ -157,9 +163,22 @@ func main() {
 		if remote.expectedBundle == "" {
 			log.Fatal("BCM_PROVIDER_BUNDLE_DIGEST must pin a reviewed, non-demo runtime bundle")
 		}
-		handler = handlerWithProvider(remote, remote, origin)
+		var catalog *utilitycontext.Catalog
+		viewPath := os.Getenv("BCM_UTILITY_CONTEXT_VIEW_PATH")
+		viewSHA := os.Getenv("BCM_UTILITY_CONTEXT_VIEW_SHA256")
+		if viewPath != "" || viewSHA != "" {
+			if viewPath == "" || viewSHA == "" {
+				log.Fatal("BCM utility context requires both view path and exact SHA-256")
+			}
+			catalog, err = utilitycontext.Open(viewPath, viewSHA)
+			if err != nil { log.Fatalf("BCM utility context source rejected: %v", err) }
+		}
+		handler = handlerWithUtilityContext(remote, remote, origin, catalog)
 		log.Printf("BCM project verifier listening at %s; remote provider configured", *addr)
 	} else {
+		if os.Getenv("BCM_UTILITY_CONTEXT_VIEW_PATH") != "" || os.Getenv("BCM_UTILITY_CONTEXT_VIEW_SHA256") != "" {
+			log.Fatal("BCM utility context requires the configured live backend, not the fictional demo")
+		}
 		log.Printf("BCM fictional reference app at http://%s (no real-world coverage)", *addr)
 	}
 	server := &http.Server{Addr: *addr, Handler: handler, ReadHeaderTimeout: 5 * time.Second,
