@@ -24,9 +24,13 @@ Run from the public BCM repository, **writing all outputs to an approved private
 ```sh
 go run ./cmd/bcm-sources list
 go run ./cmd/bcm-sources fetch -source co-dola-municipal -out /private/bcm/co-municipal.json
+# Obtain the retained ID-only projection from the private bcm-regulatory-data
+# repository and verify its bytes against the pinned source SHA256.
 go run ./cmd/bcm-sources normalize-colorado \
   -in /private/bcm/co-municipal.json \
   -receipt /private/bcm/co-municipal.json.receipt.json \
+  -identities /private/bcm/municipality-identities.socrata.json \
+  -identities-sha256 a02aefaa936f95ac65cb4964eacd504b6940d9e028680b7f2410fc7d81c79aa9 \
   -out /private/bcm/co-municipal.candidates.geojson \
   -expected-count 274
 ```
@@ -37,7 +41,7 @@ BCAT and NAD require explicit `-allow-large`, have a bounded 4 GiB response limi
 
 ## Colorado geometry transformation
 
-The `normalize-colorado` command requires the exact digest-bearing acquisition receipt and an independently checked `-expected-count`. The live DOLA Socrata feed was checked on October 20, 2026: 274 records; `id` is a unique numeric source row identifier, `city` is a unique **five-digit place code** (for example `00760`), and **`first_city` is the display name** (for example `Aguilar`). The initial importer incorrectly treated `city` as the name; this is now covered by a regression test. Validate the expected count against [source metadata](https://data.colorado.gov/Local-Aggregation/Municipal-Boundaries-in-Colorado/w6jq-7em5) on each new vintage. If the count changes, explicitly review the new release before adjusting it.
+The `normalize-colorado` command requires the exact digest-bearing acquisition receipt, a separately retained and SHA-pinned identity projection, and an independently checked `-expected-count`. The live DOLA Socrata feed was checked on October 20, 2026: 274 records; `id` is a unique numeric source row identifier, `city` is a unique **five-digit place code** (for example `00760`), and **`first_city` is the display name** (for example `Aguilar`). The initial importer incorrectly treated `city` as the name; this is now covered by a regression test. Validate the expected count against [source metadata](https://data.colorado.gov/Local-Aggregation/Municipal-Boundaries-in-Colorado/w6jq-7em5) on each new vintage. If the count changes, explicitly review the new release before adjusting it.
 
 The converter validates source URL, byte length, digest, IDs, distinct source codes and MultiPolygon rings, and emits GeoJSON features with `jurisdiction_name`, `source_city_code`, `status=geographic_observation_only` and `source_sha256`. It refuses incomplete or mismatched snapshots and does not overwrite outputs. Data remains a **geographic observation**, not an incorporation-date claim, historical annexation proof, authoritative legal boundary, or evidence of code adoption.
 
@@ -51,3 +55,20 @@ An output should be compared against Census TIGER, dated DOLA annexation records
 4. Reuse the canonical provider and runtime bundle adapters once the ongoing [source-ownership migration](../docs/source-ownership.md) is complete. Test fail-closed behavior on contradictory and missing official evidence before any real-world `verified` outcome.
 
 Useful source pages: [DOE state portal](https://www.energycodes.gov/state-portal), [FEMA BCAT extract](https://zenodo.org/records/21084129), [USDOT NAD](https://data.transportation.gov/dataset/National-Address-Database-NAD-Text-File/fc2s-wawr), [DOLA municipality dataset](https://data.colorado.gov/Local-Aggregation/Municipal-Boundaries-in-Colorado/w6jq-7em5), [Census TIGER/Line](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html).
+
+## Private immutable object admission (operator step, not automatic)
+
+The full boundary JSON has not been uploaded or activated by the public software. After an authorized operator obtains it, verify its receipt and retain its raw bytes plus candidate GeoJSON under separate private GCS content-addressed keys. The following is the **required write pattern**, not evidence that an upload occurred:
+
+```sh
+# Set BCM_PRIVATE_GCS_BUCKET to an existing authorized *private* bucket.
+# Derive these keys from independently computed SHA-256 digests, not display names.
+gcloud storage cp --if-generation-match=0 \
+  /private/bcm/co-municipal.json \
+  "gs://${BCM_PRIVATE_GCS_BUCKET}/bcm/source/co-dola-municipal/<raw-sha256>.json"
+gcloud storage cp --if-generation-match=0 \
+  /private/bcm/co-municipal.candidates.geojson \
+  "gs://${BCM_PRIVATE_GCS_BUCKET}/bcm/candidates/co-dola-municipal/<candidate-sha256>.geojson"
+```
+
+The operator must read back both objects by generation, compare downloaded SHA-256 to local verified bytes, retain the object generation numbers and source receipts in private regulatory-data custody, and confirm bucket IAM prevents public access. DOLA calls its polygons best-effort, not legally authoritative. A geometric observation cannot establish jurisdiction or code adoption; review unresolved identity conflicts in the private reconciliation report before promoting any geographic claim. Neither output belongs in public Git.
