@@ -15,7 +15,8 @@ if (example.schema_version !== "0.3" || example.jurisdiction_id !== "DEMO-XX" ||
 }
 const original = fs.readFileSync(path.join(source, "index.html"), "utf8");
 if (!original.includes('<head>') || !original.includes('href="./styles.css"') ||
-    !original.includes('src="./app.js"')) {
+    !original.includes('src="./app.js"') ||
+    !original.includes('src="./utility-context.js"')) {
   throw Error("Public HTML must use relative static paths for Pages subpath hosting.");
 }
 const configured = process.env.BCM_PUBLIC_API_BASE_URL?.trim() || "";
@@ -36,7 +37,7 @@ const html = original.replace("<head>", "<head>\n  " + tag);
 fs.rmSync(target, { recursive: true, force: true });
 fs.mkdirSync(target, { recursive: true });
 fs.writeFileSync(path.join(target, "index.html"), html);
-for (const name of ["app.js", "styles.css"]) {
+for (const name of ["app.js", "styles.css", "utility-context.js"]) {
   fs.copyFileSync(path.join(source, name), path.join(target, name));
 }
 if (!apiBase) {

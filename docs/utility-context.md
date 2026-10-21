@@ -67,3 +67,27 @@ This is **not** a second regulatory decision path, a public geocoder database,
 or an address-level service-territory claim. It is disabled in DEMO-only mode,
 and it is not deployed by merging code. Production activation still requires
 private source and deployment verification and a separate user-interface review.
+
+## Project Utility Context in the BCM user interface
+
+The separately labeled Utility Context section is available **only in live
+API mode**. The browser sends the same project ID and address as the user's
+code-basis request to the existing `POST /v1/project-utility-context` operation.
+BCM's server-side bridge remains solely responsible for authenticating its
+private provider, geocoding to a unique address point, checking a source-bound
+county boundary, and reading the pinned EIA county-candidate view. The browser
+never derives state/county from entered address text and it never makes a
+jurisdiction or serving-utility determination.
+
+The code-basis result and utility context are independent. If the utility
+lookup is unavailable, unresolved, or ambiguous, its section shows that
+limitation without replacing the code verdict. Both views invalidate when any
+project input changes. Late HTTP responses from a previous project are ignored.
+The live section shows source IDs, the private provider bundle identity, EIA
+reporting year/release/view hash, and a capped candidate list with a clear
+non-confirmation notice. A candidate is **not** a verified service connection;
+no UI control asserts it is. The static Pages demo never issues this request.
+
+Enabling the section is not a production deployment. It remains inactive until
+the configured Go backend has its independently verified provider and EIA view
+installed, and public Pages is explicitly switched to that live backend.
