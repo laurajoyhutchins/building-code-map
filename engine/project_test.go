@@ -181,3 +181,24 @@ func TestProjectVerificationAllowsIdenticalEvidenceLinkReusedAcrossCodes(t *test
 		t.Fatalf("identical link must be represented once, basis = %#v", basis)
 	}
 }
+
+func TestProjectVerificationRejectsResolvedClaimWithoutEvidence(t *testing.T) {
+	provider := projectProvider{result: Resolution{
+		Jurisdiction: JurisdictionContext{
+			CountryCode: "US", PrimaryJurisdictionID: "DEMO-XX",
+			PrimaryJurisdictionName: "Demonstration Jurisdiction",
+		},
+		Codes: []CodeResolution{{
+			Family: "building", Edition: "DEMO-2024", Status: StatusResolved,
+			Basis: "Unsubstantiated provider assertion",
+		}},
+	}}
+	verifier := NewProjectVerifier(NewRuntimeWithSourcePolicy(provider, demoPolicy()))
+	basis, err := verifier.VerifyProject(context.Background(), ProjectRequest{
+		ProjectID: "DEMO-UNSUPPORTED-CLAIM", Address: "100 Demo Plaza",
+		ApplicabilityDate: "2026-08-25",
+	})
+	if got := NormalizeError(err).Code; got != ErrorDataBundleInvalid {
+		t.Fatalf("evidence-free resolved claim returned basis %#v and error %v, want data_bundle_invalid", basis, err)
+	}
+}
