@@ -42,3 +42,28 @@ The query requires an **already-known state and county name**. It cannot infer a
 This is not `/v1/project-code-basis`. A caller can display a **Utility Context** section once it has verified the county independently, but must not merge these candidates into regulatory authority, code applicability, or the `verified` verdict. The browser must never guess a county from the input address. The selected EIA ID, release ID and source SHA can subsequently be carried into Arcata's separately reviewed project reference, with an independently recorded *serving-utility confirmation* if one exists.
 
 The reference app's static GitHub Pages build stays synthetic. The endpoint is not automatically live just because the feature's tests pass: production staging, authenticating the backend, and an independent deployment readback are separate operational steps.
+
+## Geographic county evidence from the live BCM backend
+
+When the **existing** authenticated private provider is configured and the
+checksum-pinned EIA projection is loaded, the public Go API additionally
+exposes `POST /v1/project-utility-context` with bounded JSON input:
+
+```json
+{"project_id":"SITE-1","address":"100 Main St, Denver, CO"}
+```
+
+The bridge invokes the private engine's existing `/v1/geocode` and
+`/v1/lookup` operations, only after `/v1/readiness` and the exact provider
+bundle identity check. It requires one selected **address point** rather than a
+street-range interpolation, an unambiguous county boundary with source IDs,
+matched Census state FIPS, identical returned coordinates, and matching pinned
+private bundle provenance. It preserves boundary/geocoder source digests in
+`geography` and nests the original non-authoritative EIA county result under
+`utility_context`. The input address is not echoed back. Missing, ambiguous,
+unsupported, or contradictory geography returns an error, not a utility guess.
+
+This is **not** a second regulatory decision path, a public geocoder database,
+or an address-level service-territory claim. It is disabled in DEMO-only mode,
+and it is not deployed by merging code. Production activation still requires
+private source and deployment verification and a separate user-interface review.
