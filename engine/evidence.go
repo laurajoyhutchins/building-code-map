@@ -173,11 +173,11 @@ func VerifyClaimEvidence(claim EvidenceClaim, policy SourcePolicy) (EvidenceVeri
 // to different claims, roles or source records. Repeated identical records
 // are harmless; conflicting records are an invalid evidence bundle.
 func acceptEvidenceLinkIdentity(seen map[string]EvidenceLink, link EvidenceLink) error {
-    if previous, exists := seen[link.ID]; exists && !reflect.DeepEqual(previous, link) {
-        return EngineError{Code: ErrorDataBundleInvalid, Message: "evidence link id refers to conflicting records"}
-    }
-    seen[link.ID] = link
-    return nil
+	if previous, exists := seen[link.ID]; exists && !reflect.DeepEqual(previous, link) {
+		return EngineError{Code: ErrorDataBundleInvalid, Message: "evidence link id refers to conflicting records"}
+	}
+	seen[link.ID] = link
+	return nil
 }
 
 func validateEvidenceLink(link EvidenceLink, claimID string) error {
