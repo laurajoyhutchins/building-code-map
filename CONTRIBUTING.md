@@ -21,8 +21,10 @@ See [`docs/publication-policy.md`](docs/publication-policy.md) for the repositor
 Before opening a pull request, run:
 
 ```sh
-npm test
-npm run validate
+python3 tools/check.py --preflight  # gofmt, go vet, Python and Node syntax
+python3 tools/check.py              # all offline Go/Python/Node tests and public build
 ```
+
+A deliberate local Go formatting pass is available as `python3 tools/check.py --preflight --fix-style`. CI does not rewrite sources. The existing Go, Python and Node implementations remain separately testable; this entrypoint ensures they are all exercised together.
 
 Keep changes focused enough that reviewers can evaluate both behavior and the public distribution boundary.
