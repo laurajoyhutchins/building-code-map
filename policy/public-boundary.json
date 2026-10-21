@@ -92,6 +92,7 @@
     "policy",
     "schemas",
     "scripts",
-    "test"
+    "test",
+    "utilitycontext"
   ]
 }
