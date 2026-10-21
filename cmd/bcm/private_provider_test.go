@@ -41,15 +41,19 @@ const providerSample = `{
 func sampleForFamily(t *testing.T, source, family string) []byte {
 	t.Helper()
 	var response map[string]any
-	if err := json.Unmarshal([]byte(source), &response); err != nil { t.Fatal(err) }
+	if err := json.Unmarshal([]byte(source), &response); err != nil {
+		t.Fatal(err)
+	}
 	res := response["resolution"].(map[string]any)
 	if family != "electrical" {
 		res["adoptions"] = []any{}
 		res["status"] = "insufficient_evidence"
 		res["required_local_records"] = []any{}
 	}
-	b,err:=json.Marshal(response)
-	if err!=nil { t.Fatal(err) }
+	b, err := json.Marshal(response)
+	if err != nil {
+		t.Fatal(err)
+	}
 	return b
 }
 
@@ -89,122 +93,158 @@ func TestPrivateProviderUsesOneEngineAndPreservesUncertainty(t *testing.T) {
 	server := mockLegacyProvider(t, true, providerSample)
 	defer server.Close()
 	provider, err := newPrivateProvider(server.URL, "")
-	if err != nil { t.Fatal(err) }
+	if err != nil {
+		t.Fatal(err)
+	}
 	result, err := engine.NewProjectVerifier(engine.NewRuntime(provider)).VerifyProject(context.Background(), engine.ProjectRequest{
-		ProjectID:"SITE-123",Address:"100 Main St, Denver, CO",ApplicabilityDate:"2026-10-20",
+		ProjectID: "SITE-123", Address: "100 Main St, Denver, CO", ApplicabilityDate: "2026-10-20",
 	})
-	if err != nil { t.Fatal(err) }
+	if err != nil {
+		t.Fatal(err)
+	}
 	if result.Verdict != engine.ProjectNotVerified || result.JurisdictionID != "08" || result.AsOf != "2026-10-20" {
 		t.Fatalf("unexpected project basis: %#v", result)
 	}
-	if len(result.CodeSet) != 5 { t.Fatalf("incomplete code family set: %#v",result.CodeSet) }
+	if len(result.CodeSet) != 5 {
+		t.Fatalf("incomplete code family set: %#v", result.CodeSet)
+	}
 	var electricalFound bool
 	for _, code := range result.CodeSet {
 		if code.Family == "electrical" {
 			electricalFound = true
 			if code.Status != engine.StatusLocalRecordRequired || code.Edition != "National Electrical Code" {
-				t.Fatalf("wrong adoption translation: %#v",code)
+				t.Fatalf("wrong adoption translation: %#v", code)
 			}
 		} else if code.Status != engine.StatusInsufficientEvidence {
-			t.Fatalf("unsupported code family was promoted: %#v",code)
+			t.Fatalf("unsupported code family was promoted: %#v", code)
 		}
 	}
-	if !electricalFound {t.Fatalf("missing electrical code from %#v",result.CodeSet)}
-	if len(result.Evidence)!=1 || result.Evidence[0].ID!="CO-SRC-1" || result.Provenance.BundleID!="sha256:reviewed" {
+	if !electricalFound {
+		t.Fatalf("missing electrical code from %#v", result.CodeSet)
+	}
+	if len(result.Evidence) != 1 || result.Evidence[0].ID != "CO-SRC-1" || result.Provenance.BundleID != "sha256:reviewed" {
 		t.Fatalf("missing real source identity: %#v", result)
 	}
 	var foundLocalRecord bool
 	for _, unresolved := range result.Unresolved {
-		if unresolved.Message == "electrical: Check municipal amendments" {foundLocalRecord = true}
+		if unresolved.Message == "electrical: Check municipal amendments" {
+			foundLocalRecord = true
+		}
 	}
 	if !foundLocalRecord || len(result.Unresolved) < 5 {
-		t.Fatalf("code family gaps or local record not preserved: %#v",result.Unresolved)
+		t.Fatalf("code family gaps or local record not preserved: %#v", result.Unresolved)
 	}
 }
 
 func TestUnavailablePrivateDataFailsClosed(t *testing.T) {
-	server:=mockLegacyProvider(t,false,providerSample)
+	server := mockLegacyProvider(t, false, providerSample)
 	defer server.Close()
-	provider,err:=newPrivateProvider(server.URL,"")
-	if err!=nil {t.Fatal(err)}
-	_,err=engine.NewRuntime(provider).Resolve(context.Background(),engine.Query{
-		Address:"100 Main St, Denver, CO",ApplicabilityDate:"2026-10-20",
+	provider, err := newPrivateProvider(server.URL, "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = engine.NewRuntime(provider).Resolve(context.Background(), engine.Query{
+		Address: "100 Main St, Denver, CO", ApplicabilityDate: "2026-10-20",
 	})
-	if err==nil || !strings.Contains(err.Error(),"not ready") {t.Fatalf("expected fail-closed error, got %v",err)}
+	if err == nil || !strings.Contains(err.Error(), "not ready") {
+		t.Fatalf("expected fail-closed error, got %v", err)
+	}
 }
 
 func TestMissingBundleIdentityFailsClosed(t *testing.T) {
-	invalid:=strings.Replace(providerSample, "sha256:reviewed", "", 1)
-	server:=mockLegacyProvider(t,true,invalid)
+	invalid := strings.Replace(providerSample, "sha256:reviewed", "", 1)
+	server := mockLegacyProvider(t, true, invalid)
 	defer server.Close()
-	provider,err:=newPrivateProvider(server.URL,"")
-	if err!=nil {t.Fatal(err)}
-	_,err=engine.NewRuntime(provider).Resolve(context.Background(),engine.Query{
-		Address:"100 Main St, Denver, CO",ApplicabilityDate:"2026-10-20",
+	provider, err := newPrivateProvider(server.URL, "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = engine.NewRuntime(provider).Resolve(context.Background(), engine.Query{
+		Address: "100 Main St, Denver, CO", ApplicabilityDate: "2026-10-20",
 	})
-	if err==nil || !strings.Contains(err.Error(),"incomplete identity") {t.Fatalf("expected data identity rejection, got %v",err)}
+	if err == nil || !strings.Contains(err.Error(), "incomplete identity") {
+		t.Fatalf("expected data identity rejection, got %v", err)
+	}
 }
 
 func TestProviderURLRejectsUnencryptedNonLocalhost(t *testing.T) {
-	if _,err:=newPrivateProvider("http://example.com",""); err==nil {t.Fatal("non-HTTPS upstream accepted")}
-	if _,err:=newPrivateProvider("https://example.com/untrusted/path",""); err==nil {t.Fatal("path-based upstream accepted")}
+	if _, err := newPrivateProvider("http://example.com", ""); err == nil {
+		t.Fatal("non-HTTPS upstream accepted")
+	}
+	if _, err := newPrivateProvider("https://example.com/untrusted/path", ""); err == nil {
+		t.Fatal("path-based upstream accepted")
+	}
 }
 
 func TestPublicBrowserOriginIsStrictlyScoped(t *testing.T) {
-	server:=mockLegacyProvider(t,true,providerSample)
+	server := mockLegacyProvider(t, true, providerSample)
 	defer server.Close()
-	provider,err:=newPrivateProvider(server.URL,"")
-	if err!=nil {t.Fatal(err)}
-	handler:=handlerWithProvider(provider,provider,"https://laurajoyhutchins.github.io")
-	for _,origin:=range []string{"https://laurajoyhutchins.github.io","https://untrusted.example"} {
-		req:=httptest.NewRequest(http.MethodOptions,httpapi.ProjectVerificationPath,nil)
-		req.Header.Set("Origin",origin)
-		response:=httptest.NewRecorder()
-		handler.ServeHTTP(response,req)
-		if origin=="https://laurajoyhutchins.github.io" {
-			if response.Code!=http.StatusNoContent || response.Header().Get("Access-Control-Allow-Origin")!=origin {
-				t.Fatalf("allowed preflight rejected: %d %#v",response.Code,response.Header())
+	provider, err := newPrivateProvider(server.URL, "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	handler := handlerWithProvider(provider, provider, "https://laurajoyhutchins.github.io")
+	for _, origin := range []string{"https://laurajoyhutchins.github.io", "https://untrusted.example"} {
+		req := httptest.NewRequest(http.MethodOptions, httpapi.ProjectVerificationPath, nil)
+		req.Header.Set("Origin", origin)
+		response := httptest.NewRecorder()
+		handler.ServeHTTP(response, req)
+		if origin == "https://laurajoyhutchins.github.io" {
+			if response.Code != http.StatusNoContent || response.Header().Get("Access-Control-Allow-Origin") != origin {
+				t.Fatalf("allowed preflight rejected: %d %#v", response.Code, response.Header())
 			}
-		} else if response.Header().Get("Access-Control-Allow-Origin")!="" {
+		} else if response.Header().Get("Access-Control-Allow-Origin") != "" {
 			t.Fatal("untrusted origin was allowed")
 		}
 	}
 }
 
 func TestPrivateProviderUsesWorkloadIdentityForEveryRequest(t *testing.T) {
-	calls:=0
-	server:=httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter,r *http.Request) {
-		if r.Header.Get("Authorization")!="Bearer signed-test-identity" {
-			t.Errorf("private request was not authenticated: %s",r.URL.Path)
+	calls := 0
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Header.Get("Authorization") != "Bearer signed-test-identity" {
+			t.Errorf("private request was not authenticated: %s", r.URL.Path)
 			w.WriteHeader(http.StatusUnauthorized)
 			return
 		}
 		calls++
 		switch r.URL.Path {
 		case "/v1/readiness":
-			_,_=w.Write([]byte(`{"status":"ok","capabilities":{"address_lookup":{"status":"available"}}}`))
+			_, _ = w.Write([]byte(`{"status":"ok","capabilities":{"address_lookup":{"status":"available"}}}`))
 		case "/v1/bundle":
-			_,_=w.Write([]byte(`{"bundle_manifest_digest":"sha256:reviewed"}`))
+			_, _ = w.Write([]byte(`{"bundle_manifest_digest":"sha256:reviewed"}`))
 		case "/v1/resolve":
-			var request struct{ CodeFamily string `json:"code_family"` }
-			if err:=json.NewDecoder(r.Body).Decode(&request);err!=nil {t.Error(err)}
-			_,_=w.Write(sampleForFamily(t,providerSample,request.CodeFamily))
+			var request struct {
+				CodeFamily string `json:"code_family"`
+			}
+			if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+				t.Error(err)
+			}
+			_, _ = w.Write(sampleForFamily(t, providerSample, request.CodeFamily))
 		default:
-			http.NotFound(w,r)
+			http.NotFound(w, r)
 		}
 	}))
 	defer server.Close()
-	provider,err:=newPrivateProvider(server.URL,"")
-	if err!=nil {t.Fatal(err)}
-	provider.expectedBundle="sha256:reviewed"
-	provider.identityToken=func(ctx context.Context,audience string)(string,error){
-		if audience!=server.URL {t.Errorf("wrong token audience: %s",audience)}
-		return "signed-test-identity",nil
+	provider, err := newPrivateProvider(server.URL, "")
+	if err != nil {
+		t.Fatal(err)
 	}
-	_,err=engine.NewProjectVerifier(engine.NewRuntime(provider)).VerifyProject(
+	provider.expectedBundle = "sha256:reviewed"
+	provider.identityToken = func(ctx context.Context, audience string) (string, error) {
+		if audience != server.URL {
+			t.Errorf("wrong token audience: %s", audience)
+		}
+		return "signed-test-identity", nil
+	}
+	_, err = engine.NewProjectVerifier(engine.NewRuntime(provider)).VerifyProject(
 		context.Background(),
-		engine.ProjectRequest{ProjectID:"SITE-123",Address:"100 Main St, Denver, CO",ApplicabilityDate:"2026-10-20"},
+		engine.ProjectRequest{ProjectID: "SITE-123", Address: "100 Main St, Denver, CO", ApplicabilityDate: "2026-10-20"},
 	)
-	if err!=nil {t.Fatal(err)}
-	if calls!=7 {t.Fatalf("wanted 7 authenticated calls, got %d",calls)}
+	if err != nil {
+		t.Fatal(err)
+	}
+	if calls != 7 {
+		t.Fatalf("wanted 7 authenticated calls, got %d", calls)
+	}
 }

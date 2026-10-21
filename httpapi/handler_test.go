@@ -102,8 +102,8 @@ func TestProjectVerificationHTTPRejectsWrongMethod(t *testing.T) {
 
 func TestProjectVerificationHTTPRejectsInvalidJSONShapes(t *testing.T) {
 	tests := map[string]string{
-		"unknown field": `{"project_id":"DEMO","address":"100 Demo Plaza","applicability_date":"2026-08-25","surprise":true}`,
-		"malformed":     `{"project_id":`,
+		"unknown field":  `{"project_id":"DEMO","address":"100 Demo Plaza","applicability_date":"2026-08-25","surprise":true}`,
+		"malformed":      `{"project_id":`,
 		"trailing value": projectRequestBody() + ` {}`,
 	}
 	for name, body := range tests {

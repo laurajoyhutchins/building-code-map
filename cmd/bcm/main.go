@@ -9,11 +9,11 @@ import (
 	"flag"
 	"io/fs"
 	"log"
-	"os"
-	"net/url"
-	"time"
 	"net/http"
+	"net/url"
+	"os"
 	"strings"
+	"time"
 
 	"github.com/laurajoyhutchins/building-code-map/engine"
 	"github.com/laurajoyhutchins/building-code-map/httpapi"
@@ -75,7 +75,9 @@ func handlerWithUtilityContext(provider engine.Provider, remote *privateProvider
 	mux := http.NewServeMux()
 	if catalog != nil {
 		mux.Handle(utilitycontext.Path, catalog.Handler())
-		if remote != nil { mux.Handle(ProjectUtilityContextPath, projectUtilityContextHandler(remote, catalog)) }
+		if remote != nil {
+			mux.Handle(ProjectUtilityContextPath, projectUtilityContextHandler(remote, catalog))
+		}
 	}
 	runtime := engine.NewRuntime(provider)
 	mux.Handle(httpapi.ProjectVerificationPath, httpapi.NewHandler(engine.NewProjectVerifier(runtime), nil))
@@ -92,17 +94,19 @@ func handlerWithUtilityContext(provider engine.Provider, remote *privateProvider
 			if err != nil || readiness.Capabilities["address_lookup"].Status != "available" ||
 				readiness.Status == "not_ready" {
 				w.WriteHeader(http.StatusServiceUnavailable)
-				_ = json.NewEncoder(w).Encode(map[string]string{"status":"unavailable"})
+				_ = json.NewEncoder(w).Encode(map[string]string{"status": "unavailable"})
 				return
 			}
-			_ = json.NewEncoder(w).Encode(map[string]string{"status":"ready"})
+			_ = json.NewEncoder(w).Encode(map[string]string{"status": "ready"})
 		})
 	}
 	mux.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.Header().Set("Cache-Control", "no-store")
 		scope := "synthetic_demo_only"
-		if remote != nil { scope = "private_provider_adapter" }
+		if remote != nil {
+			scope = "private_provider_adapter"
+		}
 		_ = json.NewEncoder(w).Encode(map[string]string{"status": "ok", "data_scope": scope})
 	})
 	static, err := fs.Sub(webFiles, "web")
@@ -110,7 +114,9 @@ func handlerWithUtilityContext(provider engine.Provider, remote *privateProvider
 		panic(err)
 	}
 	mux.Handle("/", http.FileServer(http.FS(static)))
-	if allowedOrigin == "" { return mux }
+	if allowedOrigin == "" {
+		return mux
+	}
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Header.Get("Origin") == allowedOrigin {
 			w.Header().Set("Access-Control-Allow-Origin", allowedOrigin)
@@ -122,7 +128,7 @@ func handlerWithUtilityContext(provider engine.Provider, remote *privateProvider
 				return
 			}
 		}
-		mux.ServeHTTP(w,r)
+		mux.ServeHTTP(w, r)
 	})
 }
 
@@ -174,7 +180,9 @@ func main() {
 				log.Fatal("BCM utility context requires both view path and exact SHA-256")
 			}
 			catalog, err = utilitycontext.Open(viewPath, viewSHA)
-			if err != nil { log.Fatalf("BCM utility context source rejected: %v", err) }
+			if err != nil {
+				log.Fatalf("BCM utility context source rejected: %v", err)
+			}
 		}
 		handler = handlerWithUtilityContext(remote, remote, origin, catalog)
 		log.Printf("BCM project verifier listening at %s; remote provider configured", *addr)

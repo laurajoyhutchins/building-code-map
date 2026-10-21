@@ -17,11 +17,11 @@ func TestAccuracyCLISeparatesFalseClaimsFromSafeAbstentions(t *testing.T) {
 		t.Fatal(err)
 	}
 	for _, tt := range []struct {
-		name string
+		name     string
 		observed string
-		strict bool
-		code int
-		summary string
+		strict   bool
+		code     int
+		summary  string
 	}{
 		{
 			name: "wrong edition fails", observed: `{"results":[{"project_id":"DEMO-PROJECT","jurisdiction_id":"DEMO-XX","as_of":"2026-08-25","verdict":"verified","code_set":[{"family":"building","status":"resolved","edition":"DEMO-2021"}]}]}`,

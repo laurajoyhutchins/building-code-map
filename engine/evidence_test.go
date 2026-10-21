@@ -10,7 +10,7 @@ func demoEvidenceLink(id string, role EvidenceRole) EvidenceLink {
 		ID: id, ClaimID: "DEMO-CLAIM", Role: role,
 		Document: SourceDocument{ID: "DEMO-DOC", Kind: "ordinance", JurisdictionID: "DEMO-XX", CanonicalURL: "https://example.invalid/demo"},
 		Artifact: SourceArtifact{ID: "DEMO-ARTIFACT", DocumentID: "DEMO-DOC", SHA256: demoSHA, SizeBytes: 1234, SourceURL: "https://example.invalid/demo.pdf"},
-		Anchor: TextAnchor{ID: "DEMO-ANCHOR", ArtifactID: "DEMO-ARTIFACT", LegalLocator: "Section 1", TextSHA256: demoTextSHA},
+		Anchor:   TextAnchor{ID: "DEMO-ANCHOR", ArtifactID: "DEMO-ARTIFACT", LegalLocator: "Section 1", TextSHA256: demoTextSHA},
 	}
 }
 

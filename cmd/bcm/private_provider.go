@@ -21,38 +21,42 @@ import (
 // The public ProjectVerifier remains the sole owner of project-level verdicts.
 // No corpus, source text, boundary geometry or private Git history is transferred.
 type privateProvider struct {
-	base   string
-	token  string
-	client *http.Client
+	base           string
+	token          string
+	client         *http.Client
 	expectedBundle string
-	identityToken func(context.Context,string) (string,error)
+	identityToken  func(context.Context, string) (string, error)
 }
 
 type privateReadiness struct {
 	Status       string `json:"status"`
-	Capabilities map[string]struct{ Status string `json:"status"` } `json:"capabilities"`
+	Capabilities map[string]struct {
+		Status string `json:"status"`
+	} `json:"capabilities"`
 }
 
 type privateResolution struct {
 	SchemaVersion string `json:"schema_version"`
-	Resolution struct {
-		Status               string `json:"status"`
-		ApplicabilityDate    string `json:"applicability_date"`
-		Geography struct {
+	Resolution    struct {
+		Status            string `json:"status"`
+		ApplicabilityDate string `json:"applicability_date"`
+		Geography         struct {
 			JurisdictionID            string `json:"jurisdiction_id"`
 			JurisdictionName          string `json:"jurisdiction_name"`
 			CensusStateEquivalentFIPS string `json:"census_state_equivalent_fips"`
 		} `json:"geography"`
 		Adoptions []struct {
-			CodeFamily  string `json:"code_family"`
-			CodeName    string `json:"code_name"`
+			CodeFamily    string `json:"code_family"`
+			CodeName      string `json:"code_name"`
 			StateCodeName string `json:"state_code_name"`
-			Status      string `json:"status"`
+			Status        string `json:"status"`
 			BaseModelCode *struct {
 				EditionYear int `json:"edition_year"`
 			} `json:"base_model_code"`
-			SourceIDs []string `json:"source_ids"`
-			Verification struct { Status string `json:"status"` } `json:"verification"`
+			SourceIDs    []string `json:"source_ids"`
+			Verification struct {
+				Status string `json:"status"`
+			} `json:"verification"`
 		} `json:"adoptions"`
 		RequiredLocalRecords []string `json:"required_local_records"`
 		Warnings             []string `json:"warnings"`
@@ -76,53 +80,77 @@ func newPrivateProvider(raw, token string) (*privateProvider, error) {
 		return nil, errors.New("BCM_PROVIDER_URL requires HTTPS outside loopback")
 	}
 	if uri.Port() != "" {
-		if _, err := strconv.Atoi(uri.Port()); err != nil { return nil, errors.New("invalid provider port") }
+		if _, err := strconv.Atoi(uri.Port()); err != nil {
+			return nil, errors.New("invalid provider port")
+		}
 	}
 	return &privateProvider{base: strings.TrimSuffix(uri.String(), "/"), token: token, client: &http.Client{Timeout: 10 * time.Second}}, nil
 }
 
-func (p *privateProvider) request(ctx context.Context, method, path string, payload any, dst any) (int,error) {
+func (p *privateProvider) request(ctx context.Context, method, path string, payload any, dst any) (int, error) {
 	var body io.Reader
 	if payload != nil {
 		data, err := json.Marshal(payload)
-		if err != nil { return 0,err }
+		if err != nil {
+			return 0, err
+		}
 		body = bytes.NewReader(data)
 	}
-	req, err := http.NewRequestWithContext(ctx,method,p.base+path,body)
-	if err != nil { return 0,err }
-	if payload != nil { req.Header.Set("Content-Type", "application/json") }
-	if p.identityToken != nil {
-		token,err:=p.identityToken(ctx,p.base)
-		if err!=nil || token=="" {return 0,errors.New("provider identity token unavailable")}
-		req.Header.Set("Authorization","Bearer "+token)
-	} else if p.token != "" {
-		req.Header.Set("Authorization","Bearer "+p.token)
+	req, err := http.NewRequestWithContext(ctx, method, p.base+path, body)
+	if err != nil {
+		return 0, err
 	}
-	resp,err:=p.client.Do(req)
-	if err != nil { return 0,err }
+	if payload != nil {
+		req.Header.Set("Content-Type", "application/json")
+	}
+	if p.identityToken != nil {
+		token, err := p.identityToken(ctx, p.base)
+		if err != nil || token == "" {
+			return 0, errors.New("provider identity token unavailable")
+		}
+		req.Header.Set("Authorization", "Bearer "+token)
+	} else if p.token != "" {
+		req.Header.Set("Authorization", "Bearer "+p.token)
+	}
+	resp, err := p.client.Do(req)
+	if err != nil {
+		return 0, err
+	}
 	defer resp.Body.Close()
 	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
-		if resp.StatusCode >= 500 { return resp.StatusCode, errors.New("upstream unavailable") }
-		var e struct { Code string `json:"code"` }
+		if resp.StatusCode >= 500 {
+			return resp.StatusCode, errors.New("upstream unavailable")
+		}
+		var e struct {
+			Code string `json:"code"`
+		}
 		_ = json.NewDecoder(io.LimitReader(resp.Body, 1<<16)).Decode(&e)
-		return resp.StatusCode,fmt.Errorf("upstream rejected request: %s",e.Code)
+		return resp.StatusCode, fmt.Errorf("upstream rejected request: %s", e.Code)
 	}
-	if err := json.NewDecoder(io.LimitReader(resp.Body,1<<20)).Decode(dst); err != nil {return 0,err}
-	return resp.StatusCode,nil
+	if err := json.NewDecoder(io.LimitReader(resp.Body, 1<<20)).Decode(dst); err != nil {
+		return 0, err
+	}
+	return resp.StatusCode, nil
 }
 
-func (p *privateProvider) readiness(ctx context.Context) (privateReadiness,error) {
+func (p *privateProvider) readiness(ctx context.Context) (privateReadiness, error) {
 	var out privateReadiness
-	_,err:=p.request(ctx,http.MethodGet,"/v1/readiness",nil,&out)
-	if err != nil {return out,err}
+	_, err := p.request(ctx, http.MethodGet, "/v1/readiness", nil, &out)
+	if err != nil {
+		return out, err
+	}
 	if p.expectedBundle != "" {
-		var identity struct { BundleManifestDigest string `json:"bundle_manifest_digest"` }
-		if _,err:=p.request(ctx,http.MethodGet,"/v1/bundle",nil,&identity); err!=nil {return out,err}
+		var identity struct {
+			BundleManifestDigest string `json:"bundle_manifest_digest"`
+		}
+		if _, err := p.request(ctx, http.MethodGet, "/v1/bundle", nil, &identity); err != nil {
+			return out, err
+		}
 		if identity.BundleManifestDigest != p.expectedBundle {
-			return out,errors.New("provider runtime bundle does not match reviewed identity")
+			return out, errors.New("provider runtime bundle does not match reviewed identity")
 		}
 	}
-	return out,nil
+	return out, nil
 }
 
 // Resolve asks the private authority for every covered code family. The legacy
@@ -131,29 +159,35 @@ func (p *privateProvider) readiness(ctx context.Context) (privateReadiness,error
 func (p *privateProvider) Resolve(ctx context.Context, query engine.NormalizedQuery) (engine.Resolution, error) {
 	readiness, err := p.readiness(ctx)
 	capability := "address_lookup"
-	if query.Point != nil { capability = "coordinate_resolution" }
+	if query.Point != nil {
+		capability = "coordinate_resolution"
+	}
 	if err != nil || readiness.Status == "not_ready" ||
 		readiness.Capabilities[capability].Status != "available" {
 		return engine.Resolution{}, engine.EngineError{
-			Code: engine.ErrorRegulatoryCatalogUnavailable,
-			Message: "BCM " + capability + " is not ready",
+			Code:      engine.ErrorRegulatoryCatalogUnavailable,
+			Message:   "BCM " + capability + " is not ready",
 			Retryable: true,
 		}
 	}
 
 	families := []string{"building", "electrical", "energy", "fire_operational", "residential"}
-	if query.CodeFamily != "" { families = []string{query.CodeFamily} }
+	if query.CodeFamily != "" {
+		families = []string{query.CodeFamily}
+	}
 	var result engine.Resolution
 	for index, family := range families {
 		part, err := p.resolveFamily(ctx, query, family)
-		if err != nil { return engine.Resolution{}, err }
+		if err != nil {
+			return engine.Resolution{}, err
+		}
 		if index == 0 {
 			result = part
 			continue
 		}
 		if result.Jurisdiction != part.Jurisdiction || result.Provenance != part.Provenance {
 			return engine.Resolution{}, engine.EngineError{
-				Code: engine.ErrorDataBundleInvalid,
+				Code:    engine.ErrorDataBundleInvalid,
 				Message: "BCM provider returned inconsistent jurisdiction or bundle identity",
 			}
 		}
@@ -171,20 +205,23 @@ func (p *privateProvider) Resolve(ctx context.Context, query engine.NormalizedQu
 
 func (p *privateProvider) resolveFamily(ctx context.Context, query engine.NormalizedQuery, family string) (engine.Resolution, error) {
 	request := struct {
-		Point *engine.Point `json:"point,omitempty"`
-		Address string `json:"address,omitempty"`
-		ApplicabilityDate string `json:"applicability_date"`
-		ProjectType string `json:"project_type,omitempty"`
-		CodeFamily string `json:"code_family"`
+		Point             *engine.Point `json:"point,omitempty"`
+		Address           string        `json:"address,omitempty"`
+		ApplicabilityDate string        `json:"applicability_date"`
+		ProjectType       string        `json:"project_type,omitempty"`
+		CodeFamily        string        `json:"code_family"`
 	}{query.Point, query.Address, query.ApplicabilityDate, query.ProjectType, family}
 	var upstream privateResolution
 	status, err := p.request(ctx, http.MethodPost, "/v1/resolve", request, &upstream)
 	if err != nil {
 		code := engine.ErrorRegulatoryCatalogUnavailable
 		switch status {
-		case http.StatusBadRequest: code = engine.ErrorInvalidQuery
-		case http.StatusConflict: code = engine.ErrorAddressAmbiguous
-		case http.StatusUnprocessableEntity: code = engine.ErrorOutsideSupportedCoverage
+		case http.StatusBadRequest:
+			code = engine.ErrorInvalidQuery
+		case http.StatusConflict:
+			code = engine.ErrorAddressAmbiguous
+		case http.StatusUnprocessableEntity:
+			code = engine.ErrorOutsideSupportedCoverage
 		}
 		return engine.Resolution{}, engine.EngineError{
 			Code: code, Message: "BCM could not resolve this location and date",
@@ -196,7 +233,7 @@ func (p *privateProvider) resolveFamily(ctx context.Context, query engine.Normal
 		upstream.Provenance.BundleManifestDigest == "" || upstream.Provenance.SourceCommit == "" ||
 		(p.expectedBundle != "" && upstream.Provenance.BundleManifestDigest != p.expectedBundle) {
 		return engine.Resolution{}, engine.EngineError{
-			Code: engine.ErrorDataBundleInvalid,
+			Code:    engine.ErrorDataBundleInvalid,
 			Message: "BCM provider response has incomplete identity",
 		}
 	}
@@ -210,30 +247,34 @@ func (p *privateProvider) resolveFamily(ctx context.Context, query engine.Normal
 	}
 	result := engine.Resolution{
 		Jurisdiction: engine.JurisdictionContext{
-			CountryCode: country,
-			PrimaryJurisdictionID: r.Geography.JurisdictionID,
-			PrimaryJurisdictionName: r.Geography.JurisdictionName,
+			CountryCode:               country,
+			PrimaryJurisdictionID:     r.Geography.JurisdictionID,
+			PrimaryJurisdictionName:   r.Geography.JurisdictionName,
 			CensusStateEquivalentFIPS: r.Geography.CensusStateEquivalentFIPS,
 		},
 		Provenance: engine.Provenance{
 			EngineVersion: upstream.Provenance.EngineVersion,
-			SourceCommit: upstream.Provenance.SourceCommit,
-			BundleID: upstream.Provenance.BundleManifestDigest,
+			SourceCommit:  upstream.Provenance.SourceCommit,
+			BundleID:      upstream.Provenance.BundleManifestDigest,
 		},
 	}
 	codeStatus := engine.StatusInsufficientEvidence
 	switch r.Status {
-	case "local_record_required": codeStatus = engine.StatusLocalRecordRequired
-	case "partially_resolved": codeStatus = engine.StatusPartiallyResolved
-	case "conflicting": codeStatus = engine.StatusConflicting
-	case "unsupported": codeStatus = engine.StatusUnsupported
+	case "local_record_required":
+		codeStatus = engine.StatusLocalRecordRequired
+	case "partially_resolved":
+		codeStatus = engine.StatusPartiallyResolved
+	case "conflicting":
+		codeStatus = engine.StatusConflicting
+	case "unsupported":
+		codeStatus = engine.StatusUnsupported
 	case "resolved", "verified":
 		codeStatus = engine.StatusPartiallyResolved // A verified *project* needs independent evidence.
 	}
 	for _, ad := range r.Adoptions {
 		if ad.CodeFamily != family {
 			return engine.Resolution{}, engine.EngineError{
-				Code: engine.ErrorDataBundleInvalid,
+				Code:    engine.ErrorDataBundleInvalid,
 				Message: "BCM provider returned an adoption for a different code family",
 			}
 		}
@@ -242,7 +283,9 @@ func (p *privateProvider) resolveFamily(ctx context.Context, query engine.Normal
 			status = engine.StatusInsufficientEvidence
 		}
 		edition := ad.StateCodeName
-		if edition == "" { edition = ad.CodeName }
+		if edition == "" {
+			edition = ad.CodeName
+		}
 		if edition == "" && ad.BaseModelCode != nil && ad.BaseModelCode.EditionYear > 0 {
 			edition = strconv.Itoa(ad.BaseModelCode.EditionYear)
 		}
@@ -262,7 +305,7 @@ func (p *privateProvider) resolveFamily(ctx context.Context, query engine.Normal
 	if len(result.Codes) == 0 {
 		result.Codes = []engine.CodeResolution{{
 			Family: family, Status: engine.StatusInsufficientEvidence,
-			Basis: "No supported code adoption returned for this family, location, and date.",
+			Basis:      "No supported code adoption returned for this family, location, and date.",
 			Unresolved: []string{"Confirm the locally applicable " + family + " code adoption."},
 		}}
 	}
@@ -285,19 +328,29 @@ func (p *privateProvider) resolveFamily(ctx context.Context, query engine.Normal
 	return result, nil
 }
 
-func cloudRunIdentityToken(ctx context.Context, audience string) (string,error) {
+func cloudRunIdentityToken(ctx context.Context, audience string) (string, error) {
 	metadataURL := "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/identity?audience=" + url.QueryEscape(audience)
-	req,err:=http.NewRequestWithContext(ctx,http.MethodGet,metadataURL,nil)
-	if err!=nil {return "",err}
-	req.Header.Set("Metadata-Flavor","Google")
-	metadataClient:=&http.Client{Timeout:3*time.Second}
-	resp,err:=metadataClient.Do(req)
-	if err!=nil {return "",err}
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, metadataURL, nil)
+	if err != nil {
+		return "", err
+	}
+	req.Header.Set("Metadata-Flavor", "Google")
+	metadataClient := &http.Client{Timeout: 3 * time.Second}
+	resp, err := metadataClient.Do(req)
+	if err != nil {
+		return "", err
+	}
 	defer resp.Body.Close()
-	if resp.StatusCode!=http.StatusOK {return "",errors.New("cloud identity endpoint unavailable")}
-	encoded,err:=io.ReadAll(io.LimitReader(resp.Body,8192))
-	if err!=nil {return "",err}
-	token:=strings.TrimSpace(string(encoded))
-	if len(token)<30 {return "",errors.New("cloud identity token is empty or invalid")}
-	return token,nil
+	if resp.StatusCode != http.StatusOK {
+		return "", errors.New("cloud identity endpoint unavailable")
+	}
+	encoded, err := io.ReadAll(io.LimitReader(resp.Body, 8192))
+	if err != nil {
+		return "", err
+	}
+	token := strings.TrimSpace(string(encoded))
+	if len(token) < 30 {
+		return "", errors.New("cloud identity token is empty or invalid")
+	}
+	return token, nil
 }

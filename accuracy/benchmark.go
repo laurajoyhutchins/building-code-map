@@ -31,30 +31,30 @@ type Case struct {
 type Outcome string
 
 const (
-	OutcomeCorrect      Outcome = "correct"
-	OutcomeFalseClaim   Outcome = "incorrect_assertion"
-	OutcomeAbstained    Outcome = "abstained"
-	OutcomeMissing      Outcome = "missing_result"
+	OutcomeCorrect    Outcome = "correct"
+	OutcomeFalseClaim Outcome = "incorrect_assertion"
+	OutcomeAbstained  Outcome = "abstained"
+	OutcomeMissing    Outcome = "missing_result"
 )
 
 type CaseResult struct {
-	ID             string         `json:"id"`
-	ProjectID      string         `json:"project_id"`
-	JurisdictionID string         `json:"jurisdiction_id"`
-	Family         string         `json:"code_family"`
-	Outcome        Outcome        `json:"outcome"`
-	Observed       []ExpectedCode `json:"observed,omitempty"`
+	ID             string                `json:"id"`
+	ProjectID      string                `json:"project_id"`
+	JurisdictionID string                `json:"jurisdiction_id"`
+	Family         string                `json:"code_family"`
+	Outcome        Outcome               `json:"outcome"`
+	Observed       []ExpectedCode        `json:"observed,omitempty"`
 	Verdict        engine.ProjectVerdict `json:"project_verdict,omitempty"`
-	FalseVerified  bool           `json:"false_verified,omitempty"`
+	FalseVerified  bool                  `json:"false_verified,omitempty"`
 }
 
 type Summary struct {
-	ReviewedCases     int `json:"reviewed_cases"`
-	Correct           int `json:"correct"`
+	ReviewedCases       int `json:"reviewed_cases"`
+	Correct             int `json:"correct"`
 	IncorrectAssertions int `json:"incorrect_assertions"`
-	Abstentions       int `json:"abstentions"`
-	MissingResults    int `json:"missing_results"`
-	FalseVerified     int `json:"false_verified"`
+	Abstentions         int `json:"abstentions"`
+	MissingResults      int `json:"missing_results"`
+	FalseVerified       int `json:"false_verified"`
 }
 
 type Report struct {
