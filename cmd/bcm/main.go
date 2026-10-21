@@ -73,7 +73,10 @@ func handlerWithProvider(provider engine.Provider, remote *privateProvider, allo
 
 func handlerWithUtilityContext(provider engine.Provider, remote *privateProvider, allowedOrigin string, catalog *utilitycontext.Catalog) http.Handler {
 	mux := http.NewServeMux()
-	if catalog != nil { mux.Handle(utilitycontext.Path, catalog.Handler()) }
+	if catalog != nil {
+		mux.Handle(utilitycontext.Path, catalog.Handler())
+		if remote != nil { mux.Handle(ProjectUtilityContextPath, projectUtilityContextHandler(remote, catalog)) }
+	}
 	runtime := engine.NewRuntime(provider)
 	mux.Handle(httpapi.ProjectVerificationPath, httpapi.NewHandler(engine.NewProjectVerifier(runtime), nil))
 	if remote != nil {
@@ -112,7 +115,7 @@ func handlerWithUtilityContext(provider engine.Provider, remote *privateProvider
 		if r.Header.Get("Origin") == allowedOrigin {
 			w.Header().Set("Access-Control-Allow-Origin", allowedOrigin)
 			w.Header().Set("Vary", "Origin")
-			if r.Method == http.MethodOptions && r.URL.Path == httpapi.ProjectVerificationPath {
+			if r.Method == http.MethodOptions && (r.URL.Path == httpapi.ProjectVerificationPath || r.URL.Path == ProjectUtilityContextPath) {
 				w.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS")
 				w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 				w.WriteHeader(http.StatusNoContent)
