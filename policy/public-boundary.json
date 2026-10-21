@@ -93,6 +93,7 @@
     "schemas",
     "scripts",
     "test",
+    "tools",
     "utilitycontext"
   ]
 }
