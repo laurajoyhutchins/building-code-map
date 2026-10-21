@@ -12,6 +12,8 @@ import (
  "net/http"
  "os"
  "path/filepath"
+ "sort"
+ "strconv"
  "strings"
  "time"
 )
@@ -59,7 +61,7 @@ func fetch(client *http.Client,source Source,dest,expected string,allowLarge boo
  if expected!=""{receipt.State="hash_matched_not_legal_evidence"}
  // Raw sources and receipts stay in local/private custody. Nothing here grants regulatory authority.
  if err=writeNewJSON(dest+".receipt.json",receipt);err!=nil{return Receipt{},err}
- if err=os.Rename(tmp.Name(),dest);err!=nil{os.Remove(dest+".receipt.json");return Receipt{},err}
+ if err=os.Link(tmp.Name(),dest);err!=nil{os.Remove(dest+".receipt.json");return Receipt{},err}
  return receipt,nil
 }
 func writeNewJSON(path string,v any)error{
@@ -67,18 +69,21 @@ func writeNewJSON(path string,v any)error{
  defer f.Close();e:=json.NewEncoder(f);e.SetIndent("","  ");if err=e.Encode(v);err!=nil{os.Remove(path);return err};return f.Sync()
 }
 type geom struct {Type string `json:"type"`;Coordinates [][][][]float64 `json:"coordinates"`}
-type dolaRow struct {ID json.Number `json:"id"`;City string `json:"city"`;FirstCity string `json:"first_city"`;Geometry geom `json:"the_geom"`}
+type dolaRow struct {ID json.Number `json:"id"`;CityCode string `json:"city"`;Name string `json:"first_city"`;Geometry geom `json:"the_geom"`}
 type feature struct {Type string `json:"type"`;Geometry geom `json:"geometry"`;Properties map[string]string `json:"properties"`}
 type featureCollection struct {Type string `json:"type"`;Features []feature `json:"features"`}
-func normalizeDOLA(input io.Reader,sourceHash string)(featureCollection,error){
+func normalizeDOLA(input io.Reader,sourceHash string,expectedCount int)(featureCollection,error){
+ if expectedCount<=0||expectedCount>10000{return featureCollection{},errors.New("explicit positive expected source record count required")}
  if len(sourceHash)!=64||strings.Trim(sourceHash,"0123456789abcdef")!=""{return featureCollection{},errors.New("source SHA256 required")}
  dec:=json.NewDecoder(input);dec.UseNumber();var rows []dolaRow
  if err:=dec.Decode(&rows);err!=nil{return featureCollection{},err}
- if len(rows)==0||len(rows)>10000{return featureCollection{},errors.New("unexpected DOLA record count")}
+ if len(rows)!=expectedCount{return featureCollection{},fmt.Errorf("incomplete or changed DOLA snapshot: got %d rows, expected %d",len(rows),expectedCount)}
  var extra any;if err:=dec.Decode(&extra);err!=io.EOF{return featureCollection{},errors.New("trailing JSON")}
- result:=featureCollection{Type:"FeatureCollection",Features:make([]feature,0,len(rows))};seen:=map[string]bool{}
+ result:=featureCollection{Type:"FeatureCollection",Features:make([]feature,0,len(rows))};seen:=map[string]bool{};seenCodes:=map[string]bool{}
  for _,r:=range rows{
-  id:=r.ID.String();if id==""||strings.TrimSpace(r.City)==""||seen[id]{return featureCollection{},fmt.Errorf("missing/duplicate ID or city: %q",id)};seen[id]=true
+  id:=r.ID.String();idNum,idErr:=strconv.Atoi(id);if idErr!=nil||idNum<=0||seen[id]||strings.TrimSpace(r.Name)==""{return featureCollection{},fmt.Errorf("missing/duplicate ID or municipality name: %q",id)}
+  if len(r.CityCode)!=5||strings.Trim(r.CityCode,"0123456789")!=""||seenCodes[r.CityCode]{return featureCollection{},fmt.Errorf("invalid/duplicate DOLA city code for ID %s",id)}
+  seen[id]=true;seenCodes[r.CityCode]=true
   if r.Geometry.Type!="MultiPolygon"||len(r.Geometry.Coordinates)==0{return featureCollection{},fmt.Errorf("invalid geometry for ID %s",id)}
   for _,polygon:=range r.Geometry.Coordinates{if len(polygon)==0{return featureCollection{},fmt.Errorf("empty polygon %s",id)};for _,ring:=range polygon{
    if len(ring)<4{return featureCollection{},fmt.Errorf("short ring %s",id)}
@@ -86,17 +91,20 @@ func normalizeDOLA(input io.Reader,sourceHash string)(featureCollection,error){
    a,b:=ring[0],ring[len(ring)-1];if a[0]!=b[0]||a[1]!=b[1]{return featureCollection{},fmt.Errorf("open ring %s",id)}
   }}
   result.Features=append(result.Features,feature{Type:"Feature",Geometry:r.Geometry,Properties:map[string]string{
-   "source_id":"co-dola-municipal","source_record_id":id,"jurisdiction_name":strings.TrimSpace(r.City),"source_sha256":sourceHash,"status":"geographic_observation_only",
+   "source_id":"co-dola-municipal","source_record_id":id,"jurisdiction_name":strings.TrimSpace(r.Name),"source_city_code":r.CityCode,"source_sha256":sourceHash,"status":"geographic_observation_only",
   }})
  }
+ // Stable candidate ordering must not depend on Socrata response order.
+ sort.Slice(result.Features,func(i,j int)bool{a,_:=strconv.Atoi(result.Features[i].Properties["source_record_id"]);b,_:=strconv.Atoi(result.Features[j].Properties["source_record_id"]);return a<b})
  return result,nil
 }
-func normalizeFile(input,receiptPath,out string)error{
+func normalizeFile(input,receiptPath,out string,expectedCount int)error{
  var r Receipt;rb,err:=os.ReadFile(receiptPath);if err!=nil{return err};if err=json.Unmarshal(rb,&r);err!=nil{return err}
- if r.SourceID!="co-dola-municipal"{return errors.New("receipt is not a Colorado DOLA source")}
+ source,_:=lookup("co-dola-municipal")
+ if r.SourceID!=source.ID||r.SourceURL!=source.URL||r.Bytes<=0||(r.State!="unreviewed"&&r.State!="hash_matched_not_legal_evidence"){return errors.New("receipt source URL, size, or acquisition state does not match DOLA contract")}
  f,err:=os.Open(input);if err!=nil{return err};defer f.Close()
- h:=sha256.New();if _,err=io.Copy(h,f);err!=nil{return err};if hex.EncodeToString(h.Sum(nil))!=r.SHA256{return errors.New("source content does not match receipt SHA256")}
- if _,err=f.Seek(0,io.SeekStart);err!=nil{return err};collection,err:=normalizeDOLA(f,r.SHA256);if err!=nil{return err}
+ h:=sha256.New();n,err:=io.Copy(h,f);if err!=nil{return err};if n!=r.Bytes||hex.EncodeToString(h.Sum(nil))!=r.SHA256{return errors.New("source content does not match receipt SHA256")}
+ if _,err=f.Seek(0,io.SeekStart);err!=nil{return err};collection,err:=normalizeDOLA(f,r.SHA256,expectedCount);if err!=nil{return err}
  return writeNewJSON(out,collection)
 }
 func main(){
@@ -105,7 +113,7 @@ func main(){
  switch os.Args[1]{
  case "list":for _,s:=range sources{fmt.Printf("%s\t%s\t%s\n",s.ID,s.Format,s.Purpose)}
  case "fetch":fs:=flag.NewFlagSet("fetch",flag.ExitOnError);id:=fs.String("source","","listed source ID");out:=fs.String("out","","private destination");sha:=fs.String("sha256","","expected content hash");large:=fs.Bool("allow-large",false,"opt in to large archives");fs.Parse(os.Args[2:]);var src Source;src,err=lookup(*id);if err==nil{client:=&http.Client{Timeout:30*time.Minute};client.CheckRedirect=func(req *http.Request,via []*http.Request)error{if req.URL.Scheme!="https"{return errors.New("redirect left HTTPS")};if len(via)>=5{return errors.New("too many redirects")};return nil};var receipt Receipt;receipt,err=fetch(client,src,*out,*sha,*large);if err==nil{fmt.Printf("acquired %s (%d bytes), SHA256 %s, status %s\n",*id,receipt.Bytes,receipt.SHA256,receipt.State)}}
- case "normalize-colorado":fs:=flag.NewFlagSet("normalize-colorado",flag.ExitOnError);input:=fs.String("in","","downloaded JSON");receipt:=fs.String("receipt","","matching fetch receipt");out:=fs.String("out","","private candidate GeoJSON output");fs.Parse(os.Args[2:]);if *input==""||*receipt==""||*out==""{err=errors.New("-in, -receipt, and -out are required")}else{err=normalizeFile(*input,*receipt,*out)}
+ case "normalize-colorado":fs:=flag.NewFlagSet("normalize-colorado",flag.ExitOnError);input:=fs.String("in","","downloaded JSON");receipt:=fs.String("receipt","","matching fetch receipt");out:=fs.String("out","","private candidate GeoJSON output");expectedCount:=fs.Int("expected-count",0,"independently checked source metadata row count");fs.Parse(os.Args[2:]);if *input==""||*receipt==""||*out==""||*expectedCount<=0{err=errors.New("-in, -receipt, -out, and positive -expected-count are required")}else{err=normalizeFile(*input,*receipt,*out,*expectedCount)}
  default:err=fmt.Errorf("unknown command %q",os.Args[1])
  }
  if err!=nil{fmt.Fprintln(os.Stderr,"bcm-sources:",err);os.Exit(1)}
