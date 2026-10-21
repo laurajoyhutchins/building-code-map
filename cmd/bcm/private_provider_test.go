@@ -248,3 +248,46 @@ func TestPrivateProviderUsesWorkloadIdentityForEveryRequest(t *testing.T) {
 		t.Fatalf("wanted 7 authenticated calls, got %d", calls)
 	}
 }
+
+func TestPrivateProviderResponseIsCompleteAndSizeBounded(t *testing.T) {
+	const valid = `{"ok":true}`
+	tests := []struct {
+		name      string
+		body      string
+		wantError string
+	}{
+		{name: "single JSON value", body: valid},
+		{name: "trailing JSON whitespace", body: valid + " \n\t"},
+		{name: "exactly at size limit", body: valid + strings.Repeat(" ", maxPrivateProviderResponseBytes-len(valid))},
+		{name: "second JSON object", body: valid + `{"other":true}`, wantError: "trailing content"},
+		{name: "trailing non-JSON bytes", body: valid + " garbage", wantError: "trailing content"},
+		{name: "oversized trailing whitespace", body: valid + strings.Repeat(" ", maxPrivateProviderResponseBytes-len(valid)+1), wantError: "exceeds 1 MiB"},
+		{name: "oversized first JSON value", body: `{"blob":"` + strings.Repeat("x", maxPrivateProviderResponseBytes) + `"}`, wantError: "exceeds 1 MiB"},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				w.Header().Set("Content-Type", "application/json")
+				_, _ = w.Write([]byte(tt.body))
+			}))
+			defer server.Close()
+			provider, err := newPrivateProvider(server.URL, "")
+			if err != nil {
+				t.Fatal(err)
+			}
+			var result struct {
+				OK bool `json:"ok"`
+			}
+			status, err := provider.request(context.Background(), http.MethodGet, "/v1/test", nil, &result)
+			if tt.wantError != "" {
+				if err == nil || !strings.Contains(err.Error(), tt.wantError) {
+					t.Fatalf("wanted %q error, got status %d, err %v", tt.wantError, status, err)
+				}
+				return
+			}
+			if err != nil || status != http.StatusOK || !result.OK {
+				t.Fatalf("valid response rejected: status %d, result %#v, err %v", status, result, err)
+			}
+		})
+	}
+}
