@@ -10,7 +10,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-MODULE = Path(__file__).with_name("export_utility_context.py")
+MODULE = Path(__file__).resolve().parents[1] / "scripts" / "export_utility_context.py"
 spec = importlib.util.spec_from_file_location("bcm_eia_export", MODULE)
 assert spec is not None and spec.loader is not None
 exporter = importlib.util.module_from_spec(spec)

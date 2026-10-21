@@ -82,6 +82,15 @@ It does not add production regulatory data, geocoder or boundary stores, source 
 
 See [Project Verification HTTP API](docs/http-api.md) for the wire contract, error mapping, and request-correlation rules.
 
+## Utility context (independent of code verification)
+
+A configured live backend can serve a separately verified, source-pinned EIA-861
+county-candidate view at `GET /v1/utility-context?state=CO&county=Denver`.
+This lookup never identifies the serving utility for a particular site or changes
+BCM's regulatory verdict. See [Utility context](docs/utility-context.md) for
+projection, limits, and optional private deployment. The public Pages example
+remains fictional and does not contain EIA data.
+
 ## Data and licensing
 
 This repository is not a bulk download of maintained jurisdiction-by-jurisdiction regulatory research. A hosted Building Code Map service may return project-scoped conclusions, citations, provenance, and unresolved requirements without exposing the complete maintained corpus or restricted source material.

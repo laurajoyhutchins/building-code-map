@@ -42,3 +42,13 @@ Before setting `BCM_PUBLIC_API_BASE_URL` or permitting unauthenticated access:
 5. Configure Pages only after the public API returns accurate project results under the contract. Independently read back the deployed revision and sample failure cases.
 
 **Current boundary:** This repository contains the live wiring and tests, not an independently confirmed production regulatory deployment. Never interpret a green CI check or a valid synthetic example as live service availability.
+
+## Optional non-regulatory utility context
+
+The live Go backend may independently load a SHA-256-pinned county-candidate
+projection of the Electric Utility Catalog from a private local path. Its
+`GET /v1/utility-context` operation requires separately established state
+and county, never geocodes an address, and never changes the code-basis result.
+Configuration, offline projection rules and the serving-utility disclaimer are
+in [Utility context](utility-context.md). The static demo remains synthetic;
+this route is not automatically deployed by a successful source PR.
