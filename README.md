@@ -124,3 +124,7 @@ Contributions are welcome. Start with [`CONTRIBUTING.md`](CONTRIBUTING.md). Secu
 ## License
 
 Project-authored software and documentation in this repository are licensed under Apache-2.0 unless a file states otherwise. Third-party materials retain their own terms.
+
+## Related public data product
+
+[**BCAST**](https://github.com/laurajoyhutchins/bcast) defines provider-neutral contracts and reusable tools for structured regulatory publications. Building Code Map instead owns project-specific jurisdiction, adopted-code applicability and evidence-backed regulatory conclusions. A BCAST package is not itself proof that a publication has been adopted in a location. Both projects remain independently usable and versioned.
