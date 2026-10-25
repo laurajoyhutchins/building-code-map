@@ -67,6 +67,9 @@ type SourcePolicyRule struct {
 	ClaimKind      string `json:"claim_kind"`
 	JurisdictionID string `json:"jurisdiction_id"`
 	DocumentID     string `json:"document_id"`
+	ArtifactSHA256 string `json:"artifact_sha256"`
+	TextSHA256     string `json:"text_sha256"`
+	LegalLocator   string `json:"legal_locator"`
 	EffectiveFrom  string `json:"effective_from,omitempty"`
 	EffectiveTo    string `json:"effective_to,omitempty"`
 }
@@ -143,7 +146,7 @@ func VerifyClaimEvidence(claim EvidenceClaim, policy SourcePolicy) (EvidenceVeri
 		if _, superseded := supersededTargets[link.ID]; superseded {
 			continue
 		}
-		if policyAllows(policy, claim.Kind, claim.JurisdictionID, asOf, link.Document.ID) {
+		if policyAllows(policy, claim.Kind, claim.JurisdictionID, asOf, link) {
 			qualifying = append(qualifying, link.ID)
 		}
 	}
@@ -212,9 +215,18 @@ func validateEvidenceLink(link EvidenceLink, claimID string) error {
 	return nil
 }
 
-func policyAllows(policy SourcePolicy, claimKind, jurisdictionID string, asOf time.Time, documentID string) bool {
+func policyAllows(policy SourcePolicy, claimKind, jurisdictionID string, asOf time.Time, link EvidenceLink) bool {
 	for _, rule := range policy.Rules {
-		if strings.TrimSpace(rule.ClaimKind) != claimKind || strings.TrimSpace(rule.JurisdictionID) != jurisdictionID || strings.TrimSpace(rule.DocumentID) != documentID {
+		if strings.TrimSpace(rule.ClaimKind) != claimKind ||
+			strings.TrimSpace(rule.JurisdictionID) != jurisdictionID ||
+			strings.TrimSpace(link.Document.JurisdictionID) != jurisdictionID ||
+			strings.TrimSpace(rule.DocumentID) != link.Document.ID ||
+			!sha256Pattern.MatchString(rule.ArtifactSHA256) ||
+			!sha256Pattern.MatchString(rule.TextSHA256) ||
+			strings.TrimSpace(rule.LegalLocator) == "" ||
+			rule.ArtifactSHA256 != link.Artifact.SHA256 ||
+			rule.TextSHA256 != link.Anchor.TextSHA256 ||
+			rule.LegalLocator != link.Anchor.LegalLocator {
 			continue
 		}
 		if rule.EffectiveFrom != "" {
