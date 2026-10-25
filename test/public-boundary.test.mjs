@@ -135,3 +135,46 @@ test('repository-wide validation rejects alternate-path regulatory fixture', (t)
     /test\/fixtures\/leak.json.*synthetic jurisdiction prefix/,
   );
 });
+
+test('only exact project-owned geocoder ranking policy can be public, never a GIS source', () => {
+  const config = {
+    version: 'geocoder-ranking-1.0',
+    address_point_base: 0.7,
+    street_range_base: 0.55,
+    exact_street: 0.05,
+    exact_city: 0.15,
+    exact_postal_code: 0.1,
+    postal_not_supplied: 0.05,
+    parity_matched: 0.05,
+    minimum_address_point_quality: 0.85,
+    minimum_street_range_quality: 0.75,
+    ambiguity_gap: 0.05,
+    source_priority: {},
+  };
+  const official = { ...config, postal_code_not_supplied: config.postal_not_supplied };
+  delete official.postal_not_supplied;
+  assert.deepEqual(
+    validatePublicArtifact('geocoder/config/geocoder-ranking-policy.json', JSON.stringify(official), policy),
+    [],
+  );
+  assert.match(
+    validatePublicArtifact('geocoder/config/municipal-boundaries.json', JSON.stringify(official), policy).join('\n'),
+    /unreviewed JSON data path/,
+  );
+  assert.match(
+    validatePublicArtifact(
+      'geocoder/config/geocoder-ranking-policy.json',
+      JSON.stringify({ ...official, source_priority: { 'private-source': 0.9 } }),
+      policy,
+    ).join('\n'),
+    /source priorities/,
+  );
+  assert.match(
+    validatePublicArtifact(
+      'geocoder/config/geocoder-ranking-policy.json',
+      JSON.stringify({ ...official, claim_kind: 'code_adoption' }),
+      policy,
+    ).join('\n'),
+    /unreviewed fields/,
+  );
+});
