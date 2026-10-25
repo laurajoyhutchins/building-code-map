@@ -147,6 +147,9 @@ type ProviderSourcePolicyRule struct {
 	ClaimKind        string `json:"claim_kind,omitempty"`
 	JurisdictionID   string `json:"jurisdiction_id,omitempty"`
 	DocumentID       string `json:"document_id,omitempty"`
+	ArtifactSHA256   string `json:"artifact_sha256,omitempty"`
+	TextSHA256       string `json:"text_sha256,omitempty"`
+	LegalLocator     string `json:"legal_locator,omitempty"`
 	EffectiveFrom    string `json:"effective_from,omitempty"`
 	EffectiveTo      string `json:"effective_to,omitempty"`
 	MaterialClass    string `json:"material_class,omitempty"`
@@ -479,7 +482,7 @@ func providerSourcePolicy(bundle ProviderBundle) SourcePolicy {
 		if strings.TrimSpace(rule.ClaimKind) == "" || strings.TrimSpace(rule.JurisdictionID) == "" || strings.TrimSpace(rule.DocumentID) == "" {
 			continue
 		}
-		rules = append(rules, SourcePolicyRule{ID: rule.ID, ClaimKind: rule.ClaimKind, JurisdictionID: rule.JurisdictionID, DocumentID: rule.DocumentID, EffectiveFrom: rule.EffectiveFrom, EffectiveTo: rule.EffectiveTo})
+		rules = append(rules, SourcePolicyRule{ID: rule.ID, ClaimKind: rule.ClaimKind, JurisdictionID: rule.JurisdictionID, DocumentID: rule.DocumentID, ArtifactSHA256: rule.ArtifactSHA256, TextSHA256: rule.TextSHA256, LegalLocator: rule.LegalLocator, EffectiveFrom: rule.EffectiveFrom, EffectiveTo: rule.EffectiveTo})
 	}
 	return SourcePolicy{Rules: rules}
 }
