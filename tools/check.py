@@ -48,8 +48,9 @@ def main() -> int:
         for path in sorted((ROOT / "scripts").glob("*.mjs"))
     )
     checks.extend(
-        (f"Node TypeScript syntax: {path.name}", [
-            "node", "--experimental-strip-types", "--check", str(path.relative_to(ROOT))
+        (f"Node TypeScript module: {path.name}", [
+            "node", "--experimental-strip-types", "--input-type=module", "--eval",
+            "await import('./" + path.relative_to(ROOT).as_posix() + "')",
         ])
         for path in sorted((ROOT / "scripts").glob("*.ts"))
     )
