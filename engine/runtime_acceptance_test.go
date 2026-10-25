@@ -101,7 +101,7 @@ func TestAffirmativeNonApplicabilityRequiresLegalProof(t *testing.T) {
 		{name: "bare provider assertion"},
 		{name: "approved claim", policy: SourcePolicy{Rules: []SourcePolicyRule{{
 			ID: "DEMO-EXCLUSION", ClaimKind: "code_non_applicability",
-			JurisdictionID: "DEMO-XX", DocumentID: "DEMO-DOC", EffectiveFrom: "2026-01-01",
+			JurisdictionID: "DEMO-XX", DocumentID: "DEMO-DOC", ArtifactSHA256: demoSHA, TextSHA256: demoTextSHA, LegalLocator: "Section 1", EffectiveFrom: "2026-01-01",
 		}}}, links: []EvidenceLink{link}, wantVerified: true},
 	} {
 		t.Run(tt.name, func(t *testing.T) {
