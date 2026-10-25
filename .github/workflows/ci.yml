@@ -55,5 +55,7 @@ jobs:
           node-version: 22
       - name: Install pinned schema-validator dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: TEMPORARY diagnose alpha geocoder formatting parity
+        run: gofmt -d geocoder/sqlite.go geocoder/sqlite_service_test.go
       - name: Run Go, Python and Node lint and test harness
         run: python3 tools/check.py
