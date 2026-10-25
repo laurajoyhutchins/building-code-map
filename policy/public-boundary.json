@@ -88,6 +88,7 @@
     "engine",
     "geocoder",
     "go.mod",
+    "go.sum",
     "httpapi",
     "package.json",
     "package-lock.json",
