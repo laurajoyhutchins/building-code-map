@@ -50,6 +50,9 @@ function schemaDiagnostic(error: ErrorObject, input: unknown): string {
   if (error.keyword === 'additionalProperties' && error.instancePath === '') {
     return 'ODCS_FIELD_UNSUPPORTED ' + path;
   }
+  if (path === 'id' && (error.keyword === 'pattern' || error.keyword === 'type')) {
+    return 'BCM_STABLE_ID_INVALID id';
+  }
   if (path === 'apiVersion' && error.keyword === 'const') {
     return 'ODCS_API_VERSION_UNSUPPORTED apiVersion';
   }

@@ -1,4 +1,5 @@
 import test from 'node:test';
+import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
 import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -106,4 +107,13 @@ test('does not coerce invalid ODCS JSON types', () => {
   contract.authoritativeDefinitions[0].url = true;
   const result = runContract(contract);
   assert.notEqual(result.status, 0);
+});
+
+test('ODCS schema bytes remain identical to the reviewed upstream Git blob', () => {
+  const content = readFileSync('schemas/odcs-v3.1.0.schema.json');
+  const actual = createHash('sha1')
+    .update('blob ' + content.length + '\0')
+    .update(content)
+    .digest('hex');
+  assert.equal(actual, '3596e68b07d19fc44fe947d8796021b64b8f86eb');
 });
