@@ -15,7 +15,7 @@ import (
 
 func TestPinnedSourcePolicyRejectsDriftAndInvalidRules(t *testing.T) {
 	path := filepath.Join(t.TempDir(), "private-policy.json")
-	valid := `{"rules":[{"id":"synthetic-demo-policy","claim_kind":"code_adoption","jurisdiction_id":"DEMO-XX","document_id":"demo-instrument","effective_from":"2025-01-01","effective_to":"2026-12-31"}]}`
+	valid := `{"rules":[{"id":"synthetic-demo-policy","claim_kind":"code_adoption","jurisdiction_id":"DEMO-XX","document_id":"demo-instrument","artifact_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","text_sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","legal_locator":"DEMO-XX 1.1","effective_from":"2025-01-01","effective_to":"2026-12-31"}]}`
 	verify := func(contents string, wantError bool) {
 		t.Helper()
 		if err := os.WriteFile(path, []byte(contents), 0600); err != nil {
@@ -42,6 +42,8 @@ func TestPinnedSourcePolicyRejectsDriftAndInvalidRules(t *testing.T) {
 	verify(strings.Replace(valid, "2026-12-31", "2024-01-01", 1), true)
 	verify(strings.Replace(valid, "code_adoption", "unknown_kind", 1), true)
 	verify(strings.Replace(valid, "2025-01-01", "not-a-date", 1), true)
+	verify(strings.Replace(valid, strings.Repeat("a", 64), strings.Repeat("z", 64), 1), true)
+	verify(strings.Replace(valid, `"legal_locator":"DEMO-XX 1.1"`, `"legal_locator":""`, 1), true)
 	verify(strings.Replace(valid, `"rules":`, `"unknown":1,"rules":`, 1), true)
 	if _, err := loadPinnedSourcePolicy(path, "invalid"); err == nil {
 		t.Fatal("invalid digest length accepted")
@@ -77,7 +79,9 @@ func (syntheticEvidenceProvider) Resolve(_ context.Context, q engine.NormalizedQ
 func TestCanonicalVerifierNeedsIndependentEvidencePolicy(t *testing.T) {
 	policy := engine.SourcePolicy{Rules: []engine.SourcePolicyRule{{
 		ID: "demo-policy", ClaimKind: "code_adoption", JurisdictionID: "DEMO-XX",
-		DocumentID: "demo-instrument", EffectiveFrom: "2025-01-01",
+		DocumentID: "demo-instrument", ArtifactSHA256: strings.Repeat("a", 64),
+		TextSHA256: strings.Repeat("b", 64), LegalLocator: "DEMO-XX 1.1",
+		EffectiveFrom: "2025-01-01",
 	}}}
 	req := engine.ProjectRequest{
 		ProjectID: "DEMO-1", Address: "1 Synthetic Lane, DEMO-XX",
