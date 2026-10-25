@@ -123,7 +123,7 @@ function collectRepositoryFiles(root, dir = root, result = []) {
 // fixtures, have an implicit public disposition. Every other JSON data path
 // needs an explicit policy change and rights review.
 function jsonDisposition(relativePath) {
-  if (relativePath === 'package.json' || relativePath === 'policy/public-boundary.json') {
+  if (relativePath === 'package.json' || relativePath === 'package-lock.json' || relativePath === 'policy/public-boundary.json') {
     return 'first-party';
   }
   if (relativePath.startsWith('schemas/') && relativePath.endsWith('.schema.json')) {
