@@ -15,7 +15,7 @@ func demoEvidenceLink(id string, role EvidenceRole) EvidenceLink {
 }
 
 func demoPolicy() SourcePolicy {
-	return SourcePolicy{Rules: []SourcePolicyRule{{ID: "DEMO-POLICY", ClaimKind: "code_adoption", JurisdictionID: "DEMO-XX", DocumentID: "DEMO-DOC", EffectiveFrom: "2026-01-01"}}}
+	return SourcePolicy{Rules: []SourcePolicyRule{{ID: "DEMO-POLICY", ClaimKind: "code_adoption", JurisdictionID: "DEMO-XX", DocumentID: "DEMO-DOC", ArtifactSHA256: demoSHA, TextSHA256: demoTextSHA, LegalLocator: "Section 1", EffectiveFrom: "2026-01-01"}}}
 }
 
 func demoClaim(links ...EvidenceLink) EvidenceClaim {
@@ -104,5 +104,30 @@ func TestRepeatedIdenticalEvidenceLinkIdentityDoesNotChangeDecision(t *testing.T
 	result, err := VerifyClaimEvidence(demoClaim(same, same), demoPolicy())
 	if err != nil || result.Decision != EvidenceVerified {
 		t.Fatalf("repeated same link result = %#v, err = %v", result, err)
+	}
+}
+
+func TestForgedArtifactOrPassageCannotInheritDocumentPolicy(t *testing.T) {
+	for _, tc := range []struct {
+		name   string
+		change func(*EvidenceLink)
+	}{
+		{"changed source bytes", func(link *EvidenceLink) {
+			link.Artifact.SHA256 = "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+		}},
+		{"changed extracted text", func(link *EvidenceLink) {
+			link.Anchor.TextSHA256 = "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+		}},
+		{"different legal locator", func(link *EvidenceLink) { link.Anchor.LegalLocator = "Section 2" }},
+		{"wrong document jurisdiction", func(link *EvidenceLink) { link.Document.JurisdictionID = "OTHER" }},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			link := demoEvidenceLink("DEMO-LINK", EvidenceEstablishes)
+			tc.change(&link)
+			out, err := VerifyClaimEvidence(demoClaim(link), demoPolicy())
+			if err != nil || out.Decision != EvidenceInsufficient {
+				t.Fatalf("forged source admitted: %#v; %v", out, err)
+			}
+		})
 	}
 }

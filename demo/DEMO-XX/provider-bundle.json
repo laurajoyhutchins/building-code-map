@@ -123,6 +123,9 @@
       "claim_kind": "code_adoption",
       "jurisdiction_id": "DEMO-XX",
       "document_id": "DEMO-DOC-001",
+      "artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "text_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "legal_locator": "Section 1",
       "effective_from": "2026-01-01",
       "material_class": "synthetic_example",
       "public_repository": "allowed"
