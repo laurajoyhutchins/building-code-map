@@ -34,7 +34,7 @@ Public evidence links support:
 2. the link resolves to a valid exact `TextAnchor`;
 3. the anchor belongs to an immutable `SourceArtifact` with a pinned SHA-256 and byte size;
 4. the artifact belongs to the identified `SourceDocument`;
-5. source policy authorizes that exact document identity for the claim kind, jurisdiction, and applicability date; and
+5. a **separately reviewed source policy** pins the exact document ID, source-artifact SHA-256, passage SHA-256 and legal locator for the claim kind, jurisdiction and applicability date; and
 6. no contradictory evidence is present.
 
 Otherwise the verifier returns an explicit insufficient, conflicting, or superseded decision.
@@ -47,7 +47,7 @@ The project-specific evidence claim uses `code_adoption` for resolved instrument
 
 ## Source policy
 
-Source policy is keyed to document identity, claim kind, jurisdiction, and time. It does not authorize evidence merely because a URL, publisher, or informal source tier looks plausible.
+Source policy is keyed to an *exact source witness*: document identity, original artifact SHA-256, anchored-text SHA-256, legal locator, claim kind, jurisdiction and time. A provider's digest-shaped assertion is not evidence that its bytes were authentic; source-review custody must independently establish and authorize those hashes. An older document-only policy is **insufficient** to verify new claims and fails closed. URLs, publishers, and informal source tiers cannot upgrade a claim.
 
 The public schemas are [`evidence.schema.json`](../schemas/evidence.schema.json) and [`source-policy.schema.json`](../schemas/source-policy.schema.json).
 
