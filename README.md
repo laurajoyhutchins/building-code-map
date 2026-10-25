@@ -50,7 +50,7 @@ The [website](https://laurajoyhutchins.github.io/building-code-map/) shows a fic
 
 The public repository now contains a deliberately **synthetic-only**, standalone application powered by the same `engine.ProjectVerifier` and `httpapi.NewHandler` used by library clients. It does not make real-world regulatory determinations.
 
-Requires Go 1.23+:
+Requires Go 1.25+:
 
 ```sh
 go run ./cmd/bcm
@@ -59,6 +59,25 @@ go run ./cmd/bcm
 Open `http://127.0.0.1:8787`, select a project applicability date, and verify the fictional `100 Demo Plaza, DEMO-XX` address. Changes to project inputs invalidate old results; a non-demo address fails closed rather than invoking an unconfigured provider. There is no frontend dependency install.
 
 The intended **single-source software architecture** and private-data migration gates are recorded in [Source ownership](docs/source-ownership.md). The legacy private application is not yet retired. The synthetic demo is a truthful contract/useability reference, not a deployment cutover or a second production engine.
+
+## Local synthetic geocoder snapshot (migration slice)
+
+The public `geocoder` package now contains the reviewed local SQLite
+address-point/street-range builder and read-only deterministic resolver formerly
+maintained in private alpha, in addition to civic-address normalization.
+`BuildSnapshot` accepts explicitly supplied, reviewed CSV input and records
+source name/vintage; `Open` checks schema and runs read-only queries. A
+unique address point wins over interpolation, equal-ranked points remain
+ambiguous, and street-range estimates retain their provenance and warnings.
+Source-specific address databases and third-party boundary bytes are **not**
+published or activated by this package. The repository test fixture is
+deliberately synthetic. A normalized or geocoded point is **not** itself
+proof of jurisdiction, code adoption, or a project's legal address.
+
+The runtime still needs a separate private, source-verified provider adapter
+and a real-project acceptance test before activating live code lookup. The
+broader GIS/frontend migration and private corpus custody remain tracked in
+[BCM #41](https://github.com/laurajoyhutchins/building-code-map/issues/41).
 
 ## Public geocoder normalization
 
@@ -103,7 +122,7 @@ The [accuracy benchmark](docs/accuracy-benchmark.md) compares the canonical proj
 
 ## Validate the public foundation
 
-Requires Node.js 22 or later and Go 1.23 or later.
+Requires Node.js 22 or later and Go 1.25 or later.
 
 ```sh
 go test ./...

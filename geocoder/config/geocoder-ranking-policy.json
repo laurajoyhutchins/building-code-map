@@ -1,0 +1,14 @@
+{
+  "version": "geocoder-ranking-1.0",
+  "address_point_base": 0.70,
+  "street_range_base": 0.55,
+  "exact_street": 0.05,
+  "exact_city": 0.15,
+  "exact_postal_code": 0.10,
+  "postal_code_not_supplied": 0.05,
+  "parity_matched": 0.05,
+  "minimum_address_point_quality": 0.85,
+  "minimum_street_range_quality": 0.75,
+  "ambiguity_gap": 0.05,
+  "source_priority": {}
+}
