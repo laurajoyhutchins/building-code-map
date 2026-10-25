@@ -112,8 +112,12 @@ func TestForgedArtifactOrPassageCannotInheritDocumentPolicy(t *testing.T) {
 		name   string
 		change func(*EvidenceLink)
 	}{
-		{"changed source bytes", func(link *EvidenceLink) { link.Artifact.SHA256 = "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" }},
-		{"changed extracted text", func(link *EvidenceLink) { link.Anchor.TextSHA256 = "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" }},
+		{"changed source bytes", func(link *EvidenceLink) {
+			link.Artifact.SHA256 = "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+		}},
+		{"changed extracted text", func(link *EvidenceLink) {
+			link.Anchor.TextSHA256 = "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+		}},
 		{"different legal locator", func(link *EvidenceLink) { link.Anchor.LegalLocator = "Section 2" }},
 		{"wrong document jurisdiction", func(link *EvidenceLink) { link.Document.JurisdictionID = "OTHER" }},
 	} {
