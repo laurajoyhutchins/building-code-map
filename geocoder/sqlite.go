@@ -211,7 +211,7 @@ LIMIT 20;`, parsed.Street, parsed.Street+" %", parsed.City, parsed.State, parsed
 		candidate := Candidate{
 			MatchedAddress: parsed.Normalized, Longitude: longitude, Latitude: latitude, Precision: PrecisionInterpolated,
 			Confidence: service.policy.StreetRangeBase, ScoreKind: "deterministic_quality",
-			ScoreFactors: map[string]float64{"street_range_base": service.policy.StreetRangeBase},
+			ScoreFactors:         map[string]float64{"street_range_base": service.policy.StreetRangeBase},
 			RankingPolicyVersion: service.policy.Version, RankingConfigurationID: service.configurationID,
 			Source: source, SourceRecordID: sourceRecordID, SourceVintage: sourceVintage,
 			Interpolation: &InterpolationProvenance{
