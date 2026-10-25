@@ -72,6 +72,12 @@ func handlerWithProvider(provider engine.Provider, remote *privateProvider, allo
 }
 
 func handlerWithUtilityContext(provider engine.Provider, remote *privateProvider, allowedOrigin string, catalog *utilitycontext.Catalog) http.Handler {
+	return handlerWithSourcePolicy(provider, remote, allowedOrigin, catalog, engine.SourcePolicy{})
+}
+
+// The operator's reviewed policy is independent of the private Provider.
+// Legacy endpoints without exact evidence remain conditional or unverified.
+func handlerWithSourcePolicy(provider engine.Provider, remote *privateProvider, allowedOrigin string, catalog *utilitycontext.Catalog, policy engine.SourcePolicy) http.Handler {
 	mux := http.NewServeMux()
 	if catalog != nil {
 		mux.Handle(utilitycontext.Path, catalog.Handler())
@@ -79,7 +85,7 @@ func handlerWithUtilityContext(provider engine.Provider, remote *privateProvider
 			mux.Handle(ProjectUtilityContextPath, projectUtilityContextHandler(remote, catalog))
 		}
 	}
-	runtime := engine.NewRuntime(provider)
+	runtime := engine.NewRuntimeWithSourcePolicy(provider, policy)
 	mux.Handle(httpapi.ProjectVerificationPath, httpapi.NewHandler(engine.NewProjectVerifier(runtime), nil))
 	if remote != nil {
 		mux.HandleFunc("/v1/readiness", func(w http.ResponseWriter, r *http.Request) {
@@ -184,7 +190,19 @@ func main() {
 				log.Fatalf("BCM utility context source rejected: %v", err)
 			}
 		}
-		handler = handlerWithUtilityContext(remote, remote, origin, catalog)
+		policyPath := os.Getenv("BCM_SOURCE_POLICY_PATH")
+		policySHA := os.Getenv("BCM_SOURCE_POLICY_SHA256")
+		var policy engine.SourcePolicy
+		if policyPath != "" || policySHA != "" {
+			if policyPath == "" || policySHA == "" {
+				log.Fatal("BCM source policy needs both private file path and exact SHA-256")
+			}
+			policy, err = loadPinnedSourcePolicy(policyPath, policySHA)
+			if err != nil {
+				log.Fatalf("BCM reviewed source policy rejected: %v", err)
+			}
+		}
+		handler = handlerWithSourcePolicy(remote, remote, origin, catalog, policy)
 		log.Printf("BCM project verifier listening at %s; remote provider configured", *addr)
 	} else {
 		if os.Getenv("BCM_UTILITY_CONTEXT_VIEW_PATH") != "" || os.Getenv("BCM_UTILITY_CONTEXT_VIEW_SHA256") != "" {
