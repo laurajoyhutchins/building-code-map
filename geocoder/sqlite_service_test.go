@@ -47,10 +47,10 @@ func syntheticGeocoder(t *testing.T) *SQLiteService {
 func TestCanonicalBCMSyntheticGeocoderPreservesPrecisionAndSource(t *testing.T) {
 	service := syntheticGeocoder(t)
 	for _, tc := range []struct {
-		address string
-		status Status
+		address   string
+		status    Status
 		precision Precision
-		sourceID string
+		sourceID  string
 	}{
 		{"101 Example Street, Sample City, CO 80202", StatusMatched, PrecisionAddressPoint, "a"},
 		{"100 Example St, Sample City, CO 80202", StatusAmbiguous, "", ""},
@@ -59,39 +59,49 @@ func TestCanonicalBCMSyntheticGeocoderPreservesPrecisionAndSource(t *testing.T) 
 		{"101 Example St, Other City, CO 80202", StatusNotFound, "", ""},
 		{"101 Example St, Sample City, CO 99999", StatusNotFound, "", ""},
 	} {
-		t.Run(tc.address,func(t *testing.T){
-			out,err:=service.Geocode(context.Background(),Query{Address:tc.address})
-			if err!=nil { t.Fatal(err) }
-			if out.Status!=tc.status { t.Fatalf("got %s, want %s: %#v",out.Status,tc.status,out) }
-			if tc.status!=StatusMatched {
-				if out.Selected!=nil {t.Fatalf("selected incompatible/ambiguous point: %#v",out)}
-				if tc.status==StatusAmbiguous && len(out.Candidates)!=2 {t.Fatalf("lost disambiguation: %#v",out)}
+		t.Run(tc.address, func(t *testing.T) {
+			out, err := service.Geocode(context.Background(), Query{Address: tc.address})
+			if err != nil {
+				t.Fatal(err)
+			}
+			if out.Status != tc.status {
+				t.Fatalf("got %s, want %s: %#v", out.Status, tc.status, out)
+			}
+			if tc.status != StatusMatched {
+				if out.Selected != nil {
+					t.Fatalf("selected incompatible/ambiguous point: %#v", out)
+				}
+				if tc.status == StatusAmbiguous && len(out.Candidates) != 2 {
+					t.Fatalf("lost disambiguation: %#v", out)
+				}
 				return
 			}
-			if out.Selected==nil || out.Selected.Precision!=tc.precision || out.Selected.SourceRecordID!=tc.sourceID {
-				t.Fatalf("source identity/precision lost: %#v",out)
+			if out.Selected == nil || out.Selected.Precision != tc.precision || out.Selected.SourceRecordID != tc.sourceID {
+				t.Fatalf("source identity/precision lost: %#v", out)
 			}
-			if out.Selected.Source!="synthetic-only" || out.Selected.SourceVintage!="2026-10-25" || out.Selected.RankingPolicyVersion=="" {
-				t.Fatalf("unproven source/ranking: %#v",out.Selected)
+			if out.Selected.Source != "synthetic-only" || out.Selected.SourceVintage != "2026-10-25" || out.Selected.RankingPolicyVersion == "" {
+				t.Fatalf("unproven source/ranking: %#v", out.Selected)
 			}
-			if tc.precision==PrecisionInterpolated {
-				if out.Selected.Interpolation==nil || out.Selected.Interpolation.SourceRangeID=="" || len(out.Warnings)==0 {
-					t.Fatalf("street-range approximation was presented as exact: %#v",out)
+			if tc.precision == PrecisionInterpolated {
+				if out.Selected.Interpolation == nil || out.Selected.Interpolation.SourceRangeID == "" || len(out.Warnings) == 0 {
+					t.Fatalf("street-range approximation was presented as exact: %#v", out)
 				}
-			}else if out.Selected.Interpolation!=nil {
-				t.Fatalf("address point mislabeled as interpolation: %#v",out)
+			} else if out.Selected.Interpolation != nil {
+				t.Fatalf("address point mislabeled as interpolation: %#v", out)
 			}
 		})
 	}
 }
 
-func TestPublicGeocoderRejectsBadInputsAndCorruptSnapshot(t *testing.T){
-	if err:=BuildSnapshot(BuildOptions{OutputPath:filepath.Join(t.TempDir(),"x.sqlite")});err==nil {
+func TestPublicGeocoderRejectsBadInputsAndCorruptSnapshot(t *testing.T) {
+	if err := BuildSnapshot(BuildOptions{OutputPath: filepath.Join(t.TempDir(), "x.sqlite")}); err == nil {
 		t.Fatal("builder accepted empty source")
 	}
-	path:=filepath.Join(t.TempDir(),"corrupt.sqlite")
-	if err:=os.WriteFile(path,[]byte("not a SQLite database"),0600);err!=nil{t.Fatal(err)}
-	if svc,err:=Open(path);err==nil {
+	path := filepath.Join(t.TempDir(), "corrupt.sqlite")
+	if err := os.WriteFile(path, []byte("not a SQLite database"), 0600); err != nil {
+		t.Fatal(err)
+	}
+	if svc, err := Open(path); err == nil {
 		_ = svc.Close()
 		t.Fatal("unverified SQLite snapshot opened")
 	}
