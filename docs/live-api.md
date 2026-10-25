@@ -18,6 +18,13 @@ The public Go service supports a configurable remote provider. Without configura
 - `BCM_PROVIDER_AUTH_MODE`: required for the live Go service. Use `gcp_id_token` when the private Authority Engine is protected by Cloud Run IAM, or `bearer` only when a separate provider explicitly validates bearer tokens.
 - `BCM_PROVIDER_TOKEN`: server-side secret required only in `bearer` mode; prohibited in `gcp_id_token` mode. Never place credentials in GitHub Pages variables.
 
+**Optional evidence-admission prerequisite for a verified project result:**
+
+- `BCM_SOURCE_POLICY_PATH`: private, operator-reviewed JSON with the existing `engine.SourcePolicy` rules for identified enacted source documents and scoped effective dates.
+- `BCM_SOURCE_POLICY_SHA256`: independently approved SHA-256 of the exact policy file bytes. Both settings must be provided together; malformed, changed, or oversized policy is rejected before the HTTP service starts. Keep policy bytes and approvals in private regulatory custody, not GitHub Pages, CI artifacts, or public demo files.
+
+The runtime now receives this **independently configured policy** instead of allowing its private Provider to establish its own evidence authority. A file hash establishes identity, not source authenticity or review authorization. The legacy private `/v1/resolve` adapter still only yields conditional or insufficient results because it does not convey qualifying exact evidence. Supplying policy alone **cannot** upgrade legacy results. The eventual private Provider must return source-bound `exact_evidence` through the canonical result, with the Runtime validating the establishing links, dates, and trusted policy. Do not configure fake policy or claim a live verified result before the real-data acceptance in BCM #74.
+
 For Cloud Run, grant the **public API service account** `roles/run.invoker` on the private backend service only. The Go API obtains a short-lived Google-signed identity token from the Cloud Run metadata server with the private service origin as the audience. No service-account key file is required or permitted. Keep the private backend unauthenticated-invoker permission disabled.
 - `PORT`: listen port, defaults to `8080` when the live provider is configured.
 
