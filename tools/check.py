@@ -47,6 +47,12 @@ def main() -> int:
         (f"Node syntax: {path.name}", ["node", "--check", str(path.relative_to(ROOT))])
         for path in sorted((ROOT / "scripts").glob("*.mjs"))
     )
+    checks.extend(
+        (f"Node TypeScript syntax: {path.name}", [
+            "node", "--experimental-strip-types", "--check", str(path.relative_to(ROOT))
+        ])
+        for path in sorted((ROOT / "scripts").glob("*.ts"))
+    )
     if not args.preflight:
         checks += [
             ("Go tests", ["go", "test", "./..."]),

@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "https://building-code-map.invalid/schemas/bcm-provider-contract-v1.schema.json",
+  "title": "BCM provider contract profile v1 (ODCS v3.1.0)",
+  "description": "Additional BCM v1 rules over the exact upstream ODCS v3.1.0 JSON Schema, locally registered by the validator.",
+  "allOf": [
+    {
+      "$ref": "https://building-code-map.invalid/schemas/odcs-v3.1.0.schema.json"
+    },
+    {
+      "type": "object",
+      "required": [
+        "name",
+        "description",
+        "authoritativeDefinitions",
+        "customProperties"
+      ],
+      "properties": {
+        "apiVersion": {
+          "const": "v3.1.0"
+        },
+        "kind": {
+          "const": "DataContract"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "name": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "status": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "description": {
+          "type": "object",
+          "required": [
+            "purpose",
+            "usage",
+            "limitations"
+          ],
+          "properties": {
+            "purpose": {
+              "type": "string",
+              "pattern": "\\S"
+            },
+            "usage": {
+              "type": "string",
+              "pattern": "\\S"
+            },
+            "limitations": {
+              "type": "string",
+              "pattern": "\\S"
+            }
+          }
+        },
+        "authoritativeDefinitions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]+$"
+              }
+            }
+          }
+        },
+        "customProperties": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "property"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]+$"
+              },
+              "property": {
+                "type": "string",
+                "pattern": "\\S"
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "property": {
+                      "pattern": "^bcm"
+                    }
+                  },
+                  "required": [
+                    "property"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "property": {
+                      "enum": [
+                        "bcmProfileVersion",
+                        "bcmProviderBundleId"
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "property": {
+                      "const": "bcmProfileVersion"
+                    }
+                  },
+                  "required": [
+                    "property"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "const": "1.0.0"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "contains": {
+            "type": "object",
+            "properties": {
+              "property": {
+                "const": "bcmProfileVersion"
+              }
+            },
+            "required": [
+              "property"
+            ]
+          },
+          "minContains": 1
+        }
+      }
+    }
+  ]
+}

@@ -12,7 +12,7 @@ function runContract(contract) {
   const directory = mkdtempSync(join(tmpdir(), 'bcm-provider-contract-'));
   const path = join(directory, 'contract.json');
   writeFileSync(path, `${JSON.stringify(contract, null, 2)}\n`);
-  return spawnSync(process.execPath, ['scripts/provider-contract.mjs', path], {
+  return spawnSync(process.execPath, ['--experimental-strip-types', 'scripts/provider-contract.ts', path], {
     encoding: 'utf8',
   });
 }
@@ -73,4 +73,37 @@ test('rejects fields outside the pinned ODCS root contract', () => {
   const result = runContract(contract);
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /ODCS_FIELD_UNSUPPORTED privateStoragePath/);
+});
+
+test('rejects nested invalid ODCS fields, not merely the root field allowlist', () => {
+  const contract = structuredClone(valid);
+  contract.authoritativeDefinitions[0].url = 123;
+  const result = runContract(contract);
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /BCM_SCHEMA_INVALID authoritativeDefinitions\[0\]\.url/);
+});
+
+test('rejects missing ODCS custom property values', () => {
+  const contract = structuredClone(valid);
+  delete contract.customProperties[1].value;
+  const result = runContract(contract);
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /BCM_REQUIRED customProperties\[1\]\.value/);
+});
+
+test('requires the BCM profile extension', () => {
+  const contract = structuredClone(valid);
+  contract.customProperties = contract.customProperties.filter(
+    (item) => item.property !== 'bcmProfileVersion',
+  );
+  const result = runContract(contract);
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /BCM_REQUIRED customProperties\.bcmProfileVersion/);
+});
+
+test('does not coerce invalid ODCS JSON types', () => {
+  const contract = structuredClone(valid);
+  contract.authoritativeDefinitions[0].url = true;
+  const result = runContract(contract);
+  assert.notEqual(result.status, 0);
 });
