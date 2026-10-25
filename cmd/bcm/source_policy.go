@@ -61,6 +61,19 @@ func loadPinnedSourcePolicy(path, expectedSHA string) (engine.SourcePolicy, erro
 			(rule.ClaimKind != "code_adoption" && rule.ClaimKind != "code_non_applicability") {
 			return engine.SourcePolicy{}, errors.New("source policy contains invalid rule identity")
 		}
+		// Only independently admitted immutable original bytes and a reviewed
+		// exact passage may establish legal materiality. A digest-shaped
+		// value asserted by the provider is never sufficient.
+		if len(rule.ArtifactSHA256) != 64 || len(rule.TextSHA256) != 64 ||
+			strings.TrimSpace(rule.LegalLocator) == "" {
+			return engine.SourcePolicy{}, errors.New("source policy requires pinned artifact and passage identities")
+		}
+		for _, digest := range []string{rule.ArtifactSHA256, rule.TextSHA256} {
+			decoded, err := hex.DecodeString(digest)
+			if err != nil || len(decoded) != sha256.Size || digest != strings.ToLower(digest) {
+				return engine.SourcePolicy{}, errors.New("source policy contains malformed source digest")
+			}
+		}
 		if _, found := ids[rule.ID]; found {
 			return engine.SourcePolicy{}, errors.New("source policy contains duplicate rule ID")
 		}
