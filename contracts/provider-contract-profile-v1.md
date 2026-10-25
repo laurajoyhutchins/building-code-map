@@ -278,3 +278,18 @@ A provider conforms to BCM Provider Contract Profile v1 only when all of the fol
 - limitations are explicit;
 - BCM evidence, project-verdict, unresolved-requirement, and source-policy semantics remain authoritative; and
 - the contract does not expose or require private production implementation, maintained corpus contents, private project data, or restricted source material.
+
+
+## Machine-readable validation authority
+
+The public validator uses the verbatim ODCS v3.1.0 JSON Schema pinned from
+`bitol-io/open-data-contract-standard` (Git blob
+`3596e68b07d19fc44fe947d8796021b64b8f86eb`), alongside
+`schemas/bcm-provider-contract-v1.schema.json` for BCM-specific rules.
+Both schemas are loaded locally, without network access. The ODCS schema is
+licensed under Apache-2.0; see `NOTICE`.
+
+ODCS and BCM shape constraints are evaluated by Ajv using JSON Schema Draft
+2019-09. Only uniqueness by stable identifier remains procedural here.
+This contract validation does **not** certify provider authority, published
+rights, exact source evidence, or regulatory suitability.

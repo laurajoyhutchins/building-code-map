@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { validateProviderContract } from '../scripts/provider-contract.mjs';
+import { validateProviderContract } from '../scripts/provider-contract.ts';
 
 const demoDir = 'demo/DEMO-XX';
 

@@ -90,6 +90,7 @@
     "go.mod",
     "httpapi",
     "package.json",
+    "package-lock.json",
     "policy",
     "schemas",
     "scripts",
