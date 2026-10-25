@@ -126,6 +126,11 @@ function jsonDisposition(relativePath) {
   if (relativePath === 'package.json' || relativePath === 'package-lock.json' || relativePath === 'policy/public-boundary.json') {
     return 'first-party';
   }
+  // Reviewed first-party algorithm configuration, not a GIS or regulatory corpus.
+  // Permit only this one exact file, never a whole geocoder data directory.
+  if (relativePath === 'geocoder/config/geocoder-ranking-policy.json') {
+    return 'geocoder-ranking-policy';
+  }
   if (relativePath.startsWith('schemas/') && relativePath.endsWith('.schema.json')) {
     return 'schema';
   }
@@ -158,6 +163,33 @@ export function validatePublicArtifact(relativePath, contents, policy) {
   } catch {
     errors.push('JSON content is invalid');
     return errors;
+  }
+  if (disposition === 'geocoder-ranking-policy') {
+    const requiredNumbers = [
+      'address_point_base', 'street_range_base', 'exact_street', 'exact_city',
+      'exact_postal_code', 'postal_code_not_supplied', 'parity_matched',
+      'minimum_address_point_quality', 'minimum_street_range_quality', 'ambiguity_gap',
+    ];
+    const expectedKeys = new Set(['version', 'source_priority', ...requiredNumbers]);
+    const keys = value && typeof value === 'object' && !Array.isArray(value)
+      ? Object.keys(value) : [];
+    if (keys.length !== expectedKeys.size || keys.some((key) => !expectedKeys.has(key))) {
+      errors.push('geocoder ranking policy contains unreviewed fields');
+    }
+    if (typeof value?.version !== 'string' || !value.version.startsWith('geocoder-ranking-')) {
+      errors.push('geocoder ranking version must be declared');
+    }
+    for (const field of requiredNumbers) {
+      if (typeof value?.[field] !== 'number' || !Number.isFinite(value[field]) ||
+          value[field] < 0 || value[field] > 1) {
+        errors.push(`geocoder ranking ${field} must be a bounded number`);
+      }
+    }
+    if (value?.source_priority === null || typeof value?.source_priority !== 'object' ||
+        Array.isArray(value?.source_priority) ||
+        Object.keys(value.source_priority ?? {}).length !== 0) {
+      errors.push('public geocoder ranking must not embed real source priorities');
+    }
   }
   if (disposition === 'schema') {
     if (typeof value?.$schema !== 'string' || !value.$schema.includes('json-schema.org')) {
