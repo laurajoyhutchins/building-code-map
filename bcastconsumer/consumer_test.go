@@ -228,8 +228,8 @@ func rehashPublicBCASTPackage(t *testing.T, pkg map[string]any) string {
 func TestPublicBCASTUnicodeMetadataLengthAndExactMaterialization(t *testing.T) {
 	cases := []struct {
 		name string
-		max int
-		set func(map[string]any, string)
+		max  int
+		set  func(map[string]any, string)
 	}{
 		{"package version", 128, func(p map[string]any, value string) { p["package_version"] = value }},
 		{"publication title", 512, func(p map[string]any, value string) { p["publication"].(map[string]any)["title"] = value }},
@@ -270,20 +270,19 @@ func TestPublicBCASTUnicodeMetadataLengthAndExactMaterialization(t *testing.T) {
 	}
 }
 
-
 // A publication coordinate is not a display label. Even fully rehashed
 // edition/revision aliases remain invalid unless canonical.
 func TestBCASTNoncanonicalRevisionRejectedEvenWhenHashesRecomputed(t *testing.T) {
 	for _, revision := range []string{"2026-a", " 2026-a", "2026-a "} {
 		t.Run(revision, func(t *testing.T) {
-		p := example(t)
-		publication := p["publication"].(map[string]any)
-		publication["revision"] = revision
-		publicationID, err := id("bcastpub", map[string]any{
-			"namespace": publication["namespace"],
-			"family": publication["family"],
-			"edition": publication["edition"],
-			"revision": revision,
+			p := example(t)
+			publication := p["publication"].(map[string]any)
+			publication["revision"] = revision
+			publicationID, err := id("bcastpub", map[string]any{
+				"namespace": publication["namespace"],
+				"family": publication["family"],
+				"edition": publication["edition"],
+				"revision": revision,
 		})
 		if err != nil {
 			t.Fatal(err)
