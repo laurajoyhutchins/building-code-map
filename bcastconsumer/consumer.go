@@ -285,6 +285,12 @@ func validate(raw map[string]any, requested string) (*Package, error) {
 	if !namespace.MatchString(ns) || len(ns) > 253 || !family.MatchString(fam) || len(fam) > 256 || edition == "" || len(edition) > 128 || strings.TrimSpace(edition) != edition {
 		return bad("publication coordinates")
 	}
+	// Both edition and revision are canonical publication coordinates. An
+	// ASCII revision with surrounding whitespace is not a distinct lawful
+	// coordinate, even if a caller correctly recomputes its hash.
+	if rev := asString(pub, "revision"); rev != "" && strings.TrimSpace(rev) != rev {
+		return bad("noncanonical publication revision")
+	}
 	for _, r := range edition + asString(pub, "revision") {
 		if r > 127 {
 			return bad("non-ASCII edition/revision pending NFC implementation")
