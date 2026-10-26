@@ -25,7 +25,7 @@ func exactLegacyLink(family string) engine.EvidenceLink {
 			JurisdictionID: "DEMO-XX"},
 		Artifact: engine.SourceArtifact{ID: id + "-ARTIFACT", DocumentID: id + "-DOCUMENT",
 			SHA256: syntheticArtifactHash, SizeBytes: 123},
-		Anchor:   engine.TextAnchor{ID: id + "-ANCHOR", ArtifactID: id + "-ARTIFACT",
+		Anchor: engine.TextAnchor{ID: id + "-ANCHOR", ArtifactID: id + "-ARTIFACT",
 			TextSHA256: syntheticPassageHash, LegalLocator: "Fictional section 1"},
 	}
 }
