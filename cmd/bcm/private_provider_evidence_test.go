@@ -46,7 +46,7 @@ func exactLegacyPolicy() engine.SourcePolicy {
 }
 
 type exactLegacyObservation struct {
-	omitEvidence bool
+	omitEvidence  bool
 	mutatePassage bool
 	localRecord   bool
 }
@@ -159,13 +159,13 @@ func TestPrivateExactEvidenceUsesCanonicalProjectVerifier(t *testing.T) {
 
 func TestPrivateExactEvidenceFailsClosedForMissingOrUntrustedWitness(t *testing.T) {
 	for _, tt := range []struct {
-		name   string
-		scenario exactLegacyObservation
-		policy engine.SourcePolicy
-		date   string
-		facts map[string]string
+		name        string
+		scenario    exactLegacyObservation
+		policy      engine.SourcePolicy
+		date        string
+		facts       map[string]string
 		wantVerdict engine.ProjectVerdict
-		wantError bool
+		wantError   bool
 	}{
 		{name: "no exact evidence remains conditional", scenario: exactLegacyObservation{omitEvidence: true},
 			policy: exactLegacyPolicy(), date: "2026-10-25", wantVerdict: engine.ProjectConditional},
