@@ -234,7 +234,9 @@ func TestPublicBCASTUnicodeMetadataLengthAndExactMaterialization(t *testing.T) {
 		{"publication title", 512, func(p map[string]any, value string) { p["publication"].(map[string]any)["title"] = value }},
 		{"issuing body", 256, func(p map[string]any, value string) { p["publication"].(map[string]any)["issuing_body"] = value }},
 		{"object label", 1024, func(p map[string]any, value string) { p["objects"].([]any)[1].(map[string]any)["label"] = value }},
-		{"source citation", 2048, func(p map[string]any, value string) { p["objects"].([]any)[1].(map[string]any)["provenance"].(map[string]any)["citation"] = value }},
+		{"source citation", 2048, func(p map[string]any, value string) {
+			p["objects"].([]any)[1].(map[string]any)["provenance"].(map[string]any)["citation"] = value
+		}},
 		{"object locator", 512, func(p map[string]any, value string) {
 			object := p["objects"].([]any)[1].(map[string]any)
 			object["locator"] = value
