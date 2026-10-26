@@ -1,0 +1,72 @@
+{
+  "apiVersion": "v3.1.0",
+  "kind": "DataContract",
+  "id": "bcm-private-resolve-evidence-demo-xx",
+  "name": "BCM private resolver evidence handoff (synthetic contract)",
+  "version": "1.0.0",
+  "status": "active",
+  "description": {
+    "purpose": "Bind private single-family resolution observations to the public canonical BCM verifier.",
+    "usage": "Provider implementers emit project-scoped source identifiers and optional exact evidence links; the public Runtime authenticates source claims against independently reviewed source policy.",
+    "limitations": "DEMO-XX synthetic contract only; this schema and source IDs cannot establish enacted law, legal authority, real coverage, or a verified project. Project verification is exclusively performed by public engine.ProjectVerifier."
+  },
+  "schema": [
+    {
+      "name": "private_resolve_response",
+      "logicalType": "object",
+      "physicalName": "POST /v1/resolve",
+      "properties": [
+        {
+          "name": "schema_version",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "resolution",
+          "logicalType": "object",
+          "required": true
+        },
+        {
+          "name": "resolution.adoptions[].exact_evidence",
+          "logicalType": "array",
+          "required": false,
+          "description": "Immutable legal evidence-link identities validated against the public EvidenceLink schema and independent policy."
+        },
+        {
+          "name": "provenance.bundle_manifest_digest",
+          "logicalType": "string",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "authoritativeDefinitions": [
+    {
+      "id": "bcm_private_reply_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/private-resolve-response-v1.schema.json"
+    },
+    {
+      "id": "bcm_evidence_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/evidence.schema.json"
+    },
+    {
+      "id": "bcm_project_code_basis",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/project-code-basis.schema.json"
+    }
+  ],
+  "customProperties": [
+    {
+      "id": "bcm_profile_version",
+      "property": "bcmProfileVersion",
+      "value": "1.0.0"
+    },
+    {
+      "id": "bcm_provider_bundle_id",
+      "property": "bcmProviderBundleId",
+      "value": "DEMO-XX-SYNTHETIC-ONLY"
+    }
+  ]
+}
