@@ -328,7 +328,7 @@ func (p *privateProvider) resolveFamily(ctx context.Context, query engine.Normal
 		}
 		code := engine.CodeResolution{
 			Family: family, Edition: edition, Status: status,
-			Basis: "Source-backed adoption; local applicability may require confirmation.",
+			Basis:         "Source-backed adoption; local applicability may require confirmation.",
 			ExactEvidence: ad.ExactEvidence,
 		}
 		for _, id := range ad.SourceIDs {
