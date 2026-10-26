@@ -25,7 +25,7 @@ func exactLegacyLink(family string) engine.EvidenceLink {
 			JurisdictionID: "DEMO-XX"},
 		Artifact: engine.SourceArtifact{ID: id + "-ARTIFACT", DocumentID: id + "-DOCUMENT",
 			SHA256: syntheticArtifactHash, SizeBytes: 123},
-		Anchor: engine.TextAnchor{ID: id + "-ANCHOR", ArtifactID: id + "-ARTIFACT",
+		Anchor:   engine.TextAnchor{ID: id + "-ANCHOR", ArtifactID: id + "-ARTIFACT",
 			TextSHA256: syntheticPassageHash, LegalLocator: "Fictional section 1"},
 	}
 }
@@ -38,7 +38,7 @@ func exactLegacyPolicy() engine.SourcePolicy {
 			ID: "DEMO-POLICY-" + family, ClaimKind: "code_adoption",
 			JurisdictionID: "DEMO-XX", DocumentID: link.Document.ID,
 			ArtifactSHA256: syntheticArtifactHash, TextSHA256: syntheticPassageHash,
-			LegalLocator: "Fictional section 1",
+			LegalLocator:  "Fictional section 1",
 			EffectiveFrom: "2026-01-01", EffectiveTo: "2026-12-31",
 		})
 	}
@@ -91,25 +91,25 @@ func mockExactLegacyProvider(t *testing.T, scenario exactLegacyObservation) *htt
 			out := map[string]any{
 				"schema_version": "1",
 				"resolution": map[string]any{
-					"status": "verified",
+					"status":             "verified",
 					"applicability_date": query.ApplicabilityDate,
 					"geography": map[string]any{
-						"jurisdiction_id": "DEMO-XX",
-						"jurisdiction_name": "Fictional jurisdiction",
+						"jurisdiction_id":              "DEMO-XX",
+						"jurisdiction_name":            "Fictional jurisdiction",
 						"census_state_equivalent_fips": "08",
 					},
 					"adoptions": []any{map[string]any{
-						"code_family": query.CodeFamily,
-						"code_name": "DEMO-CODE-" + query.CodeFamily,
-						"verification": map[string]any{"status": "verified"},
-						"source_ids": []string{"DEMO-SOURCE-" + query.CodeFamily},
+						"code_family":    query.CodeFamily,
+						"code_name":      "DEMO-CODE-" + query.CodeFamily,
+						"verification":   map[string]any{"status": "verified"},
+						"source_ids":     []string{"DEMO-SOURCE-" + query.CodeFamily},
 						"exact_evidence": links,
 					}},
 					"required_local_records": required,
 				},
 				"provenance": map[string]any{
-					"engine_version": "DEMO-ENGINE",
-					"source_commit": strings.Repeat("d", 40),
+					"engine_version":         "DEMO-ENGINE",
+					"source_commit":          strings.Repeat("d", 40),
 					"bundle_manifest_digest": "sha256:synthetic",
 				},
 			}
