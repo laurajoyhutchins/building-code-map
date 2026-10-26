@@ -53,8 +53,9 @@ type privateResolution struct {
 			BaseModelCode *struct {
 				EditionYear int `json:"edition_year"`
 			} `json:"base_model_code"`
-			SourceIDs    []string `json:"source_ids"`
-			Verification struct {
+			SourceIDs     []string              `json:"source_ids"`
+			ExactEvidence []engine.EvidenceLink `json:"exact_evidence"`
+			Verification  struct {
 				Status string `json:"status"`
 			} `json:"verification"`
 		} `json:"adoptions"`
@@ -306,7 +307,16 @@ func (p *privateProvider) resolveFamily(ctx context.Context, query engine.Normal
 			}
 		}
 		status := codeStatus
-		if ad.Verification.Status != "verified" && status == engine.StatusPartiallyResolved {
+		// Legacy source IDs or a private "verified" flag cannot establish a
+		// public claim. Only a scoped, exact-evidence-bearing observation may
+		// be proposed as resolved; Runtime independently checks the hashes,
+		// legal locator, contradiction and operative date against trusted policy.
+		if (r.Status == "resolved" || r.Status == "verified") &&
+			ad.Verification.Status == "verified" && len(ad.ExactEvidence) > 0 &&
+			len(r.RequiredLocalRecords) == 0 && len(r.Warnings) == 0 &&
+			len(query.ProjectFacts) == 0 {
+			status = engine.StatusResolved
+		} else if ad.Verification.Status != "verified" && status == engine.StatusPartiallyResolved {
 			status = engine.StatusInsufficientEvidence
 		}
 		edition := ad.StateCodeName
@@ -319,6 +329,7 @@ func (p *privateProvider) resolveFamily(ctx context.Context, query engine.Normal
 		code := engine.CodeResolution{
 			Family: family, Edition: edition, Status: status,
 			Basis: "Source-backed adoption; local applicability may require confirmation.",
+			ExactEvidence: ad.ExactEvidence,
 		}
 		for _, id := range ad.SourceIDs {
 			if id != "" {
