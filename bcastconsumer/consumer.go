@@ -17,6 +17,7 @@ import (
 	"sort"
 	"strings"
 	"time"
+	"unicode/utf8"
 )
 
 const maxBytes = 16 << 20
@@ -162,6 +163,12 @@ func validObjectKind(s string) bool {
 	return false
 }
 func validStatus(s string) bool { return s == "resolved" || s == "unresolved" || s == "unsupported" }
+
+// JSON Schema maxLength counts Unicode code points, not UTF-8 bytes.
+// The public BCAST package schema owns these metadata limits.
+func validPublicText(s string, maxCharacters int) bool {
+	return s != "" && utf8.ValidString(s) && utf8.RuneCountInString(s) <= maxCharacters
+}
 func noDuplicates(data []byte) error {
 	d := json.NewDecoder(bytes.NewReader(data))
 	var walk func() error
@@ -255,7 +262,7 @@ func validate(raw map[string]any, requested string) (*Package, error) {
 	if !only(raw, "schema_version", "package_id", "package_version", "publication", "objects") || asString(raw, "schema_version") != "bcast.package/0.2.0" || !expectID(asString(raw, "package_id"), "bcastpkg") || asString(raw, "package_id") != requested {
 		return bad("package header or requested identity")
 	}
-	if v := asString(raw, "package_version"); v == "" || len(v) > 128 {
+	if v := asString(raw, "package_version"); !validPublicText(v, 128) {
 		return bad("package version")
 	}
 	pub, ok := raw["publication"].(map[string]any)
@@ -269,7 +276,7 @@ func validate(raw map[string]any, requested string) (*Package, error) {
 				return bad("invalid optional publication field")
 			}
 			max := map[string]int{"revision": 128, "title": 512, "issuing_body": 256}[key]
-			if len(v) > max {
+			if !validPublicText(v, max) {
 				return bad("long publication field")
 			}
 		}
@@ -307,7 +314,7 @@ func validate(raw map[string]any, requested string) (*Package, error) {
 			return bad("object shape")
 		}
 		kind, loc, oid := asString(obj, "kind"), asString(obj, "locator"), asString(obj, "object_id")
-		if !validObjectKind(kind) || loc == "" || len(loc) > 512 || !validStatus(asString(obj, "status")) || !expectID(oid, "bcastobj") {
+		if !validObjectKind(kind) || !validPublicText(loc, 512) || !validStatus(asString(obj, "status")) || !expectID(oid, "bcastobj") {
 			return bad("object coordinates/status")
 		}
 		for _, key := range []string{"parent_id", "label"} {
@@ -316,7 +323,7 @@ func validate(raw map[string]any, requested string) (*Package, error) {
 				if !ok || v == "" {
 					return bad("invalid optional object field")
 				}
-				if key == "label" && len(v) > 1024 {
+				if key == "label" && !validPublicText(v, 1024) {
 					return bad("long object label")
 				}
 			}
@@ -338,7 +345,7 @@ func validate(raw map[string]any, requested string) (*Package, error) {
 		}
 		if provenance, exists := obj["provenance"]; exists {
 			p, ok := provenance.(map[string]any)
-			if !ok || !only(p, "citation", "source_artifact_sha256") || asString(p, "citation") == "" {
+			if !ok || !only(p, "citation", "source_artifact_sha256") || !validPublicText(asString(p, "citation"), 2048) {
 				return bad("provenance")
 			}
 			if v, exists := p["source_artifact_sha256"]; exists {
