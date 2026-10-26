@@ -84,7 +84,16 @@ func newPrivateProvider(raw, token string) (*privateProvider, error) {
 			return nil, errors.New("invalid provider port")
 		}
 	}
-	return &privateProvider{base: strings.TrimSuffix(uri.String(), "/"), token: token, client: &http.Client{Timeout: 10 * time.Second}}, nil
+	// The configured origin is the sole authorized destination. A private
+	// resolver must not redirect bearer credentials or project inputs to an
+	// unreviewed host (including a same-domain subdomain).
+	client := &http.Client{
+		Timeout: 10 * time.Second,
+		CheckRedirect: func(_ *http.Request, _ []*http.Request) error {
+			return http.ErrUseLastResponse
+		},
+	}
+	return &privateProvider{base: strings.TrimSuffix(uri.String(), "/"), token: token, client: client}, nil
 }
 
 // Successful private-provider responses may contain at most 1 MiB of JSON and whitespace.
