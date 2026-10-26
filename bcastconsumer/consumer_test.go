@@ -200,7 +200,6 @@ func TestRemoteRedirectIsNotFollowed(t *testing.T) {
 	}
 }
 
-
 func rehashPublicBCASTPackage(t *testing.T, pkg map[string]any) string {
 	t.Helper()
 	objects := append([]any(nil), pkg["objects"].([]any)...)
@@ -280,44 +279,44 @@ func TestBCASTNoncanonicalRevisionRejectedEvenWhenHashesRecomputed(t *testing.T)
 			publication["revision"] = revision
 			publicationID, err := id("bcastpub", map[string]any{
 				"namespace": publication["namespace"],
-				"family": publication["family"],
-				"edition": publication["edition"],
-				"revision": revision,
-		})
-		if err != nil {
-			t.Fatal(err)
-		}
-		publication["publication_id"] = publicationID
-		oldToNew := make(map[string]string)
-		objects := p["objects"].([]any)
-		for _, value := range objects {
-			object := value.(map[string]any)
-			oldID := asString(object, "object_id")
-			newID, err := id("bcastobj", map[string]any{
-				"publication_id": publicationID,
-				"kind": object["kind"],
-				"locator": object["locator"],
+				"family":    publication["family"],
+				"edition":   publication["edition"],
+				"revision":  revision,
 			})
 			if err != nil {
 				t.Fatal(err)
 			}
-			oldToNew[oldID] = newID
-			object["object_id"] = newID
-		}
-		for _, value := range objects {
-			object := value.(map[string]any)
-			if parent, exists := object["parent_id"]; exists {
-				object["parent_id"] = oldToNew[parent.(string)]
+			publication["publication_id"] = publicationID
+			oldToNew := make(map[string]string)
+			objects := p["objects"].([]any)
+			for _, value := range objects {
+				object := value.(map[string]any)
+				oldID := asString(object, "object_id")
+				newID, err := id("bcastobj", map[string]any{
+					"publication_id": publicationID,
+					"kind":           object["kind"],
+					"locator":        object["locator"],
+				})
+				if err != nil {
+					t.Fatal(err)
+				}
+				oldToNew[oldID] = newID
+				object["object_id"] = newID
 			}
-		}
-		packageID := rehashPublicBCASTPackage(t, p)
-		_, err = validate(p, packageID)
-		if revision == "2026-a" && err != nil {
-			t.Fatalf("rejected canonical revision: %v", err)
-		}
-		if revision != "2026-a" && err == nil {
-			t.Fatal("accepted whitespace-altered publication revision with valid hashes")
-		}
+			for _, value := range objects {
+				object := value.(map[string]any)
+				if parent, exists := object["parent_id"]; exists {
+					object["parent_id"] = oldToNew[parent.(string)]
+				}
+			}
+			packageID := rehashPublicBCASTPackage(t, p)
+			_, err = validate(p, packageID)
+			if revision == "2026-a" && err != nil {
+				t.Fatalf("rejected canonical revision: %v", err)
+			}
+			if revision != "2026-a" && err == nil {
+				t.Fatal("accepted whitespace-altered publication revision with valid hashes")
+			}
 		})
 	}
 }
