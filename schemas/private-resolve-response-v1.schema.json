@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://building-code-map.example/schemas/private-resolve-response-v1.schema.json",
+  "title": "BCM legacy private single-family resolution handoff v1",
+  "description": "Cross-repository response shape for private /v1/resolve observations, including optional exact evidence. The public Runtime independently authenticates legal evidence; this structural schema does not establish a project verdict.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "resolution",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1"
+    },
+    "resolution": {
+      "type": "object",
+      "required": [
+        "status",
+        "applicability_date",
+        "geography",
+        "adoptions"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "applicability_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "geography": {
+          "type": "object",
+          "required": [
+            "jurisdiction_id",
+            "jurisdiction_name"
+          ],
+          "properties": {
+            "jurisdiction_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "jurisdiction_name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "census_state_equivalent_fips": {
+              "type": "string"
+            }
+          }
+        },
+        "adoptions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "code_family",
+              "verification"
+            ],
+            "properties": {
+              "code_family": {
+                "enum": [
+                  "building",
+                  "electrical",
+                  "energy",
+                  "fire_operational",
+                  "residential"
+                ]
+              },
+              "code_name": {
+                "type": "string"
+              },
+              "state_code_name": {
+                "type": "string"
+              },
+              "source_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "verification": {
+                "type": "object",
+                "required": [
+                  "status"
+                ],
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "exact_evidence": {
+                "type": "array",
+                "items": {
+                  "$ref": "https://building-code-map.example/schemas/evidence.schema.json#/$defs/evidence_link"
+                }
+              }
+            }
+          }
+        },
+        "required_local_records": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "source_commit",
+        "bundle_manifest_digest"
+      ],
+      "properties": {
+        "engine_version": {
+          "type": "string"
+        },
+        "source_commit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bundle_manifest_digest": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
