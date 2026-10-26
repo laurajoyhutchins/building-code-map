@@ -269,3 +269,56 @@ func TestPublicBCASTUnicodeMetadataLengthAndExactMaterialization(t *testing.T) {
 		})
 	}
 }
+
+
+// A publication coordinate is not a display label. Even fully rehashed
+// edition/revision aliases remain invalid unless canonical.
+func TestBCASTNoncanonicalRevisionRejectedEvenWhenHashesRecomputed(t *testing.T) {
+	for _, revision := range []string{"2026-a", " 2026-a", "2026-a "} {
+		t.Run(revision, func(t *testing.T) {
+		p := example(t)
+		publication := p["publication"].(map[string]any)
+		publication["revision"] = revision
+		publicationID, err := id("bcastpub", map[string]any{
+			"namespace": publication["namespace"],
+			"family": publication["family"],
+			"edition": publication["edition"],
+			"revision": revision,
+		})
+		if err != nil {
+			t.Fatal(err)
+		}
+		publication["publication_id"] = publicationID
+		oldToNew := make(map[string]string)
+		objects := p["objects"].([]any)
+		for _, value := range objects {
+			object := value.(map[string]any)
+			oldID := asString(object, "object_id")
+			newID, err := id("bcastobj", map[string]any{
+				"publication_id": publicationID,
+				"kind": object["kind"],
+				"locator": object["locator"],
+			})
+			if err != nil {
+				t.Fatal(err)
+			}
+			oldToNew[oldID] = newID
+			object["object_id"] = newID
+		}
+		for _, value := range objects {
+			object := value.(map[string]any)
+			if parent, exists := object["parent_id"]; exists {
+				object["parent_id"] = oldToNew[parent.(string)]
+			}
+		}
+		packageID := rehashPublicBCASTPackage(t, p)
+		_, err = validate(p, packageID)
+		if revision == "2026-a" && err != nil {
+			t.Fatalf("rejected canonical revision: %v", err)
+		}
+		if revision != "2026-a" && err == nil {
+			t.Fatal("accepted whitespace-altered publication revision with valid hashes")
+		}
+		})
+	}
+}
