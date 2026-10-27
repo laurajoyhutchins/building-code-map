@@ -71,13 +71,13 @@ func handlerWithProvider(provider engine.Provider, remote *privateProvider, allo
 	return handlerWithUtilityContext(provider, remote, allowedOrigin, nil)
 }
 
-func handlerWithUtilityContext(provider engine.Provider, remote *privateProvider, allowedOrigin string, catalog *utilitycontext.Catalog) http.Handler {
+func handlerWithUtilityContext(provider engine.Provider, remote *privateProvider, allowedOrigin string, catalog utilitycontext.Provider) http.Handler {
 	return handlerWithSourcePolicy(provider, remote, allowedOrigin, catalog, engine.SourcePolicy{})
 }
 
 // The operator's reviewed policy is independent of the private Provider.
 // Legacy endpoints without exact evidence remain conditional or unverified.
-func handlerWithSourcePolicy(provider engine.Provider, remote *privateProvider, allowedOrigin string, catalog *utilitycontext.Catalog, policy engine.SourcePolicy) http.Handler {
+func handlerWithSourcePolicy(provider engine.Provider, remote *privateProvider, allowedOrigin string, catalog utilitycontext.Provider, policy engine.SourcePolicy) http.Handler {
 	mux := http.NewServeMux()
 	if catalog != nil {
 		mux.Handle(utilitycontext.Path, catalog.Handler())
@@ -178,10 +178,20 @@ func main() {
 		if remote.expectedBundle == "" {
 			log.Fatal("BCM_PROVIDER_BUNDLE_DIGEST must pin a reviewed, non-demo runtime bundle")
 		}
-		var catalog *utilitycontext.Catalog
+		var catalog utilitycontext.Provider
 		viewPath := os.Getenv("BCM_UTILITY_CONTEXT_VIEW_PATH")
 		viewSHA := os.Getenv("BCM_UTILITY_CONTEXT_VIEW_SHA256")
-		if viewPath != "" || viewSHA != "" {
+		catalogOrigin := os.Getenv("BCM_UTILITY_CATALOG_API_URL")
+		catalogViewSHA := os.Getenv("BCM_UTILITY_CATALOG_VIEW_SHA256")
+		if catalogOrigin != "" || catalogViewSHA != "" {
+			if catalogOrigin == "" || catalogViewSHA == "" || viewPath != "" || viewSHA != "" {
+				log.Fatal("catalog API needs a pinned HTTPS origin and view SHA-256, not a parallel local EIA source")
+			}
+			catalog, err = utilitycontext.NewRemote(catalogOrigin, catalogViewSHA)
+			if err != nil {
+				log.Fatalf("catalog API source rejected: %v", err)
+			}
+		} else if viewPath != "" || viewSHA != "" {
 			if viewPath == "" || viewSHA == "" {
 				log.Fatal("BCM utility context requires both view path and exact SHA-256")
 			}
@@ -205,7 +215,8 @@ func main() {
 		handler = handlerWithSourcePolicy(remote, remote, origin, catalog, policy)
 		log.Printf("BCM project verifier listening at %s; remote provider configured", *addr)
 	} else {
-		if os.Getenv("BCM_UTILITY_CONTEXT_VIEW_PATH") != "" || os.Getenv("BCM_UTILITY_CONTEXT_VIEW_SHA256") != "" {
+		if os.Getenv("BCM_UTILITY_CONTEXT_VIEW_PATH") != "" || os.Getenv("BCM_UTILITY_CONTEXT_VIEW_SHA256") != "" ||
+			os.Getenv("BCM_UTILITY_CATALOG_API_URL") != "" || os.Getenv("BCM_UTILITY_CATALOG_VIEW_SHA256") != "" {
 			log.Fatal("BCM utility context requires the configured live backend, not the fictional demo")
 		}
 		log.Printf("BCM fictional reference app at http://%s (no real-world coverage)", *addr)

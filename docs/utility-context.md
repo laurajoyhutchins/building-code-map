@@ -4,6 +4,36 @@ BCM's optional county context reader consumes a **content-pinned projection** of
 
 The EIA Form 861 respondent identifier is a statistical reporting ID. A respondent may be a marketer or administrator, rather than a physical distribution utility. A reported county association is only a **candidate**: it does not establish the retail utility at a parcel, a facility's point of connection, a franchise boundary, or any electrical service characteristics. Absence from the candidate list is not proof that nobody serves the county. Confirmation requires separately identified utility documents or project-site evidence.
 
+## Ownership migration to Electric Utility Catalog
+
+The source-independent EIA projection and standalone county API now have their
+target implementation in [Electric Utility Catalog](https://github.com/laurajoyhutchins/electric-utility-catalog/blob/main/docs/county-candidate-api.md).
+BCM is a **consumer** only: it establishes a county using source-bound
+geography and then reads the independently published candidate list.
+
+For a separately reviewed and deployed catalog service, configure the BCM
+live backend (both values are mandatory):
+
+```sh
+BCM_UTILITY_CATALOG_API_URL=https://catalog-service.example.com
+BCM_UTILITY_CATALOG_VIEW_SHA256=<exact-operator-reviewed-64-character-sha256>
+```
+
+The origin must be HTTPS and has no path, query, user info or fragment.
+The remote adapter rejects redirects, malformed/oversize payloads, mismatched
+state or county, changed release/view provenance, duplicate EIA IDs, unexpected
+fields and promotional serving-utility claims. It never sends the project
+address to the catalog service. Missing or inconsistent catalog results
+return `503 source_unavailable` independently of the code-basis verdict.
+
+The original `BCM_UTILITY_CONTEXT_VIEW_PATH` and
+`BCM_UTILITY_CONTEXT_VIEW_SHA256` are **transitional rollback settings**.
+BCM refuses to start with both local and remote inputs configured, rather than
+silently combining two EIA releases. The standalone BCM image, local exporter,
+and local catalog reader must not be removed until live catalog deployment,
+pinned source readback, UI parity and rollback have been independently shown.
+A merged PR alone does not activate the remote service.
+
 ## Prepare the read-only projection
 
 Obtain the separately verified `catalog.sqlite` and `manifest.json` from one release in the private GCS bucket. Do not commit source data or the generated projection to this public repository. Run:

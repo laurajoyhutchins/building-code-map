@@ -61,7 +61,7 @@ type projectUtilityResponse struct {
 
 // Attach to the existing configured private provider, rather than introducing
 // a second geocoder, provider, live database, or regulatory verdict path.
-func projectUtilityContextHandler(remote *privateProvider, catalog *utilitycontext.Catalog) http.Handler {
+func projectUtilityContextHandler(remote *privateProvider, catalog utilitycontext.Provider) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
 		w.Header().Set("Cache-Control", "no-store")
@@ -174,7 +174,11 @@ func projectUtilityContextHandler(remote *privateProvider, catalog *utilityconte
 		}
 		candidates, err := catalog.Lookup(parsed.State, countyKey)
 		if err != nil {
-			projectUtilityError(w, http.StatusUnprocessableEntity, "county_not_resolved")
+			if errors.Is(err, utilitycontext.ErrSourceUnavailable) {
+				projectUtilityError(w, http.StatusServiceUnavailable, "source_unavailable")
+			} else {
+				projectUtilityError(w, http.StatusUnprocessableEntity, "county_not_resolved")
+			}
 			return
 		}
 		response := projectUtilityResponse{
