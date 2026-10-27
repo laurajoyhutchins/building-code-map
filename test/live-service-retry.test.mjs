@@ -28,6 +28,7 @@ function startLivePage(readiness) {
   const selectors = [
     "#lookup", "#submit", "#result-panel", "#result-content", "#status",
     "#retry-service", ".mode", "#lookup-title", "#address", "#project-id",
+    "#as-of", "#occupancy",
     'label[for="address"] small', "footer span",
   ];
   const nodes = new Map(selectors.map(selector => [selector, element()]));
@@ -75,7 +76,8 @@ test("live readiness can recover after two failures without project field loss",
   // The user types their project facts once. A readiness retry must not clear them.
   get("#project-id").value = "ENGINEERING-042";
   get("#address").value = "123 Sample Street";
-  get("#as-of")?.value = "2026-10-27";
+  get("#as-of").value = "2026-10-27";
+  get("#occupancy").value = "business";
   get("#retry-service").fire("click");
   await settle();
   assert.equal(get("#retry-service").hidden, false);
@@ -89,5 +91,7 @@ test("live readiness can recover after two failures without project field loss",
   assert.equal(get("#status").textContent, "");
   assert.equal(get("#project-id").value, "ENGINEERING-042");
   assert.equal(get("#address").value, "123 Sample Street");
+  assert.equal(get("#as-of").value, "2026-10-27");
+  assert.equal(get("#occupancy").value, "business");
   assert.equal(page.calls.length, 3);
 });
