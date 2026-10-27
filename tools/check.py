@@ -38,6 +38,7 @@ def main() -> int:
     result = subprocess.run(["gofmt", "-l", *go_files], cwd=ROOT, capture_output=True, text=True)
     if result.returncode or result.stdout.strip():
         print("Unformatted Go source:\n" + result.stdout + result.stderr, file=sys.stderr)
+        subprocess.run(["gofmt", "-d", *go_files], cwd=ROOT, check=False)
         failures.append("Go formatting")
     checks = [
         ("Go vet", ["go", "vet", "./..."]),
