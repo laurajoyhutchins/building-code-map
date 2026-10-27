@@ -43,7 +43,7 @@ func NewRemote(origin, pinnedViewSHA256 string) (*Remote, error) {
 	return &Remote{
 		origin:     u.String(),
 		viewSHA256: pinnedViewSHA256,
-		client:     &http.Client{
+		client: &http.Client{
 			Timeout: 8 * time.Second,
 			CheckRedirect: func(*http.Request, []*http.Request) error {
 				return http.ErrUseLastResponse
