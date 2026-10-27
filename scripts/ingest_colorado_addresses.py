@@ -11,6 +11,7 @@ import csv
 import hashlib
 import json
 import os
+import shutil
 from pathlib import Path
 import tempfile
 from urllib.parse import urlencode
@@ -90,6 +91,118 @@ def parse_row(feature: dict) -> dict[str, str]:
     }
 
 
+def receipt_path(output: Path) -> Path:
+    return output.with_suffix(output.suffix + ".receipt.json")
+
+
+def file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def verify_export(output: Path) -> dict:
+    """Admit a CSV only when its paired source-bound receipt matches actual bytes.
+
+    A filename or a receipt existing is not proof of a verified acquisition.
+    Consumers must independently validate the exact bytes they ingest.
+    """
+    receipt_file = receipt_path(output)
+    if not output.is_file() or not receipt_file.is_file():
+        raise ValueError("incomplete Colorado address export pair")
+    try:
+        receipt = json.loads(receipt_file.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise ValueError("invalid Colorado address acquisition receipt") from exc
+    if not isinstance(receipt, dict) or not (
+        receipt.get("schema_version") == "1"
+        and receipt.get("source_url") == SOURCE
+        and receipt.get("output_path") == str(output)
+        and receipt.get("production_approved") is False
+        and isinstance(receipt.get("csv_sha256"), str)
+        and len(receipt["csv_sha256"]) == 64
+    ):
+        raise ValueError("Colorado address acquisition receipt identity mismatch")
+    if file_sha256(output) != receipt["csv_sha256"]:
+        raise ValueError("Colorado address CSV differs from its acquisition receipt")
+    return receipt
+
+
+def publish_pair(csv_tmp: Path, output: Path, receipt: dict) -> None:
+    """Stage the complete sidecar first, then recover the old pair on failure.
+
+    Two filesystem paths cannot be replaced atomically as one object. A crash
+    between replacements is UNKNOWN until a fresh verify_export() succeeds.
+    Recoverable previous bytes are retained in a hidden sibling directory.
+    """
+    sidecar = receipt_path(output)
+    existing_csv, existing_receipt = output.exists(), sidecar.exists()
+    if existing_csv != existing_receipt:
+        raise ValueError("incomplete prior export pair; manual recovery required")
+    if existing_csv:
+        verify_export(output)
+
+    receipt_json = json.dumps(receipt, sort_keys=True, indent=2) + "\n"
+    with tempfile.NamedTemporaryFile(
+        mode="w", encoding="utf-8", dir=output.parent,
+        prefix=sidecar.name + ".", suffix=".partial", delete=False
+    ) as handle:
+        receipt_tmp = Path(handle.name)
+        try:
+            handle.write(receipt_json)
+            handle.flush()
+            os.fsync(handle.fileno())
+        except BaseException:
+            handle.close()
+            receipt_tmp.unlink(missing_ok=True)
+            raise
+
+    try:
+        backup = Path(tempfile.mkdtemp(
+            dir=output.parent, prefix="." + output.name + ".recovery."
+        ))
+    except BaseException:
+        receipt_tmp.unlink(missing_ok=True)
+        raise
+    saved_csv = backup / output.name
+    saved_receipt = backup / sidecar.name
+    recovered = False
+    try:
+        if existing_csv:
+            os.replace(output, saved_csv)
+            os.replace(sidecar, saved_receipt)
+        os.replace(csv_tmp, output)
+        os.replace(receipt_tmp, sidecar)
+        verify_export(output)
+        recovered = True
+    except BaseException:
+        try:
+            # Inspect actual files, not whether a failing rename allegedly ran.
+            # Ambiguous transport/filesystem errors may occur after rename effects.
+            if existing_csv:
+                if saved_csv.is_file():
+                    os.replace(saved_csv, output)
+                if saved_receipt.is_file():
+                    os.replace(saved_receipt, sidecar)
+                verify_export(output)
+            else:
+                output.unlink(missing_ok=True)
+                sidecar.unlink(missing_ok=True)
+            recovered = True
+        except BaseException as recovery_error:
+            raise RuntimeError(
+                f"RECOVERY REQUIRED: previous Colorado export may be retained in {backup}"
+            ) from recovery_error
+        raise
+    finally:
+        csv_tmp.unlink(missing_ok=True)
+        receipt_tmp.unlink(missing_ok=True)
+        if recovered:
+            shutil.rmtree(backup)
+
+
 def export(fetch_page, output: Path, date: str, max_invalid: int = 0,
            max_records: int = 5_000_000) -> dict:
     count_data = fetch_page({"where": "1=1", "returnCountOnly": "true"})
@@ -141,8 +254,7 @@ def export(fetch_page, output: Path, date: str, max_invalid: int = 0,
             handle.close()
             tmp.unlink(missing_ok=True)
             raise
-    digest = hashlib.sha256(tmp.read_bytes()).hexdigest()
-    os.replace(tmp, output)
+    digest = file_sha256(tmp)
     receipt = {
         "schema_version": "1",
         "source_url": SOURCE,
@@ -155,19 +267,27 @@ def export(fetch_page, output: Path, date: str, max_invalid: int = 0,
         "output_path": str(output),
         "production_approved": False,
     }
-    output.with_suffix(output.suffix + ".receipt.json").write_text(
-        json.dumps(receipt, sort_keys=True, indent=2) + "\n", encoding="utf-8"
-    )
+    try:
+        publish_pair(tmp, output, receipt)
+    finally:
+        tmp.unlink(missing_ok=True)
     return receipt
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--retrieved-at", required=True, help="Actual UTC acquisition date YYYY-MM-DD")
+    parser.add_argument("--retrieved-at", help="Actual UTC acquisition date YYYY-MM-DD")
+    parser.add_argument("--verify-existing", action="store_true",
+                        help="Verify CSV bytes against the paired acquisition receipt; never contact GIS")
     parser.add_argument("--max-invalid", type=int, default=0)
     parser.add_argument("--max-records", type=int, default=5_000_000)
     args = parser.parse_args()
+    if args.verify_existing:
+        print(json.dumps(verify_export(args.output), sort_keys=True))
+        return
+    if not args.retrieved_at:
+        parser.error("--retrieved-at is required when acquiring")
     from datetime import date
     if date.fromisoformat(args.retrieved_at).isoformat() != args.retrieved_at:
         parser.error("--retrieved-at must be an ISO date")
