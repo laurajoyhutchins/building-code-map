@@ -61,9 +61,9 @@ func TestRemoteLookupAndVersionedHandler(t *testing.T) {
 		t.Fatalf("remote handler returned %d %s", accepted.Code, accepted.Body.String())
 	}
 	for _, path := range []string{
-		Path+"?state=CO&county=Denver&all=true",
-		Path+"?state=CO&county=Denver&county=Adams",
-		Path+"?state=CO",
+		Path + "?state=CO&county=Denver&all=true",
+		Path + "?state=CO&county=Denver&county=Adams",
+		Path + "?state=CO",
 	} {
 		rec := httptest.NewRecorder()
 		remote.Handler().ServeHTTP(rec, httptest.NewRequest(http.MethodGet, path, nil))
