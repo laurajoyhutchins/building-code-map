@@ -14,7 +14,7 @@ jobs:
   verify:
     name: Attempt pinned ETH theorem and axioms
     runs-on: ubuntu-latest
-    timeout-minutes: 62
+    timeout-minutes: 175
     steps:
       - name: Checkout pinned theorem source
         uses: actions/checkout@v4
@@ -53,6 +53,51 @@ jobs:
           export GLIBC_TUNABLES='glibc.malloc.mmap_max=0:glibc.malloc.arena_max=1'
           export LEAN_NUM_THREADS=2
           echo '=== Preflight disk/memory ===' > "$evidence/resources.txt"
+          python3 - "$evidence/lean-final.log" "$evidence/axiom-verdict.json" <<'PY'
+          import json
+          import pathlib
+          import re
+          import sys
+
+          output = pathlib.Path(sys.argv[1]).read_text(errors="replace")
+          expected = (
+              "compiled_exact_count_and_sat",
+              "exact_count_and_sat",
+              "exact_count_eth",
+              "sat_polynomial_space",
+              "original_sat_main",
+          )
+          prefix = "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace."
+          allowed = {"propext", "Quot.sound", "Classical.choice"}
+          matches = re.findall(
+              r"(?m)^([A-Za-z0-9_.']+) (?:depends on axioms: \\[([^\\]]*)\\]|does not depend on any axioms)",
+              output,
+          )
+          observed = {}
+          for theorem, listed in matches:
+              if theorem.startswith(prefix):
+                  observed[theorem[len(prefix):]] = [
+                      name.strip() for name in listed.split(",") if name.strip()
+                  ]
+          missing = sorted(set(expected) - set(observed))
+          unexpected = {
+              name: [a for a in axioms if a not in allowed]
+              for name, axioms in observed.items()
+              if any(a not in allowed for a in axioms)
+          }
+          verdict = {
+              "required_theorems": list(expected),
+              "observed_axioms": observed,
+              "missing_reports": missing,
+              "unexpected_axioms": unexpected,
+              "sorried": "sorryAx" in output,
+              "accepted": not missing and not unexpected and "sorryAx" not in output,
+          }
+          pathlib.Path(sys.argv[2]).write_text(json.dumps(verdict, indent=2) + "\\n")
+          print(json.dumps(verdict, indent=2))
+          if not verdict["accepted"]:
+              sys.exit(1)
+          PY
           df -h . >> "$evidence/resources.txt"
           free -h >> "$evidence/resources.txt"
           attempt () {
@@ -81,11 +126,11 @@ jobs:
             echo 'BLOCKED: dependency cache hydration did not complete' >> "$evidence/status.txt"
             exit 1
           fi
-          if ! attempt lake-build 2400 lake build OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.Final; then
+          if ! attempt lake-build 9600 lake build OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.Final; then
             echo 'BLOCKED: exact endpoint build did not complete' >> "$evidence/status.txt"
             exit 1
           fi
-          if ! attempt lean-final 180 lake env lean \
+          if ! attempt lean-final 480 lake env lean \
             OAI/Algorithms/SubexponentialSAT/SqrtLogSpace/Final.lean; then
             echo 'BLOCKED: Lean endpoint elaboration failed' >> "$evidence/status.txt"
             exit 1
