@@ -74,7 +74,7 @@ func (c *Remote) Lookup(state, county string) (Response, error) {
 	if response.StatusCode != http.StatusOK {
 		return Response{}, fmt.Errorf("%w: HTTP %d", ErrSourceUnavailable, response.StatusCode)
 	}
-	limited := io.LimitReader(response.Body, 8<<20+1)
+	limited := io.LimitReader(response.Body, (8<<20)+1)
 	data, err := io.ReadAll(limited)
 	if err != nil || len(data) == 0 || len(data) > 8<<20 {
 		return Response{}, fmt.Errorf("%w: invalid response size", ErrSourceUnavailable)
