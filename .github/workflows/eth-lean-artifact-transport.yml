@@ -1,0 +1,66 @@
+name: ETH Lean proof independent artifact transfer
+
+on:
+  push:
+    branches:
+      - experiment/eth-lean-artifact-transport-20261027
+    paths:
+      - .github/workflows/eth-lean-artifact-transport.yml
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    name: Package pinned Lean 4.34.1 and public source
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out exact public OpenAI math source
+        uses: actions/checkout@v4
+        with:
+          repository: openai/math
+          ref: 7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a
+          path: source
+          persist-credentials: false
+          sparse-checkout: |
+            lean
+          sparse-checkout-cone-mode: true
+
+      - name: Install pinned Lean compiler
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error \
+            https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            -o /tmp/elan-init.sh
+          sh /tmp/elan-init.sh -y --default-toolchain leanprover/lean4:v4.34.1
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake --version
+
+      - name: Package immutable sources and toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C source rev-parse HEAD)" = 7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a
+          test "$(cat source/lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          test -f source/lean/OAI/Algorithms/SubexponentialSAT/SqrtLogSpace/Final.lean
+          mkdir -p payload
+          git -C source rev-parse HEAD > payload/source-commit.txt
+          printf '%s\n' 'leanprover/lean4:v4.34.1' > payload/lean-toolchain.txt
+          du -sh source/lean "$HOME/.elan/toolchains/"* || true
+          tar -I 'zstd -1 -T2' -cf payload/source-lean.tar.zst -C source lean
+          tar -I 'zstd -1 -T2' -cf payload/lean-compiler.tar.zst -C "$HOME/.elan" toolchains bin
+          (cd payload && sha256sum source-lean.tar.zst lean-compiler.tar.zst > SHA256SUMS)
+          ls -lh payload
+          cat payload/SHA256SUMS
+
+      - name: Upload public source and Lean toolchain
+        uses: actions/upload-artifact@v4
+        with:
+          name: eth-lean-vm-transport
+          path: payload/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
