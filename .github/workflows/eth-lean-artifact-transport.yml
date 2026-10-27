@@ -56,11 +56,62 @@ jobs:
           ls -lh payload
           cat payload/SHA256SUMS
 
-      - name: Upload public source and Lean toolchain
+      - name: Split compiler archive beneath connector's 512 MiB limit
+        shell: bash
+        run: |
+          set -euo pipefail
+          split --bytes=240M --numeric-suffixes=0 --suffix-length=2 \
+            payload/lean-compiler.tar.zst payload/lean-compiler.part.
+          ls -lh payload/lean-compiler.part.*
+          (cd payload && sha256sum lean-compiler.part.* > PART_SHA256SUMS)
+          cat payload/PART_SHA256SUMS
+
+      - name: Upload source with manifest
         uses: actions/upload-artifact@v4
         with:
-          name: eth-lean-vm-transport
-          path: payload/
+          name: eth-lean-source
+          path: |
+            payload/source-lean.tar.zst
+            payload/SHA256SUMS
+            payload/PART_SHA256SUMS
+            payload/source-commit.txt
+            payload/lean-toolchain.txt
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+
+      - name: Upload compiler part 00
+        uses: actions/upload-artifact@v4
+        with:
+          name: eth-lean-compiler-00
+          path: payload/lean-compiler.part.00
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+
+      - name: Upload compiler part 01
+        uses: actions/upload-artifact@v4
+        with:
+          name: eth-lean-compiler-01
+          path: payload/lean-compiler.part.01
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+
+      - name: Upload compiler part 02
+        uses: actions/upload-artifact@v4
+        with:
+          name: eth-lean-compiler-02
+          path: payload/lean-compiler.part.02
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error
+
+      - name: Upload compiler part 03
+        uses: actions/upload-artifact@v4
+        with:
+          name: eth-lean-compiler-03
+          path: payload/lean-compiler.part.03
           retention-days: 1
           compression-level: 0
           if-no-files-found: error
