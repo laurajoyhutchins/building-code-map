@@ -12,7 +12,7 @@ import (
 
 type remoteCatalogStub struct {
 	value utilitycontext.Response
-	err error
+	err   error
 }
 
 func (r remoteCatalogStub) Lookup(_, _ string) (utilitycontext.Response, error) {
