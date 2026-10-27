@@ -1,0 +1,108 @@
+name: ETH Lean exact proof check (isolated experiment)
+
+on:
+  push:
+    branches:
+      - experiment/eth-lean-artifact-transport-20261027
+    paths:
+      - .github/workflows/eth-lean-proof-attempt.yml
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Attempt pinned ETH theorem and axioms
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - name: Checkout pinned theorem source
+        uses: actions/checkout@v4
+        with:
+          repository: openai/math
+          ref: 7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a
+          path: source
+          persist-credentials: false
+          sparse-checkout: |
+            lean
+          sparse-checkout-cone-mode: true
+
+      - name: Install pinned compiler
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error \
+            https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/elan-init.sh
+          sh /tmp/elan-init.sh -y --default-toolchain leanprover/lean4:v4.34.1
+          "$HOME/.elan/bin/lean" --version
+          "$HOME/.elan/bin/lake" --version
+
+      - name: Attempt dependency hydration, exact build, and axiom report
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$GITHUB_WORKSPACE/evidence"
+          evidence="$GITHUB_WORKSPACE/evidence"
+          test "$(git -C source rev-parse HEAD)" = '7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a'
+          test "$(cat source/lean/lean-toolchain)" = 'leanprover/lean4:v4.34.1'
+          printf 'source_sha=%s\ncompiler=%s\n' \
+            "$(git -C source rev-parse HEAD)" \
+            "$("$HOME/.elan/bin/lean" --version)" > "$evidence/identity.txt"
+          cd source/lean
+          export PATH="$HOME/.elan/bin:$PATH"
+          export GLIBC_TUNABLES='glibc.malloc.mmap_max=0:glibc.malloc.arena_max=1'
+          export LEAN_NUM_THREADS=2
+          echo '=== Preflight disk/memory ===' > "$evidence/resources.txt"
+          df -h . >> "$evidence/resources.txt"
+          free -h >> "$evidence/resources.txt"
+          attempt () {
+            label="$1"
+            seconds="$2"
+            shift 2
+            set +e
+            timeout "$seconds" "$@" > "$evidence/$label.log" 2>&1
+            rc="$?"
+            set -e
+            printf '%s=%s\n' "$label" "$rc" >> "$evidence/status.txt"
+            echo "=== $label exit $rc ==="
+            tail -n 60 "$evidence/$label.log" || true
+            return "$rc"
+          }
+          if ! attempt lake-update 420 lake update; then
+            echo 'BLOCKED: pinned dependency update did not complete' >> "$evidence/status.txt"
+            exit 0
+          fi
+          git diff -- lean/lake-manifest.json > "$evidence/lake-manifest.diff" || true
+          if [[ -s "$evidence/lake-manifest.diff" ]]; then
+            echo 'BLOCKED: lake update changed pinned dependency manifest' >> "$evidence/status.txt"
+            exit 0
+          fi
+          if ! attempt lake-cache 420 lake exe cache get; then
+            echo 'BLOCKED: dependency cache hydration did not complete' >> "$evidence/status.txt"
+            exit 0
+          fi
+          if ! attempt lake-build 420 lake build OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.Final; then
+            echo 'BLOCKED: exact endpoint build did not complete' >> "$evidence/status.txt"
+            exit 0
+          fi
+          if ! attempt lean-final 110 lake env lean \
+            OAI/Algorithms/SubexponentialSAT/SqrtLogSpace/Final.lean; then
+            echo 'BLOCKED: Lean endpoint elaboration failed' >> "$evidence/status.txt"
+            exit 0
+          fi
+          if grep -Fq 'sorryAx' "$evidence/lean-final.log"; then
+            echo 'CAUTION: sorryAx appears in printed axiom report' >> "$evidence/status.txt"
+          else
+            echo 'Lean endpoint elaborated, no sorryAx in its output; inspect all axioms' >> "$evidence/status.txt"
+          fi
+          df -h . >> "$evidence/resources.txt"
+
+      - name: Upload run-bound proof-attempt evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eth-lean-proof-attempt-evidence
+          path: evidence/
+          retention-days: 1
+          compression-level: 6
+          if-no-files-found: warn
