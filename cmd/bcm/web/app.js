@@ -3,6 +3,7 @@ const submit = document.querySelector("#submit");
 const panel = document.querySelector("#result-panel");
 const content = document.querySelector("#result-content");
 const status = document.querySelector("#status");
+const retry = document.querySelector("#retry-service");
 const staticDemo = document.querySelector('meta[name="bcm-static-demo"]') !== null;
 const liveAPI = document.querySelector('meta[name="bcm-live-api"]')?.content || "";
 let pending = null;
@@ -152,6 +153,8 @@ form.addEventListener("submit", async event => {
 async function checkLiveService() {
   liveReady = false;
   submit.disabled = true;
+  retry.hidden = true;
+  retry.disabled = true;
   status.textContent = "Checking service availability…";
   try {
     const response = await fetch(liveAPI + "/v1/readiness", {
@@ -165,7 +168,10 @@ async function checkLiveService() {
     submit.disabled = false;
     status.textContent = "";
   } catch {
-    status.textContent = "Live lookup is unavailable. No result has been generated.";
+    status.textContent = "Live lookup is unavailable. Retry without re-entering project details.";
+    retry.hidden = false;
+  } finally {
+    retry.disabled = false;
   }
 }
 
@@ -199,5 +205,6 @@ if (staticDemo) {
   document.querySelector('label[for="address"] small').textContent = "";
   document.querySelector("footer span").textContent = "Confirm the code basis with the authority having jurisdiction.";
   submit.firstChild.textContent = "Check code basis ";
+  retry.addEventListener("click", checkLiveService);
   checkLiveService();
 }
