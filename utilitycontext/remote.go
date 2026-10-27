@@ -25,9 +25,9 @@ var ErrInvalidCounty = errors.New("invalid state or county")
 // Remote consumes Electric Utility Catalog's v1 read-only HTTP service.
 // It has no access to private EIA source bytes, the catalog database, or BCM's verdict.
 type Remote struct {
-	origin string
-	viewSHA256 string
-	client *http.Client
+	origin       string
+	viewSHA256   string
+	client       *http.Client
 }
 
 // NewRemote requires an operator-configured HTTPS origin and exact view digest.
@@ -41,9 +41,9 @@ func NewRemote(origin, pinnedViewSHA256 string) (*Remote, error) {
 		return nil, errors.New("utility catalog requires an HTTPS origin and pinned view SHA-256")
 	}
 	return &Remote{
-		origin: u.String(),
-		viewSHA256: pinnedViewSHA256,
-		client: &http.Client{
+		origin:       u.String(),
+		viewSHA256:   pinnedViewSHA256,
+		client:       &http.Client{
 			Timeout: 8 * time.Second,
 			CheckRedirect: func(*http.Request, []*http.Request) error {
 				return http.ErrUseLastResponse
