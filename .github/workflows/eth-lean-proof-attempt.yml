@@ -14,7 +14,7 @@ jobs:
   verify:
     name: Attempt pinned ETH theorem and axioms
     runs-on: ubuntu-latest
-    timeout-minutes: 24
+    timeout-minutes: 62
     steps:
       - name: Checkout pinned theorem source
         uses: actions/checkout@v4
@@ -68,33 +68,34 @@ jobs:
             tail -n 60 "$evidence/$label.log" || true
             return "$rc"
           }
-          if ! attempt lake-update 420 lake update; then
+          if ! attempt lake-update 600 lake update; then
             echo 'BLOCKED: pinned dependency update did not complete' >> "$evidence/status.txt"
-            exit 0
+            exit 1
           fi
-          git diff -- lean/lake-manifest.json > "$evidence/lake-manifest.diff" || true
+          git diff -- lake-manifest.json > "$evidence/lake-manifest.diff" || true
           if [[ -s "$evidence/lake-manifest.diff" ]]; then
             echo 'BLOCKED: lake update changed pinned dependency manifest' >> "$evidence/status.txt"
-            exit 0
+            exit 1
           fi
-          if ! attempt lake-cache 420 lake exe cache get; then
+          if ! attempt lake-cache 480 lake exe cache get; then
             echo 'BLOCKED: dependency cache hydration did not complete' >> "$evidence/status.txt"
-            exit 0
+            exit 1
           fi
-          if ! attempt lake-build 420 lake build OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.Final; then
+          if ! attempt lake-build 2400 lake build OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.Final; then
             echo 'BLOCKED: exact endpoint build did not complete' >> "$evidence/status.txt"
-            exit 0
+            exit 1
           fi
-          if ! attempt lean-final 110 lake env lean \
+          if ! attempt lean-final 180 lake env lean \
             OAI/Algorithms/SubexponentialSAT/SqrtLogSpace/Final.lean; then
             echo 'BLOCKED: Lean endpoint elaboration failed' >> "$evidence/status.txt"
-            exit 0
+            exit 1
           fi
+          grep -E '^OAI\.Algorithms\.SubexponentialSAT\.SqrtLogSpace\.|^' "$evidence/lean-final.log" > "$evidence/axioms-full.txt" || true
           if grep -Fq 'sorryAx' "$evidence/lean-final.log"; then
-            echo 'CAUTION: sorryAx appears in printed axiom report' >> "$evidence/status.txt"
-          else
-            echo 'Lean endpoint elaborated, no sorryAx in its output; inspect all axioms' >> "$evidence/status.txt"
+            echo 'BLOCKED: sorryAx found in final theorem axioms' >> "$evidence/status.txt"
+            exit 1
           fi
+          echo 'Lean endpoint elaborated; inspect the complete listed axioms independently' >> "$evidence/status.txt"
           df -h . >> "$evidence/resources.txt"
 
       - name: Upload run-bound proof-attempt evidence
