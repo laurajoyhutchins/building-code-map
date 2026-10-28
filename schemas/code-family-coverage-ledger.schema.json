@@ -82,10 +82,11 @@
         "adoption_candidate": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["source_ref", "source_sha256", "edition", "effective_on", "amendments"],
+          "required": ["source_ref", "source_sha256", "code_family", "edition", "effective_on", "amendments"],
           "properties": {
             "source_ref": { "$ref": "#/$defs/receipt_ref" },
             "source_sha256": { "$ref": "#/$defs/sha256" },
+            "code_family": { "$ref": "#/$defs/family" },
             "edition": { "type": "string", "minLength": 1 },
             "amendments": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
             "enacted_on": { "type": "string", "format": "date" },
@@ -146,9 +147,10 @@
             "receipt": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["project_id", "code_family", "as_of", "project_class", "engine_commit", "source_revision_sha256", "provider_release_sha256", "result_sha256", "execution_ref", "independent_review_ref"],
+              "required": ["project_id", "entity_id", "code_family", "as_of", "project_class", "engine_commit", "source_revision_sha256", "provider_release_sha256", "result_sha256", "execution_ref", "independent_review_ref"],
               "properties": {
                 "project_id": { "type": "string", "minLength": 1 },
+                "entity_id": { "type": "string", "minLength": 1 },
                 "code_family": { "$ref": "#/$defs/family" },
                 "as_of": { "type": "string", "format": "date" },
                 "project_class": { "type": "string", "minLength": 1 },
