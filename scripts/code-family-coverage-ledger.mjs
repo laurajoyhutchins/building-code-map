@@ -32,6 +32,9 @@ export function validateCoverageLedger(ledger) {
 
     const candidate = record.adoption_candidate;
     if (candidate) {
+      if (candidate.code_family !== family) {
+        errors.push(`${prefix}: adoption candidate code family does not match ledger scope`);
+      }
       if (candidate.transition_end_on && candidate.transition_end_on < candidate.effective_on) {
         errors.push(`${prefix}: transition ends before effective date`);
       }
@@ -45,6 +48,9 @@ export function validateCoverageLedger(ledger) {
 
     if (record.project_verification.status === 'independently_verified') {
       const receipt = record.project_verification.receipt;
+      if (receipt.entity_id !== record.entity_id) {
+        errors.push(`${prefix}: project receipt entity does not match ledger entity`);
+      }
       if (receipt.code_family !== family || receipt.as_of !== asOf || receipt.project_class !== projectClass) {
         errors.push(`${prefix}: project receipt family/date/class does not match ledger scope`);
       }
