@@ -102,4 +102,3 @@ func (idx *PlaceCandidateIndex) ForAddress(address ParsedAddress) PlaceCandidate
 	}
 	return placeCandidatesFor(idx.byName[normalizeWords(address.City)])
 }
-
