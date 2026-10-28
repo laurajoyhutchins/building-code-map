@@ -85,3 +85,99 @@ export function summarizeCoverageLedger(ledger) {
     address_level_jurisdiction_coverage: 'not_established',
   };
 }
+
+const REQUIRED_CODE_FAMILIES = Object.freeze([
+  'building', 'electrical', 'fire', 'energy', 'plumbing', 'mechanical',
+]);
+
+/**
+ * Admission for multi-family projection. The caller must supply the expected
+ * entity-snapshot digest and applicability scope, not infer them from the
+ * first submitted family. A missing ledger is UNKNOWN, not a zero numerator.
+ *
+ * This remains syntactic admission only. External source and reviewer receipts
+ * must be independently verified before real-world coverage is asserted.
+ */
+export function summarizeCodeFamilyMatrix(ledgers, expected) {
+  if (!Array.isArray(ledgers) ||
+      typeof expected?.as_of !== 'string' ||
+      !/^\\d{4}-\\d{2}-\\d{2}$/.test(expected.as_of) ||
+      typeof expected?.project_class !== 'string' || !expected.project_class ||
+      typeof expected?.projection_snapshot_sha256 !== 'string' ||
+      !/^[0-9a-f]{64}$/.test(expected.projection_snapshot_sha256)) {
+    throw new Error('family matrix requires ledgers and explicit date/class/projection digest');
+  }
+
+  const families = Object.fromEntries(
+    REQUIRED_CODE_FAMILIES.map((family) => [
+      family, {
+        status: 'ledger_missing',
+        denominator_entities: null,
+        claimed_independently_verified_project_receipts: null,
+        national_verified_project_coverage: 'not_established',
+      },
+    ]),
+  );
+  const seen = new Set();
+  let firstSnapshotId = null;
+  let firstSourceRef = null;
+
+  for (const ledger of ledgers) {
+    // Reject an invalid supplied family before using it as a property key.
+    const summary = summarizeCoverageLedger(ledger);
+    const family = summary.code_family;
+    if (seen.has(family)) throw new Error(`duplicate code family: ${family}`);
+    seen.add(family);
+    if (ledger.scope.as_of !== expected.as_of ||
+        ledger.scope.project_class !== expected.project_class) {
+      throw new Error(`applicability scope mismatch for code family ${family}`);
+    }
+    if (ledger.projection.snapshot_sha256 !== expected.projection_snapshot_sha256) {
+      throw new Error(`projection snapshot mismatch for code family ${family}`);
+    }
+    if (firstSnapshotId !== null &&
+        (ledger.projection.snapshot_id !== firstSnapshotId ||
+         ledger.projection.source_ref !== firstSourceRef)) {
+      throw new Error(`projection identity mismatch for code family ${family}`);
+    }
+    firstSnapshotId = ledger.projection.snapshot_id;
+    firstSourceRef = ledger.projection.source_ref;
+    // Use a null-prototype map to avoid prototype pollution by extensions.
+    Object.defineProperty(families, family, {
+      value: { status: 'ledger_present', ...summary },
+      enumerable: true,
+      writable: true,
+      configurable: true,
+    });
+  }
+
+  return {
+    scope: { country_code: 'US', as_of: expected.as_of, project_class: expected.project_class },
+    projection_snapshot_sha256: expected.projection_snapshot_sha256,
+    families,
+    missing_required_families: REQUIRED_CODE_FAMILIES.filter((family) => !seen.has(family)),
+    national_verified_project_coverage: 'not_established',
+    address_level_jurisdiction_coverage: 'not_established',
+  };
+}
+
+// Producers should call this at input admission, before any report/publication.
+// No partial report is emitted when a file cannot be parsed or validated.
+if (process.argv[1] && new URL(import.meta.url).pathname === process.argv[1].replace(/\\\\/g, '/')) {
+  try {
+    if (process.argv.length !== 4 || process.argv[2] !== 'validate') {
+      throw new Error('usage: node scripts/code-family-coverage-ledger.mjs validate <ledger.json>');
+    }
+    let ledger;
+    try {
+      ledger = JSON.parse(readFileSync(process.argv[3], 'utf8'));
+    } catch (error) {
+      throw new Error(`ledger input invalid: ${error.message}`);
+    }
+    const result = summarizeCoverageLedger(ledger);
+    process.stdout.write(`${JSON.stringify(result, null, 2)}\\n`);
+  } catch (error) {
+    console.error(error.message);
+    process.exitCode = 1;
+  }
+}
