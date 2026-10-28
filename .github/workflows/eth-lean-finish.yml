@@ -1,0 +1,40 @@
+name: ETH Lean resumed final theorem verification
+
+on:
+  push:
+    branches:
+      - experiment/eth-lean-artifact-transport-20261027
+    paths:
+      - .github/workflows/eth-lean-finish.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: eth-lean-resumed-final-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  finish_01:
+    uses: ./.github/workflows/eth-lean-checkpoint-stage.yml
+    with:
+      stage: "01"
+      previous: "00"
+  finish_02:
+    needs: finish_01
+    uses: ./.github/workflows/eth-lean-checkpoint-stage.yml
+    with:
+      stage: "02"
+      previous: "01"
+  finish_03:
+    needs: finish_02
+    uses: ./.github/workflows/eth-lean-checkpoint-stage.yml
+    with:
+      stage: "03"
+      previous: "02"
+  finish_04:
+    needs: finish_03
+    uses: ./.github/workflows/eth-lean-checkpoint-stage.yml
+    with:
+      stage: "04"
+      previous: "03"
