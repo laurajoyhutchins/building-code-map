@@ -22,6 +22,16 @@ if err != nil { return err }
 
 The call refuses missing or malformed source identities and documents, conflicting reused IDs, invalid SHA-256 and unknown evidence roles. It does not use `Verified` status, add review agents, or generate an activity unless that activity exists independently in trusted source records. All source bytes remain in their appropriate custody domain.
 
+## Command-line export
+
+The public, read-only `bcm-prov` CLI accepts exactly one JSON `EvidenceClaim` object on standard input and emits source-safe PROV-O JSON-LD on standard output:
+
+```sh
+go run ./cmd/bcm-prov < test/fixtures/prov/claim.json > /tmp/bcm-provenance.jsonld
+```
+
+The example uses invented `DEMO-XX` records. The CLI rejects unknown input fields, more than 1 MiB, trailing JSON, malformed source links, orphaned document/anchor identities and digest mismatches. The output is portable metadata, not an approved claim. Cross-repository readers must validate the paired JSON Schema and ODCS contract and retain the canonical source-policy decision outside the graph.
+
 ## Add independently observed activities and agents
 
 Where a source-operations adapter can actually prove an execution event, it may add `provenance.Node{Kind: provenance.Activity}` and `provenance.Node{Kind: provenance.Agent}` to the graph, plus typed `provenance.Edge` relationships. For example, a recorded extraction activity can `prov:used` the exact source artifact; a retained result may `prov:wasGeneratedBy` that activity. Associate the actor through `prov:wasAssociatedWith` **only if the actor's identity is established**. Re-run `Graph.Validate()` or `Graph.JSONLD()` after extending the graph.
