@@ -35,7 +35,7 @@ are not automatically separate products.
 | Tool / current implementation | Complete task and result | Boundary presented to BCM |
 | --- | --- | --- |
 | [BCAST package toolkit](https://github.com/laurajoyhutchins/regulatory-package-toolkit) | Reviewed, normalized publication records -> deterministic content-addressed publication package that an independent client can validate and navigate | Verified package/object identities are *references* only, not evidence of legal adoption |
-| [BCAST private source operations](https://github.com/laurajoyhutchins/regulatory-source-operations) | Lawfully acquired, explicitly dated source -> source-audited BCAST package, provenance and protected readback, using the public package builder | Source interpretation and rights custody do not enter the BCM verdict or public Git history |
+| [BCAST private source operations](https://github.com/laurajoyhutchins/regulatory-source-operations) | Lawfully acquired and reviewed legal source -> source-audited BCAST package, exact text/enactment/amendment evidence, provenance and regulatory proof frontier | Reviewed claim evidence is referenced by BCM; source review does not itself authorize the BCM verdict or publicize protected bytes |
 | `bcast-rules` (currently a Rust crate inside the BCAST toolkit) | Reviewed, edition-pinned rule IR -> standalone Rust predicates and conformance results | Optional separately reviewed rules, never authority to choose a jurisdiction or code edition |
 | [Electric Utility Catalog](https://github.com/laurajoyhutchins/electric-utility-catalog) | EIA release -> verified, source-identifiable statistical utility catalog and county-candidate lookup | **No regulatory-decision dependency**; this is a separate product |
 | [Obsidian PDF Extractor](https://github.com/laurajoyhutchins/obsidian-pdf-extractor) | User-selected PDF -> previewed, validated structured notes and traceable extraction artifacts | Generic extraction is not authoritative regulatory interpretation |
@@ -53,12 +53,13 @@ and must not duplicate it in BCM.
   application behavior and protected research, **not** another product to
   develop indefinitely. Migrate only reviewed, independently verifiable
   functionality and archive alpha after parity, provenance and rollback.
-- `bcm-regulatory-data` exists, but is currently a **custody/migration
-  repository, not a completed standalone application**. Its candidate end-to-end
-  job is enacted adoption evidence -> reviewed, dated, provider-compatible
-  regulatory bundle. Do not call that achieved until its real input,
-  independent legal/source review, materialization, and canonical BCM
-  consumer readback have been proven. Data storage alone is not a new product.
+- `bcm-regulatory-data` is a **private geographic-data custody and provider-assembly
+  migration repository, not a second regulatory evidence or verification product**.
+  Regulatory source originals, legal-text interpretation, adoption/amendment review,
+  and regulatory proof obligations are RSO responsibilities. This repository will
+  reference approved RSO claim evidence and retain protected geography snapshots
+  as needed for one provider-compatible bundle. Real RSO export, independent
+  policy/geography review, BCM consumer readback and rollback remain unproven.
 - BCM currently has separate EIA county utility-context APIs and an
   `bcm-utility-api` executable. These are **out of BCM's functional scope**,
   despite being deliberately isolated from the code verdict. Do not expand
@@ -102,7 +103,7 @@ The older source-ownership text below is an uncompleted migration baseline and m
 ## Intended source of truth
 
 - `laurajoyhutchins/building-code-map` (this **public clean-history repository**) owns the reusable software, canonical Authority Engine, project-code verification, HTTP contract `POST /v1/project-code-basis`, schemas, synthetic reference application, and eventually the full product frontend, geocoder algorithms, and GIS tooling.
-- The existing **private `bcm-regulatory-data` repository** is intended to own maintained jurisdiction research, source retrieval records, license- or redistribution-sensitive evidence, source-to-claim mappings, private verification fixtures, and the compilation of signed/content-identified regulatory bundles. Until `bcm-regulatory-data` has been independently validated and its corpus migrated, `building-code-map-alpha` remains the protected custody location for those bytes.
+- The private `regulatory-source-operations` repository is the intended custodian for regulation originals, legally reviewed claim/evidence relationships, rights and source-proof receipts. The private `bcm-regulatory-data` repository is intended for geographic-source custody and thin signed/content-identified provider bundle assembly referencing immutable RSO reviewed claims. Until source-by-source migration is independently validated, `building-code-map-alpha` remains the protected source custodian.
 - `building-code-map-alpha` is **not** a second long-term software authority. It remains active temporarily for existing production capabilities and in-flight PRs, then becomes a read-only historical archive after complete verified cutover.
 
 ## Non-negotiable boundaries
