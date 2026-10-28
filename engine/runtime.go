@@ -77,13 +77,14 @@ type Provenance struct {
 }
 
 type Resolution struct {
-	SchemaVersion string                  `json:"schema_version"`
-	Query         NormalizedQuery         `json:"query"`
-	Jurisdiction  JurisdictionContext     `json:"jurisdiction"`
-	Codes         []CodeResolution        `json:"codes"`
-	Requirements  []ResolutionRequirement `json:"requirements,omitempty"`
-	DerivedFacts  []DerivedFact           `json:"derived_facts,omitempty"`
-	Provenance    Provenance              `json:"provenance,omitempty"`
+	SchemaVersion string                   `json:"schema_version"`
+	Query         NormalizedQuery          `json:"query"`
+	Jurisdiction  JurisdictionContext      `json:"jurisdiction"`
+	Codes         []CodeResolution         `json:"codes"`
+	Requirements  []ResolutionRequirement  `json:"requirements,omitempty"`
+	DerivedFacts  []DerivedFact            `json:"derived_facts,omitempty"`
+	SiteAuthority *SiteAuthorityAssessment `json:"site_authority,omitempty"`
+	Provenance    Provenance               `json:"provenance,omitempty"`
 }
 
 type Provider interface {
@@ -93,6 +94,7 @@ type Provider interface {
 type Runtime struct {
 	provider     Provider
 	sourcePolicy SourcePolicy
+	sitePolicy   SiteAuthorityPolicy
 }
 
 func NewRuntime(provider Provider) Runtime { return Runtime{provider: provider} }
@@ -101,7 +103,20 @@ func NewRuntime(provider Provider) Runtime { return Runtime{provider: provider} 
 // check request-specific resolved claims. A provider cannot set this policy
 // through its Resolution. Without it, resolved claims fail closed.
 func NewRuntimeWithSourcePolicy(provider Provider, policy SourcePolicy) Runtime {
-	return Runtime{provider: provider, sourcePolicy: SourcePolicy{Rules: append([]SourcePolicyRule(nil), policy.Rules...)}}
+	return NewRuntimeWithPolicies(provider, policy, SiteAuthorityPolicy{})
+}
+
+// NewRuntimeWithPolicies takes *two independent* operator-approved inputs.
+// The provider cannot approve its own jurisdiction attribution. A missing
+// site policy fails closed for any otherwise resolved project verdict.
+func NewRuntimeWithPolicies(provider Provider, source SourcePolicy, site SiteAuthorityPolicy) Runtime {
+	return Runtime{
+		provider:     provider,
+		sourcePolicy: SourcePolicy{Rules: append([]SourcePolicyRule(nil), source.Rules...)},
+		sitePolicy: SiteAuthorityPolicy{
+			SchemaVersion: site.SchemaVersion, Rules: append([]SiteAuthorityRule(nil), site.Rules...),
+		},
+	}
 }
 
 func (runtime Runtime) Resolve(ctx context.Context, query Query) (Resolution, error) {
@@ -123,6 +138,21 @@ func (runtime Runtime) Resolve(ctx context.Context, query Query) (Resolution, er
 	}
 	if err := runtime.validateResolvedEvidence(result); err != nil {
 		return Resolution{}, err
+	}
+	for _, code := range result.Codes {
+		if code.Status != StatusResolved && code.Status != StatusNotApplicable {
+			continue
+		}
+		site := evaluateSiteAuthority(normalized, result.Jurisdiction, runtime.sitePolicy)
+		result.SiteAuthority = &site
+		if site.Status != "reviewed" {
+			result.Requirements = append(result.Requirements, ResolutionRequirement{
+				ID:     "site-jurisdiction-authority",
+				Kind:   RequirementEvidenceDefect,
+				Prompt: "Site-to-jurisdiction legal authority not independently established: " + site.Reason,
+			})
+		}
+		break
 	}
 	return result, nil
 }
@@ -168,6 +198,9 @@ func validateResolution(result Resolution) error {
 		}
 	}
 	for index, requirement := range result.Requirements {
+		if requirement.ID == "site-jurisdiction-authority" {
+			return EngineError{Code: ErrorDataBundleInvalid, Message: "site authority requirement is reserved to BCM Runtime"}
+		}
 		if strings.TrimSpace(requirement.ID) == "" || strings.TrimSpace(requirement.Prompt) == "" {
 			return EngineError{Code: ErrorDataBundleInvalid, Message: "resolution requirement requires id and prompt", Details: map[string]any{"index": index}}
 		}

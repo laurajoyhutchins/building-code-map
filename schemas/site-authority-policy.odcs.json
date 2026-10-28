@@ -1,0 +1,202 @@
+{
+  "apiVersion": "v3.1.0",
+  "kind": "DataContract",
+  "id": "bcm-site-jurisdiction-authority-policy-v1",
+  "name": "BCM site-to-jurisdiction authority policy",
+  "version": "1.0.0",
+  "status": "draft",
+  "description": {
+    "purpose": "Independent dated, site-bound reviewed legal government/authority input to the canonical BCM ProjectVerifier via Runtime.",
+    "usage": "Private RSO/jurisdiction research must provide accepted bytes under the public JSON Schema and paired ODCS definition; the BCM operator independently approves and pins a policy SHA-256 before configuring Runtime. Provider cannot set this policy. Use only after verified source custody and review.",
+    "limitations": "Structure, provenance references and a matching SHA-256 cannot authenticate reviewer/legal source, establish original-object custody, legal site membership, signed delegation or an enacted code edition. No real Colorado policy exists in this reference application. Do not manufacture legal verdicts from candidates or date-free name joins."
+  },
+  "schema": [
+    {
+      "name": "site_authority_policy_v1",
+      "logicalType": "object",
+      "physicalName": "application/json",
+      "properties": [
+        {
+          "name": "schema_version",
+          "logicalType": "string",
+          "required": true,
+          "description": "Contract version fixed at 1.0.0"
+        },
+        {
+          "name": "rules",
+          "logicalType": "array",
+          "required": true,
+          "description": "Operator-reviewed site witness set; never supplied by Provider"
+        },
+        {
+          "name": "rules[].location_sha256",
+          "logicalType": "string",
+          "required": true,
+          "description": "Exact hash of normalized query site, separate from date/facts"
+        },
+        {
+          "name": "rules[].location_precision",
+          "logicalType": "string",
+          "required": true,
+          "description": "Independent address point or parcel; interpolated forbidden"
+        },
+        {
+          "name": "rules[].country_code",
+          "logicalType": "string",
+          "required": true,
+          "description": "Country matching canonical result"
+        },
+        {
+          "name": "rules[].jurisdiction_id",
+          "logicalType": "string",
+          "required": true,
+          "description": "Government identity matching canonical result"
+        },
+        {
+          "name": "rules[].authority_id",
+          "logicalType": "string",
+          "required": true,
+          "description": "Enforcement authority; duplicate active authorities reject"
+        },
+        {
+          "name": "rules[].effective_from",
+          "logicalType": "date",
+          "required": true,
+          "description": "First applicable date"
+        },
+        {
+          "name": "rules[].effective_to",
+          "logicalType": "date",
+          "required": true,
+          "description": "Last applicable date"
+        },
+        {
+          "name": "rules[].review_state",
+          "logicalType": "string",
+          "required": true,
+          "description": "Operator source admission recorded; not self-verifying"
+        },
+        {
+          "name": "rules[].boundary.object_uri",
+          "logicalType": "string",
+          "required": true,
+          "description": "GCS immutable geometry locator"
+        },
+        {
+          "name": "rules[].boundary.object_generation",
+          "logicalType": "string",
+          "required": true,
+          "description": "Observed exact GCS generation"
+        },
+        {
+          "name": "rules[].boundary.sha256",
+          "logicalType": "string",
+          "required": true,
+          "description": "Pinned geometry bytes"
+        },
+        {
+          "name": "rules[].boundary.crs",
+          "logicalType": "string",
+          "required": true,
+          "description": "EPSG:4326"
+        },
+        {
+          "name": "rules[].boundary.site_relation",
+          "logicalType": "string",
+          "required": true,
+          "description": "Reviewed interior membership with no unresolved boundary conflict"
+        },
+        {
+          "name": "rules[].boundary.topology_review_sha256",
+          "logicalType": "string",
+          "required": true,
+          "description": "Independent topology review receipt"
+        },
+        {
+          "name": "rules[].boundary.crosswalk_review_sha256",
+          "logicalType": "string",
+          "required": true,
+          "description": "Independent governmental identity/census disagreement review receipt"
+        },
+        {
+          "name": "rules[].legal.instrument_id",
+          "logicalType": "string",
+          "required": true,
+          "description": "Official legal annexation/incorporation/delegation identity"
+        },
+        {
+          "name": "rules[].legal.source_artifact_sha256",
+          "logicalType": "string",
+          "required": true,
+          "description": "Pinned original legal instrument bytes"
+        },
+        {
+          "name": "rules[].legal.exact_text_sha256",
+          "logicalType": "string",
+          "required": true,
+          "description": "Reviewed operative exact source passage digest"
+        },
+        {
+          "name": "rules[].legal.legal_locator",
+          "logicalType": "string",
+          "required": true,
+          "description": "Section/legal locator"
+        },
+        {
+          "name": "rules[].legal.effective_from",
+          "logicalType": "date",
+          "required": true,
+          "description": "Instrument operative start"
+        },
+        {
+          "name": "rules[].legal.effective_to",
+          "logicalType": "date",
+          "required": true,
+          "description": "Instrument operative end"
+        },
+        {
+          "name": "rules[].legal.enforcement_authority_id",
+          "logicalType": "string",
+          "required": true,
+          "description": "Authority carrying jurisdiction responsibility"
+        },
+        {
+          "name": "rules[].legal.enforcement_mode",
+          "logicalType": "string",
+          "required": true,
+          "description": "Direct or legally delegated; delegation artifact required if delegated"
+        },
+        {
+          "name": "rules[].legal.delegation_artifact_sha256",
+          "logicalType": "string",
+          "required": false,
+          "description": "Pinned delegation instrument when delegated"
+        },
+        {
+          "name": "rules[].provenance.entity_uri",
+          "logicalType": "string",
+          "required": true,
+          "description": "W3C PROV Entity of reviewed source"
+        },
+        {
+          "name": "rules[].provenance.activity_uri",
+          "logicalType": "string",
+          "required": true,
+          "description": "W3C PROV Activity independently reviewing mapping"
+        },
+        {
+          "name": "rules[].provenance.agent_uri",
+          "logicalType": "string",
+          "required": true,
+          "description": "W3C PROV Agent accountable for review"
+        },
+        {
+          "name": "rules[].provenance.review_receipt_sha256",
+          "logicalType": "string",
+          "required": true,
+          "description": "Pinned review receipt bytes"
+        }
+      ]
+    }
+  ]
+}

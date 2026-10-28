@@ -78,6 +78,12 @@ func handlerWithUtilityContext(provider engine.Provider, remote *privateProvider
 // The operator's reviewed policy is independent of the private Provider.
 // Legacy endpoints without exact evidence remain conditional or unverified.
 func handlerWithSourcePolicy(provider engine.Provider, remote *privateProvider, allowedOrigin string, catalog utilitycontext.Provider, policy engine.SourcePolicy) http.Handler {
+	return handlerWithPolicies(provider, remote, allowedOrigin, catalog, policy, engine.SiteAuthorityPolicy{})
+}
+
+// Site evidence is admitted by the operator, independently of the remote provider.
+// A missing policy cannot authorize an otherwise source-backed real-world project.
+func handlerWithPolicies(provider engine.Provider, remote *privateProvider, allowedOrigin string, catalog utilitycontext.Provider, policy engine.SourcePolicy, sitePolicy engine.SiteAuthorityPolicy) http.Handler {
 	mux := http.NewServeMux()
 	if catalog != nil {
 		mux.Handle(utilitycontext.Path, catalog.Handler())
@@ -85,7 +91,7 @@ func handlerWithSourcePolicy(provider engine.Provider, remote *privateProvider, 
 			mux.Handle(ProjectUtilityContextPath, projectUtilityContextHandler(remote, catalog))
 		}
 	}
-	runtime := engine.NewRuntimeWithSourcePolicy(provider, policy)
+	runtime := engine.NewRuntimeWithPolicies(provider, policy, sitePolicy)
 	mux.Handle(httpapi.ProjectVerificationPath, httpapi.NewHandler(engine.NewProjectVerifier(runtime), nil))
 	if remote != nil {
 		mux.HandleFunc("/v1/readiness", func(w http.ResponseWriter, r *http.Request) {
@@ -212,9 +218,24 @@ func main() {
 				log.Fatalf("BCM reviewed source policy rejected: %v", err)
 			}
 		}
-		handler = handlerWithSourcePolicy(remote, remote, origin, catalog, policy)
+		sitePath := os.Getenv("BCM_SITE_AUTHORITY_POLICY_PATH")
+		siteSHA := os.Getenv("BCM_SITE_AUTHORITY_POLICY_SHA256")
+		var sitePolicy engine.SiteAuthorityPolicy
+		if sitePath != "" || siteSHA != "" {
+			if sitePath == "" || siteSHA == "" {
+				log.Fatal("BCM site authority policy needs both private file path and exact SHA-256")
+			}
+			sitePolicy, err = loadPinnedSiteAuthorityPolicy(sitePath, siteSHA)
+			if err != nil {
+				log.Fatal("BCM independently reviewed site authority policy rejected: ", err)
+			}
+		}
+		handler = handlerWithPolicies(remote, remote, origin, catalog, policy, sitePolicy)
 		log.Printf("BCM project verifier listening at %s; remote provider configured", *addr)
 	} else {
+		if os.Getenv("BCM_SITE_AUTHORITY_POLICY_PATH") != "" || os.Getenv("BCM_SITE_AUTHORITY_POLICY_SHA256") != "" {
+			log.Fatal("BCM site authority policy requires the configured live backend, not the fictional demo")
+		}
 		if os.Getenv("BCM_UTILITY_CONTEXT_VIEW_PATH") != "" || os.Getenv("BCM_UTILITY_CONTEXT_VIEW_SHA256") != "" ||
 			os.Getenv("BCM_UTILITY_CATALOG_API_URL") != "" || os.Getenv("BCM_UTILITY_CATALOG_VIEW_SHA256") != "" {
 			log.Fatal("BCM utility context requires the configured live backend, not the fictional demo")

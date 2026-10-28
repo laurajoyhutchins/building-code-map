@@ -39,7 +39,7 @@ func TestResolvedClaimRequiresRequestSpecificQualifyingEvidence(t *testing.T) {
 				Basis: "Synthetic adoption", ExactEvidence: tt.links,
 				Evidence: []EvidenceRef{{ID: "DEMO-SOURCE", Kind: "synthetic"}},
 			}
-			runtime := NewRuntimeWithSourcePolicy(syntheticProvider{codes: []CodeResolution{code}}, tt.policy)
+			runtime := NewRuntimeWithPolicies(syntheticProvider{codes: []CodeResolution{code}}, tt.policy, syntheticSiteAuthorityPolicy("100 Demo Plaza", "US", "DEMO-XX"))
 			basis, err := NewProjectVerifier(runtime).VerifyProject(context.Background(), ProjectRequest{
 				ProjectID: "DEMO-001", Address: "100 Demo Plaza", ApplicabilityDate: "2026-08-25",
 			})
@@ -105,10 +105,10 @@ func TestAffirmativeNonApplicabilityRequiresLegalProof(t *testing.T) {
 		}}}, links: []EvidenceLink{link}, wantVerified: true},
 	} {
 		t.Run(tt.name, func(t *testing.T) {
-			runtime := NewRuntimeWithSourcePolicy(syntheticProvider{codes: []CodeResolution{{
+			runtime := NewRuntimeWithPolicies(syntheticProvider{codes: []CodeResolution{{
 				Family: "fire", Status: StatusNotApplicable, Basis: "Synthetic exclusion",
 				ExactEvidence: tt.links,
-			}}}, tt.policy)
+			}}}, tt.policy, syntheticSiteAuthorityPolicy("100 Demo Plaza", "US", "DEMO-XX"))
 			basis, err := NewProjectVerifier(runtime).VerifyProject(context.Background(), ProjectRequest{
 				ProjectID: "DEMO-001", Address: "100 Demo Plaza", ApplicabilityDate: "2026-08-25",
 			})

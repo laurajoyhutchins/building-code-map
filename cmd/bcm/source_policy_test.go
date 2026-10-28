@@ -100,8 +100,8 @@ func TestCanonicalVerifierNeedsIndependentEvidencePolicy(t *testing.T) {
 		}}}, ""},
 	} {
 		t.Run(tt.name, func(t *testing.T) {
-			verifier := engine.NewProjectVerifier(engine.NewRuntimeWithSourcePolicy(
-				syntheticEvidenceProvider{}, tt.policy))
+			verifier := engine.NewProjectVerifier(engine.NewRuntimeWithPolicies(
+				syntheticEvidenceProvider{}, tt.policy, syntheticPrivateSitePolicyFor("1 Synthetic Lane, DEMO-XX", "DEMO", "DEMO-XX")))
 			result, err := verifier.VerifyProject(context.Background(), req)
 			if tt.want == "" {
 				if err == nil {

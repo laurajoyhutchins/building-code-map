@@ -132,7 +132,7 @@ func exactLegacyProject(t *testing.T, scenario exactLegacyObservation, policy en
 		t.Fatal(err)
 	}
 	provider.expectedBundle = "sha256:synthetic"
-	return engine.NewProjectVerifier(engine.NewRuntimeWithSourcePolicy(provider, policy)).
+	return engine.NewProjectVerifier(engine.NewRuntimeWithPolicies(provider, policy, syntheticPrivateSitePolicyFor(demoAddress, "US", "DEMO-XX"))).
 		VerifyProject(context.Background(), engine.ProjectRequest{
 			ProjectID: "DEMO-PROJECT", Address: demoAddress,
 			ApplicabilityDate: asOf, Facts: facts,
@@ -203,7 +203,7 @@ func TestPrivateExactEvidenceSurvivesOnlyCanonicalHTTPPath(t *testing.T) {
 		t.Fatal(err)
 	}
 	provider.expectedBundle = "sha256:synthetic"
-	handler := handlerWithSourcePolicy(provider, provider, "", nil, exactLegacyPolicy())
+	handler := handlerWithPolicies(provider, provider, "", nil, exactLegacyPolicy(), syntheticPrivateSitePolicyFor(demoAddress, "US", "DEMO-XX"))
 	req := httptest.NewRequest(http.MethodPost, httpapi.ProjectVerificationPath,
 		strings.NewReader(`{"project_id":"DEMO-PROJECT","address":"100 Demo Plaza, DEMO-XX","applicability_date":"2026-10-25"}`))
 	req.Header.Set("Content-Type", "application/json")
@@ -218,5 +218,42 @@ func TestPrivateExactEvidenceSurvivesOnlyCanonicalHTTPPath(t *testing.T) {
 	}
 	if result.Verdict != engine.ProjectVerified || len(result.ExactEvidence) != 5 {
 		t.Fatalf("lost verified evidence at HTTP boundary: %#v", result)
+	}
+}
+
+func TestPrivateExactCodeEvidenceWithoutSiteCannotVerifyHTTP(t *testing.T) {
+	server := mockExactLegacyProvider(t, exactLegacyObservation{})
+	defer server.Close()
+	provider, err := newPrivateProvider(server.URL, "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	provider.expectedBundle = "sha256:synthetic"
+	// This is the ordinary server with an operator-approved adoption source,
+	// but no separately reviewed site-to-jurisdiction authority policy.
+	handler := handlerWithSourcePolicy(provider, provider, "", nil, exactLegacyPolicy())
+	req := httptest.NewRequest(http.MethodPost, httpapi.ProjectVerificationPath,
+		strings.NewReader(`{"project_id":"SYNTHETIC-NO-SITE","address":"100 Demo Plaza, DEMO-XX","applicability_date":"2026-10-25"}`))
+	req.Header.Set("Content-Type", "application/json")
+	rec := httptest.NewRecorder()
+	handler.ServeHTTP(rec, req)
+	if rec.Code != http.StatusOK {
+		t.Fatalf("canonical HTTP response: %d %s", rec.Code, rec.Body.String())
+	}
+	var result engine.ProjectCodeBasis
+	if err := json.Unmarshal(rec.Body.Bytes(), &result); err != nil {
+		t.Fatal(err)
+	}
+	if result.Verdict != engine.ProjectNotVerified || len(result.CodeSet) != 5 ||
+		len(result.ExactEvidence) != 5 || result.SiteAuthority == nil ||
+		result.SiteAuthority.Status != "unresolved" ||
+		result.SiteAuthority.Reason != "independent_site_authority_policy_missing" ||
+		len(result.Unresolved) != 1 ||
+		result.Unresolved[0].Kind != engine.RequirementEvidenceDefect ||
+		len(result.FollowUpQuestions) != 0 {
+		t.Fatalf("independent site authority was silently skipped: %+v", result)
+	}
+	if result.Provenance.BundleID != "sha256:synthetic" {
+		t.Fatalf("source bundle provenance lost: %+v", result.Provenance)
 	}
 }
