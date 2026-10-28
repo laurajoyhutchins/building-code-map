@@ -150,13 +150,8 @@ export function summarizeCodeFamilyMatrix(ledgers, expected) {
     }
     firstSnapshotId = ledger.projection.snapshot_id;
     firstSourceRef = ledger.projection.source_ref;
-    // Use a null-prototype map to avoid prototype pollution by extensions.
-    Object.defineProperty(families, family, {
-      value: { status: 'ledger_present', ...summary },
-      enumerable: true,
-      writable: true,
-      configurable: true,
-    });
+    // The schema admits only canonical built-ins or x_ extension family codes.
+    families[family] = { status: 'ledger_present', ...summary };
   }
 
   return {
