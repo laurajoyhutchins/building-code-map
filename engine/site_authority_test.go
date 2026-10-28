@@ -178,12 +178,12 @@ func TestCodeAdoptionDoesNotSelfAuthorizeSiteJurisdiction(t *testing.T) {
 	} {
 		other, err := NewProjectVerifier(NewRuntimeWithPolicies(provider, demoPolicy(), approved)).
 			VerifyProject(context.Background(), altered)
-		if altered.ApplicabilityDate == "2027-01-01" {
-			// Exact code-adoption policy also expires, and rejects first.
-			if err == nil {
-				t.Fatalf("expired code evidence unexpectedly valid: %+v", other)
-			}
-			continue
+		// The synthetic adoption policy is intentionally unbounded above:
+		// the independently dated legal site witness still blocks a verdict.
+		if altered.ApplicabilityDate == "2027-01-01" &&
+			(err != nil || other.SiteAuthority == nil ||
+				other.SiteAuthority.Reason != "site_authority_not_effective_for_project_date") {
+			t.Fatalf("outdated site authority did not fail closed: %+v err=%v", other, err)
 		}
 		if err != nil || other.Verdict != ProjectNotVerified ||
 			other.SiteAuthority == nil || other.SiteAuthority.Status == "reviewed" {
