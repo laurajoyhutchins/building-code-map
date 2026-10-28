@@ -3,6 +3,7 @@ import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import Ajv2019 from 'ajv/dist/2019.js';
 import addFormats from 'ajv-formats';
+import { validatePublicArtifact } from '../scripts/public-boundary.mjs';
 
 const odcs = JSON.parse(readFileSync('schemas/code-family-coverage-ledger.odcs.json', 'utf8'));
 const pinnedStandard = JSON.parse(readFileSync('schemas/odcs-v3.1.0.schema.json', 'utf8'));
@@ -66,4 +67,19 @@ test('no family export may omit schema identity or imply national verified cover
   );
   assert.equal(odcs.description.limitations.includes('not public'), true);
   assert.equal(odcs.status, 'draft');
+});
+
+test('public boundary admits only the reviewed family ODCS contract and rejects altered identity', () => {
+  const exactPath = 'schemas/code-family-coverage-ledger.odcs.json';
+  assert.deepEqual(validatePublicArtifact(exactPath, JSON.stringify(odcs), {}), []);
+  const tampered = structuredClone(odcs);
+  tampered.authoritativeDefinitions[0].url = 'https://example.invalid/source-substitution';
+  assert.match(
+    validatePublicArtifact(exactPath, JSON.stringify(tampered), {}).join('; '),
+    /must match reviewed schema and identity/,
+  );
+  assert.match(
+    validatePublicArtifact('schemas/unreviewed-private-data.odcs.json', JSON.stringify(odcs), {}).join('; '),
+    /unreviewed JSON data path/,
+  );
 });
