@@ -32,7 +32,7 @@ class AxiomReportTests(unittest.TestCase):
 
     def test_missing_report_rejected(self):
         with self.assertRaisesRegex(ValueError, "Missing"):
-            verifier.parse_axioms(self.reports().splitlines()[0] + "\n")
+            verifier.parse_axioms(self.reports().split("]\\n")[0] + "]\\n")
 
     def test_duplicate_report_rejected(self):
         data = self.reports()
