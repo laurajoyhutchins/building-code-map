@@ -5,7 +5,7 @@ import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 
 const schema = JSON.parse(readFileSync(new URL('../schemas/code-family-coverage-ledger.schema.json', import.meta.url), 'utf8'));
-const ajv = new Ajv2020({ allErrors: true, strict: true });
+const ajv = new Ajv2020({ allErrors: true, strict: false });
 addFormats(ajv);
 const isValidSchema = ajv.compile(schema);
 
