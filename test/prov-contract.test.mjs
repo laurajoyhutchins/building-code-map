@@ -127,3 +127,27 @@ test('the real Go CLI rejects malformed, tampered and trailing source observatio
   });
   assert.notEqual(extra.status, 0);
 });
+
+test('external JSON-LD is admitted only through whole-graph Go validation', () => {
+  const valid = JSON.parse(readFileSync('test/fixtures/prov/actor.jsonld', 'utf8'));
+  assert.equal(validate(valid), true, JSON.stringify(validate.errors));
+  const run = (value) => spawnSync('go', ['run', './cmd/bcm-prov', 'validate'], {
+    input: JSON.stringify(value), encoding: 'utf8', timeout: 60000,
+  });
+  const passed = run(valid);
+  assert.equal(passed.status, 0, passed.stderr);
+  assert.equal(validate(JSON.parse(passed.stdout)), true);
+  for (const mutate of [
+    (x) => { x['@graph'][2]['prov:used'][0]['@id'] = 'urn:bcm:prov:missing'; },
+    (x) => { x['@graph'][1]['prov:wasDerivedFrom'][0]['@id'] = 'urn:bcm:prov:demo:activity'; },
+    (x) => { x['@graph'][3]['@id'] = x['@graph'][0]['@id']; },
+  ]) {
+    const mutant = structuredClone(valid);
+    mutate(mutant);
+    // This proves the original defect: local structure alone lacks global closure.
+    assert.equal(validate(mutant), true, JSON.stringify(validate.errors));
+    const result = run(mutant);
+    assert.notEqual(result.status, 0, 'whole-graph import must reject structural false positive');
+    assert.equal(result.stdout, '', 'invalid graph must not produce a successful output');
+  }
+});
