@@ -28,19 +28,19 @@ const (
 )
 
 type Node struct {
-	ID           string
-	Kind         Kind
-	SourceID     string
-	SHA256       string
-	SourceURL    string
-	LegalLocator string
-	EvidenceRole string
-	ObservedAt   string
-	StartedAt    string
-	EndedAt      string
-	ClaimKind    string
-	JurisdictionID string
-	AsOf         string
+	ID              string
+	Kind            Kind
+	SourceID        string
+	SHA256          string
+	SourceURL       string
+	LegalLocator    string
+	EvidenceRole    string
+	ObservedAt      string
+	StartedAt       string
+	EndedAt         string
+	ClaimKind       string
+	JurisdictionID  string
+	AsOf            string
 	LegallyMaterial *bool
 }
 
@@ -78,7 +78,9 @@ func ClaimID(sourceID, kind, jurisdiction, asOf string, legallyMaterial bool) (s
 		return "", fmt.Errorf("claim applicability date is invalid")
 	}
 	scope, err := json.Marshal([]any{sourceID, kind, jurisdiction, asOf, legallyMaterial})
-	if err != nil { return "", err }
+	if err != nil {
+		return "", err
+	}
 	return StableID("claim", string(scope))
 }
 
