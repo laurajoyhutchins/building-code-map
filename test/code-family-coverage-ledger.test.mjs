@@ -326,3 +326,30 @@ test('multi-family prepublication CLI rejects mixed projection inputs without pa
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('unpinned municipal source observations retain unknown applicability without fabricated digests', () => {
+  const ledger = syntheticLedger('electrical');
+  delete ledger.records[0].adoption_candidate.source_sha256;
+  delete ledger.records[0].adoption_candidate.effective_on;
+  ledger.records[0].unknown_reasons = ['source_unreviewed', 'temporal_applicability_unresolved'];
+  const summary = summarizeCoverageLedger(ledger);
+  assert.equal(summary.adoption_candidate_records, 1);
+  assert.equal(summary.independently_checked_source_records, 0);
+  assert.equal(summary.legally_resolved_records, 0);
+  assert.equal(summary.claimed_independently_verified_project_receipts, 0);
+  assert.equal(summary.national_verified_project_coverage, 'not_established');
+});
+
+test('unpinned or undated observations cannot cross independent source and legal resolution gates', () => {
+  const unpinned = syntheticLedger();
+  delete unpinned.records[0].adoption_candidate.source_sha256;
+  unpinned.records[0].source_review = { status: 'independently_checked', receipt_ref: 'DEMO-review' };
+  rejects(unpinned, /coverage ledger schema invalid/);
+
+  const undated = verifiedLedger();
+  delete undated.records[0].adoption_candidate.effective_on;
+  rejects(undated, /coverage ledger schema invalid/);
+  const unpinnedAuthority = verifiedLedger();
+  delete unpinnedAuthority.records[0].adoption_candidate.source_sha256;
+  rejects(unpinnedAuthority, /coverage ledger schema invalid/);
+});
