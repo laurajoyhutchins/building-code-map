@@ -1,0 +1,46 @@
+name: ETH Lean checkpointed exact-source verification
+
+on:
+  push:
+    branches:
+      - experiment/eth-lean-artifact-transport-20261027
+    paths:
+      - .github/workflows/eth-lean-checkpoint.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: eth-lean-checkpoint-pinned-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  stage_01:
+    uses: ./.github/workflows/eth-lean-checkpoint-stage.yml
+    with:
+      stage: "01"
+      previous: "00"
+  stage_02:
+    needs: stage_01
+    uses: ./.github/workflows/eth-lean-checkpoint-stage.yml
+    with:
+      stage: "02"
+      previous: "01"
+  stage_03:
+    needs: stage_02
+    uses: ./.github/workflows/eth-lean-checkpoint-stage.yml
+    with:
+      stage: "03"
+      previous: "02"
+  stage_04:
+    needs: stage_03
+    uses: ./.github/workflows/eth-lean-checkpoint-stage.yml
+    with:
+      stage: "04"
+      previous: "03"
+  stage_05:
+    needs: stage_04
+    uses: ./.github/workflows/eth-lean-checkpoint-stage.yml
+    with:
+      stage: "05"
+      previous: "04"
