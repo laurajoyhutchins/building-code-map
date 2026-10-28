@@ -38,6 +38,10 @@ type Node struct {
 	ObservedAt   string
 	StartedAt    string
 	EndedAt      string
+	ClaimKind    string
+	JurisdictionID string
+	AsOf         string
+	LegallyMaterial *bool
 }
 
 type Edge struct {
@@ -62,6 +66,20 @@ func StableID(tag, sourceID string) (string, error) {
 	}
 	sum := sha256.Sum256([]byte(sourceID))
 	return "urn:bcm:prov:" + tag + ":" + hex.EncodeToString(sum[:]), nil
+}
+
+// ClaimID binds legal scope and applicability to immutable provenance identity.
+// A JSON tuple avoids ambiguous string concatenation and delimiter collisions.
+func ClaimID(sourceID, kind, jurisdiction, asOf string, legallyMaterial bool) (string, error) {
+	if strings.TrimSpace(sourceID) == "" || strings.TrimSpace(kind) == "" || strings.TrimSpace(jurisdiction) == "" {
+		return "", fmt.Errorf("claim scope is incomplete")
+	}
+	if _, err := time.Parse(time.DateOnly, asOf); err != nil {
+		return "", fmt.Errorf("claim applicability date is invalid")
+	}
+	scope, err := json.Marshal([]any{sourceID, kind, jurisdiction, asOf, legallyMaterial})
+	if err != nil { return "", err }
+	return StableID("claim", string(scope))
 }
 
 func validIRI(value string) bool {
@@ -135,6 +153,19 @@ func (g Graph) Validate() error {
 			(n.SHA256 != "" || n.SourceURL != "" || n.LegalLocator != "" || n.EvidenceRole != "" || n.ObservedAt != "") {
 			return fmt.Errorf("entity-only properties on %q", n.ID)
 		}
+		if n.Kind != Entity && (n.ClaimKind != "" || n.JurisdictionID != "" || n.AsOf != "" || n.LegallyMaterial != nil) {
+			return fmt.Errorf("claim properties on non-entity %q", n.ID)
+		}
+		hasClaim := n.ClaimKind != "" || n.JurisdictionID != "" || n.AsOf != "" || n.LegallyMaterial != nil || strings.HasPrefix(n.ID, "urn:bcm:prov:claim:")
+		if hasClaim {
+			if n.Kind != Entity || n.LegallyMaterial == nil {
+				return fmt.Errorf("incomplete claim scope at %q", n.ID)
+			}
+			expected, err := ClaimID(n.SourceID, n.ClaimKind, n.JurisdictionID, n.AsOf, *n.LegallyMaterial)
+			if err != nil || n.ID != expected {
+				return fmt.Errorf("claim identity does not bind legal scope at %q", n.ID)
+			}
+		}
 		if n.Kind != Activity && (n.StartedAt != "" || n.EndedAt != "") {
 			return fmt.Errorf("activity times on non-activity %q", n.ID)
 		}
@@ -161,6 +192,10 @@ func (g Graph) Validate() error {
 		case "prov:wasDerivedFrom", "prov:specializationOf", "bcm:hasEvidenceLink":
 			if from.Kind != Entity || to.Kind != Entity || e.From == e.To {
 				return fmt.Errorf("invalid entity relation %q", e.Predicate)
+			}
+		case "bcm:targetsEvidenceLink":
+			if from.Kind != Entity || to.Kind != Entity || e.From == e.To || from.EvidenceRole != "supersedes" || to.EvidenceRole == "" {
+				return fmt.Errorf("invalid superseded evidence target")
 			}
 		case "prov:wasGeneratedBy":
 			if from.Kind != Entity || to.Kind != Activity {
@@ -220,6 +255,12 @@ func (g Graph) JSONLD() ([]byte, error) {
 		}
 		if n.EvidenceRole != "" {
 			item["bcm:evidenceRole"] = n.EvidenceRole
+		}
+		if n.ClaimKind != "" {
+			item["bcm:claimKind"] = n.ClaimKind
+			item["bcm:jurisdictionID"] = n.JurisdictionID
+			item["bcm:asOf"] = map[string]string{"@value": n.AsOf, "@type": "xsd:date"}
+			item["bcm:legallyMaterial"] = *n.LegallyMaterial
 		}
 		if n.ObservedAt != "" {
 			item["bcm:observedAt"] = dateTimeLiteral(n.ObservedAt)
