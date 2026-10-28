@@ -29,8 +29,8 @@ func ParseJSONLD(data []byte) (Graph, error) {
 	}
 	for name, expected := range map[string]string{
 		"prov": provNS,
-		"bcm": bcmNS,
-		"xsd": "http://www.w3.org/2001/XMLSchema#",
+		"bcm":  bcmNS,
+		"xsd":  "http://www.w3.org/2001/XMLSchema#",
 	} {
 		value, err := stringField(ctx[name])
 		if err != nil || value != expected {
@@ -93,9 +93,13 @@ func readNode(raw json.RawMessage) (Node, []Edge, error) {
 		return Node{}, nil, fmt.Errorf("PROV node missing @type")
 	}
 	id, err := stringField(fields["@id"])
-	if err != nil { return Node{}, nil, err }
+	if err != nil {
+		return Node{}, nil, err
+	}
 	kind, err := stringField(fields["@type"])
-	if err != nil { return Node{}, nil, err }
+	if err != nil {
+		return Node{}, nil, err
+	}
 	n := Node{ID: id, Kind: Kind(kind)}
 	literals := map[string]*string{
 		"bcm:sourceID": &n.SourceID, "bcm:sha256": &n.SHA256,
@@ -105,12 +109,16 @@ func readNode(raw json.RawMessage) (Node, []Edge, error) {
 	for key, destination := range literals {
 		if raw, exists := fields[key]; exists {
 			value, err := stringField(raw)
-			if err != nil { return Node{}, nil, fmt.Errorf("invalid %s: %w", key, err) }
+			if err != nil {
+				return Node{}, nil, fmt.Errorf("invalid %s: %w", key, err)
+			}
 			*destination = value
 		}
 	}
 	if raw, exists := fields["bcm:legallyMaterial"]; exists {
-		if invalidNull(raw) { return Node{}, nil, fmt.Errorf("invalid materiality null") }
+		if invalidNull(raw) {
+			return Node{}, nil, fmt.Errorf("invalid materiality null")
+		}
 		var value bool
 		if err := json.Unmarshal(raw, &value); err != nil {
 			return Node{}, nil, fmt.Errorf("invalid claim materiality: %w", err)
@@ -119,36 +127,48 @@ func readNode(raw json.RawMessage) (Node, []Edge, error) {
 	}
 	if raw, exists := fields["bcm:sourceURL"]; exists {
 		value, err := referenceIRI(raw)
-		if err != nil { return Node{}, nil, err }
+		if err != nil {
+			return Node{}, nil, err
+		}
 		n.SourceURL = value
 	}
 	dates := map[string]*string{
-		"bcm:observedAt": &n.ObservedAt,
+		"bcm:observedAt":     &n.ObservedAt,
 		"prov:startedAtTime": &n.StartedAt,
-		"prov:endedAtTime": &n.EndedAt,
-		"bcm:asOf": &n.AsOf,
+		"prov:endedAtTime":   &n.EndedAt,
+		"bcm:asOf":           &n.AsOf,
 	}
 	for key, destination := range dates {
 		if raw, exists := fields[key]; exists {
 			kind := "xsd:dateTime"
-			if key == "bcm:asOf" { kind = "xsd:date" }
+			if key == "bcm:asOf" {
+				kind = "xsd:date"
+			}
 			value, err := typedLiteral(raw, kind)
-			if err != nil { return Node{}, nil, fmt.Errorf("invalid %s: %w", key, err) }
+			if err != nil {
+				return Node{}, nil, fmt.Errorf("invalid %s: %w", key, err)
+			}
 			*destination = value
 		}
 	}
 	var edges []Edge
 	for key := range relationFields {
 		raw, exists := fields[key]
-		if !exists { continue }
-		if invalidNull(raw) { return Node{}, nil, fmt.Errorf("null PROV edge %s", key) }
+		if !exists {
+			continue
+		}
+		if invalidNull(raw) {
+			return Node{}, nil, fmt.Errorf("null PROV edge %s", key)
+		}
 		var links []json.RawMessage
 		if err := json.Unmarshal(raw, &links); err != nil || len(links) == 0 {
 			return Node{}, nil, fmt.Errorf("invalid PROV references %s", key)
 		}
 		for _, link := range links {
 			iri, err := referenceIRI(link)
-			if err != nil { return Node{}, nil, fmt.Errorf("invalid relation %s: %w", key, err) }
+			if err != nil {
+				return Node{}, nil, fmt.Errorf("invalid relation %s: %w", key, err)
+			}
 			edges = append(edges, Edge{From: id, Predicate: key, To: iri})
 		}
 	}
@@ -167,12 +187,21 @@ func objectFields(raw json.RawMessage, allowed ...string) (map[string]json.RawMe
 		return nil, fmt.Errorf("JSON object expected")
 	}
 	var obj map[string]json.RawMessage
-	if err := json.Unmarshal(raw, &obj); err != nil { return nil, err }
+	if err := json.Unmarshal(raw, &obj); err != nil {
+		return nil, err
+	}
 	if allowed != nil {
 		for key := range obj {
 			found := false
-			for _, item := range allowed { if item == key { found = true; break } }
-			if !found { return nil, fmt.Errorf("unknown JSON property %s", key) }
+			for _, item := range allowed {
+				if item == key {
+					found = true
+					break
+				}
+			}
+			if !found {
+				return nil, fmt.Errorf("unknown JSON property %s", key)
+			}
 		}
 	}
 	return obj, nil
