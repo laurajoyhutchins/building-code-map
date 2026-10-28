@@ -1,0 +1,66 @@
+name: ETH Lean immutable evidence verdict (isolated experiment)
+
+on:
+  push:
+    branches:
+      - experiment/eth-lean-artifact-transport-20261027
+    paths:
+      - .github/workflows/eth-lean-evidence-verdict.yml
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout independent evidence verifier
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Fetch original run-bound ZIP with digest admission
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          artifact_id=12819889032
+          expected_sha=dab68939cab20ebc9227f8838038e96b5ef9b9b454d4e9f19bd042a57e9edbf2
+          gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts/${artifact_id}" > "$RUNNER_TEMP/artifact-metadata.json"
+          jq -e --argjson artifact_id "$artifact_id" --arg digest "sha256:$expected_sha" \
+            '.id == $artifact_id and .workflow_run.id == 40689984295 and
+             .workflow_run.head_sha == "4206727985687871fe59e83fdbd5f8a0f58fa195" and
+             .name == "eth-lean-stage-03-logs" and .digest == $digest and
+             .expired == false' "$RUNNER_TEMP/artifact-metadata.json"
+          curl -fL --retry 4 --retry-all-errors --connect-timeout 20 --max-time 180 \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/${artifact_id}/zip" \
+            -o "$RUNNER_TEMP/eth-proof-evidence.zip"
+          echo "$expected_sha  $RUNNER_TEMP/eth-proof-evidence.zip" | sha256sum --check
+          mkdir -p evidence
+          unzip -q "$RUNNER_TEMP/eth-proof-evidence.zip" -d evidence
+
+      - name: Run fail-closed verifier regression tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s .github/scripts -p test_verify_eth_lean_artifact.py -v
+
+      - name: Independently validate original Lean kernel evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 .github/scripts/verify_eth_lean_artifact.py evidence --output verdict.json
+
+      - name: Retain independent verdict
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eth-lean-immutable-evidence-verdict
+          path: verdict.json
+          if-no-files-found: warn
+          retention-days: 14
