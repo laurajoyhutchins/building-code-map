@@ -24,7 +24,7 @@ function syntheticLedger(family = 'building') {
       entity_id: 'DEMO-XX-TOWN', authority_level: 'municipality',
       inventory: { source_ref: 'DEMO-inventory', source_sha256: sha('b') },
       adoption_candidate: {
-        source_ref: 'DEMO-ordinance', source_sha256: sha('c'), edition: 'DEMO-2024',
+        source_ref: 'DEMO-ordinance', source_sha256: sha('c'), code_family: family, edition: 'DEMO-2024',
         amendments: ['DEMO-amendment-A'], enacted_on: '2024-05-01', effective_on: '2025-01-01',
       },
       source_review: { status: 'not_checked' }, authority: { status: 'unresolved' },
@@ -44,7 +44,7 @@ function verifiedLedger() {
   record.project_verification = {
     status: 'independently_verified',
     receipt: {
-      project_id: 'DEMO-PROJECT-1', code_family: ledger.scope.code_family,
+      project_id: 'DEMO-PROJECT-1', entity_id: record.entity_id, code_family: ledger.scope.code_family,
       as_of: ledger.scope.as_of, project_class: ledger.scope.project_class,
       engine_commit: 'd'.repeat(40), source_revision_sha256: sha('e'),
       provider_release_sha256: sha('f'), result_sha256: sha('1'),
@@ -265,4 +265,25 @@ test('at-admission CLI rejects malformed JSON instead of emitting partial covera
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
+});
+
+test('adoption candidates must declare the same family before source admission', () => {
+  const ledger = syntheticLedger('building');
+  ledger.records[0].adoption_candidate.code_family = 'electrical';
+  rejects(ledger, /adoption candidate code family does not match/);
+});
+
+test('a copied project execution receipt cannot verify another jurisdiction entity', () => {
+  const ledger = verifiedLedger();
+  ledger.records[0].project_verification.receipt.entity_id = 'DEMO-XX-OTHER-TOWN';
+  rejects(ledger, /project receipt entity does not match/);
+});
+
+test('family and entity identity are required on candidate and verified receipt', () => {
+  const untypedSource = syntheticLedger();
+  delete untypedSource.records[0].adoption_candidate.code_family;
+  rejects(untypedSource, /coverage ledger schema invalid/);
+  const unboundReceipt = verifiedLedger();
+  delete unboundReceipt.records[0].project_verification.receipt.entity_id;
+  rejects(unboundReceipt, /coverage ledger schema invalid/);
 });
