@@ -1,4 +1,6 @@
 name: ETH Lean checkpointed exact-source verification
+# Resumes immutable 40629044604 stage-03 cache after three bounded checkpoints.
+# Each stage remains a checkpoint until exact final elaboration and all five axiom reports pass.
 
 on:
   push:
