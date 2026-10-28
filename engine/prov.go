@@ -72,10 +72,7 @@ func ProjectClaimPROV(claim EvidenceClaim) (provenance.Graph, error) {
   // are distinct entities. The evidence link is derived from the anchor.
   // The claim HAS an evidence link; it is not automatically legally supported
   // or derived from every link (a link may contradict the claim).
-  if _, repeated := seen[link.ID]; !repeated {
-   // acceptEvidenceLinkIdentity inserted the link already; see below.
-  }
-  g.Edges = append(g.Edges,
+   g.Edges = append(g.Edges,
    provenance.Edge{From:artID,Predicate:"prov:wasDerivedFrom",To:docID},
    provenance.Edge{From:anchorID,Predicate:"prov:wasDerivedFrom",To:artID},
    provenance.Edge{From:evidenceID,Predicate:"prov:wasDerivedFrom",To:anchorID},
