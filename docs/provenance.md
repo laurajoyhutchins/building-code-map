@@ -4,7 +4,7 @@ BCM publishes provenance as **additional, source-safe evidence metadata**, not a
 
 ## Ownership and contracts
 
-- `provenance/graph.go`: no-dependency deterministic JSON-LD 1.1 serialization and closed-graph validation with genuine PROV-O IRIs and type-correct `prov:wasDerivedFrom`, `prov:used`, `prov:wasGeneratedBy`, `prov:wasAssociatedWith` and `prov:wasAttributedTo` relations. Input order does not change bytes. No remote context retrieval occurs.
+- `provenance/graph.go` and `provenance/parse.go`: no-dependency deterministic JSON-LD 1.1 serialization, strict external import and closed-graph validation with genuine PROV-O IRIs and type-correct `prov:wasDerivedFrom`, `prov:used`, `prov:wasGeneratedBy`, `prov:wasAssociatedWith` and `prov:wasAttributedTo` relations. Input order does not change bytes. No remote context retrieval occurs.
 - `engine/prov.go`: read-only projection of one existing `EvidenceClaim`. Document, SHA-pinned artifact, anchored excerpt, source link and claim remain separate entities. The link's source-evidence role is preserved. `bcm:hasEvidenceLink` is **not** equivalent to `prov:wasDerivedFrom` or an approved legal claim.
 - `schemas/prov-graph.schema.json` + `schemas/prov-graph.odcs.json`: the paired public cross-repository data contract. Both are required where another repository consumes the export; the JSON Schema is structural, and the Go validator also checks unique IDs, closed references and predicate domain/range.
 - `engine.VerifyClaimEvidence`, runtime-owned `SourcePolicy`, `engine.ProjectVerifier` and the existing project-code-basis contract remain sole owners of evidence admission and project verdicts.
@@ -20,7 +20,7 @@ payload, err := g.JSONLD()
 if err != nil { return err }
 ```
 
-The call refuses missing or malformed source identities and documents, conflicting reused IDs, invalid SHA-256 and unknown evidence roles. It does not use `Verified` status, add review agents, or generate an activity unless that activity exists independently in trusted source records. All source bytes remain in their appropriate custody domain.
+The call refuses missing or malformed source identities and documents, conflicting reused IDs, invalid SHA-256 and unknown evidence roles. The claim entity's URI binds its original ID, kind, jurisdiction, applicability date and legal-materiality flag; these properties are also represented explicitly in the graph. Source-evidence `supersedes` edges retain their specific referenced link via `bcm:targetsEvidenceLink` and refuse missing or self-targets. It does not use `Verified` status, add review agents, or generate an activity unless that activity exists independently in trusted source records. All source bytes remain in their appropriate custody domain.
 
 ## Command-line export
 
@@ -29,6 +29,14 @@ The public, read-only `bcm-prov` CLI accepts exactly one JSON `EvidenceClaim` ob
 ```sh
 go run ./cmd/bcm-prov < test/fixtures/prov/claim.json > /tmp/bcm-provenance.jsonld
 ```
+
+To **admit externally authored** PROV-O JSON-LD, run the same repository-owned whole-graph validator before any other processing:
+
+```sh
+go run ./cmd/bcm-prov validate < test/fixtures/prov/actor.jsonld > /tmp/validated.jsonld
+```
+
+The validator rejects unknown fields, namespace substitution, malformed literals, duplicated node IDs, orphan target references, invalid predicate domain/range, incomplete or altered claim scopes, and invalid supersession references. Successful output is deterministically serialized JSON-LD. **JSON Schema and ODCS checks alone are insufficient:** they cannot close cross-node references or reject duplicate @id values. Cross-repository consumers must pass the graph through `bcm-prov validate` (or call `provenance.ParseJSONLD` in Go) after schema checks and before trusting or storing an imported graph. There is no second source registry or project-verdict path.
 
 The example uses invented `DEMO-XX` records. The CLI rejects unknown input fields, more than 1 MiB, trailing JSON, malformed source links, orphaned document/anchor identities and digest mismatches. The output is portable metadata, not an approved claim. Cross-repository readers must validate the paired JSON Schema and ODCS contract and retain the canonical source-policy decision outside the graph.
 
@@ -46,6 +54,6 @@ Do not use `prov:wasAttributedTo` or `prov:wasAssociatedWith` as vague 'the sour
 
 ## Verification boundary
 
-The Go tests exercise source-pointer closure, deterministic serialization, reused-ID conflicts, digests, invalid timestamps and invalid PROV predicate domain/range. The Node contract tests validate the same JSON-LD representation against the published JSON Schema and the paired ODCS contract using the repository's pinned validators. The test data is fictional.
+The Go tests exercise source-pointer closure, deterministic serialization, scoped claim identities, supersession targets, reused-ID conflicts, digests, invalid timestamps and invalid PROV predicate domain/range. External import is negative-tested against graphs that satisfy the JSON Schema but violate whole-graph invariants. The Node contract tests validate the same JSON-LD representation against the published JSON Schema and the paired ODCS contract using the repository's pinned validators. The test data is fictional.
 
-These are **structural PROV-O/JSON-LD tests**, not a full RDF reasoner, remote-source authenticity check, or legally reviewed source-to-verdict proof. A production adapter still needs immutable source acquisition/review receipts and independently validated provenance of its asserted activities. Promote a real claim only through the existing runtime-owned source policy, never because its JSON-LD passes a schema.
+An independent pinned RDFLib parser in CI additionally expands the actual Go output and an independently authored synthetic Activity/Agent graph to W3C PROV RDF triples. These remain **structural PROV-O/JSON-LD checks**, not a full RDF reasoner, remote-source authenticity check, or legally reviewed source-to-verdict proof. A production adapter still needs immutable source acquisition/review receipts and independently validated provenance of its asserted activities. Promote a real claim only through the existing runtime-owned source policy, never because its JSON-LD passes a schema.
