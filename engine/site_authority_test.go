@@ -75,6 +75,9 @@ func TestIndependentSiteAuthorityRequiresSourceAndGeographicEvidence(t *testing.
 		{"missing Census disagreement review", func(p *SiteAuthorityPolicy) {
 			p.Rules[0].Boundary.CrosswalkReviewSHA = ""
 		}, "unresolved", "incomplete"},
+		{"invalid GCS object locator", func(p *SiteAuthorityPolicy) {
+			p.Rules[0].Boundary.ObjectURI = "gs:///untrusted-object"
+		}, "unresolved", "incomplete"},
 		{"unobserved GCS generation", func(p *SiteAuthorityPolicy) {
 			p.Rules[0].Boundary.ObjectGeneration = ""
 		}, "unresolved", "incomplete"},
