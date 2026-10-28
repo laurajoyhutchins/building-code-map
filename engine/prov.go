@@ -123,7 +123,9 @@ func ProjectClaimPROV(claim EvidenceClaim) (provenance.Graph, error) {
 			return provenance.Graph{}, fmt.Errorf("supersession target not present in claim")
 		}
 		toID, err := provenance.StableID("evidence-link", item.to)
-		if err != nil { return provenance.Graph{}, err }
+		if err != nil {
+			return provenance.Graph{}, err
+		}
 		g.Edges = append(g.Edges, provenance.Edge{From: item.from, Predicate: "bcm:targetsEvidenceLink", To: toID})
 	}
 	// Duplicate identical evidence links are harmless in the source evidence
