@@ -77,14 +77,14 @@ type Provenance struct {
 }
 
 type Resolution struct {
-	SchemaVersion string                  `json:"schema_version"`
-	Query         NormalizedQuery         `json:"query"`
-	Jurisdiction  JurisdictionContext     `json:"jurisdiction"`
-	Codes         []CodeResolution        `json:"codes"`
-	Requirements  []ResolutionRequirement `json:"requirements,omitempty"`
-	DerivedFacts  []DerivedFact           `json:"derived_facts,omitempty"`
+	SchemaVersion string                   `json:"schema_version"`
+	Query         NormalizedQuery          `json:"query"`
+	Jurisdiction  JurisdictionContext      `json:"jurisdiction"`
+	Codes         []CodeResolution         `json:"codes"`
+	Requirements  []ResolutionRequirement  `json:"requirements,omitempty"`
+	DerivedFacts  []DerivedFact            `json:"derived_facts,omitempty"`
 	SiteAuthority *SiteAuthorityAssessment `json:"site_authority,omitempty"`
-	Provenance    Provenance              `json:"provenance,omitempty"`
+	Provenance    Provenance               `json:"provenance,omitempty"`
 }
 
 type Provider interface {
@@ -111,7 +111,7 @@ func NewRuntimeWithSourcePolicy(provider Provider, policy SourcePolicy) Runtime 
 // site policy fails closed for any otherwise resolved project verdict.
 func NewRuntimeWithPolicies(provider Provider, source SourcePolicy, site SiteAuthorityPolicy) Runtime {
 	return Runtime{
-		provider: provider,
+		provider:     provider,
 		sourcePolicy: SourcePolicy{Rules: append([]SourcePolicyRule(nil), source.Rules...)},
 		sitePolicy: SiteAuthorityPolicy{
 			SchemaVersion: site.SchemaVersion, Rules: append([]SiteAuthorityRule(nil), site.Rules...),
@@ -147,8 +147,8 @@ func (runtime Runtime) Resolve(ctx context.Context, query Query) (Resolution, er
 		result.SiteAuthority = &site
 		if site.Status != "reviewed" {
 			result.Requirements = append(result.Requirements, ResolutionRequirement{
-				ID: "site-jurisdiction-authority",
-				Kind: RequirementEvidenceDefect,
+				ID:     "site-jurisdiction-authority",
+				Kind:   RequirementEvidenceDefect,
 				Prompt: "Site-to-jurisdiction legal authority not independently established: " + site.Reason,
 			})
 		}

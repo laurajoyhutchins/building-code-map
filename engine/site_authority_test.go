@@ -20,16 +20,16 @@ func syntheticSiteAuthorityPolicy(address, country, jurisdiction string) SiteAut
 			EffectiveFrom: "2026-01-01", EffectiveTo: "2026-12-31",
 			ReviewState: "reviewed",
 			Boundary: SiteAuthorityBoundary{
-				ObjectURI: "gs://synthetic-review-only/fictional-boundary",
+				ObjectURI:        "gs://synthetic-review-only/fictional-boundary",
 				ObjectGeneration: "1", SHA256: strings.Repeat("a", 64),
 				CRS: "EPSG:4326", SiteRelation: "interior_reviewed",
-				TopologyReviewSHA: strings.Repeat("b", 64),
+				TopologyReviewSHA:  strings.Repeat("b", 64),
 				CrosswalkReviewSHA: strings.Repeat("c", 64),
 			},
 			Legal: SiteAuthorityLegal{
 				InstrumentID: "synthetic-annexation", SourceArtifactSHA256: strings.Repeat("d", 64),
 				ExactTextSHA256: strings.Repeat("e", 64),
-				LegalLocator: "Synthetic locality clause 1", EffectiveFrom: "2026-01-01",
+				LegalLocator:    "Synthetic locality clause 1", EffectiveFrom: "2026-01-01",
 				EffectiveTo: "2026-12-31", EnforcementAuthority: "synthetic-local-enforcer",
 				EnforcementMode: "direct",
 			},
@@ -54,7 +54,7 @@ func TestIndependentSiteAuthorityRequiresSourceAndGeographicEvidence(t *testing.
 	}
 
 	cases := []struct {
-		name string
+		name   string
 		mutate func(*SiteAuthorityPolicy)
 		status string
 		reason string

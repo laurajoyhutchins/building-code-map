@@ -136,6 +136,10 @@ function jsonDisposition(relativePath) {
     // ODCS-shaped source records or private regulatory corpus in public Git.
     return 'family-ledger-contract';
   }
+  if (relativePath === 'schemas/site-authority-policy.odcs.json') {
+    // Reviewed public contract definition only, never a real policy or private source.
+    return 'site-authority-contract';
+  }
   if (relativePath === 'schemas/prov-graph.odcs.json') {
     // A single, reviewed first-party interchange definition, never a blanket
     // permission to commit ODCS-shaped regulatory data.
@@ -215,6 +219,16 @@ export function validatePublicArtifact(relativePath, contents, policy) {
         !value?.authoritativeDefinitions?.some((item) => item?.id === 'bcm_family_ledger_json_schema' &&
           item?.url === schemaUrl)) {
       errors.push('public family-ledger contract must match reviewed schema and identity');
+    }
+  }
+  if (disposition === 'site-authority-contract') {
+    if (value?.apiVersion !== 'v3.1.0' || value?.kind !== 'DataContract' ||
+        value?.id !== 'bcm-site-jurisdiction-authority-policy-v1' ||
+        value?.status !== 'draft' ||
+        value?.schema?.[0]?.name !== 'site_authority_policy_v1' ||
+        !value?.schema?.[0]?.properties?.some((item) => item?.name === 'rules[].legal.instrument_id') ||
+        !value?.schema?.[0]?.properties?.some((item) => item?.name === 'rules[].provenance.review_receipt_sha256')) {
+      errors.push('public site-authority ODCS must match reviewed schema and contract-only identity');
     }
   }
   if (disposition === 'prov-contract') {

@@ -34,13 +34,13 @@ type SiteAuthorityRule struct {
 }
 
 type SiteAuthorityBoundary struct {
-	ObjectURI           string `json:"object_uri"`
-	ObjectGeneration    string `json:"object_generation"`
-	SHA256              string `json:"sha256"`
-	CRS                 string `json:"crs"`
-	SiteRelation        string `json:"site_relation"`
-	TopologyReviewSHA   string `json:"topology_review_sha256"`
-	CrosswalkReviewSHA  string `json:"crosswalk_review_sha256"`
+	ObjectURI          string `json:"object_uri"`
+	ObjectGeneration   string `json:"object_generation"`
+	SHA256             string `json:"sha256"`
+	CRS                string `json:"crs"`
+	SiteRelation       string `json:"site_relation"`
+	TopologyReviewSHA  string `json:"topology_review_sha256"`
+	CrosswalkReviewSHA string `json:"crosswalk_review_sha256"`
 }
 
 type SiteAuthorityLegal struct {
@@ -213,11 +213,11 @@ func evaluateSiteAuthority(query NormalizedQuery, jurisdiction JurisdictionConte
 	}
 	return SiteAuthorityAssessment{
 		Status: "reviewed", Reason: "site_authority_policy_witness_matched",
-		RuleID: rule.ID,
-		ProvenanceEntity: rule.Provenance.EntityURI,
-		ReviewActivity: rule.Provenance.ActivityURI,
+		RuleID:              rule.ID,
+		ProvenanceEntity:    rule.Provenance.EntityURI,
+		ReviewActivity:      rule.Provenance.ActivityURI,
 		ReviewReceiptSHA256: rule.Provenance.ReviewReceiptSHA256,
-		BoundaryGeneration: rule.Boundary.ObjectGeneration,
+		BoundaryGeneration:  rule.Boundary.ObjectGeneration,
 		// This is never a grant of legal authority from the provider's own
 		// geometry/code. Project verification additionally requires all
 		// exact adopted-code SourcePolicy evidence.

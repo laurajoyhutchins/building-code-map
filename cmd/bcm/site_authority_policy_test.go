@@ -20,31 +20,31 @@ func syntheticPrivateSitePolicyFor(address, country, jurisdiction string) engine
 	}
 	return engine.SiteAuthorityPolicy{
 		SchemaVersion: "1.0.0", Rules: []engine.SiteAuthorityRule{{
-			ID: "fictional-site-witness",
-			LocationSHA256: engine.SiteLocationSHA256(normalized),
+			ID:                "fictional-site-witness",
+			LocationSHA256:    engine.SiteLocationSHA256(normalized),
 			LocationPrecision: "address_point", CountryCode: country,
 			JurisdictionID: jurisdiction, AuthorityID: "fictional-authority",
 			EffectiveFrom: "2026-01-01", EffectiveTo: "2026-12-31",
 			ReviewState: "reviewed",
 			Boundary: engine.SiteAuthorityBoundary{
-				ObjectURI: "gs://fictional-review-only/demo-geometry",
+				ObjectURI:        "gs://fictional-review-only/demo-geometry",
 				ObjectGeneration: "11",
-				SHA256: strings.Repeat("a", 64), CRS: "EPSG:4326",
-				SiteRelation: "interior_reviewed",
-				TopologyReviewSHA: strings.Repeat("b", 64),
+				SHA256:           strings.Repeat("a", 64), CRS: "EPSG:4326",
+				SiteRelation:       "interior_reviewed",
+				TopologyReviewSHA:  strings.Repeat("b", 64),
 				CrosswalkReviewSHA: strings.Repeat("c", 64),
 			},
 			Legal: engine.SiteAuthorityLegal{
-				InstrumentID: "fictional-ordinance",
+				InstrumentID:         "fictional-ordinance",
 				SourceArtifactSHA256: strings.Repeat("d", 64),
-				ExactTextSHA256: strings.Repeat("e", 64), LegalLocator: "Fictional section",
+				ExactTextSHA256:      strings.Repeat("e", 64), LegalLocator: "Fictional section",
 				EffectiveFrom: "2026-01-01", EffectiveTo: "2026-12-31",
 				EnforcementAuthority: "fictional-authority", EnforcementMode: "direct",
 			},
 			Provenance: engine.SiteAuthorityProvenance{
-				EntityURI: "urn:fictional:source",
-				ActivityURI: "urn:fictional:review",
-				AgentURI: "urn:fictional:reviewer",
+				EntityURI:           "urn:fictional:source",
+				ActivityURI:         "urn:fictional:review",
+				AgentURI:            "urn:fictional:reviewer",
 				ReviewReceiptSHA256: strings.Repeat("f", 64),
 			},
 		}},
@@ -57,12 +57,16 @@ func TestOperatorPinnedSiteAuthorityPolicyRejectsDriftAndFalseReview(t *testing.
 	encode := func(value engine.SiteAuthorityPolicy) []byte {
 		t.Helper()
 		data, err := json.Marshal(value)
-		if err != nil { t.Fatal(err) }
+		if err != nil {
+			t.Fatal(err)
+		}
 		return data
 	}
 	load := func(data []byte, shouldPass bool) {
 		t.Helper()
-		if err := os.WriteFile(path, data, 0600); err != nil { t.Fatal(err) }
+		if err := os.WriteFile(path, data, 0600); err != nil {
+			t.Fatal(err)
+		}
 		hash := sha256.Sum256(data)
 		out, err := loadPinnedSiteAuthorityPolicy(path, hex.EncodeToString(hash[:]))
 		if shouldPass {
@@ -75,7 +79,9 @@ func TestOperatorPinnedSiteAuthorityPolicyRejectsDriftAndFalseReview(t *testing.
 	}
 	original := encode(policy)
 	load(original, true)
-	if err := os.WriteFile(path, append(append([]byte{}, original...), byte(' ')), 0600); err != nil { t.Fatal(err) }
+	if err := os.WriteFile(path, append(append([]byte{}, original...), byte(' ')), 0600); err != nil {
+		t.Fatal(err)
+	}
 	h := sha256.Sum256(original)
 	if _, err := loadPinnedSiteAuthorityPolicy(path, hex.EncodeToString(h[:])); err == nil {
 		t.Fatal("unreviewed mutated policy passed independently pinned SHA")

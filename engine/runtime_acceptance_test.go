@@ -105,7 +105,7 @@ func TestAffirmativeNonApplicabilityRequiresLegalProof(t *testing.T) {
 		}}}, links: []EvidenceLink{link}, wantVerified: true},
 	} {
 		t.Run(tt.name, func(t *testing.T) {
-			runtime := NewRuntimeWithSourcePolicy(syntheticProvider{codes: []CodeResolution{{
+			runtime := NewRuntimeWithPolicies(syntheticProvider{codes: []CodeResolution{{
 				Family: "fire", Status: StatusNotApplicable, Basis: "Synthetic exclusion",
 				ExactEvidence: tt.links,
 			}}}, tt.policy, syntheticSiteAuthorityPolicy("100 Demo Plaza", "US", "DEMO-XX"))

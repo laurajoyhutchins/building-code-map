@@ -132,7 +132,7 @@ func exactLegacyProject(t *testing.T, scenario exactLegacyObservation, policy en
 		t.Fatal(err)
 	}
 	provider.expectedBundle = "sha256:synthetic"
-	return engine.NewProjectVerifier(engine.NewRuntimeWithSourcePolicy(provider, policy)).
+	return engine.NewProjectVerifier(engine.NewRuntimeWithPolicies(provider, policy, syntheticPrivateSitePolicyFor(demoAddress, "US", "DEMO-XX"))).
 		VerifyProject(context.Background(), engine.ProjectRequest{
 			ProjectID: "DEMO-PROJECT", Address: demoAddress,
 			ApplicabilityDate: asOf, Facts: facts,
@@ -203,7 +203,7 @@ func TestPrivateExactEvidenceSurvivesOnlyCanonicalHTTPPath(t *testing.T) {
 		t.Fatal(err)
 	}
 	provider.expectedBundle = "sha256:synthetic"
-	handler := handlerWithSourcePolicy(provider, provider, "", nil, exactLegacyPolicy())
+	handler := handlerWithPolicies(provider, provider, "", nil, exactLegacyPolicy(), syntheticPrivateSitePolicyFor(demoAddress, "US", "DEMO-XX"))
 	req := httptest.NewRequest(http.MethodPost, httpapi.ProjectVerificationPath,
 		strings.NewReader(`{"project_id":"DEMO-PROJECT","address":"100 Demo Plaza, DEMO-XX","applicability_date":"2026-10-25"}`))
 	req.Header.Set("Content-Type", "application/json")
@@ -220,7 +220,6 @@ func TestPrivateExactEvidenceSurvivesOnlyCanonicalHTTPPath(t *testing.T) {
 		t.Fatalf("lost verified evidence at HTTP boundary: %#v", result)
 	}
 }
-
 
 func TestPrivateExactCodeEvidenceWithoutSiteCannotVerifyHTTP(t *testing.T) {
 	server := mockExactLegacyProvider(t, exactLegacyObservation{})
