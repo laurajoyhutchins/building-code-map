@@ -1,0 +1,600 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/prov-graph.schema.json",
+  "title": "BCM PROV-O source evidence graph (JSON-LD 1.1)",
+  "description": "Source-safe lineage only, not a legal verification decision. Cross-repository paired with prov-graph.odcs.json.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "@context",
+    "@graph"
+  ],
+  "properties": {
+    "@context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "prov",
+        "bcm",
+        "xsd"
+      ],
+      "properties": {
+        "prov": {
+          "const": "http://www.w3.org/ns/prov#"
+        },
+        "bcm": {
+          "const": "https://github.com/laurajoyhutchins/building-code-map/ns/provenance#"
+        },
+        "xsd": {
+          "const": "http://www.w3.org/2001/XMLSchema#"
+        }
+      }
+    },
+    "@graph": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 250000,
+      "items": {
+        "type": "object",
+        "required": [
+          "@id",
+          "@type"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "@id": {
+            "type": "string",
+            "pattern": "^(urn:[^\\s]+|https://[^\\s]+)$"
+          },
+          "@type": {
+            "enum": [
+              "prov:Entity",
+              "prov:Activity",
+              "prov:Agent"
+            ]
+          },
+          "bcm:sourceID": {
+            "type": "string",
+            "minLength": 1
+          },
+          "bcm:sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bcm:sourceURL": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "@id"
+            ],
+            "properties": {
+              "@id": {
+                "type": "string",
+                "format": "uri",
+                "pattern": "^https?://"
+              }
+            }
+          },
+          "bcm:legalLocator": {
+            "type": "string"
+          },
+          "bcm:evidenceRole": {
+            "enum": [
+              "establishes",
+              "corroborates",
+              "contradicts",
+              "defines",
+              "incorporates",
+              "supersedes"
+            ]
+          },
+          "bcm:observedAt": {
+            "type": "object",
+            "required": [
+              "@value",
+              "@type"
+            ],
+            "properties": {
+              "@value": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "@type": {
+                "const": "xsd:dateTime"
+              }
+            },
+            "additionalProperties": false
+          },
+          "prov:startedAtTime": {
+            "type": "object",
+            "required": [
+              "@value",
+              "@type"
+            ],
+            "properties": {
+              "@value": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "@type": {
+                "const": "xsd:dateTime"
+              }
+            },
+            "additionalProperties": false
+          },
+          "prov:endedAtTime": {
+            "type": "object",
+            "required": [
+              "@value",
+              "@type"
+            ],
+            "properties": {
+              "@value": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "@type": {
+                "const": "xsd:dateTime"
+              }
+            },
+            "additionalProperties": false
+          },
+          "prov:wasDerivedFrom": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "@id"
+              ],
+              "properties": {
+                "@id": {
+                  "type": "string",
+                  "pattern": "^(urn:[^\\s]+|https://[^\\s]+)$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "prov:specializationOf": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "@id"
+              ],
+              "properties": {
+                "@id": {
+                  "type": "string",
+                  "pattern": "^(urn:[^\\s]+|https://[^\\s]+)$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "prov:wasGeneratedBy": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "@id"
+              ],
+              "properties": {
+                "@id": {
+                  "type": "string",
+                  "pattern": "^(urn:[^\\s]+|https://[^\\s]+)$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "prov:used": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "@id"
+              ],
+              "properties": {
+                "@id": {
+                  "type": "string",
+                  "pattern": "^(urn:[^\\s]+|https://[^\\s]+)$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "prov:wasAssociatedWith": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "@id"
+              ],
+              "properties": {
+                "@id": {
+                  "type": "string",
+                  "pattern": "^(urn:[^\\s]+|https://[^\\s]+)$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "prov:wasAttributedTo": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "@id"
+              ],
+              "properties": {
+                "@id": {
+                  "type": "string",
+                  "pattern": "^(urn:[^\\s]+|https://[^\\s]+)$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "bcm:hasEvidenceLink": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "@id"
+              ],
+              "properties": {
+                "@id": {
+                  "type": "string",
+                  "pattern": "^(urn:[^\\s]+|https://[^\\s]+)$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "bcm:targetsEvidenceLink": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "@id"
+              ],
+              "properties": {
+                "@id": {
+                  "type": "string",
+                  "pattern": "^(urn:[^\\s]+|https://[^\\s]+)$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "bcm:claimKind": {
+            "type": "string",
+            "minLength": 1
+          },
+          "bcm:jurisdictionID": {
+            "type": "string",
+            "minLength": 1
+          },
+          "bcm:asOf": {
+            "type": "object",
+            "required": [
+              "@value",
+              "@type"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "@value": {
+                "type": "string",
+                "format": "date"
+              },
+              "@type": {
+                "const": "xsd:date"
+              }
+            }
+          },
+          "bcm:legallyMaterial": {
+            "type": "boolean"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "@type": {
+                  "const": "prov:Entity"
+                }
+              },
+              "required": [
+                "@type"
+              ]
+            },
+            "then": {
+              "not": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "prov:used"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "prov:wasAssociatedWith"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "prov:startedAtTime"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "prov:endedAtTime"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "@type": {
+                  "const": "prov:Activity"
+                }
+              },
+              "required": [
+                "@type"
+              ]
+            },
+            "then": {
+              "not": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "bcm:sha256"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:sourceURL"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:legalLocator"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:evidenceRole"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:observedAt"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "prov:wasDerivedFrom"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:hasEvidenceLink"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "prov:wasGeneratedBy"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "prov:wasAttributedTo"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:claimKind"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:jurisdictionID"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:asOf"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:legallyMaterial"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:targetsEvidenceLink"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "@type": {
+                  "const": "prov:Agent"
+                }
+              },
+              "required": [
+                "@type"
+              ]
+            },
+            "then": {
+              "not": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "bcm:sha256"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:sourceURL"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:legalLocator"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:evidenceRole"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:observedAt"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "prov:wasDerivedFrom"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:hasEvidenceLink"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "prov:wasGeneratedBy"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "prov:used"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "prov:wasAssociatedWith"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "prov:wasAttributedTo"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "prov:startedAtTime"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "prov:endedAtTime"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:claimKind"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:jurisdictionID"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:asOf"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:legallyMaterial"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:targetsEvidenceLink"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "if": {
+              "anyOf": [
+                {
+                  "required": [
+                    "bcm:claimKind"
+                  ]
+                },
+                {
+                  "required": [
+                    "bcm:jurisdictionID"
+                  ]
+                },
+                {
+                  "required": [
+                    "bcm:asOf"
+                  ]
+                },
+                {
+                  "required": [
+                    "bcm:legallyMaterial"
+                  ]
+                }
+              ]
+            },
+            "then": {
+              "required": [
+                "bcm:claimKind",
+                "bcm:jurisdictionID",
+                "bcm:asOf",
+                "bcm:legallyMaterial"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "@id": {
+                  "pattern": "^urn:bcm:prov:claim:"
+                }
+              },
+              "required": [
+                "@id"
+              ]
+            },
+            "then": {
+              "required": [
+                "bcm:claimKind",
+                "bcm:jurisdictionID",
+                "bcm:asOf",
+                "bcm:legallyMaterial"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

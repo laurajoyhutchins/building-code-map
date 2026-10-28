@@ -178,3 +178,18 @@ test('only exact project-owned geocoder ranking policy can be public, never a GI
     /unreviewed fields/,
   );
 });
+
+test('admits only the reviewed PROV-O ODCS schema contract, not arbitrary source JSON', () => {
+  const canonical = JSON.parse(fs.readFileSync('schemas/prov-graph.odcs.json', 'utf8'));
+  assert.deepEqual(validatePublicArtifact(
+    'schemas/prov-graph.odcs.json', JSON.stringify(canonical), policy,
+  ), []);
+  const wrongIdentity = structuredClone(canonical);
+  wrongIdentity.id = 'surreptitious-corpus';
+  assert.match(validatePublicArtifact(
+    'schemas/prov-graph.odcs.json', JSON.stringify(wrongIdentity), policy,
+  ).join('\\n'), /reviewed schema and identity/);
+  assert.match(validatePublicArtifact(
+    'schemas/unreviewed.odcs.json', JSON.stringify(canonical), policy,
+  ).join('\\n'), /unreviewed JSON data path/);
+});

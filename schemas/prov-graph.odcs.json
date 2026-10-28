@@ -1,0 +1,136 @@
+{
+  "apiVersion": "v3.1.0",
+  "kind": "DataContract",
+  "id": "bcm-prov-o-evidence-graph-v1",
+  "name": "BCM PROV-O source evidence graph",
+  "version": "1.0.0",
+  "status": "active",
+  "description": {
+    "purpose": "Portable W3C PROV-O lineage for existing BCM source documents, immutable artifacts, exact anchors, evidence links, and explicitly recorded processing activities or agents.",
+    "usage": "Public BCM and private regulatory providers exchange schema-valid JSON-LD plus this ODCS definition, then MUST validate the whole graph through `bcm-prov validate` / `provenance.ParseJSONLD` before admission. The canonical verifier alone decides legal status.",
+    "limitations": "Metadata and deterministic lineage only; a well-formed graph does not establish authentic source bytes, independent review, legally effective adoption, address-level jurisdiction or a verified project. No private source text or bulk regulatory corpus may be published. JSON Schema cannot enforce cross-node references or uniqueness; a successful structural schema check must never substitute for the repository-owned closed-graph validator."
+  },
+  "schema": [
+    {
+      "name": "prov_o_evidence_graph",
+      "logicalType": "object",
+      "physicalName": "application/ld+json",
+      "properties": [
+        {
+          "name": "@context",
+          "logicalType": "object",
+          "required": true,
+          "description": "Fixed W3C PROV-O, BCM extension and XML Schema namespace bindings"
+        },
+        {
+          "name": "@graph",
+          "logicalType": "array",
+          "required": true,
+          "description": "At least one graph node; source-only entities, genuinely observed activities and agents"
+        },
+        {
+          "name": "@graph[].@id",
+          "logicalType": "string",
+          "required": true,
+          "description": "Absolute, stable URI for each graph node"
+        },
+        {
+          "name": "@graph[].@type",
+          "logicalType": "string",
+          "required": true,
+          "description": "prov:Entity, prov:Activity, or prov:Agent"
+        },
+        {
+          "name": "@graph[].bcm:sourceID",
+          "logicalType": "string",
+          "required": false,
+          "description": "Preserved BCM source identity, never constructed from a URL alone"
+        },
+        {
+          "name": "@graph[].bcm:sha256",
+          "logicalType": "string",
+          "required": false,
+          "description": "64-character exact immutable source or passage digest"
+        },
+        {
+          "name": "@graph[].bcm:evidenceRole",
+          "logicalType": "string",
+          "required": false,
+          "description": "Preserves establishes/corroborates/contradicts/defines/incorporates/supersedes without promotion"
+        },
+        {
+          "name": "@graph[].prov:wasDerivedFrom",
+          "logicalType": "array",
+          "required": false,
+          "description": "Entity-to-entity derivation only"
+        },
+        {
+          "name": "@graph[].prov:used",
+          "logicalType": "array",
+          "required": false,
+          "description": "Explicitly observed Activity-to-Entity usage only"
+        },
+        {
+          "name": "@graph[].prov:wasGeneratedBy",
+          "logicalType": "array",
+          "required": false,
+          "description": "Explicitly observed Entity-to-Activity generation only"
+        },
+        {
+          "name": "@graph[].bcm:claimKind",
+          "logicalType": "string",
+          "required": false,
+          "description": "Claim kind tied to the hash-bound version-qualified source identity"
+        },
+        {
+          "name": "@graph[].bcm:jurisdictionID",
+          "logicalType": "string",
+          "required": false,
+          "description": "Claim jurisdiction tied to hash-bound scope"
+        },
+        {
+          "name": "@graph[].bcm:asOf",
+          "logicalType": "object",
+          "required": false,
+          "description": "xsd:date claim applicability, scoped into immutable claim identity"
+        },
+        {
+          "name": "@graph[].bcm:legallyMaterial",
+          "logicalType": "boolean",
+          "required": false,
+          "description": "Explicit true or false, never inferred from evidence"
+        },
+        {
+          "name": "@graph[].bcm:targetsEvidenceLink",
+          "logicalType": "array",
+          "required": false,
+          "description": "Closed same-claim evidence supersession target; must be validated with the Go importer"
+        }
+      ]
+    }
+  ],
+  "authoritativeDefinitions": [
+    {
+      "id": "bcm_prov_graph_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/prov-graph.schema.json"
+    },
+    {
+      "id": "w3c_prov_o",
+      "type": "canonicalUrl",
+      "url": "https://www.w3.org/TR/prov-o/"
+    },
+    {
+      "id": "bcm_exact_evidence",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/evidence.schema.json"
+    }
+  ],
+  "customProperties": [
+    {
+      "id": "bcm_prov_graph_contract_version",
+      "property": "bcmProvContractVersion",
+      "value": "1.0.0"
+    }
+  ]
+}

@@ -136,6 +136,11 @@ function jsonDisposition(relativePath) {
     // ODCS-shaped source records or private regulatory corpus in public Git.
     return 'family-ledger-contract';
   }
+  if (relativePath === 'schemas/prov-graph.odcs.json') {
+    // A single, reviewed first-party interchange definition, never a blanket
+    // permission to commit ODCS-shaped regulatory data.
+    return 'prov-contract';
+  }
   if (relativePath.startsWith('schemas/') && relativePath.endsWith('.schema.json')) {
     return 'schema';
   }
@@ -210,6 +215,16 @@ export function validatePublicArtifact(relativePath, contents, policy) {
         !value?.authoritativeDefinitions?.some((item) => item?.id === 'bcm_family_ledger_json_schema' &&
           item?.url === schemaUrl)) {
       errors.push('public family-ledger contract must match reviewed schema and identity');
+    }
+  }
+  if (disposition === 'prov-contract') {
+    if (value?.apiVersion !== 'v3.1.0' || value?.kind !== 'DataContract' ||
+        value?.id !== 'bcm-prov-o-evidence-graph-v1' ||
+        value?.schema?.[0]?.name !== 'prov_o_evidence_graph' ||
+        !value?.authoritativeDefinitions?.some(
+          (item) => item?.url === 'https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/prov-graph.schema.json',
+        )) {
+      errors.push('public PROV contract must match the reviewed schema and identity');
     }
   }
   if (disposition === 'synthetic') {

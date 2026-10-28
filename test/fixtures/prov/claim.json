@@ -1,0 +1,35 @@
+{
+  "id": "DEMO-CLAIM-1",
+  "kind": "code_adoption",
+  "jurisdiction_id": "DEMO-XX",
+  "as_of": "2026-10-28",
+  "legally_material": true,
+  "links": [
+    {
+      "id": "DEMO-LINK-1",
+      "claim_id": "DEMO-CLAIM-1",
+      "role": "establishes",
+      "document": {
+        "id": "DEMO-DOCUMENT-1",
+        "kind": "synthetic_ordinance",
+        "jurisdiction_id": "DEMO-XX",
+        "title": "Fictional ordinance",
+        "canonical_url": "https://example.invalid/demo/ordinance"
+      },
+      "artifact": {
+        "id": "DEMO-ARTIFACT-1",
+        "document_id": "DEMO-DOCUMENT-1",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "size_bytes": 512,
+        "source_url": "https://example.invalid/demo/source.pdf",
+        "observed_at": "2026-10-27T15:30:00Z"
+      },
+      "anchor": {
+        "id": "DEMO-ANCHOR-1",
+        "artifact_id": "DEMO-ARTIFACT-1",
+        "legal_locator": "Fictional § 1",
+        "text_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      }
+    }
+  ]
+}
