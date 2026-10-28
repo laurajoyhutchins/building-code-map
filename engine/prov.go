@@ -46,6 +46,8 @@ func ProjectClaimPROV(claim EvidenceClaim) (provenance.Graph, error) {
 		return provenance.Graph{}, err
 	}
 	seen := map[string]EvidenceLink{}
+	artifactDocument := map[string]string{}
+	anchorArtifact := map[string]string{}
 	for _, link := range claim.Links {
 		if err := validateEvidenceLink(link, claim.ID); err != nil {
 			return provenance.Graph{}, err
@@ -72,6 +74,14 @@ func ProjectClaimPROV(claim EvidenceClaim) (provenance.Graph, error) {
 		if err != nil {
 			return provenance.Graph{}, err
 		}
+		if owner, ok := artifactDocument[artID]; ok && owner != docID {
+			return provenance.Graph{}, fmt.Errorf("artifact identity refers to multiple documents")
+		}
+		artifactDocument[artID] = docID
+		if owner, ok := anchorArtifact[anchorID]; ok && owner != artID {
+			return provenance.Graph{}, fmt.Errorf("text anchor identity refers to multiple artifacts")
+		}
+		anchorArtifact[anchorID] = artID
 		items := []provenance.Node{
 			{ID: docID, Kind: provenance.Entity, SourceID: link.Document.ID, SourceURL: link.Document.CanonicalURL},
 			{ID: artID, Kind: provenance.Entity, SourceID: link.Artifact.ID,
