@@ -20,9 +20,17 @@
     "provenance"
   ],
   "properties": {
-    "schema_version": { "const": "0.3" },
-    "project_id": { "type": "string", "minLength": 1 },
-    "as_of": { "type": "string", "format": "date" },
+    "schema_version": {
+      "const": "0.3"
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
     "inputs": {
       "type": "object",
       "additionalProperties": false,
@@ -30,47 +38,109 @@
         "point": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["longitude", "latitude"],
+          "required": [
+            "longitude",
+            "latitude"
+          ],
           "properties": {
-            "longitude": { "type": "number", "minimum": -180, "maximum": 180 },
-            "latitude": { "type": "number", "minimum": -90, "maximum": 90 }
+            "longitude": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            },
+            "latitude": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            }
           }
         },
-        "address": { "type": "string", "minLength": 1 },
-        "project_type": { "type": "string", "minLength": 1 },
+        "address": {
+          "type": "string",
+          "minLength": 1
+        },
+        "project_type": {
+          "type": "string",
+          "minLength": 1
+        },
         "facts": {
           "type": "object",
-          "additionalProperties": { "type": "string", "minLength": 1 }
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
         }
       },
       "oneOf": [
-        { "required": ["address"] },
-        { "required": ["point"] }
+        {
+          "required": [
+            "address"
+          ]
+        },
+        {
+          "required": [
+            "point"
+          ]
+        }
       ]
     },
-    "jurisdiction_id": { "type": "string", "minLength": 1 },
+    "jurisdiction_id": {
+      "type": "string",
+      "minLength": 1
+    },
     "jurisdiction": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["country_code", "primary_jurisdiction_id", "primary_jurisdiction_name"],
+      "required": [
+        "country_code",
+        "primary_jurisdiction_id",
+        "primary_jurisdiction_name"
+      ],
       "properties": {
-        "country_code": { "type": "string", "minLength": 2 },
-        "primary_jurisdiction_id": { "type": "string", "minLength": 1 },
-        "primary_jurisdiction_name": { "type": "string", "minLength": 1 },
-        "census_state_equivalent_fips": { "type": "string", "minLength": 1 }
+        "country_code": {
+          "type": "string",
+          "minLength": 2
+        },
+        "primary_jurisdiction_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "primary_jurisdiction_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "census_state_equivalent_fips": {
+          "type": "string",
+          "minLength": 1
+        }
       }
     },
-    "verdict": { "enum": ["verified", "conditional", "not_verified"] },
+    "verdict": {
+      "enum": [
+        "verified",
+        "conditional",
+        "not_verified"
+      ]
+    },
     "code_set": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["family", "status"],
+        "required": [
+          "family",
+          "status"
+        ],
         "properties": {
-          "family": { "type": "string", "minLength": 1 },
-          "edition": { "type": "string", "minLength": 1 },
+          "family": {
+            "type": "string",
+            "minLength": 1
+          },
+          "edition": {
+            "type": "string",
+            "minLength": 1
+          },
           "status": {
             "enum": [
               "resolved",
@@ -83,24 +153,42 @@
               "conflicting"
             ]
           },
-          "basis": { "type": "string", "minLength": 1 }
+          "basis": {
+            "type": "string",
+            "minLength": 1
+          }
         }
       }
     },
     "user_facts": {
       "type": "object",
-      "additionalProperties": { "type": "string", "minLength": 1 }
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
     },
     "derived_facts": {
       "type": "array",
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["key", "value"],
+        "required": [
+          "key",
+          "value"
+        ],
         "properties": {
-          "key": { "type": "string", "minLength": 1 },
-          "value": { "type": "string", "minLength": 1 },
-          "basis": { "type": "string", "minLength": 1 }
+          "key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1
+          },
+          "basis": {
+            "type": "string",
+            "minLength": 1
+          }
         }
       }
     },
@@ -109,42 +197,128 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["kind", "message"],
+        "required": [
+          "kind",
+          "message"
+        ],
         "properties": {
-          "kind": { "enum": ["project_fact", "local_record", "evidence_defect"] },
-          "message": { "type": "string", "minLength": 1 },
-          "fact_key": { "type": "string", "minLength": 1 },
-          "code_family": { "type": "string", "minLength": 1 }
+          "kind": {
+            "enum": [
+              "project_fact",
+              "local_record",
+              "evidence_defect"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "fact_key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "code_family": {
+            "type": "string",
+            "minLength": 1
+          }
         }
       }
     },
     "follow_up_questions": {
       "type": "array",
-      "items": { "type": "string", "minLength": 1 }
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
     },
     "evidence": {
       "type": "array",
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "kind"],
+        "required": [
+          "id",
+          "kind"
+        ],
         "properties": {
-          "id": { "type": "string", "minLength": 1 },
-          "kind": { "type": "string", "minLength": 1 }
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "type": "string",
+            "minLength": 1
+          }
         }
       }
     },
     "exact_evidence": {
       "type": "array",
-      "items": { "$ref": "evidence.schema.json#/$defs/evidence_link" }
+      "items": {
+        "$ref": "evidence.schema.json#/$defs/evidence_link"
+      }
     },
     "provenance": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "engine_version": { "type": "string", "minLength": 1 },
-        "source_commit": { "type": "string", "minLength": 1 },
-        "bundle_id": { "type": "string", "minLength": 1 }
+        "engine_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_commit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bundle_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "site_authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reason",
+        "legal_verdict_authorized"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "reviewed",
+            "unresolved",
+            "conflicting"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rule_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provenance_entity": {
+          "type": "string",
+          "pattern": "^(urn:|https://).+"
+        },
+        "review_activity": {
+          "type": "string",
+          "pattern": "^(urn:|https://).+"
+        },
+        "review_receipt_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "boundary_generation": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        },
+        "legal_verdict_authorized": {
+          "const": false
+        }
       }
     }
   }

@@ -14,10 +14,10 @@ func (provider projectProvider) Resolve(_ context.Context, query NormalizedQuery
 }
 
 func TestProjectVerificationDoesNotRequireCodeFamily(t *testing.T) {
-	runtime := NewRuntimeWithSourcePolicy(projectProvider{result: Resolution{
+	runtime := NewRuntimeWithPolicies(projectProvider{result: Resolution{
 		Jurisdiction: JurisdictionContext{CountryCode: "US", PrimaryJurisdictionID: "DEMO-XX", PrimaryJurisdictionName: "Demonstration Jurisdiction"},
 		Codes:        []CodeResolution{{Family: "building", Edition: "DEMO-2024", Status: StatusResolved, Basis: "DEMO ordinance", ExactEvidence: []EvidenceLink{demoEvidenceLink("DEMO-ESTABLISHES", EvidenceEstablishes)}}},
-	}}, demoPolicy())
+	}}, demoPolicy(), syntheticSiteAuthorityPolicy("100 Demo Plaza", "US", "DEMO-XX"))
 	basis, err := NewProjectVerifier(runtime).VerifyProject(context.Background(), ProjectRequest{ProjectID: "DEMO-001", Address: "100 Demo Plaza", ApplicabilityDate: "2026-08-25"})
 	if err != nil {
 		t.Fatalf("VerifyProject() error = %v", err)
@@ -106,7 +106,7 @@ func TestProjectVerificationLocalRecordRequirementRemainsConditional(t *testing.
 
 func TestProjectVerificationPreservesFactsEvidenceAndProvenance(t *testing.T) {
 	exact := demoEvidenceLink("DEMO-EXACT", EvidenceEstablishes)
-	runtime := NewRuntimeWithSourcePolicy(projectProvider{result: Resolution{
+	runtime := NewRuntimeWithPolicies(projectProvider{result: Resolution{
 		Jurisdiction: JurisdictionContext{CountryCode: "US", PrimaryJurisdictionID: "DEMO-XX", PrimaryJurisdictionName: "Demonstration Jurisdiction"},
 		Codes: []CodeResolution{{
 			Family: "building", Edition: "DEMO-2024", Status: StatusResolved, Basis: "DEMO ordinance",
@@ -114,7 +114,7 @@ func TestProjectVerificationPreservesFactsEvidenceAndProvenance(t *testing.T) {
 		}},
 		DerivedFacts: []DerivedFact{{Key: "primary_jurisdiction", Value: "DEMO-XX", Basis: "synthetic resolver"}},
 		Provenance:   Provenance{EngineVersion: "demo", SourceCommit: "DEMO-COMMIT", BundleID: "DEMO-BUNDLE"},
-	}}, demoPolicy())
+	}}, demoPolicy(), syntheticSiteAuthorityPolicy("100 Demo Plaza", "US", "DEMO-XX"))
 	basis, err := NewProjectVerifier(runtime).VerifyProject(context.Background(), ProjectRequest{
 		ProjectID: "DEMO-004", Address: "100 Demo Plaza", ApplicabilityDate: "2026-08-25", Facts: map[string]string{" Occupancy ": "Business"},
 	})
@@ -141,7 +141,7 @@ func TestProjectVerificationPreservesFactsEvidenceAndProvenance(t *testing.T) {
 func TestProjectVerificationRejectsConflictingEvidenceLinkIDAcrossCodes(t *testing.T) {
 	first := demoEvidenceLink("SAME-LINK-ID", EvidenceEstablishes)
 	second := demoEvidenceLink("SAME-LINK-ID", EvidenceCorroborates)
-	runtime := NewRuntimeWithSourcePolicy(projectProvider{result: Resolution{
+	runtime := NewRuntimeWithPolicies(projectProvider{result: Resolution{
 		Jurisdiction: JurisdictionContext{
 			CountryCode: "US", PrimaryJurisdictionID: "DEMO-XX",
 			PrimaryJurisdictionName: "Demonstration Jurisdiction",
@@ -150,7 +150,7 @@ func TestProjectVerificationRejectsConflictingEvidenceLinkIDAcrossCodes(t *testi
 			{Family: "building", Status: StatusResolved, ExactEvidence: []EvidenceLink{first}},
 			{Family: "energy", Status: StatusInsufficientEvidence, ExactEvidence: []EvidenceLink{second}},
 		},
-	}}, demoPolicy())
+	}}, demoPolicy(), syntheticSiteAuthorityPolicy("100 Demo Plaza", "US", "DEMO-XX"))
 	_, err := NewProjectVerifier(runtime).VerifyProject(context.Background(), ProjectRequest{
 		ProjectID: "DEMO-EVIDENCE-CONFLICT", Address: "100 Demo Plaza", ApplicabilityDate: "2026-08-25",
 	})
@@ -161,7 +161,7 @@ func TestProjectVerificationRejectsConflictingEvidenceLinkIDAcrossCodes(t *testi
 
 func TestProjectVerificationAllowsIdenticalEvidenceLinkReusedAcrossCodes(t *testing.T) {
 	same := demoEvidenceLink("SAME-LINK-ID", EvidenceEstablishes)
-	runtime := NewRuntimeWithSourcePolicy(projectProvider{result: Resolution{
+	runtime := NewRuntimeWithPolicies(projectProvider{result: Resolution{
 		Jurisdiction: JurisdictionContext{
 			CountryCode: "US", PrimaryJurisdictionID: "DEMO-XX",
 			PrimaryJurisdictionName: "Demonstration Jurisdiction",
@@ -170,7 +170,7 @@ func TestProjectVerificationAllowsIdenticalEvidenceLinkReusedAcrossCodes(t *test
 			{Family: "building", Status: StatusResolved, ExactEvidence: []EvidenceLink{same}},
 			{Family: "energy", Status: StatusResolved, ExactEvidence: []EvidenceLink{same}},
 		},
-	}}, demoPolicy())
+	}}, demoPolicy(), syntheticSiteAuthorityPolicy("100 Demo Plaza", "US", "DEMO-XX"))
 	basis, err := NewProjectVerifier(runtime).VerifyProject(context.Background(), ProjectRequest{
 		ProjectID: "DEMO-EVIDENCE-REUSED", Address: "100 Demo Plaza", ApplicabilityDate: "2026-08-25",
 	})
@@ -193,7 +193,7 @@ func TestProjectVerificationRejectsResolvedClaimWithoutEvidence(t *testing.T) {
 			Basis: "Unsubstantiated provider assertion",
 		}},
 	}}
-	verifier := NewProjectVerifier(NewRuntimeWithSourcePolicy(provider, demoPolicy()))
+	verifier := NewProjectVerifier(NewRuntimeWithPolicies(provider, demoPolicy(), syntheticSiteAuthorityPolicy("100 Demo Plaza", "US", "DEMO-XX")))
 	basis, err := verifier.VerifyProject(context.Background(), ProjectRequest{
 		ProjectID: "DEMO-UNSUPPORTED-CLAIM", Address: "100 Demo Plaza",
 		ApplicabilityDate: "2026-08-25",

@@ -62,6 +62,7 @@ type ProjectCodeBasis struct {
 	Evidence          []EvidenceRef       `json:"evidence"`
 	ExactEvidence     []EvidenceLink      `json:"exact_evidence"`
 	Provenance        Provenance          `json:"provenance"`
+	SiteAuthority     *SiteAuthorityAssessment `json:"site_authority,omitempty"`
 }
 
 type ProjectVerifier struct{ runtime Runtime }
@@ -179,6 +180,7 @@ func (verifier ProjectVerifier) VerifyProject(ctx context.Context, request Proje
 		Evidence:          evidence,
 		ExactEvidence:     exactEvidence,
 		Provenance:        resolution.Provenance,
+		SiteAuthority:     resolution.SiteAuthority,
 	}, nil
 }
 
