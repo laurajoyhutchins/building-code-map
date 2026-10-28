@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
 import Ajv2020 from 'ajv/dist/2020.js';
 import Ajv2019 from 'ajv/dist/2019.js';
 import addFormats from 'ajv-formats';
@@ -85,4 +85,45 @@ test('published Go source and tests preserve independent evidence gating', () =>
   assert.match(core, /prov:wasAssociatedWith/);
   assert.match(core, /prov:used/);
   assert.doesNotMatch(core, /http\.Get\(/);
+});
+
+test('the real Go exporter emits schema-valid PROV-O from a canonical synthetic claim', () => {
+  const fixture = readFileSync('test/fixtures/prov/claim.json', 'utf8');
+  const run = () => execFileSync('go', ['run', './cmd/bcm-prov'], {
+    input: fixture, encoding: 'utf8', timeout: 60000,
+  });
+  const first = run();
+  assert.equal(first, run(), 'source graph serialization must be deterministic');
+  const actual = JSON.parse(first);
+  assert.equal(validate(actual), true, JSON.stringify(validate.errors));
+  const entities = actual['@graph'];
+  assert.equal(entities.length, 5);
+  assert.ok(entities.some((node) => node['bcm:sourceID'] === 'DEMO-ARTIFACT-1' &&
+    node['bcm:sha256'] === 'a'.repeat(64)));
+  assert.ok(entities.some((node) => node['bcm:sourceID'] === 'DEMO-LINK-1' &&
+    node['bcm:evidenceRole'] === 'establishes'));
+  assert.ok(entities.every((node) => node['@type'] === 'prov:Entity'),
+    'a source claim cannot fabricate review agents or activities');
+});
+
+test('the real Go CLI rejects malformed, tampered and trailing source observations', () => {
+  const valid = JSON.parse(readFileSync('test/fixtures/prov/claim.json', 'utf8'));
+  for (const mutate of [
+    (x) => { x.links[0].artifact.sha256 = 'malformed'; },
+    (x) => { x.links[0].document.jurisdiction_id = 'US-CO'; },
+    (x) => { x.links[0].role = 'verified_by_ai'; },
+    (x) => { x.extraUnreviewedClaim = true; },
+  ]) {
+    const trial = structuredClone(valid);
+    mutate(trial);
+    const result = spawnSync('go', ['run', './cmd/bcm-prov'], {
+      input: JSON.stringify(trial), encoding: 'utf8', timeout: 60000,
+    });
+    assert.notEqual(result.status, 0, 'unverified input must fail closed');
+    assert.equal(result.stdout, '', 'invalid source must not produce a PROV graph');
+  }
+  const extra = spawnSync('go', ['run', './cmd/bcm-prov'], {
+    input: JSON.stringify(valid) + '\\n{}', encoding: 'utf8', timeout: 60000,
+  });
+  assert.notEqual(extra.status, 0);
 });
