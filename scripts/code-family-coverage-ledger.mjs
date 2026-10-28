@@ -164,21 +164,31 @@ export function summarizeCodeFamilyMatrix(ledgers, expected) {
   };
 }
 
-// Producers should call this at input admission, before any report/publication.
-// No partial report is emitted when a file cannot be parsed or validated.
+// Call at raw-input admission, before committing or publishing a projection.
+// Both modes validate *all* input before emitting a single byte of output.
 if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1])) {
   try {
-    if (process.argv.length !== 4 || process.argv[2] !== 'validate') {
-      throw new Error('usage: node scripts/code-family-coverage-ledger.mjs validate <ledger.json>');
+    const [, , command, ...paths] = process.argv;
+    const readLedgerJSON = (path) => {
+      try {
+        return JSON.parse(readFileSync(path, 'utf8'));
+      } catch (error) {
+        throw new Error(`ledger input invalid (${path}): ${error.message}`);
+      }
+    };
+
+    let result;
+    if (command === 'validate' && paths.length === 1) {
+      result = summarizeCoverageLedger(readLedgerJSON(paths[0]));
+    } else if (command === 'matrix' && paths.length >= 2) {
+      const [expected, ...families] = paths;
+      result = summarizeCodeFamilyMatrix(
+        families.map((file) => readLedgerJSON(file)), readLedgerJSON(expected),
+      );
+    } else {
+      throw new Error('usage: node scripts/code-family-coverage-ledger.mjs validate <ledger.json> | matrix <expected.json> <family-ledger.json>...');
     }
-    let ledger;
-    try {
-      ledger = JSON.parse(readFileSync(process.argv[3], 'utf8'));
-    } catch (error) {
-      throw new Error(`ledger input invalid: ${error.message}`);
-    }
-    const result = summarizeCoverageLedger(ledger);
-    process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
+    process.stdout.write(JSON.stringify(result, null, 2) + '\n');
   } catch (error) {
     console.error(error.message);
     process.exitCode = 1;
