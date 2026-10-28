@@ -35,10 +35,29 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/elan-init.sh
-          sh /tmp/elan-init.sh -y --default-toolchain leanprover/lean4:v4.34.1
-          "$HOME/.elan/bin/lean" --version
-          "$HOME/.elan/bin/lake" --version
+          curl -fsSL --retry 4 --retry-all-errors \
+            https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/elan-init.sh
+          sh /tmp/elan-init.sh -y --default-toolchain none
+          export PATH="$HOME/.elan/bin:$PATH"
+          if timeout 210s elan toolchain install leanprover/lean4:v4.34.1; then
+            elan default leanprover/lean4:v4.34.1
+          else
+            echo 'Official Lean release endpoint failed; trying the pinned GitHub release asset.'
+            curl -fL --retry 4 --retry-all-errors --connect-timeout 20 --max-time 720 \
+              https://github.com/leanprover/lean4/releases/download/v4.34.1/lean-4.34.1-linux.tar.zst \
+              -o /tmp/lean-4.34.1-linux.tar.zst
+            echo '47bf4bbd78f70c2e9670598ab7124d92b6efb7330ff33e5fbb4030f6fd72e4e4  /tmp/lean-4.34.1-linux.tar.zst' | sha256sum --check
+            mkdir -p "$HOME/lean-4.34.1-pinned"
+            tar -I zstd -xf /tmp/lean-4.34.1-linux.tar.zst \
+              -C "$HOME/lean-4.34.1-pinned" --strip-components=1
+            rm -f /tmp/lean-4.34.1-linux.tar.zst
+            elan toolchain link lean-4.34.1-pinned "$HOME/lean-4.34.1-pinned"
+            export ELAN_TOOLCHAIN=lean-4.34.1-pinned
+            echo 'ELAN_TOOLCHAIN=lean-4.34.1-pinned' >> "$GITHUB_ENV"
+          fi
+          lean --version | tee "$RUNNER_TEMP/lean-version.txt"
+          grep -F 'Lean (version 4.34.1,' "$RUNNER_TEMP/lean-version.txt"
+          lake --version
 
       - name: Hydrate pinned dependencies
         shell: bash
@@ -50,6 +69,9 @@ jobs:
           test "$(cat lean-toolchain)" = leanprover/lean4:v4.34.1
           timeout 540s lake update
           git diff --exit-code -- lake-manifest.json
+          expected_manifest='cf6105a25d9dca2f166b241d9191bd12c7e13305890dc9c4d0952351cccc0794'
+          test "$(git show HEAD:lean/lake-manifest.json | sha256sum | cut -d' ' -f1)" = "$expected_manifest"
+          test "$(sha256sum lake-manifest.json | cut -d' ' -f1)" = "$expected_manifest"
           timeout 540s lake exe cache get
 
       - name: Restore preceding Lean compilation checkpoint
@@ -58,6 +80,8 @@ jobs:
         with:
           path: source/lean/.lake/build
           key: eth-lean-7ef5c0c-v1-${{ github.run_id }}-${{ inputs.previous }}
+          restore-keys: |
+            eth-lean-7ef5c0c-v1-40629044604-03
 
       - name: Compile bounded stage; stream all output
         id: bounded
