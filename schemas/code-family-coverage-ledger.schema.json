@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://building-code-map.example/schemas/code-family-coverage-ledger.schema.json",
+  "title": "BCM family-specific jurisdiction evidence ledger (internal v0.1)",
+  "description": "One family, applicability date and project class per ledger. Records and syntactic receipts do not independently establish real-world legal or project coverage. Cross-repository exports also require an ODCS data contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "scope", "projection", "records"],
+  "properties": {
+    "schema_version": { "const": "0.1" },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["country_code", "code_family", "as_of", "project_class"],
+      "properties": {
+        "country_code": { "const": "US" },
+        "code_family": { "$ref": "#/$defs/family" },
+        "as_of": { "type": "string", "format": "date" },
+        "project_class": { "type": "string", "minLength": 1, "maxLength": 120 }
+      }
+    },
+    "projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["snapshot_id", "snapshot_sha256", "source_ref", "universe", "denominator"],
+      "properties": {
+        "snapshot_id": { "type": "string", "minLength": 1 },
+        "snapshot_sha256": { "$ref": "#/$defs/sha256" },
+        "source_ref": { "type": "string", "minLength": 1 },
+        "universe": { "const": "governmental_entities" },
+        "denominator": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status"],
+          "properties": {
+            "status": { "enum": ["not_established", "independently_audited"] },
+            "entity_ids": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "audit_receipt_ref": { "type": "string", "minLength": 1 }
+          },
+          "allOf": [
+            {
+              "if": { "properties": { "status": { "const": "independently_audited" } } },
+              "then": { "required": ["entity_ids", "audit_receipt_ref"] },
+              "else": { "not": { "anyOf": [ { "required": ["entity_ids"] }, { "required": ["audit_receipt_ref"] } ] } }
+            }
+          ]
+        }
+      }
+    },
+    "records": { "type": "array", "items": { "$ref": "#/$defs/record" } }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "family": {
+      "oneOf": [
+        { "enum": ["building", "electrical", "fire", "energy", "plumbing", "mechanical"] },
+        { "type": "string", "pattern": "^x_[a-z][a-z0-9_]*$" }
+      ]
+    },
+    "receipt_ref": { "type": "string", "minLength": 1 },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entity_id", "authority_level", "inventory", "source_review", "authority", "geography", "provider", "project_verification", "unknown_reasons"],
+      "properties": {
+        "entity_id": { "type": "string", "minLength": 1 },
+        "authority_level": { "enum": ["federal", "state_equivalent", "county_equivalent", "municipality", "township", "tribal", "special_district", "other"] },
+        "inventory": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["source_ref", "source_sha256"],
+          "properties": {
+            "source_ref": { "$ref": "#/$defs/receipt_ref" },
+            "source_sha256": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        "adoption_candidate": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["source_ref", "source_sha256", "edition", "effective_on", "amendments"],
+          "properties": {
+            "source_ref": { "$ref": "#/$defs/receipt_ref" },
+            "source_sha256": { "$ref": "#/$defs/sha256" },
+            "edition": { "type": "string", "minLength": 1 },
+            "amendments": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+            "enacted_on": { "type": "string", "format": "date" },
+            "effective_on": { "type": "string", "format": "date" },
+            "transition_end_on": { "type": "string", "format": "date" }
+          }
+        },
+        "source_review": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status"],
+          "properties": {
+            "status": { "enum": ["not_checked", "independently_checked", "conflicting"] },
+            "receipt_ref": { "$ref": "#/$defs/receipt_ref" }
+          },
+          "if": { "properties": { "status": { "enum": ["independently_checked", "conflicting"] } } },
+          "then": { "required": ["receipt_ref"] }
+        },
+        "authority": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status"],
+          "properties": {
+            "status": { "enum": ["unresolved", "resolved", "conflicting"] },
+            "basis_ref": { "$ref": "#/$defs/receipt_ref" }
+          },
+          "if": { "properties": { "status": { "enum": ["resolved", "conflicting"] } } },
+          "then": { "required": ["basis_ref"] }
+        },
+        "geography": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status"],
+          "properties": {
+            "status": { "enum": ["unresolved", "project_location_verified"] },
+            "receipt_ref": { "$ref": "#/$defs/receipt_ref" }
+          },
+          "if": { "properties": { "status": { "const": "project_location_verified" } } },
+          "then": { "required": ["receipt_ref"] }
+        },
+        "provider": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status"],
+          "properties": {
+            "status": { "enum": ["unknown", "declared", "conformance_verified", "unsupported"] },
+            "receipt_ref": { "$ref": "#/$defs/receipt_ref" }
+          },
+          "if": { "properties": { "status": { "const": "conformance_verified" } } },
+          "then": { "required": ["receipt_ref"] }
+        },
+        "project_verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status"],
+          "properties": {
+            "status": { "enum": ["not_verified", "independently_verified"] },
+            "receipt": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["project_id", "code_family", "as_of", "project_class", "engine_commit", "source_revision_sha256", "provider_release_sha256", "result_sha256", "execution_ref", "independent_review_ref"],
+              "properties": {
+                "project_id": { "type": "string", "minLength": 1 },
+                "code_family": { "$ref": "#/$defs/family" },
+                "as_of": { "type": "string", "format": "date" },
+                "project_class": { "type": "string", "minLength": 1 },
+                "engine_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+                "source_revision_sha256": { "$ref": "#/$defs/sha256" },
+                "provider_release_sha256": { "$ref": "#/$defs/sha256" },
+                "result_sha256": { "$ref": "#/$defs/sha256" },
+                "execution_ref": { "$ref": "#/$defs/receipt_ref" },
+                "independent_review_ref": { "$ref": "#/$defs/receipt_ref" }
+              }
+            }
+          },
+          "if": { "properties": { "status": { "const": "independently_verified" } } },
+          "then": { "required": ["receipt"] },
+          "else": { "not": { "required": ["receipt"] } }
+        },
+        "unknown_reasons": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": ["no_adoption_source", "source_unreviewed", "conflicting_sources", "future_effective_date", "temporal_applicability_unresolved", "overlapping_authority", "address_jurisdiction_unverified", "provider_not_conformant", "project_receipt_missing", "project_facts_missing", "local_record_required", "other"]
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "source_review": { "properties": { "status": { "const": "independently_checked" } } } } },
+          "then": { "required": ["adoption_candidate"] }
+        },
+        {
+          "if": { "properties": { "authority": { "properties": { "status": { "const": "resolved" } } } } },
+          "then": {
+            "required": ["adoption_candidate"],
+            "properties": { "source_review": { "properties": { "status": { "const": "independently_checked" } } } }
+          }
+        },
+        {
+          "if": { "properties": { "project_verification": { "properties": { "status": { "const": "independently_verified" } } } } },
+          "then": {
+            "properties": {
+              "source_review": { "properties": { "status": { "const": "independently_checked" } } },
+              "authority": { "properties": { "status": { "const": "resolved" } } },
+              "geography": { "properties": { "status": { "const": "project_location_verified" } } },
+              "provider": { "properties": { "status": { "const": "conformance_verified" } } },
+              "unknown_reasons": { "maxItems": 0 }
+            }
+          },
+          "else": { "properties": { "unknown_reasons": { "minItems": 1 } } }
+        }
+      ]
+    }
+  }
+}
