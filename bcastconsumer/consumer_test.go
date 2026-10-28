@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"os"
+	"sort"
 	"strings"
 	"testing"
 )
@@ -196,5 +197,128 @@ func TestRemoteRedirectIsNotFollowed(t *testing.T) {
 	}
 	if _, err := c.Fetch(context.Background(), asString(p, "package_id")); err == nil {
 		t.Fatal("accepted cross-origin redirect")
+	}
+}
+
+func rehashPublicBCASTPackage(t *testing.T, pkg map[string]any) string {
+	t.Helper()
+	objects := append([]any(nil), pkg["objects"].([]any)...)
+	sort.Slice(objects, func(i, j int) bool {
+		return asString(objects[i].(map[string]any), "object_id") < asString(objects[j].(map[string]any), "object_id")
+	})
+	materialized := make(map[string]any, len(pkg)-1)
+	for k, v := range pkg {
+		if k != "package_id" {
+			materialized[k] = v
+		}
+	}
+	materialized["objects"] = objects
+	packageID, err := id("bcastpkg", materialized)
+	if err != nil {
+		t.Fatal(err)
+	}
+	pkg["package_id"] = packageID
+	return packageID
+}
+
+// The public BCAST 0.2 package schema owns Unicode code-point limits for
+// these fields. The Go consumer must not reject valid source publications
+// merely because their UTF-8 representation uses multiple bytes per character.
+func TestPublicBCASTUnicodeMetadataLengthAndExactMaterialization(t *testing.T) {
+	cases := []struct {
+		name string
+		max  int
+		set  func(map[string]any, string)
+	}{
+		{"package version", 128, func(p map[string]any, value string) { p["package_version"] = value }},
+		{"publication title", 512, func(p map[string]any, value string) { p["publication"].(map[string]any)["title"] = value }},
+		{"issuing body", 256, func(p map[string]any, value string) { p["publication"].(map[string]any)["issuing_body"] = value }},
+		{"object label", 1024, func(p map[string]any, value string) { p["objects"].([]any)[1].(map[string]any)["label"] = value }},
+		{"source citation", 2048, func(p map[string]any, value string) {
+			p["objects"].([]any)[1].(map[string]any)["provenance"].(map[string]any)["citation"] = value
+		}},
+		{"object locator", 512, func(p map[string]any, value string) {
+			object := p["objects"].([]any)[1].(map[string]any)
+			object["locator"] = value
+			pubID := asString(p["publication"].(map[string]any), "publication_id")
+			objectID, err := id("bcastobj", map[string]any{"publication_id": pubID, "kind": object["kind"], "locator": value})
+			if err != nil {
+				panic(err)
+			}
+			object["object_id"] = objectID
+		}},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			p := example(t)
+			tc.set(p, strings.Repeat("é", tc.max))
+			originalID := asString(p, "package_id")
+			if _, err := validate(p, originalID); err == nil {
+				t.Fatal("accepted changed Unicode materialization with stale digest")
+			}
+			acceptedID := rehashPublicBCASTPackage(t, p)
+			if _, err := validate(p, acceptedID); err != nil {
+				t.Fatalf("rejected public JSON Schema-valid Unicode length: %v", err)
+			}
+
+			tooLong := example(t)
+			tc.set(tooLong, strings.Repeat("é", tc.max+1))
+			badID := rehashPublicBCASTPackage(t, tooLong)
+			if _, err := validate(tooLong, badID); err == nil {
+				t.Fatal("accepted Unicode text exceeding public JSON Schema maxLength")
+			}
+		})
+	}
+}
+
+// A publication coordinate is not a display label. Even fully rehashed
+// edition/revision aliases remain invalid unless canonical.
+func TestBCASTNoncanonicalRevisionRejectedEvenWhenHashesRecomputed(t *testing.T) {
+	for _, revision := range []string{"2026-a", " 2026-a", "2026-a "} {
+		t.Run(revision, func(t *testing.T) {
+			p := example(t)
+			publication := p["publication"].(map[string]any)
+			publication["revision"] = revision
+			publicationID, err := id("bcastpub", map[string]any{
+				"namespace": publication["namespace"],
+				"family":    publication["family"],
+				"edition":   publication["edition"],
+				"revision":  revision,
+			})
+			if err != nil {
+				t.Fatal(err)
+			}
+			publication["publication_id"] = publicationID
+			oldToNew := make(map[string]string)
+			objects := p["objects"].([]any)
+			for _, value := range objects {
+				object := value.(map[string]any)
+				oldID := asString(object, "object_id")
+				newID, err := id("bcastobj", map[string]any{
+					"publication_id": publicationID,
+					"kind":           object["kind"],
+					"locator":        object["locator"],
+				})
+				if err != nil {
+					t.Fatal(err)
+				}
+				oldToNew[oldID] = newID
+				object["object_id"] = newID
+			}
+			for _, value := range objects {
+				object := value.(map[string]any)
+				if parent, exists := object["parent_id"]; exists {
+					object["parent_id"] = oldToNew[parent.(string)]
+				}
+			}
+			packageID := rehashPublicBCASTPackage(t, p)
+			_, err = validate(p, packageID)
+			if revision == "2026-a" && err != nil {
+				t.Fatalf("rejected canonical revision: %v", err)
+			}
+			if revision != "2026-a" && err == nil {
+				t.Fatal("accepted whitespace-altered publication revision with valid hashes")
+			}
+		})
 	}
 }
