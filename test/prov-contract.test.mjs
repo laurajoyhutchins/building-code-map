@@ -123,7 +123,7 @@ test('the real Go CLI rejects malformed, tampered and trailing source observatio
     assert.equal(result.stdout, '', 'invalid source must not produce a PROV graph');
   }
   const extra = spawnSync('go', ['run', './cmd/bcm-prov'], {
-    input: JSON.stringify(valid) + '\\n{}', encoding: 'utf8', timeout: 60000,
+    input: JSON.stringify(valid) + ' ' + JSON.stringify({}), encoding: 'utf8', timeout: 60000,
   });
   assert.notEqual(extra.status, 0);
 });
