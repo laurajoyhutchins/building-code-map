@@ -81,6 +81,7 @@ jobs:
           path: source/lean/.lake/build
           key: eth-lean-7ef5c0c-v1-${{ github.run_id }}-${{ inputs.previous }}
           restore-keys: |
+            eth-lean-7ef5c0c-v1-40641329372-05
             eth-lean-7ef5c0c-v1-40629044604-03
 
       - name: Compile bounded stage; stream all output
