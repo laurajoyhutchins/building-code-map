@@ -48,7 +48,7 @@ test('invalid ODCS shapes cannot satisfy the cross-repo contract', () => {
   for (const patch of [
     (value) => { value.apiVersion = 'v999'; },
     (value) => { value.kind = 'NotADataContract'; },
-    (value) => { delete value.description; },
+    (value) => { value.description = 17; },
     (value) => { value.schema[0].properties[0].required = 'yes'; },
   ]) {
     const altered = structuredClone(odcs);
