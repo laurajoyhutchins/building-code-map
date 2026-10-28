@@ -1,6 +1,8 @@
 // Public-safe, source-free evidence-ledger validator. This is not an authority
 // engine and cannot establish the truth of referenced external receipts.
 import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 
@@ -101,7 +103,7 @@ const REQUIRED_CODE_FAMILIES = Object.freeze([
 export function summarizeCodeFamilyMatrix(ledgers, expected) {
   if (!Array.isArray(ledgers) ||
       typeof expected?.as_of !== 'string' ||
-      !/^\\d{4}-\\d{2}-\\d{2}$/.test(expected.as_of) ||
+      !/^\d{4}-\d{2}-\d{2}$/.test(expected.as_of) ||
       typeof expected?.project_class !== 'string' || !expected.project_class ||
       typeof expected?.projection_snapshot_sha256 !== 'string' ||
       !/^[0-9a-f]{64}$/.test(expected.projection_snapshot_sha256)) {
@@ -163,7 +165,7 @@ export function summarizeCodeFamilyMatrix(ledgers, expected) {
 
 // Producers should call this at input admission, before any report/publication.
 // No partial report is emitted when a file cannot be parsed or validated.
-if (process.argv[1] && new URL(import.meta.url).pathname === process.argv[1].replace(/\\\\/g, '/')) {
+if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1])) {
   try {
     if (process.argv.length !== 4 || process.argv[2] !== 'validate') {
       throw new Error('usage: node scripts/code-family-coverage-ledger.mjs validate <ledger.json>');
@@ -175,7 +177,7 @@ if (process.argv[1] && new URL(import.meta.url).pathname === process.argv[1].rep
       throw new Error(`ledger input invalid: ${error.message}`);
     }
     const result = summarizeCoverageLedger(ledger);
-    process.stdout.write(`${JSON.stringify(result, null, 2)}\\n`);
+    process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
   } catch (error) {
     console.error(error.message);
     process.exitCode = 1;
