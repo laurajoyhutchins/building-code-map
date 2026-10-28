@@ -1,0 +1,25 @@
+name: Temporary PROV gofmt transport
+on:
+  push:
+    branches: [feat/prov-o-evidence-graph-20261028]
+    paths: [.github/workflows/prov-format-once.yml]
+permissions:
+  contents: read
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Emit formatted source-only transport
+        shell: bash
+        run: |
+          set -euo pipefail
+          for path in provenance/graph.go provenance/graph_test.go engine/prov.go engine/prov_test.go; do
+            gofmt -w "$path"
+            printf 'PROV_FORMAT_BEGIN:%s\n' "$path"
+            base64 -w0 "$path"
+            printf '\nPROV_FORMAT_END:%s\n' "$path"
+          done
