@@ -38,32 +38,32 @@ type PlaceCandidateSource struct {
 // cross-repository geographic-observation JSON Schema + ODCS contract.
 // This is not a legal government object, address-bound polygon, or adoption.
 type PlaceCandidateObservation struct {
-	SchemaVersion                 string `json:"schema_version"`
-	ObservationID                 string `json:"observation_id"`
-	Kind                          string `json:"kind"`
-	ScopeID                       string `json:"scope_id"`
-	SourceReceiptID               string `json:"source_receipt_id"`
-	SourceRecordKey               string `json:"source_record_key"`
-	ObservedAt                    string `json:"observed_at"`
-	ProvenanceEntity              string `json:"provenance_entity"`
-	ReviewState                   string `json:"review_state"`
-	PublisherCode                 string `json:"publisher_code"`
-	PublisherName                 string `json:"publisher_name"`
-	IdentityMatchBasis            string `json:"identity_match_basis"`
-	CandidateGovernmentEntityID   string `json:"candidate_government_entity_id,omitempty"`
+	SchemaVersion               string `json:"schema_version"`
+	ObservationID               string `json:"observation_id"`
+	Kind                        string `json:"kind"`
+	ScopeID                     string `json:"scope_id"`
+	SourceReceiptID             string `json:"source_receipt_id"`
+	SourceRecordKey             string `json:"source_record_key"`
+	ObservedAt                  string `json:"observed_at"`
+	ProvenanceEntity            string `json:"provenance_entity"`
+	ReviewState                 string `json:"review_state"`
+	PublisherCode               string `json:"publisher_code"`
+	PublisherName               string `json:"publisher_name"`
+	IdentityMatchBasis          string `json:"identity_match_basis"`
+	CandidateGovernmentEntityID string `json:"candidate_government_entity_id,omitempty"`
 }
 
 type PlaceCandidateSummary struct {
-	SchemaVersion           string `json:"schema_version"`
-	ScopeID                 string `json:"scope_id"`
-	SourceReceiptID         string `json:"source_receipt_id"`
-	SourceSHA256            string `json:"source_sha256"`
-	ObservationCount        int    `json:"observation_count"`
-	CodeCandidateCount      int    `json:"code_candidate_count"`
-	UnmatchedCount          int    `json:"unmatched_count"`
-	ConflictedCount         int    `json:"conflicted_count"`
-	AuthorityStatus         string `json:"authority_status"`
-	LegalVerdictAuthorized  bool   `json:"legal_verdict_authorized"`
+	SchemaVersion          string `json:"schema_version"`
+	ScopeID                string `json:"scope_id"`
+	SourceReceiptID        string `json:"source_receipt_id"`
+	SourceSHA256           string `json:"source_sha256"`
+	ObservationCount       int    `json:"observation_count"`
+	CodeCandidateCount     int    `json:"code_candidate_count"`
+	UnmatchedCount         int    `json:"unmatched_count"`
+	ConflictedCount        int    `json:"conflicted_count"`
+	AuthorityStatus        string `json:"authority_status"`
+	LegalVerdictAuthorized bool   `json:"legal_verdict_authorized"`
 }
 
 // PlaceCandidateMatch is a source-only lookup. Even one source-code match

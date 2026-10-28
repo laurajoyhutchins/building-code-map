@@ -25,7 +25,7 @@ func candidateFixture() ([]byte, PlaceCandidateSource) {
 			SourceReceiptID: "private:synthetic:receipt", SourceRecordKey: "2",
 			ObservedAt: "2026-10-21T00:48:20.738Z", ProvenanceEntity: "urn:example:row:2",
 			ReviewState: "candidate_only", PublisherCode: "37820", PublisherName: "Hudson",
-			IdentityMatchBasis: "publisher_code_candidate",
+			IdentityMatchBasis:          "publisher_code_candidate",
 			CandidateGovernmentEntityID: "gov:synthetic:2",
 		},
 		{
@@ -34,7 +34,7 @@ func candidateFixture() ([]byte, PlaceCandidateSource) {
 			SourceReceiptID: "private:synthetic:receipt", SourceRecordKey: "3",
 			ObservedAt: "2026-10-21T00:48:20.738Z", ProvenanceEntity: "urn:example:row:3",
 			ReviewState: "candidate_only", PublisherCode: "20000", PublisherName: "Denver",
-			IdentityMatchBasis: "publisher_code_candidate",
+			IdentityMatchBasis:          "publisher_code_candidate",
 			CandidateGovernmentEntityID: "gov:synthetic:3",
 		},
 	}
