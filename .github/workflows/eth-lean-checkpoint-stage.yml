@@ -1,0 +1,153 @@
+name: ETH pinned Lean stage (reusable)
+
+on:
+  workflow_call:
+    inputs:
+      stage:
+        description: Unique checkpoint suffix
+        required: true
+        type: string
+      previous:
+        description: Previous checkpoint suffix
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout exact OpenAI Lean source
+        uses: actions/checkout@v4
+        with:
+          repository: openai/math
+          ref: 7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a
+          path: source
+          persist-credentials: false
+          sparse-checkout: |
+            lean
+          sparse-checkout-cone-mode: true
+
+      - name: Install Lean 4.34.1
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/elan-init.sh
+          sh /tmp/elan-init.sh -y --default-toolchain leanprover/lean4:v4.34.1
+          "$HOME/.elan/bin/lean" --version
+          "$HOME/.elan/bin/lake" --version
+
+      - name: Hydrate pinned dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          cd source/lean
+          test "$(git -C .. rev-parse HEAD)" = 7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a
+          test "$(cat lean-toolchain)" = leanprover/lean4:v4.34.1
+          timeout 540s lake update
+          git diff --exit-code -- lake-manifest.json
+          timeout 540s lake exe cache get
+
+      - name: Restore preceding Lean compilation checkpoint
+        id: restore
+        uses: actions/cache/restore@v4
+        with:
+          path: source/lean/.lake/build
+          key: eth-lean-7ef5c0c-v1-${{ github.run_id }}-${{ inputs.previous }}
+
+      - name: Compile bounded stage; stream all output
+        id: bounded
+        shell: bash
+        env:
+          STAGE: ${{ inputs.stage }}
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          export GLIBC_TUNABLES='glibc.malloc.mmap_max=0:glibc.malloc.arena_max=1'
+          export LEAN_NUM_THREADS=2
+          mkdir -p "$GITHUB_WORKSPACE/evidence"
+          ev="$GITHUB_WORKSPACE/evidence"
+          cd source/lean
+          printf 'source=%s\ncompiler=%s\nmanifest_sha256=%s\nstage=%s\n' \
+            "$(git -C .. rev-parse HEAD)" "$(lean --version)" \
+            "$(sha256sum lake-manifest.json | cut -d' ' -f1)" "$STAGE" > "$ev/identity.txt"
+          printf 'Stage %s; restoring build outputs from prior stage.\n' "$STAGE"
+          du -sh .lake/build 2>/dev/null || true
+          set +e
+          timeout --signal=INT --kill-after=30s 1020s lake build \
+            OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.Final 2>&1 | tee "$ev/lake-build.log"
+          result=${PIPESTATUS[0]}
+          set -e
+          printf 'lake-build=%s\n' "$result" > "$ev/status.txt"
+          du -sh .lake/build 2>/dev/null | tee "$ev/build-directory-size.txt" || true
+          tail -n 40 "$ev/lake-build.log"
+          if [ "$result" -ne 0 ] && [ "$result" -ne 124 ]; then
+            echo 'Compilation returned a non-timeout failure' >&2
+            exit "$result"
+          fi
+          if [ "$result" -eq 124 ]; then
+            echo 'CHECKPOINT_ONLY: bounded compilation interrupted; preserving completed outputs.'
+            exit 0
+          fi
+          echo 'BUILD_COMPLETE=true' >> "$GITHUB_ENV"
+          echo 'Build complete. Running the final Lean elaboration and axiom report.'
+          set +e
+          timeout 360s lake env lean \
+            OAI/Algorithms/SubexponentialSAT/SqrtLogSpace/Final.lean 2>&1 | tee "$ev/lean-final.log"
+          result=${PIPESTATUS[0]}
+          set -e
+          printf 'lean-final=%s\n' "$result" >> "$ev/status.txt"
+          test "$result" -eq 0
+          python3 - "$ev/lean-final.log" "$ev/axiom-verdict.json" <<'PY'
+          import json, pathlib, re, sys
+          content = pathlib.Path(sys.argv[1]).read_text(errors="replace")
+          prefix = "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace."
+          expected = {
+              "compiled_exact_count_and_sat", "exact_count_and_sat",
+              "exact_count_eth", "sat_polynomial_space", "original_sat_main"
+          }
+          permitted = {"propext", "Quot.sound", "Classical.choice"}
+          observed = {}
+          for line in content.splitlines():
+              match = re.match(
+                  r"^'?([A-Za-z0-9_.']+)'? (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",
+                  line.strip(),
+              )
+              if match:
+                  full = match.group(1).strip("'")
+                  if full.startswith(prefix):
+                      observed[full[len(prefix):]] = [
+                          ax.strip() for ax in (match.group(2) or "").split(",") if ax.strip()
+                      ]
+          missing = sorted(expected - observed.keys())
+          disallowed = {name: sorted(set(vals) - permitted)
+                        for name, vals in observed.items() if set(vals) - permitted}
+          verdict = {"observed": observed, "missing": missing, "disallowed": disallowed,
+                     "sorry_ax": "sorryAx" in content,
+                     "accepted": not missing and not disallowed and "sorryAx" not in content}
+          pathlib.Path(sys.argv[2]).write_text(json.dumps(verdict, indent=2) + "\n")
+          print(json.dumps(verdict, indent=2))
+          if not verdict["accepted"]:
+              raise SystemExit(1)
+          PY
+
+      - name: Save incremental Lean build checkpoint
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: source/lean/.lake/build
+          key: eth-lean-7ef5c0c-v1-${{ github.run_id }}-${{ inputs.stage }}
+
+      - name: Upload immutable checkpoint status and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eth-lean-stage-${{ inputs.stage }}-logs
+          path: evidence/
+          retention-days: 5
+          if-no-files-found: warn
+          compression-level: 6
