@@ -18,6 +18,8 @@ import (
 	"strings"
 	"time"
 	"unicode/utf8"
+
+	"golang.org/x/text/unicode/norm"
 )
 
 const maxBytes = 16 << 20
@@ -282,18 +284,17 @@ func validate(raw map[string]any, requested string) (*Package, error) {
 		}
 	}
 	ns, fam, edition := asString(pub, "namespace"), asString(pub, "family"), asString(pub, "edition")
-	if !namespace.MatchString(ns) || len(ns) > 253 || !family.MatchString(fam) || len(fam) > 256 || edition == "" || len(edition) > 128 || strings.TrimSpace(edition) != edition {
+	if !namespace.MatchString(ns) || len(ns) > 253 || !family.MatchString(fam) || len(fam) > 256 || !validPublicText(edition, 128) || strings.TrimSpace(edition) != edition {
 		return bad("publication coordinates")
 	}
-	// Both edition and revision are canonical publication coordinates. An
-	// ASCII revision with surrounding whitespace is not a distinct lawful
-	// coordinate, even if a caller correctly recomputes its hash.
-	if rev := asString(pub, "revision"); rev != "" && strings.TrimSpace(rev) != rev {
-		return bad("noncanonical publication revision")
+	// The public BCAST 0.2 identity contract requires existing NFC text.
+	// Check the original bytes instead of normalizing and silently changing hashes.
+	if !norm.NFC.IsNormalString(edition) {
+		return bad("noncanonical publication edition NFC")
 	}
-	for _, r := range edition + asString(pub, "revision") {
-		if r > 127 {
-			return bad("non-ASCII edition/revision pending NFC implementation")
+	if rev := asString(pub, "revision"); rev != "" {
+		if strings.TrimSpace(rev) != rev || !norm.NFC.IsNormalString(rev) {
+			return bad("noncanonical publication revision NFC")
 		}
 	}
 	fields := map[string]any{"namespace": ns, "family": fam, "edition": edition}
