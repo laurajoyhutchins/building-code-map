@@ -137,23 +137,32 @@ jobs:
           }
           permitted = {"propext", "Quot.sound", "Classical.choice"}
           observed = {}
-          for line in content.splitlines():
-              match = re.match(
-                  r"^'?([A-Za-z0-9_.']+)'? (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",
-                  line.strip(),
-              )
-              if match:
-                  full = match.group(1).strip("'")
-                  if full.startswith(prefix):
-                      observed[full[len(prefix):]] = [
-                          ax.strip() for ax in (match.group(2) or "").split(",") if ax.strip()
-                      ]
+          duplicates = []
+          matches = []
+          for match in re.finditer(
+              r"(?m)^'([A-Za-z0-9_.]+)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)",
+              content,
+          ):
+              full = match.group(1)
+              if full.startswith(prefix):
+                  matches.append(match)
+                  short = full[len(prefix):]
+                  if short in observed:
+                      duplicates.append(short)
+                  observed[short] = [
+                      ax.strip() for ax in (match.group(2) or "").split(",") if ax.strip()
+                  ]
+          report_starts = sum(line.startswith("'" + prefix) for line in content.splitlines())
+          malformed = report_starts != len(matches)
           missing = sorted(expected - observed.keys())
+          unexpected = sorted(observed.keys() - expected)
           disallowed = {name: sorted(set(vals) - permitted)
                         for name, vals in observed.items() if set(vals) - permitted}
-          verdict = {"observed": observed, "missing": missing, "disallowed": disallowed,
+          verdict = {"observed": observed, "missing": missing, "unexpected": unexpected,
+                     "duplicates": duplicates, "malformed": malformed, "disallowed": disallowed,
                      "sorry_ax": "sorryAx" in content,
-                     "accepted": not missing and not disallowed and "sorryAx" not in content}
+                     "accepted": not missing and not unexpected and not duplicates
+                                 and not malformed and not disallowed and "sorryAx" not in content}
           pathlib.Path(sys.argv[2]).write_text(json.dumps(verdict, indent=2) + "\n")
           print(json.dumps(verdict, indent=2))
           if not verdict["accepted"]:
