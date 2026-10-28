@@ -91,3 +91,24 @@ func TestProjectClaimPROVRejectsInvalidEvidence(t *testing.T) {
 		})
 	}
 }
+
+func TestProjectClaimPROVRejectsSourceRebindingAcrossLinks(t *testing.T) {
+	base := demoEvidenceLink("DEMO-FIRST", EvidenceEstablishes)
+	t.Run("same artifact identity has two document owners", func(t *testing.T) {
+		second := demoEvidenceLink("DEMO-SECOND", EvidenceCorroborates)
+		second.Document.ID = "DIFFERENT-DOC"
+		second.Artifact.DocumentID = second.Document.ID
+		second.Anchor.ID = "DIFFERENT-ANCHOR"
+		if _, err := ProjectClaimPROV(demoClaim(base, second)); err == nil {
+			t.Fatal("one artifact rebound to a second document")
+		}
+	})
+	t.Run("same anchor identity has two artifact owners", func(t *testing.T) {
+		second := demoEvidenceLink("DEMO-SECOND", EvidenceCorroborates)
+		second.Artifact.ID = "DIFFERENT-ARTIFACT"
+		second.Anchor.ArtifactID = second.Artifact.ID
+		if _, err := ProjectClaimPROV(demoClaim(base, second)); err == nil {
+			t.Fatal("one text anchor rebound to a second artifact")
+		}
+	})
+}
