@@ -93,6 +93,12 @@ with explicit fidelity and release-rights limitations. A structural package
 does not constitute a verified code interpretation. Neither proof substitutes
 for BCM's real legal applicability decision.
 
+## Regulatory evidence versus geographic authority cutover
+
+The [cross-repo evidence and geography cutover plan](regulatory-evidence-geography-cutover.md) makes Regulatory Source Operations responsible for legal source acquisition, exact-text anchoring, enacted adoption/amendment/effective-date review and regulatory proof obligations. BCM owns government-entity identity, all GIS/geocoding and spatial authority, and the final project applicability verdict. The private BCM data repository will keep protected geography inputs, the thin provider/bundle and immutable references to RSO's independently reviewed claim evidence, not a second legal-source review engine. The **separately trusted BCM SourcePolicy** remains a runtime-owned admission control. See [BCM #91](https://github.com/laurajoyhutchins/building-code-map/issues/91) and [RSO #77](https://github.com/laurajoyhutchins/regulatory-source-operations/issues/77).
+
+The older source-ownership text below is an uncompleted migration baseline and must be read together with this approved target split. Do not treat this documentation as permission to archive alpha or as evidence of an accepted real regulatory claim.
+
 ## Intended source of truth
 
 - `laurajoyhutchins/building-code-map` (this **public clean-history repository**) owns the reusable software, canonical Authority Engine, project-code verification, HTTP contract `POST /v1/project-code-basis`, schemas, synthetic reference application, and eventually the full product frontend, geocoder algorithms, and GIS tooling.
