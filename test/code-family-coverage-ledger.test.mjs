@@ -287,3 +287,42 @@ test('family and entity identity are required on candidate and verified receipt'
   delete unboundReceipt.records[0].project_verification.receipt.entity_id;
   rejects(unboundReceipt, /coverage ledger schema invalid/);
 });
+
+test('multi-family prepublication CLI rejects mixed projection inputs without partial output', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'DEMO-family-matrix-'));
+  const expectedPath = join(dir, 'DEMO-expected.json');
+  const buildingPath = join(dir, 'DEMO-building.json');
+  const electricalPath = join(dir, 'DEMO-electrical.json');
+  try {
+    writeFileSync(expectedPath, JSON.stringify({
+      as_of: '2026-10-28', project_class: 'DEMO-new-commercial',
+      projection_snapshot_sha256: sha('a'),
+    }));
+    writeFileSync(buildingPath, JSON.stringify(verifiedLedger()));
+    const incompatible = syntheticLedger('electrical');
+    incompatible.projection.snapshot_sha256 = sha('9');
+    writeFileSync(electricalPath, JSON.stringify(incompatible));
+
+    const rejected = spawnSync(process.execPath, [
+      'scripts/code-family-coverage-ledger.mjs', 'matrix',
+      expectedPath, buildingPath, electricalPath,
+    ], { encoding: 'utf8' });
+    assert.notEqual(rejected.status, 0);
+    assert.equal(rejected.stdout, '');
+    assert.match(rejected.stderr, /projection snapshot mismatch/);
+
+    incompatible.projection.snapshot_sha256 = sha('a');
+    writeFileSync(electricalPath, JSON.stringify(incompatible));
+    const admitted = spawnSync(process.execPath, [
+      'scripts/code-family-coverage-ledger.mjs', 'matrix',
+      expectedPath, buildingPath, electricalPath,
+    ], { encoding: 'utf8' });
+    assert.equal(admitted.status, 0, admitted.stderr);
+    const output = JSON.parse(admitted.stdout);
+    assert.equal(output.families.electrical.claimed_independently_verified_project_receipts, 0);
+    assert.equal(output.families.fire.status, 'ledger_missing');
+    assert.equal(output.national_verified_project_coverage, 'not_established');
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
