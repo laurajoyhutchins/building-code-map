@@ -24,7 +24,7 @@ func ProjectClaimPROV(claim EvidenceClaim) (provenance.Graph, error) {
 	if len(claim.Links) == 0 {
 		return provenance.Graph{}, fmt.Errorf("PROV claim has no cited evidence")
 	}
-	claimID, err := provenance.StableID("claim", claim.ID)
+	claimID, err := provenance.ClaimID(claim.ID, claim.Kind, claim.JurisdictionID, claim.AsOf, claim.LegallyMaterial)
 	if err != nil {
 		return provenance.Graph{}, err
 	}
@@ -42,13 +42,20 @@ func ProjectClaimPROV(claim EvidenceClaim) (provenance.Graph, error) {
 		g.Nodes = append(g.Nodes, n)
 		return nil
 	}
-	if err := add(provenance.Node{ID: claimID, Kind: provenance.Entity, SourceID: claim.ID}); err != nil {
+	if err := add(provenance.Node{ID: claimID, Kind: provenance.Entity, SourceID: claim.ID,
+		ClaimKind: claim.Kind, JurisdictionID: claim.JurisdictionID, AsOf: claim.AsOf,
+		LegallyMaterial: &claim.LegallyMaterial}); err != nil {
 		return provenance.Graph{}, err
 	}
 	seen := map[string]EvidenceLink{}
+	type target struct{ from, to string }
+	var supersessionTargets []target
 	artifactDocument := map[string]string{}
 	anchorArtifact := map[string]string{}
 	for _, link := range claim.Links {
+		if link.TargetLinkID != "" && link.Role != EvidenceSupersedes {
+			return provenance.Graph{}, fmt.Errorf("supersession target on non-superseding evidence")
+		}
 		if err := validateEvidenceLink(link, claim.ID); err != nil {
 			return provenance.Graph{}, err
 		}
@@ -73,6 +80,9 @@ func ProjectClaimPROV(claim EvidenceClaim) (provenance.Graph, error) {
 		evidenceID, err := provenance.StableID("evidence-link", link.ID)
 		if err != nil {
 			return provenance.Graph{}, err
+		}
+		if link.Role == EvidenceSupersedes && link.TargetLinkID != "" {
+			supersessionTargets = append(supersessionTargets, target{from: evidenceID, to: link.TargetLinkID})
 		}
 		if owner, ok := artifactDocument[artID]; ok && owner != docID {
 			return provenance.Graph{}, fmt.Errorf("artifact identity refers to multiple documents")
@@ -106,6 +116,15 @@ func ProjectClaimPROV(claim EvidenceClaim) (provenance.Graph, error) {
 			provenance.Edge{From: evidenceID, Predicate: "prov:wasDerivedFrom", To: anchorID},
 			provenance.Edge{From: claimID, Predicate: "bcm:hasEvidenceLink", To: evidenceID},
 		)
+	}
+	// Bind supersession to an actual, same-claim evidence link only.
+	for _, item := range supersessionTargets {
+		if _, exists := seen[item.to]; !exists {
+			return provenance.Graph{}, fmt.Errorf("supersession target not present in claim")
+		}
+		toID, err := provenance.StableID("evidence-link", item.to)
+		if err != nil { return provenance.Graph{}, err }
+		g.Edges = append(g.Edges, provenance.Edge{From: item.from, Predicate: "bcm:targetsEvidenceLink", To: toID})
 	}
 	// Duplicate identical evidence links are harmless in the source evidence
 	// verifier. Deduplicate identical edges here while rejecting disagreements.
