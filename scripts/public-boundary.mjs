@@ -131,6 +131,11 @@ function jsonDisposition(relativePath) {
   if (relativePath === 'geocoder/config/geocoder-ranking-policy.json') {
     return 'geocoder-ranking-policy';
   }
+  if (relativePath === 'schemas/prov-graph.odcs.json') {
+    // A single, reviewed first-party interchange definition, never a blanket
+    // permission to commit ODCS-shaped regulatory data.
+    return 'prov-contract';
+  }
   if (relativePath.startsWith('schemas/') && relativePath.endsWith('.schema.json')) {
     return 'schema';
   }
@@ -194,6 +199,16 @@ export function validatePublicArtifact(relativePath, contents, policy) {
   if (disposition === 'schema') {
     if (typeof value?.$schema !== 'string' || !value.$schema.includes('json-schema.org')) {
       errors.push('a public schema path must contain an actual JSON Schema');
+    }
+  }
+  if (disposition === 'prov-contract') {
+    if (value?.apiVersion !== 'v3.1.0' || value?.kind !== 'DataContract' ||
+        value?.id !== 'bcm-prov-o-evidence-graph-v1' ||
+        value?.schema?.[0]?.name !== 'prov_o_evidence_graph' ||
+        !value?.authoritativeDefinitions?.some(
+          (item) => item?.url === 'https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/prov-graph.schema.json',
+        )) {
+      errors.push('public PROV contract must match the reviewed schema and identity');
     }
   }
   if (disposition === 'synthetic') {
