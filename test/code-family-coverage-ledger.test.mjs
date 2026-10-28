@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { summarizeCoverageLedger } from '../scripts/code-family-coverage-ledger.mjs';
+import { summarizeCoverageLedger, summarizeCodeFamilyMatrix } from '../scripts/code-family-coverage-ledger.mjs';
+import { spawnSync } from 'node:child_process';
+import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 
 // All identities and source references below are fictional, not production
 // regulatory observations or actual execution/independent-review receipts.
@@ -168,4 +172,97 @@ test('an independently reviewed source is not yet legally resolved or provider-c
   assert.equal(summary.legally_resolved_records, 0);
   assert.equal(summary.provider_conformance_records, 0);
   assert.equal(summary.claimed_independently_verified_project_receipts, 0);
+});
+
+test('missing family ledgers remain explicitly unknown, never zero coverage', () => {
+  const matrix = summarizeCodeFamilyMatrix([verifiedLedger()], {
+    as_of: '2026-10-28', project_class: 'DEMO-new-commercial',
+    projection_snapshot_sha256: sha('a'),
+  });
+  assert.equal(matrix.families.building.status, 'ledger_present');
+  assert.equal(matrix.families.building.claimed_independently_verified_project_receipts, 1);
+  for (const family of ['electrical', 'fire', 'energy', 'plumbing', 'mechanical']) {
+    assert.equal(matrix.families[family].status, 'ledger_missing');
+    assert.equal(matrix.families[family].denominator_entities, null);
+    assert.equal(matrix.families[family].claimed_independently_verified_project_receipts, null);
+  }
+  assert.equal(matrix.national_verified_project_coverage, 'not_established');
+  assert.equal(matrix.address_level_jurisdiction_coverage, 'not_established');
+});
+
+test('independent source-admission matrix keeps same-snapshot family evidence separate', () => {
+  const matrix = summarizeCodeFamilyMatrix([verifiedLedger(), syntheticLedger('electrical')], {
+    as_of: '2026-10-28', project_class: 'DEMO-new-commercial',
+    projection_snapshot_sha256: sha('a'),
+  });
+  assert.equal(matrix.families.building.claimed_independently_verified_project_receipts, 1);
+  assert.equal(matrix.families.electrical.claimed_independently_verified_project_receipts, 0);
+  assert.equal(matrix.families.electrical.adoption_candidate_records, 1);
+  assert.equal(matrix.families.fire.status, 'ledger_missing');
+});
+
+test('no duplicate family or mixed projection vintage enters aggregate coverage', () => {
+  const expected = {
+    as_of: '2026-10-28', project_class: 'DEMO-new-commercial',
+    projection_snapshot_sha256: sha('a'),
+  };
+  assert.throws(() => summarizeCodeFamilyMatrix([syntheticLedger(), syntheticLedger()], expected), /duplicate code family/);
+  const wrongSnapshot = syntheticLedger('electrical');
+  wrongSnapshot.projection.snapshot_sha256 = sha('9');
+  assert.throws(() => summarizeCodeFamilyMatrix([syntheticLedger(), wrongSnapshot], expected), /projection snapshot mismatch/);
+});
+
+test('mixed applicability dates and project classes are rejected before national coverage projection', () => {
+  const expected = {
+    as_of: '2026-10-28', project_class: 'DEMO-new-commercial',
+    projection_snapshot_sha256: sha('a'),
+  };
+  const wrongDate = syntheticLedger('energy');
+  wrongDate.scope.as_of = '2026-10-27';
+  assert.throws(() => summarizeCodeFamilyMatrix([wrongDate], expected), /applicability scope mismatch/);
+  const wrongClass = syntheticLedger('fire');
+  wrongClass.scope.project_class = 'DEMO-residential';
+  assert.throws(() => summarizeCodeFamilyMatrix([wrongClass], expected), /applicability scope mismatch/);
+});
+
+test('at-admission CLI accepts only structurally valid ledger before output', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'DEMO-family-ledger-'));
+  const input = join(dir, 'DEMO-ledger.json');
+  try {
+    writeFileSync(input, JSON.stringify(syntheticLedger('plumbing')));
+    const valid = spawnSync(process.execPath, ['scripts/code-family-coverage-ledger.mjs', 'validate', input], {
+      encoding: 'utf8',
+    });
+    assert.equal(valid.status, 0, valid.stderr);
+    assert.match(valid.stdout, /"code_family":\s*"plumbing"/);
+    assert.match(valid.stdout, /"national_verified_project_coverage":\s*"not_established"/);
+
+    const invalid = syntheticLedger('plumbing');
+    invalid.records[0].authority = { status: 'resolved', basis_ref: 'DEMO-legal-basis' };
+    writeFileSync(input, JSON.stringify(invalid));
+    const rejected = spawnSync(process.execPath, ['scripts/code-family-coverage-ledger.mjs', 'validate', input], {
+      encoding: 'utf8',
+    });
+    assert.notEqual(rejected.status, 0);
+    assert.equal(rejected.stdout, '');
+    assert.match(rejected.stderr, /coverage ledger schema invalid/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('at-admission CLI rejects malformed JSON instead of emitting partial coverage', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'DEMO-family-ledger-'));
+  const input = join(dir, 'DEMO-ledger.json');
+  try {
+    writeFileSync(input, '{ "schema_version": ');
+    const result = spawnSync(process.execPath, ['scripts/code-family-coverage-ledger.mjs', 'validate', input], {
+      encoding: 'utf8',
+    });
+    assert.notEqual(result.status, 0);
+    assert.equal(result.stdout, '');
+    assert.match(result.stderr, /ledger input invalid/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });
