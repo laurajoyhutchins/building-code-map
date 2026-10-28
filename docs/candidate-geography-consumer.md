@@ -46,7 +46,7 @@ verification is performed in private CI against this commit-pinned consumer
 with the complete migrated source feed; that independent consumer check is
 not proof of RSO legal evidence or BCM #90 address-level geographic authority.
 
-The legacy public `ReadPlaceCandidates` library intake is retained temporarily for compatibility tests; the executable `bcm-geo-candidates` probe uses only canonical identity input. It must not be used to bypass the source PROV-O closure and original receipt verification in private CI.
+The obsolete public `ReadPlaceCandidates` JSONL intake has been removed after exact-revision real-source producer-to-consumer parity. `geographic-observation` remains private ingestion input, but only `ReadJurisdictionIdentityCandidates` admits public candidate feeds. The source PROV-O closure and original receipt verification remain mandatory in private CI.
 
 The full production cutover still requires a separately reviewed dated
 site-to-jurisdiction authority observation, polygon/topology source custody,
