@@ -112,3 +112,56 @@ func TestProjectClaimPROVRejectsSourceRebindingAcrossLinks(t *testing.T) {
 		}
 	})
 }
+
+func TestPROVClaimVersionIsBoundToDateAndMateriality(t *testing.T) {
+	base := demoClaim(demoEvidenceLink("LINK", EvidenceEstablishes))
+	first, err := ProjectClaimPROV(base)
+	if err != nil {t.Fatal(err)}
+	firstJSON, err := first.JSONLD()
+	if err != nil {t.Fatal(err)}
+	changes := []func(*EvidenceClaim){
+		func(c *EvidenceClaim){c.AsOf = "2026-10-27"},
+		func(c *EvidenceClaim){c.LegallyMaterial = !c.LegallyMaterial},
+		func(c *EvidenceClaim){c.Kind = "different_kind"},
+		func(c *EvidenceClaim){c.JurisdictionID = "DEMO-YY";c.Links[0].Document.JurisdictionID = "DEMO-YY"},
+	}
+	for index,change := range changes {
+		claim:=demoClaim(demoEvidenceLink("LINK", EvidenceEstablishes))
+		change(&claim)
+		graph,err:=ProjectClaimPROV(claim)
+		if err!=nil {t.Fatalf("case %d failed unexpectedly: %v",index,err)}
+		data,err:=graph.JSONLD()
+		if err!=nil {t.Fatal(err)}
+		if string(data)==string(firstJSON) {t.Fatalf("claim scope aliased in case %d",index)}
+	}
+}
+
+func TestPROVSupersessionTargetsAreClosedAndPreserved(t *testing.T) {
+	establishing:=demoEvidenceLink("OLD",EvidenceEstablishes)
+	superseding:=demoEvidenceLink("NEW",EvidenceSupersedes)
+	superseding.TargetLinkID="OLD"
+	g,err:=ProjectClaimPROV(demoClaim(establishing,superseding))
+	if err!=nil {t.Fatal(err)}
+	newID,_:=provenance.StableID("evidence-link","NEW")
+	oldID,_:=provenance.StableID("evidence-link","OLD")
+	var found bool
+	for _,edge:=range g.Edges {
+		if edge.Predicate=="bcm:targetsEvidenceLink" && edge.From==newID && edge.To==oldID {found=true}
+	}
+	if !found {t.Fatal("superseded evidence target missing from PROV")}
+	data,err:=g.JSONLD()
+	if err!=nil {t.Fatal(err)}
+	if _,err:=provenance.ParseJSONLD(data);err!=nil {t.Fatal(err)}
+	cases:=[]struct{name string; change func(*EvidenceClaim)}{
+		{"orphan target",func(c *EvidenceClaim){c.Links[1].TargetLinkID="MISSING"}},
+		{"self target",func(c *EvidenceClaim){c.Links[1].TargetLinkID="NEW"}},
+		{"role mismatch",func(c *EvidenceClaim){c.Links[1].Role=EvidenceCorroborates}},
+	}
+	for _,tc:=range cases {
+		t.Run(tc.name,func(t *testing.T){
+			claim:=demoClaim(establishing,superseding)
+			tc.change(&claim)
+			if _,err:=ProjectClaimPROV(claim);err==nil {t.Fatal("invalid supersession accepted")}
+		})
+	}
+}
