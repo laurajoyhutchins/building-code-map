@@ -257,6 +257,51 @@
               },
               "additionalProperties": false
             }
+          },
+          "bcm:targetsEvidenceLink": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "@id"
+              ],
+              "properties": {
+                "@id": {
+                  "type": "string",
+                  "pattern": "^(urn:[^\\s]+|https://[^\\s]+)$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "bcm:claimKind": {
+            "type": "string",
+            "minLength": 1
+          },
+          "bcm:jurisdictionID": {
+            "type": "string",
+            "minLength": 1
+          },
+          "bcm:asOf": {
+            "type": "object",
+            "required": [
+              "@value",
+              "@type"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "@value": {
+                "type": "string",
+                "format": "date"
+              },
+              "@type": {
+                "const": "xsd:date"
+              }
+            }
+          },
+          "bcm:legallyMaterial": {
+            "type": "boolean"
           }
         },
         "allOf": [
@@ -356,6 +401,31 @@
                     "required": [
                       "prov:wasAttributedTo"
                     ]
+                  },
+                  {
+                    "required": [
+                      "bcm:claimKind"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:jurisdictionID"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:asOf"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:legallyMaterial"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:targetsEvidenceLink"
+                    ]
                   }
                 ]
               }
@@ -439,9 +509,88 @@
                     "required": [
                       "prov:endedAtTime"
                     ]
+                  },
+                  {
+                    "required": [
+                      "bcm:claimKind"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:jurisdictionID"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:asOf"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:legallyMaterial"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "bcm:targetsEvidenceLink"
+                    ]
                   }
                 ]
               }
+            }
+          },
+          {
+            "if": {
+              "anyOf": [
+                {
+                  "required": [
+                    "bcm:claimKind"
+                  ]
+                },
+                {
+                  "required": [
+                    "bcm:jurisdictionID"
+                  ]
+                },
+                {
+                  "required": [
+                    "bcm:asOf"
+                  ]
+                },
+                {
+                  "required": [
+                    "bcm:legallyMaterial"
+                  ]
+                }
+              ]
+            },
+            "then": {
+              "required": [
+                "bcm:claimKind",
+                "bcm:jurisdictionID",
+                "bcm:asOf",
+                "bcm:legallyMaterial"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "@id": {
+                  "pattern": "^urn:bcm:prov:claim:"
+                }
+              },
+              "required": [
+                "@id"
+              ]
+            },
+            "then": {
+              "required": [
+                "bcm:claimKind",
+                "bcm:jurisdictionID",
+                "bcm:asOf",
+                "bcm:legallyMaterial"
+              ]
             }
           }
         ]
