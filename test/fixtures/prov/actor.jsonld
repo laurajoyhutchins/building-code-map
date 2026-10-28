@@ -1,0 +1,57 @@
+{
+  "@context": {
+    "prov": "http://www.w3.org/ns/prov#",
+    "bcm": "https://github.com/laurajoyhutchins/building-code-map/ns/provenance#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:bcm:prov:demo:document",
+      "@type": "prov:Entity",
+      "bcm:sourceID": "DEMO-DOCUMENT"
+    },
+    {
+      "@id": "urn:bcm:prov:demo:output",
+      "@type": "prov:Entity",
+      "bcm:sourceID": "DEMO-OUTPUT",
+      "prov:wasDerivedFrom": [
+        {
+          "@id": "urn:bcm:prov:demo:document"
+        }
+      ],
+      "prov:wasGeneratedBy": [
+        {
+          "@id": "urn:bcm:prov:demo:activity"
+        }
+      ]
+    },
+    {
+      "@id": "urn:bcm:prov:demo:activity",
+      "@type": "prov:Activity",
+      "bcm:sourceID": "DEMO-EXTRACTION",
+      "prov:used": [
+        {
+          "@id": "urn:bcm:prov:demo:document"
+        }
+      ],
+      "prov:wasAssociatedWith": [
+        {
+          "@id": "urn:bcm:prov:demo:agent"
+        }
+      ],
+      "prov:startedAtTime": {
+        "@value": "2026-10-28T12:00:00Z",
+        "@type": "xsd:dateTime"
+      },
+      "prov:endedAtTime": {
+        "@value": "2026-10-28T12:01:00Z",
+        "@type": "xsd:dateTime"
+      }
+    },
+    {
+      "@id": "urn:bcm:prov:demo:agent",
+      "@type": "prov:Agent",
+      "bcm:sourceID": "DEMO-AGENT"
+    }
+  ]
+}
