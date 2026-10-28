@@ -1,4 +1,4 @@
-// Command bcm-geo-candidates checks an immutable, private candidate-observation
+// Command bcm-geo-candidates checks an immutable, private canonical jurisdiction-identity
 // export against the public geocoder's source-only intake boundary.
 // It never produces an accepted jurisdiction, legal claim, or project verdict.
 package main
@@ -15,7 +15,7 @@ import (
 )
 
 func main() {
-	input := flag.String("input", "", "path to private source-only geographic observation JSONL")
+	input := flag.String("input", "", "path to private canonical jurisdiction identity JSONL")
 	sha := flag.String("sha256", "", "trusted immutable SHA-256 of exact input file")
 	scope := flag.String("scope", "", "expected US state scope, e.g. US-CO")
 	receipt := flag.String("source-receipt", "", "expected immutable publisher observation receipt ID")
@@ -31,7 +31,7 @@ func main() {
 		die(err)
 	}
 	defer file.Close()
-	idx, err := geocoder.ReadPlaceCandidates(file, geocoder.PlaceCandidateSource{
+	idx, err := geocoder.ReadJurisdictionIdentityCandidates(file, geocoder.PlaceCandidateSource{
 		SHA256: *sha, ScopeID: *scope, SourceReceiptID: *receipt, ExpectedRows: *rows,
 	})
 	if err != nil {
