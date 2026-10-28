@@ -131,6 +131,11 @@ function jsonDisposition(relativePath) {
   if (relativePath === 'geocoder/config/geocoder-ranking-policy.json') {
     return 'geocoder-ranking-policy';
   }
+  if (relativePath === 'schemas/code-family-coverage-ledger.odcs.json') {
+    // Exactly one first-party contract definition. Do not permit arbitrary
+    // ODCS-shaped source records or private regulatory corpus in public Git.
+    return 'family-ledger-contract';
+  }
   if (relativePath === 'schemas/prov-graph.odcs.json') {
     // A single, reviewed first-party interchange definition, never a blanket
     // permission to commit ODCS-shaped regulatory data.
@@ -199,6 +204,17 @@ export function validatePublicArtifact(relativePath, contents, policy) {
   if (disposition === 'schema') {
     if (typeof value?.$schema !== 'string' || !value.$schema.includes('json-schema.org')) {
       errors.push('a public schema path must contain an actual JSON Schema');
+    }
+  }
+  if (disposition === 'family-ledger-contract') {
+    const schemaUrl = 'https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/code-family-coverage-ledger.schema.json';
+    if (value?.apiVersion !== 'v3.1.0' || value?.kind !== 'DataContract' ||
+        value?.id !== 'bcm-code-family-coverage-ledger-v01' ||
+        value?.status !== 'draft' ||
+        value?.schema?.[0]?.name !== 'code_family_coverage_ledger_v01' ||
+        !value?.authoritativeDefinitions?.some((item) => item?.id === 'bcm_family_ledger_json_schema' &&
+          item?.url === schemaUrl)) {
+      errors.push('public family-ledger contract must match reviewed schema and identity');
     }
   }
   if (disposition === 'prov-contract') {

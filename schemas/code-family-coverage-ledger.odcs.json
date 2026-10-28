@@ -1,0 +1,145 @@
+{
+  "apiVersion": "v3.1.0",
+  "kind": "DataContract",
+  "id": "bcm-code-family-coverage-ledger-v01",
+  "name": "BCM code-family coverage evidence ledger (cross-repository export)",
+  "version": "0.1.0",
+  "status": "draft",
+  "description": {
+    "purpose": "Describe a private-source-to-public-verifier export of family-scoped governmental-entity evidence without treating inventory, adoption candidates, or receipt-shaped metadata as verified national project coverage.",
+    "usage": "One JSON Schema v0.1 ledger per (US code family, applicability date, project class) and pinned projection source; validate against the canonical JSON Schema and semantic integrity gate before publishing. Every source and reviewer identity remains a non-authoritative reference until independently read back and reviewed.",
+    "limitations": "Draft contract; private regulatory corpus is not public. This export is not a governmental-entity or address-level determination, a verified legal adoption, or a verified project verdict. Unpinned or missing sources, unknown effective dates, unresolved geometry, provider limitations and absent independently reviewed execution receipts must remain unknown. W3C PROV-O generation and source readback are separate required acceptance steps."
+  },
+  "schema": [
+    {
+      "name": "code_family_coverage_ledger_v01",
+      "logicalType": "object",
+      "physicalName": "code-family-coverage-ledger/v0.1",
+      "description": "Single family/date/project-class ledger; validated by schemas/code-family-coverage-ledger.schema.json.",
+      "properties": [
+        {
+          "name": "schema_version",
+          "logicalType": "string",
+          "required": true,
+          "description": "Must equal 0.1."
+        },
+        {
+          "name": "scope.country_code",
+          "logicalType": "string",
+          "required": true,
+          "description": "US only in v0.1."
+        },
+        {
+          "name": "scope.code_family",
+          "logicalType": "string",
+          "required": true,
+          "description": "Six declared families or x_ typed extension; never inferred from building."
+        },
+        {
+          "name": "scope.as_of",
+          "logicalType": "date",
+          "required": true
+        },
+        {
+          "name": "scope.project_class",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "projection.snapshot_id",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "projection.snapshot_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "projection.source_ref",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "projection.denominator.status",
+          "logicalType": "string",
+          "required": true,
+          "description": "Independently audited or not established; no extrapolation."
+        },
+        {
+          "name": "records",
+          "logicalType": "array",
+          "required": true,
+          "description": "Zero or more family-scoped governmental entity evidence records; NOT national project verdicts."
+        },
+        {
+          "name": "records[].entity_id",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "records[].inventory.source_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "records[].adoption_candidate.code_family",
+          "logicalType": "string",
+          "required": false
+        },
+        {
+          "name": "records[].source_review.status",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "records[].authority.status",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "records[].geography.status",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "records[].provider.status",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "records[].project_verification.status",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "records[].project_verification.receipt.entity_id",
+          "logicalType": "string",
+          "required": false
+        },
+        {
+          "name": "records[].project_verification.receipt.independent_review_ref",
+          "logicalType": "string",
+          "required": false
+        },
+        {
+          "name": "records[].unknown_reasons",
+          "logicalType": "array",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "authoritativeDefinitions": [
+    {
+      "id": "bcm_family_ledger_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/code-family-coverage-ledger.schema.json"
+    },
+    {
+      "id": "bcm_family_coverage_acceptance",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/issues/87"
+    }
+  ]
+}
