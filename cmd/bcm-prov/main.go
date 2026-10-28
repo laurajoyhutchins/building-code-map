@@ -50,11 +50,17 @@ func run(input io.Reader, output io.Writer) error {
 func validate(input io.Reader, output io.Writer) error {
 	const maxGraphBytes = 16 << 20
 	content, err := io.ReadAll(io.LimitReader(input, maxGraphBytes+1))
-	if err != nil { return fmt.Errorf("read graph: %w", err) }
+	if err != nil {
+		return fmt.Errorf("read graph: %w", err)
+	}
 	graph, err := provenance.ParseJSONLD(content)
-	if err != nil { return fmt.Errorf("invalid imported PROV-O: %w", err) }
+	if err != nil {
+		return fmt.Errorf("invalid imported PROV-O: %w", err)
+	}
 	canonical, err := graph.JSONLD()
-	if err != nil { return err }
+	if err != nil {
+		return err
+	}
 	_, err = output.Write(canonical)
 	return err
 }
