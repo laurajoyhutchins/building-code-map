@@ -7,7 +7,8 @@
   "required": [
     "id",
     "category",
-    "latency_ms"
+    "latency_ms",
+    "applicability_date"
   ],
   "properties": {
     "id": {
@@ -60,6 +61,10 @@
     "latency_ms": {
       "type": "number",
       "minimum": 0
+    },
+    "applicability_date": {
+      "type": "string",
+      "format": "date"
     }
   }
 }
