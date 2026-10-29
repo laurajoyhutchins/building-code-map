@@ -83,7 +83,7 @@ def run(args: argparse.Namespace) -> dict:
     health = json_get(origin + "/health", token, args.timeout)
     if health.get("status") != "ok" or health.get("data_scope") != "private_provider_adapter":
         raise ValueError("canonical live provider adapter not established")
-    readiness = json_get(origin + "/v1/readiness", token, args.timeout)
+    readiness = json_get(origin + "/v1/readiness?capability=coordinate_resolution", token, args.timeout)
     if readiness.get("status") != "ready":
         raise ValueError("private provider readiness not established")
     result = query(sample, args.endpoint, args.date, "", args.timeout, token,
