@@ -378,6 +378,54 @@
           "required": true
         }
       ]
+    },
+    {
+      "name": "accuracy_review_queue_v1",
+      "logicalType": "object",
+      "physicalName": "application/json",
+      "description": "Blinded pending independent primary-source review queue, never evidence of an admitted benchmark case.",
+      "properties": [
+        {
+          "name": "schema_version",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "status",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "input_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "source_samples",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "case_count",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "cases",
+          "logicalType": "array",
+          "required": true
+        },
+        {
+          "name": "legal_accuracy_reviewed",
+          "logicalType": "boolean",
+          "required": true
+        },
+        {
+          "name": "expected_results_present",
+          "logicalType": "boolean",
+          "required": true
+        }
+      ]
     }
   ],
   "authoritativeDefinitions": [
@@ -420,6 +468,11 @@
       "id": "bulk_source_gap_summary_json_schema",
       "type": "canonicalUrl",
       "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/bulk-source-gap-summary-v1.schema.json"
+    },
+    {
+      "id": "accuracy_review_queue_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/accuracy-review-queue-v1.schema.json"
     }
   ]
 }
