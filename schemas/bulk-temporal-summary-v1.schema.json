@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/bulk-temporal-summary-v1.schema.json",
+  "title": "BCM candidate transition-day workload receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "classification",
+    "input_sha256",
+    "transition_manifest_sha256",
+    "workload_sha256",
+    "source_samples",
+    "candidate_events",
+    "samples"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1"
+    },
+    "classification": {
+      "const": "source_date_candidate_only"
+    },
+    "input_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "transition_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "workload_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_samples": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "candidate_events": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100
+    },
+    "samples": {
+      "type": "integer",
+      "minimum": 3,
+      "maximum": 200000
+    }
+  }
+}

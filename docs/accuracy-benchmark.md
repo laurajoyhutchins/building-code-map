@@ -4,6 +4,41 @@ BCM cannot infer the accuracy of its legal conclusions from code coverage, a gre
 
 The benchmark is an evaluator, not a second engine or an alternative project-verdict reducer. It does not call the provider, interpret legal text, or fill missing code families.
 
+## Select cases for independent review without seeing provider answers
+
+A transport-grid pass, source-boundary pair, temporal probe, and source-gap
+probe all produce **candidate** locations, not legal truth. A blind queue
+can select an intentionally diverse, reproducible set of workload IDs
+before the reviewer sees any BCM provider result:
+
+```sh
+python3 -m scripts.select_accuracy_review \
+  --input /secure/composed-bcm-workload.jsonl \
+  --max-cases 100 \
+  --output /secure/pending-review-queue.json
+```
+
+Selection balances grid, boundary, source-gap, transition-date and
+unclassified samples via stable ID hashes; it never reads API result
+files. The queue contains only candidate IDs/tags and an exact SHA-256 of
+the source workload, **not** coordinates, addresses, project facts, legal
+text, observed provider verdicts or expected code editions. It is
+always `pending_independent_review` with
+`legal_accuracy_reviewed:false` and `expected_results_present:false`.
+
+The reviewer must retrieve selected cases from the **original pinned**
+protected workload, separately obtain and inspect current or historical
+primary legal instruments and effective timelines, preserve source
+artifact identities and exact supporting text, resolve governmental
+authority/geometry ambiguity and document explicit uncertainties.
+Only an independently adjudicated, custody-appropriate reference
+becomes a `bcm-accuracy` truth case. A valid JSON file or a nonempty
+`source_ids` array is **not** proof of independent legal review.
+
+The public contract is `schemas/accuracy-review-queue-v1.schema.json`,
+paired with `schemas/bulk-query.odcs.json`. The tool creates no
+automatic conversion into a legal expected result and never commits a
+private case to public Git.
 ## Inputs and custody
 
 Prepare `truth.json` independently of BCM's derived regulatory bundles. Each case identifies a project, jurisdiction, code family, applicability date, review date, explicit expected code states/editions, and primary-source identifiers. An independent reviewer must verify the source text and applicable legal timeline before admitting a case. A non-empty source ID is a mechanical prerequisite, not proof that review was performed.

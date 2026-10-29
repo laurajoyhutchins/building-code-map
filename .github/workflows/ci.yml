@@ -57,5 +57,7 @@ jobs:
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Install pinned offline RDF/JSON-LD parser for conformance tests
         run: python3 -m pip install --disable-pip-version-check --no-input 'rdflib==7.5.0'
+      - name: Install pinned grid geometry libraries
+        run: python3 -m pip install --disable-pip-version-check --no-input 'shapely==2.1.2' 'pyproj==3.7.2' 'pyshp==2.3.1'
       - name: Run Go, Python and Node lint and test harness
         run: python3 tools/check.py

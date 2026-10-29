@@ -1,0 +1,247 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/site-authority-policy.schema.json",
+  "title": "BCM independently admitted site-jurisdiction authority policy v1",
+  "description": "Cross-repository reviewed authority input for existing BCM Runtime; source identity does not itself prove genuine authority or approve code-adoption claims.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "rules"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/rule"
+      }
+    }
+  },
+  "$defs": {
+    "rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "location_sha256",
+        "location_precision",
+        "country_code",
+        "jurisdiction_id",
+        "authority_id",
+        "effective_from",
+        "effective_to",
+        "review_state",
+        "boundary",
+        "legal",
+        "provenance"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "location_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "location_precision": {
+          "enum": [
+            "address_point",
+            "parcel"
+          ]
+        },
+        "country_code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "jurisdiction_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "effective_from": {
+          "type": "string",
+          "format": "date"
+        },
+        "effective_to": {
+          "type": "string",
+          "format": "date"
+        },
+        "review_state": {
+          "const": "reviewed"
+        },
+        "boundary": {
+          "$ref": "#/$defs/boundary"
+        },
+        "legal": {
+          "$ref": "#/$defs/legal"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        }
+      }
+    },
+    "boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "object_uri",
+        "object_generation",
+        "sha256",
+        "crs",
+        "site_relation",
+        "topology_review_sha256",
+        "crosswalk_review_sha256"
+      ],
+      "properties": {
+        "object_uri": {
+          "type": "string",
+          "pattern": "^gs://[^/]+/.+"
+        },
+        "object_generation": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "crs": {
+          "const": "EPSG:4326"
+        },
+        "site_relation": {
+          "const": "interior_reviewed"
+        },
+        "topology_review_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "crosswalk_review_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "legal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "instrument_id",
+        "source_artifact_sha256",
+        "exact_text_sha256",
+        "legal_locator",
+        "effective_from",
+        "effective_to",
+        "enforcement_authority_id",
+        "enforcement_mode"
+      ],
+      "properties": {
+        "instrument_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_artifact_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "exact_text_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "legal_locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "effective_from": {
+          "type": "string",
+          "format": "date"
+        },
+        "effective_to": {
+          "type": "string",
+          "format": "date"
+        },
+        "enforcement_authority_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "enforcement_mode": {
+          "enum": [
+            "direct",
+            "delegated"
+          ]
+        },
+        "delegation_artifact_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "enforcement_mode": {
+                "const": "delegated"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "delegation_artifact_sha256"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "enforcement_mode": {
+                "const": "direct"
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "required": [
+                "delegation_artifact_sha256"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entity_uri",
+        "activity_uri",
+        "agent_uri",
+        "review_receipt_sha256"
+      ],
+      "properties": {
+        "entity_uri": {
+          "type": "string",
+          "pattern": "^(urn:|https://).+"
+        },
+        "activity_uri": {
+          "type": "string",
+          "pattern": "^(urn:|https://).+"
+        },
+        "agent_uri": {
+          "type": "string",
+          "pattern": "^(urn:|https://).+"
+        },
+        "review_receipt_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    }
+  }
+}

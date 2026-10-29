@@ -136,6 +136,13 @@ function jsonDisposition(relativePath) {
     // ODCS-shaped source records or private regulatory corpus in public Git.
     return 'family-ledger-contract';
   }
+  if (relativePath === 'schemas/site-authority-policy.odcs.json') {
+    // Reviewed public contract definition only, never a real policy or private source.
+    return 'site-authority-contract';
+  }
+  if (relativePath === 'schemas/bulk-query.odcs.json') {
+    return 'bulk-query-contract';
+  }
   if (relativePath === 'schemas/prov-graph.odcs.json') {
     // A single, reviewed first-party interchange definition, never a blanket
     // permission to commit ODCS-shaped regulatory data.
@@ -217,6 +224,16 @@ export function validatePublicArtifact(relativePath, contents, policy) {
       errors.push('public family-ledger contract must match reviewed schema and identity');
     }
   }
+  if (disposition === 'site-authority-contract') {
+    if (value?.apiVersion !== 'v3.1.0' || value?.kind !== 'DataContract' ||
+        value?.id !== 'bcm-site-jurisdiction-authority-policy-v1' ||
+        value?.status !== 'draft' ||
+        value?.schema?.[0]?.name !== 'site_authority_policy_v1' ||
+        !value?.schema?.[0]?.properties?.some((item) => item?.name === 'rules[].legal.instrument_id') ||
+        !value?.schema?.[0]?.properties?.some((item) => item?.name === 'rules[].provenance.review_receipt_sha256')) {
+      errors.push('public site-authority ODCS must match reviewed schema and contract-only identity');
+    }
+  }
   if (disposition === 'prov-contract') {
     if (value?.apiVersion !== 'v3.1.0' || value?.kind !== 'DataContract' ||
         value?.id !== 'bcm-prov-o-evidence-graph-v1' ||
@@ -225,6 +242,20 @@ export function validatePublicArtifact(relativePath, contents, policy) {
           (item) => item?.url === 'https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/prov-graph.schema.json',
         )) {
       errors.push('public PROV contract must match the reviewed schema and identity');
+    }
+  }
+  if (disposition === 'bulk-query-contract') {
+    const schemaRoot = 'https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/';
+    const expected = ['bulk-workload-v1.schema.json', 'bulk-result-v1.schema.json',
+      'bulk-summary-v1.schema.json', 'live-bulk-canary.schema.json',
+      'bulk-boundary-summary-v1.schema.json',
+      'bulk-temporal-events-v1.schema.json', 'bulk-temporal-summary-v1.schema.json',
+      'bulk-source-gap-summary-v1.schema.json', 'accuracy-review-queue-v1.schema.json'];
+    if (value?.apiVersion !== 'v3.1.0' || value?.kind !== 'DataContract' ||
+        value?.id !== 'bcm-bulk-query-v1' || value?.status !== 'draft' ||
+        value?.schema?.length !== 9 ||
+        !expected.every((name) => value?.authoritativeDefinitions?.some((entry) => entry?.url === schemaRoot + name))) {
+      errors.push('public bulk query contract must match reviewed schema-only identity');
     }
   }
   if (disposition === 'synthetic') {

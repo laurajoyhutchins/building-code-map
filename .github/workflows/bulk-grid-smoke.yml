@@ -1,0 +1,185 @@
+name: Census 100-mile bulk query smoke
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/bulk-grid-smoke.yml'
+      - 'scripts/prepare_census_us_land.py'
+      - 'scripts/generate_grid.py'
+      - 'scripts/bulk_query.py'
+      - 'scripts/state_coverage.py'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bulk-grid-smoke.yml'
+      - 'scripts/prepare_census_us_land.py'
+      - 'scripts/generate_grid.py'
+      - 'scripts/bulk_query.py'
+      - 'scripts/state_coverage.py'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bcm-census-grid-smoke-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-to-synthetic-query:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+      - name: Bind candidate revision
+        shell: bash
+        env:
+          EXPECTED_SHA: ${{ github.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            read -r tested base head extra <<< "$(git rev-list --parents -n 1 HEAD)"
+            test -z "${extra:-}"
+            test "$tested" = "$EXPECTED_SHA"
+            test "$head" = "$PR_HEAD_SHA"
+          fi
+          printf 'Candidate: %s\n' "$(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.25.x'
+      - name: Install pinned off-the-shelf geographic libraries
+        run: python3 -m pip install --disable-pip-version-check --no-input 'pyshp==2.3.1' 'shapely==2.1.2' 'pyproj==3.7.2'
+      - name: Fetch and verify authentic Census 2024 boundary archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/bcm-census-grid"
+          cd "$RUNNER_TEMP/bcm-census-grid"
+          curl --fail --location --silent --show-error --retry 2 \
+            --proto '=https' --tlsv1.2 \
+            --output census-source.zip \
+            'https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_state_500k.zip'
+          echo '3e81cbb6cf5f60d9b01ef3e730afa14d61ce5f784252a0b33a696135e71447bc  census-source.zip' | sha256sum --check
+          test "$(stat -c %s census-source.zip)" -eq 3242450
+          printf 'Census archive SHA-256: %s\n' '3e81cbb6cf5f60d9b01ef3e730afa14d61ce5f784252a0b33a696135e71447bc' >> "$GITHUB_STEP_SUMMARY"
+          echo "Source: [2024 Census 1:500,000 states](https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_state_500k.zip)" >> "$GITHUB_STEP_SUMMARY"
+      - name: Prepare exactly 50 states plus DC, then make 100-mile grid
+        shell: bash
+        run: |
+          set -euo pipefail
+          dir="$RUNNER_TEMP/bcm-census-grid"
+          python3 scripts/prepare_census_us_land.py \
+            --archive "$dir/census-source.zip" \
+            --archive-sha256 '3e81cbb6cf5f60d9b01ef3e730afa14d61ce5f784252a0b33a696135e71447bc' \
+            --output "$dir/us-states.geojson" | tee "$dir/prepare-receipt.json"
+          geo_sha="$(sha256sum "$dir/us-states.geojson" | cut -d' ' -f1)"
+          python3 scripts/generate_grid.py \
+            --geometry "$dir/us-states.geojson" --sha256 "$geo_sha" \
+            --miles 100 --output "$dir/us-100mi.jsonl" | tee "$dir/grid-receipt.json"
+          python3 - "$dir" <<'PY'
+          import json, pathlib, sys
+          root = pathlib.Path(sys.argv[1])
+          prepare = json.loads((root / "prepare-receipt.json").read_text())
+          grid = json.loads((root / "grid-receipt.json").read_text())
+          assert prepare["state_equivalents"] == 51
+          assert 300 <= grid["samples"] <= 10000, grid
+          assert prepare["geometry_sha256"] == grid["geometry_sha256"]
+          with (root / "us-100mi.jsonl").open() as file:
+              ids = [json.loads(line)["id"] for line in file]
+          assert len(ids) == grid["samples"] == len(set(ids))
+          print("ACTUAL SOURCE GRID ACCEPTED:", grid["samples"], "positive-land-overlap cells")
+          with open(__import__("os").environ["GITHUB_STEP_SUMMARY"], "a") as file:
+              file.write(f"\n### Geographic workload\n- state equivalents: 51\n- 100-mile cells: **{grid['samples']}**\n")
+              file.write(f"- WGS84 geometry SHA-256: `{grid['geometry_sha256']}`\n")
+          PY
+      - name: Audit state coverage and generate missing-state companion probes
+        shell: bash
+        run: |
+          set -euo pipefail
+          dir="$RUNNER_TEMP/bcm-census-grid"
+          sha="$(sha256sum "$dir/us-states.geojson" | cut -d' ' -f1)"
+          python3 -m scripts.state_coverage \
+            --geometry "$dir/us-states.geojson" --sha256 "$sha" \
+            --grid "$dir/us-100mi.jsonl" \
+            --audit "$dir/state-audit.json" \
+            --representatives "$dir/state-probes.jsonl" \
+            --expect-51 | tee "$dir/state-audit-receipt.json"
+          python3 - "$dir" <<'PY'
+          import json, pathlib, sys, os
+          root = pathlib.Path(sys.argv[1])
+          audit = json.loads((root / "state-audit.json").read_text())
+          probes = [json.loads(line) for line in (root / "state-probes.jsonl").open()]
+          assert audit["states"] == len(probes) == 51
+          assert audit["samples"] == 516
+          assert len({p["id"] for p in probes}) == 51
+          assert audit["classification"] == "source_geography_candidate_only"
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as file:
+              file.write("\n### Source geography sampling audit (not legal authority)\n")
+              file.write(f"- 100-mile grid state-equivalents with no sampling point: {len(audit['unsampled_states'])}\n")
+              file.write(f"- additional source-state representative points: {len(probes)}\n")
+              file.write(f"- ambiguous Census polygon memberships: {audit['overlapping_candidate_points']}\n")
+              file.write(f"- unmatched Census polygon samples: {audit['unmatched_points']}\n")
+          print("Grid missing-state FIPS candidates:", audit["unsampled_states"])
+          PY
+      - name: Exercise canonical synthetic-only BCM API on every generated sample
+        shell: bash
+        run: |
+          set -euo pipefail
+          dir="$RUNNER_TEMP/bcm-census-grid"
+          go run ./cmd/bcm -addr 127.0.0.1:8787 > "$dir/server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          ready=0
+          for i in {1..90}; do
+            if curl --silent --fail http://127.0.0.1:8787/health > /dev/null; then ready=1; break; fi
+            sleep 1
+          done
+          if [[ "$ready" != 1 ]]; then cat "$dir/server.log"; exit 1; fi
+          python3 scripts/bulk_query.py \
+            --input "$dir/us-100mi.jsonl" \
+            --results "$dir/synthetic-outcomes.jsonl" \
+            --summary "$dir/synthetic-summary.json" \
+            --date 2026-10-28 \
+            --concurrency 8 --qps 50 --timeout 8 --max-requests 10000
+          python3 - "$dir" <<'PY'
+          import json, pathlib, sys, hashlib, os
+          root = pathlib.Path(sys.argv[1])
+          s = json.loads((root / "synthetic-summary.json").read_text())
+          n = sum(1 for line in (root / "us-100mi.jsonl").open())
+          assert s["samples"] == n, (s, n)
+          assert s["categories"] == {"unresolved": n}, s["categories"]
+          assert s["http_statuses"] == {"422": n}, s["http_statuses"]
+          assert s["input_sha256"] == hashlib.sha256((root / "us-100mi.jsonl").read_bytes()).hexdigest()
+          assert all(json.loads(line)["error_code"] == "outside_supported_coverage"
+                     for line in (root / "synthetic-outcomes.jsonl").open())
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as file:
+              file.write("\n### Synthetic canonical API probe (not national code coverage)\n")
+              file.write(f"- submitted: **{n}**, expected unsupported: **{n}**, service failures: 0\n")
+              file.write(f"- observed RPS: {s['requests_per_second']}; p95: {s['latency_p95_ms']} ms\n")
+              file.write(f"- input SHA-256: `{s['input_sha256']}`\n")
+          print("PASS: all", n, "source-bound Census grid samples refused without false legal authority")
+          PY
+          python3 scripts/bulk_query.py \
+            --input "$dir/state-probes.jsonl" \
+            --results "$dir/state-probe-outcomes.jsonl" \
+            --summary "$dir/state-probe-summary.json" \
+            --date 2026-10-28 \
+            --concurrency 4 --qps 25 --timeout 8 --max-requests 51
+          python3 - "$dir" <<'PY'
+          import json, pathlib, sys, os
+          root = pathlib.Path(sys.argv[1])
+          summary = json.loads((root / "state-probe-summary.json").read_text())
+          assert summary["samples"] == 51
+          assert summary["categories"] == {"unresolved": 51}
+          assert summary["http_statuses"] == {"422": 51}
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as file:
+              file.write("- state-stratified synthetic-only probes refused without false authority: 51 / 51\n")
+          print("PASS: all 51 state-stratified source candidates fail closed at synthetic provider")
+          PY

@@ -1,12 +1,12 @@
 # Independent BCAST consumer evidence (Go)
 
-BCM now has a bounded read-only Go consumer for the public `bcast.package/0.2.0` and `bcast.api/0.2.0` contracts in `bcastconsumer/`. It uses only Go's standard library and knows no eCFR XML, provider IDs, private Python compiler, or source access credentials.
+BCM now has a bounded read-only Go consumer for the public `bcast.package/0.2.0` and `bcast.api/0.2.0` contracts in `bcastconsumer/`. It uses Go's standard library plus the upstream `golang.org/x/text/unicode/norm` NFC validator (pinned at Go 1.25-compatible `v0.41.0`). It knows no eCFR XML, provider IDs, private Python compiler, or source access credentials.
 
 The consumer downloads the **entire package**, checks its SHA-256 materialization ID, publication and object identities, rejects unknown fields, duplicates, unexpected JSON types, missing parents and cycles, then checks the API metadata/object/child endpoints against the verified package. The source-safe fixture is copied from public `bcast/examples/synthetic/valid/package-0.2.0.json` for cross-repository interoperability regression. Ordinary BCM CI runs the Go tests entirely offline through a local HTTP server.
 
 This is a read-only source-structure dependency, **not an adoption integration**. A resolved BCAST object is not an operative adopted code, jurisdiction verdict, professional approval, or BCM evidence-link role. In particular, the existing BCM `engine.ProjectVerifier` and its jurisdiction/adoption proof remain authoritative. Do not let this client set project code status or `ExactEvidence`.
 
-Boundary: this first interoperability consumer conservatively rejects non-ASCII publication edition/revision coordinates because full NFC Unicode conformance needs a deliberate standard-library-independent policy. It also does not yet prove the live private BCAST reference server and independently deployed BCM service communicate in production. Those remain separate acceptance evidence. The public BCAST contract, not this client, defines normative semantics.
+Boundary: publication edition/revision coordinates now admit canonical NFC Unicode and reject non-NFC inputs without changing their identity bytes, using the maintained upstream Go normalization library. An exact source-safe Unicode fixture from public BCAST `8273a20` is retained under `bcastconsumer/testdata/` and exercised end-to-end over the local HTTP consumer path. This does not prove live private BCAST and independently deployed BCM communicate in production. That remains separate acceptance evidence. The public BCAST contract, not this client, defines normative semantics.
 
 See [BCAST issue #22](https://github.com/laurajoyhutchins/bcast/issues/22) and [BCAST 1.0 readiness issue #13](https://github.com/laurajoyhutchins/bcast/issues/13).
 

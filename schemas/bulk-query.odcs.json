@@ -1,0 +1,502 @@
+{
+  "apiVersion": "v3.1.0",
+  "kind": "DataContract",
+  "id": "bcm-bulk-query-v1",
+  "name": "BCM canonical project bulk-query workload and results",
+  "version": "1.0.0",
+  "status": "draft",
+  "description": {
+    "purpose": "Exchange bounded location samples, transport-level outcomes, and aggregate stress-test metrics for the existing BCM canonical project verifier.",
+    "usage": "The JSONL workload and per-point result each validate per line using paired canonical JSON Schemas; summary JSON uses the summary schema. Workload files are snapshot-hashed; geography bytes and real provider data must stay in appropriate custody. A separately pinned one-point operational canary is defined by live-bulk-canary.schema.json.",
+    "limitations": "This contract is about load and operational completeness. It cannot establish authoritative geography, legal adoption, code correctness, national accuracy or a verified project. Unknown is not success or error. Output omits sources and response text; independently reviewed truth requires bcm-accuracy."
+  },
+  "schema": [
+    {
+      "name": "bulk_workload_sample_v1",
+      "logicalType": "object",
+      "physicalName": "application/x-ndjson",
+      "description": "One NDJSON row; schemes/bulk-workload-v1.schema.json",
+      "properties": [
+        {
+          "name": "id",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "point.longitude",
+          "logicalType": "number",
+          "required": false
+        },
+        {
+          "name": "point.latitude",
+          "logicalType": "number",
+          "required": false
+        },
+        {
+          "name": "address",
+          "logicalType": "string",
+          "required": false
+        },
+        {
+          "name": "applicability_date",
+          "logicalType": "date",
+          "required": false
+        },
+        {
+          "name": "source_sha256",
+          "logicalType": "string",
+          "required": false
+        },
+        {
+          "name": "cell",
+          "logicalType": "object",
+          "required": false
+        },
+        {
+          "name": "boundary",
+          "logicalType": "object",
+          "required": false,
+          "description": "Source polygon candidate-only paired edge observation, never legal authority."
+        },
+        {
+          "name": "temporal",
+          "logicalType": "object",
+          "required": false,
+          "description": "Candidate-only date transition metadata, no legal effectivity assertion"
+        },
+        {
+          "name": "gap",
+          "logicalType": "object",
+          "required": false,
+          "description": "Missing source polygon or geometry interior-hole sample; no legal gap or AHJ asserted."
+        }
+      ]
+    },
+    {
+      "name": "bulk_result_v1",
+      "logicalType": "object",
+      "physicalName": "application/x-ndjson",
+      "description": "One outcome per submitted request, no raw source or body",
+      "properties": [
+        {
+          "name": "id",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "http_status",
+          "logicalType": "integer",
+          "required": false
+        },
+        {
+          "name": "verdict",
+          "logicalType": "string",
+          "required": false
+        },
+        {
+          "name": "code_families",
+          "logicalType": "array",
+          "required": false
+        },
+        {
+          "name": "latency_ms",
+          "logicalType": "number",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "bulk_summary_v1",
+      "logicalType": "object",
+      "physicalName": "application/json",
+      "description": "One aggregate report for the pinned input",
+      "properties": [
+        {
+          "name": "schema_version",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "input_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "applicability_date",
+          "logicalType": "date",
+          "required": true
+        },
+        {
+          "name": "samples",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "categories",
+          "logicalType": "object",
+          "required": true
+        },
+        {
+          "name": "duration_ms",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "requests_per_second",
+          "logicalType": "number",
+          "required": true
+        },
+        {
+          "name": "latency_p95_ms",
+          "logicalType": "number",
+          "required": true
+        },
+        {
+          "name": "latency_p99_ms",
+          "logicalType": "number",
+          "required": true
+        },
+        {
+          "name": "expected_runtime_identity",
+          "logicalType": "object",
+          "required": false,
+          "description": "Software identity, not legal authority."
+        },
+        {
+          "name": "circuit_breaker_tripped",
+          "logicalType": "boolean",
+          "required": false,
+          "description": "Opt-in early-stop diagnostics; false input validation completion explicitly distinguishes a partial batch from a completed workload."
+        },
+        {
+          "name": "input_validation_complete",
+          "logicalType": "boolean",
+          "required": false,
+          "description": "Opt-in early-stop diagnostics; false input validation completion explicitly distinguishes a partial batch from a completed workload."
+        },
+        {
+          "name": "fatal_error_count",
+          "logicalType": "integer",
+          "required": false,
+          "description": "Opt-in early-stop diagnostics; false input validation completion explicitly distinguishes a partial batch from a completed workload."
+        },
+        {
+          "name": "abort_after_errors",
+          "logicalType": "integer",
+          "required": false,
+          "description": "Opt-in early-stop diagnostics; false input validation completion explicitly distinguishes a partial batch from a completed workload."
+        }
+      ]
+    },
+    {
+      "name": "live_bulk_canary_v1",
+      "logicalType": "object",
+      "physicalName": "application/json",
+      "description": "One source/bundle identity-pinned canonical API transport canary; not legal accuracy or authorization for paid load.",
+      "properties": [
+        {
+          "name": "schema_version",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "canary_input_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "expected_runtime_identity",
+          "logicalType": "object",
+          "required": true
+        },
+        {
+          "name": "legal_accuracy_reviewed",
+          "logicalType": "boolean",
+          "required": true
+        },
+        {
+          "name": "bulk_run_authorized",
+          "logicalType": "boolean",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "bulk_boundary_summary_v1",
+      "logicalType": "object",
+      "physicalName": "application/json",
+      "description": "Source-bound candidate-only geographic edge-pair generator receipt, never a legal verdict.",
+      "properties": [
+        {
+          "name": "schema_version",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "classification",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "source_geometry_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "workload_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "candidate_touch_pairs",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "sampled_pairs",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "unresolved_touch_pairs",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "overlapping_source_pairs",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "samples",
+          "logicalType": "integer",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "bulk_temporal_events_v1",
+      "logicalType": "object",
+      "physicalName": "application/json",
+      "description": "Source-only date observation manifest; legal operative effectivity is separate",
+      "properties": [
+        {
+          "name": "schema_version",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "classification",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "events",
+          "logicalType": "array",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "bulk_temporal_summary_v1",
+      "logicalType": "object",
+      "physicalName": "application/json",
+      "description": "Digest-bound -1/0/+1 calendar-date workload generation receipt; not legal verdict",
+      "properties": [
+        {
+          "name": "schema_version",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "classification",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "input_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "transition_manifest_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "workload_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "source_samples",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "candidate_events",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "samples",
+          "logicalType": "integer",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "bulk_source_gap_summary_v1",
+      "logicalType": "object",
+      "physicalName": "application/json",
+      "description": "Candidate-only overlap and baseline coverage observations; not jurisdictional completeness.",
+      "properties": [
+        {
+          "name": "schema_version",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "classification",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "source_geometry_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "baseline_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "workload_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "missing_source_features",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "generated_samples",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "categories",
+          "logicalType": "object",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "accuracy_review_queue_v1",
+      "logicalType": "object",
+      "physicalName": "application/json",
+      "description": "Blinded pending independent primary-source review queue, never evidence of an admitted benchmark case.",
+      "properties": [
+        {
+          "name": "schema_version",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "status",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "input_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "source_samples",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "case_count",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "cases",
+          "logicalType": "array",
+          "required": true
+        },
+        {
+          "name": "legal_accuracy_reviewed",
+          "logicalType": "boolean",
+          "required": true
+        },
+        {
+          "name": "expected_results_present",
+          "logicalType": "boolean",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "authoritativeDefinitions": [
+    {
+      "id": "bulk_sample_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/bulk-workload-v1.schema.json"
+    },
+    {
+      "id": "bulk_result_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/bulk-result-v1.schema.json"
+    },
+    {
+      "id": "bulk_summary_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/bulk-summary-v1.schema.json"
+    },
+    {
+      "id": "live_bulk_canary_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/live-bulk-canary.schema.json"
+    },
+    {
+      "id": "bulk_boundary_summary_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/bulk-boundary-summary-v1.schema.json"
+    },
+    {
+      "id": "bulk_temporal_events_v1_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/bulk-temporal-events-v1.schema.json"
+    },
+    {
+      "id": "bulk_temporal_summary_v1_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/bulk-temporal-summary-v1.schema.json"
+    },
+    {
+      "id": "bulk_source_gap_summary_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/bulk-source-gap-summary-v1.schema.json"
+    },
+    {
+      "id": "accuracy_review_queue_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/accuracy-review-queue-v1.schema.json"
+    }
+  ]
+}

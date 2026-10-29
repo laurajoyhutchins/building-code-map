@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/bulk-summary-v1.schema.json",
+  "title": "BCM bulk query summary v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "input_sha256",
+    "endpoint_path",
+    "applicability_date",
+    "samples",
+    "categories",
+    "http_statuses",
+    "code_families",
+    "duration_ms",
+    "requests_per_second",
+    "latency_p50_ms",
+    "latency_p95_ms",
+    "latency_p99_ms",
+    "shard_index",
+    "shard_count",
+    "skipped_samples"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1"
+    },
+    "input_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "endpoint_path": {
+      "const": "/v1/project-code-basis"
+    },
+    "applicability_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "samples": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "categories": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "http_statuses": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "code_families": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "requests_per_second": {
+      "type": "number",
+      "minimum": 0
+    },
+    "latency_p50_ms": {
+      "type": "number",
+      "minimum": 0
+    },
+    "latency_p95_ms": {
+      "type": "number",
+      "minimum": 0
+    },
+    "latency_p99_ms": {
+      "type": "number",
+      "minimum": 0
+    },
+    "shard_index": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "shard_count": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1024
+    },
+    "skipped_samples": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "expected_runtime_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bundle_id",
+        "source_commit"
+      ],
+      "properties": {
+        "bundle_id": {
+          "type": "string",
+          "minLength": 8
+        },
+        "source_commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        }
+      }
+    },
+    "circuit_breaker_tripped": {
+      "type": "boolean"
+    },
+    "input_validation_complete": {
+      "type": "boolean"
+    },
+    "fatal_error_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "abort_after_errors": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100000
+    }
+  }
+}

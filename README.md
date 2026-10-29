@@ -116,6 +116,17 @@ This repository is not a bulk download of maintained jurisdiction-by-jurisdictio
 
 Third-party laws, government records, model codes, standards, datasets, and other source materials retain their own terms. See the [Publication Policy](docs/publication-policy.md), [Data Visibility Contract](docs/data-visibility.md), and [`NOTICE`](NOTICE).
 
+## Bulk query stress tests
+
+The reusable [bulk workload tools](docs/bulk-query.md) create deterministic
+equal-area location samples from digest-pinned geometry, beginning at
+100 statute miles per cell, and exercise the canonical
+`POST /v1/project-code-basis` route with bounded concurrency, rate and
+request count. The tools emit sanitized per-point classifications and
+machine-readable throughput/latency summaries. Synthetic and locally mocked
+tests run in CI; real nationwide load and independently reviewed correctness
+remain separate approval and evidence steps.
+
 ## Independently reviewed accuracy benchmarking
 
 The [accuracy benchmark](docs/accuracy-benchmark.md) compares the canonical project-code-basis output against separately reviewed regulatory expectations. It distinguishes correct legal assertions, incorrect assertions, refusals to conclude, omitted results, and falsely verified project conclusions. It does **not** claim measured national accuracy until representative, independently verified real-world cases are admitted.

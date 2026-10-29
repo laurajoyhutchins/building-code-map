@@ -47,21 +47,22 @@ type ProjectUnresolved struct {
 }
 
 type ProjectCodeBasis struct {
-	SchemaVersion     string              `json:"schema_version"`
-	ProjectID         string              `json:"project_id"`
-	AsOf              string              `json:"as_of"`
-	Inputs            ProjectInputs       `json:"inputs"`
-	JurisdictionID    string              `json:"jurisdiction_id"`
-	Jurisdiction      JurisdictionContext `json:"jurisdiction"`
-	Verdict           ProjectVerdict      `json:"verdict"`
-	CodeSet           []ProjectCodeEntry  `json:"code_set"`
-	UserFacts         map[string]string   `json:"user_facts,omitempty"`
-	DerivedFacts      []DerivedFact       `json:"derived_facts,omitempty"`
-	Unresolved        []ProjectUnresolved `json:"unresolved"`
-	FollowUpQuestions []string            `json:"follow_up_questions"`
-	Evidence          []EvidenceRef       `json:"evidence"`
-	ExactEvidence     []EvidenceLink      `json:"exact_evidence"`
-	Provenance        Provenance          `json:"provenance"`
+	SchemaVersion     string                   `json:"schema_version"`
+	ProjectID         string                   `json:"project_id"`
+	AsOf              string                   `json:"as_of"`
+	Inputs            ProjectInputs            `json:"inputs"`
+	JurisdictionID    string                   `json:"jurisdiction_id"`
+	Jurisdiction      JurisdictionContext      `json:"jurisdiction"`
+	Verdict           ProjectVerdict           `json:"verdict"`
+	CodeSet           []ProjectCodeEntry       `json:"code_set"`
+	UserFacts         map[string]string        `json:"user_facts,omitempty"`
+	DerivedFacts      []DerivedFact            `json:"derived_facts,omitempty"`
+	Unresolved        []ProjectUnresolved      `json:"unresolved"`
+	FollowUpQuestions []string                 `json:"follow_up_questions"`
+	Evidence          []EvidenceRef            `json:"evidence"`
+	ExactEvidence     []EvidenceLink           `json:"exact_evidence"`
+	Provenance        Provenance               `json:"provenance"`
+	SiteAuthority     *SiteAuthorityAssessment `json:"site_authority,omitempty"`
 }
 
 type ProjectVerifier struct{ runtime Runtime }
@@ -179,6 +180,7 @@ func (verifier ProjectVerifier) VerifyProject(ctx context.Context, request Proje
 		Evidence:          evidence,
 		ExactEvidence:     exactEvidence,
 		Provenance:        resolution.Provenance,
+		SiteAuthority:     resolution.SiteAuthority,
 	}, nil
 }
 
