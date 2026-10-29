@@ -73,7 +73,7 @@ def validate_sample(row: dict) -> dict:
         raise ValueError("project_type must be a string")
     if "applicability_date" in row:
         value = row["applicability_date"]
-        if not isinstance(value, str) or not re.fullmatch(r"\\d{4}-\\d{2}-\\d{2}", value):
+        if not isinstance(value, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
             raise ValueError("applicability_date must be YYYY-MM-DD")
         date.fromisoformat(value)
     return row
@@ -186,7 +186,7 @@ def atomic_json(path: Path, value: dict):
 
 def run(args: argparse.Namespace) -> dict:
     validate_target(args.endpoint, args.allow_remote)
-    if not re.fullmatch(r"\\d{4}-\\d{2}-\\d{2}", args.date):
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", args.date):
         raise ValueError("date must be YYYY-MM-DD")
     date.fromisoformat(args.date)
     if not (0 <= args.shard_index < args.shard_count <= 1024):
