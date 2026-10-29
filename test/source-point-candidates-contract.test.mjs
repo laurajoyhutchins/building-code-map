@@ -4,6 +4,7 @@ import test from 'node:test';
 import Ajv2020 from 'ajv/dist/2020.js';
 import Ajv2019 from 'ajv/dist/2019.js';
 import addFormats from 'ajv-formats';
+import { validatePublicArtifact } from '../scripts/public-boundary.mjs';
 
 const schema = JSON.parse(readFileSync('schemas/source-point-candidates-v1.schema.json','utf8'));
 const contract = JSON.parse(readFileSync('schemas/source-point-candidates-v1.odcs.json','utf8'));
@@ -39,4 +40,12 @@ test('ODCS 3.1 and source-polygon lookup schema are field-aligned', () => {
   assert.deepEqual(contract.schema[0].properties.map(x=>x.name),Object.keys(schema.properties));
   assert.deepEqual(schema.required,Object.keys(schema.properties));
   assert.equal(contract.schema[0].properties.every(x=>x.required===true),true);
+  assert.deepEqual(validatePublicArtifact('schemas/source-point-candidates-v1.odcs.json',
+    JSON.stringify(contract), {}), []);
+  const fake = structuredClone(contract);
+  fake.authoritativeDefinitions[0].url = 'https://example.com/untrusted.json';
+  assert.match(validatePublicArtifact('schemas/source-point-candidates-v1.odcs.json',
+    JSON.stringify(fake), {}).join(';'),/must match reviewed schema-only identity/);
+  assert.match(validatePublicArtifact('schemas/private-county-source.json',
+    JSON.stringify(contract), {}).join(';'),/unreviewed JSON data path/);
 });
