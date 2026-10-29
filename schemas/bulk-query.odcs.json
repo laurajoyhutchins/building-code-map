@@ -51,6 +51,12 @@
           "name": "cell",
           "logicalType": "object",
           "required": false
+        },
+        {
+          "name": "boundary",
+          "logicalType": "object",
+          "required": false,
+          "description": "Source polygon candidate-only paired edge observation, never legal authority."
         }
       ]
     },
@@ -188,6 +194,59 @@
           "required": true
         }
       ]
+    },
+    {
+      "name": "bulk_boundary_summary_v1",
+      "logicalType": "object",
+      "physicalName": "application/json",
+      "description": "Source-bound candidate-only geographic edge-pair generator receipt, never a legal verdict.",
+      "properties": [
+        {
+          "name": "schema_version",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "classification",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "source_geometry_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "workload_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "candidate_touch_pairs",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "sampled_pairs",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "unresolved_touch_pairs",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "overlapping_source_pairs",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "samples",
+          "logicalType": "integer",
+          "required": true
+        }
+      ]
     }
   ],
   "authoritativeDefinitions": [
@@ -210,6 +269,11 @@
       "id": "live_bulk_canary_json_schema",
       "type": "canonicalUrl",
       "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/live-bulk-canary.schema.json"
+    },
+    {
+      "id": "bulk_boundary_summary_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/bulk-boundary-summary-v1.schema.json"
     }
   ]
 }

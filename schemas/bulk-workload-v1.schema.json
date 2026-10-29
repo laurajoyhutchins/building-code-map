@@ -91,6 +91,50 @@
           ]
         }
       }
+    },
+    "boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pair_key",
+        "feature_id",
+        "neighbor_feature_id",
+        "side",
+        "offset_metres",
+        "crs",
+        "classification"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{24}$"
+        },
+        "feature_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,100}$"
+        },
+        "neighbor_feature_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,100}$"
+        },
+        "side": {
+          "enum": [
+            "a",
+            "b"
+          ]
+        },
+        "offset_metres": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 5000
+        },
+        "crs": {
+          "const": "EPSG:6933"
+        },
+        "classification": {
+          "const": "source_polygon_candidate_only"
+        }
+      }
     }
   },
   "oneOf": [
@@ -110,6 +154,21 @@
       ],
       "not": {
         "required": [
+          "point"
+        ]
+      }
+    }
+  ],
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "boundary"
+        ]
+      },
+      "then": {
+        "required": [
+          "source_sha256",
           "point"
         ]
       }
