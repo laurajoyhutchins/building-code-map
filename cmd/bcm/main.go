@@ -100,10 +100,22 @@ func handlerWithPolicies(provider engine.Provider, remote *privateProvider, allo
 				http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
 				return
 			}
-			readiness, err := remote.readiness(r.Context())
+			// Preserve address readiness as the default for existing clients.
+			// Coordinate-based site canaries must instead check the actual
+			// coordinate capability, not a possibly absent address geocoder.
+			capability := r.URL.Query().Get("capability")
+			if capability == "" {
+				capability = "address_lookup"
+			}
 			w.Header().Set("Content-Type", "application/json")
 			w.Header().Set("Cache-Control", "no-store")
-			if err != nil || readiness.Capabilities["address_lookup"].Status != "available" ||
+			if capability != "address_lookup" && capability != "coordinate_resolution" {
+				w.WriteHeader(http.StatusBadRequest)
+				_ = json.NewEncoder(w).Encode(map[string]string{"status": "invalid_capability"})
+				return
+			}
+			readiness, err := remote.readiness(r.Context())
+			if err != nil || readiness.Capabilities[capability].Status != "available" ||
 				readiness.Status == "not_ready" {
 				w.WriteHeader(http.StatusServiceUnavailable)
 				_ = json.NewEncoder(w).Encode(map[string]string{"status": "unavailable"})
