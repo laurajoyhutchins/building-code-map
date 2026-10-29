@@ -15,12 +15,21 @@ The input must contain only the selected coverage area, for example all
 is 50 states and DC. Do not commit national geometry or real bulk results to
 this public source repository.
 
-Install the two existing geometry libraries rather than implementing a
-coordinate projection or polygon clipping algorithm:
+Use the Census 2024 1:500,000 **state** cartographic boundary ZIP
+(`https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_state_500k.zip`).
+The preparer includes only the 50 states and DC (51 state equivalents),
+checks original Census field identities and reports both ZIP and derived
+geometry digests. Keep both and the source URL with the private run receipt.
+It uses off-the-shelf shapefile reading, polygon operations and projection,
+not a homegrown geospatial parser.
 
 ```sh
-python3 -m pip install 'shapely==2.1.2' 'pyproj==3.7.2'
-sha256sum /secure/us-land.geojson
+python3 -m pip install 'pyshp==2.3.1' 'shapely==2.1.2' 'pyproj==3.7.2'
+curl --fail --location --output /secure/census-states.zip \\
+  https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_state_500k.zip
+python3 scripts/prepare_census_us_land.py \\
+  --archive /secure/census-states.zip --output /secure/us-land.geojson
+# Save the printed source archive and derived geometry SHA-256 values.
 python3 scripts/generate_grid.py \
   --geometry /secure/us-land.geojson \
   --sha256 ACTUAL_64_CHARACTER_SHA256 \
