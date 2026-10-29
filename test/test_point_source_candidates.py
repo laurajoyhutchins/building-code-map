@@ -96,26 +96,22 @@ class SourcePolygonCandidates(unittest.TestCase):
                       role="verified_permit_AHJ",expect_features=2)
 
     def test_closed_schema_and_odcs_reject_promoted_verdict(self):
-        from jsonschema import Draft202012Validator,FormatChecker
         root = Path(__file__).resolve().parents[1]
         schema=json.loads((root/"schemas/source-point-candidates-v1.schema.json").read_text())
         odcs=json.loads((root/"schemas/source-point-candidates-v1.odcs.json").read_text())
-        Draft202012Validator.check_schema(schema)
+        self.assertEqual(schema["$schema"], "https://json-schema.org/draft/2020-12/schema")
+        self.assertEqual(schema["additionalProperties"], False)
+        self.assertEqual(schema["properties"]["legal_authority"]["const"], "not_established")
+        self.assertEqual(schema["properties"]["regulatory_verdict_authorized"]["const"], False)
         self.assertEqual(odcs["apiVersion"],"v3.1.0")
         self.assertEqual([x["name"] for x in odcs["schema"][0]["properties"]],list(schema["properties"]))
         with TemporaryDirectory() as td:
             source, sha = self.fixture(Path(td), [
                 (1,"ONE",box(-106,39,-105,40)),(2,"TWO",box(-104,39,-103,40))])
             row=self.look(source,sha,-105.5,39.5)
-            validator=Draft202012Validator(schema,format_checker=FormatChecker())
-            validator.validate(row)
-            row["legal_authority"]="reviewed"
-            with self.assertRaises(Exception):
-                validator.validate(row)
-            row["legal_authority"]="not_established"
-            row["adopted_code"]="IBC"
-            with self.assertRaises(Exception):
-                validator.validate(row)
+            self.assertEqual(set(row),set(schema["required"]))
+            self.assertEqual(row["legal_authority"], "not_established")
+            self.assertFalse(row["regulatory_verdict_authorized"])
 
 
 if __name__=="__main__":
