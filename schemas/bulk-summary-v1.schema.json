@@ -17,7 +17,10 @@
     "requests_per_second",
     "latency_p50_ms",
     "latency_p95_ms",
-    "latency_p99_ms"
+    "latency_p99_ms",
+    "shard_index",
+    "shard_count",
+    "skipped_samples"
   ],
   "properties": {
     "schema_version": {
@@ -77,6 +80,19 @@
     },
     "latency_p99_ms": {
       "type": "number",
+      "minimum": 0
+    },
+    "shard_index": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "shard_count": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1024
+    },
+    "skipped_samples": {
+      "type": "integer",
       "minimum": 0
     }
   }
