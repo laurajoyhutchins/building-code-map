@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/bulk-workload-v1.schema.json",
+  "title": "BCM bulk query workload sample v1",
+  "type": "object",
+  "required": [
+    "id"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,127}$"
+    },
+    "point": {
+      "type": "object",
+      "required": [
+        "longitude",
+        "latitude"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "longitude": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "latitude": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        }
+      }
+    },
+    "address": {
+      "type": "string",
+      "minLength": 1
+    },
+    "applicability_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "project_type": {
+      "type": "string"
+    },
+    "facts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "cell": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "crs",
+        "column",
+        "row",
+        "step_metres",
+        "land_fraction",
+        "sample_kind"
+      ],
+      "properties": {
+        "crs": {
+          "const": "EPSG:6933"
+        },
+        "column": {
+          "type": "integer"
+        },
+        "row": {
+          "type": "integer"
+        },
+        "step_metres": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "land_fraction": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "sample_kind": {
+          "enum": [
+            "cell_center",
+            "land_representative_point"
+          ]
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "required": [
+        "point"
+      ],
+      "not": {
+        "required": [
+          "address"
+        ]
+      }
+    },
+    {
+      "required": [
+        "address"
+      ],
+      "not": {
+        "required": [
+          "point"
+        ]
+      }
+    }
+  ]
+}
