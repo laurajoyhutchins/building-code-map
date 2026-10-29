@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/bulk-result-v1.schema.json",
+  "title": "BCM bulk per-sample outcome v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "category",
+    "latency_ms"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "enum": [
+        "verified",
+        "conditional",
+        "not_verified",
+        "unresolved",
+        "invalid_response",
+        "unsupported_verification",
+        "service_error",
+        "http_error",
+        "transport_error"
+      ]
+    },
+    "http_status": {
+      "type": "integer",
+      "minimum": 100,
+      "maximum": 599
+    },
+    "error_code": {
+      "type": "string"
+    },
+    "verdict": {
+      "enum": [
+        "verified",
+        "conditional",
+        "not_verified"
+      ]
+    },
+    "jurisdiction_id": {
+      "type": "string"
+    },
+    "code_families": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evidence_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "latency_ms": {
+      "type": "number",
+      "minimum": 0
+    }
+  }
+}
