@@ -43,9 +43,10 @@ def load_polygon(path: Path, expected_sha256: str):
             raise ValueError("geometry must contain valid land Polygon/MultiPolygon features")
         # A geographic span over 180 degrees can indicate an unsplit dateline
         # crossing. Requiring preprocessing avoids an accidental world-width grid.
-        if geom.bounds[2] - geom.bounds[0] > 180:
-            raise ValueError("unsplit antimeridian polygon; normalize the source first")
-        polygons.append(geom)
+        parts = list(geom.geoms) if geom.geom_type == "MultiPolygon" else [geom]
+        if any(part.bounds[2] - part.bounds[0] > 180 for part in parts):
+            raise ValueError("unsplit antimeridian ring; normalize the source first")
+        polygons.extend(parts)
     return unary_union(polygons), actual
 
 
