@@ -190,10 +190,10 @@ class TestGrid(unittest.TestCase):
                 writer.field("STATEFP", "C", 2)
                 for index, fips in enumerate(sorted(census.STATE_FIPS)):
                     left = -120 + index * 1.5
-                    writer.poly([[(left, 30), (left + .4, 30), (left + .4, 30.4),
-                                  (left, 30.4), (left, 30)]])
+                    writer.poly([[(left, 30), (left, 30.4), (left + .4, 30.4),
+                                  (left + .4, 30), (left, 30)]])
                     writer.record(fips)
-                writer.poly([[(-66, 18), (-65, 18), (-65, 19), (-66, 19), (-66, 18)]])
+                writer.poly([[(-66, 18), (-66, 19), (-65, 19), (-65, 18), (-66, 18)]])
                 writer.record("72")
             archive = directory / "source.zip"
             with ZipFile(archive, "w") as output:
