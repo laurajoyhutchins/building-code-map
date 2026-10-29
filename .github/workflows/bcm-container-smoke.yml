@@ -1,0 +1,65 @@
+name: BCM container startup smoke
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - Dockerfile
+      - go.mod
+      - go.sum
+      - cmd/bcm/**
+      - engine/**
+      - httpapi/**
+      - geocoder/**
+      - utilitycontext/**
+      - tools/check_container.sh
+      - .github/workflows/bcm-container-smoke.yml
+  push:
+    branches: [main]
+    paths:
+      - Dockerfile
+      - go.mod
+      - go.sum
+      - cmd/bcm/**
+      - engine/**
+      - httpapi/**
+      - geocoder/**
+      - utilitycontext/**
+      - tools/check_container.sh
+      - .github/workflows/bcm-container-smoke.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bcm-image-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  image-smoke:
+    name: Build image and fail-closed loopback smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 2
+          persist-credentials: false
+      - name: Bind exact candidate
+        env:
+          EXPECTED_SHA: ${{ github.sha }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            read -r tested base head extra <<< "$(git rev-list --parents -n 1 HEAD)"
+            test -z "${extra:-}"
+            test "$tested" = "$EXPECTED_SHA"
+            test "$head" = "$PR_HEAD"
+          fi
+      - name: Build and test local container without provider configuration
+        run: bash tools/check_container.sh bcm-image-smoke:ci
