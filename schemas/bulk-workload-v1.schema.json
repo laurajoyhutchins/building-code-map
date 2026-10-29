@@ -171,6 +171,51 @@
           "const": "source_date_candidate_only"
         }
       }
+    },
+    "gap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "classification",
+        "kind",
+        "source_feature_id",
+        "containing_feature_ids",
+        "baseline_sampled",
+        "crs"
+      ],
+      "properties": {
+        "classification": {
+          "const": "source_geometry_candidate_only"
+        },
+        "kind": {
+          "enum": [
+            "unrepresented_feature_candidate",
+            "nested_feature_candidate",
+            "interior_void_candidate"
+          ]
+        },
+        "source_feature_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 130,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+        },
+        "containing_feature_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "maxItems": 100000,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "baseline_sampled": {
+          "const": false
+        },
+        "crs": {
+          "const": "EPSG:6933"
+        }
+      }
     }
   },
   "oneOf": [
@@ -218,6 +263,19 @@
       "then": {
         "required": [
           "applicability_date"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "gap"
+        ]
+      },
+      "then": {
+        "required": [
+          "point",
+          "source_sha256"
         ]
       }
     }
