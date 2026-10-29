@@ -79,7 +79,8 @@ def validate_sample(row: dict) -> dict:
     return row
 
 
-def classify(status: int, body: bytes, sample_id: str, as_of: str) -> dict:
+def classify(status: int, body: bytes, sample_id: str, as_of: str,
+             expected_bundle: str = "", expected_source: str = "") -> dict:
     result = {"id": sample_id, "http_status": status}
     try:
         payload = json.loads(body)
@@ -105,6 +106,14 @@ def classify(status: int, body: bytes, sample_id: str, as_of: str) -> dict:
         exact = payload.get("exact_evidence", [])
         if not isinstance(evidence, list) or not isinstance(exact, list):
             return dict(result, category="invalid_response")
+        if expected_bundle or expected_source:
+            provenance = payload.get("provenance")
+            if (not isinstance(provenance, dict) or
+                    (expected_bundle and provenance.get("bundle_id") != expected_bundle) or
+                    (expected_source and provenance.get("source_commit") != expected_source) or
+                    payload["jurisdiction_id"].upper().startswith("DEMO") or
+                    payload.get("jurisdiction", {}).get("country_code") == "DEMO"):
+                return dict(result, category="runtime_identity_mismatch")
         if verdict == "verified" and not evidence and not exact:
             return dict(result, category="unsupported_verification")
         return dict(result, category=verdict, verdict=verdict,
@@ -136,7 +145,8 @@ class RateLimiter:
 
 
 def query(row: dict, endpoint: str, as_of: str, default_type: str,
-          timeout: float, token: str, limiter: RateLimiter) -> dict:
+          timeout: float, token: str, limiter: RateLimiter,
+          expected_bundle: str = "", expected_source: str = "") -> dict:
     effective_date = row.get("applicability_date", as_of)
     payload = {"project_id": row["id"], "applicability_date": effective_date}
     for key in ("point", "address", "facts", "project_type"):
@@ -163,7 +173,8 @@ def query(row: dict, endpoint: str, as_of: str, default_type: str,
         if len(body) > MAX_RESPONSE:
             result = {"id": row["id"], "http_status": status, "category": "invalid_response"}
         else:
-            result = classify(status, body, row["id"], effective_date)
+            result = classify(status, body, row["id"], effective_date,
+                              expected_bundle, expected_source)
     except (OSError, ValueError, URLError):
         result = {"id": row["id"], "category": "transport_error"}
     result["applicability_date"] = effective_date
@@ -197,6 +208,15 @@ def run(args: argparse.Namespace) -> dict:
     paths = [Path(args.input).resolve(), Path(args.results).resolve(), Path(args.summary).resolve()]
     if len(set(paths)) != 3:
         raise ValueError("input, results and summary paths must differ")
+    expected_bundle = getattr(args, "expected_bundle", "")
+    expected_source = getattr(args, "expected_source", "")
+    if bool(expected_bundle) != bool(expected_source):
+        raise ValueError("live runs must pin both --expected-bundle and --expected-source")
+    if expected_bundle and (
+            not re.fullmatch(r"[a-zA-Z0-9:._-]{8,200}", expected_bundle)
+            or not re.fullmatch(r"[a-f0-9]{40}", expected_source)
+            or "demo" in expected_bundle.lower()):
+        raise ValueError("invalid or demo runtime identity pin")
     token = os.environ.get(args.token_env, "") if args.token_env else ""
     if args.token_env and not token:
         raise ValueError("token environment variable is empty")
@@ -242,7 +262,8 @@ def run(args: argparse.Namespace) -> dict:
                     if sample_count >= args.max_requests:
                         raise ValueError("workload shard exceeds --max-requests")
                     pending.add(pool.submit(query, row, args.endpoint, args.date,
-                                            args.project_type, args.timeout, token, limiter))
+                                            args.project_type, args.timeout, token, limiter,
+                                            expected_bundle, expected_source))
                     sample_count += 1
                     if len(pending) >= args.concurrency * 2:
                         done, pending = wait(pending, return_when=FIRST_COMPLETED)
@@ -264,6 +285,9 @@ def run(args: argparse.Namespace) -> dict:
         "samples": sample_count, "skipped_samples": skipped,
         "shard_index": args.shard_index, "shard_count": args.shard_count,
         "categories": dict(sorted(counts.items())),
+        **({"expected_runtime_identity": {"bundle_id": expected_bundle,
+                                          "source_commit": expected_source}}
+           if expected_bundle else {}),
         "http_statuses": dict(sorted(status_counts.items())),
         "code_families": dict(sorted(families.items())),
         "duration_ms": round(duration * 1000),
@@ -292,12 +316,23 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--shard-index", type=int, default=0)
     p.add_argument("--shard-count", type=int, default=1)
     p.add_argument("--timeout", type=float, default=8)
+    p.add_argument("--expected-bundle", default="", help="independently pinned non-demo provider bundle")
+    p.add_argument("--expected-source", default="", help="independently pinned 40-character provider source commit")
+    p.add_argument("--fail-on-errors", action="store_true",
+                   help="exit nonzero for transport, server, invalid response or identity drift")
     p.add_argument("--allow-remote", action="store_true")
     return p
 
 
 if __name__ == "__main__":
     try:
-        run(parser().parse_args())
+        args = parser().parse_args()
+        report = run(args)
+        if args.fail_on_errors:
+            defects = {"runtime_identity_mismatch", "invalid_response",
+                       "unsupported_verification", "service_error",
+                       "http_error", "transport_error"}
+            if any(report["categories"].get(category, 0) for category in defects):
+                raise ValueError("run has non-accepted outcomes; inspect sanitized summary")
     except (OSError, ValueError) as error:
         raise SystemExit("bulk run failed: " + str(error)) from error
