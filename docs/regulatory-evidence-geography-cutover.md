@@ -2,6 +2,26 @@
 
 Status: **approved ownership direction; not a production cutover** (2026-10-28). Implementation tracking: [BCM #41](https://github.com/laurajoyhutchins/building-code-map/issues/41), [BCM #91](https://github.com/laurajoyhutchins/building-code-map/issues/91), [site attribution #90](https://github.com/laurajoyhutchins/building-code-map/issues/90), [Denver project #74](https://github.com/laurajoyhutchins/building-code-map/issues/74).
 
+## Implemented source boundary versus uncompleted legal cutover
+
+The private `arcata-rso` repository contains a **source-safe candidate** claim
+exporter with paired JSON Schema/ODCS, W3C PROV-O source entity records and a
+missing-regulatory-proof frontier. It records reviewer references as **unadmitted**:
+a synthetic export is not a legally reviewed ordinance or a trusted BCM policy.
+The private `arcata-jurisdictions` producer emits source-bound governmental and
+geographic identity **candidates** under canonical JSON Schema/ODCS and PROV-O
+contracts; BCM's `ReadJurisdictionIdentityCandidates` is an offline
+candidate-only consumer, not a project authority determination.
+
+Public BCM's `Runtime` and `ProjectVerifier` have two separately configured
+trust gates: `SourcePolicy` for code-adoption evidence and
+`SiteAuthorityPolicy` for original-source-backed, dated location and enforcing
+authority. Both are synthetic-testable; neither an accepted real municipal legal
+claim nor a reviewed matching real parcel authority is established. See
+[site authority](site-jurisdiction-authority.md) and
+[candidate geography](candidate-geography-consumer.md). No live provider
+cutover or alpha retirement is implied.
+
 ## One project answer, two independently established facts
 
 BCM's product question is: for this project location, date, code family and known facts, which governing instruments and authorities can actually be verified? BCM exclusively owns geospatial data processing and jurisdiction determination, plus the canonical Runtime, ProjectVerifier and project-code-basis HTTP path.
@@ -13,10 +33,10 @@ Regulatory Source Operations (RSO) owns the evidence **why** a regulation claim 
 ## Contract and authority diagram
 
 1. Publisher/rightfully obtained regulatory source -> RSO extraction, audited source review, claim-obligation closure, bounded adoption/amendment/effective-date evidence.
-2. RSO produces rights-scoped, immutable reviewed **claim-evidence** records and W3C PROV-O source lineage, conforming to a jointly versioned **JSON Schema 2020-12 + ODCS** export.
-3. Private BCM data/provider assembly references RSO evidence and its generation. It independently binds government entity IDs, date, family, accepted geography and approved evidence-policy inputs. Provider may not certify itself.
-4. BCM Runtime verifies claims against a **separately trusted, runtime-owned SourcePolicy**, including exact document/bytes/anchor, date, jurisdiction, contradiction and supersession. RSO's reviewer field and source-policy proposal cannot authorize this step.
-5. BCM separately verifies site-to-jurisdiction authority from geocoder precision, dated geometry, legal boundary/delegation instrument and government entity identity. Geographic evidence cannot be inferred from Census name matches, statewide code inheritance, or arbitrary provider-assigned jurisdiction IDs.
+2. RSO currently implements deterministic **candidate** claim-evidence records, a missing-proof frontier and source-safe W3C PROV-O provenance under **JSON Schema 2020-12 + ODCS**; only separately authenticated original-source/reviewer receipts and legal adjudication may make a reviewed regulatory claim.
+3. The proposed thin private provider adapter may bind independently reviewed RSO references, source-native `arcata-jurisdictions` governmental/geometry observations, dates and family into the public Provider contract. Its operational ownership and live delivery remain **unverified**. Provider output may not certify itself.
+4. BCM Runtime evaluates claims against a **separately trusted, runtime-owned SourcePolicy** for exact document/bytes/anchor, date, jurisdiction and conflicting evidence. RSO's reviewer field and source-policy proposal cannot authorize this step.
+5. BCM separately verifies site-to-jurisdiction authority through its independently trusted `SiteAuthorityPolicy`, requiring a source-pinned project point/parcel, original legal boundary/delegation instrument, independently reviewed dated topology and enforcing entity identity. A candidate polygon, Census name match, statewide code inheritance or provider-assigned ID does not satisfy this gate.
 6. The existing ProjectVerifier reduces the canonical Runtime result to verified, conditional or not_verified with structured unresolved requirements. No alternative endpoint, graph truth store or verdict reducer.
 
 **Time dimensions:** source acquisition time, source publication/edition, enactment/adoption date, effective/repeal interval, boundary/annexation effective interval, and project as-of date must not be collapsed. **Spatial dimensions:** candidate polygon containment, legally established boundary, enforcing AHJ and project parcel/point must not be collapsed.
@@ -27,11 +47,12 @@ Regulatory Source Operations (RSO) owns the evidence **why** a regulation claim 
 | --- | --- |
 | Publication/section identity and neutral package semantics | public BCAST |
 | Regulatory originals, rights and review receipts; interpretation and regulatory claim obligations | private RSO |
-| Geocoding, GIS, Census crosswalks, governmental/territorial authority; spatial and effective-date algorithms | public BCM software |
-| Protected geographic snapshot custody, thin RSO evidence reference/bundle assembly, provider distribution | private bcm-regulatory-data |
+| Geocoding/GIS algorithms, independently trusted dated site and enforcing-authority admission, Runtime and sole project verdict | public BCM software |
+| Publisher-native governmental identity, source-only geographic observations, canonical schema/PROV and protected source custody | private `arcata-jurisdictions` |
+| Proposed thin private Provider adapter combining approved immutable regulatory evidence and geography | **Not yet an independently accepted/deployed owner** |
 | Temporary state research and existing live app, until verified transfer | private building-code-map-alpha |
 
-Alpha remains source custodian until source rights, retained hashes, reviewer evidence, contract binding, real project consumption and rollback are verified. Never import alpha's private Git history into this public repository.
+Alpha remains custodian of unmigrated original material until source rights, retained hashes, reviewer evidence, contract binding, real project consumption and rollback are verified. Never import alpha's private Git history into this public repository.
 
 ## Acceptance before authority transfer
 
@@ -39,7 +60,7 @@ Alpha remains source custodian until source rights, retained hashes, reviewer ev
 - Cross-repo export has paired schema + ODCS; the public W3C PROV graph importer validates reference closure. Any in-flight private state graph using a legacy dialect must migrate before admission.
 - Explicit negatives for a fabricated review activity, wrong identity/family/date, altered artifact or anchor digest, unreviewed exception, repeal, contrary ordinance, two enforcing authorities, ambiguous locality and overlapping polygons.
 - A real address or parcel has independently evidenced dated legal territorial authority; an interpolated point or source snapshot alone never proves it.
-- Existing SourcePolicy stays independently supplied. Without approved exact source witnesses, runtime returns insufficient/not_verified regardless of provider status.
+- Both `SourcePolicy` and `SiteAuthorityPolicy` remain independently supplied and exact-source approved. Without either approved legal source witnesses **or** real site authority, the runtime remains `not_verified` regardless of provider assertions.
 - One project passes the **existing** Runtime/ProjectVerifier/POST /v1/project-code-basis. Missing project facts yield conditional follow-up; source defects remain evidence_defect rather than user questions.
 - Source-safe receipts pin the exact revision/export/consumer; unknown statuses survive and the original provider remains recoverable until equivalence and deployed readiness are observed.
 
@@ -49,4 +70,4 @@ Keep **identity inventoried**, **official source observed**, **regulatory source
 
 One statewide source may satisfy many shared legal obligations but cannot prove thousands of local permitting offices or parcel boundaries. Kansas provides the first candidate locality pilot, Michigan tests statewide inheritance, Tennessee preserves multi-county conflicts, Maine tests source custody, Illinois/ND test provenance and spatial identity joins. Treat those as test cases, not already completed legal verification.
 
-Workstream tasks: [RSO claim export #77](https://github.com/laurajoyhutchins/regulatory-source-operations/issues/77), [RSO proof closure #78](https://github.com/laurajoyhutchins/regulatory-source-operations/issues/78), [private custody #8](https://github.com/laurajoyhutchins/bcm-regulatory-data/issues/8), [alpha inventory #318](https://github.com/laurajoyhutchins/building-code-map-alpha/issues/318). No dependency on Overcenter or duplicated runtime in RSO. All new cross-repo contracts must satisfy JSON Schema + ODCS; internal contracts need JSON Schema.
+Workstream tasks: [RSO claim export #77](https://github.com/laurajoyhutchins/arcata-rso/issues/77), [RSO proof closure #78](https://github.com/laurajoyhutchins/arcata-rso/issues/78), [jurisdiction producer/migration #20](https://github.com/laurajoyhutchins/arcata-jurisdictions/issues/20), [alpha inventory #318](https://github.com/laurajoyhutchins/building-code-map-alpha/issues/318). No dependency on Overcenter or duplicated runtime in RSO. All new cross-repo contracts must satisfy JSON Schema + ODCS; internal contracts need JSON Schema.
