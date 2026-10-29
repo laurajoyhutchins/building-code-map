@@ -135,6 +135,42 @@
           "const": "source_polygon_candidate_only"
         }
       }
+    },
+    "temporal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "transition_date",
+        "offset_days",
+        "source_sha256",
+        "classification"
+      ],
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,70}$"
+        },
+        "transition_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "offset_days": {
+          "type": "integer",
+          "enum": [
+            -1,
+            0,
+            1
+          ]
+        },
+        "source_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "classification": {
+          "const": "source_date_candidate_only"
+        }
+      }
     }
   },
   "oneOf": [
@@ -170,6 +206,18 @@
         "required": [
           "source_sha256",
           "point"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "temporal"
+        ]
+      },
+      "then": {
+        "required": [
+          "applicability_date"
         ]
       }
     }
