@@ -166,6 +166,30 @@
           "logicalType": "object",
           "required": false,
           "description": "Software identity, not legal authority."
+        },
+        {
+          "name": "circuit_breaker_tripped",
+          "logicalType": "boolean",
+          "required": false,
+          "description": "Opt-in early-stop diagnostics; false input validation completion explicitly distinguishes a partial batch from a completed workload."
+        },
+        {
+          "name": "input_validation_complete",
+          "logicalType": "boolean",
+          "required": false,
+          "description": "Opt-in early-stop diagnostics; false input validation completion explicitly distinguishes a partial batch from a completed workload."
+        },
+        {
+          "name": "fatal_error_count",
+          "logicalType": "integer",
+          "required": false,
+          "description": "Opt-in early-stop diagnostics; false input validation completion explicitly distinguishes a partial batch from a completed workload."
+        },
+        {
+          "name": "abort_after_errors",
+          "logicalType": "integer",
+          "required": false,
+          "description": "Opt-in early-stop diagnostics; false input validation completion explicitly distinguishes a partial batch from a completed workload."
         }
       ]
     },
