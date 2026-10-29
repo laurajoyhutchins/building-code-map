@@ -15,8 +15,8 @@ cleanup() {
 trap cleanup EXIT
 
 docker build --file Dockerfile --tag "$image" .
-container="$(docker run -d --publish 127.0.0.1::8787 "$image")"
-hostport="$(docker port "$container" 8787/tcp)"
+container="$(docker run -d --publish 127.0.0.1::8080 "$image" -addr :8080)"
+hostport="$(docker port "$container" 8080/tcp)"
 port="$(printf '%s\n' "$hostport" | sed -n 's/^127\.0\.0\.1:\([0-9][0-9]*\)$/\1/p' | head -n 1)"
 [[ "$port" =~ ^[0-9]+$ ]] || { echo 'No loopback port published' >&2; exit 1; }
 base="http://127.0.0.1:$port"
