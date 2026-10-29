@@ -119,6 +119,86 @@ They select IDs by SHA-256 modulo the shard count. Aggregate results only
 after checking that the source SHA-256, date/scope, shard count and all
 distinct indices match; do not sum p95 latency across shards.
 
+## Controlled live-provider preflight
+
+The original 516-cell source-backed 2024 Census workload and the 51
+state-stratified companion probes have run against the **synthetic-only** public
+API, not against a real reviewed regulatory provider. A real Cloud Run or
+equivalent service must be demonstrably present; the tester must not start a
+new deployed service, publish a private corpus, infer operator SourcePolicy
+from a source ID, or silently send a nationwide job to an unverified URL.
+
+Before a single real-provider request, obtain independent custody/review
+for the exact private provider bundle and source commit and check the live
+service's origin, authentication and scope. The local Go server must be
+configured as a private provider adapter, not a synthetic demo. Keep credentials
+in the server's private environment and use `--token-env` only when the
+**public** canonical API itself requires an explicit bearer token. Cloud Run
+workload identity is the preferred server-to-private-provider boundary.
+Never place tokens in the command line, git or page configuration.
+
+Prepare exactly **one** reviewed geographic sample (JSONL, single point;
+one record only) in private storage. It is a transport canary, not a truth
+case. Do not use a synthetic DEMO-XX address or substitute a random grid cell
+for a documented site:
+
+```sh
+python3 -m scripts.live_bulk_preflight \
+  --endpoint https://APPROVED_BCM_API/v1/project-code-basis \
+  --allow-remote \
+  --canary /secure/reviewed-canary.jsonl \
+  --date 2026-10-28 \
+  --expected-bundle EXACT_NON_DEMO_BUNDLE_ID \
+  --expected-source EXACT_40_CHAR_GIT_SOURCE_COMMIT \
+  --token-env BCM_BULK_TOKEN \
+  --output /secure/live-canary-receipt.json
+```
+
+If the public API does not require its own bearer token, omit
+`--token-env`. The canary checks `GET /health` reports
+`private_provider_adapter`, `GET /v1/readiness` reports ready, and one
+point's canonical 200 response carries the independently pinned bundle and
+source commit. It explicitly refuses the fictional demo, drift, unavailable
+coordinate support or provider errors. The receipt declares
+`legal_accuracy_reviewed:false` and `bulk_run_authorized:false`; it
+cannot replace manual operative law and site-authority review.
+
+Only after independently approving the **same target, scope and QPS** run
+a small separate sampled input (for example one source-state point), then
+the full verified Census input. When using the existing runner against a real
+endpoint always pass the independent `--expected-bundle` and
+`--expected-source` pins, plus `--fail-on-errors`:
+
+```sh
+python3 scripts/bulk_query.py \
+  --input /secure/approved-100mi-subset.jsonl \
+  --results /secure/live-outcomes.jsonl \
+  --summary /secure/live-summary.json \
+  --date 2026-10-28 \
+  --endpoint https://APPROVED_BCM_API/v1/project-code-basis \
+  --allow-remote \
+  --expected-bundle EXACT_NON_DEMO_BUNDLE_ID \
+  --expected-source EXACT_40_CHAR_GIT_SOURCE_COMMIT \
+  --concurrency 1 --qps 1 --max-requests 10 --timeout 8 \
+  --fail-on-errors
+```
+
+The batch runner keeps `runtime_identity_mismatch` distinct from legal
+unknowns, rejects returned DEMO jurisdiction identity under an explicit
+live pin, and exits nonzero for HTTP/transport errors, invalid provider
+response or falsely asserted verification when `--fail-on-errors` is set.
+A 404/422 `unresolved` sample has **no provider identity witness** and
+therefore cannot prove the remote backend revision per point. A successful
+canary pin does not prove that a rolling deployment never changed. For
+rigorous full-batch replay, retain authenticated service revision identity
+and provider bundle snapshots separately, and prevent deployment changes
+during the approved run.
+
+Neither a valid provider identity nor a `verified` API field constitutes
+independently checked legal truth. Use the separately reviewed
+`bcm-accuracy` suite, including amendments, effective dates and AHJ,
+to distinguish real correct assertions from plausible but unsupported ones.
+
 ## Workload and output contracts
 
 - `schemas/bulk-workload-v1.schema.json`: one JSONL sample (point **or**
@@ -129,6 +209,8 @@ distinct indices match; do not sum p95 latency across shards.
   jurisdiction ID and latency are retained; never copy full source responses.
 - `schemas/bulk-summary-v1.schema.json`: aggregate counts, deterministic
   input SHA-256, shard identity, throughput, and p50/p95/p99 latency.
+- `schemas/live-bulk-canary.schema.json`: one non-authoritative live provider
+  identity/transport receipt.
 - `schemas/bulk-query.odcs.json`: paired ODCS cross-repository contract.
 
 A 200 response is checked for matching project ID/date, v0.3 schema version,

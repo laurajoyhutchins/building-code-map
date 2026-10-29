@@ -247,10 +247,10 @@ export function validatePublicArtifact(relativePath, contents, policy) {
   if (disposition === 'bulk-query-contract') {
     const schemaRoot = 'https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/';
     const expected = ['bulk-workload-v1.schema.json', 'bulk-result-v1.schema.json',
-      'bulk-summary-v1.schema.json'];
+      'bulk-summary-v1.schema.json', 'live-bulk-canary.schema.json'];
     if (value?.apiVersion !== 'v3.1.0' || value?.kind !== 'DataContract' ||
         value?.id !== 'bcm-bulk-query-v1' || value?.status !== 'draft' ||
-        value?.schema?.length !== 3 ||
+        value?.schema?.length !== 4 ||
         !expected.every((name) => value?.authoritativeDefinitions?.some((entry) => entry?.url === schemaRoot + name))) {
       errors.push('public bulk query contract must match reviewed schema-only identity');
     }

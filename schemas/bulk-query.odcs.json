@@ -7,7 +7,7 @@
   "status": "draft",
   "description": {
     "purpose": "Exchange bounded location samples, transport-level outcomes, and aggregate stress-test metrics for the existing BCM canonical project verifier.",
-    "usage": "The JSONL workload and per-point result each validate per line using paired canonical JSON Schemas; summary JSON uses the summary schema. Workload files are snapshot-hashed; geography bytes and real provider data must stay in appropriate custody.",
+    "usage": "The JSONL workload and per-point result each validate per line using paired canonical JSON Schemas; summary JSON uses the summary schema. Workload files are snapshot-hashed; geography bytes and real provider data must stay in appropriate custody. A separately pinned one-point operational canary is defined by live-bulk-canary.schema.json.",
     "limitations": "This contract is about load and operational completeness. It cannot establish authoritative geography, legal adoption, code correctness, national accuracy or a verified project. Unknown is not success or error. Output omits sources and response text; independently reviewed truth requires bcm-accuracy."
   },
   "schema": [
@@ -142,6 +142,50 @@
           "name": "latency_p99_ms",
           "logicalType": "number",
           "required": true
+        },
+        {
+          "name": "expected_runtime_identity",
+          "logicalType": "object",
+          "required": false,
+          "description": "Software identity, not legal authority."
+        }
+      ]
+    },
+    {
+      "name": "live_bulk_canary_v1",
+      "logicalType": "object",
+      "physicalName": "application/json",
+      "description": "One source/bundle identity-pinned canonical API transport canary; not legal accuracy or authorization for paid load.",
+      "properties": [
+        {
+          "name": "schema_version",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "canary_input_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "expected_runtime_identity",
+          "logicalType": "object",
+          "required": true
+        },
+        {
+          "name": "legal_accuracy_reviewed",
+          "logicalType": "boolean",
+          "required": true
+        },
+        {
+          "name": "bulk_run_authorized",
+          "logicalType": "boolean",
+          "required": true
         }
       ]
     }
@@ -161,6 +205,11 @@
       "id": "bulk_summary_json_schema",
       "type": "canonicalUrl",
       "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/bulk-summary-v1.schema.json"
+    },
+    {
+      "id": "live_bulk_canary_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/live-bulk-canary.schema.json"
     }
   ]
 }

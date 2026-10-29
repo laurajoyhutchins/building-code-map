@@ -94,6 +94,24 @@
     "skipped_samples": {
       "type": "integer",
       "minimum": 0
+    },
+    "expected_runtime_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bundle_id",
+        "source_commit"
+      ],
+      "properties": {
+        "bundle_id": {
+          "type": "string",
+          "minLength": 8
+        },
+        "source_commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        }
+      }
     }
   }
 }

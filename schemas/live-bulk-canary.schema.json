@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/live-bulk-canary.schema.json",
+  "title": "BCM live bulk canary identity receipt v1",
+  "description": "An operational real-provider identity and transport check, never a legal accuracy certificate or authorization to execute unbounded traffic.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "category",
+    "canary_input_sha256",
+    "expected_runtime_identity",
+    "sample_id",
+    "http_status",
+    "project_verdict",
+    "jurisdiction_id",
+    "code_families",
+    "latency_ms",
+    "legal_accuracy_reviewed",
+    "bulk_run_authorized"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1"
+    },
+    "category": {
+      "const": "runtime_canary_only"
+    },
+    "canary_input_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "expected_runtime_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bundle_id",
+        "source_commit"
+      ],
+      "properties": {
+        "bundle_id": {
+          "type": "string",
+          "minLength": 8
+        },
+        "source_commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        }
+      }
+    },
+    "sample_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "http_status": {
+      "const": 200
+    },
+    "project_verdict": {
+      "enum": [
+        "verified",
+        "conditional",
+        "not_verified"
+      ]
+    },
+    "jurisdiction_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "code_families": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "latency_ms": {
+      "type": "number",
+      "minimum": 0
+    },
+    "legal_accuracy_reviewed": {
+      "const": false
+    },
+    "bulk_run_authorized": {
+      "const": false
+    }
+  }
+}
