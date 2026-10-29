@@ -119,6 +119,65 @@ They select IDs by SHA-256 modulo the shard count. Aggregate results only
 after checking that the source SHA-256, date/scope, shard count and all
 distinct indices match; do not sum p95 latency across shards.
 
+## Source-bound paired-edge workload (offline)
+
+The national 100-mile grid cannot resolve narrow municipalities or
+jurisdiction boundaries. Generate a separate adversarial workload from a
+**digest-pinned, rights-cleared WGS84 GeoJSON FeatureCollection** of source
+polygons with stable unique string IDs (default \`properties.id\`). The
+input may be private. Never substitute unreviewed Census polygons for a
+legally effective authority boundary, and do not commit private source
+geometry or individual results to public Git.
+
+\`\`\`sh
+python3 -m scripts.generate_boundary_pairs \
+  --geometry /secure/approved-geographic-source.geojson \
+  --sha256 ACTUAL_SOURCE_SHA256_64_LOWERCASE_HEX \
+  --id-field id \
+  --offset-metres 100 \
+  --max-pairs 10000 \
+  --output /secure/boundary-pairs.jsonl \
+  --summary /secure/boundary-pairs-receipt.json
+
+# Replay via the EXISTING canonical API after the same live preflight
+# and bounded, approved source/bundle identity checks described below.
+python3 scripts/bulk_query.py \
+  --input /secure/boundary-pairs.jsonl \
+  --results /secure/boundary-results.jsonl \
+  --summary /secure/boundary-run-summary.json \
+  --date 2026-10-28 --concurrency 1 --qps 1 --max-requests 100
+\`\`\`
+
+This generator uses Shapely STRtree, projected EPSG:6933 geometry, and
+PyProj rather than custom polygon parsers. For each *exact*, positive-length
+shared edge between two source polygons, it tries points on either side
+at a requested **projected** offset, shrinking only when needed. It
+accepts a pair only when each rounded WGS84 point lies strictly inside
+exactly its own source polygon and no other input polygon. Feature
+ordering does not change pair IDs or coordinates. The same-source SHA-256
+binds rows to the input snapshot. A final receipt records eligible
+touching pairs, produced pairs, unresolved edges, overlapping interiors,
+and the workload bytes' SHA-256.
+
+Overlaps and missing exact shared edges must not be repaired silently:
+a point-only contact is not an edge; an overlap is not a valid pair;
+gaps and imprecise noncoincident boundaries produce no pair. Boundaries
+at very narrow features or multi-feature junctions may have zero safe
+samples. The CLI refuses unbounded counts and refuses overwriting
+the output when zero pairs or a limit violation is detected.
+
+\`boundary.classification\` is always
+\`source_polygon_candidate_only\`. Its \`feature_id\` is *not* the
+verified enforcing governmental authority. The offset is in EPSG:6933
+projected metres, not guaranteed geodesic distance. The generator
+does not evaluate annexations, legal effectivity, addresses or code
+adoption. Pair outcomes require independent source and legal review
+in the actual provider, not merely a changed API jurisdiction field.
+
+Schemas: \`bulk-workload-v1.schema.json\` provides the optional typed
+boundary metadata, \`bulk-boundary-summary-v1.schema.json\` specifies
+the generation receipt, and \`bulk-query.odcs.json\` binds both.
+
 ## Controlled live-provider preflight
 
 The original 516-cell source-backed 2024 Census workload and the 51
