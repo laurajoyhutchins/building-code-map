@@ -249,10 +249,11 @@ export function validatePublicArtifact(relativePath, contents, policy) {
     const expected = ['bulk-workload-v1.schema.json', 'bulk-result-v1.schema.json',
       'bulk-summary-v1.schema.json', 'live-bulk-canary.schema.json',
       'bulk-boundary-summary-v1.schema.json',
-      'bulk-temporal-events-v1.schema.json', 'bulk-temporal-summary-v1.schema.json'];
+      'bulk-temporal-events-v1.schema.json', 'bulk-temporal-summary-v1.schema.json',
+      'bulk-source-gap-summary-v1.schema.json'];
     if (value?.apiVersion !== 'v3.1.0' || value?.kind !== 'DataContract' ||
         value?.id !== 'bcm-bulk-query-v1' || value?.status !== 'draft' ||
-        value?.schema?.length !== 7 ||
+        value?.schema?.length !== 8 ||
         !expected.every((name) => value?.authoritativeDefinitions?.some((entry) => entry?.url === schemaRoot + name))) {
       errors.push('public bulk query contract must match reviewed schema-only identity');
     }

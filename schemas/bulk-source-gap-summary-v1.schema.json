@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/bulk-source-gap-summary-v1.schema.json",
+  "title": "BCM source-geometry candidate gap and enclave probe receipt",
+  "description": "Coverage over supplied source polygons only, not jurisdictional, site-level or legal completeness.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "classification",
+    "source_geometry_sha256",
+    "baseline_sha256",
+    "source_features",
+    "baseline_samples",
+    "baseline_represented_features",
+    "missing_source_features",
+    "generated_samples",
+    "categories",
+    "workload_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1"
+    },
+    "classification": {
+      "const": "source_geometry_candidate_only"
+    },
+    "source_geometry_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "baseline_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "workload_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_features": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 100000
+    },
+    "baseline_samples": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "baseline_represented_features": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "missing_source_features": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "generated_samples": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "categories": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "propertyNames": {
+        "enum": [
+          "unsampleable_feature",
+          "ambiguous_overlap_skipped",
+          "invalid_holes_skipped",
+          "occupied_or_unsampleable_holes",
+          "unrepresented_feature_candidate",
+          "nested_feature_candidate",
+          "interior_void_candidate"
+        ]
+      }
+    }
+  }
+}

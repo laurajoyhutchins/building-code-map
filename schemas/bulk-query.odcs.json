@@ -63,6 +63,12 @@
           "logicalType": "object",
           "required": false,
           "description": "Candidate-only date transition metadata, no legal effectivity assertion"
+        },
+        {
+          "name": "gap",
+          "logicalType": "object",
+          "required": false,
+          "description": "Missing source polygon or geometry interior-hole sample; no legal gap or AHJ asserted."
         }
       ]
     },
@@ -324,6 +330,54 @@
           "required": true
         }
       ]
+    },
+    {
+      "name": "bulk_source_gap_summary_v1",
+      "logicalType": "object",
+      "physicalName": "application/json",
+      "description": "Candidate-only overlap and baseline coverage observations; not jurisdictional completeness.",
+      "properties": [
+        {
+          "name": "schema_version",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "classification",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "source_geometry_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "baseline_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "workload_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "missing_source_features",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "generated_samples",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "categories",
+          "logicalType": "object",
+          "required": true
+        }
+      ]
     }
   ],
   "authoritativeDefinitions": [
@@ -361,6 +415,11 @@
       "id": "bulk_temporal_summary_v1_json_schema",
       "type": "canonicalUrl",
       "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/bulk-temporal-summary-v1.schema.json"
+    },
+    {
+      "id": "bulk_source_gap_summary_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/bulk-source-gap-summary-v1.schema.json"
     }
   ]
 }
