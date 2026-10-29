@@ -363,6 +363,45 @@ independently checked legal truth. Use the separately reviewed
 `bcm-accuracy` suite, including amendments, effective dates and AHJ,
 to distinguish real correct assertions from plausible but unsupported ones.
 
+## Local concurrency and bounded failure circuit breaker
+
+The canonical `scripts/bulk_query.py` runner already has explicit
+`--concurrency`, `--qps`, `--timeout` and `--max-requests` limits.
+Use its optional breaker for a real, independently authorized sampled
+service test, rather than discovering a provider outage only after
+hundreds of requests:
+
+```sh
+python3 scripts/bulk_query.py \
+  --input /secure/reviewed-subset.jsonl \
+  --results /secure/partial-or-complete-outcomes.jsonl \
+  --summary /secure/run-summary.json \
+  --date 2026-10-29 --concurrency 1 --qps 1 \
+  --max-requests 10 --timeout 8 \
+  --abort-after-errors 1 --fail-on-errors
+```
+
+Add the independently verified live HTTPS endpoint, bundle/source pins
+and required bearer token environment only after successful one-point
+provider preflight. The sample command defaults to loopback and does
+not authorize new cloud load.
+
+Fatal categories for the breaker are transport/HTTP/service failures,
+invalid responses, unsupported verification and provider identity drift.
+Expected legal unknowns (`unresolved`) and explicit conditional results
+do not trigger it. When enabled, at most `--concurrency` requests are
+scheduled concurrently; already-in-flight calls are drained but no new
+queries are queued after the fatal threshold is observed. The CLI exits
+nonzero if triggered, with a sanitized partial results file and report.
+
+The receipt retains the **full input byte SHA-256** even when early
+termination prevents inspecting all rows; it sets
+`input_validation_complete:false`, reports the number actually
+submitted and the fatal count, and never equates the truncated sample
+denominator to a completed nationwide assessment. When the breaker is
+disabled, existing bounded and sharded behavior is unchanged.
+Loopback-only concurrent hostile tests in CI exercise throttling,
+actual in-flight limits, first-error early exit and hash completeness.
 ## Workload and output contracts
 
 - `schemas/bulk-workload-v1.schema.json`: one JSONL sample (point **or**

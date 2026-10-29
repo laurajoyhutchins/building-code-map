@@ -112,6 +112,21 @@
           "pattern": "^[a-f0-9]{40}$"
         }
       }
+    },
+    "circuit_breaker_tripped": {
+      "type": "boolean"
+    },
+    "input_validation_complete": {
+      "type": "boolean"
+    },
+    "fatal_error_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "abort_after_errors": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100000
     }
   }
 }
