@@ -206,6 +206,9 @@ def run(args: argparse.Namespace) -> dict:
     if not (1 <= args.concurrency <= 64 and 1 <= args.qps <= 100
             and 1 <= args.max_requests <= 5_000_000 and 1 <= args.timeout <= 120):
         raise ValueError("concurrency 1..64, qps 1..100, max-requests 1..5000000, timeout 1..120")
+    abort_after = getattr(args, "abort_after_errors", 0)
+    if not isinstance(abort_after, int) or isinstance(abort_after, bool) or not 0 <= abort_after <= 100000:
+        raise ValueError("abort-after-errors must be 0..100000")
     paths = [Path(args.input).resolve(), Path(args.results).resolve(), Path(args.summary).resolve()]
     if len(set(paths)) != 3:
         raise ValueError("input, results and summary paths must differ")
@@ -228,6 +231,12 @@ def run(args: argparse.Namespace) -> dict:
     seen: set[str] = set()
     started = time.perf_counter()
     skipped = 0
+    errors_seen = 0
+    circuit_breaker_tripped = False
+    input_validation_complete = True
+    fatal_categories = {"runtime_identity_mismatch", "invalid_response",
+                        "unsupported_verification", "service_error",
+                        "http_error", "transport_error"}
     results_path = paths[1]
     with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=results_path.parent,
                                      prefix=results_path.name + ".", delete=False) as output:
@@ -238,10 +247,13 @@ def run(args: argparse.Namespace) -> dict:
                 sample_count = 0
 
                 def collect(done):
+                    nonlocal errors_seen
                     for future in done:
                         outcome = future.result()
                         output.write(json.dumps(outcome, sort_keys=True) + "\n")
                         counts[outcome["category"]] += 1
+                        if outcome["category"] in fatal_categories:
+                            errors_seen += 1
                         status_counts[str(outcome.get("http_status", 0))] += 1
                         families.update(outcome.get("code_families", []))
                         latencies.append(outcome["latency_ms"])
@@ -266,9 +278,20 @@ def run(args: argparse.Namespace) -> dict:
                                             args.project_type, args.timeout, token, limiter,
                                             expected_bundle, expected_source))
                     sample_count += 1
-                    if len(pending) >= args.concurrency * 2:
+                    # With a breaker armed, never queue more requests than
+                    # the available concurrent slots. Already-in-flight calls
+                    # may complete, but no more work is submitted once tripped.
+                    limit = args.concurrency if abort_after else args.concurrency * 2
+                    if len(pending) >= limit:
                         done, pending = wait(pending, return_when=FIRST_COMPLETED)
                         collect(done)
+                        if abort_after and errors_seen >= abort_after:
+                            circuit_breaker_tripped = True
+                            input_validation_complete = False
+                            # Hash the complete immutable byte input even though
+                            # unexamined rows must not be counted as validated.
+                            digest.update(source.read())
+                            break
                 while pending:
                     done, pending = wait(pending, return_when=FIRST_COMPLETED)
                     collect(done)
@@ -286,6 +309,10 @@ def run(args: argparse.Namespace) -> dict:
         "samples": sample_count, "skipped_samples": skipped,
         "shard_index": args.shard_index, "shard_count": args.shard_count,
         "categories": dict(sorted(counts.items())),
+        **({"circuit_breaker_tripped": circuit_breaker_tripped,
+            "input_validation_complete": input_validation_complete,
+            "fatal_error_count": errors_seen,
+            "abort_after_errors": abort_after} if abort_after else {}),
         **({"expected_runtime_identity": {"bundle_id": expected_bundle,
                                           "source_commit": expected_source}}
            if expected_bundle else {}),
@@ -319,6 +346,8 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--timeout", type=float, default=8)
     p.add_argument("--expected-bundle", default="", help="independently pinned non-demo provider bundle")
     p.add_argument("--expected-source", default="", help="independently pinned 40-character provider source commit")
+    p.add_argument("--abort-after-errors", type=int, default=0,
+                   help="stop scheduling new calls after N fatal results (0 disables breaker)")
     p.add_argument("--fail-on-errors", action="store_true",
                    help="exit nonzero for transport, server, invalid response or identity drift")
     p.add_argument("--allow-remote", action="store_true")
@@ -329,6 +358,8 @@ if __name__ == "__main__":
     try:
         args = parser().parse_args()
         report = run(args)
+        if report.get("circuit_breaker_tripped"):
+            raise ValueError("circuit breaker tripped; inspect sanitized partial results")
         if args.fail_on_errors:
             defects = {"runtime_identity_mismatch", "invalid_response",
                        "unsupported_verification", "service_error",
