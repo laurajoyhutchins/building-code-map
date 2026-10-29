@@ -10,12 +10,14 @@ const load = (name) => JSON.parse(readFileSync('schemas/' + name, 'utf8'));
 const sampleSchema = load('bulk-workload-v1.schema.json');
 const resultSchema = load('bulk-result-v1.schema.json');
 const summarySchema = load('bulk-summary-v1.schema.json');
+const canarySchema = load('live-bulk-canary.schema.json');
 const odcs = load('bulk-query.odcs.json');
 const ajv = new Ajv2020({ allErrors: true, strict: false });
 addFormats(ajv);
 const validateSample = ajv.compile(sampleSchema);
 const validateResult = ajv.compile(resultSchema);
 const validateSummary = ajv.compile(summarySchema);
+const validateCanary = ajv.compile(canarySchema);
 
 test('bulk sample schema admits points and addresses, rejects ambiguity and malformed grid provenance', () => {
   const point = { id: 'grid:100mi:r1:c2', point: { latitude: 39, longitude: -105 },
@@ -63,4 +65,21 @@ test('bulk query ODCS uses pinned schema and the public boundary rejects altered
     /must match reviewed schema-only identity/);
   assert.match(validatePublicArtifact('schemas/unreviewed-source.odcs.json', JSON.stringify(odcs), {}).join('; '),
     /unreviewed JSON data path/);
+});
+
+test('identity mismatch is a first-class error; canary never authorizes real-code claims', () => {
+  const outcome = { id: 'g1', category: 'runtime_identity_mismatch',
+    http_status: 200, applicability_date: '2026-10-28', latency_ms: 12 };
+  assert.equal(validateResult(outcome), true, JSON.stringify(validateResult.errors));
+  const canary = { schema_version: '1', category: 'runtime_canary_only',
+    canary_input_sha256: 'a'.repeat(64), sample_id: 'canary-1', http_status: 200,
+    expected_runtime_identity: { bundle_id: 'sha256:reviewed-bundle',
+      source_commit: 'c'.repeat(40) }, project_verdict: 'not_verified',
+    jurisdiction_id: 'CO-DENVER', code_families: ['building'],
+    latency_ms: 22, legal_accuracy_reviewed: false, bulk_run_authorized: false };
+  assert.equal(validateCanary(canary), true, JSON.stringify(validateCanary.errors));
+  assert.equal(validateCanary({ ...canary, bulk_run_authorized: true }), false);
+  assert.equal(validateCanary({ ...canary, legal_accuracy_reviewed: true }), false);
+  assert.deepEqual(validatePublicArtifact('schemas/live-bulk-canary.schema.json',
+    JSON.stringify(canarySchema), {}), []);
 });
