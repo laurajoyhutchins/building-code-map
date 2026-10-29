@@ -295,6 +295,8 @@ def run(args: argparse.Namespace) -> dict:
                 while pending:
                     done, pending = wait(pending, return_when=FIRST_COMPLETED)
                     collect(done)
+                if abort_after and errors_seen >= abort_after:
+                    circuit_breaker_tripped = True
             output.flush()
             os.fsync(output.fileno())
         except BaseException:
