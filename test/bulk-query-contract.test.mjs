@@ -83,3 +83,19 @@ test('identity mismatch is a first-class error; canary never authorizes real-cod
   assert.deepEqual(validatePublicArtifact('schemas/live-bulk-canary.schema.json',
     JSON.stringify(canarySchema), {}), []);
 });
+
+test('circuit breaker receipt must disclose partial input validation', () => {
+  const summary = { schema_version: '1', input_sha256: 'f'.repeat(64),
+    endpoint_path: '/v1/project-code-basis', applicability_date: '2026-10-29',
+    samples: 4, skipped_samples: 0, shard_index: 0, shard_count: 1,
+    categories: { service_error: 1, unresolved: 3 },
+    http_statuses: { '422': 3, '503': 1 },
+    code_families: {}, duration_ms: 1000, requests_per_second: 4,
+    latency_p50_ms: 10, latency_p95_ms: 80, latency_p99_ms: 80,
+    circuit_breaker_tripped: true, input_validation_complete: false,
+    fatal_error_count: 1, abort_after_errors: 1 };
+  assert.equal(validateSummary(summary), true, JSON.stringify(validateSummary.errors));
+  assert.equal(validateSummary({ ...summary, abort_after_errors: -1 }), false);
+  assert.equal(validateSummary({ ...summary, fatal_error_count: -1 }), false);
+  assert.equal(validateSummary({ ...summary, secret: 'should not exist' }), false);
+});
