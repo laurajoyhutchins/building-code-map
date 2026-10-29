@@ -124,12 +124,12 @@ distinct indices match; do not sum p95 latency across shards.
 The national 100-mile grid cannot resolve narrow municipalities or
 jurisdiction boundaries. Generate a separate adversarial workload from a
 **digest-pinned, rights-cleared WGS84 GeoJSON FeatureCollection** of source
-polygons with stable unique string IDs (default \`properties.id\`). The
+polygons with stable unique string IDs (default `properties.id`). The
 input may be private. Never substitute unreviewed Census polygons for a
 legally effective authority boundary, and do not commit private source
 geometry or individual results to public Git.
 
-\`\`\`sh
+```sh
 python3 -m scripts.generate_boundary_pairs \
   --geometry /secure/approved-geographic-source.geojson \
   --sha256 ACTUAL_SOURCE_SHA256_64_LOWERCASE_HEX \
@@ -146,7 +146,7 @@ python3 scripts/bulk_query.py \
   --results /secure/boundary-results.jsonl \
   --summary /secure/boundary-run-summary.json \
   --date 2026-10-28 --concurrency 1 --qps 1 --max-requests 100
-\`\`\`
+```
 
 This generator uses Shapely STRtree, projected EPSG:6933 geometry, and
 PyProj rather than custom polygon parsers. For each *exact*, positive-length
@@ -166,17 +166,17 @@ at very narrow features or multi-feature junctions may have zero safe
 samples. The CLI refuses unbounded counts and refuses overwriting
 the output when zero pairs or a limit violation is detected.
 
-\`boundary.classification\` is always
-\`source_polygon_candidate_only\`. Its \`feature_id\` is *not* the
+`boundary.classification` is always
+`source_polygon_candidate_only`. Its `feature_id` is *not* the
 verified enforcing governmental authority. The offset is in EPSG:6933
 projected metres, not guaranteed geodesic distance. The generator
 does not evaluate annexations, legal effectivity, addresses or code
 adoption. Pair outcomes require independent source and legal review
 in the actual provider, not merely a changed API jurisdiction field.
 
-Schemas: \`bulk-workload-v1.schema.json\` provides the optional typed
-boundary metadata, \`bulk-boundary-summary-v1.schema.json\` specifies
-the generation receipt, and \`bulk-query.odcs.json\` binds both.
+Schemas: `bulk-workload-v1.schema.json` provides the optional typed
+boundary metadata, `bulk-boundary-summary-v1.schema.json` specifies
+the generation receipt, and `bulk-query.odcs.json` binds both.
 
 ## Controlled live-provider preflight
 
