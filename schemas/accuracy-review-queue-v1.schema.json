@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/accuracy-review-queue-v1.schema.json",
+  "title": "Blinded pending regulatory accuracy review queue",
+  "description": "A selection of source-snapshot workload identifiers for separate independent review. Has no observed or expected legal verdicts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "input_sha256",
+    "source_samples",
+    "max_cases",
+    "case_count",
+    "selected_cohorts",
+    "cases",
+    "legal_accuracy_reviewed",
+    "expected_results_present"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1"
+    },
+    "status": {
+      "const": "pending_independent_review"
+    },
+    "input_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_samples": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "max_cases": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000
+    },
+    "case_count": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000
+    },
+    "legal_accuracy_reviewed": {
+      "const": false
+    },
+    "expected_results_present": {
+      "const": false
+    },
+    "selected_cohorts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "grid": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "boundary": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "source_gap": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "transition_date": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "other": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "case_id",
+          "workload_id",
+          "candidate_tags",
+          "status"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "pattern": "^review:[a-f0-9]{24}$"
+          },
+          "workload_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "candidate_tags": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 5,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "grid",
+                "boundary",
+                "source_gap",
+                "transition_date",
+                "other"
+              ]
+            }
+          },
+          "status": {
+            "const": "pending_independent_review"
+          }
+        }
+      }
+    }
+  }
+}
