@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/bulk-temporal-events-v1.schema.json",
+  "title": "BCM candidate transition-date source observations",
+  "description": "Dates are research inputs and cannot assert enacted-law effectivity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "classification",
+    "events"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1"
+    },
+    "classification": {
+      "const": "source_date_candidate_only"
+    },
+    "events": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "transition_date",
+          "source_sha256"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,70}$"
+          },
+          "transition_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    }
+  }
+}

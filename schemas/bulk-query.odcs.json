@@ -57,6 +57,12 @@
           "logicalType": "object",
           "required": false,
           "description": "Source polygon candidate-only paired edge observation, never legal authority."
+        },
+        {
+          "name": "temporal",
+          "logicalType": "object",
+          "required": false,
+          "description": "Candidate-only date transition metadata, no legal effectivity assertion"
         }
       ]
     },
@@ -247,6 +253,77 @@
           "required": true
         }
       ]
+    },
+    {
+      "name": "bulk_temporal_events_v1",
+      "logicalType": "object",
+      "physicalName": "application/json",
+      "description": "Source-only date observation manifest; legal operative effectivity is separate",
+      "properties": [
+        {
+          "name": "schema_version",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "classification",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "events",
+          "logicalType": "array",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "bulk_temporal_summary_v1",
+      "logicalType": "object",
+      "physicalName": "application/json",
+      "description": "Digest-bound -1/0/+1 calendar-date workload generation receipt; not legal verdict",
+      "properties": [
+        {
+          "name": "schema_version",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "classification",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "input_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "transition_manifest_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "workload_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "source_samples",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "candidate_events",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "samples",
+          "logicalType": "integer",
+          "required": true
+        }
+      ]
     }
   ],
   "authoritativeDefinitions": [
@@ -274,6 +351,16 @@
       "id": "bulk_boundary_summary_json_schema",
       "type": "canonicalUrl",
       "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/bulk-boundary-summary-v1.schema.json"
+    },
+    {
+      "id": "bulk_temporal_events_v1_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/bulk-temporal-events-v1.schema.json"
+    },
+    {
+      "id": "bulk_temporal_summary_v1_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/bulk-temporal-summary-v1.schema.json"
     }
   ]
 }

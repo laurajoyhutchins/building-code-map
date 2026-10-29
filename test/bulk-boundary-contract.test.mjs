@@ -54,7 +54,7 @@ test('paired ODCS permits only the reviewed fifth bulk exchange schema', () => {
   const validator = new Ajv2019({ allErrors: true, strict: false });
   addFormats(validator);
   assert.equal(validator.compile(load('odcs-v3.1.0.schema.json'))(odcs), true);
-  assert.equal(odcs.schema.length, 5);
+  assert.equal(odcs.schema.length, 7);
   assert.deepEqual(validatePublicArtifact('schemas/bulk-query.odcs.json',
     JSON.stringify(odcs), {}), []);
   const tampered = structuredClone(odcs);

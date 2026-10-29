@@ -178,6 +178,64 @@ Schemas: `bulk-workload-v1.schema.json` provides the optional typed
 boundary metadata, `bulk-boundary-summary-v1.schema.json` specifies
 the generation receipt, and `bulk-query.odcs.json` binds both.
 
+## Candidate transition-day stress workload (offline)
+
+Use an explicit, digest-pinned JSON event manifest for every date suspected
+of changing code applicability. Dates are **source research candidates**,
+not legal effectivity. A responsible reviewer must separately examine enacted
+instruments, amendments, transition/grandfathering provisions, submission
+completeness and actual applicability before claiming a correct verdict.
+
+The input `events.json` uses `schemas/bulk-temporal-events-v1.schema.json`:
+
+```json
+{
+  "schema_version": "1",
+  "classification": "source_date_candidate_only",
+  "events": [
+    {"id": "synthetic-year-turn", "transition_date": "2025-12-31",
+     "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+  ]
+}
+```
+
+The hash above is a **fictional placeholder** and cannot admit an official
+source. In a genuine workload replace it with the exact SHA-256 of the
+source observation under protected custody; preserve independent legal
+review outside this test generator. Do not copy private source or results
+to the public repository.
+
+```sh
+python3 -m scripts.generate_temporal_probes \
+  --input /secure/boundary-pairs.jsonl \
+  --events /secure/candidate-transitions.json \
+  --max-requests 10000 \
+  --output /secure/temporal.jsonl \
+  --summary /secure/temporal-receipt.json
+
+# Run only against the already approved canonical endpoint and limits.
+python3 scripts/bulk_query.py \
+  --input /secure/temporal.jsonl \
+  --results /secure/temporal-outcomes.jsonl \
+  --summary /secure/temporal-query-summary.json \
+  --date 2025-12-31 --max-requests 10000
+```
+
+The expander preserves the original geographic point/address, optional
+project facts and source-polygon metadata, but sets each request's
+`applicability_date` to the calendar day before, the candidate date, and
+the day after. It handles year and leap-day boundaries using standard
+calendar arithmetic, refuses dates at unrepresentable endpoints, rejects
+duplicates and recursive expansion, enforces an explicit output cap and
+records source, event manifest and generated workload SHA-256 identities.
+No legal verdict is created. The resulting JSONL is still sent through
+the **single** `POST /v1/project-code-basis` path.
+
+Versioned contracts: optional `temporal` metadata in
+`schemas/bulk-workload-v1.schema.json`, candidate event
+`schemas/bulk-temporal-events-v1.schema.json`, generated receipt
+`schemas/bulk-temporal-summary-v1.schema.json`, paired ODCS in
+`schemas/bulk-query.odcs.json`.
 ## Controlled live-provider preflight
 
 The original 516-cell source-backed 2024 Census workload and the 51
