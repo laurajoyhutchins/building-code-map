@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/bulk-boundary-summary-v1.schema.json",
+  "title": "BCM source-candidate paired-boundary workload generation receipt",
+  "description": "Records geographic candidate edge probes; not legal boundary, AHJ, or enacted code evidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "classification",
+    "source_geometry_sha256",
+    "workload_sha256",
+    "source_features",
+    "candidate_touch_pairs",
+    "sampled_pairs",
+    "unresolved_touch_pairs",
+    "overlapping_source_pairs",
+    "max_pairs",
+    "requested_offset_metres",
+    "samples"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1"
+    },
+    "classification": {
+      "const": "source_polygon_candidate_only"
+    },
+    "source_geometry_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "workload_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_features": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 100000
+    },
+    "candidate_touch_pairs": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "sampled_pairs": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "unresolved_touch_pairs": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "overlapping_source_pairs": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "max_pairs": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100000
+    },
+    "requested_offset_metres": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 5000
+    },
+    "samples": {
+      "type": "integer",
+      "minimum": 2
+    }
+  }
+}
