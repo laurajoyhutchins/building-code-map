@@ -35,7 +35,7 @@ are not automatically separate products.
 | Tool / current implementation | Complete task and result | Boundary presented to BCM |
 | --- | --- | --- |
 | [BCAST package toolkit](https://github.com/laurajoyhutchins/regulatory-package-toolkit) | Reviewed, normalized publication records -> deterministic content-addressed publication package that an independent client can validate and navigate | Verified package/object identities are *references* only, not evidence of legal adoption |
-| [BCAST private source operations](https://github.com/laurajoyhutchins/regulatory-source-operations) | Lawfully acquired, explicitly dated source -> source-audited BCAST package, provenance and protected readback, using the public package builder | Source interpretation and rights custody do not enter the BCM verdict or public Git history |
+| [Arcata Regulatory Source Operations](https://github.com/laurajoyhutchins/arcata-rso) | Lawfully acquired and reviewed legal source -> source-audited BCAST package, exact text/enactment/amendment evidence, provenance and regulatory proof frontier | Reviewed claim evidence is referenced by BCM; source review does not itself authorize the BCM verdict or publicize protected bytes |
 | `bcast-rules` (currently a Rust crate inside the BCAST toolkit) | Reviewed, edition-pinned rule IR -> standalone Rust predicates and conformance results | Optional separately reviewed rules, never authority to choose a jurisdiction or code edition |
 | [Electric Utility Catalog](https://github.com/laurajoyhutchins/electric-utility-catalog) | EIA release -> verified, source-identifiable statistical utility catalog and county-candidate lookup | **No regulatory-decision dependency**; this is a separate product |
 | [Obsidian PDF Extractor](https://github.com/laurajoyhutchins/obsidian-pdf-extractor) | User-selected PDF -> previewed, validated structured notes and traceable extraction artifacts | Generic extraction is not authoritative regulatory interpretation |
@@ -53,12 +53,19 @@ and must not duplicate it in BCM.
   application behavior and protected research, **not** another product to
   develop indefinitely. Migrate only reviewed, independently verifiable
   functionality and archive alpha after parity, provenance and rollback.
-- `bcm-regulatory-data` exists, but is currently a **custody/migration
-  repository, not a completed standalone application**. Its candidate end-to-end
-  job is enacted adoption evidence -> reviewed, dated, provider-compatible
-  regulatory bundle. Do not call that achieved until its real input,
-  independent legal/source review, materialization, and canonical BCM
-  consumer readback have been proven. Data storage alone is not a new product.
+- `arcata-jurisdictions` (the renamed private geographic-data repository)
+  owns publisher-native governmental identities, canonical identity/PROV-O
+  contracts, source-bound boundary observations and protected source custody.
+  Its source-only canonical exports are *candidates* admitted by BCM's
+  `ReadJurisdictionIdentityCandidates` consumer; neither a Census match nor
+  a polygon observation proves a legal boundary, enforcing AHJ, adoption or
+  project verdict.
+- A thin private evidence/provider assembler may eventually reference
+  `arcata-rso` source-reviewed claim evidence and `arcata-jurisdictions`
+  candidate geography. No independently accepted **production provider
+  assembly or live source-to-project cutover** is claimed. The previous
+  `bcm-regulatory-data` repository name does not create another legal
+  source-review engine or project verifier.
 - BCM currently has separate EIA county utility-context APIs and an
   `bcm-utility-api` executable. These are **out of BCM's functional scope**,
   despite being deliberately isolated from the code verdict. Do not expand
@@ -93,10 +100,34 @@ with explicit fidelity and release-rights limitations. A structural package
 does not constitute a verified code interpretation. Neither proof substitutes
 for BCM's real legal applicability decision.
 
+## Regulatory evidence versus geographic authority cutover
+
+The [cross-repo evidence and geography cutover plan](regulatory-evidence-geography-cutover.md)
+makes `arcata-rso` (Regulatory Source Operations) responsible for legal
+source custody, source-text/adoption/amendment/effective-date review and
+regulatory proof obligations. Private `arcata-jurisdictions` produces
+source-native governmental/territorial observations with unresolved conflicts,
+not legal authorization. Public BCM owns the geocoder/GIS algorithms,
+independent government identity and dated authority admission, and the sole
+`Runtime`/`ProjectVerifier` verdict. The public candidate-only consumer
+and separate trusted runtime `SourcePolicy` and `SiteAuthorityPolicy` are
+already implemented with synthetic negatives; **no real source-approved RSO
+claim plus site-authority pair is accepted**. See [BCM #91](https://github.com/laurajoyhutchins/building-code-map/issues/91),
+[site authority #90](https://github.com/laurajoyhutchins/building-code-map/issues/90)
+and [RSO #77](https://github.com/laurajoyhutchins/arcata-rso/issues/77).
+The older source-ownership text below is an uncompleted migration baseline and must be read together with this approved target split. Do not treat this documentation as permission to archive alpha or as evidence of an accepted real regulatory claim.
+
 ## Intended source of truth
 
 - `laurajoyhutchins/building-code-map` (this **public clean-history repository**) owns the reusable software, canonical Authority Engine, project-code verification, HTTP contract `POST /v1/project-code-basis`, schemas, synthetic reference application, and eventually the full product frontend, geocoder algorithms, and GIS tooling.
-- The existing **private `bcm-regulatory-data` repository** is intended to own maintained jurisdiction research, source retrieval records, license- or redistribution-sensitive evidence, source-to-claim mappings, private verification fixtures, and the compilation of signed/content-identified regulatory bundles. Until `bcm-regulatory-data` has been independently validated and its corpus migrated, `building-code-map-alpha` remains the protected custody location for those bytes.
+- Private `arcata-rso` is responsible for regulatory originals, reviewer and
+  rights custody, bounded legal evidence and source-safe *candidate* claim
+  exports. Private `arcata-jurisdictions` owns source-only governmental identity
+  and geographic observation contracts. A thin protected provider adapter
+  may eventually combine **approved** references and dated site evidence, but
+  is neither a legal reviewer nor a second verdict path. Until individual
+  original-source migrations and independent consumer readback pass,
+  `building-code-map-alpha` remains custodian of unmigrated originals.
 - `building-code-map-alpha` is **not** a second long-term software authority. It remains active temporarily for existing production capabilities and in-flight PRs, then becomes a read-only historical archive after complete verified cutover.
 
 ## Non-negotiable boundaries
