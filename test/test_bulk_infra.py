@@ -125,7 +125,7 @@ class TestBulkQuery(unittest.TestCase):
                     summary=str(home / "summary.json"), endpoint=f"http://127.0.0.1:{server.server_port}" + bulk.PATH,
                     date="2026-10-28", concurrency=3, qps=100,
                     max_requests=10, timeout=2, project_type="", token_env="",
-                    allow_remote=False,
+                    allow_remote=False, shard_index=0, shard_count=1,
                 )
                 report = bulk.run(args)
                 self.assertEqual(report["samples"], 3)
@@ -136,6 +136,16 @@ class TestBulkQuery(unittest.TestCase):
                 args.max_requests = 2
                 with self.assertRaises(ValueError):
                     bulk.run(args)
+                args.max_requests = 10
+                args.shard_count = 2
+                args.shard_index = 0
+                shard = bulk.run(args)
+                expected = sum(
+                    int.from_bytes(hashlib.sha256(row["id"].encode()).digest()[:8], "big") % 2 == 0
+                    for row in rows
+                )
+                self.assertEqual(shard["samples"], expected)
+                self.assertEqual(shard["skipped_samples"], len(rows) - expected)
         finally:
             server.shutdown()
             server.server_close()
