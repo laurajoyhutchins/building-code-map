@@ -5,6 +5,7 @@ import hashlib
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import importlib.util
 import json
+from zipfile import ZipFile
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from threading import Thread
@@ -13,6 +14,7 @@ import unittest
 
 from scripts import bulk_query as bulk
 from scripts import generate_grid as grid
+from scripts import prepare_census_us_land as census
 
 
 class TestBulkQuery(unittest.TestCase):
@@ -178,6 +180,31 @@ class TestGrid(unittest.TestCase):
                 bulk.validate_sample(row)
             with self.assertRaises(ValueError):
                 grid.load_polygon(path, "0" * 64)
+
+    def test_census_preparer_selects_exactly_50_states_and_dc(self):
+        import shapefile
+        with TemporaryDirectory() as directory:
+            directory = Path(directory)
+            base = directory / "cb_2024_us_state_500k"
+            with shapefile.Writer(str(base), shapeType=shapefile.POLYGON) as writer:
+                writer.field("STATEFP", "C", 2)
+                for index, fips in enumerate(sorted(census.STATE_FIPS)):
+                    left = -120 + index * 1.5
+                    writer.poly([[(left, 30), (left + .4, 30), (left + .4, 30.4),
+                                  (left, 30.4), (left, 30)]])
+                    writer.record(fips)
+                writer.poly([[(-66, 18), (-65, 18), (-65, 19), (-66, 19), (-66, 18)]])
+                writer.record("72")
+            archive = directory / "source.zip"
+            with ZipFile(archive, "w") as output:
+                for ext in ("shp", "shx", "dbf"):
+                    name = base.with_suffix("." + ext)
+                    output.write(name, arcname=name.name)
+            result, digest = census.prepare(archive)
+            self.assertEqual(len(result["features"]), 51)
+            self.assertEqual(digest, hashlib.sha256(archive.read_bytes()).hexdigest())
+            with self.assertRaises(ValueError):
+                census.prepare(archive, "0" * 64)
 
     def test_invalid_grid_spacing(self):
         from shapely.geometry import box
