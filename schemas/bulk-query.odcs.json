@@ -1,0 +1,166 @@
+{
+  "apiVersion": "v3.1.0",
+  "kind": "DataContract",
+  "id": "bcm-bulk-query-v1",
+  "name": "BCM canonical project bulk-query workload and results",
+  "version": "1.0.0",
+  "status": "draft",
+  "description": {
+    "purpose": "Exchange bounded location samples, transport-level outcomes, and aggregate stress-test metrics for the existing BCM canonical project verifier.",
+    "usage": "The JSONL workload and per-point result each validate per line using paired canonical JSON Schemas; summary JSON uses the summary schema. Workload files are snapshot-hashed; geography bytes and real provider data must stay in appropriate custody.",
+    "limitations": "This contract is about load and operational completeness. It cannot establish authoritative geography, legal adoption, code correctness, national accuracy or a verified project. Unknown is not success or error. Output omits sources and response text; independently reviewed truth requires bcm-accuracy."
+  },
+  "schema": [
+    {
+      "name": "bulk_workload_sample_v1",
+      "logicalType": "object",
+      "physicalName": "application/x-ndjson",
+      "description": "One NDJSON row; schemes/bulk-workload-v1.schema.json",
+      "properties": [
+        {
+          "name": "id",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "point.longitude",
+          "logicalType": "number",
+          "required": false
+        },
+        {
+          "name": "point.latitude",
+          "logicalType": "number",
+          "required": false
+        },
+        {
+          "name": "address",
+          "logicalType": "string",
+          "required": false
+        },
+        {
+          "name": "applicability_date",
+          "logicalType": "date",
+          "required": false
+        },
+        {
+          "name": "source_sha256",
+          "logicalType": "string",
+          "required": false
+        },
+        {
+          "name": "cell",
+          "logicalType": "object",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "bulk_result_v1",
+      "logicalType": "object",
+      "physicalName": "application/x-ndjson",
+      "description": "One outcome per submitted request, no raw source or body",
+      "properties": [
+        {
+          "name": "id",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "http_status",
+          "logicalType": "integer",
+          "required": false
+        },
+        {
+          "name": "verdict",
+          "logicalType": "string",
+          "required": false
+        },
+        {
+          "name": "code_families",
+          "logicalType": "array",
+          "required": false
+        },
+        {
+          "name": "latency_ms",
+          "logicalType": "number",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "bulk_summary_v1",
+      "logicalType": "object",
+      "physicalName": "application/json",
+      "description": "One aggregate report for the pinned input",
+      "properties": [
+        {
+          "name": "schema_version",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "input_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "applicability_date",
+          "logicalType": "date",
+          "required": true
+        },
+        {
+          "name": "samples",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "categories",
+          "logicalType": "object",
+          "required": true
+        },
+        {
+          "name": "duration_ms",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "requests_per_second",
+          "logicalType": "number",
+          "required": true
+        },
+        {
+          "name": "latency_p95_ms",
+          "logicalType": "number",
+          "required": true
+        },
+        {
+          "name": "latency_p99_ms",
+          "logicalType": "number",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "authoritativeDefinitions": [
+    {
+      "id": "bulk_sample_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/bulk-workload-v1.schema.json"
+    },
+    {
+      "id": "bulk_result_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/bulk-result-v1.schema.json"
+    },
+    {
+      "id": "bulk_summary_json_schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/bulk-summary-v1.schema.json"
+    }
+  ]
+}
