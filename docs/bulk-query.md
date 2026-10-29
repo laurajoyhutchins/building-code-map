@@ -236,6 +236,53 @@ Versioned contracts: optional `temporal` metadata in
 `schemas/bulk-temporal-events-v1.schema.json`, generated receipt
 `schemas/bulk-temporal-summary-v1.schema.json`, paired ODCS in
 `schemas/bulk-query.odcs.json`.
+## Source-polygon omission, enclave and interior-hole probes (offline)
+
+An equal-area national grid cannot prove it sampled a small municipality,
+an enclave or even every source polygon. Audit an existing **point-only**
+JSONL workload against a separate rights-cleared, WGS84 source polygon
+FeatureCollection with unique `properties.id` values. Pin the exact bytes
+of **both** the source geometry and the baseline workload:
+
+```sh
+python3 -m scripts.generate_source_gaps \
+  --geometry /secure/reviewed-source-polygons.geojson \
+  --sha256 EXACT_64_CHAR_GEOMETRY_SHA256 \
+  --baseline /secure/100mi-grid.jsonl \
+  --baseline-sha256 EXACT_64_CHAR_BASELINE_SHA256 \
+  --max-samples 10000 \
+  --output /secure/source-omissions.jsonl \
+  --summary /secure/source-omissions-receipt.json
+```
+
+The generator projects source polygons and baseline points with PyProj
+EPSG:6933. For each source polygon with **no baseline point strictly
+inside**, it finds a source-interior representative sample. It reports
+`unrepresented_feature_candidate` for isolated source polygons and
+`nested_feature_candidate` for source features entirely nested in
+another. If the selected point is in partially overlapping source
+geometries, the row is skipped and counted as ambiguous rather than
+being assigned an exclusive authority. Rounded coordinate containment
+is rechecked against all source polygons.
+
+For every interior ring, it may additionally generate a point where
+**no supplied source polygon contains that point**. This is only an
+`interior_void_candidate`: it does not establish that the whole hole
+is empty, that the legal jurisdiction is missing, or that a regulatory
+authority does not exist. A source polygon filling the hole excludes
+that point. The generator cannot discover a gap outside the supplied
+source geometry, missing datasets, legal enclaves, annexation histories
+or authoritative address boundaries.
+
+Source and baseline SHA-256, coverage counts, skipped overlap cases and
+generated workload SHA-256 remain in the local receipt. Zero generated
+samples is an auditable result, not proof of complete regulatory coverage.
+Existing `bulk_query.py` can run these candidate points only after the
+same live-provider preflight and approved QPS/request limits. Contracts:
+`schemas/bulk-workload-v1.schema.json`,
+`schemas/bulk-source-gap-summary-v1.schema.json`, and
+`schemas/bulk-query.odcs.json`. No real polygons or live results are
+committed to the public repository.
 ## Controlled live-provider preflight
 
 The original 516-cell source-backed 2024 Census workload and the 51
