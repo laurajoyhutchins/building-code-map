@@ -25,7 +25,8 @@
         "unsupported_verification",
         "service_error",
         "http_error",
-        "transport_error"
+        "transport_error",
+        "runtime_identity_mismatch"
       ]
     },
     "http_status": {
