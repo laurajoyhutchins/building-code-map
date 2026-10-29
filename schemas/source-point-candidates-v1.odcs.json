@@ -1,0 +1,106 @@
+{
+  "apiVersion": "v3.1.0",
+  "kind": "DataContract",
+  "id": "bcm-source-point-candidates-v1",
+  "name": "BCM source-only point and polygon observations",
+  "version": "1.0.0",
+  "status": "draft",
+  "description": {
+    "purpose": "Connect exact SHA pinned publisher polygon candidates to public BCM geographic point lookup without legal authority inference",
+    "usage": "Offline source-only candidate lookups, not production ProjectVerifier or AHJ resolver",
+    "limitations": "Storage-generation receipts, independent topology, source vintage/effective date, government identity, annexation and legal code adoption reviewed separately"
+  },
+  "schema": [
+    {
+      "name": "source_point_candidates_v1",
+      "logicalType": "object",
+      "physicalName": "application/json",
+      "properties": [
+        {
+          "name": "schema_version",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "classification",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "source_geometry_sha256",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "source_layer_role",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "source_features",
+          "logicalType": "integer",
+          "required": true
+        },
+        {
+          "name": "point",
+          "logicalType": "object",
+          "required": true
+        },
+        {
+          "name": "candidate_feature_ids",
+          "logicalType": "array",
+          "required": true
+        },
+        {
+          "name": "boundary_feature_ids",
+          "logicalType": "array",
+          "required": true
+        },
+        {
+          "name": "status",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "identity_review",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "boundary_effective_date",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "legal_authority",
+          "logicalType": "string",
+          "required": true
+        },
+        {
+          "name": "regulatory_verdict_authorized",
+          "logicalType": "boolean",
+          "required": true
+        },
+        {
+          "name": "limitations",
+          "logicalType": "string",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "authoritativeDefinitions": [
+    {
+      "id": "source-point-candidates-schema",
+      "type": "canonicalUrl",
+      "url": "https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/source-point-candidates-v1.schema.json"
+    }
+  ],
+  "customProperties": [
+    {
+      "id": "legal_boundary",
+      "property": "candidateOnly",
+      "value": "Source containment is not a code-adoption or jurisdictional authority verdict"
+    }
+  ]
+}
