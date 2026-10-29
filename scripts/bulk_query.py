@@ -71,6 +71,11 @@ def validate_sample(row: dict) -> dict:
         raise ValueError("facts must be a string-to-string map")
     if "project_type" in row and not isinstance(row["project_type"], str):
         raise ValueError("project_type must be a string")
+    if "applicability_date" in row:
+        value = row["applicability_date"]
+        if not isinstance(value, str) or not re.fullmatch(r"\\d{4}-\\d{2}-\\d{2}", value):
+            raise ValueError("applicability_date must be YYYY-MM-DD")
+        date.fromisoformat(value)
     return row
 
 
@@ -89,7 +94,9 @@ def classify(status: int, body: bytes, sample_id: str, as_of: str) -> dict:
                 not isinstance(payload.get("jurisdiction_id"), str) or
                 not payload["jurisdiction_id"] or
                 not isinstance(codes, list) or not codes or
-                any(not isinstance(c, dict) or not c.get("family") or not c.get("status") for c in codes)):
+                any(not isinstance(c, dict) or not isinstance(c.get("family"), str)
+                    or not c["family"] or not isinstance(c.get("status"), str) or not c["status"]
+                    for c in codes)):
             return dict(result, category="invalid_response")
         verdict = payload.get("verdict")
         if verdict not in {"verified", "conditional", "not_verified"}:
@@ -130,7 +137,8 @@ class RateLimiter:
 
 def query(row: dict, endpoint: str, as_of: str, default_type: str,
           timeout: float, token: str, limiter: RateLimiter) -> dict:
-    payload = {"project_id": row["id"], "applicability_date": as_of}
+    effective_date = row.get("applicability_date", as_of)
+    payload = {"project_id": row["id"], "applicability_date": effective_date}
     for key in ("point", "address", "facts", "project_type"):
         if key in row:
             payload[key] = row[key]
@@ -140,8 +148,8 @@ def query(row: dict, endpoint: str, as_of: str, default_type: str,
     headers = {"Content-Type": "application/json", "X-Request-ID": row["id"]}
     if token:
         headers["Authorization"] = "Bearer " + token
-    started = time.perf_counter()
     limiter.acquire()
+    started = time.perf_counter()
     try:
         request = Request(endpoint, data=data, headers=headers, method="POST")
         opener = build_opener(NoRedirect())
@@ -155,9 +163,10 @@ def query(row: dict, endpoint: str, as_of: str, default_type: str,
         if len(body) > MAX_RESPONSE:
             result = {"id": row["id"], "http_status": status, "category": "invalid_response"}
         else:
-            result = classify(status, body, row["id"], as_of)
+            result = classify(status, body, row["id"], effective_date)
     except (OSError, ValueError, URLError):
         result = {"id": row["id"], "category": "transport_error"}
+    result["applicability_date"] = effective_date
     result["latency_ms"] = round((time.perf_counter() - started) * 1000, 3)
     return result
 
@@ -177,7 +186,11 @@ def atomic_json(path: Path, value: dict):
 
 def run(args: argparse.Namespace) -> dict:
     validate_target(args.endpoint, args.allow_remote)
+    if not re.fullmatch(r"\\d{4}-\\d{2}-\\d{2}", args.date):
+        raise ValueError("date must be YYYY-MM-DD")
     date.fromisoformat(args.date)
+    if not (0 <= args.shard_index < args.shard_count <= 1024):
+        raise ValueError("shard-index must be 0..shard-count-1; shard-count 1..1024")
     if not (1 <= args.concurrency <= 64 and 1 <= args.qps <= 100
             and 1 <= args.max_requests <= 5_000_000 and 1 <= args.timeout <= 120):
         raise ValueError("concurrency 1..64, qps 1..100, max-requests 1..5000000, timeout 1..120")
@@ -193,6 +206,7 @@ def run(args: argparse.Namespace) -> dict:
     limiter = RateLimiter(args.qps)
     seen: set[str] = set()
     started = time.perf_counter()
+    skipped = 0
     results_path = paths[1]
     with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=results_path.parent,
                                      prefix=results_path.name + ".", delete=False) as output:
@@ -215,8 +229,6 @@ def run(args: argparse.Namespace) -> dict:
                     digest.update(line)
                     if not line.strip():
                         continue
-                    if sample_count >= args.max_requests:
-                        raise ValueError("workload exceeds --max-requests")
                     try:
                         row = validate_sample(json.loads(line))
                     except (ValueError, TypeError, KeyError) as error:
@@ -224,6 +236,11 @@ def run(args: argparse.Namespace) -> dict:
                     if row["id"] in seen:
                         raise ValueError("duplicate sample id: " + row["id"])
                     seen.add(row["id"])
+                    if int.from_bytes(sha256(row["id"].encode()).digest()[:8], "big") % args.shard_count != args.shard_index:
+                        skipped += 1
+                        continue
+                    if sample_count >= args.max_requests:
+                        raise ValueError("workload shard exceeds --max-requests")
                     pending.add(pool.submit(query, row, args.endpoint, args.date,
                                             args.project_type, args.timeout, token, limiter))
                     sample_count += 1
@@ -244,7 +261,9 @@ def run(args: argparse.Namespace) -> dict:
     summary = {
         "schema_version": "1", "input_sha256": digest.hexdigest(),
         "endpoint_path": PATH, "applicability_date": args.date,
-        "samples": sample_count, "categories": dict(sorted(counts.items())),
+        "samples": sample_count, "skipped_samples": skipped,
+        "shard_index": args.shard_index, "shard_count": args.shard_count,
+        "categories": dict(sorted(counts.items())),
         "http_statuses": dict(sorted(status_counts.items())),
         "code_families": dict(sorted(families.items())),
         "duration_ms": round(duration * 1000),
@@ -268,7 +287,10 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--token-env", default="", help="name of bearer-token environment variable")
     p.add_argument("--concurrency", type=int, default=4)
     p.add_argument("--qps", type=int, default=2)
-    p.add_argument("--max-requests", type=int, default=5000)
+    p.add_argument("--max-requests", type=int, default=5000,
+                   help="maximum executed samples per shard")
+    p.add_argument("--shard-index", type=int, default=0)
+    p.add_argument("--shard-count", type=int, default=1)
     p.add_argument("--timeout", type=float, default=8)
     p.add_argument("--allow-remote", action="store_true")
     return p
