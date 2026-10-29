@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/laurajoyhutchins/building-code-map/schemas/source-point-candidates-v1.schema.json",
+  "title": "BCM source-only point in polygon candidate lookup v1",
+  "description": "An offline geometry query result that must never imply code adoption, reviewed identity or site authority.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "classification",
+    "source_geometry_sha256",
+    "source_layer_role",
+    "source_features",
+    "point",
+    "candidate_feature_ids",
+    "boundary_feature_ids",
+    "status",
+    "identity_review",
+    "boundary_effective_date",
+    "legal_authority",
+    "regulatory_verdict_authorized",
+    "limitations"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "classification": {
+      "const": "source_polygon_candidate_only"
+    },
+    "source_geometry_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_layer_role": {
+      "enum": [
+        "municipal_boundary",
+        "county_boundary",
+        "fire_district",
+        "zoning",
+        "other"
+      ]
+    },
+    "source_features": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100000
+    },
+    "point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "longitude",
+        "latitude"
+      ],
+      "properties": {
+        "longitude": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "latitude": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        }
+      }
+    },
+    "candidate_feature_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "boundary_feature_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "status": {
+      "enum": [
+        "boundary_uncertain",
+        "multiple_source_candidates",
+        "one_source_candidate",
+        "no_source_polygon_match"
+      ]
+    },
+    "identity_review": {
+      "const": "not_established"
+    },
+    "boundary_effective_date": {
+      "const": "unknown"
+    },
+    "legal_authority": {
+      "const": "not_established"
+    },
+    "regulatory_verdict_authorized": {
+      "const": false
+    },
+    "limitations": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

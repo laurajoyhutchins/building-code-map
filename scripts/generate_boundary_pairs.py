@@ -21,7 +21,7 @@ CRS = "EPSG:6933"
 IDENT = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,100}$")
 
 
-def load_features(path: Path, expected_sha256: str, id_field: str = "id"):
+def load_features(path: Path, expected_sha256: str, id_field: str = "id", *, allow_integer_ids: bool = False):
     raw = path.read_bytes()
     digest = sha256(raw).hexdigest()
     if not re.fullmatch(r"[a-f0-9]{64}", expected_sha256) or digest != expected_sha256:
@@ -43,6 +43,8 @@ def load_features(path: Path, expected_sha256: str, id_field: str = "id"):
         if not isinstance(properties, dict):
             raise ValueError("source feature lacks properties")
         ident = properties.get(id_field)
+        if allow_integer_ids and type(ident) is int and ident > 0:
+            ident = str(ident)
         if not isinstance(ident, str) or not IDENT.fullmatch(ident) or ident in features:
             raise ValueError("feature IDs must be safe, unique strings")
         geom = shape(feature.get("geometry"))

@@ -143,6 +143,10 @@ function jsonDisposition(relativePath) {
   if (relativePath === 'schemas/bulk-query.odcs.json') {
     return 'bulk-query-contract';
   }
+  if (relativePath === 'schemas/source-point-candidates-v1.odcs.json') {
+    // This exact public schema definition, not arbitrary publisher polygon data.
+    return 'source-point-candidate-contract';
+  }
   if (relativePath === 'schemas/prov-graph.odcs.json') {
     // A single, reviewed first-party interchange definition, never a blanket
     // permission to commit ODCS-shaped regulatory data.
@@ -256,6 +260,21 @@ export function validatePublicArtifact(relativePath, contents, policy) {
         value?.schema?.length !== 9 ||
         !expected.every((name) => value?.authoritativeDefinitions?.some((entry) => entry?.url === schemaRoot + name))) {
       errors.push('public bulk query contract must match reviewed schema-only identity');
+    }
+  }
+  if (disposition === 'source-point-candidate-contract') {
+    const schemaUrl = 'https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/source-point-candidates-v1.schema.json';
+    const fields = value?.schema?.[0]?.properties ?? [];
+    const names = fields.map((field) => field?.name);
+    if (value?.apiVersion !== 'v3.1.0' || value?.kind !== 'DataContract' ||
+        value?.id !== 'bcm-source-point-candidates-v1' || value?.status !== 'draft' ||
+        value?.schema?.length !== 1 || value?.schema?.[0]?.name !== 'source_point_candidates_v1' ||
+        !names.includes('source_geometry_sha256') || !names.includes('legal_authority') ||
+        !names.includes('regulatory_verdict_authorized') ||
+        fields.some((field) => field?.required !== true) ||
+        value?.authoritativeDefinitions?.length !== 1 ||
+        value?.authoritativeDefinitions?.[0]?.url !== schemaUrl) {
+      errors.push('public source polygon candidate contract must match reviewed schema-only identity');
     }
   }
   if (disposition === 'synthetic') {
