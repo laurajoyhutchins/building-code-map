@@ -140,6 +140,9 @@ function jsonDisposition(relativePath) {
     // Reviewed public contract definition only, never a real policy or private source.
     return 'site-authority-contract';
   }
+  if (relativePath === 'schemas/bulk-query.odcs.json') {
+    return 'bulk-query-contract';
+  }
   if (relativePath === 'schemas/prov-graph.odcs.json') {
     // A single, reviewed first-party interchange definition, never a blanket
     // permission to commit ODCS-shaped regulatory data.
@@ -239,6 +242,17 @@ export function validatePublicArtifact(relativePath, contents, policy) {
           (item) => item?.url === 'https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/prov-graph.schema.json',
         )) {
       errors.push('public PROV contract must match the reviewed schema and identity');
+    }
+  }
+  if (disposition === 'bulk-query-contract') {
+    const schemaRoot = 'https://github.com/laurajoyhutchins/building-code-map/blob/main/schemas/';
+    const expected = ['bulk-workload-v1.schema.json', 'bulk-result-v1.schema.json',
+      'bulk-summary-v1.schema.json'];
+    if (value?.apiVersion !== 'v3.1.0' || value?.kind !== 'DataContract' ||
+        value?.id !== 'bcm-bulk-query-v1' || value?.status !== 'draft' ||
+        value?.schema?.length !== 3 ||
+        !expected.every((name) => value?.authoritativeDefinitions?.some((entry) => entry?.url === schemaRoot + name))) {
+      errors.push('public bulk query contract must match reviewed schema-only identity');
     }
   }
   if (disposition === 'synthetic') {
