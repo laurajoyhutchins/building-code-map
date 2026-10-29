@@ -37,7 +37,7 @@ class TestLiveBulkPreflight(unittest.TestCase):
                 if self.path == "/health":
                     self.reply(200, {"status": "ok", "data_scope":
                                     "synthetic_demo_only" if state["demo"] else "private_provider_adapter"})
-                elif self.path == "/v1/readiness":
+                elif self.path == "/v1/readiness?capability=coordinate_resolution":
                     self.reply(200, {"status": "ready" if state["ready"] else "unavailable"})
                 else:
                     self.reply(404, {})
