@@ -112,7 +112,8 @@ def classify(status: int, body: bytes, sample_id: str, as_of: str,
                     (expected_bundle and provenance.get("bundle_id") != expected_bundle) or
                     (expected_source and provenance.get("source_commit") != expected_source) or
                     payload["jurisdiction_id"].upper().startswith("DEMO") or
-                    payload.get("jurisdiction", {}).get("country_code") == "DEMO"):
+                    (isinstance(payload.get("jurisdiction"), dict) and
+                     payload["jurisdiction"].get("country_code") == "DEMO")):
                 return dict(result, category="runtime_identity_mismatch")
         if verdict == "verified" and not evidence and not exact:
             return dict(result, category="unsupported_verification")
