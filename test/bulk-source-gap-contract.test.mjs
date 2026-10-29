@@ -44,7 +44,7 @@ test('reviewed ODCS has exactly eight bulk exchanges and source-gap receipt', ()
   const validator = new Ajv2019({ allErrors: true, strict: false });
   addFormats(validator);
   assert.equal(validator.compile(load('odcs-v3.1.0.schema.json'))(odcs), true);
-  assert.equal(odcs.schema.length, 8);
+  assert.equal(odcs.schema.length, 9);
   assert.deepEqual(validatePublicArtifact('schemas/bulk-query.odcs.json', JSON.stringify(odcs), {}), []);
   const modified = structuredClone(odcs);
   modified.authoritativeDefinitions = modified.authoritativeDefinitions.filter(
