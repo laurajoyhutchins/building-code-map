@@ -53,6 +53,36 @@ samples include source geometry SHA-256, EPSG, cell row/column and estimated
 land fraction. A coastal cell is sampled **on land**, not blindly at sea.
 No code or jurisdiction is inferred by grid generation.
 
+## State-stratified complement
+
+A 100-mile grid intersects states that its selected representative points may
+not actually sample, especially small northeastern states and DC. Audit
+Census **candidate** state membership separately, preserving zero-count
+states, overlap/edge ambiguities and unmatched points. Then generate one
+supplemental positive-land representative point for each Census state
+equivalent. This is a geographic sampling probe, **never** evidence of a
+verified governmental authority or adopted code.
+
+```sh
+python3 -m scripts.state_coverage \
+  --geometry /secure/us-land.geojson \
+  --sha256 ACTUAL_64_CHARACTER_SHA256 \
+  --grid /secure/us-100mi.jsonl --expect-51 \
+  --audit /secure/us-100mi-state-audit.json \
+  --representatives /secure/us-state-probes.jsonl
+python3 scripts/bulk_query.py \
+  --input /secure/us-state-probes.jsonl \
+  --results /secure/state-probe-results.jsonl \
+  --summary /secure/state-probe-summary.json \
+  --date 2026-10-28 --concurrency 4 --qps 2 --max-requests 51
+```
+
+The versioned `schemas/bulk-state-audit.schema.json` allows only source
+coverage counts and ambiguity diagnostics. The additional state probes use
+the existing `bulk-workload-v1` contract and must not carry regulatory
+verdicts. Neither the grid nor this representative sample can establish
+address-level applicability or jurisdiction boundary accuracy.
+
 ## Safe first execution
 
 Start the public fictional demo service in a separate terminal:
