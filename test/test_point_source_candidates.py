@@ -62,7 +62,7 @@ class SourcePolygonCandidates(unittest.TestCase):
             hole = self.look(source,sha,-104.5,40.5)
             self.assertEqual(hole["candidate_feature_ids"], [])
             self.assertEqual(hole["status"], "no_source_polygon_match")
-            edge = self.look(source,sha,-106,40.5)
+            edge = self.look(source,sha,-106,39)
             self.assertEqual(edge["status"], "boundary_uncertain")
             self.assertEqual(edge["boundary_feature_ids"], ["10"])
 
