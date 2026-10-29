@@ -48,7 +48,7 @@ test('temporal receipts and ODCS remain source-only versioned contracts', () => 
   const ajv2019 = new Ajv2019({ allErrors: true, strict: false });
   addFormats(ajv2019);
   assert.equal(ajv2019.compile(load('odcs-v3.1.0.schema.json'))(odcs), true);
-  assert.equal(odcs.schema.length, 8);
+  assert.equal(odcs.schema.length, 9);
   assert.deepEqual(validatePublicArtifact('schemas/bulk-query.odcs.json', JSON.stringify(odcs), {}), []);
   for (const path of ['bulk-temporal-events-v1.schema.json', 'bulk-temporal-summary-v1.schema.json']) {
     assert.deepEqual(validatePublicArtifact('schemas/' + path, JSON.stringify(load(path)), {}), []);
